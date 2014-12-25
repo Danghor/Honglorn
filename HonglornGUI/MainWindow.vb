@@ -8,7 +8,7 @@ Public Class MainWindow
     Dim sUser As String = oFile.ReadLine()
     Dim sPassword As String = oFile.ReadLine()
     Dim sDatabase As String = oFile.ReadLine()
-    App = Honglorn.Instance(sServer, sUser, sPassword)
+    App = New Honglorn(sServer, sUser, sPassword)
   End Sub
 
   Private App As Honglorn

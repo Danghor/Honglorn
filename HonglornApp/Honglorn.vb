@@ -1,29 +1,10 @@
 ﻿Public Class Honglorn
-  Private Shared _MySingletonInstance As Honglorn
-
   Private Const CsDataBaseName As String = "bjs"
 
   Private oMySqlHandler As MySqlHandler
   Private oExcelImporter As ExcelImporter
 
-  ''' <summary>
-  ''' Returns the singleton instance or creates a new one, if none is available.
-  ''' </summary>
-  ''' <param name="sServer">Name or IP address of the database server.</param>
-  ''' <param name="sUser">Username used for login to the database server.</param>
-  ''' <param name="sPassword">Password used for login to the database server.</param>
-  ''' <returns>A singleton instance of type Honglorn.</returns>
-  Public Shared ReadOnly Property Instance(sServer As String, sUser As String, sPassword As String) As Honglorn
-    Get
-      If IsNothing(_MySingletonInstance) Then
-        Instance = New Honglorn(sServer, sUser, sPassword)
-      Else
-        Instance = _MySingletonInstance
-      End If
-    End Get
-  End Property
-
-  Private Sub New(sServer As String, sUser As String, sPassword As String)
+  Public Sub New(sServer As String, sUser As String, sPassword As String)
     oMySqlHandler = New MySqlHandler(sServer, sUser, sPassword, CsDataBaseName)
     oExcelImporter = ExcelImporter.Instance
   End Sub
