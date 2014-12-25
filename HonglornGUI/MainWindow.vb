@@ -15,6 +15,5 @@ Public Class MainWindow
 
   Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     SETCREDENTIALS()
-    App.ImportStudentCourseExcelSheet("C:\Users\Nick\Desktop\IMPORT~1.XLS", 2014)
   End Sub
 End Class

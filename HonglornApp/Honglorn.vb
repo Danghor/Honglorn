@@ -9,12 +9,10 @@
   ''' <summary>
   ''' Returns the singleton instance or creates a new one, if none is available.
   ''' </summary>
-  ''' <param name="sServer"></param>
-  ''' <param name="sUser"></param>
-  ''' <param name="sPassword"></param>
-  ''' <value></value>
-  ''' <returns></returns>
-  ''' <remarks></remarks>
+  ''' <param name="sServer">Name or IP address of the database server.</param>
+  ''' <param name="sUser">Username used for login to the database server.</param>
+  ''' <param name="sPassword">Password used for login to the database server.</param>
+  ''' <returns>A singleton instance of type Honglorn.</returns>
   Public Shared ReadOnly Property Instance(sServer As String, sUser As String, sPassword As String) As Honglorn
     Get
       If IsNothing(_MySingletonInstance) Then
@@ -30,6 +28,12 @@
     oExcelImporter = ExcelImporter.Instance
   End Sub
 
+  ''' <summary>
+  ''' Imports an Excel sheet containing data for multiple students into the database.
+  ''' </summary>
+  ''' <param name="sFilePath">The full path to the Excel file to be imported.</param>
+  ''' <param name="iYear">The year in which the imported data is valid (relevant for mapping the courses).</param>
+  ''' <remarks>todo: currently only works with a "perfect" Excel sheet</remarks>
   Public Sub ImportStudentCourseExcelSheet(sFilePath As String, iYear As Integer)
     Dim sCurSurname As String
     Dim sCurForename As String
