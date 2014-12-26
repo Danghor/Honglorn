@@ -22,28 +22,32 @@ Partial Class MainWindow
   'Do not modify it using the code editor.
   <System.Diagnostics.DebuggerStepThrough()> _
   Private Sub InitializeComponent()
-    Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+    Me.EditDataGridView = New System.Windows.Forms.DataGridView()
     Me.SelectEditCourseComboBox = New System.Windows.Forms.ComboBox()
     Me.SelectEditYearComboBox = New System.Windows.Forms.ComboBox()
-    CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+    CType(Me.EditDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.SuspendLayout()
     '
-    'DataGridView1
+    'EditDataGridView
     '
-    Me.DataGridView1.AllowUserToAddRows = False
-    Me.DataGridView1.AllowUserToDeleteRows = False
-    Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-    Me.DataGridView1.Location = New System.Drawing.Point(180, 138)
-    Me.DataGridView1.Name = "DataGridView1"
-    Me.DataGridView1.RowTemplate.Height = 28
-    Me.DataGridView1.Size = New System.Drawing.Size(728, 479)
-    Me.DataGridView1.TabIndex = 0
+    Me.EditDataGridView.AllowUserToAddRows = False
+    Me.EditDataGridView.AllowUserToDeleteRows = False
+    Me.EditDataGridView.AllowUserToResizeRows = False
+    Me.EditDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
+    Me.EditDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised
+    Me.EditDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+    Me.EditDataGridView.Location = New System.Drawing.Point(180, 79)
+    Me.EditDataGridView.Name = "EditDataGridView"
+    Me.EditDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+    Me.EditDataGridView.Size = New System.Drawing.Size(1200, 700)
+    Me.EditDataGridView.TabIndex = 0
+    Me.EditDataGridView.Visible = False
     '
     'SelectEditCourseComboBox
     '
     Me.SelectEditCourseComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
     Me.SelectEditCourseComboBox.FormattingEnabled = True
-    Me.SelectEditCourseComboBox.Location = New System.Drawing.Point(180, 12)
+    Me.SelectEditCourseComboBox.Location = New System.Drawing.Point(180, 45)
     Me.SelectEditCourseComboBox.Name = "SelectEditCourseComboBox"
     Me.SelectEditCourseComboBox.Size = New System.Drawing.Size(121, 28)
     Me.SelectEditCourseComboBox.TabIndex = 1
@@ -52,7 +56,7 @@ Partial Class MainWindow
     '
     Me.SelectEditYearComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
     Me.SelectEditYearComboBox.FormattingEnabled = True
-    Me.SelectEditYearComboBox.Location = New System.Drawing.Point(787, 12)
+    Me.SelectEditYearComboBox.Location = New System.Drawing.Point(180, 11)
     Me.SelectEditYearComboBox.Name = "SelectEditYearComboBox"
     Me.SelectEditYearComboBox.Size = New System.Drawing.Size(121, 28)
     Me.SelectEditYearComboBox.TabIndex = 2
@@ -61,17 +65,17 @@ Partial Class MainWindow
     '
     Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-    Me.ClientSize = New System.Drawing.Size(920, 629)
+    Me.ClientSize = New System.Drawing.Size(1553, 785)
     Me.Controls.Add(Me.SelectEditYearComboBox)
     Me.Controls.Add(Me.SelectEditCourseComboBox)
-    Me.Controls.Add(Me.DataGridView1)
+    Me.Controls.Add(Me.EditDataGridView)
     Me.Name = "MainWindow"
     Me.Text = "Form1"
-    CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+    CType(Me.EditDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
     Me.ResumeLayout(False)
 
   End Sub
-  Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+  Friend WithEvents EditDataGridView As System.Windows.Forms.DataGridView
   Friend WithEvents SelectEditCourseComboBox As System.Windows.Forms.ComboBox
   Friend WithEvents SelectEditYearComboBox As System.Windows.Forms.ComboBox
 

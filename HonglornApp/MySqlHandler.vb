@@ -80,7 +80,10 @@ Public Class MySqlHandler
     oSelectCommand.Connection = _oConnection
     oUpdateCommand.Connection = _oConnection
 
-    oSelectCommand.CommandText = "SELECT PKey, Surname, Forename, Sprint, Jump, Throw, MiddleDistance FROM (Student LEFT JOIN Competition ON Student.PKey = Competition.StudentPKey) INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey INNER JOIN Course ON StudentCourseRel.CoursePKey = Course.PKey WHERE StudentCourseRel.Year = @Year AND Competition.Year = @Year AND Course.CourseName = @CourseName"
+    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey INNER JOIN Course ON StudentCourseRel.CoursePKey = Course.PKey left outer join Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND Course.CourseName = @CourseName"
+
+    oSelectCommand.Parameters.AddWithValue("@Year", iYear)
+    oSelectCommand.Parameters.AddWithValue("@CourseName", sCourseName)
 
     oUpdateCommand.CommandText = "IF EXISTS (SELECT NULL FROM Competition WHERE StudentPKey = @PKey AND Year = @Year) UPDATE Competition SET Sprint"
 

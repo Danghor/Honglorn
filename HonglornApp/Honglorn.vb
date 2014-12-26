@@ -4,14 +4,21 @@
   Private _oMySqlHandler As MySqlHandler
   Private _oExcelImporter As ExcelImporter
 
+  Private _daCurrentEditDataAdapter As MySql.Data.MySqlClient.MySqlDataAdapter
+
   Public Sub New(sServer As String, sUser As String, sPassword As String)
     _oMySqlHandler = New MySqlHandler(sServer, sUser, sPassword, CsDataBaseName)
     _oExcelImporter = ExcelImporter.Instance
   End Sub
 
-  'Public Function GetCompetitionEditDataTable()
+  Public Function GetCompetitionEditDataTable(sCourseName As String, iYear As Integer) As DataTable
+    Dim dtEditDataTable As New DataTable()
+    _daCurrentEditDataAdapter = _oMySqlHandler.GetCompetitionEditAdapter(sCourseName, iYear)
 
-  'End Function
+    _daCurrentEditDataAdapter.Fill(dtEditDataTable)
+
+    GetCompetitionEditDataTable = dtEditDataTable
+  End Function
 
   Public Function GetValidYears() As Integer()
     GetValidYears = _oMySqlHandler.GetValidYears()

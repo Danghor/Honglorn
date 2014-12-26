@@ -36,4 +36,23 @@ Public Class MainWindow
 
     SelectEditCourseComboBox.DataSource = App.GetValidCourseNames(iSelectedYear)
   End Sub
+
+  Private Sub ReloadDataGridView(sCourseName As String, iYear As Integer)
+    'todo: confirmation dialog, saving changes from old datasource etc
+    EditDataGridView.Visible = False
+    EditDataGridView.DataSource = App.GetCompetitionEditDataTable(sCourseName, iYear)
+    EditDataGridView.Columns("PKey").Visible = False
+    EditDataGridView.Columns("Surname").ReadOnly = True
+    EditDataGridView.Columns("Forename").ReadOnly = True
+    EditDataGridView.Visible = True
+  End Sub
+
+  Private Sub SelectEditCourseComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SelectEditCourseComboBox.SelectedIndexChanged
+    Dim sSelectedCourseName As String = SelectEditCourseComboBox.Text
+    Dim sSelectedYear As Integer = CInt(SelectEditYearComboBox.Text)
+
+    If Not String.IsNullOrWhiteSpace(sSelectedCourseName) And sSelectedYear <> 0 Then
+      ReloadDataGridView(sSelectedCourseName, sSelectedYear)
+    End If
+  End Sub
 End Class
