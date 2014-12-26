@@ -1,20 +1,32 @@
 ﻿Public Class Honglorn
   Private Const CsDataBaseName As String = "bjs"
 
-  Private oMySqlHandler As MySqlHandler
-  Private oExcelImporter As ExcelImporter
+  Private _oMySqlHandler As MySqlHandler
+  Private _oExcelImporter As ExcelImporter
 
   Public Sub New(sServer As String, sUser As String, sPassword As String)
-    oMySqlHandler = New MySqlHandler(sServer, sUser, sPassword, CsDataBaseName)
-    oExcelImporter = ExcelImporter.Instance
+    _oMySqlHandler = New MySqlHandler(sServer, sUser, sPassword, CsDataBaseName)
+    _oExcelImporter = ExcelImporter.Instance
   End Sub
 
+  'Public Function GetCompetitionEditDataTable()
+
+  'End Function
+
+  Public Function GetValidYears() As Integer()
+    GetValidYears = _oMySqlHandler.GetValidYears()
+  End Function
+
+  Public Function GetValidCourseNames(iYear As Integer) As String()
+    GetValidCourseNames = _oMySqlHandler.GetValidCourseNames(iYear)
+  End Function
+
+  'todo: currently only works with a "perfect" Excel sheet
   ''' <summary>
   ''' Imports an Excel sheet containing data for multiple students into the database.
   ''' </summary>
   ''' <param name="sFilePath">The full path to the Excel file to be imported.</param>
   ''' <param name="iYear">The year in which the imported data is valid (relevant for mapping the courses).</param>
-  ''' <remarks>todo: currently only works with a "perfect" Excel sheet</remarks>
   Public Sub ImportStudentCourseExcelSheet(sFilePath As String, iYear As Integer)
     Dim sCurSurname As String
     Dim sCurForename As String
@@ -22,7 +34,7 @@
     Dim eCurrentSex As MySqlHandler.Sex
     Dim iCurYearOfBirth As Integer
 
-    Dim oDataTable As DataTable = oExcelImporter.GetStudentCourseDataTable(sFilePath)
+    Dim oDataTable As DataTable = _oExcelImporter.GetStudentCourseDataTable(sFilePath)
 
     For Each oRow As DataRow In oDataTable.Rows
       sCurSurname = CStr(oRow(0))
@@ -38,11 +50,11 @@
 
       iCurYearOfBirth = CInt(oRow(4))
 
-      oMySqlHandler.ImportStudentData(sCurSurname, sCurForename, sCurCourseName, eCurrentSex, iCurYearOfBirth, iYear)
+      _oMySqlHandler.ImportStudentData(sCurSurname, sCurForename, sCurCourseName, eCurrentSex, iCurYearOfBirth, iYear)
     Next
   End Sub
 
   Public Sub ImportSingleStudent(sSurname As String, sForename As String, sCourseName As String, eSex As MySqlHandler.Sex, iYearOfBirth As Integer, iYear As Integer)
-    oMySqlHandler.ImportStudentData(sSurname, sForename, sCourseName, eSex, iYearOfBirth, iYear)
+    _oMySqlHandler.ImportStudentData(sSurname, sForename, sCourseName, eSex, iYearOfBirth, iYear)
   End Sub
 End Class

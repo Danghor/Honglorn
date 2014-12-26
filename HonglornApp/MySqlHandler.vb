@@ -22,6 +22,56 @@ Public Class MySqlHandler
     _oConnection = New MySqlConnection(oConStringBuilder.GetConnectionString(True))
   End Sub
 
+  Friend Function GetValidYears() As Integer()
+    Dim oDataAdapter As New MySqlDataAdapter()
+    Dim oSelectCommand As New MySqlCommand()
+    Dim dtDataTable As New DataTable()
+    Dim aiResult As Integer()
+    Dim iArrayLength As Integer
+
+    oSelectCommand.Connection = _oConnection
+    'todo: create view for this
+    oSelectCommand.CommandText = "SELECT DISTINCT year FROM StudentCourseRel"
+
+    oDataAdapter.SelectCommand = oSelectCommand
+
+    oDataAdapter.Fill(dtDataTable)
+
+    iArrayLength = dtDataTable.Rows.Count - 1
+    aiResult = New Integer(dtDataTable.Rows.Count - 1) {}
+
+    For iRow As Integer = 0 To iArrayLength
+      aiResult(iRow) = CInt(dtDataTable.Rows(iRow)(0))
+    Next
+
+    GetValidYears = aiResult
+  End Function
+
+  Friend Function GetValidCourseNames(iYear As Integer) As String()
+    Dim oDataAdapter As New MySqlDataAdapter()
+    Dim oSelectCommand As New MySqlCommand()
+    Dim dtDataTable As New DataTable()
+    Dim asResult As String()
+    Dim iArrayLength As Integer
+
+    oSelectCommand.Connection = _oConnection
+    oSelectCommand.CommandText = "SELECT DISTINCT CourseName FROM course INNER JOIN StudentCourseRel ON Course.PKey = StudentCourseRel.CoursePKey WHERE year = @iYear"
+    oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
+
+    oDataAdapter.SelectCommand = oSelectCommand
+
+    oDataAdapter.Fill(dtDataTable)
+
+    iArrayLength = dtDataTable.Rows.Count - 1
+    asResult = New String(iArrayLength) {}
+
+    For iRow As Integer = 0 To iArrayLength
+      asResult(iRow) = CStr(dtDataTable.Rows(iRow)(0))
+    Next
+
+    GetValidCourseNames = asResult
+  End Function
+
   Friend Function GetCompetitionEditAdapter(sCourseName As String, iYear As Integer) As MySqlDataAdapter
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
