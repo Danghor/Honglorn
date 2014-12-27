@@ -31,7 +31,7 @@ Public Class MySqlHandler
 
     oSelectCommand.Connection = _oConnection
     'todo: create view for this
-    oSelectCommand.CommandText = "SELECT DISTINCT year FROM StudentCourseRel"
+    oSelectCommand.CommandText = "SELECT DISTINCT year FROM StudentCourseRel ORDER BY year DESC"
 
     oDataAdapter.SelectCommand = oSelectCommand
 
@@ -55,7 +55,7 @@ Public Class MySqlHandler
     Dim iArrayLength As Integer
 
     oSelectCommand.Connection = _oConnection
-    oSelectCommand.CommandText = "SELECT DISTINCT CourseName FROM course INNER JOIN StudentCourseRel ON Course.PKey = StudentCourseRel.CoursePKey WHERE year = @iYear"
+    oSelectCommand.CommandText = "SELECT DISTINCT CourseName FROM course INNER JOIN StudentCourseRel ON Course.PKey = StudentCourseRel.CoursePKey WHERE year = @iYear ORDER BY CourseName ASC"
     oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
 
     oDataAdapter.SelectCommand = oSelectCommand
@@ -80,7 +80,7 @@ Public Class MySqlHandler
     oSelectCommand.Connection = _oConnection
     oUpdateCommand.Connection = _oConnection
 
-    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey INNER JOIN Course ON StudentCourseRel.CoursePKey = Course.PKey left outer join Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND Course.CourseName = @CourseName"
+    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey INNER JOIN Course ON StudentCourseRel.CoursePKey = Course.PKey left outer join Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND Course.CourseName = @CourseName"
 
     oSelectCommand.Parameters.AddWithValue("@Year", iYear)
     oSelectCommand.Parameters.AddWithValue("@CourseName", sCourseName)
