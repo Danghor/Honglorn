@@ -56,6 +56,7 @@ Public Class MainWindow
   End Sub
 
   Private Sub SelectEditCourseComboBox_DropDown(sender As Object, e As EventArgs) Handles SelectEditCourseComboBox.DropDown
+    'If Not String.IsNullOrWhiteSpace(SelectEditCourseComboBox.SelectedText) Then
     If CurrentYear <> -1 Then
       SelectEditCourseComboBox.DataSource = App.GetValidCourseNames(CurrentYear)
     Else
@@ -65,6 +66,11 @@ Public Class MainWindow
 
   Private Sub ReloadDataGridView(sCourseName As String, iYear As Integer)
     'todo: confirmation dialog, saving changes from old datasource etc
+    'todo: change tab order so tab at the end of the line skips to next "value" field instead of "Surname"
+    If EditDataGridView.DataSource IsNot Nothing Then
+      App.SaveChanges(CType(EditDataGridView.DataSource, DataTable))
+    End If
+
     EditDataGridView.Visible = False
 
     EditDataGridView.DataSource = App.GetCompetitionEditDataTable(sCourseName, iYear)
@@ -83,5 +89,11 @@ Public Class MainWindow
     If CurrentYear <> -1 AndAlso Not String.IsNullOrWhiteSpace(sSelectedCourseName) Then
       ReloadDataGridView(sSelectedCourseName, CurrentYear)
     End If
+  End Sub
+
+  Private Sub EditDataGridView_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles EditDataGridView.CellEndEdit
+    'todo: verify content
+
+    App.SaveChanges(CType(EditDataGridView.DataSource, DataTable))
   End Sub
 End Class

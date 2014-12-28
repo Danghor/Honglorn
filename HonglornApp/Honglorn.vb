@@ -11,6 +11,13 @@
     _oExcelImporter = ExcelImporter.Instance
   End Sub
 
+  ''' <summary>
+  ''' Returns a DataTable containing the relevant data to fill the DataGridView for editing the competition data per course in the UI. Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the DataBase later.
+  ''' </summary>
+  ''' <param name="sCourseName">The name of the course to be edited.</param>
+  ''' <param name="iYear">The year for which the data should be selected.</param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
   Public Function GetCompetitionEditDataTable(sCourseName As String, iYear As Integer) As DataTable
     Dim dtEditDataTable As New DataTable()
     _daCurrentEditDataAdapter = _oMySqlHandler.GetCompetitionEditAdapter(sCourseName, iYear)
@@ -20,15 +27,31 @@
     GetCompetitionEditDataTable = dtEditDataTable
   End Function
 
+  Public Sub SaveChanges(oChanges As DataTable)
+    _daCurrentEditDataAdapter.Update(oChanges)
+  End Sub
+
+  ''' <summary>
+  ''' Get an Integer Array representing the years for which data is present in the database.
+  ''' </summary>
+  ''' <returns>An Integer Array representing the valid years.</returns>
+  ''' <remarks></remarks>
   Public Function GetValidYears() As Integer()
     GetValidYears = _oMySqlHandler.GetValidYears()
   End Function
 
+  ''' <summary>
+  ''' Get a String Array representing the course names for which there is at least one Student present in the given year. 
+  ''' </summary>
+  ''' <param name="iYear">The year for which the valid course names should be retrieved.</param>
+  ''' <returns>A String Array representing the valid course names.</returns>
+  ''' <remarks></remarks>
   Public Function GetValidCourseNames(iYear As Integer) As String()
     GetValidCourseNames = _oMySqlHandler.GetValidCourseNames(iYear)
   End Function
 
   'todo: currently only works with a "perfect" Excel sheet
+  'todo: test inserting an already existing student
   ''' <summary>
   ''' Imports an Excel sheet containing data for multiple students into the database.
   ''' </summary>

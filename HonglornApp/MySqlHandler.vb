@@ -78,16 +78,23 @@ Public Class MySqlHandler
     Dim oUpdateCommand As New MySqlCommand()
 
     oSelectCommand.Connection = _oConnection
-    oUpdateCommand.Connection = _oConnection
 
-    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey INNER JOIN Course ON StudentCourseRel.CoursePKey = Course.PKey left outer join Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND Course.CourseName = @CourseName"
+    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey INNER JOIN Course ON StudentCourseRel.CoursePKey = Course.PKey left outer join Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND Course.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC"
 
     oSelectCommand.Parameters.AddWithValue("@Year", iYear)
     oSelectCommand.Parameters.AddWithValue("@CourseName", sCourseName)
 
-    oUpdateCommand.CommandText = "IF EXISTS (SELECT NULL FROM Competition WHERE StudentPKey = @PKey AND Year = @Year) UPDATE Competition SET Sprint"
+    oUpdateCommand = New MySqlCommand("EnterCompetitionValues", _oConnection)
+    oUpdateCommand.CommandType = CommandType.StoredProcedure
 
-    'todo: update command and parameters for both commands
+    oUpdateCommand.Parameters.AddWithValue("yYear", iYear)
+
+    oUpdateCommand.Parameters.Add("cPKey", MySqlDbType.Guid, 36, "PKey")
+    'todo: figure out, what exactly the size does for float :D
+    oUpdateCommand.Parameters.Add("fSprintValue", MySqlDbType.Float, 7, "Sprint")
+    oUpdateCommand.Parameters.Add("fJumpValue", MySqlDbType.Float, 7, "Jump")
+    oUpdateCommand.Parameters.Add("fThrowValue", MySqlDbType.Float, 7, "Throw")
+    oUpdateCommand.Parameters.Add("fMiddleDistanceValue", MySqlDbType.Float, 7, "MiddleDistance")
 
     oDataAdapter.SelectCommand = oSelectCommand
     oDataAdapter.UpdateCommand = oUpdateCommand
@@ -98,8 +105,6 @@ Public Class MySqlHandler
   Friend Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
     Dim oCmd As New MySqlCommand("ImportStudent", _oConnection)
     oCmd.CommandType = CommandType.StoredProcedure
-
-    'Dim oDateTime As New MySqlDateTime
 
     oCmd.Parameters.AddWithValue("@sSurname", sSurname)
     oCmd.Parameters.AddWithValue("@sForename", sForename)
