@@ -56,9 +56,13 @@ Public Class MainWindow
   End Sub
 
   Private Sub SelectEditCourseComboBox_DropDown(sender As Object, e As EventArgs) Handles SelectEditCourseComboBox.DropDown
-    'If Not String.IsNullOrWhiteSpace(SelectEditCourseComboBox.SelectedText) Then
     If CurrentYear <> -1 Then
-      SelectEditCourseComboBox.DataSource = App.GetValidCourseNames(CurrentYear)
+      Dim asNewCourseNames As String() = App.GetValidCourseNames(CurrentYear)
+      Dim asOldCourseNames As String() = CType(SelectEditCourseComboBox.DataSource, String())
+      
+      If Not IsEqual(asNewCourseNames, asOldCourseNames) Then
+        SelectEditCourseComboBox.DataSource = App.GetValidCourseNames(CurrentYear)
+      End If
     Else
       'todo: display tooltip "please set a year" or so
     End If
@@ -83,7 +87,7 @@ Public Class MainWindow
     EditDataGridView.Visible = True
   End Sub
 
-  Private Sub SelectEditCourseComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles SelectEditCourseComboBox.SelectedIndexChanged
+  Private Sub SelectEditCourseComboBox_TextChanged(sender As Object, e As EventArgs) Handles SelectEditCourseComboBox.TextChanged
     Dim sSelectedCourseName As String = SelectEditCourseComboBox.Text
 
     If CurrentYear <> -1 AndAlso Not String.IsNullOrWhiteSpace(sSelectedCourseName) Then
@@ -96,4 +100,26 @@ Public Class MainWindow
 
     App.SaveChanges(CType(EditDataGridView.DataSource, DataTable))
   End Sub
+
+  ''' <summary>
+  ''' Compares two String arrays. Returns true if their content is identical and false otherwise.
+  ''' </summary>
+  ''' <param name="asFirst"></param>
+  ''' <param name="asSecond"></param>
+  ''' <returns></returns>
+  ''' <remarks>Uses Exit Function.</remarks>
+  Private Function IsEqual(asFirst As String(), asSecond As String()) As Boolean
+    IsEqual = True
+
+    If asFirst IsNot Nothing AndAlso asSecond IsNot Nothing AndAlso asFirst.Count = asSecond.Count Then
+      For i As Integer = 0 To asFirst.Count - 1
+        If asFirst(i) <> asSecond(i) Then
+          IsEqual = False
+          Exit Function 'MURICA!
+        End If
+      Next
+    Else
+      IsEqual = False
+    End If
+  End Function
 End Class
