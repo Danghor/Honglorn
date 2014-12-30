@@ -27,6 +27,7 @@ Partial Class MainWindow
     Me.SelectEditYearComboBox = New System.Windows.Forms.ComboBox()
     Me.MenuStrip = New System.Windows.Forms.MenuStrip()
     Me.ImportStudentsMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+    Me.SetDisciplinesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
     CType(Me.EditDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.MenuStrip.SuspendLayout()
     Me.SuspendLayout()
@@ -73,7 +74,7 @@ Partial Class MainWindow
     'MenuStrip
     '
     Me.MenuStrip.BackColor = System.Drawing.SystemColors.Control
-    Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportStudentsMenuItem})
+    Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ImportStudentsMenuItem, Me.SetDisciplinesToolStripMenuItem})
     Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
     Me.MenuStrip.Name = "MenuStrip"
     Me.MenuStrip.Size = New System.Drawing.Size(778, 33)
@@ -85,6 +86,12 @@ Partial Class MainWindow
     Me.ImportStudentsMenuItem.Name = "ImportStudentsMenuItem"
     Me.ImportStudentsMenuItem.Size = New System.Drawing.Size(178, 29)
     Me.ImportStudentsMenuItem.Text = "Schüler importieren"
+    '
+    'SetDisciplinesToolStripMenuItem
+    '
+    Me.SetDisciplinesToolStripMenuItem.Name = "SetDisciplinesToolStripMenuItem"
+    Me.SetDisciplinesToolStripMenuItem.Size = New System.Drawing.Size(187, 29)
+    Me.SetDisciplinesToolStripMenuItem.Text = "Disziplinen einstellen"
     '
     'MainWindow
     '
@@ -109,5 +116,6 @@ Partial Class MainWindow
   Friend WithEvents SelectEditYearComboBox As System.Windows.Forms.ComboBox
   Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
   Friend WithEvents ImportStudentsMenuItem As System.Windows.Forms.ToolStripMenuItem
+  Friend WithEvents SetDisciplinesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -35,6 +35,8 @@ Public Class MainWindow
     Me.Height = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Height * SCALE_FACTOR))
     Me.Width = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Width * SCALE_FACTOR))
 
+    Me.Location = New Point(CInt(Math.Round((Screen.PrimaryScreen.Bounds.Width - Me.Width) / 2)), CInt(Math.Round((Screen.PrimaryScreen.Bounds.Height - Me.Height) / 2)))
+
     'pre-select a year
     Dim aiValidYears As Integer() = App.GetValidYears()
     If aiValidYears.Count <> 0 Then
