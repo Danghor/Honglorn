@@ -16,7 +16,7 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `CourseExists`(cCourseName CHAR(3) CH
     READS SQL DATA
 BEGIN
 
-RETURN exists(select null from Course where CourseName = cCourseName COLLATE utf8_unicode_ci);
+RETURN exists(select null from CourseClassRel where CourseName = cCourseName COLLATE utf8_unicode_ci);
 
 END//
 DELIMITER ;

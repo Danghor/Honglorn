@@ -1,4 +1,6 @@
-﻿Public Class Honglorn
+﻿Imports System.Text.RegularExpressions
+
+Public Class Honglorn
   Private Const CsDataBaseName As String = "bjs"
 
   Private _oMySqlHandler As MySqlHandler
@@ -80,11 +82,21 @@
 
       iCurYearOfBirth = CInt(oRow(4))
 
-      _oMySqlHandler.ImportStudentData(sCurSurname, sCurForename, sCurCourseName, eCurrentSex, iCurYearOfBirth, iYear)
+      ImportSingleStudent(sCurSurname, sCurForename, sCurCourseName, eCurrentSex, iCurYearOfBirth, iYear)
     Next
   End Sub
 
   Public Sub ImportSingleStudent(sSurname As String, sForename As String, sCourseName As String, eSex As MySqlHandler.Sex, iYearOfBirth As Integer, iYear As Integer)
-    _oMySqlHandler.ImportStudentData(sSurname, sForename, sCourseName, eSex, iYearOfBirth, iYear)
+    Dim sClassName As String
+
+    If Regex.IsMatch(sCourseName, "0[5-9][A-Z]") Then
+      sClassName = CStr(sCourseName(1))
+    ElseIf Regex.IsMatch(sCourseName, "E(0[1-9]|[1-9][0-9])") Then
+      sClassName = "E"
+    Else
+      Throw New ArgumentException("Invalid course name. Automatic mapping to class name failed.")
+    End If
+
+    _oMySqlHandler.ImportStudentData(sSurname, sForename, sCourseName, sClassName, eSex, iYearOfBirth, iYear)
   End Sub
 End Class

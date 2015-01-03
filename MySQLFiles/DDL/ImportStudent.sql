@@ -12,44 +12,38 @@
 
 -- Dumping structure for procedure bjs.ImportStudent
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ImportStudent`(IN `sSurname` VARCHAR(45), IN `sForename` VARCHAR(45), IN `cCourseName` CHAR(3), IN `eSex` ENUM('Male','Female'), IN `yYearOfBirth` YEAR(4), IN `yYear` YEAR(4))
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ImportStudent`(IN `sSurname` VARCHAR(45), IN `sForename` VARCHAR(45), IN `cCourseName` CHAR(3), IN `cClassName` CHAR(1), IN `eSex` ENUM('Male','Female'), IN `yYearOfBirth` YEAR(4), IN `yYear` YEAR(4))
 BEGIN
 
-declare cRetrievedStudentPKey CHAR(36);
+declare cStudentPKey CHAR(36);
 declare cRetrievedCoursePKey CHAR(36);
 declare cGeneratedCoursePKey CHAR(36);
 declare cGeneratedStudentPKey CHAR(36);
+declare cRetrievedClassPKey CHAR(36);
+declare cGeneratedClassPKey CHAR(36);
 
 IF StudentExists(sSurname, sForename, eSex, yYearOfBirth) then
-
-    set cRetrievedStudentPKey = GetStudentPKey(sSurname, sForename, eSex, yYearOfBirth);
-	if not StudentCourseRelExists(cRetrievedPKey, yYear) then
-		
-        if CourseExists(cCourseName) then
-			set cRetrievedCoursePKey = GetCoursePKey(cCourseName);
-            INSERT INTO StudentCourseRel (StudentPKey,CoursePKey,`Year`) VALUES (cRetrievedStudentPKey,cRetrievedCoursePKey,yYear);
-        else
-			set cGeneratedCoursePKey = uuid();
-            INSERT INTO Course (PKey,CourseName) VALUES (cGeneratedCoursePKey,cCourseName);
-            INSERT INTO StudentCourseRel (StudentPKey,CoursePKey,`Year`) VALUES (cRetrievedStudentPKey,cGeneratedCoursePKey,yYear);
-        end if;
-        
-    end if;
-    
+	set cStudentPKey = GetStudentPKey(sSurname, sForename, eSex, yYearOfBirth);
 else
-    
-    set cGeneratedStudentPKey = uuid();
-    INSERT INTO Student (PKey,Surname,Forename,Sex,YearOfBirth) VALUES (cGeneratedStudentPKey,sSurname,sForename,eSex,yYearOfBirth);
-    
-    if CourseExists(cCourseName) then
-			set cRetrievedCoursePKey = GetCoursePKey(cCourseName);
-            INSERT INTO StudentCourseRel (StudentPKey,CoursePKey,`Year`) VALUES (cGeneratedStudentPKey,cRetrievedCoursePKey,yYear);
+    set cStudentPKey = uuid();
+    INSERT INTO Student (PKey,Surname,Forename,Sex,YearOfBirth) VALUES (cStudentPKey,sSurname,sForename,eSex,yYearOfBirth);
+end if;
+
+if not StudentCourseRelExists(cStudentPKey, yYear) then
+	if CourseExists(cCourseName) then
+		INSERT INTO StudentCourseRel (StudentPKey,CourseName,`Year`) VALUES (cStudentPKey,cCourseName,yYear);
 	else
-			set cGeneratedCoursePKey = uuid();
-            INSERT INTO Course (PKey,CourseName) VALUES (cGeneratedCoursePKey,cCourseName);
-            INSERT INTO StudentCourseRel (StudentPKey,CoursePKey,`Year`) VALUES (cGeneratedStudentPKey,cGeneratedCoursePKey,yYear);
+		if ClassExists(cClassName) then
+			set cRetrievedClassPKey = GetClassPKey(cClassName);
+			INSERT INTO CourseClassRel (CourseName,ClassPKey) VALUES (cCourseName,cRetrievedClassPKey);
+			INSERT INTO StudentCourseRel (StudentPKey,CourseName,`Year`) VALUES (cStudentPKey,cCourseName,yYear);
+		else
+			set cGeneratedClassPKey = uuid();
+			INSERT INTO Class (PKey,ClassName) VALUES (cGeneratedClassPKey,cClassName);
+			INSERT INTO CourseClassRel (CourseName,ClassPKey) VALUES (cCourseName,cGeneratedClassPKey);
+			INSERT INTO StudentCourseRel (StudentPKey,CourseName,`Year`) VALUES (cStudentPKey,cCourseName,yYear);
+		end if;
 	end if;
-    
 end if;
 
 END//

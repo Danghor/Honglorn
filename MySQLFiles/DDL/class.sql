@@ -10,11 +10,15 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping structure for view bjs.disciplinemetaview
--- Removing temporary table and create final VIEW structure
-DROP TABLE IF EXISTS `disciplinemetaview`;
-CREATE DEFINER=`root`@`localhost` VIEW `disciplinemetaview` AS SELECT `CoursePKey`, `Year`, `GameType`, `MaleSprintPKey`, `MaleJumpPKey`, `MaleThrowPKey`, `MaleMiddleDistancePKey`, `FemaleSprintPKey`, `FemaleJumpPKey`, `FemaleThrowPKey`, `FemaleMiddleDistancePKey`
-FROM DisciplineMeta ;
+-- Dumping structure for table bjs.class
+CREATE TABLE IF NOT EXISTS `class` (
+  `PKey` char(36) COLLATE utf8_unicode_ci NOT NULL,
+  `ClassName` char(1) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`PKey`),
+  UNIQUE KEY `ClassNameUNIQUE` (`ClassName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- Data exporting was unselected.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

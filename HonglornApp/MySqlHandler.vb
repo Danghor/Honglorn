@@ -102,13 +102,14 @@ Public Class MySqlHandler
     GetCompetitionEditAdapter = oDataAdapter
   End Function
 
-  Friend Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
+  Friend Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, sClassName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
     Dim oCmd As New MySqlCommand("ImportStudent", _oConnection)
     oCmd.CommandType = CommandType.StoredProcedure
 
     oCmd.Parameters.AddWithValue("@sSurname", sSurname)
     oCmd.Parameters.AddWithValue("@sForename", sForename)
     oCmd.Parameters.AddWithValue("@cCourseName", sCourseName)
+    oCmd.Parameters.AddWithValue("@cClassName", sClassName)
     oCmd.Parameters.AddWithValue("@eSex", eSex.ToString())
     oCmd.Parameters.AddWithValue("@yYearOfBirth", iYearOfBirth)
     oCmd.Parameters.AddWithValue("@yYear", iYear)

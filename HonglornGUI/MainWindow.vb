@@ -121,4 +121,12 @@ Public Class MainWindow
   Private Sub SetDisciplinesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDisciplinesToolStripMenuItem.Click
     SetDisciplinesDialog.ShowDialog(Me)
   End Sub
+
+  Private Sub ImportStudentsMenuItem_Click(sender As Object, e As EventArgs) Handles ImportStudentsMenuItem.Click
+    'Dim oOpenFileDialog As New OpenFileDialog()
+
+    'If oOpenFileDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+    '  _oApp.ImportStudentCourseExcelSheet()
+    'End If
+  End Sub
 End Class

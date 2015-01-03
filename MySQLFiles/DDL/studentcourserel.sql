@@ -13,13 +13,13 @@
 -- Dumping structure for table bjs.studentcourserel
 CREATE TABLE IF NOT EXISTS `studentcourserel` (
   `StudentPKey` char(36) COLLATE utf8_unicode_ci NOT NULL,
-  `CoursePKey` char(36) COLLATE utf8_unicode_ci NOT NULL,
+  `CourseName` char(3) COLLATE utf8_unicode_ci NOT NULL,
   `Year` year(4) NOT NULL,
-  PRIMARY KEY (`StudentPKey`,`CoursePKey`),
+  PRIMARY KEY (`StudentPKey`,`CourseName`),
   UNIQUE KEY `StudentPKeyYearUNIQUE` (`StudentPKey`,`Year`),
   KEY `StudentPKeyINDEX` (`StudentPKey`),
-  KEY `CoursePKeyINDEX` (`CoursePKey`),
-  CONSTRAINT `fk_Course_has_Student_Course1` FOREIGN KEY (`CoursePKey`) REFERENCES `course` (`PKey`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `CourseNameINDEX` (`CourseName`),
+  CONSTRAINT `CoursePKey` FOREIGN KEY (`CourseName`) REFERENCES `courseclassrel` (`CourseName`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Course_has_Student_Student1` FOREIGN KEY (`StudentPKey`) REFERENCES `student` (`PKey`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

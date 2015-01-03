@@ -12,7 +12,7 @@
 
 -- Dumping structure for table bjs.disciplinemeta
 CREATE TABLE IF NOT EXISTS `disciplinemeta` (
-  `CoursePKey` char(36) COLLATE utf8_unicode_ci NOT NULL,
+  `ClassPKey` char(36) COLLATE utf8_unicode_ci NOT NULL,
   `Year` year(4) NOT NULL,
   `GameType` enum('Competition','Traditional') COLLATE utf8_unicode_ci NOT NULL,
   `MaleSprintPKey` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Polymorphic',
@@ -23,10 +23,9 @@ CREATE TABLE IF NOT EXISTS `disciplinemeta` (
   `FemaleJumpPKey` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Polymorphic',
   `FemaleThrowPKey` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Polymorphic',
   `FemaleMiddleDistancePKey` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Polymorphic',
-  PRIMARY KEY (`CoursePKey`,`Year`),
-  KEY `CoursePKeyINDEX` (`CoursePKey`),
+  PRIMARY KEY (`ClassPKey`,`Year`),
   KEY `YearINDEX` (`Year`),
-  CONSTRAINT `CoursePKey` FOREIGN KEY (`CoursePKey`) REFERENCES `course` (`PKey`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `DisciplineMetaClassPKey` FOREIGN KEY (`ClassPKey`) REFERENCES `class` (`PKey`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Data exporting was unselected.
