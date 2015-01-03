@@ -55,7 +55,7 @@ Public Class MySqlHandler
     Dim iArrayLength As Integer
 
     oSelectCommand.Connection = _oConnection
-    oSelectCommand.CommandText = "SELECT DISTINCT CourseName FROM course INNER JOIN StudentCourseRel ON Course.PKey = StudentCourseRel.CoursePKey WHERE year = @iYear ORDER BY CourseName ASC"
+    oSelectCommand.CommandText = "SELECT DISTINCT CourseName FROM StudentCourseRel WHERE year = @iYear ORDER BY CourseName ASC"
     oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
 
     oDataAdapter.SelectCommand = oSelectCommand
@@ -79,7 +79,7 @@ Public Class MySqlHandler
 
     oSelectCommand.Connection = _oConnection
 
-    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey INNER JOIN Course ON StudentCourseRel.CoursePKey = Course.PKey left outer join Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND Course.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC"
+    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC"
 
     oSelectCommand.Parameters.AddWithValue("@Year", iYear)
     oSelectCommand.Parameters.AddWithValue("@CourseName", sCourseName)
