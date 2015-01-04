@@ -87,7 +87,7 @@ Public Class MainWindow
 
   Private Sub ReloadDataGridView(sCourseName As String, iYear As Integer)
     'todo: confirmation dialog, saving changes from old datasource etc
-    'todo: change tab order so tab at the end of the line skips to next "value" field instead of "Surname"
+    'todo: change tab order so pressing tab-key at the end of the line skips to next "value" field instead of "Surname"
     If EditDataGridView.DataSource IsNot Nothing Then
       _oApp.SaveChanges(CType(EditDataGridView.DataSource, DataTable))
     End If
