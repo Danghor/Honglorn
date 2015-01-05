@@ -23,12 +23,13 @@ Public Class MainWindow
 
   Private ReadOnly Property SetDisciplinesDialog As SetDisciplinesDialog
     Get
-      If _oSetDisciplinesDialog IsNot Nothing Then
-        SetDisciplinesDialog = _oSetDisciplinesDialog
-      Else
+
+      If _oSetDisciplinesDialog Is Nothing Then
         _oSetDisciplinesDialog = New SetDisciplinesDialog()
-        SetDisciplinesDialog = _oSetDisciplinesDialog
       End If
+
+      SetDisciplinesDialog = _oSetDisciplinesDialog
+
     End Get
   End Property
 
