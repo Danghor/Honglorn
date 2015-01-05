@@ -10,6 +10,17 @@
   End Sub
 
   ''' <summary>
+  ''' Scales the given control dependent on the screen-measurements.
+  ''' </summary>
+  ''' <param name="oControl">The control to be scaled.</param>
+  ''' <param name="siScaleFactor">The scale factor to be used. 1 will make the control just as big as the screen.</param>
+  ''' <remarks></remarks>
+  Public Shared Sub ScaleScreenAware(oControl As Control, siScaleFactor As Single)
+    oControl.Height = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Height * siScaleFactor))
+    oControl.Width = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Width * siScaleFactor))
+  End Sub
+
+  ''' <summary>
   ''' Compares two String arrays. Returns true if their content is identical and false otherwise.
   ''' </summary>
   ''' <param name="asFirst"></param>

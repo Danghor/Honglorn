@@ -48,8 +48,7 @@ Public Class MainWindow
   Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     SETCREDENTIALS()
 
-    Me.Height = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Height * SCALE_FACTOR))
-    Me.Width = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Width * SCALE_FACTOR))
+    Tools.ScaleScreenAware(Me, SCALE_FACTOR)
 
     Tools.Center(Me)
 
