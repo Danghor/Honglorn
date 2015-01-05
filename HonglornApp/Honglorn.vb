@@ -43,13 +43,23 @@ Public Class Honglorn
   End Function
 
   ''' <summary>
-  ''' Get a String Array representing the course names for which there is at least one Student present in the given year. 
+  ''' Get a String Array representing the course names for which there is at least one student present in the given year. 
   ''' </summary>
   ''' <param name="iYear">The year for which the valid course names should be retrieved.</param>
   ''' <returns>A String Array representing the valid course names.</returns>
   ''' <remarks></remarks>
   Public Function GetValidCourseNames(iYear As Integer) As String()
     GetValidCourseNames = _oMySqlHandler.GetValidCourseNames(iYear)
+  End Function
+
+  ''' <summary>
+  ''' Get a String Array representing the class names for which there is at least one student present in the given year. 
+  ''' </summary>
+  ''' <param name="iYear">The year for which the valid class names should be retrieved.</param>
+  ''' <returns>A String Array representing the valid class names.</returns>
+  ''' <remarks></remarks>
+  Public Function GetValidClassNames(iYear As Integer) As String()
+    GetValidClassNames = _oMySqlHandler.GetValidClassNames(iYear)
   End Function
 
   'todo: currently only works with a "perfect" Excel sheet

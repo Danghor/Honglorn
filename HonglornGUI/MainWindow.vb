@@ -78,7 +78,7 @@ Public Class MainWindow
       Dim asOldCourseNames As String() = CType(SelectEditCourseComboBox.DataSource, String())
 
       If Not Tools.IsEqual(asNewCourseNames, asOldCourseNames) Then
-        SelectEditCourseComboBox.DataSource = _oApp.GetValidCourseNames(CurrentYear)
+        SelectEditCourseComboBox.DataSource = asNewCourseNames
       End If
     Else
       'todo: display tooltip "please set a year" or so

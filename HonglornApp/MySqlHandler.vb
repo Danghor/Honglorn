@@ -72,6 +72,31 @@ Public Class MySqlHandler
     GetValidCourseNames = asResult
   End Function
 
+  Friend Function GetValidClassNames(iYear As Integer) As String()
+    Dim oDataAdapter As New MySqlDataAdapter()
+    Dim oSelectCommand As New MySqlCommand()
+    Dim dtDataTable As New DataTable()
+    Dim asResult As String()
+    Dim iArrayLength As Integer
+
+    oSelectCommand.Connection = _oConnection
+    oSelectCommand.CommandText = "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassPKey = Class.PKey WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC"
+    oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
+
+    oDataAdapter.SelectCommand = oSelectCommand
+
+    oDataAdapter.Fill(dtDataTable)
+
+    iArrayLength = dtDataTable.Rows.Count - 1
+    asResult = New String(iArrayLength) {}
+
+    For iRow As Integer = 0 To iArrayLength
+      asResult(iRow) = CStr(dtDataTable.Rows(iRow)(0))
+    Next
+
+    GetValidClassNames = asResult
+  End Function
+
   Friend Function GetCompetitionEditAdapter(sCourseName As String, iYear As Integer) As MySqlDataAdapter
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()

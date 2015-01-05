@@ -43,11 +43,11 @@ Public Class SetDisciplinesDialog
 
   Private Sub ClassComboBox_DropDown(sender As Object, e As EventArgs) Handles ClassComboBox.DropDown
     If CurrentYear <> -1 Then
-      Dim asNewCourseNames As String() = App.GetValidCourseNames(CurrentYear)
-      Dim asOldCourseNames As String() = CType(ClassComboBox.DataSource, String())
+      Dim asNewClassNames As String() = App.GetValidClassNames(CurrentYear)
+      Dim asOldClassNames As String() = CType(ClassComboBox.DataSource, String())
 
-      If Not Tools.IsEqual(asNewCourseNames, asOldCourseNames) Then
-        ClassComboBox.DataSource = App.GetValidCourseNames(CurrentYear)
+      If Not Tools.IsEqual(asNewClassNames, asOldClassNames) Then
+        ClassComboBox.DataSource = asNewClassNames
       End If
     Else
       'todo: display tooltip "please set a year" or so
