@@ -2,7 +2,14 @@
 
 Public Class SetDisciplinesDialog
 
-  Private _oApp As Honglorn
+  Private ReadOnly Property App As Honglorn
+    Get
+      Dim oOwner As MainWindow = CType(Me.Owner, MainWindow)
+      App = oOwner._oApp
+    End Get
+  End Property
+
+
 
   Private ReadOnly Property CurrentYear As Integer
     Get
@@ -19,13 +26,11 @@ Public Class SetDisciplinesDialog
   End Property
 
   Private Sub SetDisciplinesDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    Dim oOwner As MainWindow = CType(Me.Owner, MainWindow)
-    _oApp = oOwner._oApp
 
     Tools.Center(Me)
 
     'pre-select a year
-    Dim aiValidYears As Integer() = _oApp.GetValidYears()
+    Dim aiValidYears As Integer() = App.GetValidYears()
     If aiValidYears.Count <> 0 Then
       YearComboBox.DataSource = aiValidYears
       YearComboBox.SelectedIndex = 0
@@ -33,16 +38,16 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub YearComboBox_DropDown(sender As Object, e As EventArgs) Handles YearComboBox.DropDown
-    YearComboBox.DataSource = _oApp.GetValidYears()
+    YearComboBox.DataSource = App.GetValidYears()
   End Sub
 
   Private Sub ClassComboBox_DropDown(sender As Object, e As EventArgs) Handles ClassComboBox.DropDown
     If CurrentYear <> -1 Then
-      Dim asNewCourseNames As String() = _oApp.GetValidCourseNames(CurrentYear)
+      Dim asNewCourseNames As String() = App.GetValidCourseNames(CurrentYear)
       Dim asOldCourseNames As String() = CType(ClassComboBox.DataSource, String())
 
       If Not Tools.IsEqual(asNewCourseNames, asOldCourseNames) Then
-        ClassComboBox.DataSource = _oApp.GetValidCourseNames(CurrentYear)
+        ClassComboBox.DataSource = App.GetValidCourseNames(CurrentYear)
       End If
     Else
       'todo: display tooltip "please set a year" or so
