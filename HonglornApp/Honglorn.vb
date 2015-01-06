@@ -29,7 +29,7 @@ Public Class Honglorn
     GetCompetitionEditDataTable = dtEditDataTable
   End Function
 
-  Public Sub SaveChanges(oChanges As DataTable)
+  Public Sub SaveEditTableChanges(oChanges As DataTable)
     _daCurrentEditDataAdapter.Update(oChanges)
   End Sub
 
