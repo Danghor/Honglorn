@@ -1,11 +1,11 @@
-﻿Friend Class Tools
+﻿Friend Module Tools
 
   ''' <summary>
   ''' Positions the given control in the center of the screen.
   ''' </summary>
   ''' <param name="oControl">The control to be centered.</param>
   ''' <remarks></remarks>
-  Public Shared Sub Center(oControl As Control)
+  Sub Center(oControl As Control)
     oControl.Location = New Point(CInt(Math.Round((Screen.PrimaryScreen.Bounds.Width - oControl.Width) / 2)), CInt(Math.Round((Screen.PrimaryScreen.Bounds.Height - oControl.Height) / 2)))
   End Sub
 
@@ -15,7 +15,7 @@
   ''' <param name="oControl">The control to be scaled.</param>
   ''' <param name="siScaleFactor">The scale factor to be used. 1 will make the control just as big as the screen.</param>
   ''' <remarks></remarks>
-  Public Shared Sub ScaleScreenAware(oControl As Control, siScaleFactor As Single)
+  Sub ScaleScreenAware(oControl As Control, siScaleFactor As Single)
     oControl.Height = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Height * siScaleFactor))
     oControl.Width = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Width * siScaleFactor))
   End Sub
@@ -27,7 +27,7 @@
   ''' <param name="asSecond"></param>
   ''' <returns></returns>
   ''' <remarks>Uses Exit For.</remarks>
-  Public Shared Function IsEqual(asFirst As String(), asSecond As String()) As Boolean
+  Function IsEqual(asFirst As String(), asSecond As String()) As Boolean
     IsEqual = True
 
     If asFirst IsNot Nothing AndAlso asSecond IsNot Nothing AndAlso asFirst.Count = asSecond.Count Then
@@ -42,4 +42,4 @@
     End If
   End Function
 
-End Class
+End Module
