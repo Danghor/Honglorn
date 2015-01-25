@@ -1,25 +1,7 @@
 ﻿Imports System.Text.RegularExpressions
+Imports HonglornApp.Requirements
 
 Public Class Honglorn
-
-  Public Enum Discipline
-    Sprint
-    Jump
-    Throwing '"Throw" cannot be used since it's a keyword
-    MiddleDistance
-  End Enum
-
-  Public Enum GameType
-    Competition
-    Traditional
-  End Enum
-
-  Public Enum Sex
-    Male
-    Female
-  End Enum
-
-  Private Const CsDataBaseName As String = "bjs"
 
   Private _oMySqlHandler As MySqlHandler
   Private _oExcelImporter As ExcelImporter
