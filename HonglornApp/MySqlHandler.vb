@@ -1,18 +1,9 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports MySql.Data.Types
+Imports HonglornApp.Honglorn
 
 Public Class MySqlHandler
   Private _oConnection As MySqlConnection
-
-  Public Enum Sex
-    Male
-    Female
-  End Enum
-
-  Private Enum GameType
-    Competition
-    Traditional
-  End Enum
 
   'todo: handle exception when connection cannot be established
   Friend Sub New(sServer As String, sUser As String, sPassword As String, sDatabase As String)

@@ -1,6 +1,16 @@
 ﻿Imports System.Text.RegularExpressions
 
 Public Class Honglorn
+  Public Enum Sex
+    Male
+    Female
+  End Enum
+
+  Friend Enum GameType
+    Competition
+    Traditional
+  End Enum
+
   Private Const CsDataBaseName As String = "bjs"
 
   Private _oMySqlHandler As MySqlHandler
@@ -70,6 +80,9 @@ Public Class Honglorn
 
 #End Region
 
+  Public Function GetValidDisciplinesTable() As DataTable
+    Throw New NotImplementedException()
+  End Function
 
   ''' <summary>
   ''' Get an Integer Array representing the years for which data is present in the database.
@@ -113,7 +126,7 @@ Public Class Honglorn
     Dim sCurSurname As String
     Dim sCurForename As String
     Dim sCurCourseName As String
-    Dim eCurrentSex As MySqlHandler.Sex
+    Dim eCurrentSex As Sex
     Dim iCurYearOfBirth As Integer
 
     Dim oDataTable As DataTable = _oExcelImporter.GetStudentCourseDataTable(sFilePath)
@@ -125,9 +138,9 @@ Public Class Honglorn
 
       Select Case (CStr(oRow(3)))
         Case "M"
-          eCurrentSex = MySqlHandler.Sex.Male
+          eCurrentSex = Sex.Male
         Case "W"
-          eCurrentSex = MySqlHandler.Sex.Female
+          eCurrentSex = Sex.Female
       End Select
 
       iCurYearOfBirth = CInt(oRow(4))
@@ -146,7 +159,7 @@ Public Class Honglorn
   ''' <param name="iYearOfBirth"></param>
   ''' <param name="iYear"></param>
   ''' <remarks></remarks>
-  Public Sub ImportSingleStudent(sSurname As String, sForename As String, sCourseName As String, eSex As MySqlHandler.Sex, iYearOfBirth As Integer, iYear As Integer)
+  Public Sub ImportSingleStudent(sSurname As String, sForename As String, sCourseName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
     Dim sClassName As String
 
     If Regex.IsMatch(sCourseName, "0[5-9][A-Z]") Then
