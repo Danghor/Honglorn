@@ -1,14 +1,22 @@
 ﻿Imports System.Text.RegularExpressions
 
 Public Class Honglorn
+
+  Public Enum Discipline
+    Sprint
+    Jump
+    Throwing '"Throw" cannot be used since it's a keyword
+    MiddleDistance
+  End Enum
+
+  Public Enum GameType
+    Competition
+    Traditional
+  End Enum
+
   Public Enum Sex
     Male
     Female
-  End Enum
-
-  Friend Enum GameType
-    Competition
-    Traditional
   End Enum
 
   Private Const CsDataBaseName As String = "bjs"
@@ -80,8 +88,8 @@ Public Class Honglorn
 
 #End Region
 
-  Public Function GetValidDisciplinesTable() As DataTable
-    Throw New NotImplementedException()
+  Public Function GetValidDisciplinesTable(eGameType As GameType, eSex As Sex, eDiscipline As Discipline) As DataTable
+    GetValidDisciplinesTable = _oMySqlHandler.GetValidDisciplinesTable(eGameType, eSex, eDiscipline)
   End Function
 
   ''' <summary>
