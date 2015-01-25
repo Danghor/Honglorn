@@ -9,6 +9,11 @@ Public Class MySqlHandler
     Female
   End Enum
 
+  Private Enum GameType
+    Competition
+    Traditional
+  End Enum
+
   'todo: handle exception when connection cannot be established
   Friend Sub New(sServer As String, sUser As String, sPassword As String, sDatabase As String)
     Dim oConStringBuilder As New MySqlConnectionStringBuilder
@@ -97,7 +102,43 @@ Public Class MySqlHandler
     GetValidClassNames = asResult
   End Function
 
-  Friend Function GetCompetitionEditAdapter(sCourseName As String, iYear As Integer) As MySqlDataAdapter
+  Private Function GetGameType(cClassName As Char, iYear As Integer) As GameType
+    'Throw New NotImplementedException
+    Dim oSelectCommand As New MySqlCommand()
+
+    oSelectCommand.Connection = _oConnection
+    oSelectCommand.CommandText = "GetGameType"
+    oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName)
+    oSelectCommand.Parameters.AddWithValue("@yYear", iYear)
+
+    oSelectCommand.Parameters.Add("@eReturnValue", MySqlDbType.Enum)
+    oSelectCommand.Parameters("@eReturnValue").Direction = ParameterDirection.ReturnValue
+
+    oSelectCommand.CommandType = CommandType.StoredProcedure
+
+    Try
+      oSelectCommand.Connection.Open()
+      Dim o As Object = oSelectCommand.ExecuteScalar()
+    Finally
+      If oSelectCommand.Connection IsNot Nothing Then
+        oSelectCommand.Connection.Close()
+      End If
+    End Try
+
+    Select Case oSelectCommand.ExecuteScalar().ToString()
+      Case "Competition"
+        GetGameType = GameType.Competition
+      Case "Traditional"
+        GetGameType = GameType.Traditional
+      Case ""
+        GetGameType = Nothing
+      Case Else
+        Throw New Exception("Invalid GameType received from database.")
+    End Select
+
+  End Function
+
+  Friend Function GetRawDataEditAdapter(sCourseName As String, iYear As Integer) As MySqlDataAdapter
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim oUpdateCommand As New MySqlCommand()
@@ -124,7 +165,38 @@ Public Class MySqlHandler
     oDataAdapter.SelectCommand = oSelectCommand
     oDataAdapter.UpdateCommand = oUpdateCommand
 
-    GetCompetitionEditAdapter = oDataAdapter
+    GetRawDataEditAdapter = oDataAdapter
+  End Function
+
+  Friend Function GetDisciplinesEditAdapter(cClassName As Char, iYear As Integer) As MySqlDataAdapter
+    Dim oDataAdapter As New MySqlDataAdapter()
+    Dim oSelectCommand As New MySqlCommand()
+    Dim oUpdateCommand As New MySqlCommand()
+
+    oSelectCommand.Connection = _oConnection
+
+    oSelectCommand.CommandText = "SELECT * FROM ClassDisciplineMeta WHERE ClassName = @cClassName AND YEAR = @yYear"
+
+    oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName)
+    oSelectCommand.Parameters.AddWithValue("@yYear", iYear)
+
+    'todo: update command
+    oUpdateCommand = New MySqlCommand("EnterCompetitionValues", _oConnection)
+    oUpdateCommand.CommandType = CommandType.StoredProcedure
+
+    oUpdateCommand.Parameters.AddWithValue("yYear", iYear)
+
+    oUpdateCommand.Parameters.Add("cPKey", MySqlDbType.Guid, 36, "PKey")
+    'todo: figure out, what exactly the size does for float :D
+    oUpdateCommand.Parameters.Add("fSprintValue", MySqlDbType.Float, 7, "Sprint")
+    oUpdateCommand.Parameters.Add("fJumpValue", MySqlDbType.Float, 7, "Jump")
+    oUpdateCommand.Parameters.Add("fThrowValue", MySqlDbType.Float, 7, "Throw")
+    oUpdateCommand.Parameters.Add("fMiddleDistanceValue", MySqlDbType.Float, 7, "MiddleDistance")
+
+    oDataAdapter.SelectCommand = oSelectCommand
+    oDataAdapter.UpdateCommand = oUpdateCommand
+
+    GetDisciplinesEditAdapter = oDataAdapter
   End Function
 
   Friend Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, sClassName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
