@@ -2,11 +2,11 @@
 Imports MySql.Data.Types
 Imports HonglornApp.Honglorn
 
-Public Class MySqlHandler
+Friend Class MySqlHandler
   Private _oConnection As MySqlConnection
 
   'todo: handle exception when connection cannot be established
-  Friend Sub New(sServer As String, sUser As String, sPassword As String, sDatabase As String)
+  Sub New(sServer As String, sUser As String, sPassword As String, sDatabase As String)
     Dim oConStringBuilder As New MySqlConnectionStringBuilder
 
     oConStringBuilder.Server = sServer
@@ -18,7 +18,7 @@ Public Class MySqlHandler
     _oConnection = New MySqlConnection(oConStringBuilder.GetConnectionString(True))
   End Sub
 
-  Friend Function GetValidYears() As Integer()
+  Function GetValidYears() As Integer()
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim dtDataTable As New DataTable()
@@ -43,7 +43,7 @@ Public Class MySqlHandler
     GetValidYears = aiResult
   End Function
 
-  Friend Function GetValidCourseNames(iYear As Integer) As String()
+  Function GetValidCourseNames(iYear As Integer) As String()
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim dtDataTable As New DataTable()
@@ -68,7 +68,7 @@ Public Class MySqlHandler
     GetValidCourseNames = asResult
   End Function
 
-  Friend Function GetValidClassNames(iYear As Integer) As String()
+  Function GetValidClassNames(iYear As Integer) As String()
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim dtDataTable As New DataTable()
@@ -93,7 +93,7 @@ Public Class MySqlHandler
     GetValidClassNames = asResult
   End Function
 
-  Public Function GetValidDisciplinesTable(eGameType As GameType, eSex As Sex, eDiscipline As Discipline) As DataTable
+  Function GetValidDisciplinesTable(eGameType As GameType, eSex As Sex, eDiscipline As Discipline) As DataTable
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oDataTable As New DataTable()
     Dim oSelectCommand As New MySqlCommand()
@@ -180,7 +180,7 @@ Public Class MySqlHandler
 
   End Function
 
-  Friend Function GetRawDataEditAdapter(sCourseName As String, iYear As Integer) As MySqlDataAdapter
+  Function GetRawDataEditAdapter(sCourseName As String, iYear As Integer) As MySqlDataAdapter
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim oUpdateCommand As New MySqlCommand()
@@ -210,7 +210,7 @@ Public Class MySqlHandler
     GetRawDataEditAdapter = oDataAdapter
   End Function
 
-  Friend Function GetDisciplinesEditAdapter(cClassName As Char, iYear As Integer) As MySqlDataAdapter
+  Function GetDisciplinesEditAdapter(cClassName As Char, iYear As Integer) As MySqlDataAdapter
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim oUpdateCommand As New MySqlCommand()
@@ -241,7 +241,7 @@ Public Class MySqlHandler
     GetDisciplinesEditAdapter = oDataAdapter
   End Function
 
-  Friend Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, sClassName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
+  Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, sClassName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
     Dim oCmd As New MySqlCommand("ImportStudent", _oConnection)
     oCmd.CommandType = CommandType.StoredProcedure
 
