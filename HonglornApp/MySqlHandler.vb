@@ -1,6 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports MySql.Data.Types
-Imports HonglornApp.Honglorn
 
 Friend Class MySqlHandler
   Private _oConnection As MySqlConnection
