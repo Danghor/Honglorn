@@ -1,4 +1,4 @@
-﻿Public Module Requirements
+﻿Public Module Prerequisites
   Public Const CsDataBaseName As String = "bjs"
 
   Enum Discipline
