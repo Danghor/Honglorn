@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for view bjs.traditionalmalesprintdisciplines
+DROP VIEW IF EXISTS `traditionalmalesprintdisciplines`;
 -- Removing temporary table and create final VIEW structure
 DROP TABLE IF EXISTS `traditionalmalesprintdisciplines`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `traditionalmalesprintdisciplines` AS SELECT PKey, Name, Measurement

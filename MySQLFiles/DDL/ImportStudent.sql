@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for procedure bjs.ImportStudent
+DROP PROCEDURE IF EXISTS `ImportStudent`;
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ImportStudent`(IN `sSurname` VARCHAR(45), IN `sForename` VARCHAR(45), IN `cCourseName` CHAR(3), IN `cClassName` CHAR(1), IN `eSex` ENUM('Male','Female'), IN `yYearOfBirth` YEAR(4), IN `yYear` YEAR(4))
 BEGIN

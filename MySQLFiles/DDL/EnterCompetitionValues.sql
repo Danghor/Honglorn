@@ -11,18 +11,38 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for procedure bjs.EnterCompetitionValues
+DROP PROCEDURE IF EXISTS `EnterCompetitionValues`;
 DELIMITER //
-CREATE DEFINER=`root`@`localhost` PROCEDURE `EnterCompetitionValues`(IN `cPKey` CHAR(36), IN `yYear` YEAR(4), IN `fSprintValue` FLOAT, IN `fJumpValue` FLOAT, IN `fThrowValue` FLOAT, IN `fMiddleDistanceValue` FLOAT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `EnterCompetitionValues`(IN `cPKey` CHAR(36) CHARSET utf8, IN `yYear` YEAR(4), IN `fSprintValue` FLOAT, IN `fJumpValue` FLOAT, IN `fThrowValue` FLOAT, IN `fMiddleDistanceValue` FLOAT)
 BEGIN
-IF EXISTS (SELECT NULL FROM Competition WHERE StudentPKey = cPKey AND YEAR = yYear) THEN
+
   IF COALESCE(fSprintValue,fJumpValue,fThrowValue,fMiddleDistanceValue) IS NULL THEN
-    DELETE FROM Competition WHERE StudentPKey = cPKey AND Year = yYear;
+    
+    DELETE FROM Competition
+    WHERE StudentPKey = cPKey COLLATE utf8_unicode_ci
+		AND Year = yYear;
+  
   ELSE
-    UPDATE Competition SET Sprint = fSprintValue, Jump = fJumpValue, Throw = fThrowValue, MiddleDistance = fMiddleDistanceValue WHERE StudentPKey = cPKey AND YEAR = yYEAR;
+  
+	IF EXISTS (SELECT NULL FROM Competition WHERE StudentPKey = cPKey COLLATE utf8_unicode_ci AND YEAR = yYear) THEN
+	
+		UPDATE Competition
+		SET Sprint = fSprintValue,
+			Jump = fJumpValue,
+			Throw = fThrowValue,
+			MiddleDistance = fMiddleDistanceValue
+		WHERE StudentPKey = cPKey COLLATE utf8_unicode_ci
+			AND YEAR = yYEAR;
+	
+    ELSE
+
+		INSERT INTO Competition (StudentPKey,Year,Sprint,Jump,Throw,MiddleDistance)
+		VALUES (cPKey,yYEAR,fSprintValue,fJumpValue,fThrowValue,fMiddleDistanceValue);
+
+	END IF;
+  
   END IF;
-ELSE
-  INSERT INTO Competition (StudentPKey,Year,Sprint,Jump,Throw,MiddleDistance) VALUES (cPKey,yYEAR,fSprintValue,fJumpValue,fThrowValue,fMiddleDistanceValue);
-END IF;
+
 END//
 DELIMITER ;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

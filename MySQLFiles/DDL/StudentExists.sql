@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for function bjs.StudentExists
+DROP FUNCTION IF EXISTS `StudentExists`;
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` FUNCTION `StudentExists`(`sSurname` VARCHAR(45) CHARSET utf8, `sForename` VARCHAR(45) CHARSET utf8, `eSex` ENUM('Male','Female') CHARSET utf8, `yYearOfBirth` YEAR(4)) RETURNS tinyint(1)
     READS SQL DATA

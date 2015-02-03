@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for function bjs.GetStudentPKey
+DROP FUNCTION IF EXISTS `GetStudentPKey`;
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetStudentPKey`(sSurname VARCHAR(45) CHARSET utf8, sForename VARCHAR(45) CHARSET utf8, eSex ENUM('Male','Female') CHARSET utf8, yYearOfBirth YEAR(4)) RETURNS char(36) CHARSET utf8
     READS SQL DATA

@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table bjs.competitiondiscipline
+DROP TABLE IF EXISTS `competitiondiscipline`;
 CREATE TABLE IF NOT EXISTS `competitiondiscipline` (
   `PKey` char(36) COLLATE utf8_unicode_ci NOT NULL,
   `Type` enum('Sprint','Jump','Throw','MiddleDistance') COLLATE utf8_unicode_ci NOT NULL,
@@ -21,7 +22,10 @@ CREATE TABLE IF NOT EXISTS `competitiondiscipline` (
   UNIQUE KEY `Name_UNIQUE` (`Name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table bjs.competitiondiscipline: ~0 rows (approximately)
+DELETE FROM `competitiondiscipline`;
+/*!40000 ALTER TABLE `competitiondiscipline` DISABLE KEYS */;
+/*!40000 ALTER TABLE `competitiondiscipline` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

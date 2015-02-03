@@ -10,14 +10,16 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping structure for view bjs.traditionalfemalesprintdisciplines
-DROP VIEW IF EXISTS `traditionalfemalesprintdisciplines`;
--- Removing temporary table and create final VIEW structure
-DROP TABLE IF EXISTS `traditionalfemalesprintdisciplines`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` VIEW `traditionalfemalesprintdisciplines` AS SELECT PKey, Name, Measurement
-FROM TraditionalDiscipline
-WHERE `Type` = "Sprint" AND `Sex` = "Female"
-ORDER BY Measurement ASC, LENGTH(Name) ASC, Name ASC ;
+-- Dumping structure for function bjs.DisciplineMetaExists
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` FUNCTION `DisciplineMetaExists`(`cClassName` CHAR(1) CHARSET utf8, `yYear` Year(4)) RETURNS tinyint(1)
+    READS SQL DATA
+BEGIN
+
+RETURN EXISTS(select null from ClassDisciplineMeta where ClassName = cClassName COLLATE utf8_unicode_ci AND `Year` = yYear);
+
+END//
+DELIMITER ;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

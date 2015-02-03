@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for table bjs.competitionreportmeta
+DROP TABLE IF EXISTS `competitionreportmeta`;
 CREATE TABLE IF NOT EXISTS `competitionreportmeta` (
   `Year` year(4) NOT NULL,
   `HonoraryCertificatePercentage` int(3) NOT NULL,
@@ -23,7 +24,10 @@ CREATE TABLE IF NOT EXISTS `competitionreportmeta` (
   PRIMARY KEY (`Year`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Data exporting was unselected.
+-- Dumping data for table bjs.competitionreportmeta: ~0 rows (approximately)
+DELETE FROM `competitionreportmeta`;
+/*!40000 ALTER TABLE `competitionreportmeta` DISABLE KEYS */;
+/*!40000 ALTER TABLE `competitionreportmeta` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

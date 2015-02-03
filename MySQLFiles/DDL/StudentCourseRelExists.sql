@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for function bjs.StudentCourseRelExists
+DROP FUNCTION IF EXISTS `StudentCourseRelExists`;
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` FUNCTION `StudentCourseRelExists`(cStudentPKey CHAR(36) CHARSET utf8, yYear YEAR(4)) RETURNS tinyint(1)
     READS SQL DATA
