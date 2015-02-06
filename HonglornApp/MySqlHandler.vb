@@ -221,18 +221,21 @@ Friend Class MySqlHandler
     oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName)
     oSelectCommand.Parameters.AddWithValue("@yYear", iYear)
 
-    'todo: update command
-    oUpdateCommand = New MySqlCommand("EnterCompetitionValues", _oConnection)
+    oUpdateCommand = New MySqlCommand("EnterDisciplineMeta", _oConnection)
     oUpdateCommand.CommandType = CommandType.StoredProcedure
 
+    oUpdateCommand.Parameters.AddWithValue("cClassName", cClassName)
     oUpdateCommand.Parameters.AddWithValue("yYear", iYear)
 
-    oUpdateCommand.Parameters.Add("cPKey", MySqlDbType.Guid, 36, "PKey")
-    'todo: figure out, what exactly the size does for float :D
-    oUpdateCommand.Parameters.Add("fSprintValue", MySqlDbType.Float, 7, "Sprint")
-    oUpdateCommand.Parameters.Add("fJumpValue", MySqlDbType.Float, 7, "Jump")
-    oUpdateCommand.Parameters.Add("fThrowValue", MySqlDbType.Float, 7, "Throw")
-    oUpdateCommand.Parameters.Add("fMiddleDistanceValue", MySqlDbType.Float, 7, "MiddleDistance")
+    oUpdateCommand.Parameters.Add("eGameType", MySqlDbType.Enum, 1, "GameType") ' todo: test this
+    oUpdateCommand.Parameters.Add("cMaleSprintPKey", MySqlDbType.Guid, 36, "MaleSprintPKey")
+    oUpdateCommand.Parameters.Add("cMaleJumpPKey", MySqlDbType.Guid, 36, "MaleJumpPKey")
+    oUpdateCommand.Parameters.Add("cMaleThrowPKey", MySqlDbType.Guid, 36, "MaleThrowPKey")
+    oUpdateCommand.Parameters.Add("cMaleMiddleDistancePKey", MySqlDbType.Guid, 36, "MaleMiddleDistancePKey")
+    oUpdateCommand.Parameters.Add("cFemaleSprintPKey", MySqlDbType.Guid, 36, "FemaleSprintPKey")
+    oUpdateCommand.Parameters.Add("cFemaleJumpPKey", MySqlDbType.Guid, 36, "FemaleJumpPKey")
+    oUpdateCommand.Parameters.Add("cFemaleThrowPKey", MySqlDbType.Guid, 36, "FemaleThrowPKey")
+    oUpdateCommand.Parameters.Add("cFemaleMiddleDistancePKey", MySqlDbType.Guid, 36, "FemaleMiddleDistancePKey")
 
     oDataAdapter.SelectCommand = oSelectCommand
     oDataAdapter.UpdateCommand = oUpdateCommand
