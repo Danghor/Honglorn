@@ -4,7 +4,7 @@
   Enum Discipline
     Sprint
     Jump
-    Throwing '"Throw" cannot be used since it's a keyword
+    [Throw]
     MiddleDistance
   End Enum
 

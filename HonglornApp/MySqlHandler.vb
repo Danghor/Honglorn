@@ -102,7 +102,7 @@ Friend Class MySqlHandler
         Select Case eDiscipline
           Case Discipline.Sprint
             oSelectCommand.CommandText = "TraditionalMaleSprintDisciplines"
-          Case Discipline.Throwing
+          Case Discipline.Throw
             oSelectCommand.CommandText = "TraditionalMaleThrowDisciplines"
           Case Discipline.Jump
             oSelectCommand.CommandText = "TraditionalMaleJumpDisciplines"
@@ -115,7 +115,7 @@ Friend Class MySqlHandler
         Select Case eDiscipline
           Case Discipline.Sprint
             oSelectCommand.CommandText = "TraditionalFemaleSprintDisciplines"
-          Case Discipline.Throwing
+          Case Discipline.Throw
             oSelectCommand.CommandText = "TraditionalFemaleThrowDisciplines"
           Case Discipline.Jump
             oSelectCommand.CommandText = "TraditionalFemaleJumpDisciplines"
@@ -128,6 +128,7 @@ Friend Class MySqlHandler
         Throw New ArgumentException("Invalid sex.")
       End If
     ElseIf eGameType = GameType.Competition Then
+      'todo: Implement Competition Game Type
       Throw New NotImplementedException()
     Else
       Throw New ArgumentException("Invalid GameType.")

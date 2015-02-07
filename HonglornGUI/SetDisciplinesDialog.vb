@@ -9,8 +9,6 @@ Public Class SetDisciplinesDialog
     End Get
   End Property
 
-
-
   Private ReadOnly Property CurrentYear As Integer
     Get
       Dim sSelectedYearShown As String
