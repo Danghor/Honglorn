@@ -31,12 +31,12 @@ Partial Class SetDisciplinesDialog
     Me.TraditionalDisciplineSetRadioButton = New System.Windows.Forms.RadioButton()
     Me.MaleLabel = New System.Windows.Forms.Label()
     Me.MySplitContainer = New System.Windows.Forms.SplitContainer()
-    Me.SprintLabel = New System.Windows.Forms.Label()
-    Me.SprintMaleComboBox = New System.Windows.Forms.ComboBox()
-    Me.TextBox1 = New System.Windows.Forms.TextBox()
-    Me.SprintUnitMaleLabel = New System.Windows.Forms.Label()
-    Me.SprintNameMaleLabel = New System.Windows.Forms.Label()
     Me.SprintLowIsBetterMaleCheckBox = New System.Windows.Forms.CheckBox()
+    Me.SprintNameMaleLabel = New System.Windows.Forms.Label()
+    Me.SprintUnitMaleLabel = New System.Windows.Forms.Label()
+    Me.TextBox1 = New System.Windows.Forms.TextBox()
+    Me.SprintMaleComboBox = New System.Windows.Forms.ComboBox()
+    Me.SprintLabel = New System.Windows.Forms.Label()
     Me.DisciplineSetTypeGroupBox.SuspendLayout()
     CType(Me.MySplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.MySplitContainer.Panel1.SuspendLayout()
@@ -145,48 +145,6 @@ Partial Class SetDisciplinesDialog
     Me.MySplitContainer.SplitterDistance = 328
     Me.MySplitContainer.TabIndex = 1
     '
-    'SprintLabel
-    '
-    Me.SprintLabel.AutoSize = True
-    Me.SprintLabel.Location = New System.Drawing.Point(12, 52)
-    Me.SprintLabel.Name = "SprintLabel"
-    Me.SprintLabel.Size = New System.Drawing.Size(51, 20)
-    Me.SprintLabel.TabIndex = 1
-    Me.SprintLabel.Text = "Sprint"
-    '
-    'SprintMaleComboBox
-    '
-    Me.SprintMaleComboBox.FormattingEnabled = True
-    Me.SprintMaleComboBox.Location = New System.Drawing.Point(159, 86)
-    Me.SprintMaleComboBox.Name = "SprintMaleComboBox"
-    Me.SprintMaleComboBox.Size = New System.Drawing.Size(121, 28)
-    Me.SprintMaleComboBox.TabIndex = 2
-    '
-    'TextBox1
-    '
-    Me.TextBox1.Location = New System.Drawing.Point(159, 120)
-    Me.TextBox1.Name = "TextBox1"
-    Me.TextBox1.Size = New System.Drawing.Size(121, 26)
-    Me.TextBox1.TabIndex = 3
-    '
-    'SprintUnitMaleLabel
-    '
-    Me.SprintUnitMaleLabel.AutoSize = True
-    Me.SprintUnitMaleLabel.Location = New System.Drawing.Point(95, 123)
-    Me.SprintUnitMaleLabel.Name = "SprintUnitMaleLabel"
-    Me.SprintUnitMaleLabel.Size = New System.Drawing.Size(58, 20)
-    Me.SprintUnitMaleLabel.TabIndex = 4
-    Me.SprintUnitMaleLabel.Text = "Einheit"
-    '
-    'SprintNameMaleLabel
-    '
-    Me.SprintNameMaleLabel.AutoSize = True
-    Me.SprintNameMaleLabel.Location = New System.Drawing.Point(12, 89)
-    Me.SprintNameMaleLabel.Name = "SprintNameMaleLabel"
-    Me.SprintNameMaleLabel.Size = New System.Drawing.Size(140, 20)
-    Me.SprintNameMaleLabel.TabIndex = 5
-    Me.SprintNameMaleLabel.Text = "Name der Disziplin"
-    '
     'SprintLowIsBetterMaleCheckBox
     '
     Me.SprintLowIsBetterMaleCheckBox.AutoSize = True
@@ -197,6 +155,48 @@ Partial Class SetDisciplinesDialog
     Me.SprintLowIsBetterMaleCheckBox.TabIndex = 7
     Me.SprintLowIsBetterMaleCheckBox.Text = "Weniger ist besser"
     Me.SprintLowIsBetterMaleCheckBox.UseVisualStyleBackColor = True
+    '
+    'SprintNameMaleLabel
+    '
+    Me.SprintNameMaleLabel.AutoSize = True
+    Me.SprintNameMaleLabel.Location = New System.Drawing.Point(12, 89)
+    Me.SprintNameMaleLabel.Name = "SprintNameMaleLabel"
+    Me.SprintNameMaleLabel.Size = New System.Drawing.Size(140, 20)
+    Me.SprintNameMaleLabel.TabIndex = 5
+    Me.SprintNameMaleLabel.Text = "Name der Disziplin"
+    '
+    'SprintUnitMaleLabel
+    '
+    Me.SprintUnitMaleLabel.AutoSize = True
+    Me.SprintUnitMaleLabel.Location = New System.Drawing.Point(95, 123)
+    Me.SprintUnitMaleLabel.Name = "SprintUnitMaleLabel"
+    Me.SprintUnitMaleLabel.Size = New System.Drawing.Size(58, 20)
+    Me.SprintUnitMaleLabel.TabIndex = 4
+    Me.SprintUnitMaleLabel.Text = "Einheit"
+    '
+    'TextBox1
+    '
+    Me.TextBox1.Location = New System.Drawing.Point(159, 120)
+    Me.TextBox1.Name = "TextBox1"
+    Me.TextBox1.Size = New System.Drawing.Size(121, 26)
+    Me.TextBox1.TabIndex = 3
+    '
+    'SprintMaleComboBox
+    '
+    Me.SprintMaleComboBox.FormattingEnabled = True
+    Me.SprintMaleComboBox.Location = New System.Drawing.Point(159, 86)
+    Me.SprintMaleComboBox.Name = "SprintMaleComboBox"
+    Me.SprintMaleComboBox.Size = New System.Drawing.Size(121, 28)
+    Me.SprintMaleComboBox.TabIndex = 2
+    '
+    'SprintLabel
+    '
+    Me.SprintLabel.AutoSize = True
+    Me.SprintLabel.Location = New System.Drawing.Point(12, 52)
+    Me.SprintLabel.Name = "SprintLabel"
+    Me.SprintLabel.Size = New System.Drawing.Size(51, 20)
+    Me.SprintLabel.TabIndex = 1
+    Me.SprintLabel.Text = "Sprint"
     '
     'SetDisciplinesDialog
     '

@@ -89,7 +89,7 @@ Public Class MainWindow
     'todo: confirmation dialog, saving changes from old datasource etc
     'todo: change tab order so pressing tab-key at the end of the line skips to next "value" field instead of "Surname"
     If EditDataGridView.DataSource IsNot Nothing Then
-      _oApp.SaveEditTableChanges(CType(EditDataGridView.DataSource, DataTable))
+      _oApp.SaveRawDataEditTableChanges(CType(EditDataGridView.DataSource, DataTable))
     End If
 
     EditDataGridView.Visible = False
@@ -115,7 +115,7 @@ Public Class MainWindow
   Private Sub EditDataGridView_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles EditDataGridView.CellEndEdit
     'todo: verify content
 
-    _oApp.SaveEditTableChanges(CType(EditDataGridView.DataSource, DataTable))
+    _oApp.SaveRawDataEditTableChanges(CType(EditDataGridView.DataSource, DataTable))
   End Sub
 
   Private Sub SetDisciplinesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDisciplinesToolStripMenuItem.Click
