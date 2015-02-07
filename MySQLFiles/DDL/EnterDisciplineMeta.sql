@@ -27,7 +27,7 @@ IF COALESCE(cMaleSprintPKey,cMaleJumpPKey,cMaleThrowPKey,cMaleMiddleDistancePKey
 ELSE
 
 	IF IsValidDisciplineMeta(eGameType,cMaleSprintPKey,cMaleJumpPKey,cMaleThrowPKey,cMaleMiddleDistancePKey,cFemaleSprintPKey,cFemaleJumpPKey,cFemaleThrowPKey,cFemaleMiddleDistancePKey) THEN
-    
+    -- could possible be replaced by Update where exists and insert ignore ?
 		IF DisciplineMetaExists(cClassName, yYear) THEN
 
 			update DisciplineMeta

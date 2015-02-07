@@ -1,5 +1,6 @@
 ﻿Public Module Prerequisites
-  Public Const CsDataBaseName As String = "bjs"
+
+  Public Const DATABASE_NAME As String = "bjs"
 
   Enum Discipline
     Sprint

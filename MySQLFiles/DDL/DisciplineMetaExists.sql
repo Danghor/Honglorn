@@ -11,6 +11,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping structure for function bjs.DisciplineMetaExists
+DROP FUNCTION IF EXISTS `DisciplineMetaExists`;
 DELIMITER //
 CREATE DEFINER=`root`@`localhost` FUNCTION `DisciplineMetaExists`(`cClassName` CHAR(1) CHARSET utf8, `yYear` Year(4)) RETURNS tinyint(1)
     READS SQL DATA

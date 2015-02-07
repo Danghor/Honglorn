@@ -25,8 +25,8 @@ Friend Class MySqlHandler
     Dim iArrayLength As Integer
 
     oSelectCommand.Connection = _oConnection
-    'todo: create view for this
-    oSelectCommand.CommandText = "SELECT DISTINCT year FROM StudentCourseRel ORDER BY year DESC"
+
+    oSelectCommand.CommandText = "SELECT * FROM ValidYears"
 
     oDataAdapter.SelectCommand = oSelectCommand
 

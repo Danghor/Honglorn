@@ -9,7 +9,7 @@ Public Class Honglorn
   Private _daCurrentDisciplinesEditAdapter As MySql.Data.MySqlClient.MySqlDataAdapter
 
   Public Sub New(sServer As String, sUser As String, sPassword As String)
-    _oMySqlHandler = New MySqlHandler(sServer, sUser, sPassword, CsDataBaseName)
+    _oMySqlHandler = New MySqlHandler(sServer, sUser, sPassword, DATABASE_NAME)
     _oExcelImporter = ExcelImporter.Instance
   End Sub
 
