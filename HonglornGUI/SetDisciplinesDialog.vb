@@ -4,8 +4,7 @@ Public Class SetDisciplinesDialog
 
   Private ReadOnly Property App As Honglorn
     Get
-      Dim oOwner As MainWindow = CType(Me.Owner, MainWindow)
-      App = oOwner._oApp
+      App = CType(Me.Owner, MainWindow)._oApp
     End Get
   End Property
 
