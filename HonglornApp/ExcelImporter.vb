@@ -11,10 +11,10 @@ Public Class ExcelImporter
   Public Shared ReadOnly Property Instance As ExcelImporter
     Get
       If IsNothing(_MySingletonInstance) Then
-        Instance = New ExcelImporter()
-      Else
-        Instance = _MySingletonInstance
+        _MySingletonInstance = New ExcelImporter()
       End If
+
+      Instance = _MySingletonInstance
     End Get
   End Property
 
