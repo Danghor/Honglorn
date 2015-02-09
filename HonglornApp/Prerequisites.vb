@@ -2,6 +2,8 @@
 
   Public Const DATABASE_NAME As String = "bjs"
 
+  Public ReadOnly VALID_CLASSNAMES As Char() = {"5"c, "6"c, "7"c, "8"c, "9"c, "E"c}
+
   Enum Discipline
     Sprint
     Jump
