@@ -42,4 +42,29 @@
     End If
   End Function
 
+  'todo: write third method that just compares two objects and checks their type beforehand
+  'reference this method by the above and below methods
+
+  ''' <summary>
+  ''' Compares two Char arrays. Returns true if their content is identical and false otherwise.
+  ''' </summary>
+  ''' <param name="acFirst"></param>
+  ''' <param name="acSecond"></param>
+  ''' <returns></returns>
+  ''' <remarks>Uses Exit For.</remarks>
+  Function IsEqual(acFirst As Char(), acSecond As Char()) As Boolean
+    IsEqual = True
+
+    If acFirst IsNot Nothing AndAlso acSecond IsNot Nothing AndAlso acFirst.Count = acSecond.Count Then
+      For i As Integer = 0 To acFirst.Count - 1
+        If acFirst(i) <> acSecond(i) Then
+          IsEqual = False
+          Exit For
+        End If
+      Next
+    Else
+      IsEqual = False
+    End If
+  End Function
+
 End Module
