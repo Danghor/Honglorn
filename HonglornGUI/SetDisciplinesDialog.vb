@@ -22,6 +22,16 @@ Public Class SetDisciplinesDialog
     End Get
   End Property
 
+  Private ReadOnly Property CurrentClass As Char
+    Get
+      If String.IsNullOrWhiteSpace(ClassComboBox.Text) Then
+        CurrentClass = Nothing
+      Else
+        CurrentClass = CChar(ClassComboBox.Text)
+      End If
+    End Get
+  End Property
+
   Private Sub SetDisciplinesDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     Tools.Center(Me)
@@ -40,11 +50,11 @@ Public Class SetDisciplinesDialog
 
   Private Sub ClassComboBox_DropDown(sender As Object, e As EventArgs) Handles ClassComboBox.DropDown
     If CurrentYear <> -1 Then
-      Dim asNewClassNames As String() = App.GetValidClassNames(CurrentYear)
-      Dim asOldClassNames As String() = CType(ClassComboBox.DataSource, String())
+      Dim acNewClassNames As Char() = App.GetValidClassNames(CurrentYear)
+      Dim acOldClassNames As Char() = CType(ClassComboBox.DataSource, Char())
 
-      If Not Tools.IsEqual(asNewClassNames, asOldClassNames) Then
-        ClassComboBox.DataSource = asNewClassNames
+      If Not Tools.IsEqual(acNewClassNames, acOldClassNames) Then
+        ClassComboBox.DataSource = acNewClassNames
       End If
     Else
       'todo: display tooltip "please set a year" or so
@@ -52,8 +62,14 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub ClassComboBox_TextChanged(sender As Object, e As EventArgs) Handles ClassComboBox.TextChanged
+
     If Not String.IsNullOrWhiteSpace(ClassComboBox.Text) Then
-      DisciplineSetTypeGroupBox.Enabled = True
+
+      'App.GetGameType()
+      'TraditionalDisciplineSetRadioButton.Checked = True
+      'CompetitionDisciplineSetRadioButton.Checked = True
+      'DisciplineSetTypeGroupBox.Enabled = True
+
     End If
 
   End Sub

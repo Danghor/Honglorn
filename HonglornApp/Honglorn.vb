@@ -74,6 +74,17 @@ Public Class Honglorn
   End Function
 
   ''' <summary>
+  ''' Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType is set.
+  ''' </summary>
+  ''' <param name="cClassName">The class name of the class the GameType is to be returned.</param>
+  ''' <param name="iYear">The year for which the GameType is valid.</param>
+  ''' <returns>A member of the Enum GameType that represents the GameType set in DisciplineMeta for the corresponding class in the given year.</returns>
+  ''' <remarks></remarks>
+  Function GetGameType(cClassName As Char, iYear As Integer) As GameType
+    GetGameType = _oMySqlHandler.GetGameType(cClassName, iYear)
+  End Function
+
+  ''' <summary>
   ''' Get an Integer Array representing the years for which data is present in the database.
   ''' </summary>
   ''' <returns>An Integer Array representing the valid years.</returns>
@@ -93,12 +104,12 @@ Public Class Honglorn
   End Function
 
   ''' <summary>
-  ''' Get a String Array representing the class names for which there is at least one student present in the given year. 
+  ''' Get a Char Array representing the class names for which there is at least one student present in the given year. 
   ''' </summary>
   ''' <param name="iYear">The year for which the valid class names should be retrieved.</param>
-  ''' <returns>A String Array representing the valid class names.</returns>
+  ''' <returns>A Char Array representing the valid class names.</returns>
   ''' <remarks></remarks>
-  Public Function GetValidClassNames(iYear As Integer) As String()
+  Public Function GetValidClassNames(iYear As Integer) As Char()
     GetValidClassNames = _oMySqlHandler.GetValidClassNames(iYear)
   End Function
 

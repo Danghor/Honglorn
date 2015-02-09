@@ -67,12 +67,13 @@ Friend Class MySqlHandler
     GetValidCourseNames = asResult
   End Function
 
-  Function GetValidClassNames(iYear As Integer) As String()
+  Function GetValidClassNames(iYear As Integer) As Char()
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim dtDataTable As New DataTable()
-    Dim asResult As String()
+    Dim acResult As Char()
     Dim iArrayLength As Integer
+    Dim cCurrentClass As Char
 
     oSelectCommand.Connection = _oConnection
     oSelectCommand.CommandText = "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassPKey = Class.PKey WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC"
@@ -83,13 +84,20 @@ Friend Class MySqlHandler
     oDataAdapter.Fill(dtDataTable)
 
     iArrayLength = dtDataTable.Rows.Count - 1
-    asResult = New String(iArrayLength) {}
+    acResult = New Char(iArrayLength) {}
 
     For iRow As Integer = 0 To iArrayLength
-      asResult(iRow) = CStr(dtDataTable.Rows(iRow)(0))
+      cCurrentClass = CChar(dtDataTable.Rows(iRow)(0))
+
+      'todo: make seperate function/class for validation tasks
+      If dtDataTable(iRow)(0).ToString().Count() <> 1 OrElse Not VALID_CLASSNAMES.Contains(cCurrentClass) Then
+        Throw New ArgumentOutOfRangeException("Invalid ClassName received from database.")
+      End If
+
+      acResult(iRow) = CChar(dtDataTable.Rows(iRow)(0))
     Next
 
-    GetValidClassNames = asResult
+    GetValidClassNames = acResult
   End Function
 
   Function GetValidDisciplinesTable(eGameType As GameType, eSex As Sex, eDiscipline As Discipline) As DataTable
@@ -144,7 +152,7 @@ Friend Class MySqlHandler
     GetValidDisciplinesTable = oDataTable
   End Function
 
-  Private Function GetGameType(cClassName As Char, iYear As Integer) As GameType
+  Function GetGameType(cClassName As Char, iYear As Integer) As GameType
     'Throw New NotImplementedException
     Dim oSelectCommand As New MySqlCommand()
 
