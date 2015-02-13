@@ -4,8 +4,6 @@ Imports Microsoft.Office.Interop
 Public Class ExcelImporter
   Private Shared _MySingletonInstance As ExcelImporter
 
-  Private Const CsAlphabet As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
   Private ReadOnly CsaExpectedHeaderColumnNames As String() = {"Nachname", "Vorname", "Kursbezeichnung", "Geschlecht", "Geburtsjahr"}
 
   Public Shared ReadOnly Property Instance As ExcelImporter
@@ -44,7 +42,7 @@ Public Class ExcelImporter
         'validate header row
         For iColIdx As Integer = 0 To 4
           'iterates from "A1" to "E1"
-          If CStr(oWorksheet.Range(CsAlphabet(iColIdx) + "1").Text) <> CsaExpectedHeaderColumnNames(iColIdx) Then
+          If CStr(oWorksheet.Range(ALPHABET(iColIdx) + "1").Text) <> CsaExpectedHeaderColumnNames(iColIdx) Then
             Throw New ArgumentException("Header row of Excel-File is not in the expected condition.")
           End If
         Next
@@ -70,7 +68,7 @@ Public Class ExcelImporter
 
           'read one row
           For iColIdx As Integer = 0 To 4
-            sCurrentCell = CStr(oWorksheet.Range(CsAlphabet(iColIdx) + CStr(iCurrentRow)).Text)
+            sCurrentCell = CStr(oWorksheet.Range(ALPHABET(iColIdx) + CStr(iCurrentRow)).Text)
             oNewDataRow(iColIdx) = sCurrentCell
 
             If Not String.IsNullOrWhiteSpace(sCurrentCell) Then
