@@ -67,7 +67,7 @@ Public Class ExcelImporter
           oNewDataRow = oDataTable.NewRow()
 
           'read one row
-          For iColIdx As Integer = 0 To 4
+          For iColIdx As Integer = 0 To CsaExpectedHeaderColumnNames.Count - 1
             sCurrentCell = CStr(oWorksheet.Range(ALPHABET(iColIdx) + CStr(iCurrentRow)).Text)
             oNewDataRow(iColIdx) = sCurrentCell
 
