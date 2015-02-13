@@ -2,17 +2,17 @@
 Imports Microsoft.Office.Interop
 
 Public Class ExcelImporter
-  Private Shared _MySingletonInstance As ExcelImporter
+  Private Shared _oMySingletonInstance As ExcelImporter
 
   Private ReadOnly CsaExpectedHeaderColumnNames As String() = {"Nachname", "Vorname", "Kursbezeichnung", "Geschlecht", "Geburtsjahr"}
 
   Public Shared ReadOnly Property Instance As ExcelImporter
     Get
-      If IsNothing(_MySingletonInstance) Then
-        _MySingletonInstance = New ExcelImporter()
+      If IsNothing(_oMySingletonInstance) Then
+        _oMySingletonInstance = New ExcelImporter()
       End If
 
-      Instance = _MySingletonInstance
+      Instance = _oMySingletonInstance
     End Get
   End Property
 
