@@ -26,9 +26,9 @@ Partial Class SetDisciplinesDialog
     Me.ClassComboBox = New System.Windows.Forms.ComboBox()
     Me.YearComboBox = New System.Windows.Forms.ComboBox()
     Me.YearLabel = New System.Windows.Forms.Label()
-    Me.DisciplineSetTypeGroupBox = New System.Windows.Forms.GroupBox()
-    Me.CompetitionDisciplineSetRadioButton = New System.Windows.Forms.RadioButton()
-    Me.TraditionalDisciplineSetRadioButton = New System.Windows.Forms.RadioButton()
+    Me.GameTypeGroupBox = New System.Windows.Forms.GroupBox()
+    Me.CompetitionGameTypeRadioButton = New System.Windows.Forms.RadioButton()
+    Me.TraditionalGameTypeRadioButton = New System.Windows.Forms.RadioButton()
     Me.MaleLabel = New System.Windows.Forms.Label()
     Me.MySplitContainer = New System.Windows.Forms.SplitContainer()
     Me.SprintLowIsBetterMaleCheckBox = New System.Windows.Forms.CheckBox()
@@ -37,7 +37,7 @@ Partial Class SetDisciplinesDialog
     Me.TextBox1 = New System.Windows.Forms.TextBox()
     Me.SprintMaleComboBox = New System.Windows.Forms.ComboBox()
     Me.SprintLabel = New System.Windows.Forms.Label()
-    Me.DisciplineSetTypeGroupBox.SuspendLayout()
+    Me.GameTypeGroupBox.SuspendLayout()
     CType(Me.MySplitContainer, System.ComponentModel.ISupportInitialize).BeginInit()
     Me.MySplitContainer.Panel1.SuspendLayout()
     Me.MySplitContainer.SuspendLayout()
@@ -79,39 +79,39 @@ Partial Class SetDisciplinesDialog
     Me.YearLabel.TabIndex = 2
     Me.YearLabel.Text = "Jahr"
     '
-    'DisciplineSetTypeGroupBox
+    'GameTypeGroupBox
     '
-    Me.DisciplineSetTypeGroupBox.Controls.Add(Me.CompetitionDisciplineSetRadioButton)
-    Me.DisciplineSetTypeGroupBox.Controls.Add(Me.TraditionalDisciplineSetRadioButton)
-    Me.DisciplineSetTypeGroupBox.Enabled = False
-    Me.DisciplineSetTypeGroupBox.Location = New System.Drawing.Point(484, 12)
-    Me.DisciplineSetTypeGroupBox.Name = "DisciplineSetTypeGroupBox"
-    Me.DisciplineSetTypeGroupBox.Size = New System.Drawing.Size(486, 57)
-    Me.DisciplineSetTypeGroupBox.TabIndex = 4
-    Me.DisciplineSetTypeGroupBox.TabStop = False
-    Me.DisciplineSetTypeGroupBox.Text = "Art der Bewertung"
+    Me.GameTypeGroupBox.Controls.Add(Me.CompetitionGameTypeRadioButton)
+    Me.GameTypeGroupBox.Controls.Add(Me.TraditionalGameTypeRadioButton)
+    Me.GameTypeGroupBox.Enabled = False
+    Me.GameTypeGroupBox.Location = New System.Drawing.Point(484, 12)
+    Me.GameTypeGroupBox.Name = "GameTypeGroupBox"
+    Me.GameTypeGroupBox.Size = New System.Drawing.Size(486, 57)
+    Me.GameTypeGroupBox.TabIndex = 4
+    Me.GameTypeGroupBox.TabStop = False
+    Me.GameTypeGroupBox.Text = "Art der Bewertung"
     '
-    'CompetitionDisciplineSetRadioButton
+    'CompetitionGameTypeRadioButton
     '
-    Me.CompetitionDisciplineSetRadioButton.AutoSize = True
-    Me.CompetitionDisciplineSetRadioButton.Location = New System.Drawing.Point(241, 25)
-    Me.CompetitionDisciplineSetRadioButton.Name = "CompetitionDisciplineSetRadioButton"
-    Me.CompetitionDisciplineSetRadioButton.Size = New System.Drawing.Size(235, 24)
-    Me.CompetitionDisciplineSetRadioButton.TabIndex = 1
-    Me.CompetitionDisciplineSetRadioButton.TabStop = True
-    Me.CompetitionDisciplineSetRadioButton.Text = "Wettbewerb (neues System)"
-    Me.CompetitionDisciplineSetRadioButton.UseVisualStyleBackColor = True
+    Me.CompetitionGameTypeRadioButton.AutoSize = True
+    Me.CompetitionGameTypeRadioButton.Location = New System.Drawing.Point(241, 25)
+    Me.CompetitionGameTypeRadioButton.Name = "CompetitionGameTypeRadioButton"
+    Me.CompetitionGameTypeRadioButton.Size = New System.Drawing.Size(235, 24)
+    Me.CompetitionGameTypeRadioButton.TabIndex = 1
+    Me.CompetitionGameTypeRadioButton.TabStop = True
+    Me.CompetitionGameTypeRadioButton.Text = "Wettbewerb (neues System)"
+    Me.CompetitionGameTypeRadioButton.UseVisualStyleBackColor = True
     '
-    'TraditionalDisciplineSetRadioButton
+    'TraditionalGameTypeRadioButton
     '
-    Me.TraditionalDisciplineSetRadioButton.AutoSize = True
-    Me.TraditionalDisciplineSetRadioButton.Location = New System.Drawing.Point(18, 25)
-    Me.TraditionalDisciplineSetRadioButton.Name = "TraditionalDisciplineSetRadioButton"
-    Me.TraditionalDisciplineSetRadioButton.Size = New System.Drawing.Size(217, 24)
-    Me.TraditionalDisciplineSetRadioButton.TabIndex = 0
-    Me.TraditionalDisciplineSetRadioButton.TabStop = True
-    Me.TraditionalDisciplineSetRadioButton.Text = "Wettkampf (altes System)"
-    Me.TraditionalDisciplineSetRadioButton.UseVisualStyleBackColor = True
+    Me.TraditionalGameTypeRadioButton.AutoSize = True
+    Me.TraditionalGameTypeRadioButton.Location = New System.Drawing.Point(18, 25)
+    Me.TraditionalGameTypeRadioButton.Name = "TraditionalGameTypeRadioButton"
+    Me.TraditionalGameTypeRadioButton.Size = New System.Drawing.Size(217, 24)
+    Me.TraditionalGameTypeRadioButton.TabIndex = 0
+    Me.TraditionalGameTypeRadioButton.TabStop = True
+    Me.TraditionalGameTypeRadioButton.Text = "Wettkampf (altes System)"
+    Me.TraditionalGameTypeRadioButton.UseVisualStyleBackColor = True
     '
     'MaleLabel
     '
@@ -204,7 +204,7 @@ Partial Class SetDisciplinesDialog
     Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
     Me.ClientSize = New System.Drawing.Size(1178, 744)
     Me.Controls.Add(Me.MySplitContainer)
-    Me.Controls.Add(Me.DisciplineSetTypeGroupBox)
+    Me.Controls.Add(Me.GameTypeGroupBox)
     Me.Controls.Add(Me.YearComboBox)
     Me.Controls.Add(Me.YearLabel)
     Me.Controls.Add(Me.ClassComboBox)
@@ -215,8 +215,8 @@ Partial Class SetDisciplinesDialog
     Me.ShowIcon = False
     Me.ShowInTaskbar = False
     Me.Text = "SetDisciplinesDialog"
-    Me.DisciplineSetTypeGroupBox.ResumeLayout(False)
-    Me.DisciplineSetTypeGroupBox.PerformLayout()
+    Me.GameTypeGroupBox.ResumeLayout(False)
+    Me.GameTypeGroupBox.PerformLayout()
     Me.MySplitContainer.Panel1.ResumeLayout(False)
     Me.MySplitContainer.Panel1.PerformLayout()
     CType(Me.MySplitContainer, System.ComponentModel.ISupportInitialize).EndInit()
@@ -229,9 +229,9 @@ Partial Class SetDisciplinesDialog
   Friend WithEvents ClassComboBox As System.Windows.Forms.ComboBox
   Friend WithEvents YearComboBox As System.Windows.Forms.ComboBox
   Friend WithEvents YearLabel As System.Windows.Forms.Label
-  Friend WithEvents DisciplineSetTypeGroupBox As System.Windows.Forms.GroupBox
-  Friend WithEvents CompetitionDisciplineSetRadioButton As System.Windows.Forms.RadioButton
-  Friend WithEvents TraditionalDisciplineSetRadioButton As System.Windows.Forms.RadioButton
+  Friend WithEvents GameTypeGroupBox As System.Windows.Forms.GroupBox
+  Friend WithEvents CompetitionGameTypeRadioButton As System.Windows.Forms.RadioButton
+  Friend WithEvents TraditionalGameTypeRadioButton As System.Windows.Forms.RadioButton
   Friend WithEvents MaleLabel As System.Windows.Forms.Label
   Friend WithEvents MySplitContainer As System.Windows.Forms.SplitContainer
   Friend WithEvents SprintLabel As System.Windows.Forms.Label

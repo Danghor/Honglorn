@@ -62,15 +62,39 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub ClassComboBox_TextChanged(sender As Object, e As EventArgs) Handles ClassComboBox.TextChanged
+    ValidateInputAndRefresh()
+  End Sub
 
-    If Not String.IsNullOrWhiteSpace(ClassComboBox.Text) Then
+  Private Sub YearComboBox_TextChanged(sender As Object, e As EventArgs) Handles YearComboBox.TextChanged
+    ValidateInputAndRefresh()
+  End Sub
 
-      'App.GetGameType()
-      'TraditionalDisciplineSetRadioButton.Checked = True
-      'CompetitionDisciplineSetRadioButton.Checked = True
-      'DisciplineSetTypeGroupBox.Enabled = True
-
+  Private Sub ValidateInputAndRefresh()
+    If IsValidYear(CurrentYear) AndAlso IsValidClassName(CurrentClass) Then
+      RefreshGameTypeRadioButtons()
+      GameTypeGroupBox.Enabled = True
+    Else
+      GameTypeGroupBox.Enabled = False
     End If
+  End Sub
 
+  Private Sub RefreshGameTypeRadioButtons()
+    Dim eGameType As GameType
+
+    eGameType = App.GetGameType(CurrentClass, CurrentYear)
+
+    Select Case eGameType
+
+      Case Nothing
+        TraditionalGameTypeRadioButton.Checked = False
+        CompetitionGameTypeRadioButton.Checked = False
+
+      Case GameType.Competition
+        CompetitionGameTypeRadioButton.Checked = True
+
+      Case GameType.Traditional
+        TraditionalGameTypeRadioButton.Checked = True
+
+    End Select
   End Sub
 End Class
