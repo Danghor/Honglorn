@@ -2,6 +2,8 @@
 
 Public Class SetDisciplinesDialog
 
+#Region "Properties"
+
   Private ReadOnly Property App As Honglorn
     Get
       App = CType(Me.Owner, MainWindow)._oApp
@@ -31,6 +33,8 @@ Public Class SetDisciplinesDialog
       End If
     End Get
   End Property
+
+#End Region
 
   Private Sub SetDisciplinesDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -85,15 +89,15 @@ Public Class SetDisciplinesDialog
 
     Select Case eGameType
 
-      Case Nothing
-        TraditionalGameTypeRadioButton.Checked = False
-        CompetitionGameTypeRadioButton.Checked = False
-
       Case GameType.Competition
         CompetitionGameTypeRadioButton.Checked = True
 
       Case GameType.Traditional
         TraditionalGameTypeRadioButton.Checked = True
+
+      Case Nothing
+        TraditionalGameTypeRadioButton.Checked = False
+        CompetitionGameTypeRadioButton.Checked = False
 
     End Select
   End Sub
