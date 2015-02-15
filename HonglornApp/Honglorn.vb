@@ -69,8 +69,12 @@ Public Class Honglorn
 
 #End Region
 
-  Public Function GetValidDisciplinesTable(eGameType As GameType, eSex As Sex, eDiscipline As Discipline) As DataTable
-    GetValidDisciplinesTable = _oMySqlHandler.GetValidDisciplinesTable(eGameType, eSex, eDiscipline)
+  Public Function GetValidTraditionalDisciplinesTable(eSex As Sex, eDiscipline As Discipline) As DataTable
+    GetValidTraditionalDisciplinesTable = _oMySqlHandler.GetValidTraditionalDisciplinesTable(eSex, eDiscipline)
+  End Function
+
+  Public Function GetValidCompetitionDisciplinesTable(eDiscipline As Discipline) As DataTable
+    GetValidCompetitionDisciplinesTable = _oMySqlHandler.GetValidCompetitionDisciplinesTable(eDiscipline)
   End Function
 
   ''' <summary>

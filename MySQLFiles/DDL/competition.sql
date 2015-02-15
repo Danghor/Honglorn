@@ -25,9 +25,12 @@ CREATE TABLE IF NOT EXISTS `competition` (
   CONSTRAINT `StudentPKey` FOREIGN KEY (`StudentPKey`) REFERENCES `student` (`PKey`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table bjs.competition: ~0 rows (approximately)
+-- Dumping data for table bjs.competition: ~2 rows (approximately)
 DELETE FROM `competition`;
 /*!40000 ALTER TABLE `competition` DISABLE KEYS */;
+INSERT INTO `competition` (`StudentPKey`, `Year`, `Sprint`, `Jump`, `Throw`, `MiddleDistance`) VALUES
+	('a9b24f91-936c-11e4-a9c1-600292148ec2', '2014', 1, 2, 3, 4),
+	('a9bbea3d-936c-11e4-a9c1-600292148ec2', '2014', 12.5, 135, NULL, 65);
 /*!40000 ALTER TABLE `competition` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

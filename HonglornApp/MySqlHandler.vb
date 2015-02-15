@@ -100,56 +100,90 @@ Friend Class MySqlHandler
     GetValidClassNames = acResult
   End Function
 
-  Function GetValidDisciplinesTable(eGameType As GameType, eSex As Sex, eDiscipline As Discipline) As DataTable
+  ''' <summary>
+  ''' Returns a data table with information about the allowed traditional disciplines, i.e. the disciplines that can be selected for the given parameters.
+  ''' </summary>
+  ''' <param name="eSex">The students' gender.</param>
+  ''' <param name="eDiscipline">The disciple type to be looked up.</param>
+  ''' <returns></returns>
+  ''' <remarks></remarks>
+  Function GetValidTraditionalDisciplinesTable(eSex As Sex, eDiscipline As Discipline) As DataTable
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oDataTable As New DataTable()
     Dim oSelectCommand As New MySqlCommand()
 
-    If eGameType = GameType.Traditional Then
-      If eSex = Sex.Male Then
-        Select Case eDiscipline
-          Case Discipline.Sprint
-            oSelectCommand.CommandText = "TraditionalMaleSprintDisciplines"
-          Case Discipline.Throw
-            oSelectCommand.CommandText = "TraditionalMaleThrowDisciplines"
-          Case Discipline.Jump
-            oSelectCommand.CommandText = "TraditionalMaleJumpDisciplines"
-          Case Discipline.MiddleDistance
-            oSelectCommand.CommandText = "TraditionalMaleMiddleDistanceDisciplines"
-          Case Else
-            Throw New ArgumentException("Invalid discipline.")
-        End Select
-      ElseIf eSex = Sex.Female Then
-        Select Case eDiscipline
-          Case Discipline.Sprint
-            oSelectCommand.CommandText = "TraditionalFemaleSprintDisciplines"
-          Case Discipline.Throw
-            oSelectCommand.CommandText = "TraditionalFemaleThrowDisciplines"
-          Case Discipline.Jump
-            oSelectCommand.CommandText = "TraditionalFemaleJumpDisciplines"
-          Case Discipline.MiddleDistance
-            oSelectCommand.CommandText = "TraditionalFemaleMiddleDistanceDisciplines"
-          Case Else
-            Throw New ArgumentException("Invalid discipline.")
-        End Select
-      Else
-        Throw New ArgumentException("Invalid sex.")
-      End If
-    ElseIf eGameType = GameType.Competition Then
-      'todo: Implement Competition Game Type
-      Throw New NotImplementedException()
+    oSelectCommand.CommandText = "Select * from "
+
+    If eSex = Sex.Male Then
+
+      Select Case eDiscipline
+        Case Discipline.Sprint
+          oSelectCommand.CommandText += "TraditionalMaleSprintDisciplines"
+        Case Discipline.Throw
+          oSelectCommand.CommandText += "TraditionalMaleThrowDisciplines"
+        Case Discipline.Jump
+          oSelectCommand.CommandText += "TraditionalMaleJumpDisciplines"
+        Case Discipline.MiddleDistance
+          oSelectCommand.CommandText += "TraditionalMaleMiddleDistanceDisciplines"
+        Case Else
+          Throw New ArgumentException("Invalid discipline.")
+      End Select
+
+    ElseIf eSex = Sex.Female Then
+
+      Select Case eDiscipline
+        Case Discipline.Sprint
+          oSelectCommand.CommandText += "TraditionalFemaleSprintDisciplines"
+        Case Discipline.Throw
+          oSelectCommand.CommandText += "TraditionalFemaleThrowDisciplines"
+        Case Discipline.Jump
+          oSelectCommand.CommandText += "TraditionalFemaleJumpDisciplines"
+        Case Discipline.MiddleDistance
+          oSelectCommand.CommandText += "TraditionalFemaleMiddleDistanceDisciplines"
+        Case Else
+          Throw New ArgumentException("Invalid discipline.")
+      End Select
+
     Else
-      Throw New ArgumentException("Invalid GameType.")
+      Throw New ArgumentException("Invalid sex.")
     End If
 
     oSelectCommand.Connection = _oConnection
-    oSelectCommand.CommandType = CommandType.StoredProcedure
 
     oDataAdapter.SelectCommand = oSelectCommand
 
     oDataAdapter.Fill(oDataTable)
 
-    GetValidDisciplinesTable = oDataTable
+    GetValidTraditionalDisciplinesTable = oDataTable
+  End Function
+
+  Function GetValidCompetitionDisciplinesTable(eDiscipline As Discipline) As DataTable
+    Dim oDataAdapter As New MySqlDataAdapter()
+    Dim oDataTable As New DataTable()
+    Dim oSelectCommand As New MySqlCommand()
+
+    oSelectCommand.CommandText = "Select * from "
+
+    Select Case eDiscipline
+      Case Discipline.Sprint
+        oSelectCommand.CommandText += "CompetitionSprintDisciplines"
+      Case Discipline.Throw
+        oSelectCommand.CommandText += "CompetitionThrowDisciplines"
+      Case Discipline.Jump
+        oSelectCommand.CommandText += "CompetitionJumpDisciplines"
+      Case Discipline.MiddleDistance
+        oSelectCommand.CommandText += "CompetitionMiddleDistanceDisciplines"
+      Case Else
+        Throw New ArgumentException("Invalid discipline.")
+    End Select
+
+    oSelectCommand.Connection = _oConnection
+
+    oDataAdapter.SelectCommand = oSelectCommand
+
+    oDataAdapter.Fill(oDataTable)
+
+    GetValidCompetitionDisciplinesTable = oDataTable
   End Function
 
   Function GetGameType(cClassName As Char, iYear As Integer) As GameType
