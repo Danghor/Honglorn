@@ -153,38 +153,50 @@ Friend Class MySqlHandler
   End Function
 
   Function GetGameType(cClassName As Char, iYear As Integer) As GameType
-    'Throw New NotImplementedException
-    Dim oSelectCommand As New MySqlCommand()
+    Dim oSelectCommand As MySqlCommand
+    Dim oReturnParameter As MySqlParameter
 
-    oSelectCommand.Connection = _oConnection
-    oSelectCommand.CommandText = "GetGameType"
-    oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName)
-    oSelectCommand.Parameters.AddWithValue("@yYear", iYear)
+    If IsValidYear(iYear) AndAlso IsValidClassName(cClassName) Then
+      oSelectCommand = New MySqlCommand()
+      oSelectCommand.CommandType = CommandType.StoredProcedure
 
-    oSelectCommand.Parameters.Add("@eReturnValue", MySqlDbType.Enum)
-    oSelectCommand.Parameters("@eReturnValue").Direction = ParameterDirection.ReturnValue
+      oSelectCommand.Connection = _oConnection
+      oSelectCommand.CommandText = "GetGameType"
+      oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName)
+      oSelectCommand.Parameters.AddWithValue("@yYear", iYear)
 
-    oSelectCommand.CommandType = CommandType.StoredProcedure
+      oReturnParameter = New MySqlParameter()
+      oReturnParameter.Direction = ParameterDirection.ReturnValue
+      oReturnParameter.ParameterName = "@eReturnValue"
+      oReturnParameter.MySqlDbType = MySqlDbType.Enum
 
-    Try
-      oSelectCommand.Connection.Open()
-      Dim o As Object = oSelectCommand.ExecuteScalar()
-    Finally
-      If oSelectCommand.Connection IsNot Nothing Then
-        oSelectCommand.Connection.Close()
-      End If
-    End Try
+      oSelectCommand.Parameters.Add(oReturnParameter)
 
-    Select Case oSelectCommand.ExecuteScalar().ToString()
-      Case "Competition"
-        GetGameType = GameType.Competition
-      Case "Traditional"
-        GetGameType = GameType.Traditional
-      Case ""
-        GetGameType = Nothing
-      Case Else
-        Throw New Exception("Invalid GameType received from database.")
-    End Select
+      Try
+        oSelectCommand.Connection.Open()
+        oSelectCommand.ExecuteNonQuery()
+
+        Select Case oReturnParameter.Value.ToString()
+          Case "Competition"
+            GetGameType = GameType.Competition
+          Case "Traditional"
+            GetGameType = GameType.Traditional
+          Case ""
+            GetGameType = Nothing
+          Case Else
+            Throw New Exception("Invalid GameType received from database.")
+        End Select
+
+      Finally
+        If oSelectCommand.Connection IsNot Nothing Then
+          oSelectCommand.Connection.Close()
+        End If
+      End Try
+
+    Else
+      'todo: distiguish between which provided argument is invalid
+      Throw New ArgumentException("Invalid year or class name provided. Year: '" + CStr(iYear) + "'; Class Name: '" + CStr(cClassName) + "'")
+    End If
 
   End Function
 
