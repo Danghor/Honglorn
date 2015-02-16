@@ -34,7 +34,7 @@ Partial Class SetDisciplinesDialog
     Me.SprintLowIsBetterMaleCheckBox = New System.Windows.Forms.CheckBox()
     Me.SprintNameMaleLabel = New System.Windows.Forms.Label()
     Me.SprintUnitMaleLabel = New System.Windows.Forms.Label()
-    Me.TextBox1 = New System.Windows.Forms.TextBox()
+    Me.SprintUnitSymbolMaleComboBox = New System.Windows.Forms.TextBox()
     Me.SprintMaleComboBox = New System.Windows.Forms.ComboBox()
     Me.SprintLabel = New System.Windows.Forms.Label()
     Me.GameTypeGroupBox.SuspendLayout()
@@ -137,7 +137,7 @@ Partial Class SetDisciplinesDialog
     Me.MySplitContainer.Panel1.Controls.Add(Me.SprintLowIsBetterMaleCheckBox)
     Me.MySplitContainer.Panel1.Controls.Add(Me.SprintNameMaleLabel)
     Me.MySplitContainer.Panel1.Controls.Add(Me.SprintUnitMaleLabel)
-    Me.MySplitContainer.Panel1.Controls.Add(Me.TextBox1)
+    Me.MySplitContainer.Panel1.Controls.Add(Me.SprintUnitSymbolMaleComboBox)
     Me.MySplitContainer.Panel1.Controls.Add(Me.SprintMaleComboBox)
     Me.MySplitContainer.Panel1.Controls.Add(Me.SprintLabel)
     Me.MySplitContainer.Panel1.Controls.Add(Me.MaleLabel)
@@ -174,12 +174,12 @@ Partial Class SetDisciplinesDialog
     Me.SprintUnitMaleLabel.TabIndex = 4
     Me.SprintUnitMaleLabel.Text = "Einheit"
     '
-    'TextBox1
+    'SprintUnitSymbolMaleComboBox
     '
-    Me.TextBox1.Location = New System.Drawing.Point(159, 120)
-    Me.TextBox1.Name = "TextBox1"
-    Me.TextBox1.Size = New System.Drawing.Size(121, 26)
-    Me.TextBox1.TabIndex = 3
+    Me.SprintUnitSymbolMaleComboBox.Location = New System.Drawing.Point(159, 120)
+    Me.SprintUnitSymbolMaleComboBox.Name = "SprintUnitSymbolMaleComboBox"
+    Me.SprintUnitSymbolMaleComboBox.Size = New System.Drawing.Size(121, 26)
+    Me.SprintUnitSymbolMaleComboBox.TabIndex = 3
     '
     'SprintMaleComboBox
     '
@@ -237,7 +237,7 @@ Partial Class SetDisciplinesDialog
   Friend WithEvents SprintLabel As System.Windows.Forms.Label
   Friend WithEvents SprintNameMaleLabel As System.Windows.Forms.Label
   Friend WithEvents SprintUnitMaleLabel As System.Windows.Forms.Label
-  Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+  Friend WithEvents SprintUnitSymbolMaleComboBox As System.Windows.Forms.TextBox
   Friend WithEvents SprintMaleComboBox As System.Windows.Forms.ComboBox
   Friend WithEvents SprintLowIsBetterMaleCheckBox As System.Windows.Forms.CheckBox
 End Class

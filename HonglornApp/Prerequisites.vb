@@ -18,6 +18,7 @@ Public Module Prerequisites
   Enum GameType
     Competition
     Traditional
+    Unknown
   End Enum
 
   Enum Sex

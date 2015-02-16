@@ -89,12 +89,12 @@ Friend Class MySqlHandler
     For iRow As Integer = 0 To iArrayLength
       cCurrentClass = CChar(dtDataTable.Rows(iRow)(0))
 
-      'todo: make seperate function/class for validation tasks
-      If dtDataTable(iRow)(0).ToString().Count() <> 1 OrElse Not VALID_CLASSNAMES.Contains(cCurrentClass) Then
+      If IsValidClassName(cCurrentClass) Then
+        acResult(iRow) = CChar(dtDataTable.Rows(iRow)(0))
+      Else
         Throw New ArgumentOutOfRangeException("Invalid ClassName received from database.")
       End If
 
-      acResult(iRow) = CChar(dtDataTable.Rows(iRow)(0))
     Next
 
     GetValidClassNames = acResult
@@ -216,7 +216,7 @@ Friend Class MySqlHandler
           Case "Traditional"
             GetGameType = GameType.Traditional
           Case ""
-            GetGameType = Nothing
+            GetGameType = GameType.Unknown
           Case Else
             Throw New Exception("Invalid GameType received from database.")
         End Select
