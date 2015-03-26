@@ -1,11 +1,8 @@
-﻿Imports System.Text
-Imports Microsoft.VisualStudio.TestTools.UnitTesting
-Imports System.IO
+﻿
 
-Imports HonglornApp
 
-<TestClass()> Public Class MySqlHandlerTest
-
+<TestClass()>
+Public Class MySqlHandlerTest
   '<TestMethod()> Public Sub Constructor_PassConnectionParameters_DummySelectStatement()
   '  Using oFile As New StreamReader("C:\Git\Honglorn\CREDEN~1.TXT")
   '    Dim sServer As String = oFile.ReadLine()
@@ -19,5 +16,4 @@ Imports HonglornApp
   '    'oHandler.GetCompetitionEditAdapter("")
   '  End Using
   'End Sub
-
 End Class

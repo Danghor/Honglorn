@@ -1,10 +1,11 @@
-﻿Imports System.Runtime.InteropServices.Marshal
-Imports Microsoft.Office.Interop
+﻿Imports System.Runtime.InteropServices
+Imports Microsoft.Office.Interop.Excel
 
 Public Class ExcelImporter
   Private Shared _oMySingletonInstance As ExcelImporter
 
-  Private ReadOnly CsaExpectedHeaderColumnNames As String() = {"Nachname", "Vorname", "Kursbezeichnung", "Geschlecht", "Geburtsjahr"}
+  Private ReadOnly _
+    CsaExpectedHeaderColumnNames As String() = {"Nachname", "Vorname", "Kursbezeichnung", "Geschlecht", "Geburtsjahr"}
 
   Public Shared ReadOnly Property Instance As ExcelImporter
     Get
@@ -19,25 +20,27 @@ Public Class ExcelImporter
   Private Sub New()
   End Sub
 
+
   ''' <summary>
-  ''' Takes a file path as a string as input and returns a DataTable containing the extracted data. Designed to work together with the DBHandler to import the data into the database.
+  '''   Takes a file path as a string as input and returns a DataTable containing the extracted data. Designed to work
+  '''   together with the DBHandler to import the data into the database.
   ''' </summary>
   ''' <param name="sFilePath">The file path of the Excel-file containing the relevant data.</param>
   ''' <remarks></remarks>
-  Friend Function GetStudentCourseDataTable(sFilePath As String) As DataTable
+  Friend Function GetStudentCourseDataTable(sFilePath As String) As Data.DataTable
     If String.IsNullOrWhiteSpace(sFilePath) Then
       Throw New ArgumentException("File path is null, empty or consist of only white-space characters.")
     Else
-      Dim oExcel As Excel.Application = Nothing
-      Dim oWorkbook As Excel.Workbook = Nothing
-      Dim oWorksheet As Excel.Worksheet
+      Dim oExcel As Application = Nothing
+      Dim oWorkbook As Workbook = Nothing
+      Dim oWorksheet As Worksheet
 
       Try
-        oExcel = New Excel.Application()
+        oExcel = New Application()
 
         oWorkbook = oExcel.Workbooks.Open(sFilePath)
 
-        oWorksheet = CType(oWorkbook.Worksheets(1), Excel.Worksheet)
+        oWorksheet = CType(oWorkbook.Worksheets(1), Worksheet)
 
         'validate header row
         For iColIdx As Integer = 0 To 4
@@ -48,14 +51,13 @@ Public Class ExcelImporter
         Next
 
         'create DataTable and initialize column names
-        Dim oDataTable As New DataTable()
+        Dim oDataTable As New Data.DataTable()
         For iCol As Integer = 0 To CsaExpectedHeaderColumnNames.Count - 1
           oDataTable.Columns.Add(CsaExpectedHeaderColumnNames(iCol))
         Next
 
         'import content
         Dim iCurrentRow As Integer = 2
-        Dim iCurrentColIdx As Integer = 0
 
         Dim oNewDataRow As DataRow
         Dim sCurrentCell As String
@@ -90,8 +92,8 @@ Public Class ExcelImporter
         If oWorkbook IsNot Nothing Then oWorkbook.Close()
         If oExcel IsNot Nothing Then oExcel.Quit()
 
-        ReleaseComObject(oWorkbook)
-        ReleaseComObject(oExcel)
+        Marshal.ReleaseComObject(oWorkbook)
+        Marshal.ReleaseComObject(oExcel)
       End Try
     End If
   End Function

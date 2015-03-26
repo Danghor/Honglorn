@@ -1,4 +1,5 @@
-﻿Imports HonglornApp
+﻿Imports System.IO
+Imports HonglornApp
 
 Public Class MainWindow
   Private Const SCALE_FACTOR As Single = 0.8
@@ -14,7 +15,7 @@ Public Class MainWindow
       sSelectedYearShown = SelectEditYearComboBox.Text
 
       If String.IsNullOrWhiteSpace(sSelectedYearShown) Then
-        CurrentYear = -1
+        CurrentYear = - 1
       Else
         CurrentYear = CInt(sSelectedYearShown)
       End If
@@ -29,28 +30,28 @@ Public Class MainWindow
       End If
 
       SetDisciplinesDialog = _oSetDisciplinesDialog
-
     End Get
   End Property
 
 #End Region
 
   'todo: replace this by login form
+  ' ReSharper disable once InconsistentNaming
   Private Sub SETCREDENTIALS()
-    Dim oFile As New System.IO.StreamReader("C:\Git\Honglorn\CREDEN~1.TXT")
+    Dim oFile As New StreamReader("C:\Git\Honglorn\CREDEN~1.TXT")
     Dim sServer As String = oFile.ReadLine()
     Dim sUser As String = oFile.ReadLine()
     Dim sPassword As String = oFile.ReadLine()
-    Dim sDatabase As String = oFile.ReadLine()
+    oFile.ReadLine()
     _oApp = New Honglorn(sServer, sUser, sPassword)
   End Sub
 
   Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     SETCREDENTIALS()
 
-    Tools.ScaleScreenAware(Me, SCALE_FACTOR)
+    ScaleScreenAware(Me, SCALE_FACTOR)
 
-    Tools.Center(Me)
+    Center(Me)
 
     'pre-select a year
     Dim aiValidYears As Integer() = _oApp.GetValidYears()
@@ -72,12 +73,13 @@ Public Class MainWindow
     SelectEditYearComboBox.DataSource = _oApp.GetValidYears()
   End Sub
 
-  Private Sub SelectEditCourseComboBox_DropDown(sender As Object, e As EventArgs) Handles SelectEditCourseComboBox.DropDown
-    If CurrentYear <> -1 Then
+  Private Sub SelectEditCourseComboBox_DropDown(sender As Object, e As EventArgs) _
+    Handles SelectEditCourseComboBox.DropDown
+    If CurrentYear <> - 1 Then
       Dim asNewCourseNames As String() = _oApp.GetValidCourseNames(CurrentYear)
       Dim asOldCourseNames As String() = CType(SelectEditCourseComboBox.DataSource, String())
 
-      If Not Tools.IsEqual(asNewCourseNames, asOldCourseNames) Then
+      If Not IsEqual(asNewCourseNames, asOldCourseNames) Then
         SelectEditCourseComboBox.DataSource = asNewCourseNames
       End If
     Else
@@ -104,21 +106,24 @@ Public Class MainWindow
     EditDataGridView.Visible = True
   End Sub
 
-  Private Sub SelectEditCourseComboBox_TextChanged(sender As Object, e As EventArgs) Handles SelectEditCourseComboBox.TextChanged
+  Private Sub SelectEditCourseComboBox_TextChanged(sender As Object, e As EventArgs) _
+    Handles SelectEditCourseComboBox.TextChanged
     Dim sSelectedCourseName As String = SelectEditCourseComboBox.Text
 
-    If CurrentYear <> -1 AndAlso Not String.IsNullOrWhiteSpace(sSelectedCourseName) Then
+    If CurrentYear <> - 1 AndAlso Not String.IsNullOrWhiteSpace(sSelectedCourseName) Then
       ReloadDataGridView(sSelectedCourseName, CurrentYear)
     End If
   End Sub
 
-  Private Sub EditDataGridView_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles EditDataGridView.CellEndEdit
+  Private Sub EditDataGridView_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) _
+    Handles EditDataGridView.CellEndEdit
     'todo: verify content
 
     _oApp.SaveRawDataEditTableChanges(CType(EditDataGridView.DataSource, DataTable))
   End Sub
 
-  Private Sub SetDisciplinesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SetDisciplinesToolStripMenuItem.Click
+  Private Sub SetDisciplinesToolStripMenuItem_Click(sender As Object, e As EventArgs) _
+    Handles SetDisciplinesToolStripMenuItem.Click
     SetDisciplinesDialog.ShowDialog(Me)
   End Sub
 

@@ -1,12 +1,12 @@
 ﻿Imports System.Text.RegularExpressions
+Imports MySql.Data.MySqlClient
 
 Public Class Honglorn
-
   Private _oMySqlHandler As MySqlHandler
   Private _oExcelImporter As ExcelImporter
 
-  Private _daCurrentRawDataEditAdapter As MySql.Data.MySqlClient.MySqlDataAdapter
-  Private _daCurrentDisciplinesEditAdapter As MySql.Data.MySqlClient.MySqlDataAdapter
+  Private _daCurrentRawDataEditAdapter As MySqlDataAdapter
+  Private _daCurrentDisciplinesEditAdapter As MySqlDataAdapter
 
   Public Sub New(sServer As String, sUser As String, sPassword As String)
     _oMySqlHandler = New MySqlHandler(sServer, sUser, sPassword, DATABASE_NAME)
@@ -15,8 +15,11 @@ Public Class Honglorn
 
 #Region "CompetitionEdit"
 
+  
   ''' <summary>
-  ''' Returns a DataTable containing the relevant data to fill the DataGridView for editing the competition data per course in the UI. Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the DataBase later.
+  '''   Returns a DataTable containing the relevant data to fill the DataGridView for editing the competition data per course
+  '''   in the UI. Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the DataBase
+  '''   later.
   ''' </summary>
   ''' <param name="sCourseName">The name of the course to be edited.</param>
   ''' <param name="iYear">The year for which the data should be selected.</param>
@@ -43,8 +46,10 @@ Public Class Honglorn
 
 #Region "SetDisciplines"
 
+  
   ''' <summary>
-  ''' Returns a DataTable containing the current discipline settings for the given class and year (only the PKeys). Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the database later.
+  '''   Returns a DataTable containing the current discipline settings for the given class and year (only the PKeys).
+  '''   Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the database later.
   ''' </summary>
   ''' <param name="cClassName">The name of the class whose discipline settings should be displayed.</param>
   ''' <param name="iYear">The year for which the data should be retrieved.</param>
@@ -77,19 +82,25 @@ Public Class Honglorn
     GetValidCompetitionDisciplinesTable = _oMySqlHandler.GetValidCompetitionDisciplinesTable(eDiscipline)
   End Function
 
+  
   ''' <summary>
-  ''' Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType is set.
+  '''   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
+  '''   is set.
   ''' </summary>
   ''' <param name="cClassName">The class name of the class the GameType is to be returned.</param>
   ''' <param name="iYear">The year for which the GameType is valid.</param>
-  ''' <returns>A member of the Enum GameType that represents the GameType set in DisciplineMeta for the corresponding class in the given year.</returns>
+  ''' <returns>
+  '''   A member of the Enum GameType that represents the GameType set in DisciplineMeta for the corresponding class
+  '''   in the given year.
+  ''' </returns>
   ''' <remarks></remarks>
   Function GetGameType(cClassName As Char, iYear As Integer) As GameType
     GetGameType = _oMySqlHandler.GetGameType(cClassName, iYear)
   End Function
 
+  
   ''' <summary>
-  ''' Get an Integer Array representing the years for which data is present in the database.
+  '''   Get an Integer Array representing the years for which data is present in the database.
   ''' </summary>
   ''' <returns>An Integer Array representing the valid years.</returns>
   ''' <remarks></remarks>
@@ -97,8 +108,9 @@ Public Class Honglorn
     GetValidYears = _oMySqlHandler.GetValidYears()
   End Function
 
+  
   ''' <summary>
-  ''' Get a String Array representing the course names for which there is at least one student present in the given year. 
+  '''   Get a String Array representing the course names for which there is at least one student present in the given year.
   ''' </summary>
   ''' <param name="iYear">The year for which the valid course names should be retrieved.</param>
   ''' <returns>A String Array representing the valid course names.</returns>
@@ -107,8 +119,9 @@ Public Class Honglorn
     GetValidCourseNames = _oMySqlHandler.GetValidCourseNames(iYear)
   End Function
 
+  
   ''' <summary>
-  ''' Get a Char Array representing the class names for which there is at least one student present in the given year. 
+  '''   Get a Char Array representing the class names for which there is at least one student present in the given year.
   ''' </summary>
   ''' <param name="iYear">The year for which the valid class names should be retrieved.</param>
   ''' <returns>A Char Array representing the valid class names.</returns>
@@ -121,8 +134,9 @@ Public Class Honglorn
 
   'todo: currently only works with a "perfect" Excel sheet
   'todo: test inserting an already existing student
+  
   ''' <summary>
-  ''' Imports an Excel sheet containing data for multiple students into the database.
+  '''   Imports an Excel sheet containing data for multiple students into the database.
   ''' </summary>
   ''' <param name="sFilePath">The full path to the Excel file to be imported.</param>
   ''' <param name="iYear">The year in which the imported data is valid (relevant for mapping the courses).</param>
@@ -153,8 +167,9 @@ Public Class Honglorn
     Next
   End Sub
 
+  
   ''' <summary>
-  ''' Imports data of a single student into the database.
+  '''   Imports data of a single student into the database.
   ''' </summary>
   ''' <param name="sSurname">Surname of the student to be imported.</param>
   ''' <param name="sForename">Forename of the student to be imported.</param>
@@ -163,7 +178,8 @@ Public Class Honglorn
   ''' <param name="iYearOfBirth"></param>
   ''' <param name="iYear"></param>
   ''' <remarks></remarks>
-  Public Sub ImportSingleStudent(sSurname As String, sForename As String, sCourseName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
+  Public Sub ImportSingleStudent(sSurname As String, sForename As String, sCourseName As String, eSex As Sex,
+                                 iYearOfBirth As Integer, iYear As Integer)
     Dim sClassName As String
 
     If Regex.IsMatch(sCourseName, "0[5-9][A-Z]") Then
@@ -178,5 +194,4 @@ Public Class Honglorn
   End Sub
 
 #End Region
-
 End Class

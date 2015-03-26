@@ -1,12 +1,11 @@
 ﻿Imports System.Text.RegularExpressions
 
 Public Module Prerequisites
-
   Public Const ALPHABET As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
   Public Const DATABASE_NAME As String = "bjs"
 
-  Public ReadOnly VALID_CLASSNAMES As Char() = {"5"c, "6"c, "7"c, "8"c, "9"c, "E"c}
+  Private ReadOnly VALID_CLASSNAMES As Char() = {"5"c, "6"c, "7"c, "8"c, "9"c, "E"c}
 
   Enum Discipline
     Sprint
@@ -26,8 +25,9 @@ Public Module Prerequisites
     Female
   End Enum
 
+  
   ''' <summary>
-  ''' Returns true iff the given input year is a value between (including) 1900 and 2099.
+  '''   Returns true iff the given input year is a value between (including) 1900 and 2099.
   ''' </summary>
   ''' <param name="iYear">The year to be validated.</param>
   ''' <returns>True iff the given year is a valid year.</returns>
@@ -40,8 +40,9 @@ Public Module Prerequisites
     End If
   End Function
 
+  
   ''' <summary>
-  ''' Returns true iff the given character is a valid class name that can be used at all in the application.
+  '''   Returns true iff the given character is a valid class name that can be used at all in the application.
   ''' </summary>
   ''' <param name="cClassName">The class name to be validated.</param>
   ''' <returns>True iff the given class name is a valid class name.</returns>
@@ -49,5 +50,4 @@ Public Module Prerequisites
   Function IsValidClassName(cClassName As Char) As Boolean
     IsValidClassName = VALID_CLASSNAMES.Contains(cClassName)
   End Function
-
 End Module

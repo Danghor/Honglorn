@@ -6,7 +6,7 @@ Public Class SetDisciplinesDialog
 
   Private ReadOnly Property App As Honglorn
     Get
-      App = CType(Me.Owner, MainWindow)._oApp
+      App = CType(Owner, MainWindow)._oApp
     End Get
   End Property
 
@@ -17,7 +17,7 @@ Public Class SetDisciplinesDialog
       sSelectedYearShown = YearComboBox.Text
 
       If String.IsNullOrWhiteSpace(sSelectedYearShown) Then
-        CurrentYear = -1
+        CurrentYear = - 1
       Else
         CurrentYear = CInt(sSelectedYearShown)
       End If
@@ -38,7 +38,7 @@ Public Class SetDisciplinesDialog
 
   Private Sub SetDisciplinesDialog_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    Tools.Center(Me)
+    Center(Me)
 
     'pre-select a year
     Dim aiValidYears As Integer() = App.GetValidYears()
@@ -53,11 +53,11 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub ClassComboBox_DropDown(sender As Object, e As EventArgs) Handles ClassComboBox.DropDown
-    If CurrentYear <> -1 Then
+    If CurrentYear <> - 1 Then
       Dim acNewClassNames As Char() = App.GetValidClassNames(CurrentYear)
       Dim acOldClassNames As Char() = CType(ClassComboBox.DataSource, Char())
 
-      If Not Tools.IsEqual(acNewClassNames, acOldClassNames) Then
+      If Not IsEqual(acNewClassNames, acOldClassNames) Then
         ClassComboBox.DataSource = acNewClassNames
       End If
     Else
@@ -75,14 +75,17 @@ Public Class SetDisciplinesDialog
 
   Private Sub ValidateInputAndRefresh()
     If IsValidYear(CurrentYear) AndAlso IsValidClassName(CurrentClass) Then
-      RefreshGameTypeRadioButtons()
+      RefreshGameTypeFromDatabase()
+
       GameTypeGroupBox.Enabled = True
     Else
       GameTypeGroupBox.Enabled = False
+      TraditionalGameTypeRadioButton.Checked = False
+      CompetitionGameTypeRadioButton.Checked = False
     End If
   End Sub
 
-  Private Sub RefreshGameTypeRadioButtons()
+  Private Sub RefreshGameTypeFromDatabase()
     Dim eGameType As GameType
 
     eGameType = App.GetGameType(CurrentClass, CurrentYear)
@@ -100,5 +103,8 @@ Public Class SetDisciplinesDialog
         CompetitionGameTypeRadioButton.Checked = False
 
     End Select
+  End Sub
+
+  Private Sub RefreshDisciplinesFromDatabase()
   End Sub
 End Class

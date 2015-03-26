@@ -1,8 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
-Imports MySql.Data.Types
 
 Friend Class MySqlHandler
-  Private _oConnection As MySqlConnection
+  Private ReadOnly _oConnection As MySqlConnection
 
   'todo: handle exception when connection cannot be established
   Sub New(sServer As String, sUser As String, sPassword As String, sDatabase As String)
@@ -50,7 +49,8 @@ Friend Class MySqlHandler
     Dim iArrayLength As Integer
 
     oSelectCommand.Connection = _oConnection
-    oSelectCommand.CommandText = "SELECT DISTINCT CourseName FROM StudentCourseRel WHERE year = @iYear ORDER BY CourseName ASC"
+    oSelectCommand.CommandText =
+      "SELECT DISTINCT CourseName FROM StudentCourseRel WHERE year = @iYear ORDER BY CourseName ASC"
     oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
 
     oDataAdapter.SelectCommand = oSelectCommand
@@ -76,7 +76,8 @@ Friend Class MySqlHandler
     Dim cCurrentClass As Char
 
     oSelectCommand.Connection = _oConnection
-    oSelectCommand.CommandText = "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassPKey = Class.PKey WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC"
+    oSelectCommand.CommandText =
+      "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassPKey = Class.PKey WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC"
     oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
 
     oDataAdapter.SelectCommand = oSelectCommand
@@ -100,8 +101,10 @@ Friend Class MySqlHandler
     GetValidClassNames = acResult
   End Function
 
+  
   ''' <summary>
-  ''' Returns a data table with information about the allowed traditional disciplines, i.e. the disciplines that can be selected for the given parameters.
+  '''   Returns a data table with information about the allowed traditional disciplines, i.e. the disciplines that can be
+  '''   selected for the given parameters.
   ''' </summary>
   ''' <param name="eSex">The students' gender.</param>
   ''' <param name="eDiscipline">The disciple type to be looked up.</param>
@@ -229,9 +232,10 @@ Friend Class MySqlHandler
 
     Else
       'todo: distiguish between which provided argument is invalid
-      Throw New ArgumentException("Invalid year or class name provided. Year: '" + CStr(iYear) + "'; Class Name: '" + CStr(cClassName) + "'")
+      Throw _
+        New ArgumentException(
+          "Invalid year or class name provided. Year: '" + CStr(iYear) + "'; Class Name: '" + CStr(cClassName) + "'")
     End If
-
   End Function
 
   Function GetRawDataEditAdapter(sCourseName As String, iYear As Integer) As MySqlDataAdapter
@@ -241,7 +245,8 @@ Friend Class MySqlHandler
 
     oSelectCommand.Connection = _oConnection
 
-    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC"
+    oSelectCommand.CommandText =
+      "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC"
 
     oSelectCommand.Parameters.AddWithValue("@Year", iYear)
     oSelectCommand.Parameters.AddWithValue("@CourseName", sCourseName)
@@ -298,7 +303,8 @@ Friend Class MySqlHandler
     GetDisciplinesEditAdapter = oDataAdapter
   End Function
 
-  Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, sClassName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
+  Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, sClassName As String,
+                        eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
     Dim oCmd As New MySqlCommand("ImportStudent", _oConnection)
     oCmd.CommandType = CommandType.StoredProcedure
 
