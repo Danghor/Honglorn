@@ -15,7 +15,7 @@ Public Class Honglorn
 
 #Region "CompetitionEdit"
 
-  
+
   ''' <summary>
   '''   Returns a DataTable containing the relevant data to fill the DataGridView for editing the competition data per course
   '''   in the UI. Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the DataBase
@@ -46,7 +46,7 @@ Public Class Honglorn
 
 #Region "SetDisciplines"
 
-  
+
   ''' <summary>
   '''   Returns a DataTable containing the current discipline settings for the given class and year (only the PKeys).
   '''   Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the database later.
@@ -82,7 +82,7 @@ Public Class Honglorn
     GetValidCompetitionDisciplinesTable = _oMySqlHandler.GetValidCompetitionDisciplinesTable(eDiscipline)
   End Function
 
-  
+
   ''' <summary>
   '''   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
   '''   is set.
@@ -98,7 +98,7 @@ Public Class Honglorn
     GetGameType = _oMySqlHandler.GetGameType(cClassName, iYear)
   End Function
 
-  
+
   ''' <summary>
   '''   Get an Integer Array representing the years for which data is present in the database.
   ''' </summary>
@@ -108,7 +108,7 @@ Public Class Honglorn
     GetValidYears = _oMySqlHandler.GetValidYears()
   End Function
 
-  
+
   ''' <summary>
   '''   Get a String Array representing the course names for which there is at least one student present in the given year.
   ''' </summary>
@@ -119,7 +119,7 @@ Public Class Honglorn
     GetValidCourseNames = _oMySqlHandler.GetValidCourseNames(iYear)
   End Function
 
-  
+
   ''' <summary>
   '''   Get a Char Array representing the class names for which there is at least one student present in the given year.
   ''' </summary>
@@ -134,7 +134,8 @@ Public Class Honglorn
 
   'todo: currently only works with a "perfect" Excel sheet
   'todo: test inserting an already existing student
-  
+
+
   ''' <summary>
   '''   Imports an Excel sheet containing data for multiple students into the database.
   ''' </summary>
@@ -167,7 +168,7 @@ Public Class Honglorn
     Next
   End Sub
 
-  
+
   ''' <summary>
   '''   Imports data of a single student into the database.
   ''' </summary>
