@@ -36,7 +36,6 @@ Public Class MainWindow
 #End Region
 
   'todo: replace this by login form
-  ' ReSharper disable once InconsistentNaming
   Private Sub SETCREDENTIALS()
     Dim oFile As New StreamReader("C:\Git\Honglorn\CREDEN~1.TXT")
     Dim sServer As String = oFile.ReadLine()

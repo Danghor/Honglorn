@@ -25,7 +25,7 @@ Public Module Prerequisites
     Female
   End Enum
 
-  
+
   ''' <summary>
   '''   Returns true iff the given input year is a value between (including) 1900 and 2099.
   ''' </summary>
@@ -40,7 +40,7 @@ Public Module Prerequisites
     End If
   End Function
 
-  
+
   ''' <summary>
   '''   Returns true iff the given character is a valid class name that can be used at all in the application.
   ''' </summary>

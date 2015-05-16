@@ -1,7 +1,7 @@
 ﻿
 
 
-<TestClass()>
+<TestClass>
 Public Class MySqlHandlerTest
   '<TestMethod()> Public Sub Constructor_PassConnectionParameters_DummySelectStatement()
   '  Using oFile As New StreamReader("C:\Git\Honglorn\CREDEN~1.TXT")

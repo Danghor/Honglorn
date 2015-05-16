@@ -101,7 +101,7 @@ Friend Class MySqlHandler
     GetValidClassNames = acResult
   End Function
 
-  
+
   ''' <summary>
   '''   Returns a data table with information about the allowed traditional disciplines, i.e. the disciplines that can be
   '''   selected for the given parameters.
@@ -241,7 +241,7 @@ Friend Class MySqlHandler
   Function GetRawDataEditAdapter(sCourseName As String, iYear As Integer) As MySqlDataAdapter
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
-    Dim oUpdateCommand As New MySqlCommand()
+    Dim oUpdateCommand As MySqlCommand
 
     oSelectCommand.Connection = _oConnection
 
@@ -272,7 +272,7 @@ Friend Class MySqlHandler
   Function GetDisciplinesEditAdapter(cClassName As Char, iYear As Integer) As MySqlDataAdapter
     Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
-    Dim oUpdateCommand As New MySqlCommand()
+    Dim oUpdateCommand As MySqlCommand
 
     oSelectCommand.Connection = _oConnection
 

@@ -2,8 +2,8 @@
 Imports MySql.Data.MySqlClient
 
 Public Class Honglorn
-  Private _oMySqlHandler As MySqlHandler
-  Private _oExcelImporter As ExcelImporter
+  Private ReadOnly _oMySqlHandler As MySqlHandler
+  Private ReadOnly _oExcelImporter As ExcelImporter
 
   Private _daCurrentRawDataEditAdapter As MySqlDataAdapter
   Private _daCurrentDisciplinesEditAdapter As MySqlDataAdapter
