@@ -4,7 +4,7 @@ Imports Microsoft.Office.Interop.Excel
 Public Class ExcelImporter
   Private Shared _oMySingletonInstance As ExcelImporter
 
-  Private ReadOnly CsaExpectedHeaderColumnNames As String() = {"Nachname", "Vorname", "Kursbezeichnung", "Geschlecht", "Geburtsjahr"}
+  Private ReadOnly EXPECTED_HEADER_COLUMN_NAMES As String() = {"Nachname", "Vorname", "Kursbezeichnung", "Geschlecht", "Geburtsjahr"}
 
   Public Shared ReadOnly Property Instance As ExcelImporter
     Get
@@ -19,10 +19,8 @@ Public Class ExcelImporter
   Private Sub New()
   End Sub
 
-
   ''' <summary>
-  '''   Takes a file path as a string as input and returns a DataTable containing the extracted data. Designed to work
-  '''   together with the DBHandler to import the data into the database.
+  '''   Takes a file path as a string as input and returns a DataTable containing the extracted data. Designed to work together with the DBHandler to import the data into the database.
   ''' </summary>
   ''' <param name="sFilePath">The file path of the Excel-file containing the relevant data.</param>
   ''' <remarks></remarks>
@@ -44,15 +42,15 @@ Public Class ExcelImporter
         'validate header row
         For iColIdx As Integer = 0 To 4
           'iterates from "A1" to "E1"
-          If CStr(oWorksheet.Range(ALPHABET(iColIdx) + "1").Text) <> CsaExpectedHeaderColumnNames(iColIdx) Then
+          If CStr(oWorksheet.Range(ALPHABET(iColIdx) + "1").Text) <> EXPECTED_HEADER_COLUMN_NAMES(iColIdx) Then
             Throw New ArgumentException("Header row of Excel-File is not in the expected condition.")
           End If
         Next
 
         'create DataTable and initialize column names
         Dim oDataTable As New Data.DataTable()
-        For iCol As Integer = 0 To CsaExpectedHeaderColumnNames.Count - 1
-          oDataTable.Columns.Add(CsaExpectedHeaderColumnNames(iCol))
+        For iCol As Integer = 0 To EXPECTED_HEADER_COLUMN_NAMES.Count - 1
+          oDataTable.Columns.Add(EXPECTED_HEADER_COLUMN_NAMES(iCol))
         Next
 
         'import content
@@ -68,7 +66,7 @@ Public Class ExcelImporter
           oNewDataRow = oDataTable.NewRow()
 
           'read one row
-          For iColIdx As Integer = 0 To CsaExpectedHeaderColumnNames.Count - 1
+          For iColIdx As Integer = 0 To EXPECTED_HEADER_COLUMN_NAMES.Count - 1
             sCurrentCell = CStr(oWorksheet.Range(ALPHABET(iColIdx) + CStr(iCurrentRow)).Text)
             oNewDataRow(iColIdx) = sCurrentCell
 

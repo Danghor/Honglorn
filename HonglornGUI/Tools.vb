@@ -1,14 +1,13 @@
 ﻿Friend Module Tools
+
   ''' <summary>
-  '''   Positions the given control in the center of the screen.
+  '''   Positions the given control at the center of the screen.
   ''' </summary>
   ''' <param name="oControl">The control to be centered.</param>
   ''' <remarks></remarks>
   Sub Center(oControl As Control)
-    oControl.Location = New Point(CInt(Math.Round((Screen.PrimaryScreen.Bounds.Width - oControl.Width) / 2)),
-                                  CInt(Math.Round((Screen.PrimaryScreen.Bounds.Height - oControl.Height) / 2)))
+    oControl.Location = New Point(CInt(Math.Round((Screen.PrimaryScreen.Bounds.Width - oControl.Width) / 2)), CInt(Math.Round((Screen.PrimaryScreen.Bounds.Height - oControl.Height) / 2)))
   End Sub
-
 
   ''' <summary>
   '''   Scales the given control dependent on the screen-measurements.
@@ -20,7 +19,6 @@
     oControl.Height = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Height * siScaleFactor))
     oControl.Width = CInt(Math.Round(Screen.PrimaryScreen.Bounds.Width * siScaleFactor))
   End Sub
-
 
   ''' <summary>
   '''   Compares two String arrays. Returns true if their content is identical and false otherwise.
@@ -46,7 +44,6 @@
 
   'todo: write third method that just compares two objects and checks their type beforehand
   'reference this method by the above and below methods
-
 
   ''' <summary>
   '''   Compares two Char arrays. Returns true if their content is identical and false otherwise.

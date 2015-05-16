@@ -101,7 +101,6 @@ Friend Class MySqlHandler
     GetValidClassNames = acResult
   End Function
 
-
   ''' <summary>
   '''   Returns a data table with information about the allowed traditional disciplines, i.e. the disciplines that can be
   '''   selected for the given parameters.
