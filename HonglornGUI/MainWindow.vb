@@ -15,7 +15,7 @@ Public Class MainWindow
       sSelectedYearShown = SelectEditYearComboBox.Text
 
       If String.IsNullOrWhiteSpace(sSelectedYearShown) Then
-        CurrentYear = - 1
+        CurrentYear = -1
       Else
         CurrentYear = CInt(sSelectedYearShown)
       End If
@@ -74,7 +74,7 @@ Public Class MainWindow
 
   Private Sub SelectEditCourseComboBox_DropDown(sender As Object, e As EventArgs) _
     Handles SelectEditCourseComboBox.DropDown
-    If CurrentYear <> - 1 Then
+    If CurrentYear <> -1 Then
       Dim asNewCourseNames As String() = _oApp.GetValidCourseNames(CurrentYear)
       Dim asOldCourseNames As String() = CType(SelectEditCourseComboBox.DataSource, String())
 
@@ -109,7 +109,7 @@ Public Class MainWindow
     Handles SelectEditCourseComboBox.TextChanged
     Dim sSelectedCourseName As String = SelectEditCourseComboBox.Text
 
-    If CurrentYear <> - 1 AndAlso Not String.IsNullOrWhiteSpace(sSelectedCourseName) Then
+    If CurrentYear <> -1 AndAlso Not String.IsNullOrWhiteSpace(sSelectedCourseName) Then
       ReloadDataGridView(sSelectedCourseName, CurrentYear)
     End If
   End Sub
