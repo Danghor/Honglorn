@@ -93,7 +93,7 @@ Friend Class MySqlHandler
       If IsValidClassName(cCurrentClass) Then
         acResult(iRow) = CChar(dtDataTable.Rows(iRow)(0))
       Else
-        Throw New ArgumentOutOfRangeException("Invalid ClassName received from database.")
+        Throw New ArgumentOutOfRangeException("Invalid ClassName" + cCurrentClass + "received from database.")
       End If
 
     Next
