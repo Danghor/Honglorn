@@ -40,7 +40,7 @@ Public Class ExcelImporter
         oWorksheet = CType(oWorkbook.Worksheets(1), Worksheet)
 
         'validate header row
-        For iColIdx As Integer = 0 To 4
+        For iColIdx As Integer = 0 To EXPECTED_HEADER_COLUMN_NAMES.Count - 1
           'iterates from "A1" to "E1"
           If CStr(oWorksheet.Range(ALPHABET(iColIdx) + "1").Text) <> EXPECTED_HEADER_COLUMN_NAMES(iColIdx) Then
             Throw New ArgumentException("Header row of Excel-File is not in the expected condition.")
