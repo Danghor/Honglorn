@@ -1,9 +1,8 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Friend Class MySqlHandler
-  Private ReadOnly _oConnection As MySqlConnection
+  Private ReadOnly _sConnectionString As String
 
-  'todo: handle exception when connection cannot be established
   Sub New(sServer As String, sUser As String, sPassword As String, sDatabase As String)
     Dim oConStringBuilder As New MySqlConnectionStringBuilder
 
@@ -13,26 +12,25 @@ Friend Class MySqlHandler
     oConStringBuilder.Database = sDatabase
     oConStringBuilder.CharacterSet = "utf8"
 
-    _oConnection = New MySqlConnection(oConStringBuilder.GetConnectionString(True))
+    _sConnectionString = oConStringBuilder.GetConnectionString(True)
   End Sub
 
+  'todo: handle exception when connection cannot be established
+  Private Function GetConnection() As MySqlConnection
+    GetConnection = New MySqlConnection(_sConnectionString)
+  End Function
+
   Function GetValidYears() As Integer()
-    Dim oDataAdapter As New MySqlDataAdapter()
-    Dim oSelectCommand As New MySqlCommand()
     Dim dtDataTable As New DataTable()
     Dim aiResult As Integer()
     Dim iArrayLength As Integer
 
-    oSelectCommand.Connection = _oConnection
-
-    oSelectCommand.CommandText = "SELECT * FROM ValidYears"
-
-    oDataAdapter.SelectCommand = oSelectCommand
-
-    oDataAdapter.Fill(dtDataTable)
+    Using oDataAdapter As New MySqlDataAdapter("SELECT * FROM ValidYears", _sConnectionString)
+      oDataAdapter.Fill(dtDataTable)
+    End Using
 
     iArrayLength = dtDataTable.Rows.Count - 1
-    aiResult = New Integer(dtDataTable.Rows.Count - 1) {}
+    aiResult = New Integer(iArrayLength) {}
 
     For iRow As Integer = 0 To iArrayLength
       aiResult(iRow) = CInt(dtDataTable.Rows(iRow)(0))
@@ -42,20 +40,18 @@ Friend Class MySqlHandler
   End Function
 
   Function GetValidCourseNames(iYear As Integer) As String()
-    Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim dtDataTable As New DataTable()
     Dim asResult As String()
     Dim iArrayLength As Integer
 
-    oSelectCommand.Connection = _oConnection
-    oSelectCommand.CommandText =
-      "SELECT DISTINCT CourseName FROM StudentCourseRel WHERE year = @iYear ORDER BY CourseName ASC"
+    oSelectCommand.Connection = GetConnection()
+    oSelectCommand.CommandText = "SELECT DISTINCT CourseName FROM StudentCourseRel WHERE year = @iYear ORDER BY CourseName ASC"
     oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
 
-    oDataAdapter.SelectCommand = oSelectCommand
-
-    oDataAdapter.Fill(dtDataTable)
+    Using oDataAdapter As New MySqlDataAdapter(oSelectCommand)
+      oDataAdapter.Fill(dtDataTable)
+    End Using
 
     iArrayLength = dtDataTable.Rows.Count - 1
     asResult = New String(iArrayLength) {}
@@ -68,21 +64,19 @@ Friend Class MySqlHandler
   End Function
 
   Function GetValidClassNames(iYear As Integer) As Char()
-    Dim oDataAdapter As New MySqlDataAdapter()
     Dim oSelectCommand As New MySqlCommand()
     Dim dtDataTable As New DataTable()
     Dim acResult As Char()
     Dim iArrayLength As Integer
     Dim cCurrentClass As Char
 
-    oSelectCommand.Connection = _oConnection
-    oSelectCommand.CommandText =
-      "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassPKey = Class.PKey WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC"
+    oSelectCommand.Connection = GetConnection()
+    oSelectCommand.CommandText = "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassPKey = Class.PKey WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC"
     oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
 
-    oDataAdapter.SelectCommand = oSelectCommand
-
-    oDataAdapter.Fill(dtDataTable)
+    Using oDataAdapter As New MySqlDataAdapter(oSelectCommand)
+      oDataAdapter.Fill(dtDataTable)
+    End Using
 
     iArrayLength = dtDataTable.Rows.Count - 1
     acResult = New Char(iArrayLength) {}
@@ -110,7 +104,6 @@ Friend Class MySqlHandler
   ''' <returns></returns>
   ''' <remarks></remarks>
   Function GetValidTraditionalDisciplinesTable(eSex As Sex, eDiscipline As Discipline) As DataTable
-    Dim oDataAdapter As New MySqlDataAdapter()
     Dim oDataTable As New DataTable()
     Dim oSelectCommand As New MySqlCommand()
 
@@ -150,17 +143,16 @@ Friend Class MySqlHandler
       Throw New ArgumentException("Invalid sex.")
     End If
 
-    oSelectCommand.Connection = _oConnection
+    oSelectCommand.Connection = GetConnection()
 
-    oDataAdapter.SelectCommand = oSelectCommand
-
-    oDataAdapter.Fill(oDataTable)
+    Using oDataAdapter As New MySqlDataAdapter(oSelectCommand)
+      oDataAdapter.Fill(oDataTable)
+    End Using
 
     GetValidTraditionalDisciplinesTable = oDataTable
   End Function
 
   Function GetValidCompetitionDisciplinesTable(eDiscipline As Discipline) As DataTable
-    Dim oDataAdapter As New MySqlDataAdapter()
     Dim oDataTable As New DataTable()
     Dim oSelectCommand As New MySqlCommand()
 
@@ -179,11 +171,11 @@ Friend Class MySqlHandler
         Throw New ArgumentException("Invalid discipline.")
     End Select
 
-    oSelectCommand.Connection = _oConnection
+    oSelectCommand.Connection = GetConnection()
 
-    oDataAdapter.SelectCommand = oSelectCommand
-
-    oDataAdapter.Fill(oDataTable)
+    Using oDataAdapter As New MySqlDataAdapter(oSelectCommand)
+      oDataAdapter.Fill(oDataTable)
+    End Using
 
     GetValidCompetitionDisciplinesTable = oDataTable
   End Function
@@ -196,7 +188,7 @@ Friend Class MySqlHandler
       oSelectCommand = New MySqlCommand()
       oSelectCommand.CommandType = CommandType.StoredProcedure
 
-      oSelectCommand.Connection = _oConnection
+      oSelectCommand.Connection = GetConnection()
       oSelectCommand.CommandText = "GetGameType"
       oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName)
       oSelectCommand.Parameters.AddWithValue("@yYear", iYear)
@@ -231,9 +223,7 @@ Friend Class MySqlHandler
 
     Else
       'todo: distiguish between which provided argument is invalid
-      Throw _
-        New ArgumentException(
-          "Invalid year or class name provided. Year: '" + CStr(iYear) + "'; Class Name: '" + CStr(cClassName) + "'")
+      Throw New ArgumentException("Invalid year or class name provided. Year: '" + CStr(iYear) + "'; Class Name: '" + CStr(cClassName) + "'")
     End If
   End Function
 
@@ -242,15 +232,14 @@ Friend Class MySqlHandler
     Dim oSelectCommand As New MySqlCommand()
     Dim oUpdateCommand As MySqlCommand
 
-    oSelectCommand.Connection = _oConnection
+    oSelectCommand.Connection = GetConnection()
 
-    oSelectCommand.CommandText =
-      "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC"
+    oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC"
 
     oSelectCommand.Parameters.AddWithValue("@Year", iYear)
     oSelectCommand.Parameters.AddWithValue("@CourseName", sCourseName)
 
-    oUpdateCommand = New MySqlCommand("EnterCompetitionValues", _oConnection)
+    oUpdateCommand = New MySqlCommand("EnterCompetitionValues", GetConnection())
     oUpdateCommand.CommandType = CommandType.StoredProcedure
 
     oUpdateCommand.Parameters.AddWithValue("yYear", iYear)
@@ -273,14 +262,14 @@ Friend Class MySqlHandler
     Dim oSelectCommand As New MySqlCommand()
     Dim oUpdateCommand As MySqlCommand
 
-    oSelectCommand.Connection = _oConnection
+    oSelectCommand.Connection = GetConnection()
 
     oSelectCommand.CommandText = "SELECT * FROM ClassDisciplineMeta WHERE ClassName = @cClassName AND YEAR = @yYear"
 
     oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName)
     oSelectCommand.Parameters.AddWithValue("@yYear", iYear)
 
-    oUpdateCommand = New MySqlCommand("EnterDisciplineMeta", _oConnection)
+    oUpdateCommand = New MySqlCommand("EnterDisciplineMeta", GetConnection())
     oUpdateCommand.CommandType = CommandType.StoredProcedure
 
     oUpdateCommand.Parameters.AddWithValue("cClassName", cClassName)
@@ -302,9 +291,8 @@ Friend Class MySqlHandler
     GetDisciplinesEditAdapter = oDataAdapter
   End Function
 
-  Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, sClassName As String,
-                        eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
-    Dim oCmd As New MySqlCommand("ImportStudent", _oConnection)
+  Sub ImportStudentData(sSurname As String, sForename As String, sCourseName As String, sClassName As String, eSex As Sex, iYearOfBirth As Integer, iYear As Integer)
+    Dim oCmd As New MySqlCommand("ImportStudent", GetConnection())
     oCmd.CommandType = CommandType.StoredProcedure
 
     oCmd.Parameters.AddWithValue("@sSurname", sSurname)
