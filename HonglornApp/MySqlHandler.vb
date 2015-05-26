@@ -3,11 +3,12 @@
 Friend Class MySqlHandler
   Private ReadOnly _sConnectionString As String
 
-  Sub New(sServer As String, sUser As String, sPassword As String, sDatabase As String)
+  Sub New(sServer As String, iPort As UInteger, sUsername As String, sPassword As String, sDatabase As String)
     Dim oConStringBuilder As New MySqlConnectionStringBuilder
 
     oConStringBuilder.Server = sServer
-    oConStringBuilder.UserID = sUser
+    oConStringBuilder.Port = iPort
+    oConStringBuilder.UserID = sUsername
     oConStringBuilder.Password = sPassword
     oConStringBuilder.Database = sDatabase
     oConStringBuilder.CharacterSet = "utf8"
@@ -25,7 +26,7 @@ Friend Class MySqlHandler
     Dim aiResult As Integer()
     Dim iArrayLength As Integer
 
-    Using oDataAdapter As New MySqlDataAdapter("SELECT * FROM ValidYears", _sConnectionString)
+    Using oDataAdapter As New MySqlDataAdapter("SELECT * FROM ValidYears", GetConnection())
       oDataAdapter.Fill(dtDataTable)
     End Using
 

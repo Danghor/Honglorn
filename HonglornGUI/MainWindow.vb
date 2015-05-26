@@ -39,10 +39,12 @@ Public Class MainWindow
   Private Sub SETCREDENTIALS()
     Dim oFile As New StreamReader("C:\Git\Honglorn\CREDEN~1.TXT")
     Dim sServer As String = oFile.ReadLine()
-    Dim sUser As String = oFile.ReadLine()
+    Dim iPort As UInteger = CUInt(oFile.ReadLine())
+    Dim sUsername As String = oFile.ReadLine()
     Dim sPassword As String = oFile.ReadLine()
-    oFile.ReadLine()
-    _oApp = New Honglorn(sServer, sUser, sPassword)
+    Dim sDatabase As String = oFile.ReadLine()
+
+    _oApp = New Honglorn(sServer, iPort, sUsername, sPassword, sDatabase)
   End Sub
 
   Private Sub MainWindow_Load(sender As Object, e As EventArgs) Handles MyBase.Load

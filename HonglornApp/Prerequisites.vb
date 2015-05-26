@@ -3,8 +3,6 @@
 Public Module Prerequisites
   Public Const ALPHABET As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-  Public Const DATABASE_NAME As String = "bjs"
-
   Private ReadOnly VALID_CLASSNAMES As Char() = {"5"c, "6"c, "7"c, "8"c, "9"c, "E"c}
 
   Enum Discipline
