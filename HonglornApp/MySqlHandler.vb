@@ -1,5 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 
+'todo: remove inconsistency oDataTable <-> dtDataTable
 Friend Class MySqlHandler
   Private ReadOnly _sConnectionString As String
 
