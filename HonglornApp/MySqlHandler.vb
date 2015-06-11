@@ -185,6 +185,7 @@ Friend Class MySqlHandler
   Function GetGameType(cClassName As Char, iYear As Integer) As GameType
     Dim oSelectCommand As MySqlCommand
     Dim oReturnParameter As MySqlParameter
+    Dim sReturnedGameType As String
 
     If IsValidYear(iYear) AndAlso IsValidClassName(cClassName) Then
       oSelectCommand = New MySqlCommand()
@@ -206,7 +207,9 @@ Friend Class MySqlHandler
         oSelectCommand.Connection.Open()
         oSelectCommand.ExecuteNonQuery()
 
-        Select Case oReturnParameter.Value.ToString()
+        sReturnedGameType = oReturnParameter.Value.ToString()
+
+        Select Case sReturnedGameType
           Case "Competition"
             GetGameType = GameType.Competition
           Case "Traditional"
@@ -214,7 +217,7 @@ Friend Class MySqlHandler
           Case ""
             GetGameType = GameType.Unknown
           Case Else
-            Throw New Exception("Invalid GameType received from database.")
+            Throw New DataException("Invalid GameType received from database: " & sReturnedGameType)
         End Select
 
       Finally
