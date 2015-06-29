@@ -89,7 +89,7 @@ Friend Class MySqlHandler
       If IsValidClassName(cCurrentClass) Then
         acResult(iRow) = CChar(dtDataTable.Rows(iRow)(0))
       Else
-        Throw New ArgumentOutOfRangeException("Invalid ClassName" + cCurrentClass + "received from database.")
+        Throw New ArgumentOutOfRangeException("Invalid ClassName" & cCurrentClass & "received from database.")
       End If
 
     Next
@@ -123,7 +123,7 @@ Friend Class MySqlHandler
         Case Discipline.MiddleDistance
           oSelectCommand.CommandText += "TraditionalMaleMiddleDistanceDisciplines"
         Case Else
-          Throw New ArgumentException("Invalid discipline.")
+          Throw New ArgumentException("Invalid discipline: " & eDiscipline)
       End Select
 
     ElseIf eSex = Sex.Female Then
@@ -138,11 +138,11 @@ Friend Class MySqlHandler
         Case Discipline.MiddleDistance
           oSelectCommand.CommandText += "TraditionalFemaleMiddleDistanceDisciplines"
         Case Else
-          Throw New ArgumentException("Invalid discipline.")
+          Throw New ArgumentException("Invalid discipline: " & eDiscipline)
       End Select
 
     Else
-      Throw New ArgumentException("Invalid sex.")
+      Throw New ArgumentException("Invalid sex: " & eSex)
     End If
 
     oSelectCommand.Connection = GetConnection()
@@ -170,7 +170,7 @@ Friend Class MySqlHandler
       Case Discipline.MiddleDistance
         oSelectCommand.CommandText += "CompetitionMiddleDistanceDisciplines"
       Case Else
-        Throw New ArgumentException("Invalid discipline.")
+        Throw New ArgumentException("Invalid discipline: " & eDiscipline)
     End Select
 
     oSelectCommand.Connection = GetConnection()
@@ -228,7 +228,7 @@ Friend Class MySqlHandler
 
     Else
       'todo: distiguish between which provided argument is invalid
-      Throw New ArgumentException("Invalid year or class name provided. Year: '" + CStr(iYear) + "'; Class Name: '" + CStr(cClassName) + "'")
+      Throw New ArgumentException("Invalid year or class name provided. Year: '" & CStr(iYear) & "'; Class Name: '" & CStr(cClassName) + "'")
     End If
   End Function
 

@@ -175,6 +175,7 @@ Public Class Honglorn
                                  iYearOfBirth As Integer, iYear As Integer)
     Dim sClassName As String
 
+    'todo: move this to prerequisites or so (or some other validation function)
     If Regex.IsMatch(sCourseName, "0[5-9][A-Z]") Then
       sClassName = CStr(sCourseName(1))
     ElseIf Regex.IsMatch(sCourseName, "E(0[1-9]|[1-9][0-9])") Then
