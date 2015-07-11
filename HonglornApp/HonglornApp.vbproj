@@ -50,6 +50,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -69,6 +70,14 @@
   <ItemGroup>
     <Compile Include="ExcelImporter.vb" />
     <Compile Include="Honglorn.vb" />
+    <Compile Include="HonglornDataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HonglornDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="HonglornDataSet.vb">
+      <DependentUpon>HonglornDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MySqlHandler.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -96,6 +105,18 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="HonglornDataSet.xsc">
+      <DependentUpon>HonglornDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="HonglornDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HonglornDataSet.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="HonglornDataSet.xss">
+      <DependentUpon>HonglornDataSet.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
