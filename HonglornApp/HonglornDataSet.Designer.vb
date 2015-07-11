@@ -124,41 +124,41 @@ Partial Public Class HonglornDataSet
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("class")) Is Nothing) Then
-                MyBase.Tables.Add(New classDataTable(ds.Tables("class")))
+            If (Not (ds.Tables("Class")) Is Nothing) Then
+                MyBase.Tables.Add(New classDataTable(ds.Tables("Class")))
             End If
-            If (Not (ds.Tables("traditionalreportmeta")) Is Nothing) Then
-                MyBase.Tables.Add(New traditionalreportmetaDataTable(ds.Tables("traditionalreportmeta")))
+            If (Not (ds.Tables("TraditionalReportMeta")) Is Nothing) Then
+                MyBase.Tables.Add(New traditionalreportmetaDataTable(ds.Tables("TraditionalReportMeta")))
             End If
-            If (Not (ds.Tables("classdisciplinerel")) Is Nothing) Then
-                MyBase.Tables.Add(New classdisciplinerelDataTable(ds.Tables("classdisciplinerel")))
+            If (Not (ds.Tables("ClassDisciplineRel")) Is Nothing) Then
+                MyBase.Tables.Add(New classdisciplinerelDataTable(ds.Tables("ClassDisciplineRel")))
             End If
-            If (Not (ds.Tables("competition")) Is Nothing) Then
-                MyBase.Tables.Add(New competitionDataTable(ds.Tables("competition")))
+            If (Not (ds.Tables("Competition")) Is Nothing) Then
+                MyBase.Tables.Add(New competitionDataTable(ds.Tables("Competition")))
             End If
-            If (Not (ds.Tables("competitiondiscipline")) Is Nothing) Then
-                MyBase.Tables.Add(New competitiondisciplineDataTable(ds.Tables("competitiondiscipline")))
+            If (Not (ds.Tables("CompetitionDiscipline")) Is Nothing) Then
+                MyBase.Tables.Add(New competitiondisciplineDataTable(ds.Tables("CompetitionDiscipline")))
             End If
-            If (Not (ds.Tables("competitiondisciplinecollection")) Is Nothing) Then
-                MyBase.Tables.Add(New competitiondisciplinecollectionDataTable(ds.Tables("competitiondisciplinecollection")))
+            If (Not (ds.Tables("CompetitionDisciplineCollection")) Is Nothing) Then
+                MyBase.Tables.Add(New competitiondisciplinecollectionDataTable(ds.Tables("CompetitionDisciplineCollection")))
             End If
-            If (Not (ds.Tables("competitionreportmeta")) Is Nothing) Then
-                MyBase.Tables.Add(New competitionreportmetaDataTable(ds.Tables("competitionreportmeta")))
+            If (Not (ds.Tables("CompetitionReportMeta")) Is Nothing) Then
+                MyBase.Tables.Add(New competitionreportmetaDataTable(ds.Tables("CompetitionReportMeta")))
             End If
-            If (Not (ds.Tables("courseclassrel")) Is Nothing) Then
-                MyBase.Tables.Add(New courseclassrelDataTable(ds.Tables("courseclassrel")))
+            If (Not (ds.Tables("CourseClassRel")) Is Nothing) Then
+                MyBase.Tables.Add(New courseclassrelDataTable(ds.Tables("CourseClassRel")))
             End If
-            If (Not (ds.Tables("student")) Is Nothing) Then
-                MyBase.Tables.Add(New studentDataTable(ds.Tables("student")))
+            If (Not (ds.Tables("Student")) Is Nothing) Then
+                MyBase.Tables.Add(New studentDataTable(ds.Tables("Student")))
             End If
-            If (Not (ds.Tables("studentcourserel")) Is Nothing) Then
-                MyBase.Tables.Add(New studentcourserelDataTable(ds.Tables("studentcourserel")))
+            If (Not (ds.Tables("StudentCourseRel")) Is Nothing) Then
+                MyBase.Tables.Add(New studentcourserelDataTable(ds.Tables("StudentCourseRel")))
             End If
-            If (Not (ds.Tables("traditionaldiscipline")) Is Nothing) Then
-                MyBase.Tables.Add(New traditionaldisciplineDataTable(ds.Tables("traditionaldiscipline")))
+            If (Not (ds.Tables("TraditionalDiscipline")) Is Nothing) Then
+                MyBase.Tables.Add(New traditionaldisciplineDataTable(ds.Tables("TraditionalDiscipline")))
             End If
-            If (Not (ds.Tables("traditionaldisciplinecollection")) Is Nothing) Then
-                MyBase.Tables.Add(New traditionaldisciplinecollectionDataTable(ds.Tables("traditionaldisciplinecollection")))
+            If (Not (ds.Tables("TraditionalDisciplineCollection")) Is Nothing) Then
+                MyBase.Tables.Add(New traditionaldisciplinecollectionDataTable(ds.Tables("TraditionalDisciplineCollection")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -364,41 +364,41 @@ Partial Public Class HonglornDataSet
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("class")) Is Nothing) Then
-                MyBase.Tables.Add(New classDataTable(ds.Tables("class")))
+            If (Not (ds.Tables("Class")) Is Nothing) Then
+                MyBase.Tables.Add(New classDataTable(ds.Tables("Class")))
             End If
-            If (Not (ds.Tables("traditionalreportmeta")) Is Nothing) Then
-                MyBase.Tables.Add(New traditionalreportmetaDataTable(ds.Tables("traditionalreportmeta")))
+            If (Not (ds.Tables("TraditionalReportMeta")) Is Nothing) Then
+                MyBase.Tables.Add(New traditionalreportmetaDataTable(ds.Tables("TraditionalReportMeta")))
             End If
-            If (Not (ds.Tables("classdisciplinerel")) Is Nothing) Then
-                MyBase.Tables.Add(New classdisciplinerelDataTable(ds.Tables("classdisciplinerel")))
+            If (Not (ds.Tables("ClassDisciplineRel")) Is Nothing) Then
+                MyBase.Tables.Add(New classdisciplinerelDataTable(ds.Tables("ClassDisciplineRel")))
             End If
-            If (Not (ds.Tables("competition")) Is Nothing) Then
-                MyBase.Tables.Add(New competitionDataTable(ds.Tables("competition")))
+            If (Not (ds.Tables("Competition")) Is Nothing) Then
+                MyBase.Tables.Add(New competitionDataTable(ds.Tables("Competition")))
             End If
-            If (Not (ds.Tables("competitiondiscipline")) Is Nothing) Then
-                MyBase.Tables.Add(New competitiondisciplineDataTable(ds.Tables("competitiondiscipline")))
+            If (Not (ds.Tables("CompetitionDiscipline")) Is Nothing) Then
+                MyBase.Tables.Add(New competitiondisciplineDataTable(ds.Tables("CompetitionDiscipline")))
             End If
-            If (Not (ds.Tables("competitiondisciplinecollection")) Is Nothing) Then
-                MyBase.Tables.Add(New competitiondisciplinecollectionDataTable(ds.Tables("competitiondisciplinecollection")))
+            If (Not (ds.Tables("CompetitionDisciplineCollection")) Is Nothing) Then
+                MyBase.Tables.Add(New competitiondisciplinecollectionDataTable(ds.Tables("CompetitionDisciplineCollection")))
             End If
-            If (Not (ds.Tables("competitionreportmeta")) Is Nothing) Then
-                MyBase.Tables.Add(New competitionreportmetaDataTable(ds.Tables("competitionreportmeta")))
+            If (Not (ds.Tables("CompetitionReportMeta")) Is Nothing) Then
+                MyBase.Tables.Add(New competitionreportmetaDataTable(ds.Tables("CompetitionReportMeta")))
             End If
-            If (Not (ds.Tables("courseclassrel")) Is Nothing) Then
-                MyBase.Tables.Add(New courseclassrelDataTable(ds.Tables("courseclassrel")))
+            If (Not (ds.Tables("CourseClassRel")) Is Nothing) Then
+                MyBase.Tables.Add(New courseclassrelDataTable(ds.Tables("CourseClassRel")))
             End If
-            If (Not (ds.Tables("student")) Is Nothing) Then
-                MyBase.Tables.Add(New studentDataTable(ds.Tables("student")))
+            If (Not (ds.Tables("Student")) Is Nothing) Then
+                MyBase.Tables.Add(New studentDataTable(ds.Tables("Student")))
             End If
-            If (Not (ds.Tables("studentcourserel")) Is Nothing) Then
-                MyBase.Tables.Add(New studentcourserelDataTable(ds.Tables("studentcourserel")))
+            If (Not (ds.Tables("StudentCourseRel")) Is Nothing) Then
+                MyBase.Tables.Add(New studentcourserelDataTable(ds.Tables("StudentCourseRel")))
             End If
-            If (Not (ds.Tables("traditionaldiscipline")) Is Nothing) Then
-                MyBase.Tables.Add(New traditionaldisciplineDataTable(ds.Tables("traditionaldiscipline")))
+            If (Not (ds.Tables("TraditionalDiscipline")) Is Nothing) Then
+                MyBase.Tables.Add(New traditionaldisciplineDataTable(ds.Tables("TraditionalDiscipline")))
             End If
-            If (Not (ds.Tables("traditionaldisciplinecollection")) Is Nothing) Then
-                MyBase.Tables.Add(New traditionaldisciplinecollectionDataTable(ds.Tables("traditionaldisciplinecollection")))
+            If (Not (ds.Tables("TraditionalDisciplineCollection")) Is Nothing) Then
+                MyBase.Tables.Add(New traditionaldisciplinecollectionDataTable(ds.Tables("TraditionalDisciplineCollection")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -432,73 +432,73 @@ Partial Public Class HonglornDataSet
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tableclass = CType(MyBase.Tables("class"),classDataTable)
+        Me.tableclass = CType(MyBase.Tables("Class"),classDataTable)
         If (initTable = true) Then
             If (Not (Me.tableclass) Is Nothing) Then
                 Me.tableclass.InitVars
             End If
         End If
-        Me.tabletraditionalreportmeta = CType(MyBase.Tables("traditionalreportmeta"),traditionalreportmetaDataTable)
+        Me.tabletraditionalreportmeta = CType(MyBase.Tables("TraditionalReportMeta"),traditionalreportmetaDataTable)
         If (initTable = true) Then
             If (Not (Me.tabletraditionalreportmeta) Is Nothing) Then
                 Me.tabletraditionalreportmeta.InitVars
             End If
         End If
-        Me.tableclassdisciplinerel = CType(MyBase.Tables("classdisciplinerel"),classdisciplinerelDataTable)
+        Me.tableclassdisciplinerel = CType(MyBase.Tables("ClassDisciplineRel"),classdisciplinerelDataTable)
         If (initTable = true) Then
             If (Not (Me.tableclassdisciplinerel) Is Nothing) Then
                 Me.tableclassdisciplinerel.InitVars
             End If
         End If
-        Me.tablecompetition = CType(MyBase.Tables("competition"),competitionDataTable)
+        Me.tablecompetition = CType(MyBase.Tables("Competition"),competitionDataTable)
         If (initTable = true) Then
             If (Not (Me.tablecompetition) Is Nothing) Then
                 Me.tablecompetition.InitVars
             End If
         End If
-        Me.tablecompetitiondiscipline = CType(MyBase.Tables("competitiondiscipline"),competitiondisciplineDataTable)
+        Me.tablecompetitiondiscipline = CType(MyBase.Tables("CompetitionDiscipline"),competitiondisciplineDataTable)
         If (initTable = true) Then
             If (Not (Me.tablecompetitiondiscipline) Is Nothing) Then
                 Me.tablecompetitiondiscipline.InitVars
             End If
         End If
-        Me.tablecompetitiondisciplinecollection = CType(MyBase.Tables("competitiondisciplinecollection"),competitiondisciplinecollectionDataTable)
+        Me.tablecompetitiondisciplinecollection = CType(MyBase.Tables("CompetitionDisciplineCollection"),competitiondisciplinecollectionDataTable)
         If (initTable = true) Then
             If (Not (Me.tablecompetitiondisciplinecollection) Is Nothing) Then
                 Me.tablecompetitiondisciplinecollection.InitVars
             End If
         End If
-        Me.tablecompetitionreportmeta = CType(MyBase.Tables("competitionreportmeta"),competitionreportmetaDataTable)
+        Me.tablecompetitionreportmeta = CType(MyBase.Tables("CompetitionReportMeta"),competitionreportmetaDataTable)
         If (initTable = true) Then
             If (Not (Me.tablecompetitionreportmeta) Is Nothing) Then
                 Me.tablecompetitionreportmeta.InitVars
             End If
         End If
-        Me.tablecourseclassrel = CType(MyBase.Tables("courseclassrel"),courseclassrelDataTable)
+        Me.tablecourseclassrel = CType(MyBase.Tables("CourseClassRel"),courseclassrelDataTable)
         If (initTable = true) Then
             If (Not (Me.tablecourseclassrel) Is Nothing) Then
                 Me.tablecourseclassrel.InitVars
             End If
         End If
-        Me.tablestudent = CType(MyBase.Tables("student"),studentDataTable)
+        Me.tablestudent = CType(MyBase.Tables("Student"),studentDataTable)
         If (initTable = true) Then
             If (Not (Me.tablestudent) Is Nothing) Then
                 Me.tablestudent.InitVars
             End If
         End If
-        Me.tablestudentcourserel = CType(MyBase.Tables("studentcourserel"),studentcourserelDataTable)
+        Me.tablestudentcourserel = CType(MyBase.Tables("StudentCourseRel"),studentcourserelDataTable)
         If (initTable = true) Then
             If (Not (Me.tablestudentcourserel) Is Nothing) Then
                 Me.tablestudentcourserel.InitVars
             End If
         End If
-        Me.tabletraditionaldiscipline = CType(MyBase.Tables("traditionaldiscipline"),traditionaldisciplineDataTable)
+        Me.tabletraditionaldiscipline = CType(MyBase.Tables("TraditionalDiscipline"),traditionaldisciplineDataTable)
         If (initTable = true) Then
             If (Not (Me.tabletraditionaldiscipline) Is Nothing) Then
                 Me.tabletraditionaldiscipline.InitVars
             End If
         End If
-        Me.tabletraditionaldisciplinecollection = CType(MyBase.Tables("traditionaldisciplinecollection"),traditionaldisciplinecollectionDataTable)
+        Me.tabletraditionaldisciplinecollection = CType(MyBase.Tables("TraditionalDisciplineCollection"),traditionaldisciplinecollectionDataTable)
         If (initTable = true) Then
             If (Not (Me.tabletraditionaldisciplinecollection) Is Nothing) Then
                 Me.tabletraditionaldisciplinecollection.InitVars
@@ -789,7 +789,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "class"
+            Me.TableName = "Class"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -912,8 +912,9 @@ Partial Public Class HonglornDataSet
             Me.ExtendedProperties.Add("Generator_RowEvArgName", "classRowChangeEvent")
             Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "classRowChangeEventHandler")
             Me.ExtendedProperties.Add("Generator_TableClassName", "classDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "_class")
             Me.ExtendedProperties.Add("Generator_TableVarName", "tableclass")
-            Me.ExtendedProperties.Add("Generator_UserTableName", "class")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "Class")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1065,7 +1066,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "traditionalreportmeta"
+            Me.TableName = "TraditionalReportMeta"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -1232,6 +1233,13 @@ Partial Public Class HonglornDataSet
             Me.columnAge.AllowDBNull = false
             Me.columnHonoraryCertificateScore.AllowDBNull = false
             Me.columnVictoryCertificateScore.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "traditionalreportmetaRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "traditionalreportmetaRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "traditionalreportmetaRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "traditionalreportmetaDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "traditionalreportmeta")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tabletraditionalreportmeta")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "TraditionalReportMeta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1381,7 +1389,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "classdisciplinerel"
+            Me.TableName = "ClassDisciplineRel"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -1542,6 +1550,13 @@ Partial Public Class HonglornDataSet
             Me.columnClassName.AllowDBNull = false
             Me.columnClassName.MaxLength = 1
             Me.columnYear.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "classdisciplinerelRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "classdisciplinerelRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "classdisciplinerelRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "classdisciplinerelDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "classdisciplinerel")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tableclassdisciplinerel")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "ClassDisciplineRel")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1695,7 +1710,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "competition"
+            Me.TableName = "Competition"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -1874,6 +1889,13 @@ Partial Public Class HonglornDataSet
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnStudentPKey, Me.columnYear}, true))
             Me.columnStudentPKey.AllowDBNull = false
             Me.columnYear.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "competitionRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "competitionRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "competitionRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "competitionDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "competition")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tablecompetition")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "Competition")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2025,7 +2047,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "competitiondiscipline"
+            Me.TableName = "CompetitionDiscipline"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -2194,6 +2216,13 @@ Partial Public Class HonglornDataSet
             Me.columnUnit.AllowDBNull = false
             Me.columnUnit.MaxLength = 25
             Me.columnLowIsBetter.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "competitiondisciplineRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "competitiondisciplineRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "competitiondisciplineRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "competitiondisciplineDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "competitiondiscipline")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tablecompetitiondiscipline")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "CompetitionDiscipline")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2353,7 +2382,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "competitiondisciplinecollection"
+            Me.TableName = "CompetitionDisciplineCollection"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -2591,6 +2620,13 @@ Partial Public Class HonglornDataSet
             Me.columnFemaleJumpPKey.AllowDBNull = false
             Me.columnFemaleThrowPKey.AllowDBNull = false
             Me.columnFemaleMiddleDistancePKey.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "competitiondisciplinecollectionRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "competitiondisciplinecollectionRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "competitiondisciplinecollectionRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "competitiondisciplinecollectionDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "competitiondisciplinecollection")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tablecompetitiondisciplinecollection")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "CompetitionDisciplineCollection")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2748,7 +2784,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "competitionreportmeta"
+            Me.TableName = "CompetitionReportMeta"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -2950,6 +2986,13 @@ Partial Public Class HonglornDataSet
             Me.columnGrade3Percentage.AllowDBNull = false
             Me.columnGrade4Percentage.AllowDBNull = false
             Me.columnGrade5Percentage.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "competitionreportmetaRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "competitionreportmetaRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "competitionreportmetaRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "competitionreportmetaDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "competitionreportmeta")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tablecompetitionreportmeta")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "CompetitionReportMeta")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3095,7 +3138,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "courseclassrel"
+            Me.TableName = "CourseClassRel"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -3230,6 +3273,13 @@ Partial Public Class HonglornDataSet
             Me.columnCourseName.MaxLength = 3
             Me.columnClassName.AllowDBNull = false
             Me.columnClassName.MaxLength = 1
+            Me.ExtendedProperties.Add("Generator_RowClassName", "courseclassrelRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "courseclassrelRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "courseclassrelRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "courseclassrelDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "courseclassrel")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tablecourseclassrel")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "CourseClassRel")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3381,7 +3431,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "student"
+            Me.TableName = "Student"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -3550,6 +3600,13 @@ Partial Public Class HonglornDataSet
             Me.columnSex.AllowDBNull = false
             Me.columnSex.MaxLength = 6
             Me.columnYearOfBirth.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "studentRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "studentRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "studentRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "studentDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "student")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tablestudent")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "Student")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3697,7 +3754,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "studentcourserel"
+            Me.TableName = "StudentCourseRel"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -3845,6 +3902,13 @@ Partial Public Class HonglornDataSet
             Me.columnCourseName.AllowDBNull = false
             Me.columnCourseName.MaxLength = 3
             Me.columnYear.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "studentcourserelRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "studentcourserelRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "studentcourserelRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "studentcourserelDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "studentcourserel")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tablestudentcourserel")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "StudentCourseRel")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4006,7 +4070,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "traditionaldiscipline"
+            Me.TableName = "TraditionalDiscipline"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -4234,6 +4298,13 @@ Partial Public Class HonglornDataSet
             Me.columnConstantA.AllowDBNull = false
             Me.columnConstantC.AllowDBNull = false
             Me.columnMeasurement.MaxLength = 10
+            Me.ExtendedProperties.Add("Generator_RowClassName", "traditionaldisciplineRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "traditionaldisciplineRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "traditionaldisciplineRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "traditionaldisciplineDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "traditionaldiscipline")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tabletraditionaldiscipline")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "TraditionalDiscipline")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4393,7 +4464,7 @@ Partial Public Class HonglornDataSet
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "traditionaldisciplinecollection"
+            Me.TableName = "TraditionalDisciplineCollection"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -4631,6 +4702,13 @@ Partial Public Class HonglornDataSet
             Me.columnFemaleJumpPKey.AllowDBNull = false
             Me.columnFemaleThrowPKey.AllowDBNull = false
             Me.columnFemaleMiddleDistancePKey.AllowDBNull = false
+            Me.ExtendedProperties.Add("Generator_RowClassName", "traditionaldisciplinecollectionRow")
+            Me.ExtendedProperties.Add("Generator_RowEvArgName", "traditionaldisciplinecollectionRowChangeEvent")
+            Me.ExtendedProperties.Add("Generator_RowEvHandlerName", "traditionaldisciplinecollectionRowChangeEventHandler")
+            Me.ExtendedProperties.Add("Generator_TableClassName", "traditionaldisciplinecollectionDataTable")
+            Me.ExtendedProperties.Add("Generator_TablePropName", "traditionaldisciplinecollection")
+            Me.ExtendedProperties.Add("Generator_TableVarName", "tabletraditionaldisciplinecollection")
+            Me.ExtendedProperties.Add("Generator_UserTableName", "TraditionalDisciplineCollection")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4922,8 +5000,8 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tableclassdisciplinerel.CompetitionDisciplineCollectionPKeyColumn),Global.System.Guid)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'CompetitionDisciplineCollectionPKey' in table 'classdiscipl"& _ 
-                            "inerel' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CompetitionDisciplineCollectionPKey' in table 'ClassDiscipl"& _ 
+                            "ineRel' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -4938,8 +5016,8 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tableclassdisciplinerel.TraditionalDisciplineCollectionPKeyColumn),Global.System.Guid)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'TraditionalDisciplineCollectionPKey' in table 'classdiscipl"& _ 
-                            "inerel' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'TraditionalDisciplineCollectionPKey' in table 'ClassDiscipl"& _ 
+                            "ineRel' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -5049,7 +5127,7 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tablecompetition.SprintColumn),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Sprint' in table 'competition' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Sprint' in table 'Competition' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -5064,7 +5142,7 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tablecompetition.JumpColumn),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Jump' in table 'competition' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Jump' in table 'Competition' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -5079,7 +5157,7 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tablecompetition.ThrowColumn),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Throw' in table 'competition' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Throw' in table 'Competition' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -5094,7 +5172,7 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tablecompetition.MiddleDistanceColumn),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'MiddleDistance' in table 'competition' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'MiddleDistance' in table 'Competition' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -5928,7 +6006,7 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tabletraditionaldiscipline.DistanceColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Distance' in table 'traditionaldiscipline' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Distance' in table 'TraditionalDiscipline' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -5943,7 +6021,7 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tabletraditionaldiscipline.OverheadColumn),Single)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Overhead' in table 'traditionaldiscipline' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Overhead' in table 'TraditionalDiscipline' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -5980,7 +6058,7 @@ Partial Public Class HonglornDataSet
                 Try 
                     Return CType(Me(Me.tabletraditionaldiscipline.MeasurementColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'Measurement' in table 'traditionaldiscipline' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'Measurement' in table 'TraditionalDiscipline' is DBNull.", e)
                 End Try
             End Get
             Set
@@ -6879,7 +6957,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "class"
+            tableMapping.DataSetTable = "Class"
             tableMapping.ColumnMappings.Add("Name", "Name")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.MySql.Data.MySqlClient.MySqlCommand()
@@ -6978,7 +7056,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "class")
+            Return Me.Adapter.Update(dataSet, "Class")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7210,7 +7288,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "traditionalreportmeta"
+            tableMapping.DataSetTable = "TraditionalReportMeta"
             tableMapping.ColumnMappings.Add("PKey", "PKey")
             tableMapping.ColumnMappings.Add("Sex", "Sex")
             tableMapping.ColumnMappings.Add("Age", "Age")
@@ -7440,7 +7518,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "traditionalreportmeta")
+            Return Me.Adapter.Update(dataSet, "TraditionalReportMeta")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -7688,7 +7766,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "classdisciplinerel"
+            tableMapping.DataSetTable = "ClassDisciplineRel"
             tableMapping.ColumnMappings.Add("ClassName", "ClassName")
             tableMapping.ColumnMappings.Add("Year", "Year")
             tableMapping.ColumnMappings.Add("CompetitionDisciplineCollectionPKey", "CompetitionDisciplineCollectionPKey")
@@ -7926,7 +8004,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "classdisciplinerel")
+            Return Me.Adapter.Update(dataSet, "ClassDisciplineRel")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8210,7 +8288,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "competition"
+            tableMapping.DataSetTable = "Competition"
             tableMapping.ColumnMappings.Add("StudentPKey", "StudentPKey")
             tableMapping.ColumnMappings.Add("Year", "Year")
             tableMapping.ColumnMappings.Add("Sprint", "Sprint")
@@ -8546,7 +8624,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "competition")
+            Return Me.Adapter.Update(dataSet, "Competition")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -8862,7 +8940,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "competitiondiscipline"
+            tableMapping.DataSetTable = "CompetitionDiscipline"
             tableMapping.ColumnMappings.Add("PKey", "PKey")
             tableMapping.ColumnMappings.Add("Type", "Type")
             tableMapping.ColumnMappings.Add("Name", "Name")
@@ -9090,7 +9168,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "competitiondiscipline")
+            Return Me.Adapter.Update(dataSet, "CompetitionDiscipline")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -9370,7 +9448,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "competitiondisciplinecollection"
+            tableMapping.DataSetTable = "CompetitionDisciplineCollection"
             tableMapping.ColumnMappings.Add("PKey", "PKey")
             tableMapping.ColumnMappings.Add("MaleSprintPKey", "MaleSprintPKey")
             tableMapping.ColumnMappings.Add("MaleJumpPKey", "MaleJumpPKey")
@@ -9731,7 +9809,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "competitiondisciplinecollection")
+            Return Me.Adapter.Update(dataSet, "CompetitionDisciplineCollection")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10014,7 +10092,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "competitionreportmeta"
+            tableMapping.DataSetTable = "CompetitionReportMeta"
             tableMapping.ColumnMappings.Add("Year", "Year")
             tableMapping.ColumnMappings.Add("HonoraryCertificatePercentage", "HonoraryCertificatePercentage")
             tableMapping.ColumnMappings.Add("VictoryCertificatePercentage", "VictoryCertificatePercentage")
@@ -10344,7 +10422,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "competitionreportmeta")
+            Return Me.Adapter.Update(dataSet, "CompetitionReportMeta")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10604,7 +10682,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "courseclassrel"
+            tableMapping.DataSetTable = "CourseClassRel"
             tableMapping.ColumnMappings.Add("CourseName", "CourseName")
             tableMapping.ColumnMappings.Add("ClassName", "ClassName")
             Me._adapter.TableMappings.Add(tableMapping)
@@ -10736,7 +10814,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "courseclassrel")
+            Return Me.Adapter.Update(dataSet, "CourseClassRel")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -10988,7 +11066,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "student"
+            tableMapping.DataSetTable = "Student"
             tableMapping.ColumnMappings.Add("PKey", "PKey")
             tableMapping.ColumnMappings.Add("Surname", "Surname")
             tableMapping.ColumnMappings.Add("Forename", "Forename")
@@ -11215,7 +11293,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "student")
+            Return Me.Adapter.Update(dataSet, "Student")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11495,7 +11573,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "studentcourserel"
+            tableMapping.DataSetTable = "StudentCourseRel"
             tableMapping.ColumnMappings.Add("StudentPKey", "StudentPKey")
             tableMapping.ColumnMappings.Add("CourseName", "CourseName")
             tableMapping.ColumnMappings.Add("Year", "Year")
@@ -11659,7 +11737,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "studentcourserel")
+            Return Me.Adapter.Update(dataSet, "StudentCourseRel")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -11899,7 +11977,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "traditionaldiscipline"
+            tableMapping.DataSetTable = "TraditionalDiscipline"
             tableMapping.ColumnMappings.Add("PKey", "PKey")
             tableMapping.ColumnMappings.Add("Type", "Type")
             tableMapping.ColumnMappings.Add("Sex", "Sex")
@@ -12344,7 +12422,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "traditionaldiscipline")
+            Return Me.Adapter.Update(dataSet, "TraditionalDiscipline")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -12759,7 +12837,7 @@ Namespace HonglornDataSetTableAdapters
             Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "traditionaldisciplinecollection"
+            tableMapping.DataSetTable = "TraditionalDisciplineCollection"
             tableMapping.ColumnMappings.Add("PKey", "PKey")
             tableMapping.ColumnMappings.Add("MaleSprintPKey", "MaleSprintPKey")
             tableMapping.ColumnMappings.Add("MaleJumpPKey", "MaleJumpPKey")
@@ -13120,7 +13198,7 @@ Namespace HonglornDataSetTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
         Public Overloads Overridable Function Update(ByVal dataSet As HonglornDataSet) As Integer
-            Return Me.Adapter.Update(dataSet, "traditionaldisciplinecollection")
+            Return Me.Adapter.Update(dataSet, "TraditionalDisciplineCollection")
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
