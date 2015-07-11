@@ -1,6 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
 
-'todo: remove inconsistency oDataTable <-> dtDataTable
 Friend Class MySqlHandler
   Private ReadOnly _sConnectionString As String
 
@@ -23,19 +22,19 @@ Friend Class MySqlHandler
   End Function
 
   Function GetValidYears() As Integer()
-    Dim dtDataTable As New DataTable()
+    Dim oDataTable As New DataTable()
     Dim aiResult As Integer()
     Dim iArrayLength As Integer
 
     Using oDataAdapter As New MySqlDataAdapter("SELECT * FROM ValidYears", GetConnection())
-      oDataAdapter.Fill(dtDataTable)
+      oDataAdapter.Fill(oDataTable)
     End Using
 
-    iArrayLength = dtDataTable.Rows.Count - 1
+    iArrayLength = oDataTable.Rows.Count - 1
     aiResult = New Integer(iArrayLength) {}
 
     For iRow As Integer = 0 To iArrayLength
-      aiResult(iRow) = CInt(dtDataTable.Rows(iRow)(0))
+      aiResult(iRow) = CInt(oDataTable.Rows(iRow)(0))
     Next
 
     GetValidYears = aiResult
@@ -43,7 +42,7 @@ Friend Class MySqlHandler
 
   Function GetValidCourseNames(iYear As Integer) As String()
     Dim oSelectCommand As New MySqlCommand()
-    Dim dtDataTable As New DataTable()
+    Dim oDataTable As New DataTable()
     Dim asResult As String()
     Dim iArrayLength As Integer
 
@@ -52,14 +51,14 @@ Friend Class MySqlHandler
     oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
 
     Using oDataAdapter As New MySqlDataAdapter(oSelectCommand)
-      oDataAdapter.Fill(dtDataTable)
+      oDataAdapter.Fill(oDataTable)
     End Using
 
-    iArrayLength = dtDataTable.Rows.Count - 1
+    iArrayLength = oDataTable.Rows.Count - 1
     asResult = New String(iArrayLength) {}
 
     For iRow As Integer = 0 To iArrayLength
-      asResult(iRow) = CStr(dtDataTable.Rows(iRow)(0))
+      asResult(iRow) = CStr(oDataTable.Rows(iRow)(0))
     Next
 
     GetValidCourseNames = asResult
@@ -67,7 +66,7 @@ Friend Class MySqlHandler
 
   Function GetValidClassNames(iYear As Integer) As Char()
     Dim oSelectCommand As New MySqlCommand()
-    Dim dtDataTable As New DataTable()
+    Dim oDataTable As New DataTable()
     Dim acResult As Char()
     Dim iArrayLength As Integer
     Dim cCurrentClass As Char
@@ -77,17 +76,17 @@ Friend Class MySqlHandler
     oSelectCommand.Parameters.AddWithValue("@iYear", iYear)
 
     Using oDataAdapter As New MySqlDataAdapter(oSelectCommand)
-      oDataAdapter.Fill(dtDataTable)
+      oDataAdapter.Fill(oDataTable)
     End Using
 
-    iArrayLength = dtDataTable.Rows.Count - 1
+    iArrayLength = oDataTable.Rows.Count - 1
     acResult = New Char(iArrayLength) {}
 
     For iRow As Integer = 0 To iArrayLength
-      cCurrentClass = CChar(dtDataTable.Rows(iRow)(0))
+      cCurrentClass = CChar(oDataTable.Rows(iRow)(0))
 
       If IsValidClassName(cCurrentClass) Then
-        acResult(iRow) = CChar(dtDataTable.Rows(iRow)(0))
+        acResult(iRow) = CChar(oDataTable.Rows(iRow)(0))
       Else
         Throw New ArgumentOutOfRangeException("Invalid ClassName" & cCurrentClass & "received from database.")
       End If
