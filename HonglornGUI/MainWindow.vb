@@ -55,7 +55,7 @@ Public Class MainWindow
     Center(Me)
 
     'pre-select a year
-    Dim aiValidYears As Integer() = _oApp.GetValidYears()
+    Dim aiValidYears As Integer() = _oApp.GetYearsWithStudentData()
     If aiValidYears.Count <> 0 Then
       SelectEditYearComboBox.DataSource = aiValidYears
       SelectEditYearComboBox.SelectedIndex = 0
@@ -71,7 +71,7 @@ Public Class MainWindow
   End Sub
 
   Private Sub SelectEditYearComboBox_DropDown(sender As Object, e As EventArgs) Handles SelectEditYearComboBox.DropDown
-    SelectEditYearComboBox.DataSource = _oApp.GetValidYears()
+    SelectEditYearComboBox.DataSource = _oApp.GetYearsWithStudentData()
   End Sub
 
   Private Sub SelectEditCourseComboBox_DropDown(sender As Object, e As EventArgs) _

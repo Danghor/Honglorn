@@ -96,12 +96,11 @@ Public Class Honglorn
   End Function
 
   ''' <summary>
-  '''   Get an Integer Array representing the years for which data is present in the database.
+  '''   Get an Integer Array representing the years for which student data is present in the database.
   ''' </summary>
   ''' <returns>An Integer Array representing the valid years.</returns>
-  ''' <remarks></remarks>
-  Public Function GetValidYears() As Integer()
-    GetValidYears = _oMySqlHandler.GetYearsWithStudentData()
+  Public Function GetYearsWithStudentData() As Integer()
+    GetYearsWithStudentData = _oMySqlHandler.GetYearsWithStudentData()
   End Function
 
   ''' <summary>

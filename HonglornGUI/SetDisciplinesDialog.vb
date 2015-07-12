@@ -41,7 +41,7 @@ Public Class SetDisciplinesDialog
     Center(Me)
 
     'pre-select a year
-    Dim aiValidYears As Integer() = App.GetValidYears()
+    Dim aiValidYears As Integer() = App.GetYearsWithStudentData()
     If aiValidYears.Count <> 0 Then
       YearComboBox.DataSource = aiValidYears
       YearComboBox.SelectedIndex = 0
@@ -49,7 +49,7 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub YearComboBox_DropDown(sender As Object, e As EventArgs) Handles YearComboBox.DropDown
-    YearComboBox.DataSource = App.GetValidYears()
+    YearComboBox.DataSource = App.GetYearsWithStudentData()
   End Sub
 
   Private Sub ClassComboBox_DropDown(sender As Object, e As EventArgs) Handles ClassComboBox.DropDown
