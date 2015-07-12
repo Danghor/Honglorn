@@ -1,7 +1,10 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports HonglornApp.HLDS
+Imports HonglornApp.HLDSTableAdapters
 
 Friend Class MySqlHandler
   Private ReadOnly _sConnectionString As String
+  Private ReadOnly _oHLDataSet As New HLDS()
 
   Sub New(sServer As String, iPort As UInteger, sUsername As String, sPassword As String, sDatabase As String)
     Dim oConStringBuilder As New MySqlConnectionStringBuilder
@@ -21,23 +24,23 @@ Friend Class MySqlHandler
     GetConnection = New MySqlConnection(_sConnectionString)
   End Function
 
-  Function GetValidYears() As Integer()
-    Dim oDataTable As New DataTable()
-    Dim aiResult As Integer()
-    Dim iArrayLength As Integer
+  ''' <summary>
+  ''' Returns an array containing all years for which there is student data present.
+  ''' </summary>
+  ''' <returns>An array containing the years.</returns>
+  Function GetYearsWithStudentData() As Integer()
+    Dim oDA As New HLDSTableAdapters.YearsWithStudentDataTableAdapter()
 
-    Using oDataAdapter As New MySqlDataAdapter("SELECT * FROM ValidYears", GetConnection())
-      oDataAdapter.Fill(oDataTable)
-    End Using
+    Dim oDT As YearsWithStudentDataDataTable = oDA.GetData()
 
-    iArrayLength = oDataTable.Rows.Count - 1
-    aiResult = New Integer(iArrayLength) {}
+    Dim iArrayLength As Integer = oDT.Rows.Count - 1
+    Dim aiResult As Integer() = New Integer(iArrayLength) {}
 
     For iRow As Integer = 0 To iArrayLength
-      aiResult(iRow) = CInt(oDataTable.Rows(iRow)(0))
+      aiResult(iRow) = oDT(iRow).Year
     Next
 
-    GetValidYears = aiResult
+    GetYearsWithStudentData = aiResult
   End Function
 
   Function GetValidCourseNames(iYear As Integer) As String()

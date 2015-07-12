@@ -101,7 +101,7 @@ Public Class Honglorn
   ''' <returns>An Integer Array representing the valid years.</returns>
   ''' <remarks></remarks>
   Public Function GetValidYears() As Integer()
-    GetValidYears = _oMySqlHandler.GetValidYears()
+    GetValidYears = _oMySqlHandler.GetYearsWithStudentData()
   End Function
 
   ''' <summary>

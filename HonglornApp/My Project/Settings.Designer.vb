@@ -51,19 +51,19 @@ Namespace My
                 End If
 #End If
                 Return defaultInstance
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;persistsecurityinfo=True;database=honglorn;allowuse"& _ 
-            "rvariables=True")>  _
-        Public ReadOnly Property honglornConnectionString() As String
-            Get
-                Return CType(Me("honglornConnectionString"),String)
-            End Get
-        End Property
+      End Get
+    End Property
+
+    <Global.System.Configuration.ApplicationScopedSettingAttribute(), _
+     Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+     Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString), _
+     Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;user id=root;password=.I9~DH:<(>:V8uWk)_#c;persistsecurityinfo=T" & _
+        "rue;database=honglorn;characterset=utf8")> _
+    Public ReadOnly Property oConnectionStringHonglorn() As String
+      Get
+        Return CType(Me("oConnectionStringHonglorn"), String)
+      End Get
+    End Property
     End Class
 End Namespace
 
