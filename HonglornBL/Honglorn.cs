@@ -137,20 +137,16 @@ namespace HonglornBL {
     /// <param name="sFilePath">The full path to the Excel file to be imported.</param>
     /// <param name="iYear">The year in which the imported data is valid (relevant for mapping the courses).</param>
     public void ImportStudentCourseExcelSheet(string sFilePath, int iYear) {
-      string sCurSurname = null;
-      string sCurForename = null;
-      string sCurCourseName = null;
       Prerequisites.Sex eCurrentSex = default(Prerequisites.Sex);
-      int iCurYearOfBirth = 0;
 
       DataTable oDataTable = ExcelImporter.GetStudentCourseDataTable(sFilePath);
 
       foreach (DataRow oRow in oDataTable.Rows) {
-        sCurSurname = Convert.ToString(oRow[0]);
-        sCurForename = Convert.ToString(oRow[1]);
-        sCurCourseName = Convert.ToString(oRow[2]);
+        string surname = Convert.ToString(oRow[0]);
+        string forename = Convert.ToString(oRow[1]);
+        string courseName = Convert.ToString(oRow[2]);
 
-        switch ((Convert.ToString(oRow[3]))) {
+        switch (Convert.ToString(oRow[3])) {
           case "M":
             eCurrentSex = Prerequisites.Sex.Male;
             break;
@@ -159,9 +155,9 @@ namespace HonglornBL {
             break;
         }
 
-        iCurYearOfBirth = Convert.ToInt32(oRow[4]);
+        int iCurYearOfBirth = Convert.ToInt32(oRow[4]);
 
-        ImportSingleStudent(sCurSurname, sCurForename, sCurCourseName, eCurrentSex, iCurYearOfBirth, iYear);
+        ImportSingleStudent(surname, forename, courseName, eCurrentSex, iCurYearOfBirth, iYear);
       }
     }
 
@@ -177,7 +173,7 @@ namespace HonglornBL {
     /// <remarks></remarks>
     void ImportSingleStudent(string sSurname, string sForename, string sCourseName, Prerequisites.Sex eSex,
       int iYearOfBirth, int iYear) {
-      string sClassName = null;
+      string sClassName;
 
       //todo: move this to prerequisites or so (or some other validation function)
       if (Regex.IsMatch(sCourseName, "0[5-9][A-Z]")) {

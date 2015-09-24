@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
@@ -35,7 +34,7 @@ namespace HonglornBL {
         Worksheet worksheet = workbook.Worksheets[0];
 
         //validate header row
-        for (int colIdx = 0; colIdx <= EXPECTED_HEADER_COLUMN_NAMES.Count() - 1; colIdx++) {
+        for (int colIdx = 0; colIdx <= EXPECTED_HEADER_COLUMN_NAMES.Length - 1; colIdx++) {
           string actualHeader = worksheet.Range[Prerequisites.ALPHABET[colIdx] + "1"].Text;
           string expectedHeader = EXPECTED_HEADER_COLUMN_NAMES[colIdx];
           if (actualHeader != expectedHeader) {
@@ -46,7 +45,7 @@ namespace HonglornBL {
 
         //create DataTable and initialize column names
         result = new DataTable();
-        for (int colIdx = 0; colIdx <= EXPECTED_HEADER_COLUMN_NAMES.Count() - 1; colIdx++) {
+        for (int colIdx = 0; colIdx <= EXPECTED_HEADER_COLUMN_NAMES.Length - 1; colIdx++) {
           result.Columns.Add(EXPECTED_HEADER_COLUMN_NAMES[colIdx]);
         }
 
@@ -61,7 +60,7 @@ namespace HonglornBL {
           DataRow oNewDataRow = result.NewRow();
 
           //read one row
-          for (int iColIdx = 0; iColIdx <= EXPECTED_HEADER_COLUMN_NAMES.Count() - 1; iColIdx++) {
+          for (int iColIdx = 0; iColIdx <= EXPECTED_HEADER_COLUMN_NAMES.Length - 1; iColIdx++) {
             string sCurrentCell =
               Convert.ToString(worksheet.Range[Prerequisites.ALPHABET[iColIdx] + Convert.ToString(iCurrentRow)].Text);
             oNewDataRow[iColIdx] = sCurrentCell;

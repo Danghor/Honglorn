@@ -5,7 +5,15 @@ namespace HonglornBL {
   public static class Prerequisites {
     public const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
+    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
+
+    internal static readonly Dictionary<Discipline, string> CompetitionDisciplinesViewNames =
+      new Dictionary<Discipline, string> {
+        { Discipline.Sprint, "CompetitionSprintDisciplines" },
+        { Discipline.Jump, "CompetitionJumpDisciplines" },
+        { Discipline.Throw, "CompetitionThrowDisciplines" },
+        { Discipline.MiddleDistance, "CompetitionMiddleDistanceDisciplines" }
+      };
 
     /// <summary>
     ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
