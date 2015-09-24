@@ -1,31 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace HonglornBL {
   public static class Prerequisites {
-    public enum Discipline {
-      Sprint,
-      Jump,
-      Throw,
-      MiddleDistance
-    }
-
-    public enum GameType {
-      Competition,
-      Traditional,
-      Unknown
-    }
-
-    public enum Sex {
-      Male,
-      Female
-    }
-
     public const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    readonly static HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
+    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
 
     /// <summary>
     ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
@@ -45,6 +25,24 @@ namespace HonglornBL {
     /// <remarks>Valid classnames: 5, 6, 7, 8, 9, E</remarks>
     public static bool IsValidClassName(char className) {
       return VALID_CLASSNAMES.Contains(className);
+    }
+
+    public enum Discipline {
+      Sprint,
+      Jump,
+      Throw,
+      MiddleDistance
+    }
+
+    public enum GameType {
+      Competition,
+      Traditional,
+      Unknown
+    }
+
+    public enum Sex {
+      Male,
+      Female
     }
   }
 }

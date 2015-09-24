@@ -1,26 +1,70 @@
-using Microsoft.VisualBasic;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Xml.Linq;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using HonglornBL;
 using MySql.Data.MySqlClient;
+
 namespace HonglornBL {
-
   public class Honglorn {
-    private readonly MySqlHandler _oMySqlHandler;
+    readonly MySqlHandler _oMySqlHandler;
+
+    MySqlDataAdapter _daCurrentDisciplinesEditAdapter;
 
 
-    private MySqlDataAdapter _daCurrentRawDataEditAdapter;
+    MySqlDataAdapter _daCurrentRawDataEditAdapter;
 
-    private MySqlDataAdapter _daCurrentDisciplinesEditAdapter;
     public Honglorn(string sServer, uint iPort, string sUsername, string sPassword, string sDatabase) {
       _oMySqlHandler = new MySqlHandler(sServer, iPort, sUsername, sPassword, sDatabase);
+    }
+
+    public DataTable GetValidTraditionalDisciplinesTable(Prerequisites.Sex eSex, Prerequisites.Discipline eDiscipline) {
+      return _oMySqlHandler.GetValidTraditionalDisciplinesTable(eSex, eDiscipline);
+    }
+
+    public DataTable GetValidCompetitionDisciplinesTable(Prerequisites.Discipline eDiscipline) {
+      return _oMySqlHandler.GetValidCompetitionDisciplinesTable(eDiscipline);
+    }
+
+    /// <summary>
+    ///   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
+    ///   is set.
+    /// </summary>
+    /// <param name="cClassName">The class name of the class the GameType is to be returned.</param>
+    /// <param name="iYear">The year for which the GameType is valid.</param>
+    /// <returns>
+    ///   A member of the Enum GameType that represents the GameType set in DisciplineMeta for the corresponding class
+    ///   in the given year.
+    /// </returns>
+    /// <remarks></remarks>
+    public Prerequisites.GameType GetGameType(char cClassName, int iYear) {
+      return _oMySqlHandler.GetGameType(cClassName, iYear);
+    }
+
+    /// <summary>
+    ///   Get an Integer Array representing the years for which student data is present in the database.
+    /// </summary>
+    /// <returns>An Integer Array representing the valid years.</returns>
+    public int[] GetYearsWithStudentData() {
+      return _oMySqlHandler.GetYearsWithStudentData();
+    }
+
+    /// <summary>
+    ///   Get a String Array representing the course names for which there is at least one student present in the given year.
+    /// </summary>
+    /// <param name="iYear">The year for which the valid course names should be retrieved.</param>
+    /// <returns>A String Array representing the valid course names.</returns>
+    /// <remarks></remarks>
+    public string[] GetValidCourseNames(int iYear) {
+      return _oMySqlHandler.GetValidCourseNames(iYear);
+    }
+
+    /// <summary>
+    ///   Get a Char Array representing the class names for which there is at least one student present in the given year.
+    /// </summary>
+    /// <param name="iYear">The year for which the valid class names should be retrieved.</param>
+    /// <returns>A Char Array representing the valid class names.</returns>
+    /// <remarks></remarks>
+    public char[] GetValidClassNames(int iYear) {
+      return _oMySqlHandler.GetValidClassNames(iYear);
     }
 
     #region "CompetitionEdit"
@@ -82,57 +126,6 @@ namespace HonglornBL {
 
     #endregion
 
-    public DataTable GetValidTraditionalDisciplinesTable(Prerequisites.Sex eSex, Prerequisites.Discipline eDiscipline) {
-      return _oMySqlHandler.GetValidTraditionalDisciplinesTable(eSex, eDiscipline);
-    }
-
-    public DataTable GetValidCompetitionDisciplinesTable(Prerequisites.Discipline eDiscipline) {
-      return _oMySqlHandler.GetValidCompetitionDisciplinesTable(eDiscipline);
-    }
-
-    /// <summary>
-    ///   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
-    ///   is set.
-    /// </summary>
-    /// <param name="cClassName">The class name of the class the GameType is to be returned.</param>
-    /// <param name="iYear">The year for which the GameType is valid.</param>
-    /// <returns>
-    ///   A member of the Enum GameType that represents the GameType set in DisciplineMeta for the corresponding class
-    ///   in the given year.
-    /// </returns>
-    /// <remarks></remarks>
-    public Prerequisites.GameType GetGameType(char cClassName, int iYear) {
-      return _oMySqlHandler.GetGameType(cClassName, iYear);
-    }
-
-    /// <summary>
-    ///   Get an Integer Array representing the years for which student data is present in the database.
-    /// </summary>
-    /// <returns>An Integer Array representing the valid years.</returns>
-    public int[] GetYearsWithStudentData() {
-      return _oMySqlHandler.GetYearsWithStudentData();
-    }
-
-    /// <summary>
-    ///   Get a String Array representing the course names for which there is at least one student present in the given year.
-    /// </summary>
-    /// <param name="iYear">The year for which the valid course names should be retrieved.</param>
-    /// <returns>A String Array representing the valid course names.</returns>
-    /// <remarks></remarks>
-    public string[] GetValidCourseNames(int iYear) {
-      return _oMySqlHandler.GetValidCourseNames(iYear);
-    }
-
-    /// <summary>
-    ///   Get a Char Array representing the class names for which there is at least one student present in the given year.
-    /// </summary>
-    /// <param name="iYear">The year for which the valid class names should be retrieved.</param>
-    /// <returns>A Char Array representing the valid class names.</returns>
-    /// <remarks></remarks>
-    public char[] GetValidClassNames(int iYear) {
-      return _oMySqlHandler.GetValidClassNames(iYear);
-    }
-
     #region "Import"
 
     //todo: currently only works with a "perfect" Excel sheet
@@ -182,7 +175,8 @@ namespace HonglornBL {
     /// <param name="iYearOfBirth"></param>
     /// <param name="iYear"></param>
     /// <remarks></remarks>
-    private void ImportSingleStudent(string sSurname, string sForename, string sCourseName, Prerequisites.Sex eSex, int iYearOfBirth, int iYear) {
+    void ImportSingleStudent(string sSurname, string sForename, string sCourseName, Prerequisites.Sex eSex,
+      int iYearOfBirth, int iYear) {
       string sClassName = null;
 
       //todo: move this to prerequisites or so (or some other validation function)

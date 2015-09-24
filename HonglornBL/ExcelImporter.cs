@@ -2,7 +2,8 @@
 using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using DataTable = System.Data.DataTable;
 
 namespace HonglornBL {
   public static class ExcelImporter {
@@ -25,20 +26,21 @@ namespace HonglornBL {
         throw new ArgumentException("File path is null, empty or consist of only white-space characters.");
       }
 
-      Excel.Application excelInstance = null;
-      Excel.Workbook workbook = null;
+      Application excelInstance = null;
+      Workbook workbook = null;
 
       try {
-        excelInstance = new Excel.Application();
+        excelInstance = new Application();
         workbook = excelInstance.Workbooks.Open(filePath);
-        Excel.Worksheet worksheet = workbook.Worksheets[0];
+        Worksheet worksheet = workbook.Worksheets[0];
 
         //validate header row
         for (int colIdx = 0; colIdx <= EXPECTED_HEADER_COLUMN_NAMES.Count() - 1; colIdx++) {
           string actualHeader = worksheet.Range[Prerequisites.ALPHABET[colIdx] + "1"].Text;
           string expectedHeader = EXPECTED_HEADER_COLUMN_NAMES[colIdx];
           if (actualHeader != expectedHeader) {
-            throw new ArgumentException($"Column {colIdx + 1} in Row 1 was named '{actualHeader}. Expected '{expectedHeader}'.");
+            throw new ArgumentException(
+              $"Column {colIdx + 1} in Row 1 was named '{actualHeader}. Expected '{expectedHeader}'.");
           }
         }
 
@@ -60,7 +62,8 @@ namespace HonglornBL {
 
           //read one row
           for (int iColIdx = 0; iColIdx <= EXPECTED_HEADER_COLUMN_NAMES.Count() - 1; iColIdx++) {
-            string sCurrentCell = Convert.ToString(worksheet.Range[Prerequisites.ALPHABET[iColIdx] + Convert.ToString(iCurrentRow)].Text);
+            string sCurrentCell =
+              Convert.ToString(worksheet.Range[Prerequisites.ALPHABET[iColIdx] + Convert.ToString(iCurrentRow)].Text);
             oNewDataRow[iColIdx] = sCurrentCell;
 
             if (!string.IsNullOrWhiteSpace(sCurrentCell)) {

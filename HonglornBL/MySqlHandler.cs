@@ -1,19 +1,11 @@
-using Microsoft.VisualBasic;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Xml.Linq;
-using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
-using HonglornBL;
 
 namespace HonglornBL {
-
-  internal class MySqlHandler {
-    private readonly string _sConnectionString;
+  class MySqlHandler {
+    readonly string _sConnectionString;
 
     public MySqlHandler(string sServer, uint iPort, string sUsername, string sPassword, string sDatabase) {
       MySqlConnectionStringBuilder oConStringBuilder = new MySqlConnectionStringBuilder {
@@ -30,12 +22,12 @@ namespace HonglornBL {
     }
 
     //todo: handle exception when connection cannot be established
-    private MySqlConnection GetConnection() {
+    MySqlConnection GetConnection() {
       return new MySqlConnection(_sConnectionString);
     }
 
     /// <summary>
-    /// Returns an array containing all years for which there is student data present.
+    ///   Returns an array containing all years for which there is student data present.
     /// </summary>
     /// <returns>An array containing the years.</returns>
     public int[] GetYearsWithStudentData() {
@@ -82,7 +74,8 @@ namespace HonglornBL {
       DataTable oDataTable = new DataTable();
 
       oSelectCommand.Connection = GetConnection();
-      oSelectCommand.CommandText = "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassName = Class.Name WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC";
+      oSelectCommand.CommandText =
+        "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassName = Class.Name WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC";
       oSelectCommand.Parameters.AddWithValue("@iYear", iYear);
 
       using (MySqlDataAdapter oDataAdapter = new MySqlDataAdapter(oSelectCommand)) {
@@ -240,7 +233,6 @@ namespace HonglornBL {
             default:
               throw new DataException("Invalid GameType received from database: " + sReturnedGameType);
           }
-
         } finally {
           oSelectCommand.Connection?.Close();
         }
@@ -258,7 +250,8 @@ namespace HonglornBL {
 
       oSelectCommand.Connection = GetConnection();
 
-      oSelectCommand.CommandText = "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC";
+      oSelectCommand.CommandText =
+        "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC";
 
       oSelectCommand.Parameters.AddWithValue("@Year", iYear);
       oSelectCommand.Parameters.AddWithValue("@CourseName", sCourseName);
@@ -316,7 +309,8 @@ namespace HonglornBL {
       return oDataAdapter;
     }
 
-    public void ImportStudentData(string sSurname, string sForename, string sCourseName, string sClassName, Prerequisites.Sex eSex, int iYearOfBirth, int iYear) {
+    public void ImportStudentData(string sSurname, string sForename, string sCourseName, string sClassName,
+      Prerequisites.Sex eSex, int iYearOfBirth, int iYear) {
       MySqlCommand oCmd = new MySqlCommand("ImportStudent", GetConnection());
       oCmd.CommandType = CommandType.StoredProcedure;
 
@@ -332,8 +326,9 @@ namespace HonglornBL {
         oCmd.Connection.Open();
         oCmd.ExecuteNonQuery();
       } finally {
-        if (oCmd.Connection != null)
+        if (oCmd.Connection != null) {
           oCmd.Connection.Close();
+        }
       }
     }
   }
