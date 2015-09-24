@@ -1,4 +1,5 @@
-﻿Imports HonglornApp
+﻿Imports HonglornBL
+Imports HonglornBL.Prerequisites
 
 Public Class SetDisciplinesDialog
 

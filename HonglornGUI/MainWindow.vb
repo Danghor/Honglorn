@@ -1,5 +1,5 @@
 ﻿Imports System.IO
-Imports HonglornApp
+Imports HonglornBL
 
 Public Class MainWindow
   Private Const SCALE_FACTOR As Single = 0.8

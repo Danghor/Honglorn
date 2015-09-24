@@ -11,7 +11,8 @@
     <AssemblyName>HonglornGUI</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -133,6 +134,10 @@
     <ProjectReference Include="..\HonglornApp\HonglornApp.vbproj">
       <Project>{bfa33356-8bf8-4c29-9fef-bd11465d468d}</Project>
       <Name>HonglornApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HonglornBL\HonglornBL.csproj">
+      <Project>{e78798dc-7408-4d11-ae8d-4abd4aa5b912}</Project>
+      <Name>HonglornBL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

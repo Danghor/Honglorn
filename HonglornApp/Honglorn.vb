@@ -176,7 +176,7 @@ Public Class Honglorn
 
     'todo: move this to prerequisites or so (or some other validation function)
     If Regex.IsMatch(sCourseName, "0[5-9][A-Z]") Then
-      sClassName = CStr(sCourseName(1))
+      sClassName = sCourseName(1)
     ElseIf Regex.IsMatch(sCourseName, "E(0[1-9]|[1-9][0-9])") Then
       sClassName = "E"
     Else
