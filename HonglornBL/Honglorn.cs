@@ -1,42 +1,41 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
-using System.Text.RegularExpressions;
 using MySql.Data.MySqlClient;
+using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
   public class Honglorn {
-    readonly MySqlHandler _oMySqlHandler;
+    readonly MySqlHandler mySQLHandler;
 
     MySqlDataAdapter _daCurrentDisciplinesEditAdapter;
-
-
     MySqlDataAdapter _daCurrentRawDataEditAdapter;
 
-    public Honglorn(string sServer, uint iPort, string sUsername, string sPassword, string sDatabase) {
-      _oMySqlHandler = new MySqlHandler(sServer, iPort, sUsername, sPassword, sDatabase);
+    public Honglorn(string server, uint port, string username, string password, string database) {
+      mySQLHandler = new MySqlHandler(server, port, username, password, database);
     }
 
-    public DataTable GetValidTraditionalDisciplinesTable(Prerequisites.Sex eSex, Prerequisites.Discipline eDiscipline) {
-      return _oMySqlHandler.GetValidTraditionalDisciplinesTable(eSex, eDiscipline);
+    public DataTable GetValidTraditionalDisciplinesTable(Sex sex, Discipline discipline) {
+      return mySQLHandler.GetValidTraditionalDisciplinesTable(sex, discipline);
     }
 
-    public DataTable GetValidCompetitionDisciplinesTable(Prerequisites.Discipline eDiscipline) {
-      return _oMySqlHandler.GetValidCompetitionDisciplinesTable(eDiscipline);
+    public DataTable GetValidCompetitionDisciplinesTable(Discipline discipline) {
+      return mySQLHandler.GetValidCompetitionDisciplinesTable(discipline);
     }
 
     /// <summary>
     ///   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
     ///   is set.
     /// </summary>
-    /// <param name="cClassName">The class name of the class the GameType is to be returned.</param>
-    /// <param name="iYear">The year for which the GameType is valid.</param>
+    /// <param name="className">The class name of the class the GameType is to be returned.</param>
+    /// <param name="year">The year for which the GameType is valid.</param>
     /// <returns>
     ///   A member of the Enum GameType that represents the GameType set in DisciplineMeta for the corresponding class
     ///   in the given year.
     /// </returns>
     /// <remarks></remarks>
-    public Prerequisites.GameType GetGameType(char cClassName, int iYear) {
-      return _oMySqlHandler.GetGameType(cClassName, iYear);
+    public Prerequisites.GameType GetGameType(char className, uint year) {
+      return mySQLHandler.GetGameType(className, year);
     }
 
     /// <summary>
@@ -44,27 +43,27 @@ namespace HonglornBL {
     /// </summary>
     /// <returns>An Integer Array representing the valid years.</returns>
     public int[] GetYearsWithStudentData() {
-      return _oMySqlHandler.GetYearsWithStudentData();
+      return mySQLHandler.GetYearsWithStudentData();
     }
 
     /// <summary>
     ///   Get a String Array representing the course names for which there is at least one student present in the given year.
     /// </summary>
-    /// <param name="iYear">The year for which the valid course names should be retrieved.</param>
+    /// <param name="year">The year for which the valid course names should be retrieved.</param>
     /// <returns>A String Array representing the valid course names.</returns>
     /// <remarks></remarks>
-    public string[] GetValidCourseNames(int iYear) {
-      return _oMySqlHandler.GetValidCourseNames(iYear);
+    public string[] GetValidCourseNames(int year) {
+      return mySQLHandler.GetValidCourseNames(year);
     }
 
     /// <summary>
     ///   Get a Char Array representing the class names for which there is at least one student present in the given year.
     /// </summary>
-    /// <param name="iYear">The year for which the valid class names should be retrieved.</param>
+    /// <param name="year">The year for which the valid class names should be retrieved.</param>
     /// <returns>A Char Array representing the valid class names.</returns>
     /// <remarks></remarks>
-    public char[] GetValidClassNames(int iYear) {
-      return _oMySqlHandler.GetValidClassNames(iYear);
+    public char[] GetValidClassNames(int year) {
+      return mySQLHandler.GetValidClassNames(year);
     }
 
     #region "CompetitionEdit"
@@ -74,22 +73,22 @@ namespace HonglornBL {
     ///   in the UI. Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the DataBase
     ///   later.
     /// </summary>
-    /// <param name="sCourseName">The name of the course to be edited.</param>
-    /// <param name="iYear">The year for which the data should be selected.</param>
+    /// <param name="courseNames">The name of the course to be edited.</param>
+    /// <param name="year">The year for which the data should be selected.</param>
     /// <returns></returns>
     /// <remarks></remarks>
-    public DataTable GetCompetitionEditDataTable(string sCourseName, int iYear) {
+    public DataTable GetCompetitionEditDataTable(string courseNames, int year) {
       DataTable dtEditDataTable = new DataTable();
-      _daCurrentRawDataEditAdapter = _oMySqlHandler.GetRawDataEditAdapter(sCourseName, iYear);
+      _daCurrentRawDataEditAdapter = mySQLHandler.GetRawDataEditAdapter(courseNames, year);
 
       _daCurrentRawDataEditAdapter.Fill(dtEditDataTable);
 
       return dtEditDataTable;
     }
 
-    public void SaveRawDataEditTableChanges(DataTable oChanges) {
+    public void SaveRawDataEditTableChanges(DataTable changes) {
       if (_daCurrentRawDataEditAdapter != null) {
-        _daCurrentRawDataEditAdapter.Update(oChanges);
+        _daCurrentRawDataEditAdapter.Update(changes);
       } else {
         throw new InvalidOperationException("The raw data edit table has not been initialized.");
       }
@@ -103,22 +102,22 @@ namespace HonglornBL {
     ///   Returns a DataTable containing the current discipline settings for the given class and year (only the PKeys).
     ///   Simultaneously, the corresponding DataAdapter is preserved, so it can be used for updating the database later.
     /// </summary>
-    /// <param name="cClassName">The name of the class whose discipline settings should be displayed.</param>
-    /// <param name="iYear">The year for which the data should be retrieved.</param>
+    /// <param name="classNames">The name of the class whose discipline settings should be displayed.</param>
+    /// <param name="year">The year for which the data should be retrieved.</param>
     /// <returns></returns>
     /// <remarks></remarks>
-    public DataTable GetDisciplinesEditDataTable(char cClassName, int iYear) {
+    public DataTable GetDisciplinesEditDataTable(char classNames, int year) {
       DataTable dsDisciplinesEditDataTable = new DataTable();
-      _daCurrentDisciplinesEditAdapter = _oMySqlHandler.GetDisciplinesEditAdapter(cClassName, iYear);
+      _daCurrentDisciplinesEditAdapter = mySQLHandler.GetDisciplinesEditAdapter(classNames, year);
 
       _daCurrentDisciplinesEditAdapter.Fill(dsDisciplinesEditDataTable);
 
       return dsDisciplinesEditDataTable;
     }
 
-    public void SaveDisciplinesEditTableChanges(DataTable oChanges) {
+    public void SaveDisciplinesEditTableChanges(DataTable changes) {
       if (_daCurrentDisciplinesEditAdapter != null) {
-        _daCurrentDisciplinesEditAdapter.Update(oChanges);
+        _daCurrentDisciplinesEditAdapter.Update(changes);
       } else {
         throw new InvalidOperationException("The raw data edit table has not been initialized.");
       }
@@ -134,57 +133,30 @@ namespace HonglornBL {
     /// <summary>
     ///   Imports an Excel sheet containing data for multiple students into the database.
     /// </summary>
-    /// <param name="sFilePath">The full path to the Excel file to be imported.</param>
-    /// <param name="iYear">The year in which the imported data is valid (relevant for mapping the courses).</param>
-    public void ImportStudentCourseExcelSheet(string sFilePath, int iYear) {
-      Prerequisites.Sex eCurrentSex = default(Prerequisites.Sex);
+    /// <param name="filePath">The full path to the Excel file to be imported.</param>
+    /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
+    public void ImportStudentCourseExcelSheet(string filePath, uint year) {
+      IEnumerable<Student> studentsFromExcelSheet = ExcelImporter.GetStudentArrayFromExcelFile(filePath);
 
-      DataTable oDataTable = ExcelImporter.GetStudentCourseDataTable(sFilePath);
-
-      foreach (DataRow oRow in oDataTable.Rows) {
-        string surname = Convert.ToString(oRow[0]);
-        string forename = Convert.ToString(oRow[1]);
-        string courseName = Convert.ToString(oRow[2]);
-
-        switch (Convert.ToString(oRow[3])) {
-          case "M":
-            eCurrentSex = Prerequisites.Sex.Male;
-            break;
-          case "W":
-            eCurrentSex = Prerequisites.Sex.Female;
-            break;
-        }
-
-        int iCurYearOfBirth = Convert.ToInt32(oRow[4]);
-
-        ImportSingleStudent(surname, forename, courseName, eCurrentSex, iCurYearOfBirth, iYear);
+      foreach (Student s in studentsFromExcelSheet) {
+        ImportSingleStudent(s.Surname, s.Forename, s.CourseName, s.Sex, s.YearOfBirth, year);
       }
     }
 
     /// <summary>
     ///   Imports data of a single student into the database.
     /// </summary>
-    /// <param name="sSurname">Surname of the student to be imported.</param>
-    /// <param name="sForename">Forename of the student to be imported.</param>
-    /// <param name="sCourseName"></param>
-    /// <param name="eSex"></param>
-    /// <param name="iYearOfBirth"></param>
-    /// <param name="iYear"></param>
+    /// <param name="surname">Surname of the student to be imported.</param>
+    /// <param name="forename">Forename of the student to be imported.</param>
+    /// <param name="courseName"></param>
+    /// <param name="sex"></param>
+    /// <param name="yearOfBirth"></param>
+    /// <param name="year"></param>
     /// <remarks></remarks>
-    void ImportSingleStudent(string sSurname, string sForename, string sCourseName, Prerequisites.Sex eSex,
-      int iYearOfBirth, int iYear) {
-      string sClassName;
+    void ImportSingleStudent(string surname, string forename, string courseName, Sex sex, uint yearOfBirth, uint year) {
+      char className = Prerequisites.GetClassName(courseName);
 
-      //todo: move this to prerequisites or so (or some other validation function)
-      if (Regex.IsMatch(sCourseName, "0[5-9][A-Z]")) {
-        sClassName = sCourseName[1].ToString();
-      } else if (Regex.IsMatch(sCourseName, "E(0[1-9]|[1-9][0-9])")) {
-        sClassName = "E";
-      } else {
-        throw new ArgumentException("Invalid course name. Automatic mapping to class name failed.");
-      }
-
-      _oMySqlHandler.ImportStudentData(sSurname, sForename, sCourseName, sClassName, eSex, iYearOfBirth, iYear);
+      mySQLHandler.ImportStudentData(surname, forename, courseName, className, sex, yearOfBirth, year);
     }
 
     #endregion

@@ -1,17 +1,21 @@
 ﻿using System;
-using System.Data;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
-using DataTable = System.Data.DataTable;
+using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
   public static class ExcelImporter {
-    static readonly string[] EXPECTED_HEADER_COLUMN_NAMES = {
-      "Nachname",
-      "Vorname",
-      "Kursbezeichnung",
-      "Geschlecht",
-      "Geburtsjahr"
+    const string SURNAME_HEADER_COLUMN = "Nachname";
+    const string FORENAME_HEADER_COLUMN = "Vorname";
+    const string COURSENAME_HEADER_COLUMN = "Kursbezeichnung";
+    const string SEX_HEADER_COLUMN = "Geschlecht";
+    const string YEAROFBIRTH_HEADER_COLUMN = "Geburtsjahr";
+
+    static readonly Dictionary<string, Sex> SexDictionary = new Dictionary<string, Sex> {
+      {"W", Sex.Female},
+      {"M", Sex.Male}
     };
 
     /// <summary>
@@ -19,64 +23,44 @@ namespace HonglornBL {
     ///   Designed to work together with the DBHandler to import the data into the database.
     /// </summary>
     /// <param name="filePath">The file path of the Excel-file containing the relevant data.</param>
-    internal static DataTable GetStudentCourseDataTable(string filePath) {
-      DataTable result;
+    internal static IEnumerable<Student> GetStudentArrayFromExcelFile(string filePath) {
+      List<Student> importedStudents = new List<Student>();
+
       if (string.IsNullOrWhiteSpace(filePath)) {
         throw new ArgumentException("File path is null, empty or consist of only white-space characters.");
       }
 
-      Application excelInstance = null;
-      Workbook workbook = null;
+      _Application excelInstance = null;
+      _Workbook workbook = null;
 
       try {
         excelInstance = new Application();
         workbook = excelInstance.Workbooks.Open(filePath);
-        Worksheet worksheet = workbook.Worksheets[0];
+        _Worksheet worksheet = workbook.Worksheets[0];
 
-        //validate header row
-        for (int colIdx = 0; colIdx <= EXPECTED_HEADER_COLUMN_NAMES.Length - 1; colIdx++) {
-          string actualHeader = worksheet.Range[Prerequisites.ALPHABET[colIdx] + "1"].Text;
-          string expectedHeader = EXPECTED_HEADER_COLUMN_NAMES[colIdx];
-          if (actualHeader != expectedHeader) {
-            throw new ArgumentException(
-              $"Column {colIdx + 1} in Row 1 was named '{actualHeader}. Expected '{expectedHeader}'.");
-          }
-        }
-
-        //create DataTable and initialize column names
-        result = new DataTable();
-        for (int colIdx = 0; colIdx <= EXPECTED_HEADER_COLUMN_NAMES.Length - 1; colIdx++) {
-          result.Columns.Add(EXPECTED_HEADER_COLUMN_NAMES[colIdx]);
-        }
+        ValidateHeaderRow(worksheet);
 
         //import content
-        int iCurrentRow = 2;
-
-        bool bRowIsEmpty;
-
         //todo: handle half-empty rows correctly! (Error message and removal from DataTable, so it's not imported)
-        do {
-          bRowIsEmpty = true;
-          DataRow oNewDataRow = result.NewRow();
+        int rowIdx = 1;
+        bool rowIsEmpty = false;
+        while (!rowIsEmpty) {
+          string surname = GetText(worksheet, $"A{rowIdx}");
+          string forename = GetText(worksheet, $"B{rowIdx}");
+          string courseName = GetText(worksheet, $"C{rowIdx}");
+          string rawSex = GetText(worksheet, $"D{rowIdx}");
+          string rawYearOfBirth = GetText(worksheet, $"E{rowIdx}");
 
-          //read one row
-          for (int iColIdx = 0; iColIdx <= EXPECTED_HEADER_COLUMN_NAMES.Length - 1; iColIdx++) {
-            string sCurrentCell =
-              Convert.ToString(worksheet.Range[Prerequisites.ALPHABET[iColIdx] + Convert.ToString(iCurrentRow)].Text);
-            oNewDataRow[iColIdx] = sCurrentCell;
+          rowIsEmpty = CoalesceIsNullOrWhitespace(surname, forename, courseName, rawSex, rawYearOfBirth);
 
-            if (!string.IsNullOrWhiteSpace(sCurrentCell)) {
-              bRowIsEmpty = false;
-            }
+          if (!rowIsEmpty) {
+            Sex sex = SexDictionary[rawSex];
+            uint yearOfBirth = Convert.ToUInt32(rawYearOfBirth);
+            importedStudents.Add(new Student(surname, forename, yearOfBirth, sex, courseName));
           }
 
-          //add row to DataTable, if it contains at least one entry
-          if (!bRowIsEmpty) {
-            result.Rows.Add(oNewDataRow);
-          }
-
-          iCurrentRow += 1;
-        } while (!(bRowIsEmpty));
+          rowIdx++;
+        }
       } finally {
         workbook?.Close();
         excelInstance?.Quit();
@@ -84,12 +68,35 @@ namespace HonglornBL {
         if (workbook != null) {
           Marshal.ReleaseComObject(workbook);
         }
+
         if (excelInstance != null) {
           Marshal.ReleaseComObject(excelInstance);
         }
       }
 
-      return result;
+      return importedStudents;
+    }
+
+    static string GetText(_Worksheet sheet, string range) {
+      return sheet.Range[range].Text;
+    }
+
+    static void ValidateHeaderRow(_Worksheet sheet) {
+      ValidateString(SURNAME_HEADER_COLUMN, GetText(sheet, "A1"));
+      ValidateString(FORENAME_HEADER_COLUMN, GetText(sheet, "B1"));
+      ValidateString(COURSENAME_HEADER_COLUMN, GetText(sheet, "C1"));
+      ValidateString(SEX_HEADER_COLUMN, GetText(sheet, "D1"));
+      ValidateString(YEAROFBIRTH_HEADER_COLUMN, GetText(sheet, "E1"));
+    }
+
+    static void ValidateString(string expected, string actual) {
+      if (expected != actual) {
+        throw new ArgumentException($"Header row was in unexpected condition. Expected {expected} but was {actual}.");
+      }
+    }
+
+    static bool CoalesceIsNullOrWhitespace(params string[] args) {
+      return args.All(string.IsNullOrWhiteSpace);
     }
   }
 }

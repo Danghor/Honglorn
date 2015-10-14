@@ -2,28 +2,55 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
+using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
   class MySqlHandler {
-    readonly string _sConnectionString;
+    static readonly Dictionary<string, GameType> GameTypeDictionary =
+      new Dictionary<string, GameType> {
+        {"Competition", GameType.Competition},
+        {"Traditional", GameType.Traditional},
+        {string.Empty, GameType.Unspecified}
+      };
 
-    public MySqlHandler(string sServer, uint iPort, string sUsername, string sPassword, string sDatabase) {
+    static readonly Dictionary<Discipline, string> CompetitionDisciplinesViewNames =
+      new Dictionary<Discipline, string> {
+        {Discipline.Sprint, "CompetitionSprintDisciplines"},
+        {Discipline.Jump, "CompetitionJumpDisciplines"},
+        {Discipline.Throw, "CompetitionThrowDisciplines"},
+        {Discipline.MiddleDistance, "CompetitionMiddleDistanceDisciplines"}
+      };
+
+    static readonly Dictionary<Tuple<Sex, Discipline>, string> TraditionalDisciplinesViewNames =
+      new Dictionary<Tuple<Sex, Discipline>, string> {
+        {new Tuple<Sex, Discipline>(Sex.Male, Discipline.Sprint), "TraditionalMaleSprintDisciplines"},
+        {new Tuple<Sex, Discipline>(Sex.Male, Discipline.Jump), "TraditionalMaleJumpDisciplines"},
+        {new Tuple<Sex, Discipline>(Sex.Male, Discipline.Throw), "TraditionalMaleThrowDisciplines"},
+        {new Tuple<Sex, Discipline>(Sex.Male, Discipline.MiddleDistance), "TraditionalMaleMiddleDistanceDisciplines"},
+        {new Tuple<Sex, Discipline>(Sex.Female, Discipline.Sprint), "TraditionalFemaleSprintDisciplines"},
+        {new Tuple<Sex, Discipline>(Sex.Female, Discipline.Jump), "TraditionalFemaleJumpDisciplines"},
+        {new Tuple<Sex, Discipline>(Sex.Female, Discipline.Throw), "TraditionalFemaleThrowDisciplines"},
+        {new Tuple<Sex, Discipline>(Sex.Female, Discipline.MiddleDistance), "TraditionalFemaleMiddleDistanceDisciplines"}
+      };
+
+    readonly string conString;
+
+    public MySqlHandler(string server, uint port, string username, string password, string database) {
       MySqlConnectionStringBuilder oConStringBuilder = new MySqlConnectionStringBuilder {
-        Server = sServer,
-        Port = iPort,
-        UserID = sUsername,
-        Password = sPassword,
-        Database = sDatabase,
+        Server = server,
+        Port = port,
+        UserID = username,
+        Password = password,
+        Database = database,
         CharacterSet = "utf8"
       };
 
-
-      _sConnectionString = oConStringBuilder.GetConnectionString(true);
+      conString = oConStringBuilder.GetConnectionString(true);
     }
 
     //todo: handle exception when connection cannot be established
     MySqlConnection GetConnection() {
-      return new MySqlConnection(_sConnectionString);
+      return new MySqlConnection(conString);
     }
 
     /// <summary>
@@ -45,38 +72,37 @@ namespace HonglornBL {
       return years.ToArray();
     }
 
-    public string[] GetValidCourseNames(int iYear) {
-      MySqlCommand oSelectCommand = new MySqlCommand {
+    public string[] GetValidCourseNames(int year) {
+      MySqlCommand selectCommand = new MySqlCommand {
         Connection = GetConnection(),
         CommandText = "SELECT DISTINCT CourseName FROM StudentCourseRel WHERE year = @iYear ORDER BY CourseName ASC"
       };
 
-      oSelectCommand.Parameters.AddWithValue("@iYear", iYear);
+      selectCommand.Parameters.AddWithValue("@iYear", year);
 
-      DataTable oDataTable = new DataTable();
+      DataTable dt = new DataTable();
 
-      using (MySqlDataAdapter oDataAdapter = new MySqlDataAdapter(oSelectCommand)) {
-        oDataAdapter.Fill(oDataTable);
+      using (MySqlDataAdapter da = new MySqlDataAdapter(selectCommand)) {
+        da.Fill(dt);
       }
 
-      int iArrayLength = oDataTable.Rows.Count - 1;
-      string[] asResult = new string[iArrayLength + 1];
+      List<string> resultList = new List<string>();
 
-      for (int iRow = 0; iRow <= iArrayLength; iRow++) {
-        asResult[iRow] = Convert.ToString(oDataTable.Rows[iRow][0]);
+      foreach (DataRow row in dt.Rows) {
+        resultList.Add(row[0].ToString());
       }
 
-      return asResult;
+      return resultList.ToArray();
     }
 
-    public char[] GetValidClassNames(int iYear) {
+    public char[] GetValidClassNames(int year) {
       MySqlCommand oSelectCommand = new MySqlCommand();
       DataTable oDataTable = new DataTable();
 
       oSelectCommand.Connection = GetConnection();
       oSelectCommand.CommandText =
         "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassName = Class.Name WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC";
-      oSelectCommand.Parameters.AddWithValue("@iYear", iYear);
+      oSelectCommand.Parameters.AddWithValue("@iYear", year);
 
       using (MySqlDataAdapter oDataAdapter = new MySqlDataAdapter(oSelectCommand)) {
         oDataAdapter.Fill(oDataTable);
@@ -88,10 +114,10 @@ namespace HonglornBL {
       for (int iRow = 0; iRow <= iArrayLength; iRow++) {
         char cCurrentClass = Convert.ToChar(oDataTable.Rows[iRow][0]);
 
-        if (Prerequisites.IsValidClassName(cCurrentClass)) {
+        if (IsValidClassName(cCurrentClass)) {
           acResult[iRow] = Convert.ToChar(oDataTable.Rows[iRow][0]);
         } else {
-          throw new ArgumentOutOfRangeException("Invalid ClassName" + cCurrentClass + "received from database.");
+          throw new ArgumentOutOfRangeException($"Invalid ClassName {cCurrentClass} received from database.");
         }
       }
 
@@ -102,67 +128,29 @@ namespace HonglornBL {
     ///   Returns a data table with information about the allowed traditional disciplines, i.e. the disciplines that can be
     ///   selected for the given parameters.
     /// </summary>
-    /// <param name="eSex">The students' gender.</param>
-    /// <param name="eDiscipline">The disciple type to be looked up.</param>
+    /// <param name="sex">The students' gender.</param>
+    /// <param name="discipline">The disciple type to be looked up.</param>
     /// <returns></returns>
     /// <remarks></remarks>
-    public DataTable GetValidTraditionalDisciplinesTable(Prerequisites.Sex eSex, Prerequisites.Discipline eDiscipline) {
-      DataTable oDataTable = new DataTable();
-      MySqlCommand oSelectCommand = new MySqlCommand { CommandText = "Select * from " };
+    public DataTable GetValidTraditionalDisciplinesTable(Sex sex, Discipline discipline) {
+      MySqlCommand selectCommand = new MySqlCommand {
+        Connection = GetConnection(),
+        CommandText =
+          $"Select * from {TraditionalDisciplinesViewNames[new Tuple<Sex, Discipline>(sex, discipline)]}"
+      };
 
-      switch (eSex) {
-        case Prerequisites.Sex.Male:
-          switch (eDiscipline) {
-            case Prerequisites.Discipline.Sprint:
-              oSelectCommand.CommandText += "TraditionalMaleSprintDisciplines";
-              break;
-            case Prerequisites.Discipline.Throw:
-              oSelectCommand.CommandText += "TraditionalMaleThrowDisciplines";
-              break;
-            case Prerequisites.Discipline.Jump:
-              oSelectCommand.CommandText += "TraditionalMaleJumpDisciplines";
-              break;
-            case Prerequisites.Discipline.MiddleDistance:
-              oSelectCommand.CommandText += "TraditionalMaleMiddleDistanceDisciplines";
-              break;
-            default:
-              throw new ArgumentException("Invalid discipline: " + eDiscipline);
-          }
-          break;
-        case Prerequisites.Sex.Female:
-          switch (eDiscipline) {
-            case Prerequisites.Discipline.Sprint:
-              oSelectCommand.CommandText += "TraditionalFemaleSprintDisciplines";
-              break;
-            case Prerequisites.Discipline.Throw:
-              oSelectCommand.CommandText += "TraditionalFemaleThrowDisciplines";
-              break;
-            case Prerequisites.Discipline.Jump:
-              oSelectCommand.CommandText += "TraditionalFemaleJumpDisciplines";
-              break;
-            case Prerequisites.Discipline.MiddleDistance:
-              oSelectCommand.CommandText += "TraditionalFemaleMiddleDistanceDisciplines";
-              break;
-            default:
-              throw new ArgumentException("Invalid discipline: " + eDiscipline);
-          }
-          break;
-        default:
-          throw new ArgumentException("Invalid sex: " + eSex);
+      DataTable dt = new DataTable();
+
+      using (MySqlDataAdapter da = new MySqlDataAdapter(selectCommand)) {
+        da.Fill(dt);
       }
 
-      oSelectCommand.Connection = GetConnection();
-
-      using (MySqlDataAdapter oDataAdapter = new MySqlDataAdapter(oSelectCommand)) {
-        oDataAdapter.Fill(oDataTable);
-      }
-
-      return oDataTable;
+      return dt;
     }
 
-    public DataTable GetValidCompetitionDisciplinesTable(Prerequisites.Discipline discipline) {
+    public DataTable GetValidCompetitionDisciplinesTable(Discipline discipline) {
       MySqlCommand selectCommand = new MySqlCommand {
-        CommandText = $"Select * from {Prerequisites.CompetitionDisciplinesViewNames[discipline]}",
+        CommandText = $"Select * from {CompetitionDisciplinesViewNames[discipline]}",
         Connection = GetConnection()
       };
 
@@ -175,18 +163,18 @@ namespace HonglornBL {
       return dataTable;
     }
 
-    public Prerequisites.GameType GetGameType(char cClassName, int iYear) {
-      Prerequisites.GameType functionReturnValue;
+    public GameType GetGameType(char classNames, uint year) {
+      GameType functionReturnValue;
 
-      if (Prerequisites.IsValidYear(iYear) && Prerequisites.IsValidClassName(cClassName)) {
+      if (IsValidYear(year) && IsValidClassName(classNames)) {
         MySqlCommand oSelectCommand = new MySqlCommand {
           CommandType = CommandType.StoredProcedure,
           Connection = GetConnection(),
           CommandText = "GetGameType"
         };
 
-        oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName);
-        oSelectCommand.Parameters.AddWithValue("@yYear", iYear);
+        oSelectCommand.Parameters.AddWithValue("@cClassName", classNames);
+        oSelectCommand.Parameters.AddWithValue("@yYear", year);
 
         MySqlParameter oReturnParameter = new MySqlParameter {
           Direction = ParameterDirection.ReturnValue,
@@ -200,48 +188,37 @@ namespace HonglornBL {
           oSelectCommand.Connection.Open();
           oSelectCommand.ExecuteNonQuery();
 
-          string sReturnedGameType = oReturnParameter.Value.ToString();
+          string returnedGameType = oReturnParameter.Value.ToString();
 
-          switch (sReturnedGameType) {
-            case "Competition":
-              functionReturnValue = Prerequisites.GameType.Competition;
-              break;
-            case "Traditional":
-              functionReturnValue = Prerequisites.GameType.Traditional;
-              break;
-            case "":
-              functionReturnValue = Prerequisites.GameType.Unknown;
-              break;
-            default:
-              throw new DataException("Invalid GameType received from database: " + sReturnedGameType);
+          if (!GameTypeDictionary.TryGetValue(returnedGameType, out functionReturnValue)) {
+            throw new DataException($"Invalid GameType received from database: {returnedGameType}");
           }
         } finally {
           oSelectCommand.Connection?.Close();
         }
       } else {
         //todo: distiguish between which provided argument is invalid
-        throw new ArgumentException($"Invalid year or class name provided. Year: {iYear}; Class Name: {cClassName}");
+        throw new ArgumentException($"Invalid year or class name provided. Year: {year}; Class Name: {classNames}");
       }
       return functionReturnValue;
     }
 
-    public MySqlDataAdapter GetRawDataEditAdapter(string sCourseName, int iYear) {
+    public MySqlDataAdapter GetRawDataEditAdapter(string sCourseName, int year) {
       MySqlDataAdapter oDataAdapter = new MySqlDataAdapter();
-      MySqlCommand oSelectCommand = new MySqlCommand();
+      MySqlCommand oSelectCommand = new MySqlCommand {
+        Connection = GetConnection(),
+        CommandText =
+          "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC"
+      };
 
-      oSelectCommand.Connection = GetConnection();
-
-      oSelectCommand.CommandText =
-        "SELECT Student.PKey, Surname, Forename, Sex, Sprint, Jump, Throw, MiddleDistance FROM Student INNER JOIN StudentCourseRel ON Student.Pkey = StudentCourseRel.StudentPKey LEFT JOIN Competition On Student.PKey = Competition.StudentPKey and Competition.Year = @Year WHERE StudentCourseRel.Year = @Year AND StudentCourseRel.CourseName = @CourseName ORDER BY Surname ASC, Forename ASC";
-
-      oSelectCommand.Parameters.AddWithValue("@Year", iYear);
+      oSelectCommand.Parameters.AddWithValue("@Year", year);
       oSelectCommand.Parameters.AddWithValue("@CourseName", sCourseName);
 
       MySqlCommand oUpdateCommand = new MySqlCommand("EnterCompetitionValues", GetConnection()) {
         CommandType = CommandType.StoredProcedure
       };
 
-      oUpdateCommand.Parameters.AddWithValue("yYear", iYear);
+      oUpdateCommand.Parameters.AddWithValue("yYear", year);
 
       oUpdateCommand.Parameters.Add("cPKey", MySqlDbType.Guid, 36, "PKey");
       //todo: figure out, what exactly the size does for float :D
@@ -256,22 +233,22 @@ namespace HonglornBL {
       return oDataAdapter;
     }
 
-    public MySqlDataAdapter GetDisciplinesEditAdapter(char cClassName, int iYear) {
+    public MySqlDataAdapter GetDisciplinesEditAdapter(char className, int year) {
       MySqlDataAdapter oDataAdapter = new MySqlDataAdapter();
       MySqlCommand oSelectCommand = new MySqlCommand {
         Connection = GetConnection(),
         CommandText = "SELECT * FROM ClassDisciplineMeta WHERE ClassName = @cClassName AND YEAR = @yYear"
       };
 
-      oSelectCommand.Parameters.AddWithValue("@cClassName", cClassName);
-      oSelectCommand.Parameters.AddWithValue("@yYear", iYear);
+      oSelectCommand.Parameters.AddWithValue("@cClassName", className);
+      oSelectCommand.Parameters.AddWithValue("@yYear", year);
 
       MySqlCommand oUpdateCommand = new MySqlCommand("EnterDisciplineMeta", GetConnection()) {
         CommandType = CommandType.StoredProcedure
       };
 
-      oUpdateCommand.Parameters.AddWithValue("cClassName", cClassName);
-      oUpdateCommand.Parameters.AddWithValue("yYear", iYear);
+      oUpdateCommand.Parameters.AddWithValue("cClassName", className);
+      oUpdateCommand.Parameters.AddWithValue("yYear", year);
 
       oUpdateCommand.Parameters.Add("eGameType", MySqlDbType.Enum, 1, "GameType");
       // todo: test this
@@ -290,23 +267,24 @@ namespace HonglornBL {
       return oDataAdapter;
     }
 
-    public void ImportStudentData(string sSurname, string sForename, string sCourseName, string sClassName,
-      Prerequisites.Sex eSex, int iYearOfBirth, int iYear) {
-      MySqlCommand oCmd = new MySqlCommand("ImportStudent", GetConnection()) {CommandType = CommandType.StoredProcedure};
+    public void ImportStudentData(string surname, string forename, string courseName, char className, Sex sex, uint yearOfBirth, uint year) {
+      MySqlCommand cmd = new MySqlCommand("ImportStudent", GetConnection()) {
+        CommandType = CommandType.StoredProcedure
+      };
 
-      oCmd.Parameters.AddWithValue("@sSurname", sSurname);
-      oCmd.Parameters.AddWithValue("@sForename", sForename);
-      oCmd.Parameters.AddWithValue("@cCourseName", sCourseName);
-      oCmd.Parameters.AddWithValue("@cClassName", sClassName);
-      oCmd.Parameters.AddWithValue("@eSex", eSex.ToString());
-      oCmd.Parameters.AddWithValue("@yYearOfBirth", iYearOfBirth);
-      oCmd.Parameters.AddWithValue("@yYear", iYear);
+      cmd.Parameters.AddWithValue("@sSurname", surname);
+      cmd.Parameters.AddWithValue("@sForename", forename);
+      cmd.Parameters.AddWithValue("@cCourseName", courseName);
+      cmd.Parameters.AddWithValue("@cClassName", className);
+      cmd.Parameters.AddWithValue("@eSex", sex.ToString());
+      cmd.Parameters.AddWithValue("@yYearOfBirth", yearOfBirth);
+      cmd.Parameters.AddWithValue("@yYear", year);
 
       try {
-        oCmd.Connection.Open();
-        oCmd.ExecuteNonQuery();
+        cmd.Connection.Open();
+        cmd.ExecuteNonQuery();
       } finally {
-        oCmd.Connection?.Close();
+        cmd.Connection?.Close();
       }
     }
   }

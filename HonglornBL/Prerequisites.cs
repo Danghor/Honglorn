@@ -1,19 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace HonglornBL {
   public static class Prerequisites {
-    public const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
-
-    internal static readonly Dictionary<Discipline, string> CompetitionDisciplinesViewNames =
-      new Dictionary<Discipline, string> {
-        { Discipline.Sprint, "CompetitionSprintDisciplines" },
-        { Discipline.Jump, "CompetitionJumpDisciplines" },
-        { Discipline.Throw, "CompetitionThrowDisciplines" },
-        { Discipline.MiddleDistance, "CompetitionMiddleDistanceDisciplines" }
-      };
+    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
 
     /// <summary>
     ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
@@ -21,8 +12,8 @@ namespace HonglornBL {
     /// <param name="year">The year to be validated.</param>
     /// <returns>True iff the given year is a valid year.</returns>
     /// <remarks>Valid Years: 1900 - 2099</remarks>
-    public static bool IsValidYear(int year) {
-      return Regex.IsMatch(year.ToString(), "(19|20)[0-9]{2}");
+    public static bool IsValidYear(uint year) {
+      return (year >= 1900 && year <= 2099);
     }
 
     /// <summary>
@@ -35,6 +26,22 @@ namespace HonglornBL {
       return VALID_CLASSNAMES.Contains(className);
     }
 
+    public static char GetClassName(string courseName) {
+      char className;
+
+      if (Regex.IsMatch(courseName, "0[5-9][A-Za-z]")) {
+        className = Convert.ToChar(courseName[1]);
+      } else if (Regex.IsMatch(courseName, "[5-9][A-Za-z]")) {
+        className = Convert.ToChar(courseName[0]);
+      } else if (Regex.IsMatch(courseName, "(E|e)(0[1-9]|[1-9][0-9])")) {
+        className = 'E';
+      } else {
+        throw new ArgumentException($"Invalid course name: {courseName}. Automatic mapping to class name failed.");
+      }
+
+      return className;
+    }
+
     public enum Discipline {
       Sprint,
       Jump,
@@ -45,7 +52,7 @@ namespace HonglornBL {
     public enum GameType {
       Competition,
       Traditional,
-      Unknown
+      Unspecified
     }
 
     public enum Sex {
