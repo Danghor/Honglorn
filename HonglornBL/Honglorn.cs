@@ -34,7 +34,7 @@ namespace HonglornBL {
     ///   in the given year.
     /// </returns>
     /// <remarks></remarks>
-    public Prerequisites.GameType GetGameType(char className, uint year) {
+    public GameType GetGameType(char className, uint year) {
       return mySQLHandler.GetGameType(className, year);
     }
 
@@ -154,7 +154,7 @@ namespace HonglornBL {
     /// <param name="year"></param>
     /// <remarks></remarks>
     void ImportSingleStudent(string surname, string forename, string courseName, Sex sex, uint yearOfBirth, uint year) {
-      char className = Prerequisites.GetClassName(courseName);
+      char className = GetClassName(courseName);
 
       mySQLHandler.ImportStudentData(surname, forename, courseName, className, sex, yearOfBirth, year);
     }

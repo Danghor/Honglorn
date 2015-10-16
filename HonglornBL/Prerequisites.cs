@@ -7,16 +7,6 @@ namespace HonglornBL {
     static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
 
     /// <summary>
-    ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
-    /// </summary>
-    /// <param name="year">The year to be validated.</param>
-    /// <returns>True iff the given year is a valid year.</returns>
-    /// <remarks>Valid Years: 1900 - 2099</remarks>
-    public static bool IsValidYear(uint year) {
-      return (year >= 1900 && year <= 2099);
-    }
-
-    /// <summary>
     ///   Returns true iff the given character is a valid class name that can be used at all in the application.
     /// </summary>
     /// <param name="className">The class name to be validated.</param>
@@ -24,6 +14,16 @@ namespace HonglornBL {
     /// <remarks>Valid classnames: 5, 6, 7, 8, 9, E</remarks>
     public static bool IsValidClassName(char className) {
       return VALID_CLASSNAMES.Contains(className);
+    }
+
+    /// <summary>
+    ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
+    /// </summary>
+    /// <param name="year">The year to be validated.</param>
+    /// <returns>True iff the given year is a valid year.</returns>
+    /// <remarks>Valid Years: 1900 - 2099</remarks>
+    public static bool IsValidYear(uint year) {
+      return (year >= 1900 && year <= 2099);
     }
 
     public static char GetClassName(string courseName) {
