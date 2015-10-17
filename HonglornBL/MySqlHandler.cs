@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
@@ -36,7 +37,7 @@ namespace HonglornBL {
     readonly string conString;
 
     public MySqlHandler(string server, uint port, string username, string password, string database) {
-      MySqlConnectionStringBuilder oConStringBuilder = new MySqlConnectionStringBuilder {
+      MySqlConnectionStringBuilder conStringBuilder = new MySqlConnectionStringBuilder {
         Server = server,
         Port = port,
         UserID = username,
@@ -45,7 +46,7 @@ namespace HonglornBL {
         CharacterSet = "utf8"
       };
 
-      conString = oConStringBuilder.GetConnectionString(true);
+      conString = conStringBuilder.GetConnectionString(true);
     }
 
     //todo: handle exception when connection cannot be established
@@ -57,22 +58,24 @@ namespace HonglornBL {
     ///   Returns an array containing all years for which there is student data present.
     /// </summary>
     /// <returns>An array containing the years.</returns>
-    public int[] GetYearsWithStudentData() {
-      DataSet ds = new DataSet();
-      IDataAdapter da = new MySqlDataAdapter("SELECT * FROM ValidYears", GetConnection());
+    public ICollection<int> GetYearsWithStudentData() {
+      MySqlCommand selectCommand = new MySqlCommand {
+        Connection = GetConnection(),
+        CommandText = "SELECT * FROM ValidYears"
+      };
 
-      da.Fill(ds);
+      DataTable table = GetFilledDataTable(selectCommand);
 
-      List<int> years = new List<int>();
+      ICollection<int> years = new List<int>();
 
-      foreach (DataRow row in ds.Tables[0].Rows) {
+      foreach (DataRow row in table.Rows) {
         years.Add(Convert.ToInt32(row["year"]));
       }
 
-      return years.ToArray();
+      return years;
     }
 
-    public string[] GetValidCourseNames(int year) {
+    public ICollection<string> GetValidCourseNames(int year) {
       MySqlCommand selectCommand = new MySqlCommand {
         Connection = GetConnection(),
         CommandText = "SELECT DISTINCT CourseName FROM StudentCourseRel WHERE year = @iYear ORDER BY CourseName ASC"
@@ -80,48 +83,50 @@ namespace HonglornBL {
 
       selectCommand.Parameters.AddWithValue("@iYear", year);
 
-      DataTable dt = new DataTable();
+      DataTable dt = GetFilledDataTable(selectCommand);
 
-      using (MySqlDataAdapter da = new MySqlDataAdapter(selectCommand)) {
-        da.Fill(dt);
-      }
-
-      List<string> resultList = new List<string>();
+      ICollection<string> resultList = new List<string>();
 
       foreach (DataRow row in dt.Rows) {
         resultList.Add(row[0].ToString());
       }
 
-      return resultList.ToArray();
+      return resultList;
     }
 
-    public char[] GetValidClassNames(int year) {
-      MySqlCommand oSelectCommand = new MySqlCommand();
-      DataTable oDataTable = new DataTable();
+    static DataTable GetFilledDataTable(MySqlCommand selectCommand) {
+      DataTable table = new DataTable();
 
-      oSelectCommand.Connection = GetConnection();
-      oSelectCommand.CommandText =
-        "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassName = Class.Name WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC";
-      oSelectCommand.Parameters.AddWithValue("@iYear", year);
-
-      using (MySqlDataAdapter oDataAdapter = new MySqlDataAdapter(oSelectCommand)) {
-        oDataAdapter.Fill(oDataTable);
+      using (MySqlDataAdapter adapter = new MySqlDataAdapter(selectCommand)) {
+        adapter.Fill(table);
       }
 
-      int iArrayLength = oDataTable.Rows.Count - 1;
-      char[] acResult = new char[iArrayLength + 1];
+      return table;
+    }
 
-      for (int iRow = 0; iRow <= iArrayLength; iRow++) {
-        char cCurrentClass = Convert.ToChar(oDataTable.Rows[iRow][0]);
+    public ICollection<char> GetValidClassNames(int year) {
+      MySqlCommand selectCommand = new MySqlCommand {
+        Connection = GetConnection(),
+        CommandText = "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassName = Class.Name WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC"
+      };
 
-        if (IsValidClassName(cCurrentClass)) {
-          acResult[iRow] = Convert.ToChar(oDataTable.Rows[iRow][0]);
+      selectCommand.Parameters.AddWithValue("@iYear", year);
+
+      DataTable dt = GetFilledDataTable(selectCommand);
+
+      ICollection<char> classNames = new List<char>();
+
+      foreach (DataRow row in dt.Rows) {
+        char currentClass = Convert.ToChar(row[0]);
+
+        if (IsValidClassName(currentClass)) {
+          classNames.Add(currentClass);
         } else {
-          throw new ArgumentOutOfRangeException($"Invalid ClassName {cCurrentClass} received from database.");
+          throw new DataException($"Invalid ClassName {currentClass} received from database.");
         }
       }
 
-      return acResult;
+      return classNames;
     }
 
     /// <summary>
@@ -133,34 +138,20 @@ namespace HonglornBL {
     /// <returns></returns>
     /// <remarks></remarks>
     public DataTable GetValidTraditionalDisciplinesTable(Sex sex, Discipline discipline) {
-      MySqlCommand selectCommand = new MySqlCommand {
-        Connection = GetConnection(),
-        CommandText =
-          $"Select * from {TraditionalDisciplinesViewNames[new Tuple<Sex, Discipline>(sex, discipline)]}"
-      };
-
-      DataTable dt = new DataTable();
-
-      using (MySqlDataAdapter da = new MySqlDataAdapter(selectCommand)) {
-        da.Fill(dt);
-      }
-
-      return dt;
+      return GetFilledDataTable($"Select * from {TraditionalDisciplinesViewNames[new Tuple<Sex, Discipline>(sex, discipline)]}");
     }
 
     public DataTable GetValidCompetitionDisciplinesTable(Discipline discipline) {
+      return GetFilledDataTable($"Select * from {CompetitionDisciplinesViewNames[discipline]}");
+    }
+
+    DataTable GetFilledDataTable(string commandText) {
       MySqlCommand selectCommand = new MySqlCommand {
-        CommandText = $"Select * from {CompetitionDisciplinesViewNames[discipline]}",
-        Connection = GetConnection()
+        Connection = GetConnection(),
+        CommandText = commandText
       };
 
-      DataTable dataTable = new DataTable();
-
-      using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(selectCommand)) {
-        dataAdapter.Fill(dataTable);
-      }
-
-      return dataTable;
+      return GetFilledDataTable(selectCommand);
     }
 
     public GameType GetGameType(char classNames, uint year) {
@@ -267,17 +258,17 @@ namespace HonglornBL {
       return oDataAdapter;
     }
 
-    public void ImportStudentData(string surname, string forename, string courseName, char className, Sex sex, uint yearOfBirth, uint year) {
+    public void ImportStudentData(Student student, char className, uint year) {
       MySqlCommand cmd = new MySqlCommand("ImportStudent", GetConnection()) {
         CommandType = CommandType.StoredProcedure
       };
 
-      cmd.Parameters.AddWithValue("@sSurname", surname);
-      cmd.Parameters.AddWithValue("@sForename", forename);
-      cmd.Parameters.AddWithValue("@cCourseName", courseName);
+      cmd.Parameters.AddWithValue("@sSurname", student.Surname);
+      cmd.Parameters.AddWithValue("@sForename", student.Forename);
+      cmd.Parameters.AddWithValue("@cCourseName", student.CourseName);
       cmd.Parameters.AddWithValue("@cClassName", className);
-      cmd.Parameters.AddWithValue("@eSex", sex.ToString());
-      cmd.Parameters.AddWithValue("@yYearOfBirth", yearOfBirth);
+      cmd.Parameters.AddWithValue("@eSex", student.Sex.ToString());
+      cmd.Parameters.AddWithValue("@yYearOfBirth", student.YearOfBirth);
       cmd.Parameters.AddWithValue("@yYear", year);
 
       try {

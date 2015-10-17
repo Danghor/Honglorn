@@ -42,7 +42,7 @@ namespace HonglornBL {
     ///   Get an Integer Array representing the years for which student data is present in the database.
     /// </summary>
     /// <returns>An Integer Array representing the valid years.</returns>
-    public int[] GetYearsWithStudentData() {
+    public ICollection<int> GetYearsWithStudentData() {
       return mySQLHandler.GetYearsWithStudentData();
     }
 
@@ -52,7 +52,7 @@ namespace HonglornBL {
     /// <param name="year">The year for which the valid course names should be retrieved.</param>
     /// <returns>A String Array representing the valid course names.</returns>
     /// <remarks></remarks>
-    public string[] GetValidCourseNames(int year) {
+    public ICollection<string> GetValidCourseNames(int year) {
       return mySQLHandler.GetValidCourseNames(year);
     }
 
@@ -62,7 +62,7 @@ namespace HonglornBL {
     /// <param name="year">The year for which the valid class names should be retrieved.</param>
     /// <returns>A Char Array representing the valid class names.</returns>
     /// <remarks></remarks>
-    public char[] GetValidClassNames(int year) {
+    public ICollection<char> GetValidClassNames(int year) {
       return mySQLHandler.GetValidClassNames(year);
     }
 
@@ -138,25 +138,19 @@ namespace HonglornBL {
     public void ImportStudentCourseExcelSheet(string filePath, uint year) {
       IEnumerable<Student> studentsFromExcelSheet = ExcelImporter.GetStudentArrayFromExcelFile(filePath);
 
-      foreach (Student s in studentsFromExcelSheet) {
-        ImportSingleStudent(s.Surname, s.Forename, s.CourseName, s.Sex, s.YearOfBirth, year);
+      foreach (Student student in studentsFromExcelSheet) {
+        ImportSingleStudent(student, year);
       }
     }
 
     /// <summary>
     ///   Imports data of a single student into the database.
     /// </summary>
-    /// <param name="surname">Surname of the student to be imported.</param>
-    /// <param name="forename">Forename of the student to be imported.</param>
-    /// <param name="courseName"></param>
-    /// <param name="sex"></param>
-    /// <param name="yearOfBirth"></param>
-    /// <param name="year"></param>
     /// <remarks></remarks>
-    void ImportSingleStudent(string surname, string forename, string courseName, Sex sex, uint yearOfBirth, uint year) {
-      char className = GetClassName(courseName);
+    void ImportSingleStudent(Student student, uint year) {
+      char className = GetClassName(student.CourseName);
 
-      mySQLHandler.ImportStudentData(surname, forename, courseName, className, sex, yearOfBirth, year);
+      mySQLHandler.ImportStudentData(student, className, year);
     }
 
     #endregion
