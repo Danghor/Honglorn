@@ -34,7 +34,7 @@ namespace HonglornBL {
         {new Tuple<Sex, Discipline>(Sex.Female, Discipline.MiddleDistance), "TraditionalFemaleMiddleDistanceDisciplines"}
       };
 
-    readonly string conString;
+    readonly string connectionString;
 
     public MySqlHandler(string server, uint port, string username, string password, string database) {
       MySqlConnectionStringBuilder conStringBuilder = new MySqlConnectionStringBuilder {
@@ -46,12 +46,12 @@ namespace HonglornBL {
         CharacterSet = "utf8"
       };
 
-      conString = conStringBuilder.GetConnectionString(true);
+      connectionString = conStringBuilder.GetConnectionString(true);
     }
 
     //todo: handle exception when connection cannot be established
     MySqlConnection GetConnection() {
-      return new MySqlConnection(conString);
+      return new MySqlConnection(connectionString);
     }
 
     /// <summary>

@@ -12,9 +12,7 @@ namespace HonglornBL {
     /// <param name="className">The class name to be validated.</param>
     /// <returns>True iff the given class name is a valid class name.</returns>
     /// <remarks>Valid classnames: 5, 6, 7, 8, 9, E</remarks>
-    public static bool IsValidClassName(char className) {
-      return VALID_CLASSNAMES.Contains(className);
-    }
+    internal static bool IsValidClassName(char className) => VALID_CLASSNAMES.Contains(className);
 
     /// <summary>
     ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
@@ -22,11 +20,9 @@ namespace HonglornBL {
     /// <param name="year">The year to be validated.</param>
     /// <returns>True iff the given year is a valid year.</returns>
     /// <remarks>Valid Years: 1900 - 2099</remarks>
-    public static bool IsValidYear(uint year) {
-      return (year >= 1900 && year <= 2099);
-    }
+    internal static bool IsValidYear(uint year) => (year >= 1900 && year <= 2099);
 
-    public static char GetClassName(string courseName) {
+    internal static char GetClassName(string courseName) {
       char className;
 
       if (Regex.IsMatch(courseName, "0[5-9][A-Za-z]")) {

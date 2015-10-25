@@ -6,7 +6,7 @@ using Microsoft.Office.Interop.Excel;
 using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
-  public static class ExcelImporter {
+  static class ExcelImporter {
     const string SURNAME_HEADER_COLUMN = "Nachname";
     const string FORENAME_HEADER_COLUMN = "Vorname";
     const string COURSENAME_HEADER_COLUMN = "Kursbezeichnung";
@@ -45,11 +45,11 @@ namespace HonglornBL {
         int rowIdx = 1;
         bool rowIsEmpty = false;
         while (!rowIsEmpty) {
-          string surname = GetText(worksheet, $"A{rowIdx}");
-          string forename = GetText(worksheet, $"B{rowIdx}");
-          string courseName = GetText(worksheet, $"C{rowIdx}");
-          string rawSex = GetText(worksheet, $"D{rowIdx}");
-          string rawYearOfBirth = GetText(worksheet, $"E{rowIdx}");
+          string surname = GetTextFromRange(worksheet, $"A{rowIdx}");
+          string forename = GetTextFromRange(worksheet, $"B{rowIdx}");
+          string courseName = GetTextFromRange(worksheet, $"C{rowIdx}");
+          string rawSex = GetTextFromRange(worksheet, $"D{rowIdx}");
+          string rawYearOfBirth = GetTextFromRange(worksheet, $"E{rowIdx}");
 
           rowIsEmpty = CoalesceIsNullOrWhitespace(surname, forename, courseName, rawSex, rawYearOfBirth);
 
@@ -77,20 +77,20 @@ namespace HonglornBL {
       return importedStudents;
     }
 
-    static string GetText(_Worksheet sheet, string range) {
+    static string GetTextFromRange(_Worksheet sheet, string range) {
       return sheet.Range[range].Text;
     }
 
     static void ValidateHeaderRow(_Worksheet sheet) {
-      ValidateString(SURNAME_HEADER_COLUMN, GetText(sheet, "A1"));
-      ValidateString(FORENAME_HEADER_COLUMN, GetText(sheet, "B1"));
-      ValidateString(COURSENAME_HEADER_COLUMN, GetText(sheet, "C1"));
-      ValidateString(SEX_HEADER_COLUMN, GetText(sheet, "D1"));
-      ValidateString(YEAROFBIRTH_HEADER_COLUMN, GetText(sheet, "E1"));
+      ValidateString(SURNAME_HEADER_COLUMN, GetTextFromRange(sheet, "A1"));
+      ValidateString(FORENAME_HEADER_COLUMN, GetTextFromRange(sheet, "B1"));
+      ValidateString(COURSENAME_HEADER_COLUMN, GetTextFromRange(sheet, "C1"));
+      ValidateString(SEX_HEADER_COLUMN, GetTextFromRange(sheet, "D1"));
+      ValidateString(YEAROFBIRTH_HEADER_COLUMN, GetTextFromRange(sheet, "E1"));
     }
 
     static void ValidateString(string expected, string actual) {
-      if (expected != actual) {
+      if (!actual.Equals(expected, StringComparison.InvariantCulture)) {
         throw new ArgumentException($"Header row was in unexpected condition. Expected {expected} but was {actual}.");
       }
     }

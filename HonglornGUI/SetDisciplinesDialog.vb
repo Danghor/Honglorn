@@ -99,7 +99,7 @@ Public Class SetDisciplinesDialog
       Case GameType.Traditional
         TraditionalGameTypeRadioButton.Checked = True
 
-      Case GameType.Unknown
+      Case GameType.Unspecified
         TraditionalGameTypeRadioButton.Checked = False
         CompetitionGameTypeRadioButton.Checked = False
 
