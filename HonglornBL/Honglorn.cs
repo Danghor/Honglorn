@@ -62,7 +62,7 @@ namespace HonglornBL {
     /// <param name="year">The year for which the valid class names should be retrieved.</param>
     /// <returns>A Char Array representing the valid class names.</returns>
     /// <remarks></remarks>
-    public ICollection<char> GetValidClassNames(int year) {
+    public ICollection<char> GetValidClassNames(uint year) {
       return mySQLHandler.GetValidClassNames(year);
     }
 

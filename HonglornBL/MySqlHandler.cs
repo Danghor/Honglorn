@@ -104,7 +104,7 @@ namespace HonglornBL {
       return table;
     }
 
-    public ICollection<char> GetValidClassNames(int year) {
+    public ICollection<char> GetValidClassNames(uint year) {
       MySqlCommand selectCommand = new MySqlCommand {
         Connection = GetConnection(),
         CommandText = "SELECT DISTINCT ClassName FROM StudentCourseRel INNER JOIN CourseClassRel ON StudentCourseRel.CourseName = CourseClassRel.CourseName INNER JOIN Class on courseclassrel.ClassName = Class.Name WHERE StudentCourseRel.year = @iYear ORDER BY ClassName ASC"

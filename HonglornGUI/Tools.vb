@@ -25,7 +25,7 @@
   ''' <param name="asSecond"></param>
   ''' <returns></returns>
   ''' <remarks>Uses Exit For.</remarks>
-  Function IsEqual(asFirst As String(), asSecond As String()) As Boolean
+  Function IsEqual(asFirst As ICollection (Of String), asSecond As  ICollection (Of String)) As Boolean
     IsEqual = True
 
     If asFirst IsNot Nothing AndAlso asSecond IsNot Nothing AndAlso asFirst.Count = asSecond.Count Then
@@ -50,7 +50,7 @@
   ''' <param name="acSecond"></param>
   ''' <returns></returns>
   ''' <remarks>Uses Exit For.</remarks>
-  Function IsEqual(acFirst As Char(), acSecond As Char()) As Boolean
+  Function IsEqual(acFirst As ICollection(Of Char), acSecond As ICollection(Of Char)) As Boolean
     IsEqual = True
 
     If acFirst IsNot Nothing AndAlso acSecond IsNot Nothing AndAlso acFirst.Count = acSecond.Count Then

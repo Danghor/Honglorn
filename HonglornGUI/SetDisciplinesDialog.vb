@@ -11,16 +11,16 @@ Public Class SetDisciplinesDialog
     End Get
   End Property
 
-  Private ReadOnly Property CurrentYear As Integer
+  Private ReadOnly Property CurrentYear As UInteger
     Get
       Dim sSelectedYearShown As String
 
       sSelectedYearShown = YearComboBox.Text
 
       If String.IsNullOrWhiteSpace(sSelectedYearShown) Then
-        CurrentYear = - 1
+        CurrentYear = 0
       Else
-        CurrentYear = CInt(sSelectedYearShown)
+        CurrentYear = Convert.ToUInt32(sSelectedYearShown)
       End If
     End Get
   End Property
@@ -42,7 +42,7 @@ Public Class SetDisciplinesDialog
     Center(Me)
 
     'pre-select a year
-    Dim aiValidYears As Integer() = App.GetYearsWithStudentData()
+    Dim aiValidYears As ICollection(Of Integer) = App.GetYearsWithStudentData()
     If aiValidYears.Count <> 0 Then
       YearComboBox.DataSource = aiValidYears
       YearComboBox.SelectedIndex = 0
@@ -54,9 +54,9 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub ClassComboBox_DropDown(sender As Object, e As EventArgs) Handles ClassComboBox.DropDown
-    If CurrentYear <> - 1 Then
-      Dim acNewClassNames As Char() = App.GetValidClassNames(CurrentYear)
-      Dim acOldClassNames As Char() = CType(ClassComboBox.DataSource, Char())
+    If CurrentYear <> 0 Then
+      Dim acNewClassNames As ICollection(Of Char) = App.GetValidClassNames(CurrentYear)
+      Dim acOldClassNames As ICollection(Of Char) = CType(ClassComboBox.DataSource, Char())
 
       If Not IsEqual(acNewClassNames, acOldClassNames) Then
         ClassComboBox.DataSource = acNewClassNames

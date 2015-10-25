@@ -55,7 +55,7 @@ Public Class MainWindow
     Center(Me)
 
     'pre-select a year
-    Dim aiValidYears As Integer() = _oApp.GetYearsWithStudentData()
+    Dim aiValidYears As ICollection(Of Integer) = _oApp.GetYearsWithStudentData()
     If aiValidYears.Count <> 0 Then
       SelectEditYearComboBox.DataSource = aiValidYears
       SelectEditYearComboBox.SelectedIndex = 0
@@ -77,8 +77,12 @@ Public Class MainWindow
   Private Sub SelectEditCourseComboBox_DropDown(sender As Object, e As EventArgs) _
     Handles SelectEditCourseComboBox.DropDown
     If CurrentYear <> -1 Then
-      Dim asNewCourseNames As String() = _oApp.GetValidCourseNames(CurrentYear)
-      Dim asOldCourseNames As String() = CType(SelectEditCourseComboBox.DataSource, String())
+      Dim asNewCourseNames As ICollection(Of String) = _oApp.GetValidCourseNames(CurrentYear)
+      Dim asOldCourseNames As New List(Of String)
+
+      For Each item As Object In SelectEditCourseComboBox.Items
+        asOldCourseNames.Add(item.ToString())
+      Next
 
       If Not IsEqual(asNewCourseNames, asOldCourseNames) Then
         SelectEditCourseComboBox.DataSource = asNewCourseNames
