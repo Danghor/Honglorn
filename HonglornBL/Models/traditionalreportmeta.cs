@@ -1,25 +1,21 @@
-namespace HonglornBL.Models {
-  using System;
-  using System.Collections.Generic;
-  using System.ComponentModel.DataAnnotations;
-  using System.ComponentModel.DataAnnotations.Schema;
-  using System.Data.Entity.Spatial;
+using System;
+using System.ComponentModel.DataAnnotations;
 
-  [Table("bjs.traditionalreportmeta")]
-  public class traditionalreportmeta {
+namespace HonglornBL.Models {
+  public class TraditionalReportMeta {
     [Key]
     public Guid PKey { get; set; }
 
-    [Column(TypeName = "enum")]
     [Required]
-    [StringLength(65532)]
-    public string Sex { get; set; }
+    public Prerequisites.Sex Sex { get; set; }
 
-    [Column(TypeName = "uint")]
-    public long Age { get; set; }
+    [Required]
+    public byte Age { get; set; }
 
-    public int HonoraryCertificateScore { get; set; }
+    [Required]
+    public ushort HonoraryCertificateScore { get; set; }
 
-    public int VictoryCertificateScore { get; set; }
+    [Required]
+    public ushort VictoryCertificateScore { get; set; }
   }
 }

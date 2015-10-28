@@ -1,20 +1,17 @@
-namespace HonglornBL.Models {
-  using System;
-  using System.Collections.Generic;
-  using System.ComponentModel.DataAnnotations;
-  using System.ComponentModel.DataAnnotations.Schema;
-  using System.Data.Entity.Spatial;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-  [Table("bjs.competition")]
-  public class competition {
+namespace HonglornBL.Models {
+  public class Competition {
     [Key]
     [Column(Order = 0)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public Guid StudentPKey { get; set; }
 
     [Key]
-    [Column(Order = 1, TypeName = "year")]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
-    public short Year { get; set; }
+    public ushort Year { get; set; }
 
     public float? Sprint { get; set; }
 
@@ -24,6 +21,7 @@ namespace HonglornBL.Models {
 
     public float? MiddleDistance { get; set; }
 
-    public virtual student student { get; set; }
+    [ForeignKey(nameof(StudentPKey))]
+    public virtual Student Student { get; set; }
   }
 }

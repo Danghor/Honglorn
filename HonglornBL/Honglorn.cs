@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
+using HonglornBL.Models;
 using MySql.Data.MySqlClient;
 using static HonglornBL.Prerequisites;
 
@@ -15,11 +17,11 @@ namespace HonglornBL {
       mySQLHandler = new MySqlHandler(server, port, username, password, database);
     }
 
-    public DataTable GetValidTraditionalDisciplinesTable(Sex sex, Discipline discipline) {
+    public DataTable GetValidTraditionalDisciplinesTable(Sex sex, DisciplineType discipline) {
       return mySQLHandler.GetValidTraditionalDisciplinesTable(sex, discipline);
     }
 
-    public DataTable GetValidCompetitionDisciplinesTable(Discipline discipline) {
+    public DataTable GetValidCompetitionDisciplinesTable(DisciplineType discipline) {
       return mySQLHandler.GetValidCompetitionDisciplinesTable(discipline);
     }
 
@@ -39,11 +41,20 @@ namespace HonglornBL {
     }
 
     /// <summary>
-    ///   Get an Integer Array representing the years for which student data is present in the database.
+    ///   Get the years for which student data is present in the database.
     /// </summary>
-    /// <returns>An Integer Array representing the valid years.</returns>
-    public ICollection<int> GetYearsWithStudentData() {
-      return mySQLHandler.GetYearsWithStudentData();
+    /// <returns>An int collection representing the valid years.</returns>
+    public static ICollection<ushort> GetYearsWithStudentData() {
+      ICollection<ushort> result;
+
+      using (HonglornDB db = new HonglornDB()) {
+        IQueryable<ushort> years = from relations in db.StudentCourseRel
+          select relations.Year;
+
+        result = years.Distinct().ToArray();
+      }
+
+      return result;
     }
 
     /// <summary>

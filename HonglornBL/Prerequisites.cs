@@ -20,7 +20,7 @@ namespace HonglornBL {
     /// <param name="year">The year to be validated.</param>
     /// <returns>True iff the given year is a valid year.</returns>
     /// <remarks>Valid Years: 1900 - 2099</remarks>
-    public static bool IsValidYear(uint year) => (year >= 1900 && year <= 2099);
+    public static bool IsValidYear(uint year) => (year >= 1900 && year <= 2500);
 
     internal static char GetClassName(string courseName) {
       char className;
@@ -38,22 +38,26 @@ namespace HonglornBL {
       return className;
     }
 
-    public enum Discipline {
-      Sprint,
-      Jump,
-      Throw,
-      MiddleDistance
+    public enum DisciplineType {
+      Sprint = 0,
+      Jump = 1,
+      Throw = 2,
+      MiddleDistance = 3
     }
 
     public enum GameType {
-      Competition,
-      Traditional,
-      Unspecified
+      Traditional = 0,
+      Competition = 1
+    }
+
+    public enum Measurement {
+      Manual = 0,
+      Electronic = 1
     }
 
     public enum Sex {
-      Male,
-      Female
+      Male = 0,
+      Female = 1
     }
   }
 }

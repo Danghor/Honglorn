@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
@@ -10,28 +9,27 @@ namespace HonglornBL {
     static readonly Dictionary<string, GameType> GameTypeDictionary =
       new Dictionary<string, GameType> {
         {"Competition", GameType.Competition},
-        {"Traditional", GameType.Traditional},
-        {string.Empty, GameType.Unspecified}
+        {"Traditional", GameType.Traditional}
       };
 
-    static readonly Dictionary<Discipline, string> CompetitionDisciplinesViewNames =
-      new Dictionary<Discipline, string> {
-        {Discipline.Sprint, "CompetitionSprintDisciplines"},
-        {Discipline.Jump, "CompetitionJumpDisciplines"},
-        {Discipline.Throw, "CompetitionThrowDisciplines"},
-        {Discipline.MiddleDistance, "CompetitionMiddleDistanceDisciplines"}
+    static readonly Dictionary<DisciplineType, string> CompetitionDisciplinesViewNames =
+      new Dictionary<DisciplineType, string> {
+        {DisciplineType.Sprint, "CompetitionSprintDisciplines"},
+        {DisciplineType.Jump, "CompetitionJumpDisciplines"},
+        {DisciplineType.Throw, "CompetitionThrowDisciplines"},
+        {DisciplineType.MiddleDistance, "CompetitionMiddleDistanceDisciplines"}
       };
 
-    static readonly Dictionary<Tuple<Sex, Discipline>, string> TraditionalDisciplinesViewNames =
-      new Dictionary<Tuple<Sex, Discipline>, string> {
-        {new Tuple<Sex, Discipline>(Sex.Male, Discipline.Sprint), "TraditionalMaleSprintDisciplines"},
-        {new Tuple<Sex, Discipline>(Sex.Male, Discipline.Jump), "TraditionalMaleJumpDisciplines"},
-        {new Tuple<Sex, Discipline>(Sex.Male, Discipline.Throw), "TraditionalMaleThrowDisciplines"},
-        {new Tuple<Sex, Discipline>(Sex.Male, Discipline.MiddleDistance), "TraditionalMaleMiddleDistanceDisciplines"},
-        {new Tuple<Sex, Discipline>(Sex.Female, Discipline.Sprint), "TraditionalFemaleSprintDisciplines"},
-        {new Tuple<Sex, Discipline>(Sex.Female, Discipline.Jump), "TraditionalFemaleJumpDisciplines"},
-        {new Tuple<Sex, Discipline>(Sex.Female, Discipline.Throw), "TraditionalFemaleThrowDisciplines"},
-        {new Tuple<Sex, Discipline>(Sex.Female, Discipline.MiddleDistance), "TraditionalFemaleMiddleDistanceDisciplines"}
+    static readonly Dictionary<Tuple<Sex, DisciplineType>, string> TraditionalDisciplinesViewNames =
+      new Dictionary<Tuple<Sex, DisciplineType>, string> {
+        {new Tuple<Sex, DisciplineType>(Sex.Male, DisciplineType.Sprint), "TraditionalMaleSprintDisciplines"},
+        {new Tuple<Sex, DisciplineType>(Sex.Male, DisciplineType.Jump), "TraditionalMaleJumpDisciplines"},
+        {new Tuple<Sex, DisciplineType>(Sex.Male, DisciplineType.Throw), "TraditionalMaleThrowDisciplines"},
+        {new Tuple<Sex, DisciplineType>(Sex.Male, DisciplineType.MiddleDistance), "TraditionalMaleMiddleDistanceDisciplines"},
+        {new Tuple<Sex, DisciplineType>(Sex.Female, DisciplineType.Sprint), "TraditionalFemaleSprintDisciplines"},
+        {new Tuple<Sex, DisciplineType>(Sex.Female, DisciplineType.Jump), "TraditionalFemaleJumpDisciplines"},
+        {new Tuple<Sex, DisciplineType>(Sex.Female, DisciplineType.Throw), "TraditionalFemaleThrowDisciplines"},
+        {new Tuple<Sex, DisciplineType>(Sex.Female, DisciplineType.MiddleDistance), "TraditionalFemaleMiddleDistanceDisciplines"}
       };
 
     readonly string connectionString;
@@ -137,11 +135,11 @@ namespace HonglornBL {
     /// <param name="discipline">The disciple type to be looked up.</param>
     /// <returns></returns>
     /// <remarks></remarks>
-    public DataTable GetValidTraditionalDisciplinesTable(Sex sex, Discipline discipline) {
-      return GetFilledDataTable($"Select * from {TraditionalDisciplinesViewNames[new Tuple<Sex, Discipline>(sex, discipline)]}");
+    public DataTable GetValidTraditionalDisciplinesTable(Sex sex, DisciplineType discipline) {
+      return GetFilledDataTable($"Select * from {TraditionalDisciplinesViewNames[new Tuple<Sex, DisciplineType>(sex, discipline)]}");
     }
 
-    public DataTable GetValidCompetitionDisciplinesTable(Discipline discipline) {
+    public DataTable GetValidCompetitionDisciplinesTable(DisciplineType discipline) {
       return GetFilledDataTable($"Select * from {CompetitionDisciplinesViewNames[discipline]}");
     }
 

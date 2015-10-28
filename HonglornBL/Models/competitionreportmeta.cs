@@ -1,29 +1,24 @@
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace HonglornBL.Models {
-  using System;
-  using System.Collections.Generic;
-  using System.ComponentModel.DataAnnotations;
-  using System.ComponentModel.DataAnnotations.Schema;
-  using System.Data.Entity.Spatial;
-
-  [Table("bjs.competitionreportmeta")]
-  public class competitionreportmeta {
+  public class CompetitionReportMeta {
     [Key]
-    [Column(TypeName = "year")]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
-    public short Year { get; set; }
+    public ushort Year { get; set; }
 
-    public int HonoraryCertificatePercentage { get; set; }
+    public byte HonoraryCertificatePercentage { get; set; } = 0;
 
-    public int VictoryCertificatePercentage { get; set; }
+    public byte VictoryCertificatePercentage { get; set; } = 0;
 
-    public int Grade1Percentage { get; set; }
+    public byte Grade1Percentage { get; set; } = 0;
 
-    public int Grade2Percentage { get; set; }
+    public byte Grade2Percentage { get; set; } = 0;
 
-    public int Grade3Percentage { get; set; }
+    public byte Grade3Percentage { get; set; } = 0;
 
-    public int Grade4Percentage { get; set; }
+    public byte Grade4Percentage { get; set; } = 0;
 
-    public int Grade5Percentage { get; set; }
+    public byte Grade5Percentage { get; set; } = 0;
   }
 }
