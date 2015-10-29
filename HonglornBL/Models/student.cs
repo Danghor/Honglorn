@@ -21,7 +21,7 @@ namespace HonglornBL.Models {
     public Prerequisites.Sex Sex { get; set; }
 
     [Required]
-    public ushort YearOfBirth { get; set; }
+    public short YearOfBirth { get; set; }
 
     public virtual ICollection<Competition> Competition { get; set; }
 

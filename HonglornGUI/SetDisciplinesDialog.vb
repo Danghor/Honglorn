@@ -1,5 +1,4 @@
 ﻿Imports HonglornBL
-Imports HonglornBL.Prerequisites
 
 Public Class SetDisciplinesDialog
 
@@ -11,7 +10,7 @@ Public Class SetDisciplinesDialog
     End Get
   End Property
 
-  Private ReadOnly Property CurrentYear As UInteger
+  Private ReadOnly Property CurrentYear As UShort
     Get
       Dim sSelectedYearShown As String
 
@@ -20,7 +19,7 @@ Public Class SetDisciplinesDialog
       If String.IsNullOrWhiteSpace(sSelectedYearShown) Then
         CurrentYear = 0
       Else
-        CurrentYear = Convert.ToUInt32(sSelectedYearShown)
+        CurrentYear = Convert.ToUInt16(sSelectedYearShown)
       End If
     End Get
   End Property
@@ -42,7 +41,7 @@ Public Class SetDisciplinesDialog
     Center(Me)
 
     'pre-select a year
-    Dim aiValidYears As ICollection(Of Integer) = App.GetYearsWithStudentData()
+    Dim aiValidYears As ICollection(Of UShort) = Honglorn.GetYearsWithStudentData()
     If aiValidYears.Count <> 0 Then
       YearComboBox.DataSource = aiValidYears
       YearComboBox.SelectedIndex = 0
@@ -50,7 +49,7 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub YearComboBox_DropDown(sender As Object, e As EventArgs) Handles YearComboBox.DropDown
-    YearComboBox.DataSource = App.GetYearsWithStudentData()
+    YearComboBox.DataSource = Honglorn.GetYearsWithStudentData()
   End Sub
 
   Private Sub ClassComboBox_DropDown(sender As Object, e As EventArgs) Handles ClassComboBox.DropDown
@@ -75,7 +74,7 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub ValidateInputAndRefresh()
-    If IsValidYear(CurrentYear) AndAlso IsValidClassName(CurrentClass) Then
+    If Prerequisites.IsValidYear(CurrentYear) AndAlso Prerequisites.IsValidClassName(CurrentClass) Then
       RefreshGameTypeFromDatabase()
 
       GameTypeGroupBox.Enabled = True
@@ -87,21 +86,17 @@ Public Class SetDisciplinesDialog
   End Sub
 
   Private Sub RefreshGameTypeFromDatabase()
-    Dim eGameType As GameType
+    Dim eGameType As Prerequisites.GameType
 
     eGameType = App.GetGameType(CurrentClass, CurrentYear)
 
     Select Case eGameType
 
-      Case GameType.Competition
+      Case Prerequisites.GameType.Competition
         CompetitionGameTypeRadioButton.Checked = True
 
-      Case GameType.Traditional
+      Case Prerequisites.GameType.Traditional
         TraditionalGameTypeRadioButton.Checked = True
-
-      Case GameType.Unspecified
-        TraditionalGameTypeRadioButton.Checked = False
-        CompetitionGameTypeRadioButton.Checked = False
 
     End Select
   End Sub

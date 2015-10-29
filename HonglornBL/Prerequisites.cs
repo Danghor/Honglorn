@@ -20,7 +20,7 @@ namespace HonglornBL {
     /// <param name="year">The year to be validated.</param>
     /// <returns>True iff the given year is a valid year.</returns>
     /// <remarks>Valid Years: 1900 - 2099</remarks>
-    public static bool IsValidYear(uint year) => (year >= 1900 && year <= 2500);
+    public static bool IsValidYear(ushort year) => (year >= 1900 && year <= 2500);
 
     internal static char GetClassName(string courseName) {
       char className;

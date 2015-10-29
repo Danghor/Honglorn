@@ -10,8 +10,9 @@ namespace HonglornBL.Models {
     public Guid StudentPKey { get; set; }
 
     [Key]
+    [Column(Order = 1)]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
-    public ushort Year { get; set; }
+    public short Year { get; set; }
 
     public float? Sprint { get; set; }
 

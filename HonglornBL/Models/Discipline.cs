@@ -12,9 +12,11 @@ namespace HonglornBL.Models {
     public Prerequisites.DisciplineType Type { get; set; }
 
     [Required]
+    [StringLength(45)]
     public string Name { get; set; }
 
     [Required]
+    [StringLength(25)]
     public string Unit { get; set; }
   }
 }

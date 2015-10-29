@@ -1,5 +1,4 @@
 ﻿Friend Module Tools
-
   ''' <summary>
   '''   Positions the given control at the center of the screen.
   ''' </summary>
@@ -25,7 +24,7 @@
   ''' <param name="asSecond"></param>
   ''' <returns></returns>
   ''' <remarks>Uses Exit For.</remarks>
-  Function IsEqual(asFirst As ICollection (Of String), asSecond As  ICollection (Of String)) As Boolean
+  Function IsEqual(asFirst As ICollection (Of String), asSecond As ICollection (Of String)) As Boolean
     IsEqual = True
 
     If asFirst IsNot Nothing AndAlso asSecond IsNot Nothing AndAlso asFirst.Count = asSecond.Count Then

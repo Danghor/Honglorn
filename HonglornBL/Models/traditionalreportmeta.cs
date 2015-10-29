@@ -13,9 +13,9 @@ namespace HonglornBL.Models {
     public byte Age { get; set; }
 
     [Required]
-    public ushort HonoraryCertificateScore { get; set; }
+    public short HonoraryCertificateScore { get; set; }
 
     [Required]
-    public ushort VictoryCertificateScore { get; set; }
+    public short VictoryCertificateScore { get; set; }
   }
 }

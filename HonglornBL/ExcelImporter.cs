@@ -55,7 +55,7 @@ namespace HonglornBL {
 
           if (!rowIsEmpty) {
             Sex sex = SexDictionary[rawSex];
-            uint yearOfBirth = Convert.ToUInt32(rawYearOfBirth);
+            ushort yearOfBirth = Convert.ToUInt16(rawYearOfBirth);
             importedStudents.Add(new Student(surname, forename, yearOfBirth, sex, courseName));
           }
 

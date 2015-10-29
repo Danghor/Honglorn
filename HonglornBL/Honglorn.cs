@@ -36,7 +36,7 @@ namespace HonglornBL {
     ///   in the given year.
     /// </returns>
     /// <remarks></remarks>
-    public GameType GetGameType(char className, uint year) {
+    public GameType GetGameType(char className, ushort year) {
       return mySQLHandler.GetGameType(className, year);
     }
 
@@ -45,13 +45,20 @@ namespace HonglornBL {
     /// </summary>
     /// <returns>An int collection representing the valid years.</returns>
     public static ICollection<ushort> GetYearsWithStudentData() {
-      ICollection<ushort> result;
+      ICollection<ushort> result = new List<ushort>();
 
       using (HonglornDB db = new HonglornDB()) {
-        IQueryable<ushort> years = from relations in db.StudentCourseRel
-          select relations.Year;
+        IQueryable<short> years = (from relations in db.StudentCourseRel
+          select relations.Year).Distinct();
 
-        result = years.Distinct().ToArray();
+        foreach (short year in years) {
+          ushort convertedYear = (ushort) year;
+          if (IsValidYear(convertedYear)) {
+            result.Add(convertedYear);
+          } else {
+            throw new DataException($"Invalid year retrieved from Database: {year}");
+          }
+        }
       }
 
       return result;

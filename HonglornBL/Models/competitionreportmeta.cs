@@ -5,20 +5,20 @@ namespace HonglornBL.Models {
   public class CompetitionReportMeta {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
-    public ushort Year { get; set; }
+    public short Year { get; set; }
 
-    public byte HonoraryCertificatePercentage { get; set; } = 0;
+    public byte HonoraryCertificatePercentage { get; set; }
 
-    public byte VictoryCertificatePercentage { get; set; } = 0;
+    public byte VictoryCertificatePercentage { get; set; }
 
-    public byte Grade1Percentage { get; set; } = 0;
+    public byte Grade1Percentage { get; set; }
 
-    public byte Grade2Percentage { get; set; } = 0;
+    public byte Grade2Percentage { get; set; }
 
-    public byte Grade3Percentage { get; set; } = 0;
+    public byte Grade3Percentage { get; set; }
 
-    public byte Grade4Percentage { get; set; } = 0;
+    public byte Grade4Percentage { get; set; }
 
-    public byte Grade5Percentage { get; set; } = 0;
+    public byte Grade5Percentage { get; set; }
   }
 }

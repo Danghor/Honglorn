@@ -12,7 +12,7 @@ namespace HonglornBL.Models {
     [Key]
     [Column(Order = 1)]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
-    public ushort Year { get; set; }
+    public short Year { get; set; }
 
     [Required]
     public Prerequisites.GameType GameType { get; set; }

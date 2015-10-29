@@ -152,7 +152,7 @@ namespace HonglornBL {
       return GetFilledDataTable(selectCommand);
     }
 
-    public GameType GetGameType(char classNames, uint year) {
+    public GameType GetGameType(char classNames, ushort year) {
       GameType functionReturnValue;
 
       if (IsValidYear(year) && IsValidClassName(classNames)) {

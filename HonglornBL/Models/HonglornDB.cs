@@ -1,7 +1,9 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using MySql.Data.Entity;
 
 namespace HonglornBL.Models {
+  [DbConfigurationType(typeof (MySqlEFConfiguration))]
   public class HonglornDB : DbContext {
     public virtual DbSet<Competition> Competition { get; set; }
     public virtual DbSet<CompetitionDiscipline> CompetitionDiscipline { get; set; }

@@ -12,7 +12,7 @@ namespace HonglornBL {
     /// <summary>
     ///   Initializes a new instance of the <see cref="T:System.Object" /> class.
     /// </summary>
-    internal Student(string surname, string forename, uint yearOfBirth, Sex sex, string courseName) {
+    internal Student(string surname, string forename, ushort yearOfBirth, Sex sex, string courseName) {
       if (IsValidYear(yearOfBirth)) {
         YearOfBirth = yearOfBirth;
       } else {
