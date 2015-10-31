@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using HonglornBL.Models;
 using MySql.Data.MySqlClient;
 using static HonglornBL.Prerequisites;
 
@@ -155,7 +156,8 @@ namespace HonglornBL {
     public GameType GetGameType(char classNames, ushort year) {
       GameType functionReturnValue;
 
-      if (IsValidYear(year) && IsValidClassName(classNames)) {
+      if (IsValidYear((short) year) && IsValidClassName(classNames)) {
+        //todo: fix casting
         MySqlCommand oSelectCommand = new MySqlCommand {
           CommandType = CommandType.StoredProcedure,
           Connection = GetConnection(),
@@ -263,7 +265,7 @@ namespace HonglornBL {
 
       cmd.Parameters.AddWithValue("@sSurname", student.Surname);
       cmd.Parameters.AddWithValue("@sForename", student.Forename);
-      cmd.Parameters.AddWithValue("@cCourseName", student.CourseName);
+      //cmd.Parameters.AddWithValue("@cCourseName", student.CourseName);//todo: just commented out to build
       cmd.Parameters.AddWithValue("@cClassName", className);
       cmd.Parameters.AddWithValue("@eSex", student.Sex.ToString());
       cmd.Parameters.AddWithValue("@yYearOfBirth", student.YearOfBirth);

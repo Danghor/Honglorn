@@ -53,7 +53,8 @@ namespace HonglornBL {
 
         foreach (short year in years) {
           ushort convertedYear = (ushort) year;
-          if (IsValidYear(convertedYear)) {
+          if (IsValidYear((short) convertedYear)) {
+//todo: strange casting needs to be fixed at the root
             result.Add(convertedYear);
           } else {
             throw new DataException($"Invalid year retrieved from Database: {year}");
@@ -153,11 +154,19 @@ namespace HonglornBL {
     /// </summary>
     /// <param name="filePath">The full path to the Excel file to be imported.</param>
     /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
-    public void ImportStudentCourseExcelSheet(string filePath, uint year) {
-      IEnumerable<Student> studentsFromExcelSheet = ExcelImporter.GetStudentArrayFromExcelFile(filePath);
+    public static void ImportStudentCourseExcelSheet(string filePath, short year) {
+      DataTable studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
-      foreach (Student student in studentsFromExcelSheet) {
-        ImportSingleStudent(student, year);
+      foreach (DataRow row in studentsFromExcelSheet.Rows) {
+        Student student = new Student {
+          Surname = row[0].ToString(),
+          Forename = row[1].ToString(),
+          Sex = (Sex) row[2],
+          YearOfBirth = Convert.ToInt16(row[3])
+        };
+
+        string courseName = row[4].ToString();
+        ImportSingleStudent(student, courseName, year);
       }
     }
 
@@ -165,10 +174,41 @@ namespace HonglornBL {
     ///   Imports data of a single student into the database.
     /// </summary>
     /// <remarks></remarks>
-    void ImportSingleStudent(Student student, uint year) {
-      char className = GetClassName(student.CourseName);
+    static void ImportSingleStudent(Student student, string courseName, short year) {
+      GetClassName(courseName); //check whether the course name can be mapped to a class name
 
-      mySQLHandler.ImportStudentData(student, className, year);
+      using (HonglornDB db = new HonglornDB()) {
+        IQueryable<Student> studentQuery = from s in db.Student
+          where s.Forename == student.Forename
+                && s.Surname == student.Surname
+                && s.Sex == student.Sex
+                && s.YearOfBirth == student.YearOfBirth
+          select s;
+
+        if (studentQuery.Any()) {
+          Student existingStudent = studentQuery.First();
+
+          IEnumerable<StudentCourseRel> exisitingRelation = from r in existingStudent.studentCourseRel
+            where r.Year == year
+            select r;
+
+          if (!exisitingRelation.Any()) {
+            existingStudent.AddStudentCourseRel(year, courseName);
+          }
+        } else {
+          Student newStudent = new Student {
+            Forename = student.Forename,
+            Surname = student.Surname,
+            Sex = student.Sex,
+            YearOfBirth = student.YearOfBirth
+          };
+
+          newStudent.AddStudentCourseRel(year, courseName);
+          db.Student.Add(newStudent);
+        }
+
+        db.SaveChanges();
+      }
     }
 
     #endregion

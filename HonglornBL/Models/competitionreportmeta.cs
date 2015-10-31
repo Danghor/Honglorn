@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using static System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption;
 
 namespace HonglornBL.Models {
   public class CompetitionReportMeta {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    [DatabaseGenerated(None)]
     public short Year { get; set; }
 
     public byte HonoraryCertificatePercentage { get; set; }
