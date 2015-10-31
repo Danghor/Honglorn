@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
+    <Compile Include="ImportStudent.cs" />
     <Compile Include="Models\Competition.cs" />
     <Compile Include="Models\CompetitionDiscipline.cs" />
     <Compile Include="Models\CompetitionReportMeta.cs" />

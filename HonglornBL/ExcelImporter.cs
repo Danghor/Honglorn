@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
 using static HonglornBL.Prerequisites;
-using DataTable = System.Data.DataTable;
 
 namespace HonglornBL {
   static class ExcelImporter {
@@ -24,12 +23,12 @@ namespace HonglornBL {
     ///   Designed to work together with the DBHandler to import the data into the database.
     /// </summary>
     /// <param name="filePath">The file path of the Excel-file containing the relevant data.</param>
-    internal static DataTable GetStudentDataTableFromExcelFile(string filePath) {
+    internal static ICollection<ImportStudent> GetStudentDataTableFromExcelFile(string filePath) {
       if (string.IsNullOrWhiteSpace(filePath)) {
         throw new ArgumentException("File path is null, empty or consist of only white-space characters.");
       }
 
-      DataTable importedStudents = new DataTable();
+      ICollection<ImportStudent> importedStudents = new List<ImportStudent>();
 
       _Application excelInstance = null;
       _Workbook workbook = null;
@@ -40,12 +39,6 @@ namespace HonglornBL {
         _Worksheet worksheet = workbook.Worksheets[1];
 
         ValidateHeaderRow(worksheet);
-
-        importedStudents.Columns.Add("Surname", typeof(string));
-        importedStudents.Columns.Add("Forename", typeof(string));
-        importedStudents.Columns.Add("Sex", typeof(Sex));
-        importedStudents.Columns.Add("YearOfBirth", typeof(short));
-        importedStudents.Columns.Add("CourseName", typeof(string));
 
         //import content
         //todo: handle half-empty rows correctly! (Error message and removal from DataTable, so it's not imported)
@@ -65,7 +58,7 @@ namespace HonglornBL {
             if (SexDictionary.TryGetValue(rawSex, out sex)) {
               short yearOfBirth = Convert.ToInt16(rawYearOfBirth);
               if (IsValidYear(yearOfBirth)) {
-                importedStudents.Rows.Add(surname, forename, sex, yearOfBirth, courseName);
+                importedStudents.Add(new ImportStudent(surname, forename, courseName, sex, yearOfBirth));
               }
             }
           }

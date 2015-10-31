@@ -155,17 +155,18 @@ namespace HonglornBL {
     /// <param name="filePath">The full path to the Excel file to be imported.</param>
     /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
     public static void ImportStudentCourseExcelSheet(string filePath, short year) {
-      DataTable studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
+      ICollection<ImportStudent> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
-      foreach (DataRow row in studentsFromExcelSheet.Rows) {
+      foreach (ImportStudent importStudent in studentsFromExcelSheet) {
         Student student = new Student {
-          Surname = row[0].ToString(),
-          Forename = row[1].ToString(),
-          Sex = (Sex) row[2],
-          YearOfBirth = Convert.ToInt16(row[3])
+          Surname = importStudent.Surname,
+          Forename = importStudent.Forename,
+          Sex = importStudent.Sex,
+          YearOfBirth = importStudent.YearOfBirth
         };
 
-        string courseName = row[4].ToString();
+        string courseName = importStudent.CourseName;
+
         ImportSingleStudent(student, courseName, year);
       }
     }
