@@ -14,6 +14,7 @@ namespace HonglornBL {
       using (HonglornDB db = new HonglornDB()) {
         List<Student> students = (from s in db.Student
                                   where s.studentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
+                                  orderby s.Surname, s.Forename, s.YearOfBirth descending
                                   select s).ToList();
 
         foreach (Student student in students) {
