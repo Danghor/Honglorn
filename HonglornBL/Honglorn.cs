@@ -1,11 +1,34 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using HonglornBL.APIClasses;
+using HonglornBL.APIInterfaces;
 using HonglornBL.Models;
 using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
   public class Honglorn {
+    public static ICollection<IStudentCompetitionData> GetStudentCompetitionData(string courseName, short year) {
+      ICollection<IStudentCompetitionData> result = new List<IStudentCompetitionData>();
+
+      using (HonglornDB db = new HonglornDB()) {
+        List<Student> students = (from s in db.Student
+                                  where s.studentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
+                                  select s).ToList();
+
+        foreach (Student student in students) {
+          Competition competition = (from c in student.competition
+                                     where c.Year == year
+                                     select c).SingleOrDefault();
+
+          IStudentCompetitionData row = new StudentCompetitionData(student.PKey, student.Surname, student.Forename, student.Sex, competition?.Sprint, competition?.Jump, competition?.Throw, competition?.MiddleDistance);
+          result.Add(row);
+        }
+      }
+
+      return result;
+    }
+
     /// <summary>
     ///   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
     ///   is set.
@@ -27,7 +50,7 @@ namespace HonglornBL {
                                           select c.GameType;
 
         if (collection.Any()) {
-          result = collection.First();
+          result = collection.Single();
         }
       }
 
@@ -115,7 +138,7 @@ namespace HonglornBL {
                                            select s;
 
         if (studentQuery.Any()) {
-          Student existingStudent = studentQuery.First();
+          Student existingStudent = studentQuery.Single();
 
           IEnumerable<StudentCourseRel> exisitingRelation = from r in existingStudent.studentCourseRel
                                                             where r.Year == year
