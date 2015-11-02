@@ -22,15 +22,15 @@ namespace HonglornBL {
     /// <remarks>Valid Years: 1900 - 2099</remarks>
     public static bool IsValidYear(short year) => (year >= 1900 && year <= 2500);
 
-    internal static char GetClassName(string courseName) {
-      char className;
+    internal static string GetClassName(string courseName) {
+      string className;
 
       if (Regex.IsMatch(courseName, "0[5-9][A-Za-z]")) {
-        className = Convert.ToChar(courseName[1]);
+        className = courseName[1].ToString();
       } else if (Regex.IsMatch(courseName, "[5-9][A-Za-z]")) {
-        className = Convert.ToChar(courseName[0]);
+        className = courseName[0].ToString();
       } else if (Regex.IsMatch(courseName, "(E|e)(0[1-9]|[1-9][0-9])")) {
-        className = 'E';
+        className = "E";
       } else {
         throw new ArgumentException($"Invalid course name: {courseName}. Automatic mapping to class name failed.");
       }

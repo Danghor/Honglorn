@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using HonglornBL.Models;
 using Microsoft.Office.Interop.Excel;
 using static HonglornBL.Prerequisites;
 
@@ -23,12 +24,12 @@ namespace HonglornBL {
     ///   Designed to work together with the DBHandler to import the data into the database.
     /// </summary>
     /// <param name="filePath">The file path of the Excel-file containing the relevant data.</param>
-    internal static ICollection<ImportStudent> GetStudentDataTableFromExcelFile(string filePath) {
+    internal static ICollection<Tuple<Student, string>> GetStudentDataTableFromExcelFile(string filePath) {
       if (string.IsNullOrWhiteSpace(filePath)) {
         throw new ArgumentException("File path is null, empty or consist of only white-space characters.");
       }
 
-      ICollection<ImportStudent> importedStudents = new List<ImportStudent>();
+      ICollection<Tuple<Student, string>> extractedStudents = new List<Tuple<Student, string>>();
 
       _Application excelInstance = null;
       _Workbook workbook = null;
@@ -58,7 +59,14 @@ namespace HonglornBL {
             if (SexDictionary.TryGetValue(rawSex, out sex)) {
               short yearOfBirth = Convert.ToInt16(rawYearOfBirth);
               if (IsValidYear(yearOfBirth)) {
-                importedStudents.Add(new ImportStudent(surname, forename, courseName, sex, yearOfBirth));
+                Student student = new Student {
+                  Surname = surname,
+                  Forename = forename,
+                  Sex = sex,
+                  YearOfBirth = yearOfBirth
+                };
+
+                extractedStudents.Add(new Tuple<Student, string>(student, courseName));
               }
             }
           }
@@ -78,7 +86,7 @@ namespace HonglornBL {
         }
       }
 
-      return importedStudents;
+      return extractedStudents;
     }
 
     static string GetTextFromRange(_Worksheet sheet, string range) {

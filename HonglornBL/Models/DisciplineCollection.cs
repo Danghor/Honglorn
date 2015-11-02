@@ -1,14 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using static System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption;
 
 namespace HonglornBL.Models {
+  [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
   public class DisciplineCollection {
     [Key]
     [Column(Order = 0)]
     [DatabaseGenerated(None)]
-    public char ClassName { get; set; }
+    [StringLength(1)]
+    public string ClassName { get; set; }
 
     [Key]
     [Column(Order = 1)]

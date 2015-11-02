@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using static System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption;
 
 namespace HonglornBL.Models {
+  [SuppressMessage("ReSharper", "MemberCanBeInternal")]
   public class Student {
     [Key]
     [DatabaseGenerated(None)]

@@ -1,9 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 using static System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption;
 
 namespace HonglornBL.Models {
+  [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
   public class Competition {
     [Key]
     [Column(Order = 0)]
