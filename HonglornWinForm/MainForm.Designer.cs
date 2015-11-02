@@ -39,10 +39,16 @@
       this.competitionDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+      this.competitionDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+      this.competitionDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+      this.competitionDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+      this.competitionDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.competitionDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
       this.competitionDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
       this.competitionDataGridView.Location = new System.Drawing.Point(12, 101);
       this.competitionDataGridView.Name = "competitionDataGridView";
-      this.competitionDataGridView.ReadOnly = true;
+      this.competitionDataGridView.RowHeadersVisible = false;
+      this.competitionDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
       this.competitionDataGridView.RowTemplate.Height = 28;
       this.competitionDataGridView.Size = new System.Drawing.Size(754, 431);
       this.competitionDataGridView.TabIndex = 0;

@@ -22,7 +22,16 @@ namespace HonglornBL {
                                      where c.Year == year
                                      select c).SingleOrDefault();
 
-          IStudentCompetitionData row = new StudentCompetitionData(student.PKey, student.Surname, student.Forename, student.Sex, competition?.Sprint, competition?.Jump, competition?.Throw, competition?.MiddleDistance);
+          IStudentCompetitionData row = new StudentCompetitionData {
+            PKey = student.PKey,
+            Surname = student.Surname,
+            Forename = student.Forename,
+            Sex = student.Sex,
+            Sprint = competition?.Sprint,
+            Jump = competition?.Jump,
+            Throw = competition?.Throw,
+            MiddleDistance = competition?.MiddleDistance
+          };
           result.Add(row);
         }
       }

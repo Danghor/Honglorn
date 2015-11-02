@@ -42,7 +42,7 @@ namespace HonglornWinForm {
       Center(this);
 
       smartRefreshComboBoxes();
-      smartRefreshComboBoxes();
+      refreshDataGrid();
     }
 
     void smartRefreshComboBoxes() {
@@ -76,6 +76,21 @@ namespace HonglornWinForm {
 
     void refreshDataGrid() {
       competitionDataGridView.DataSource = Honglorn.GetStudentCompetitionData(SelectedCourseName, SelectedYear);
+      DataGridViewColumn pkeyColumn = competitionDataGridView.Columns["PKey"];
+      if (pkeyColumn != null) {
+        pkeyColumn.Visible = false;
+      }
+
+      makeColumnReadOnly("Surname");
+      makeColumnReadOnly("Forename");
+      makeColumnReadOnly("Sex");
+    }
+
+    void makeColumnReadOnly(string name) {
+      DataGridViewColumn column = competitionDataGridView.Columns[name];
+      if (column != null) {
+        column.ReadOnly = true;
+      }
     }
 
     void dummy() {
