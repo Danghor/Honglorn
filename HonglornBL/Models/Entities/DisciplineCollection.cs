@@ -2,20 +2,19 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
-using static System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption;
 
-namespace HonglornBL.Models {
+namespace HonglornBL.Models.Entities {
   [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
   public class DisciplineCollection {
     [Key]
     [Column(Order = 0)]
-    [DatabaseGenerated(None)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     [StringLength(1)]
     public string ClassName { get; set; }
 
     [Key]
     [Column(Order = 1)]
-    [DatabaseGenerated(None)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public short Year { get; set; }
 
     [Required]

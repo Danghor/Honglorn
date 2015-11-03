@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption;
 
-namespace HonglornBL.Models {
+namespace HonglornBL.Models.Entities {
   public class Discipline {
     [Key]
-    [DatabaseGenerated(None)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public Guid PKey { get; set; } = Guid.NewGuid();
 
     [Required]

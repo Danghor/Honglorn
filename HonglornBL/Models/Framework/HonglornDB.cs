@@ -1,8 +1,9 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using HonglornBL.Models.Entities;
 using MySql.Data.Entity;
 
-namespace HonglornBL.Models {
+namespace HonglornBL.Models.Framework {
   [DbConfigurationType(typeof(MySqlEFConfiguration))]
   public class HonglornDB : DbContext {
     public virtual DbSet<Competition> Competition { get; set; }
@@ -15,7 +16,9 @@ namespace HonglornBL.Models {
     public virtual DbSet<TraditionalReportMeta> TraditionalReportMeta { get; set; }
 
     public HonglornDB()
-      : base($"name={nameof(HonglornDB)}") {}
+      : base($"name={nameof(HonglornDB)}") {
+      Database.SetInitializer(new HonglornDBInitializer());
+    }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder) {
       modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace HonglornBL.Models {
+namespace HonglornBL.Models.Entities {
   public class CompetitionDiscipline : Discipline {
     /// <summary>
     ///   Indicates whether a lower value in this discipline indicates a better performance of the student.

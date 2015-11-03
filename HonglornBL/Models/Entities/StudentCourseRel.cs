@@ -1,18 +1,17 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using static System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption;
 
-namespace HonglornBL.Models {
+namespace HonglornBL.Models.Entities {
   public class StudentCourseRel {
     [Key]
     [Column(Order = 0)]
-    [DatabaseGenerated(None)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public Guid StudentPKey { get; set; }
 
     [Key]
     [Column(Order = 1)]
-    [DatabaseGenerated(None)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public short Year { get; set; }
 
     [Required]

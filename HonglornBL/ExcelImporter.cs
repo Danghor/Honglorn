@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using HonglornBL.Models;
+using HonglornBL.Models.Entities;
 using Microsoft.Office.Interop.Excel;
 using static HonglornBL.Prerequisites;
 

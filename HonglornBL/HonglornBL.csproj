@@ -65,19 +65,25 @@
     <Compile Include="APIInterfaces\IStudentCompetitionData.cs" />
     <Compile Include="ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
-    <Compile Include="Models\Competition.cs" />
-    <Compile Include="Models\CompetitionDiscipline.cs" />
-    <Compile Include="Models\CompetitionReportMeta.cs" />
-    <Compile Include="Models\Discipline.cs" />
-    <Compile Include="Models\DisciplineCollection.cs" />
-    <Compile Include="Models\HonglornDB.cs" />
-    <Compile Include="Models\Student.cs" />
-    <Compile Include="Models\StudentCourseRel.cs" />
-    <Compile Include="Models\TraditionalDiscipline.cs" />
-    <Compile Include="Models\TraditionalReportMeta.cs" />
+    <Compile Include="Models\Entities\Competition.cs" />
+    <Compile Include="Models\Entities\CompetitionDiscipline.cs" />
+    <Compile Include="Models\Entities\CompetitionReportMeta.cs" />
+    <Compile Include="Models\Entities\Discipline.cs" />
+    <Compile Include="Models\Entities\DisciplineCollection.cs" />
+    <Compile Include="Models\Framework\HonglornDB.cs" />
+    <Compile Include="Models\Entities\Student.cs" />
+    <Compile Include="Models\Entities\StudentCourseRel.cs" />
+    <Compile Include="Models\Entities\TraditionalDiscipline.cs" />
+    <Compile Include="Models\Entities\TraditionalReportMeta.cs" />
+    <Compile Include="Models\Framework\HonglornDBInitializer.cs" />
     <Compile Include="MySqlHandler.cs" />
     <Compile Include="Prerequisites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
@@ -108,13 +114,18 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\Seeds\TraditionalDisciplines.xml" />
+    <Content Include="Models\Seeds\ArrayOfTraditionalDiscipline.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

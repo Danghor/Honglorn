@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using HonglornBL.APIClasses;
 using HonglornBL.APIInterfaces;
-using HonglornBL.Models;
+using HonglornBL.Models.Entities;
+using HonglornBL.Models.Framework;
 using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {

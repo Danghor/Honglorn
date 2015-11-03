@@ -22,8 +22,6 @@ namespace HonglornWinForm {
     protected override void OnLoad(EventArgs e) {
       base.OnLoad(e);
 
-      //dummy();
-
       ScaleScreenAware(this, SCALING_FACTOR);
       Center(this);
 
@@ -121,10 +119,6 @@ namespace HonglornWinForm {
       if (column != null) {
         column.ReadOnly = true;
       }
-    }
-
-    void dummy() {
-      Honglorn.ImportStudentCourseExcelSheet(@"C:\Git\Honglorn\IMPORT~1.XLS", 2015);
     }
 
     void selectEditCourseComboBox_SelectedValueChanged(object sender, EventArgs e) {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using HonglornBL.Models;
+using HonglornBL.Models.Entities;
 using MySql.Data.MySqlClient;
 using static HonglornBL.Prerequisites;
 

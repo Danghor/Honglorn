@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HonglornBL.Models {
+namespace HonglornBL.Models.Entities {
   public class TraditionalReportMeta {
     [Key]
     public Guid PKey { get; set; } = Guid.NewGuid();
