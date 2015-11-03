@@ -39,6 +39,37 @@ namespace HonglornBL {
       return result;
     }
 
+    //public static DataTable GetStudentCompetitionTable(string courseName, short year) {
+    //  ICollection<IStudentCompetitionData> result = new List<IStudentCompetitionData>();
+
+    //  using (HonglornDB db = new HonglornDB()) {
+    //    List<Student> students = (from s in db.Student
+    //                              where s.studentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
+    //                              orderby s.Surname, s.Forename, s.YearOfBirth descending
+    //                              select s).ToList();
+
+    //    foreach (Student student in students) {
+    //      Competition competition = (from c in student.competition
+    //                                 where c.Year == year
+    //                                 select c).SingleOrDefault();
+
+    //      IStudentCompetitionData row = new StudentCompetitionData {
+    //        PKey = student.PKey,
+    //        Surname = student.Surname,
+    //        Forename = student.Forename,
+    //        Sex = student.Sex,
+    //        Sprint = competition?.Sprint,
+    //        Jump = competition?.Jump,
+    //        Throw = competition?.Throw,
+    //        MiddleDistance = competition?.MiddleDistance
+    //      };
+    //      result.Add(row);
+    //    }
+    //  }
+
+    //  return result;
+    //}
+
     /// <summary>
     ///   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
     ///   is set.

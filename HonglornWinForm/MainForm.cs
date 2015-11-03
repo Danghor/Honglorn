@@ -1,31 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using HonglornBL;
-using static HonglornWinForm.Tools;
+using HonglornBL.APIInterfaces;
+using static HonglornWinForm.Prerequisites;
 
 namespace HonglornWinForm {
   public partial class MainForm : Form {
     const float SCALING_FACTOR = 0.8f;
 
-    short SelectedYear {
-      get {
-        short year;
-
-        try {
-          year = Convert.ToInt16(selectEditYearComboBox.SelectedValue);
-        } catch (FormatException) {
-          try {
-            year = Convert.ToInt16(DateTime.Now.Year);
-          } catch (FormatException) {
-            year = 0;
-          }
-        }
-
-        return year;
-      }
-    }
+    short SelectedYear => selectEditYearComboBox.SelectedValue as short? ?? Convert.ToInt16(DateTime.Now.Year);
 
     string SelectedCourseName => selectEditCourseComboBox.SelectedValue?.ToString() ?? string.Empty;
 
@@ -75,19 +61,63 @@ namespace HonglornWinForm {
     }
 
     void refreshDataGrid() {
-      competitionDataGridView.DataSource = Honglorn.GetStudentCompetitionData(SelectedCourseName, SelectedYear);
-      DataGridViewColumn pkeyColumn = competitionDataGridView.Columns["PKey"];
+      ICollection<IStudentCompetitionData> retrievedData = Honglorn.GetStudentCompetitionData(SelectedCourseName, SelectedYear);
+
+      DataTable table = new DataTable();
+
+      table.Columns.Add(nameof(IStudentCompetitionData.PKey), typeof(Guid));
+      table.Columns.Add(nameof(IStudentCompetitionData.Surname), typeof(string));
+      table.Columns.Add(nameof(IStudentCompetitionData.Forename), typeof(string));
+      table.Columns.Add(nameof(IStudentCompetitionData.Sex), typeof(HonglornBL.Prerequisites.Sex));
+      table.Columns.Add(nameof(IStudentCompetitionData.Sprint), typeof(float));
+      table.Columns.Add(nameof(IStudentCompetitionData.Jump), typeof(float));
+      table.Columns.Add(nameof(IStudentCompetitionData.Throw), typeof(float));
+      table.Columns.Add(nameof(IStudentCompetitionData.MiddleDistance), typeof(float));
+
+      foreach (IStudentCompetitionData entry in retrievedData) {
+        DataRow newRow = table.NewRow();
+        newRow.ItemArray = new object[] {
+          entry.PKey,
+          entry.Surname,
+          entry.Forename,
+          entry.Sex,
+          entry.Sprint,
+          entry.Jump,
+          entry.Throw,
+          entry.MiddleDistance
+        };
+        table.Rows.Add(newRow);
+      }
+
+      competitionDataGridView.DataSource = table;
+
+      DataGridViewColumn pkeyColumn = competitionDataGridView.Columns[nameof(IStudentCompetitionData.PKey)];
       if (pkeyColumn != null) {
         pkeyColumn.Visible = false;
       }
 
-      makeColumnReadOnly("Surname");
-      makeColumnReadOnly("Forename");
-      makeColumnReadOnly("Sex");
+      makeColumnsReadOnly(competitionDataGridView, nameof(IStudentCompetitionData.Surname), nameof(IStudentCompetitionData.Forename), nameof(IStudentCompetitionData.Sex));
+
+      foreach (string key in GermanColumnNameMap.Keys) {
+        setHeaderText(competitionDataGridView, key, GermanColumnNameMap[key]);
+      }
     }
 
-    void makeColumnReadOnly(string name) {
-      DataGridViewColumn column = competitionDataGridView.Columns[name];
+    static void setHeaderText(DataGridView dgv, string oldText, string newText) {
+      DataGridViewColumn column = dgv.Columns[oldText];
+      if (column != null) {
+        column.HeaderText = newText;
+      }
+    }
+
+    static void makeColumnsReadOnly(DataGridView dgv, params string[] columnNames) {
+      foreach (string name in columnNames) {
+        makeColumnReadOnly(dgv, name);
+      }
+    }
+
+    static void makeColumnReadOnly(DataGridView dgv, string name) {
+      DataGridViewColumn column = dgv.Columns[name];
       if (column != null) {
         column.ReadOnly = true;
       }
