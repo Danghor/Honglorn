@@ -125,6 +125,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\Seeds\ArrayOfTraditionalReportMeta.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalDiscipline.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

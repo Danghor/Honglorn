@@ -1,15 +1,16 @@
-using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities {
   public class TraditionalReportMeta {
     [Key]
-    public Guid PKey { get; set; } = Guid.NewGuid();
-
-    [Required]
+    [Column(Order = 0)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public Prerequisites.Sex Sex { get; set; }
 
-    [Required]
+    [Key]
+    [Column(Order = 1)]
+    [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public byte Age { get; set; }
 
     [Required]

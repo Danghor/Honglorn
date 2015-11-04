@@ -62,6 +62,7 @@ namespace HonglornBL.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///
         ///&lt;ArrayOfTraditionalDiscipline xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
         ///  &lt;TraditionalDiscipline&gt;
         ///    &lt;Type&gt;Sprint&lt;/Type&gt;
@@ -74,12 +75,33 @@ namespace HonglornBL.Properties {
         ///    &lt;ConstantC&gt;0.00656&lt;/ConstantC&gt;
         ///    &lt;Measurement&gt;Electronic&lt;/Measurement&gt;
         ///  &lt;/TraditionalDiscipline&gt;
-        ///  &lt;TraditionalDiscipline&gt;
-        /// [rest of string was truncated]&quot;;.
+        ///  &lt;TraditionalDiscipline&gt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ArrayOfTraditionalDiscipline {
             get {
                 return ResourceManager.GetString("ArrayOfTraditionalDiscipline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///
+        ///&lt;ArrayOfTraditionalReportMeta xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///  &lt;TraditionalReportMeta&gt;
+        ///    &lt;Sex&gt;Male&lt;/Sex&gt;
+        ///    &lt;Age&gt;8&lt;/Age&gt;
+        ///    &lt;HonoraryCertificateScore&gt;575&lt;/HonoraryCertificateScore&gt;
+        ///    &lt;VictoryCertificateScore&gt;450&lt;/VictoryCertificateScore&gt;
+        ///  &lt;/TraditionalReportMeta&gt;
+        ///  &lt;TraditionalReportMeta&gt;
+        ///    &lt;Sex&gt;Female&lt;/Sex&gt;
+        ///    &lt;Age&gt;8&lt;/Age&gt;
+        ///    &lt;HonoraryCertificateScore&gt;625&lt;/HonoraryCertificateScore&gt;
+        ///    &lt;Victo [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ArrayOfTraditionalReportMeta {
+            get {
+                return ResourceManager.GetString("ArrayOfTraditionalReportMeta", resourceCulture);
             }
         }
     }
