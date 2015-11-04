@@ -18,8 +18,7 @@ namespace HonglornBL.Models.Framework {
       XmlSerializer serializer = new XmlSerializer(typeof(Entity[]));
 
       using (StringReader reader = new StringReader(xmlContent)) {
-        IEnumerable<Entity> deserializedData = serializer.Deserialize(reader) as IEnumerable<Entity>;
-        set.AddRange(deserializedData);
+        set.AddRange(serializer.Deserialize(reader) as IEnumerable<Entity>);
       }
     }
   }
