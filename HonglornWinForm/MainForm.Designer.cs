@@ -80,6 +80,7 @@
       this.schülerImportierenToolStripMenuItem.Name = "schülerImportierenToolStripMenuItem";
       this.schülerImportierenToolStripMenuItem.Size = new System.Drawing.Size(178, 29);
       this.schülerImportierenToolStripMenuItem.Text = "Schüler importieren";
+      this.schülerImportierenToolStripMenuItem.Click += new System.EventHandler(this.schülerImportierenToolStripMenuItem_Click);
       // 
       // selectEditCourseComboBox
       // 
@@ -95,6 +96,7 @@
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.AutoSize = true;
       this.ClientSize = new System.Drawing.Size(778, 544);
       this.Controls.Add(this.selectEditCourseComboBox);
       this.Controls.Add(this.selectEditYearComboBox);
@@ -102,6 +104,7 @@
       this.Controls.Add(this.menuStrip1);
       this.MainMenuStrip = this.menuStrip1;
       this.Name = "MainForm";
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Honglorn";
       ((System.ComponentModel.ISupportInitialize)(this.competitionDataGridView)).EndInit();
       this.menuStrip1.ResumeLayout(false);

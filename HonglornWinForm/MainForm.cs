@@ -23,7 +23,7 @@ namespace HonglornWinForm {
       base.OnLoad(e);
 
       ScaleScreenAware(this, SCALING_FACTOR);
-      Center(this);
+      CenterToScreen();
 
       smartRefreshComboBoxes();
       refreshDataGrid();
@@ -127,6 +127,12 @@ namespace HonglornWinForm {
 
     void selectEditYearComboBox_SelectedValueChanged(object sender, EventArgs e) {
       refreshDataGrid();
+    }
+
+    void schülerImportierenToolStripMenuItem_Click(object sender, EventArgs e) {
+      ImportDialog importDialog = new ImportDialog();
+      ScaleScreenAware(importDialog, 0.3f);
+      importDialog.ShowDialog();
     }
   }
 }

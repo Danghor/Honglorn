@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="APIClasses\StudentCompetitionData.cs" />
     <Compile Include="APIInterfaces\IStudentCompetitionData.cs" />
+    <Compile Include="Interfaces\IProgressInformer.cs" />
     <Compile Include="ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
     <Compile Include="Models\Entities\Competition.cs" />
