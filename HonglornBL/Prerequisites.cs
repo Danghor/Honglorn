@@ -38,6 +38,8 @@ namespace HonglornBL {
       return className;
     }
 
+    internal static int PercentageValue(int x, int y) => (int) Math.Round(100d * x / y);
+
     public enum DisciplineType {
       Sprint = 0,
       Jump = 1,

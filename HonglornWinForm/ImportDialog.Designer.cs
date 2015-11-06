@@ -30,6 +30,9 @@
       this.progressLabel = new System.Windows.Forms.Label();
       this.startImportButton = new System.Windows.Forms.Button();
       this.fileLabel = new System.Windows.Forms.Label();
+      this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
+      this.yearLabel = new System.Windows.Forms.Label();
+      this.yearTextBox = new System.Windows.Forms.TextBox();
       this.SuspendLayout();
       // 
       // openFileDialog
@@ -51,7 +54,7 @@
       // 
       this.browseLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.browseLabel.Location = new System.Drawing.Point(374, 3);
+      this.browseLabel.Location = new System.Drawing.Point(365, 3);
       this.browseLabel.Name = "browseLabel";
       this.browseLabel.Size = new System.Drawing.Size(133, 32);
       this.browseLabel.TabIndex = 1;
@@ -63,7 +66,8 @@
       // 
       this.progressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.progressBar.Location = new System.Drawing.Point(12, 87);
+      this.progressBar.Location = new System.Drawing.Point(12, 140);
+      this.progressBar.MarqueeAnimationSpeed = 30;
       this.progressBar.Name = "progressBar";
       this.progressBar.Size = new System.Drawing.Size(495, 35);
       this.progressBar.TabIndex = 2;
@@ -72,7 +76,7 @@
       // 
       this.progressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
       this.progressLabel.AutoSize = true;
-      this.progressLabel.Location = new System.Drawing.Point(243, 132);
+      this.progressLabel.Location = new System.Drawing.Point(243, 198);
       this.progressLabel.Name = "progressLabel";
       this.progressLabel.Size = new System.Drawing.Size(30, 20);
       this.progressLabel.TabIndex = 3;
@@ -82,12 +86,13 @@
       // 
       this.startImportButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-      this.startImportButton.Location = new System.Drawing.Point(12, 38);
+      this.startImportButton.Location = new System.Drawing.Point(12, 91);
       this.startImportButton.Name = "startImportButton";
       this.startImportButton.Size = new System.Drawing.Size(495, 43);
       this.startImportButton.TabIndex = 4;
       this.startImportButton.Text = "Start Import";
       this.startImportButton.UseVisualStyleBackColor = true;
+      this.startImportButton.Click += new System.EventHandler(this.startImportButton_Click);
       // 
       // fileLabel
       // 
@@ -98,11 +103,36 @@
       this.fileLabel.TabIndex = 5;
       this.fileLabel.Text = "Datei für Import";
       // 
+      // backgroundWorker
+      // 
+      this.backgroundWorker.WorkerReportsProgress = true;
+      this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
+      this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
+      this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+      // 
+      // yearLabel
+      // 
+      this.yearLabel.AutoSize = true;
+      this.yearLabel.Location = new System.Drawing.Point(12, 42);
+      this.yearLabel.Name = "yearLabel";
+      this.yearLabel.Size = new System.Drawing.Size(109, 20);
+      this.yearLabel.TabIndex = 6;
+      this.yearLabel.Text = "Aktuelles Jahr";
+      // 
+      // yearTextBox
+      // 
+      this.yearTextBox.Location = new System.Drawing.Point(138, 39);
+      this.yearTextBox.Name = "yearTextBox";
+      this.yearTextBox.Size = new System.Drawing.Size(98, 26);
+      this.yearTextBox.TabIndex = 7;
+      // 
       // ImportDialog
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(519, 161);
+      this.ClientSize = new System.Drawing.Size(519, 292);
+      this.Controls.Add(this.yearTextBox);
+      this.Controls.Add(this.yearLabel);
       this.Controls.Add(this.fileLabel);
       this.Controls.Add(this.startImportButton);
       this.Controls.Add(this.progressLabel);
@@ -126,5 +156,8 @@
     private System.Windows.Forms.Label progressLabel;
     private System.Windows.Forms.Button startImportButton;
     private System.Windows.Forms.Label fileLabel;
+    private System.ComponentModel.BackgroundWorker backgroundWorker;
+    private System.Windows.Forms.Label yearLabel;
+    private System.Windows.Forms.TextBox yearTextBox;
   }
 }

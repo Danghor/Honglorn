@@ -53,6 +53,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,11 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APIClasses\ProgressInformer.cs" />
     <Compile Include="APIClasses\StudentCompetitionData.cs" />
     <Compile Include="APIInterfaces\IStudentCompetitionData.cs" />
-    <Compile Include="Interfaces\IProgressInformer.cs" />
     <Compile Include="ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
+    <Compile Include="APIInterfaces\IProgressInformer.cs" />
     <Compile Include="Models\Entities\Competition.cs" />
     <Compile Include="Models\Entities\CompetitionDiscipline.cs" />
     <Compile Include="Models\Entities\CompetitionReportMeta.cs" />

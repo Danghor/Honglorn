@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using HonglornBL.APIClasses;
 using HonglornBL.APIInterfaces;
-using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
+using static System.Windows.Forms.ProgressBarStyle;
 using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
@@ -157,21 +158,29 @@ namespace HonglornBL {
     /// </summary>
     /// <param name="filePath">The full path to the Excel file to be imported.</param>
     /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
-    public static void ImportStudentCourseExcelSheet(string filePath, short year, IProgressInformer progress) {
-      progress.StatusMessage = "Lese Daten aus Excel-Datei";
+    public static void ImportStudentCourseExcelSheet(string filePath, short year, BackgroundWorker worker) {
+      worker.ReportProgress(0, new ProgressInformer {Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..."});
 
       ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
-      progress.Maximum = studentsFromExcelSheet.Count;
-      progress.Current = 0;
-      progress.StatusMessage = "Schreibe Daten in die Datenbank";
+      int currentlyImported = 0;
+
+      worker.ReportProgress(0, new ProgressInformer {Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..."});
 
       foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet) {
         ImportSingleStudent(importStudent.Item1, importStudent.Item2, year);
-        progress.Current++;
+
+        currentlyImported++;
+        worker.ReportProgress(PercentageValue(currentlyImported, studentsFromExcelSheet.Count), new ProgressInformer {
+          Style = Continuous,
+          StatusMessage = "Schreibe Daten in die Datenbank..."
+        });
       }
 
-      progress.Finished = true;
+      worker.ReportProgress(100, new ProgressInformer {
+        Style = Continuous,
+        StatusMessage = "Fertig!"
+      });
     }
 
     /// <summary>
