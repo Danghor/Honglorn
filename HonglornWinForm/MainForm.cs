@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using HonglornBL;
-using HonglornBL.APIInterfaces;
+using HonglornBL.Interfaces;
 using static HonglornWinForm.Prerequisites;
 
 namespace HonglornWinForm {

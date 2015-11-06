@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HonglornBL.APIInterfaces {
+namespace HonglornBL.Interfaces {
   public interface IStudentCompetitionData {
     Guid PKey { get; set; }
     string Surname { get; set; }

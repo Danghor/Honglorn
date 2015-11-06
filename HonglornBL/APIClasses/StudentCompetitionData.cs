@@ -1,5 +1,5 @@
 ﻿using System;
-using HonglornBL.APIInterfaces;
+using HonglornBL.Interfaces;
 
 namespace HonglornBL.APIClasses {
   class StudentCompetitionData : IStudentCompetitionData {

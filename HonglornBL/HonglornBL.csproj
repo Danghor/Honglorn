@@ -64,10 +64,10 @@
   <ItemGroup>
     <Compile Include="APIClasses\ProgressInformer.cs" />
     <Compile Include="APIClasses\StudentCompetitionData.cs" />
-    <Compile Include="APIInterfaces\IStudentCompetitionData.cs" />
+    <Compile Include="Interfaces\IStudentCompetitionData.cs" />
     <Compile Include="ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
-    <Compile Include="APIInterfaces\IProgressInformer.cs" />
+    <Compile Include="Interfaces\IProgressInformer.cs" />
     <Compile Include="Models\Entities\Competition.cs" />
     <Compile Include="Models\Entities\CompetitionDiscipline.cs" />
     <Compile Include="Models\Entities\CompetitionReportMeta.cs" />

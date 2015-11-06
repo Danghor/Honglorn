@@ -2,7 +2,7 @@
 
 namespace HonglornBL.Interfaces {
   public interface IProgressInformer {
-    ProgressBarStyle Style { get; set; }
-    string StatusMessage { get; set; }
+    ProgressBarStyle Style { get; }
+    string StatusMessage { get; }
   }
 }
