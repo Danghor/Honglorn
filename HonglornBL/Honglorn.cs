@@ -158,14 +158,19 @@ namespace HonglornBL {
     /// </summary>
     /// <param name="filePath">The full path to the Excel file to be imported.</param>
     /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
+    /// <param name="worker">The background worker used to process this method. Used for status updates.</param>
     public static void ImportStudentCourseExcelSheet(string filePath, short year, BackgroundWorker worker) {
-      worker.ReportProgress(0, new ProgressInformer {Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..."});
+      if (!IsValidYear(year)) {
+        throw new ArgumentException($"{year} not a valid year.");
+      }
+
+      worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
 
       ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
       int currentlyImported = 0;
 
-      worker.ReportProgress(0, new ProgressInformer {Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..."});
+      worker.ReportProgress(0, new ProgressInformer { Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..." });
 
       foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet) {
         ImportSingleStudent(importStudent.Item1, importStudent.Item2, year);

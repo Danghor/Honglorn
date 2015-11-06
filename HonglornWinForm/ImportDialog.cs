@@ -3,12 +3,13 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using HonglornBL;
 using HonglornBL.Interfaces;
+using static HonglornBL.Prerequisites;
 
 namespace HonglornWinForm {
   public partial class ImportDialog : Form {
     public ImportDialog() {
       InitializeComponent();
-      yearTextBox.Text = DateTime.Now.Year.ToString();
+      yearNumericUpDown.Value = Convert.ToDecimal(DateTime.Now.Year);
     }
 
     void browseLabel_Click(object sender, EventArgs e) {
@@ -19,16 +20,19 @@ namespace HonglornWinForm {
       filePathTextBox.Text = openFileDialog.FileName;
     }
 
-    void backgroundWorker_DoWork(object sender, DoWorkEventArgs e) {
-      Honglorn.ImportStudentCourseExcelSheet(filePathTextBox.Text, 2015, backgroundWorker);
-    }
-
     void startImportButton_Click(object sender, EventArgs e) {
+      startImportButton.Enabled = false;
       try {
         backgroundWorker.RunWorkerAsync();
       } catch (Exception ex) {
         MessageBox.Show(ex.Message);
+        startImportButton.Enabled = true;
       }
+    }
+
+    void backgroundWorker_DoWork(object sender, DoWorkEventArgs e) {
+      short year = (short)yearNumericUpDown.Value;
+      Honglorn.ImportStudentCourseExcelSheet(filePathTextBox.Text, year, backgroundWorker);
     }
 
     void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e) {
@@ -42,7 +46,20 @@ namespace HonglornWinForm {
     }
 
     void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-      MessageBox.Show("Import erfolgreich!", "Schülerdaten Import", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      if (e.Error == null) {
+        MessageBox.Show("Import erfolgreich!", "Schülerdaten Import", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      } else {
+        MessageBox.Show(e.Error.Message, "Schülerdaten Import", MessageBoxButtons.OK, MessageBoxIcon.Error);
+      }
+
+      ResetProgressBar();
+      progressLabel.Text = string.Empty;
+      startImportButton.Enabled = true;
+    }
+
+    void ResetProgressBar() {
+      progressBar.Style = ProgressBarStyle.Continuous;
+      progressBar.Value = 0;
     }
   }
 }

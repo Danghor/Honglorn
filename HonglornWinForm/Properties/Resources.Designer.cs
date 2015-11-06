@@ -59,5 +59,14 @@ namespace HonglornWinForm.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fehler.
+        /// </summary>
+        internal static string Fehler {
+            get {
+                return ResourceManager.GetString("Fehler", resourceCulture);
+            }
+        }
     }
 }
