@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using HonglornBL;
 using HonglornBL.Interfaces;
-using static HonglornBL.Prerequisites;
 
 namespace HonglornWinForm {
   public partial class ImportDialog : Form {
@@ -31,7 +30,7 @@ namespace HonglornWinForm {
     }
 
     void backgroundWorker_DoWork(object sender, DoWorkEventArgs e) {
-      short year = (short)yearNumericUpDown.Value;
+      short year = (short) yearNumericUpDown.Value;
       Honglorn.ImportStudentCourseExcelSheet(filePathTextBox.Text, year, backgroundWorker);
     }
 

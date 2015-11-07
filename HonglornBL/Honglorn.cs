@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using HonglornBL.APIClasses;
 using HonglornBL.Interfaces;
@@ -35,6 +36,7 @@ namespace HonglornBL {
             Throw = competition?.Throw,
             MiddleDistance = competition?.MiddleDistance
           };
+
           result.Add(row);
         }
       }
@@ -42,36 +44,60 @@ namespace HonglornBL {
       return result;
     }
 
-    //public static DataTable GetStudentCompetitionTable(string courseName, short year) {
-    //  ICollection<IStudentCompetitionData> result = new List<IStudentCompetitionData>();
+    public static void UpdateStudentCompetitionDataCollection(IEnumerable<IStudentCompetitionData> competitionData, short year) {
+      foreach (IStudentCompetitionData row in competitionData) {
+        UpdateSingleStudentCompetition(row, year);
+      }
+    }
 
-    //  using (HonglornDB db = new HonglornDB()) {
-    //    List<Student> students = (from s in db.Student
-    //                              where s.studentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
-    //                              orderby s.Surname, s.Forename, s.YearOfBirth descending
-    //                              select s).ToList();
+    static void UpdateSingleStudentCompetition(IStudentCompetitionData data, short year) {
+      if (data != null) {
+        using (HonglornDB db = new HonglornDB()) {
+          Student student = db.Student.Find(data.PKey);
 
-    //    foreach (Student student in students) {
-    //      Competition competition = (from c in student.competition
-    //                                 where c.Year == year
-    //                                 select c).SingleOrDefault();
+          if (student != null) {
+            if ((data.Sprint ?? data.Jump ?? data.Throw ?? data.MiddleDistance) == null) {
+              // Delete competition row
+              Competition competition = new Competition {
+                StudentPKey = student.PKey,
+                Year = year
+              };
 
-    //      IStudentCompetitionData row = new StudentCompetitionData {
-    //        PKey = student.PKey,
-    //        Surname = student.Surname,
-    //        Forename = student.Forename,
-    //        Sex = student.Sex,
-    //        Sprint = competition?.Sprint,
-    //        Jump = competition?.Jump,
-    //        Throw = competition?.Throw,
-    //        MiddleDistance = competition?.MiddleDistance
-    //      };
-    //      result.Add(row);
-    //    }
-    //  }
+              db.Entry(competition).State = EntityState.Deleted;
+            } else {
+              // Update competition row
+              Competition existingCompetition = (from c in student.competition
+                                                 where c.Year == year
+                                                 select c).SingleOrDefault();
 
-    //  return result;
-    //}
+              if (existingCompetition == null) {
+                // Create
+                Competition newCompetition = new Competition {
+                  Year = year,
+                  Sprint = data.Sprint,
+                  Jump = data.Jump,
+                  Throw = data.Throw,
+                  MiddleDistance = data.MiddleDistance
+                };
+                student.competition.Add(newCompetition);
+              } else {
+                // Update
+                existingCompetition.Sprint = data.Sprint;
+                existingCompetition.Jump = data.Jump;
+                existingCompetition.Throw = data.Throw;
+                existingCompetition.MiddleDistance = data.MiddleDistance;
+              }
+            }
+
+            db.SaveChanges();
+          } else {
+            throw new ArgumentException($"No {nameof(Student)} with such key in databse: {data.PKey}");
+          }
+        }
+      } else {
+        throw new ArgumentNullException($"The parameter of type {nameof(IStudentCompetitionData)} cannot be null.");
+      }
+    }
 
     /// <summary>
     ///   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
@@ -164,13 +190,13 @@ namespace HonglornBL {
         throw new ArgumentException($"{year} not a valid year.");
       }
 
-      worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
+      worker.ReportProgress(0, new ProgressInformer {Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..."});
 
       ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
       int currentlyImported = 0;
 
-      worker.ReportProgress(0, new ProgressInformer { Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..." });
+      worker.ReportProgress(0, new ProgressInformer {Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..."});
 
       foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet) {
         ImportSingleStudent(importStudent.Item1, importStudent.Item2, year);
