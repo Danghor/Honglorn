@@ -1,7 +1,6 @@
-﻿<?xml version="1.0"?>
+﻿<?xml version="1.0" ?>
 
-<ArrayOfTraditionalDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                              xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<ArrayOfTraditionalDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TraditionalDiscipline>
     <Type>Sprint</Type>
     <Name>Sprint 100 m</Name>
