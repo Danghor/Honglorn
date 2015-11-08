@@ -26,7 +26,7 @@
       this.competitionDataGridView = new System.Windows.Forms.DataGridView();
       this.selectEditYearComboBox = new System.Windows.Forms.ComboBox();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-      this.schülerImportierenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.importStudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.selectEditCourseComboBox = new System.Windows.Forms.ComboBox();
       ((System.ComponentModel.ISupportInitialize)(this.competitionDataGridView)).BeginInit();
       this.menuStrip1.SuspendLayout();
@@ -52,6 +52,7 @@
       this.competitionDataGridView.RowTemplate.Height = 28;
       this.competitionDataGridView.Size = new System.Drawing.Size(754, 431);
       this.competitionDataGridView.TabIndex = 0;
+      this.competitionDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.competitionDataGridView_CellEndEdit);
       // 
       // selectEditYearComboBox
       // 
@@ -68,19 +69,19 @@
       this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
       this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.schülerImportierenToolStripMenuItem});
+            this.importStudentsToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Size = new System.Drawing.Size(778, 33);
       this.menuStrip1.TabIndex = 2;
       this.menuStrip1.Text = "menuStrip1";
       // 
-      // schülerImportierenToolStripMenuItem
+      // importStudentsToolStripMenuItem
       // 
-      this.schülerImportierenToolStripMenuItem.Name = "schülerImportierenToolStripMenuItem";
-      this.schülerImportierenToolStripMenuItem.Size = new System.Drawing.Size(178, 29);
-      this.schülerImportierenToolStripMenuItem.Text = "Schüler importieren";
-      this.schülerImportierenToolStripMenuItem.Click += new System.EventHandler(this.schülerImportierenToolStripMenuItem_Click);
+      this.importStudentsToolStripMenuItem.Name = "importStudentsToolStripMenuItem";
+      this.importStudentsToolStripMenuItem.Size = new System.Drawing.Size(178, 29);
+      this.importStudentsToolStripMenuItem.Text = "Schüler importieren";
+      this.importStudentsToolStripMenuItem.Click += new System.EventHandler(this.importStudentsToolStripMenuItem_Click);
       // 
       // selectEditCourseComboBox
       // 
@@ -119,7 +120,7 @@
     private System.Windows.Forms.DataGridView competitionDataGridView;
     private System.Windows.Forms.ComboBox selectEditYearComboBox;
     private System.Windows.Forms.MenuStrip menuStrip1;
-    private System.Windows.Forms.ToolStripMenuItem schülerImportierenToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem importStudentsToolStripMenuItem;
     private System.Windows.Forms.ComboBox selectEditCourseComboBox;
   }
 }

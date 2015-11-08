@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.Entity;
 using System.Linq;
 using HonglornBL.APIClasses;
 using HonglornBL.Interfaces;
@@ -56,20 +55,17 @@ namespace HonglornBL {
           Student student = db.Student.Find(data.PKey);
 
           if (student != null) {
+            Competition existingCompetition = (from c in student.competition
+                                               where c.Year == year
+                                               select c).SingleOrDefault();
+
             if ((data.Sprint ?? data.Jump ?? data.Throw ?? data.MiddleDistance) == null) {
               // Delete competition row
-              Competition competition = new Competition {
-                StudentPKey = student.PKey,
-                Year = year
-              };
-
-              db.Entry(competition).State = EntityState.Deleted;
+              if (existingCompetition != null) {
+                db.Competition.Remove(existingCompetition);
+              }
             } else {
               // Update competition row
-              Competition existingCompetition = (from c in student.competition
-                                                 where c.Year == year
-                                                 select c).SingleOrDefault();
-
               if (existingCompetition == null) {
                 // Create
                 Competition newCompetition = new Competition {

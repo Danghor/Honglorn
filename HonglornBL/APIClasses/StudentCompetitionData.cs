@@ -2,7 +2,7 @@
 using HonglornBL.Interfaces;
 
 namespace HonglornBL.APIClasses {
-  class StudentCompetitionData : IStudentCompetitionData {
+  public class StudentCompetitionData : IStudentCompetitionData {
     public Guid PKey { get; set; }
     public string Surname { get; set; }
     public string Forename { get; set; }
