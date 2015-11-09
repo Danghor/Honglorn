@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using HonglornBL.APIClasses;
-using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using static System.Windows.Forms.ProgressBarStyle;
@@ -54,30 +53,48 @@ namespace HonglornBL {
       return table;
     }
 
-    public static void UpdateStudentCompetitionDataCollection(IEnumerable<IStudentCompetitionData> competitionData, short year) {
+    public static void UpdateStudentCompetitionData(DataTable table, short year) {
+      if (table == null) {
+        throw new ArgumentNullException($"Argument {nameof(DataTable)} cannot be null.");
+      }
+
       if (!IsValidYear(year)) {
         throw new ArgumentOutOfRangeException($"{year} is not a valid year.");
       }
 
-      foreach (IStudentCompetitionData row in competitionData) {
-        UpdateSingleStudentCompetition(row, year);
+      DataColumn PKeyColumn = table.Columns[nameof(Student.PKey)];
+      DataColumn SurnameColumn = table.Columns[nameof(Student.Surname)];
+      DataColumn ForenameColumn = table.Columns[nameof(Student.Forename)];
+      DataColumn SexColumn = table.Columns[nameof(Student.Sex)];
+      DataColumn SprintColumn = table.Columns[nameof(Competition.Sprint)];
+      DataColumn JumpColumn = table.Columns[nameof(Competition.Jump)];
+      DataColumn ThrowColumn = table.Columns[nameof(Competition.Throw)];
+      DataColumn MiddleDistanceColumn = table.Columns[nameof(Competition.MiddleDistance)];
+
+      foreach (DataRow row in table.Rows) {
+        Guid PKey = (Guid) row[PKeyColumn];
+        string Surname = row[SurnameColumn].ToString();
+        string Forename = row[ForenameColumn].ToString();
+        Sex Sex = (Sex) row[SexColumn];
+        float? Sprint = row[SprintColumn] as float?;
+        float? Jump = row[JumpColumn] as float?;
+        float? Throw = row[ThrowColumn] as float?;
+        float? MiddleDistance = row[MiddleDistanceColumn] as float?;
+
+        UpdateSingleStudentCompetition(PKey, Sprint, Jump, Throw, MiddleDistance, year);
       }
     }
 
-    static void UpdateSingleStudentCompetition(IStudentCompetitionData data, short year) {
-      if (data == null) {
-        throw new ArgumentNullException($"The parameter of type {nameof(IStudentCompetitionData)} cannot be null.");
-      }
-
+    static void UpdateSingleStudentCompetition(Guid pKey, float? sprint, float? jump, float? @throw, float? middleDistance, short year) {
       using (HonglornDB db = new HonglornDB()) {
-        Student student = db.Student.Find(data.PKey);
+        Student student = db.Student.Find(pKey);
 
         if (student != null) {
           Competition existingCompetition = (from c in student.competition
                                              where c.Year == year
                                              select c).SingleOrDefault();
 
-          if ((data.Sprint ?? data.Jump ?? data.Throw ?? data.MiddleDistance) == null) {
+          if ((sprint ?? jump ?? @throw ?? middleDistance) == null) {
             // Delete competition row
             if (existingCompetition != null) {
               db.Competition.Remove(existingCompetition);
@@ -88,24 +105,24 @@ namespace HonglornBL {
               // Create
               Competition newCompetition = new Competition {
                 Year = year,
-                Sprint = data.Sprint,
-                Jump = data.Jump,
-                Throw = data.Throw,
-                MiddleDistance = data.MiddleDistance
+                Sprint = sprint,
+                Jump = jump,
+                Throw = @throw,
+                MiddleDistance = middleDistance
               };
               student.competition.Add(newCompetition);
             } else {
               // Update
-              existingCompetition.Sprint = data.Sprint;
-              existingCompetition.Jump = data.Jump;
-              existingCompetition.Throw = data.Throw;
-              existingCompetition.MiddleDistance = data.MiddleDistance;
+              existingCompetition.Sprint = sprint;
+              existingCompetition.Jump = jump;
+              existingCompetition.Throw = @throw;
+              existingCompetition.MiddleDistance = middleDistance;
             }
           }
 
           db.SaveChanges();
         } else {
-          throw new ArgumentException($"No {nameof(Student)} with such key in databse: {data.PKey}");
+          throw new ArgumentException($"No {nameof(Student)} with such key in databse: {pKey}");
         }
       }
     }
@@ -122,18 +139,14 @@ namespace HonglornBL {
     /// </returns>
     /// <remarks></remarks>
     public static GameType? GetGameType(string className, short year) {
-      GameType? result;
-
       using (HonglornDB db = new HonglornDB()) {
         IQueryable<GameType> collection = from c in db.DisciplineCollection
                                           where c.ClassName == className
                                                 && c.Year == year
                                           select c.GameType;
 
-        result = collection.SingleOrDefault();
+        return collection.SingleOrDefault();
       }
-
-      return result;
     }
 
     /// <summary>
@@ -141,16 +154,12 @@ namespace HonglornBL {
     /// </summary>
     /// <returns>A short collection representing the valid years.</returns>
     public static ICollection<short> GetYearsWithStudentData() {
-      ICollection<short> result;
-
       using (HonglornDB db = new HonglornDB()) {
         IQueryable<short> years = (from relations in db.StudentCourseRel
                                    select relations.Year).Distinct();
 
-        result = years.OrderByDescending(year => year).ToArray();
+        return years.OrderByDescending(year => year).ToArray();
       }
-
-      return result;
     }
 
     /// <summary>
@@ -159,16 +168,12 @@ namespace HonglornBL {
     /// <param name="year">The year for which the valid course names should be retrieved.</param>
     /// <returns>All valid course names.</returns>
     public static ICollection<string> GetValidCourseNames(short year) {
-      ICollection<string> validCourseNames;
-
       using (HonglornDB db = new HonglornDB()) {
         IQueryable<string> courseNames = (from r in db.StudentCourseRel
                                           where r.Year == year
                                           select r.CourseName).Distinct();
-        validCourseNames = courseNames.OrderBy(name => name).ToArray();
+        return courseNames.OrderBy(name => name).ToArray();
       }
-
-      return validCourseNames;
     }
 
     /// <summary>

@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using HonglornBL;
-using HonglornBL.APIClasses;
 using HonglornBL.Interfaces;
 using static HonglornWinForm.Prerequisites;
 
@@ -77,33 +76,8 @@ namespace HonglornWinForm {
     }
 
     void SaveDataGrid() {
-      ICollection<IStudentCompetitionData> collection = new List<IStudentCompetitionData>();
-
       DataTable table = (DataTable) competitionDataGridView.DataSource;
-
-      DataColumn PKeyColumn = table.Columns[nameof(IStudentCompetitionData.PKey)];
-      DataColumn SurnameColumn = table.Columns[nameof(IStudentCompetitionData.Surname)];
-      DataColumn ForenameColumn = table.Columns[nameof(IStudentCompetitionData.Forename)];
-      DataColumn SexColumn = table.Columns[nameof(IStudentCompetitionData.Sex)];
-      DataColumn SprintColumn = table.Columns[nameof(IStudentCompetitionData.Sprint)];
-      DataColumn JumpColumn = table.Columns[nameof(IStudentCompetitionData.Jump)];
-      DataColumn ThrowColumn = table.Columns[nameof(IStudentCompetitionData.Throw)];
-      DataColumn MiddleDistanceColumn = table.Columns[nameof(IStudentCompetitionData.MiddleDistance)];
-
-      foreach (DataRow row in table.Rows) {
-        collection.Add(new StudentCompetitionData {
-          PKey = (Guid) row[PKeyColumn],
-          Surname = row[SurnameColumn].ToString(),
-          Forename = row[ForenameColumn].ToString(),
-          Sex = (HonglornBL.Prerequisites.Sex) row[SexColumn],
-          Sprint = row[SprintColumn] as float?,
-          Jump = row[JumpColumn] as float?,
-          Throw = row[ThrowColumn] as float?,
-          MiddleDistance = row[MiddleDistanceColumn] as float?
-        });
-      }
-
-      Honglorn.UpdateStudentCompetitionDataCollection(collection, SelectedYear);
+      Honglorn.UpdateStudentCompetitionData(table, SelectedYear);
     }
 
     static void SetHeaderText(DataGridView dgv, string oldText, string newText) {
