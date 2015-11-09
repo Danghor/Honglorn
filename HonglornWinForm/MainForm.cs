@@ -52,7 +52,7 @@ namespace HonglornWinForm {
     /// <param name="box">The combo box to be updated.</param>
     /// <param name="retrievedItems">The items freshly retrieved from the database.</param>
     static void SmartRefreshComboBox<CollectionType>(ComboBox box, ICollection<CollectionType> retrievedItems) {
-      ICollection<CollectionType> currentData = (ICollection<CollectionType>)box.DataSource;
+      ICollection<CollectionType> currentData = (ICollection<CollectionType>) box.DataSource;
 
       if (retrievedItems != null && currentData?.SequenceEqual(retrievedItems) != true) {
         box.DataSource = retrievedItems;
@@ -60,33 +60,7 @@ namespace HonglornWinForm {
     }
 
     void RefreshDataGrid() {
-      ICollection<IStudentCompetitionData> retrievedData = Honglorn.GetStudentCompetitionData(SelectedCourseName, SelectedYear);
-
-      DataTable table = new DataTable();
-
-      table.Columns.Add(nameof(IStudentCompetitionData.PKey), typeof(Guid));
-      table.Columns.Add(nameof(IStudentCompetitionData.Surname), typeof(string));
-      table.Columns.Add(nameof(IStudentCompetitionData.Forename), typeof(string));
-      table.Columns.Add(nameof(IStudentCompetitionData.Sex), typeof(HonglornBL.Prerequisites.Sex));
-      table.Columns.Add(nameof(IStudentCompetitionData.Sprint), typeof(float));
-      table.Columns.Add(nameof(IStudentCompetitionData.Jump), typeof(float));
-      table.Columns.Add(nameof(IStudentCompetitionData.Throw), typeof(float));
-      table.Columns.Add(nameof(IStudentCompetitionData.MiddleDistance), typeof(float));
-
-      foreach (IStudentCompetitionData entry in retrievedData) {
-        DataRow newRow = table.NewRow();
-        newRow.ItemArray = new object[] {
-          entry.PKey,
-          entry.Surname,
-          entry.Forename,
-          entry.Sex,
-          entry.Sprint,
-          entry.Jump,
-          entry.Throw,
-          entry.MiddleDistance
-        };
-        table.Rows.Add(newRow);
-      }
+      DataTable table = Honglorn.GetStudentCompetitionTable(SelectedCourseName, SelectedYear);
 
       competitionDataGridView.DataSource = table;
 
@@ -105,7 +79,7 @@ namespace HonglornWinForm {
     void SaveDataGrid() {
       ICollection<IStudentCompetitionData> collection = new List<IStudentCompetitionData>();
 
-      DataTable table = (DataTable)competitionDataGridView.DataSource;
+      DataTable table = (DataTable) competitionDataGridView.DataSource;
 
       DataColumn PKeyColumn = table.Columns[nameof(IStudentCompetitionData.PKey)];
       DataColumn SurnameColumn = table.Columns[nameof(IStudentCompetitionData.Surname)];
@@ -125,7 +99,7 @@ namespace HonglornWinForm {
           Sprint = row[SprintColumn] as float?,
           Jump = row[JumpColumn] as float?,
           Throw = row[ThrowColumn] as float?,
-          MiddleDistance = row[MiddleDistanceColumn] as float?,
+          MiddleDistance = row[MiddleDistanceColumn] as float?
         });
       }
 

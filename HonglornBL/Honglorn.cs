@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using HonglornBL.APIClasses;
 using HonglornBL.Interfaces;
@@ -11,87 +12,101 @@ using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
   public class Honglorn {
-    public static ICollection<IStudentCompetitionData> GetStudentCompetitionData(string courseName, short year) {
-      ICollection<IStudentCompetitionData> result = new List<IStudentCompetitionData>();
+    public static DataTable GetStudentCompetitionTable(string courseName, short year) {
+      // Prepare table
+      DataTable table = new DataTable();
+
+      DataColumn PKeyColumn = table.Columns.Add(nameof(Student.PKey), typeof(Guid));
+      DataColumn SurnameColumn = table.Columns.Add(nameof(Student.Surname), typeof(string));
+      DataColumn ForenameColumn = table.Columns.Add(nameof(Student.Forename), typeof(string));
+      DataColumn SexColumn = table.Columns.Add(nameof(Student.Sex), typeof(Sex));
+      DataColumn SprintColumn = table.Columns.Add(nameof(Competition.Sprint), typeof(float));
+      DataColumn JumpColumn = table.Columns.Add(nameof(Competition.Jump), typeof(float));
+      DataColumn ThrowColumn = table.Columns.Add(nameof(Competition.Throw), typeof(float));
+      DataColumn MiddleDistanceColumn = table.Columns.Add(nameof(Competition.MiddleDistance), typeof(float));
 
       using (HonglornDB db = new HonglornDB()) {
-        List<Student> students = (from s in db.Student
-                                  where s.studentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
-                                  orderby s.Surname, s.Forename, s.YearOfBirth descending
-                                  select s).ToList();
+        IEnumerable<Student> studentList = (from s in db.Student
+                                            where s.studentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
+                                            orderby s.Surname, s.Forename, s.YearOfBirth descending
+                                            select s).ToList();
 
-        foreach (Student student in students) {
+        foreach (Student student in studentList) {
           Competition competition = (from c in student.competition
                                      where c.Year == year
                                      select c).SingleOrDefault();
 
-          IStudentCompetitionData row = new StudentCompetitionData {
-            PKey = student.PKey,
-            Surname = student.Surname,
-            Forename = student.Forename,
-            Sex = student.Sex,
-            Sprint = competition?.Sprint,
-            Jump = competition?.Jump,
-            Throw = competition?.Throw,
-            MiddleDistance = competition?.MiddleDistance
-          };
+          DataRow newRow = table.NewRow();
 
-          result.Add(row);
+          newRow.SetField(PKeyColumn, student.PKey);
+          newRow.SetField(SurnameColumn, student.Surname);
+          newRow.SetField(ForenameColumn, student.Forename);
+          newRow.SetField(SexColumn, student.Sex);
+          newRow.SetField(SprintColumn, competition?.Sprint);
+          newRow.SetField(JumpColumn, competition?.Jump);
+          newRow.SetField(ThrowColumn, competition?.Throw);
+          newRow.SetField(MiddleDistanceColumn, competition?.MiddleDistance);
+
+          table.Rows.Add(newRow);
         }
       }
 
-      return result;
+      return table;
     }
 
     public static void UpdateStudentCompetitionDataCollection(IEnumerable<IStudentCompetitionData> competitionData, short year) {
+      if (!IsValidYear(year)) {
+        throw new ArgumentOutOfRangeException($"{year} is not a valid year.");
+      }
+
       foreach (IStudentCompetitionData row in competitionData) {
         UpdateSingleStudentCompetition(row, year);
       }
     }
 
     static void UpdateSingleStudentCompetition(IStudentCompetitionData data, short year) {
-      if (data != null) {
-        using (HonglornDB db = new HonglornDB()) {
-          Student student = db.Student.Find(data.PKey);
-
-          if (student != null) {
-            Competition existingCompetition = (from c in student.competition
-                                               where c.Year == year
-                                               select c).SingleOrDefault();
-
-            if ((data.Sprint ?? data.Jump ?? data.Throw ?? data.MiddleDistance) == null) {
-              // Delete competition row
-              if (existingCompetition != null) {
-                db.Competition.Remove(existingCompetition);
-              }
-            } else {
-              // Update competition row
-              if (existingCompetition == null) {
-                // Create
-                Competition newCompetition = new Competition {
-                  Year = year,
-                  Sprint = data.Sprint,
-                  Jump = data.Jump,
-                  Throw = data.Throw,
-                  MiddleDistance = data.MiddleDistance
-                };
-                student.competition.Add(newCompetition);
-              } else {
-                // Update
-                existingCompetition.Sprint = data.Sprint;
-                existingCompetition.Jump = data.Jump;
-                existingCompetition.Throw = data.Throw;
-                existingCompetition.MiddleDistance = data.MiddleDistance;
-              }
-            }
-
-            db.SaveChanges();
-          } else {
-            throw new ArgumentException($"No {nameof(Student)} with such key in databse: {data.PKey}");
-          }
-        }
-      } else {
+      if (data == null) {
         throw new ArgumentNullException($"The parameter of type {nameof(IStudentCompetitionData)} cannot be null.");
+      }
+
+      using (HonglornDB db = new HonglornDB()) {
+        Student student = db.Student.Find(data.PKey);
+
+        if (student != null) {
+          Competition existingCompetition = (from c in student.competition
+                                             where c.Year == year
+                                             select c).SingleOrDefault();
+
+          if ((data.Sprint ?? data.Jump ?? data.Throw ?? data.MiddleDistance) == null) {
+            // Delete competition row
+            if (existingCompetition != null) {
+              db.Competition.Remove(existingCompetition);
+            }
+          } else {
+            // Update competition row
+            if (existingCompetition == null) {
+              // Create
+              Competition newCompetition = new Competition {
+                Year = year,
+                Sprint = data.Sprint,
+                Jump = data.Jump,
+                Throw = data.Throw,
+                MiddleDistance = data.MiddleDistance
+              };
+              student.competition.Add(newCompetition);
+            } else {
+              // Update
+              existingCompetition.Sprint = data.Sprint;
+              existingCompetition.Jump = data.Jump;
+              existingCompetition.Throw = data.Throw;
+              existingCompetition.MiddleDistance = data.MiddleDistance;
+            }
+          }
+
+          db.SaveChanges();
+        } else {
+          throw new ArgumentException($"No {nameof(Student)} with such key in databse: {data.PKey}");
+        }
       }
     }
 
