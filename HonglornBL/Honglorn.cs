@@ -122,7 +122,7 @@ namespace HonglornBL {
     /// </returns>
     /// <remarks></remarks>
     public static GameType? GetGameType(string className, short year) {
-      GameType? result = null;
+      GameType? result;
 
       using (HonglornDB db = new HonglornDB()) {
         IQueryable<GameType> collection = from c in db.DisciplineCollection
@@ -130,9 +130,7 @@ namespace HonglornBL {
                                                 && c.Year == year
                                           select c.GameType;
 
-        if (collection.Any()) {
-          result = collection.Single();
-        }
+        result = collection.SingleOrDefault();
       }
 
       return result;
