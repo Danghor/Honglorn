@@ -4,7 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using HonglornBL;
-using HonglornBL.Interfaces;
+using HonglornBL.Models.Entities;
 using static HonglornWinForm.Prerequisites;
 
 namespace HonglornWinForm {
@@ -63,12 +63,12 @@ namespace HonglornWinForm {
 
       competitionDataGridView.DataSource = table;
 
-      DataGridViewColumn pkeyColumn = competitionDataGridView.Columns[nameof(IStudentCompetitionData.PKey)];
+      DataGridViewColumn pkeyColumn = competitionDataGridView.Columns[nameof(Student.PKey)];
       if (pkeyColumn != null) {
         pkeyColumn.Visible = false;
       }
 
-      MakeColumnsReadOnly(competitionDataGridView, nameof(IStudentCompetitionData.Surname), nameof(IStudentCompetitionData.Forename), nameof(IStudentCompetitionData.Sex));
+      MakeColumnsReadOnly(competitionDataGridView, nameof(Student.Surname), nameof(Student.Forename), nameof(Student.Sex));
 
       foreach (string key in GermanColumnNameMap.Keys) {
         SetHeaderText(competitionDataGridView, key, GermanColumnNameMap[key]);

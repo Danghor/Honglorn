@@ -63,8 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIClasses\ProgressInformer.cs" />
-    <Compile Include="APIClasses\StudentCompetitionData.cs" />
-    <Compile Include="Interfaces\IStudentCompetitionData.cs" />
     <Compile Include="ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
     <Compile Include="Interfaces\IProgressInformer.cs" />
