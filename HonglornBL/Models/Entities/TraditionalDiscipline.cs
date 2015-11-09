@@ -1,8 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Serialization;
 
 namespace HonglornBL.Models.Entities {
-  [XmlType(nameof(TraditionalDiscipline))]
   public class TraditionalDiscipline : Discipline {
     [Required]
     public Prerequisites.Sex Sex { get; set; }
