@@ -35,12 +35,12 @@ namespace HonglornWinForm {
     }
 
     void smartRefreshCourseComboBox() {
-      ICollection<string> retrievedCourseNames = Honglorn.GetValidCourseNames(SelectedYear);
+      ICollection<string> retrievedCourseNames = Honglorn.ValidCourseNames(SelectedYear);
       SmartRefreshComboBox(selectEditCourseComboBox, retrievedCourseNames);
     }
 
     void smartRefreshYearComboBox() {
-      ICollection<short> retrievedYears = Honglorn.GetYearsWithStudentData();
+      ICollection<short> retrievedYears = Honglorn.YearsWithStudentData();
       SmartRefreshComboBox(selectEditYearComboBox, retrievedYears);
     }
 

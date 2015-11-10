@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using HonglornBL.APIClasses;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
@@ -127,6 +128,32 @@ namespace HonglornBL {
       }
     }
 
+    public static DisciplineCollection ConfiguredDisciplines(string className, short year) {
+      using (HonglornDB db = new HonglornDB()) {
+        DisciplineCollection collection = (from c in db.DisciplineCollection
+                                           where c.ClassName == className
+                                                 && c.Year == year
+                                           select c).SingleOrDefault();
+
+        IEnumerable<Expression<Func<DisciplineCollection, Discipline>>> references = new Expression<Func<DisciplineCollection, Discipline>>[] {
+          c => c.MaleSprint,
+          c => c.MaleJump,
+          c => c.MaleThrow,
+          c => c.MaleMiddleDistance,
+          c => c.FemaleSprint,
+          c => c.FemaleJump,
+          c => c.FemaleThrow,
+          c => c.FemaleMiddleDistance
+        };
+
+        foreach (Expression<Func<DisciplineCollection, Discipline>> reference in references) {
+          db.Entry(collection).Reference(reference).Load();
+        }
+
+        return collection;
+      }
+    }
+
     /// <summary>
     ///   Return the GameType currently set in DisciplineMeta for the selected class name and year or nothing, if no GameType
     ///   is set.
@@ -153,7 +180,7 @@ namespace HonglornBL {
     ///   Get the years for which student data is present in the database.
     /// </summary>
     /// <returns>A short collection representing the valid years.</returns>
-    public static ICollection<short> GetYearsWithStudentData() {
+    public static ICollection<short> YearsWithStudentData() {
       using (HonglornDB db = new HonglornDB()) {
         IQueryable<short> years = (from relations in db.StudentCourseRel
                                    select relations.Year).Distinct();
@@ -167,7 +194,7 @@ namespace HonglornBL {
     /// </summary>
     /// <param name="year">The year for which the valid course names should be retrieved.</param>
     /// <returns>All valid course names.</returns>
-    public static ICollection<string> GetValidCourseNames(short year) {
+    public static ICollection<string> ValidCourseNames(short year) {
       using (HonglornDB db = new HonglornDB()) {
         IQueryable<string> courseNames = (from r in db.StudentCourseRel
                                           where r.Year == year
@@ -182,8 +209,8 @@ namespace HonglornBL {
     /// <param name="year">The year for which the valid class names should be retrieved.</param>
     /// <returns>A Char Array representing the valid class names.</returns>
     /// <remarks></remarks>
-    public static ICollection<string> GetValidClassNames(short year) {
-      ICollection<string> validCourseNames = GetValidCourseNames(year);
+    public static ICollection<string> ValidClassNames(short year) {
+      ICollection<string> validCourseNames = ValidCourseNames(year);
 
       return validCourseNames.Select(GetClassName).ToArray();
     }
