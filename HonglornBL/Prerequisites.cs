@@ -12,7 +12,7 @@ namespace HonglornBL {
     /// <param name="className">The class name to be validated.</param>
     /// <returns>True iff the given class name is a valid class name.</returns>
     /// <remarks>Valid classnames: 5, 6, 7, 8, 9, E</remarks>
-    public static bool IsValidClassName(char className) => VALID_CLASSNAMES.Contains(className);
+    internal static bool IsValidClassName(char className) => VALID_CLASSNAMES.Contains(className);
 
     /// <summary>
     ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
@@ -20,7 +20,7 @@ namespace HonglornBL {
     /// <param name="year">The year to be validated.</param>
     /// <returns>True iff the given year is a valid year.</returns>
     /// <remarks>Valid Years: 1900 - 2099</remarks>
-    public static bool IsValidYear(short year) => (year >= 1900 && year <= 2500);
+    internal static bool IsValidYear(short year) => (year >= 1900 && year <= 2500);
 
     internal static string GetClassName(string courseName) {
       string className;
@@ -38,6 +38,12 @@ namespace HonglornBL {
       return className;
     }
 
+    /// <summary>
+    ///   Calculates the fraction of x and y in percentage.
+    /// </summary>
+    /// <param name="x">The numerator.</param>
+    /// <param name="y">The denominator.</param>
+    /// <returns>The rounded fraction in percentage.</returns>
     internal static int PercentageValue(int x, int y) => (int) Math.Round(100d * x / y);
 
     public enum DisciplineType {
