@@ -2,17 +2,26 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using static HonglornBL.Prerequisites;
+using HonglornBL.Models.Entities;
 
 namespace HonglornWinForm {
   static class Prerequisites {
     internal static readonly Dictionary<string, string> GermanColumnNameMap = new Dictionary<string, string> {
-      {"Surname", "Nachname"},
-      {"Forename", "Vorname"},
-      {"Sex", "Geschlecht"},
-      {"Sprint", "Sprint"},
-      {"Jump", "Sprung"},
-      {"Throw", "Wurf"},
-      {"MiddleDistance", "Ausdauer"}
+      {nameof(Student.Surname), "Nachname"},
+      {nameof(Student.Forename), "Vorname"},
+      {nameof(Student.Sex), "Geschlecht"},
+      {nameof(Competition.Sprint), "Sprint"},
+      {nameof(Competition.Jump), "Sprung"},
+      {nameof(Competition.Throw), "Wurf"},
+      {nameof(Competition.MiddleDistance), "Ausdauer"}
+    };
+
+    internal static readonly Dictionary<DisciplineType, string> GermanDisciplineTypeMap = new Dictionary<DisciplineType, string> {
+      {DisciplineType.Sprint, "Sprint"},
+      {DisciplineType.Jump, "Sprung"},
+      {DisciplineType.Throw, "Wurf"},
+      {DisciplineType.MiddleDistance, "Ausdauer"}
     };
 
     /// <summary>

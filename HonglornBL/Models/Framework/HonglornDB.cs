@@ -5,7 +5,7 @@ using MySql.Data.Entity;
 
 namespace HonglornBL.Models.Framework {
   [DbConfigurationType(typeof(MySqlEFConfiguration))]
-  public class HonglornDB : DbContext {
+  class HonglornDB : DbContext {
     public virtual DbSet<Competition> Competition { get; set; }
     public virtual DbSet<CompetitionDiscipline> CompetitionDiscipline { get; set; }
     public virtual DbSet<CompetitionReportMeta> CompetitionReportMeta { get; set; }

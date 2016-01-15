@@ -27,6 +27,9 @@
       this.selectEditYearComboBox = new System.Windows.Forms.ComboBox();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.importStudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.disciplinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.setDisciplinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.editCompetitionDisciplinesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.selectEditCourseComboBox = new System.Windows.Forms.ComboBox();
       ((System.ComponentModel.ISupportInitialize)(this.competitionDataGridView)).BeginInit();
       this.menuStrip1.SuspendLayout();
@@ -69,7 +72,8 @@
       this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
       this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
       this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.importStudentsToolStripMenuItem});
+            this.importStudentsToolStripMenuItem,
+            this.disciplinesToolStripMenuItem});
       this.menuStrip1.Location = new System.Drawing.Point(0, 0);
       this.menuStrip1.Name = "menuStrip1";
       this.menuStrip1.Size = new System.Drawing.Size(778, 33);
@@ -82,6 +86,29 @@
       this.importStudentsToolStripMenuItem.Size = new System.Drawing.Size(178, 29);
       this.importStudentsToolStripMenuItem.Text = "Schüler importieren";
       this.importStudentsToolStripMenuItem.Click += new System.EventHandler(this.importStudentsToolStripMenuItem_Click);
+      // 
+      // disciplinesToolStripMenuItem
+      // 
+      this.disciplinesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setDisciplinesToolStripMenuItem,
+            this.editCompetitionDisciplinesToolStripMenuItem});
+      this.disciplinesToolStripMenuItem.Name = "disciplinesToolStripMenuItem";
+      this.disciplinesToolStripMenuItem.Size = new System.Drawing.Size(109, 29);
+      this.disciplinesToolStripMenuItem.Text = "Disziplinen";
+      // 
+      // setDisciplinesToolStripMenuItem
+      // 
+      this.setDisciplinesToolStripMenuItem.Name = "setDisciplinesToolStripMenuItem";
+      this.setDisciplinesToolStripMenuItem.Size = new System.Drawing.Size(358, 30);
+      this.setDisciplinesToolStripMenuItem.Text = "Disziplinen festlegen";
+      this.setDisciplinesToolStripMenuItem.Click += new System.EventHandler(this.setDisciplinesToolStripMenuItem_Click);
+      // 
+      // editCompetitionDisciplinesToolStripMenuItem
+      // 
+      this.editCompetitionDisciplinesToolStripMenuItem.Name = "editCompetitionDisciplinesToolStripMenuItem";
+      this.editCompetitionDisciplinesToolStripMenuItem.Size = new System.Drawing.Size(358, 30);
+      this.editCompetitionDisciplinesToolStripMenuItem.Text = "Wettkampfdisziplinen bearbeiten";
+      this.editCompetitionDisciplinesToolStripMenuItem.Click += new System.EventHandler(this.editCompetitionDisciplinesToolStripMenuItem_Click);
       // 
       // selectEditCourseComboBox
       // 
@@ -122,6 +149,9 @@
     private System.Windows.Forms.MenuStrip menuStrip1;
     private System.Windows.Forms.ToolStripMenuItem importStudentsToolStripMenuItem;
     private System.Windows.Forms.ComboBox selectEditCourseComboBox;
+    private System.Windows.Forms.ToolStripMenuItem disciplinesToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem setDisciplinesToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem editCompetitionDisciplinesToolStripMenuItem;
   }
 }
 

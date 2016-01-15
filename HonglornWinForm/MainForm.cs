@@ -117,5 +117,15 @@ namespace HonglornWinForm {
     void competitionDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
       SaveDataGrid();
     }
+
+    void setDisciplinesToolStripMenuItem_Click(object sender, EventArgs e) {
+      DisciplineConfiguration config = new DisciplineConfiguration();
+      config.ShowDialog();
+    }
+
+    void editCompetitionDisciplinesToolStripMenuItem_Click(object sender, EventArgs e) {
+      CompetitionDisciplinesConfiguration config = new CompetitionDisciplinesConfiguration();
+      config.ShowDialog();
+    }
   }
 }

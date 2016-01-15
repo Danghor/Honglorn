@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using HonglornBL.APIClasses;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
+using System.Data.Entity;
 using static System.Windows.Forms.ProgressBarStyle;
 using static HonglornBL.Prerequisites;
 
@@ -123,7 +124,7 @@ namespace HonglornBL {
 
           db.SaveChanges();
         } else {
-          throw new ArgumentException($"No {nameof(Student)} with such key in databse: {pKey}");
+          throw new ArgumentException($"No {nameof(Student)} with such key in database: {pKey}");
         }
       }
     }
@@ -135,6 +136,7 @@ namespace HonglornBL {
                                                  && c.Year == year
                                            select c).SingleOrDefault();
 
+        // Pre-load properties; otherwise they won't be available after the context is disposed.
         IEnumerable<Expression<Func<DisciplineCollection, Discipline>>> references = new Expression<Func<DisciplineCollection, Discipline>>[] {
           c => c.MaleSprint,
           c => c.MaleJump,
@@ -151,6 +153,50 @@ namespace HonglornBL {
         }
 
         return collection;
+      }
+    }
+
+    public static ICollection<CompetitionDiscipline> CompetitionDisciplines() {
+      using (HonglornDB db = new HonglornDB()) {
+        return db.CompetitionDiscipline.ToArray();
+      }
+    }
+
+    public static void CreateOrUpdateCompetitionDiscipline(CompetitionDiscipline givenDiscipline) {
+      if (givenDiscipline == null) {
+        throw new ArgumentNullException($"{nameof(CompetitionDiscipline)} cannot be null.");
+      }
+
+      using (HonglornDB db = new HonglornDB()) {
+        CompetitionDiscipline existing = (from d in db.CompetitionDiscipline
+                                          where d.PKey == givenDiscipline.PKey
+                                          select d).SingleOrDefault();
+
+        if (existing == null) {
+          db.CompetitionDiscipline.Add(givenDiscipline);
+        } else {
+          existing.Type = givenDiscipline.Type;
+          existing.Name = givenDiscipline.Name;
+          existing.Unit = givenDiscipline.Unit;
+          existing.LowIsBetter = givenDiscipline.LowIsBetter;
+        }
+
+        db.SaveChanges();
+      }
+    }
+
+    public static void DeleteCompetitionDisciplineByPKey(Guid pKey) {
+      using (HonglornDB db = new HonglornDB()) {
+        try {
+          CompetitionDiscipline discipline = new CompetitionDiscipline {
+            PKey = pKey
+          };
+
+          db.Entry(discipline).State = EntityState.Deleted;
+          db.SaveChanges();
+        } catch (Exception ex) {
+          throw new ArgumentException($"This {nameof(CompetitionDiscipline)} does not exist in the database", ex);
+        }
       }
     }
 
@@ -199,6 +245,7 @@ namespace HonglornBL {
         IQueryable<string> courseNames = (from r in db.StudentCourseRel
                                           where r.Year == year
                                           select r.CourseName).Distinct();
+
         return courseNames.OrderBy(name => name).ToArray();
       }
     }
@@ -231,13 +278,13 @@ namespace HonglornBL {
         throw new ArgumentException($"{year} not a valid year.");
       }
 
-      worker.ReportProgress(0, new ProgressInformer {Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..."});
+      worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
 
       ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
       int currentlyImported = 0;
 
-      worker.ReportProgress(0, new ProgressInformer {Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..."});
+      worker.ReportProgress(0, new ProgressInformer { Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..." });
 
       foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet) {
         ImportSingleStudent(importStudent.Item1, importStudent.Item2, year);
