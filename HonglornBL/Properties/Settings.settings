@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HonglornBL.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MaxValidYear" Type="System.Int16" Scope="Application">
+      <Value Profile="(Default)">2500</Value>
+    </Setting>
+    <Setting Name="MinValidYear" Type="System.Int16" Scope="Application">
+      <Value Profile="(Default)">1900</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

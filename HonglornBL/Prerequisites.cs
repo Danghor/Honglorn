@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using HonglornBL.Properties;
 
 namespace HonglornBL {
   public static class Prerequisites {
-    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
+    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
 
     /// <summary>
     ///   Returns true iff the given character is a valid class name that can be used at all in the application.
@@ -19,8 +20,9 @@ namespace HonglornBL {
     /// </summary>
     /// <param name="year">The year to be validated.</param>
     /// <returns>True iff the given year is a valid year.</returns>
-    /// <remarks>Valid Years: 1900 - 2099</remarks>
-    internal static bool IsValidYear(short year) => (year >= 1900 && year <= 2500);
+    internal static bool IsValidYear(short year) {
+      return (year >= Settings.Default.MinValidYear && year <= Settings.Default.MaxValidYear);
+    }
 
     internal static string GetClassName(string courseName) {
       string className;
