@@ -10,7 +10,7 @@ namespace HonglornBL {
     /// <param name="discipline">The traditional discipline that was performed.</param>
     /// <param name="value">The raw value of the performance achieved.</param>
     /// <returns>The score calculated by designated formulas.</returns>
-    static ushort CalculateScore(TraditionalDiscipline discipline, float? value) {
+    internal static ushort CalculateScore(TraditionalDiscipline discipline, float? value) {
       ValidateDiscipline(discipline);
 
       ushort score = 0;
