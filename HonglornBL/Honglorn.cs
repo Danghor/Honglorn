@@ -8,6 +8,7 @@ using HonglornBL.APIClasses;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System.Data.Entity;
+using System.Diagnostics;
 using static System.Windows.Forms.ProgressBarStyle;
 using static HonglornBL.Prerequisites;
 
@@ -57,7 +58,7 @@ namespace HonglornBL {
 
     public static void UpdateStudentCompetitionData(DataTable table, short year) {
       if (table == null) {
-        throw new ArgumentNullException($"Argument {nameof(DataTable)} cannot be null.");
+        throw new ArgumentNullException(nameof(DataTable));
       }
 
       if (!IsValidYear(year)) {
@@ -164,7 +165,7 @@ namespace HonglornBL {
 
     public static void CreateOrUpdateCompetitionDiscipline(CompetitionDiscipline givenDiscipline) {
       if (givenDiscipline == null) {
-        throw new ArgumentNullException($"{nameof(CompetitionDiscipline)} cannot be null.");
+        throw new ArgumentNullException(nameof(CompetitionDiscipline));
       }
 
       using (HonglornDB db = new HonglornDB()) {
@@ -213,12 +214,10 @@ namespace HonglornBL {
     /// <remarks></remarks>
     public static GameType? GetGameType(string className, short year) {
       using (HonglornDB db = new HonglornDB()) {
-        IQueryable<GameType> collection = from c in db.DisciplineCollection
-                                          where c.ClassName == className
-                                                && c.Year == year
-                                          select c.GameType;
-
-        return collection.SingleOrDefault();
+        return (from c in db.DisciplineCollection
+                where c.ClassName == className
+                      && c.Year == year
+                select c.GameType).SingleOrDefault();
       }
     }
 
@@ -307,7 +306,10 @@ namespace HonglornBL {
     /// </summary>
     /// <remarks></remarks>
     static void ImportSingleStudent(Student student, string courseName, short year) {
+      //todo: handle exception
       GetClassName(courseName); //check whether the course name can be mapped to a class name
+
+      //todo: verify year
 
       using (HonglornDB db = new HonglornDB()) {
         IQueryable<Student> studentQuery = from s in db.Student
@@ -317,17 +319,9 @@ namespace HonglornBL {
                                                  && s.YearOfBirth == student.YearOfBirth
                                            select s;
 
-        if (studentQuery.Any()) {
-          Student existingStudent = studentQuery.Single();
+        Student existingStudent = studentQuery.SingleOrDefault();
 
-          IEnumerable<StudentCourseRel> exisitingRelation = from r in existingStudent.studentCourseRel
-                                                            where r.Year == year
-                                                            select r;
-
-          if (!exisitingRelation.Any()) {
-            existingStudent.AddStudentCourseRel(year, courseName);
-          }
-        } else {
+        if (existingStudent == null) {
           Student newStudent = new Student {
             Forename = student.Forename,
             Surname = student.Surname,
@@ -337,6 +331,18 @@ namespace HonglornBL {
 
           newStudent.AddStudentCourseRel(year, courseName);
           db.Student.Add(newStudent);
+        } else {
+          IEnumerable<StudentCourseRel> courseInformationQuery = from r in existingStudent.studentCourseRel
+                                                                 where r.Year == year
+                                                                 select r;
+
+          StudentCourseRel existingCourseInformation = courseInformationQuery.SingleOrDefault();
+
+          if (existingCourseInformation == null) {
+            existingStudent.AddStudentCourseRel(year, courseName);
+          } else {
+            existingCourseInformation.CourseName = courseName;
+          }
         }
 
         db.SaveChanges();

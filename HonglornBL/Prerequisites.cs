@@ -5,25 +5,6 @@ using HonglornBL.Properties;
 
 namespace HonglornBL {
   public static class Prerequisites {
-    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
-
-    /// <summary>
-    ///   Returns true iff the given character is a valid class name that can be used at all in the application.
-    /// </summary>
-    /// <param name="className">The class name to be validated.</param>
-    /// <returns>True iff the given class name is a valid class name.</returns>
-    /// <remarks>Valid classnames: 5, 6, 7, 8, 9, E</remarks>
-    internal static bool IsValidClassName(char className) => VALID_CLASSNAMES.Contains(className);
-
-    /// <summary>
-    ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
-    /// </summary>
-    /// <param name="year">The year to be validated.</param>
-    /// <returns>True iff the given year is a valid year.</returns>
-    internal static bool IsValidYear(short year) {
-      return (year >= Settings.Default.MinValidYear && year <= Settings.Default.MaxValidYear);
-    }
-
     internal static string GetClassName(string courseName) {
       string className;
 
@@ -48,6 +29,34 @@ namespace HonglornBL {
     /// <returns>The rounded fraction in percentage.</returns>
     internal static int PercentageValue(int x, int y) => (int) Math.Round(100d * x / y);
 
+    #region Validation
+    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
+
+    /// <summary>
+    ///   Returns true iff the given character is a valid class name that can be used at all in the application.
+    /// </summary>
+    /// <param name="className">The class name to be validated.</param>
+    /// <returns>True iff the given class name is a valid class name.</returns>
+    /// <remarks>Valid classnames: 5, 6, 7, 8, 9, E</remarks>
+    internal static bool IsValidClassName(char className) => VALID_CLASSNAMES.Contains(className);
+
+    /// <summary>
+    ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
+    /// </summary>
+    /// <param name="year">The year to be validated.</param>
+    /// <returns>True iff the given year is a valid year.</returns>
+    internal static bool IsValidYear(short year) {
+      return (year >= Settings.Default.MinValidYear && year <= Settings.Default.MaxValidYear);
+    }
+    #endregion
+
+    #region Enums
+    public enum Certificate {
+      Honorary = 0,
+      Victory = 1,
+      Participation = 2
+    }
+
     public enum DisciplineType {
       Sprint = 0,
       Jump = 1,
@@ -69,5 +78,6 @@ namespace HonglornBL {
       Male = 0,
       Female = 1
     }
+    #endregion
   }
 }

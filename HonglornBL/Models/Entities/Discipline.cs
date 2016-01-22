@@ -19,6 +19,6 @@ namespace HonglornBL.Models.Entities {
     [StringLength(25)]
     public string Unit { get; set; }
 
-    public override string ToString() => $"{PKey} | {Name}";
+    public override string ToString() => Name;
   }
 }

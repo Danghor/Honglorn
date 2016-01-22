@@ -27,8 +27,7 @@ namespace HonglornBL {
             break;
           case DisciplineType.Jump:
           case DisciplineType.Throw:
-            float meters = (float) value;
-            score = CalculateJumpThrowScore(meters, discipline.ConstantA, discipline.ConstantC);
+            score = CalculateJumpThrowScore((float) value, discipline.ConstantA, discipline.ConstantC);
             break;
           case DisciplineType.MiddleDistance:
             score = CalculateRunningScoreElectronic((float) value, (ushort) discipline.Distance, discipline.ConstantA, discipline.ConstantC);
