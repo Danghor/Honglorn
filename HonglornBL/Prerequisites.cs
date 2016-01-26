@@ -41,7 +41,7 @@ namespace HonglornBL {
     internal static bool IsValidClassName(char className) => VALID_CLASSNAMES.Contains(className);
 
     /// <summary>
-    ///   Returns true iff the given input year is a value between (including) 1900 and 2099.
+    ///   Returns true iff the given input year is valid based on the lower and upper bounds defined in the settings.
     /// </summary>
     /// <param name="year">The year to be validated.</param>
     /// <returns>True iff the given year is a valid year.</returns>

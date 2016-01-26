@@ -30,44 +30,27 @@
       this.gameTypeGroupBox = new System.Windows.Forms.GroupBox();
       this.competitionRadioButton = new System.Windows.Forms.RadioButton();
       this.tradtitionalRadioButton = new System.Windows.Forms.RadioButton();
-      this.maleSprintNameLabel = new System.Windows.Forms.Label();
       this.maleGroupBox = new System.Windows.Forms.GroupBox();
-      this.maleMiddleDistanceGroupBox = new System.Windows.Forms.GroupBox();
-      this.maleMiddleDistanceLowIsBetterCheckBox = new System.Windows.Forms.CheckBox();
-      this.maleMiddleDistanceLowIsBetterLabel = new System.Windows.Forms.Label();
-      this.maleMiddleDistanceUnitComboBox = new System.Windows.Forms.ComboBox();
-      this.maleMiddleDistanceNameComboBox = new System.Windows.Forms.ComboBox();
-      this.maleMiddleDistanceNameLabel = new System.Windows.Forms.Label();
-      this.maleMiddleDistanceUnitLabel = new System.Windows.Forms.Label();
-      this.maleThrowGroupBox = new System.Windows.Forms.GroupBox();
-      this.maleThrowLowIsBetterCheckBox = new System.Windows.Forms.CheckBox();
-      this.maleThrowLowIsBetterLabel = new System.Windows.Forms.Label();
-      this.maleThrowUnitComboBox = new System.Windows.Forms.ComboBox();
-      this.maleThrowNameComboBox = new System.Windows.Forms.ComboBox();
-      this.maleThrowNameLabel = new System.Windows.Forms.Label();
-      this.maleThrowUnitLabel = new System.Windows.Forms.Label();
-      this.maleJumpGroupBox = new System.Windows.Forms.GroupBox();
-      this.maleJumpLowIsBetterCheckBox = new System.Windows.Forms.CheckBox();
-      this.maleJumpLowIsBetterLabel = new System.Windows.Forms.Label();
-      this.maleJumpUnitComboBox = new System.Windows.Forms.ComboBox();
-      this.maleJumpNameComboBox = new System.Windows.Forms.ComboBox();
-      this.maleJumpNameLabel = new System.Windows.Forms.Label();
-      this.maleJumpUnitLabel = new System.Windows.Forms.Label();
-      this.maleSprintGroupBox = new System.Windows.Forms.GroupBox();
-      this.maleSprintElectronicMeasurementRadioButton = new System.Windows.Forms.RadioButton();
-      this.maleSprintManualMeasurementRadioButton = new System.Windows.Forms.RadioButton();
-      this.maleSprintLowIsBetterCheckBox = new System.Windows.Forms.CheckBox();
-      this.maleSprintLowIsBetterLabel = new System.Windows.Forms.Label();
-      this.maleSprintMeasurementLabel = new System.Windows.Forms.Label();
-      this.maleSprintNameComboBox = new System.Windows.Forms.ComboBox();
-      this.maleSprintUnitLabel = new System.Windows.Forms.Label();
-      this.maleSprintUnitComboBox = new System.Windows.Forms.ComboBox();
+      this.maleSprintLabel = new System.Windows.Forms.Label();
+      this.maleSprintComboBox = new System.Windows.Forms.ComboBox();
+      this.maleJumpLabel = new System.Windows.Forms.Label();
+      this.maleThrowLabel = new System.Windows.Forms.Label();
+      this.maleMiddleDistanceLabel = new System.Windows.Forms.Label();
+      this.maleJumpComboBox = new System.Windows.Forms.ComboBox();
+      this.maleThrowComboBox = new System.Windows.Forms.ComboBox();
+      this.maleMiddleDistanceComboBox = new System.Windows.Forms.ComboBox();
+      this.femaleGroupBox = new System.Windows.Forms.GroupBox();
+      this.femaleMiddleDistanceComboBox = new System.Windows.Forms.ComboBox();
+      this.femaleThrowComboBox = new System.Windows.Forms.ComboBox();
+      this.femaleJumpComboBox = new System.Windows.Forms.ComboBox();
+      this.femaleMiddleDistanceLabel = new System.Windows.Forms.Label();
+      this.femaleThrowLabel = new System.Windows.Forms.Label();
+      this.femaleJumpLabel = new System.Windows.Forms.Label();
+      this.femaleSprintComboBox = new System.Windows.Forms.ComboBox();
+      this.femaleSprintLabel = new System.Windows.Forms.Label();
       this.gameTypeGroupBox.SuspendLayout();
       this.maleGroupBox.SuspendLayout();
-      this.maleMiddleDistanceGroupBox.SuspendLayout();
-      this.maleThrowGroupBox.SuspendLayout();
-      this.maleJumpGroupBox.SuspendLayout();
-      this.maleSprintGroupBox.SuspendLayout();
+      this.femaleGroupBox.SuspendLayout();
       this.SuspendLayout();
       // 
       // yearLabel
@@ -91,7 +74,7 @@
       // classLabel
       // 
       this.classLabel.AutoSize = true;
-      this.classLabel.Location = new System.Drawing.Point(208, 13);
+      this.classLabel.Location = new System.Drawing.Point(250, 13);
       this.classLabel.Name = "classLabel";
       this.classLabel.Size = new System.Drawing.Size(101, 20);
       this.classLabel.TabIndex = 2;
@@ -101,7 +84,7 @@
       // 
       this.classComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
       this.classComboBox.FormattingEnabled = true;
-      this.classComboBox.Location = new System.Drawing.Point(315, 10);
+      this.classComboBox.Location = new System.Drawing.Point(357, 10);
       this.classComboBox.Name = "classComboBox";
       this.classComboBox.Size = new System.Drawing.Size(121, 28);
       this.classComboBox.TabIndex = 3;
@@ -111,7 +94,7 @@
       this.gameTypeGroupBox.AutoSize = true;
       this.gameTypeGroupBox.Controls.Add(this.competitionRadioButton);
       this.gameTypeGroupBox.Controls.Add(this.tradtitionalRadioButton);
-      this.gameTypeGroupBox.Location = new System.Drawing.Point(17, 52);
+      this.gameTypeGroupBox.Location = new System.Drawing.Point(17, 44);
       this.gameTypeGroupBox.Name = "gameTypeGroupBox";
       this.gameTypeGroupBox.Size = new System.Drawing.Size(250, 74);
       this.gameTypeGroupBox.TabIndex = 4;
@@ -141,332 +124,191 @@
       this.tradtitionalRadioButton.Text = "Wettkampf";
       this.tradtitionalRadioButton.UseVisualStyleBackColor = true;
       // 
-      // maleSprintNameLabel
-      // 
-      this.maleSprintNameLabel.AutoSize = true;
-      this.maleSprintNameLabel.Location = new System.Drawing.Point(6, 22);
-      this.maleSprintNameLabel.Name = "maleSprintNameLabel";
-      this.maleSprintNameLabel.Size = new System.Drawing.Size(140, 20);
-      this.maleSprintNameLabel.TabIndex = 7;
-      this.maleSprintNameLabel.Text = "Name der Disziplin";
-      // 
       // maleGroupBox
       // 
-      this.maleGroupBox.AutoSize = true;
-      this.maleGroupBox.Controls.Add(this.maleMiddleDistanceGroupBox);
-      this.maleGroupBox.Controls.Add(this.maleThrowGroupBox);
-      this.maleGroupBox.Controls.Add(this.maleJumpGroupBox);
-      this.maleGroupBox.Controls.Add(this.maleSprintGroupBox);
-      this.maleGroupBox.Location = new System.Drawing.Point(17, 132);
+      this.maleGroupBox.Controls.Add(this.maleMiddleDistanceComboBox);
+      this.maleGroupBox.Controls.Add(this.maleThrowComboBox);
+      this.maleGroupBox.Controls.Add(this.maleJumpComboBox);
+      this.maleGroupBox.Controls.Add(this.maleMiddleDistanceLabel);
+      this.maleGroupBox.Controls.Add(this.maleThrowLabel);
+      this.maleGroupBox.Controls.Add(this.maleJumpLabel);
+      this.maleGroupBox.Controls.Add(this.maleSprintComboBox);
+      this.maleGroupBox.Controls.Add(this.maleSprintLabel);
+      this.maleGroupBox.Location = new System.Drawing.Point(17, 125);
       this.maleGroupBox.Name = "maleGroupBox";
-      this.maleGroupBox.Size = new System.Drawing.Size(1843, 213);
-      this.maleGroupBox.TabIndex = 9;
+      this.maleGroupBox.Size = new System.Drawing.Size(461, 163);
+      this.maleGroupBox.TabIndex = 5;
       this.maleGroupBox.TabStop = false;
       this.maleGroupBox.Text = "Männlich";
       // 
-      // maleMiddleDistanceGroupBox
+      // maleSprintLabel
       // 
-      this.maleMiddleDistanceGroupBox.AutoSize = true;
-      this.maleMiddleDistanceGroupBox.Controls.Add(this.maleMiddleDistanceLowIsBetterCheckBox);
-      this.maleMiddleDistanceGroupBox.Controls.Add(this.maleMiddleDistanceLowIsBetterLabel);
-      this.maleMiddleDistanceGroupBox.Controls.Add(this.maleMiddleDistanceUnitComboBox);
-      this.maleMiddleDistanceGroupBox.Controls.Add(this.maleMiddleDistanceNameComboBox);
-      this.maleMiddleDistanceGroupBox.Controls.Add(this.maleMiddleDistanceNameLabel);
-      this.maleMiddleDistanceGroupBox.Controls.Add(this.maleMiddleDistanceUnitLabel);
-      this.maleMiddleDistanceGroupBox.Location = new System.Drawing.Point(1417, 25);
-      this.maleMiddleDistanceGroupBox.Name = "maleMiddleDistanceGroupBox";
-      this.maleMiddleDistanceGroupBox.Size = new System.Drawing.Size(420, 163);
-      this.maleMiddleDistanceGroupBox.TabIndex = 16;
-      this.maleMiddleDistanceGroupBox.TabStop = false;
-      this.maleMiddleDistanceGroupBox.Text = "Ausdauer";
+      this.maleSprintLabel.AutoSize = true;
+      this.maleSprintLabel.Location = new System.Drawing.Point(6, 28);
+      this.maleSprintLabel.Name = "maleSprintLabel";
+      this.maleSprintLabel.Size = new System.Drawing.Size(51, 20);
+      this.maleSprintLabel.TabIndex = 0;
+      this.maleSprintLabel.Text = "Sprint";
       // 
-      // maleMiddleDistanceLowIsBetterCheckBox
+      // maleSprintComboBox
       // 
-      this.maleMiddleDistanceLowIsBetterCheckBox.AutoSize = true;
-      this.maleMiddleDistanceLowIsBetterCheckBox.Location = new System.Drawing.Point(152, 117);
-      this.maleMiddleDistanceLowIsBetterCheckBox.Name = "maleMiddleDistanceLowIsBetterCheckBox";
-      this.maleMiddleDistanceLowIsBetterCheckBox.Size = new System.Drawing.Size(22, 21);
-      this.maleMiddleDistanceLowIsBetterCheckBox.TabIndex = 14;
-      this.maleMiddleDistanceLowIsBetterCheckBox.UseVisualStyleBackColor = true;
+      this.maleSprintComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.maleSprintComboBox.FormattingEnabled = true;
+      this.maleSprintComboBox.Location = new System.Drawing.Point(98, 25);
+      this.maleSprintComboBox.Name = "maleSprintComboBox";
+      this.maleSprintComboBox.Size = new System.Drawing.Size(357, 28);
+      this.maleSprintComboBox.TabIndex = 1;
       // 
-      // maleMiddleDistanceLowIsBetterLabel
+      // maleJumpLabel
       // 
-      this.maleMiddleDistanceLowIsBetterLabel.AutoSize = true;
-      this.maleMiddleDistanceLowIsBetterLabel.Location = new System.Drawing.Point(6, 116);
-      this.maleMiddleDistanceLowIsBetterLabel.Name = "maleMiddleDistanceLowIsBetterLabel";
-      this.maleMiddleDistanceLowIsBetterLabel.Size = new System.Drawing.Size(140, 20);
-      this.maleMiddleDistanceLowIsBetterLabel.TabIndex = 13;
-      this.maleMiddleDistanceLowIsBetterLabel.Text = "Weniger ist besser";
+      this.maleJumpLabel.AutoSize = true;
+      this.maleJumpLabel.Location = new System.Drawing.Point(6, 62);
+      this.maleJumpLabel.Name = "maleJumpLabel";
+      this.maleJumpLabel.Size = new System.Drawing.Size(61, 20);
+      this.maleJumpLabel.TabIndex = 2;
+      this.maleJumpLabel.Text = "Sprung";
       // 
-      // maleMiddleDistanceUnitComboBox
+      // maleThrowLabel
       // 
-      this.maleMiddleDistanceUnitComboBox.FormattingEnabled = true;
-      this.maleMiddleDistanceUnitComboBox.Location = new System.Drawing.Point(152, 53);
-      this.maleMiddleDistanceUnitComboBox.Name = "maleMiddleDistanceUnitComboBox";
-      this.maleMiddleDistanceUnitComboBox.Size = new System.Drawing.Size(262, 28);
-      this.maleMiddleDistanceUnitComboBox.TabIndex = 10;
+      this.maleThrowLabel.AutoSize = true;
+      this.maleThrowLabel.Location = new System.Drawing.Point(6, 96);
+      this.maleThrowLabel.Name = "maleThrowLabel";
+      this.maleThrowLabel.Size = new System.Drawing.Size(43, 20);
+      this.maleThrowLabel.TabIndex = 3;
+      this.maleThrowLabel.Text = "Wurf";
       // 
-      // maleMiddleDistanceNameComboBox
+      // maleMiddleDistanceLabel
       // 
-      this.maleMiddleDistanceNameComboBox.FormattingEnabled = true;
-      this.maleMiddleDistanceNameComboBox.Location = new System.Drawing.Point(152, 19);
-      this.maleMiddleDistanceNameComboBox.Name = "maleMiddleDistanceNameComboBox";
-      this.maleMiddleDistanceNameComboBox.Size = new System.Drawing.Size(262, 28);
-      this.maleMiddleDistanceNameComboBox.TabIndex = 9;
+      this.maleMiddleDistanceLabel.AutoSize = true;
+      this.maleMiddleDistanceLabel.Location = new System.Drawing.Point(6, 130);
+      this.maleMiddleDistanceLabel.Name = "maleMiddleDistanceLabel";
+      this.maleMiddleDistanceLabel.Size = new System.Drawing.Size(78, 20);
+      this.maleMiddleDistanceLabel.TabIndex = 4;
+      this.maleMiddleDistanceLabel.Text = "Ausdauer";
       // 
-      // maleMiddleDistanceNameLabel
+      // maleJumpComboBox
       // 
-      this.maleMiddleDistanceNameLabel.AutoSize = true;
-      this.maleMiddleDistanceNameLabel.Location = new System.Drawing.Point(6, 22);
-      this.maleMiddleDistanceNameLabel.Name = "maleMiddleDistanceNameLabel";
-      this.maleMiddleDistanceNameLabel.Size = new System.Drawing.Size(140, 20);
-      this.maleMiddleDistanceNameLabel.TabIndex = 7;
-      this.maleMiddleDistanceNameLabel.Text = "Name der Disziplin";
+      this.maleJumpComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.maleJumpComboBox.FormattingEnabled = true;
+      this.maleJumpComboBox.Location = new System.Drawing.Point(98, 59);
+      this.maleJumpComboBox.Name = "maleJumpComboBox";
+      this.maleJumpComboBox.Size = new System.Drawing.Size(357, 28);
+      this.maleJumpComboBox.TabIndex = 5;
       // 
-      // maleMiddleDistanceUnitLabel
+      // maleThrowComboBox
       // 
-      this.maleMiddleDistanceUnitLabel.AutoSize = true;
-      this.maleMiddleDistanceUnitLabel.Location = new System.Drawing.Point(88, 56);
-      this.maleMiddleDistanceUnitLabel.Name = "maleMiddleDistanceUnitLabel";
-      this.maleMiddleDistanceUnitLabel.Size = new System.Drawing.Size(58, 20);
-      this.maleMiddleDistanceUnitLabel.TabIndex = 8;
-      this.maleMiddleDistanceUnitLabel.Text = "Einheit";
+      this.maleThrowComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.maleThrowComboBox.FormattingEnabled = true;
+      this.maleThrowComboBox.Location = new System.Drawing.Point(98, 93);
+      this.maleThrowComboBox.Name = "maleThrowComboBox";
+      this.maleThrowComboBox.Size = new System.Drawing.Size(357, 28);
+      this.maleThrowComboBox.TabIndex = 6;
       // 
-      // maleThrowGroupBox
+      // maleMiddleDistanceComboBox
       // 
-      this.maleThrowGroupBox.AutoSize = true;
-      this.maleThrowGroupBox.Controls.Add(this.maleThrowLowIsBetterCheckBox);
-      this.maleThrowGroupBox.Controls.Add(this.maleThrowLowIsBetterLabel);
-      this.maleThrowGroupBox.Controls.Add(this.maleThrowUnitComboBox);
-      this.maleThrowGroupBox.Controls.Add(this.maleThrowNameComboBox);
-      this.maleThrowGroupBox.Controls.Add(this.maleThrowNameLabel);
-      this.maleThrowGroupBox.Controls.Add(this.maleThrowUnitLabel);
-      this.maleThrowGroupBox.Location = new System.Drawing.Point(991, 25);
-      this.maleThrowGroupBox.Name = "maleThrowGroupBox";
-      this.maleThrowGroupBox.Size = new System.Drawing.Size(420, 163);
-      this.maleThrowGroupBox.TabIndex = 15;
-      this.maleThrowGroupBox.TabStop = false;
-      this.maleThrowGroupBox.Text = "Wurf";
+      this.maleMiddleDistanceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.maleMiddleDistanceComboBox.FormattingEnabled = true;
+      this.maleMiddleDistanceComboBox.Location = new System.Drawing.Point(98, 127);
+      this.maleMiddleDistanceComboBox.Name = "maleMiddleDistanceComboBox";
+      this.maleMiddleDistanceComboBox.Size = new System.Drawing.Size(357, 28);
+      this.maleMiddleDistanceComboBox.TabIndex = 7;
       // 
-      // maleThrowLowIsBetterCheckBox
+      // femaleGroupBox
       // 
-      this.maleThrowLowIsBetterCheckBox.AutoSize = true;
-      this.maleThrowLowIsBetterCheckBox.Location = new System.Drawing.Point(152, 117);
-      this.maleThrowLowIsBetterCheckBox.Name = "maleThrowLowIsBetterCheckBox";
-      this.maleThrowLowIsBetterCheckBox.Size = new System.Drawing.Size(22, 21);
-      this.maleThrowLowIsBetterCheckBox.TabIndex = 14;
-      this.maleThrowLowIsBetterCheckBox.UseVisualStyleBackColor = true;
+      this.femaleGroupBox.Controls.Add(this.femaleMiddleDistanceComboBox);
+      this.femaleGroupBox.Controls.Add(this.femaleThrowComboBox);
+      this.femaleGroupBox.Controls.Add(this.femaleJumpComboBox);
+      this.femaleGroupBox.Controls.Add(this.femaleMiddleDistanceLabel);
+      this.femaleGroupBox.Controls.Add(this.femaleThrowLabel);
+      this.femaleGroupBox.Controls.Add(this.femaleJumpLabel);
+      this.femaleGroupBox.Controls.Add(this.femaleSprintComboBox);
+      this.femaleGroupBox.Controls.Add(this.femaleSprintLabel);
+      this.femaleGroupBox.Location = new System.Drawing.Point(17, 294);
+      this.femaleGroupBox.Name = "femaleGroupBox";
+      this.femaleGroupBox.Size = new System.Drawing.Size(461, 163);
+      this.femaleGroupBox.TabIndex = 6;
+      this.femaleGroupBox.TabStop = false;
+      this.femaleGroupBox.Text = "Weiblich";
       // 
-      // maleThrowLowIsBetterLabel
+      // femaleMiddleDistanceComboBox
       // 
-      this.maleThrowLowIsBetterLabel.AutoSize = true;
-      this.maleThrowLowIsBetterLabel.Location = new System.Drawing.Point(6, 116);
-      this.maleThrowLowIsBetterLabel.Name = "maleThrowLowIsBetterLabel";
-      this.maleThrowLowIsBetterLabel.Size = new System.Drawing.Size(140, 20);
-      this.maleThrowLowIsBetterLabel.TabIndex = 13;
-      this.maleThrowLowIsBetterLabel.Text = "Weniger ist besser";
+      this.femaleMiddleDistanceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.femaleMiddleDistanceComboBox.FormattingEnabled = true;
+      this.femaleMiddleDistanceComboBox.Location = new System.Drawing.Point(98, 127);
+      this.femaleMiddleDistanceComboBox.Name = "femaleMiddleDistanceComboBox";
+      this.femaleMiddleDistanceComboBox.Size = new System.Drawing.Size(357, 28);
+      this.femaleMiddleDistanceComboBox.TabIndex = 7;
       // 
-      // maleThrowUnitComboBox
+      // femaleThrowComboBox
       // 
-      this.maleThrowUnitComboBox.FormattingEnabled = true;
-      this.maleThrowUnitComboBox.Location = new System.Drawing.Point(152, 53);
-      this.maleThrowUnitComboBox.Name = "maleThrowUnitComboBox";
-      this.maleThrowUnitComboBox.Size = new System.Drawing.Size(262, 28);
-      this.maleThrowUnitComboBox.TabIndex = 10;
+      this.femaleThrowComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.femaleThrowComboBox.FormattingEnabled = true;
+      this.femaleThrowComboBox.Location = new System.Drawing.Point(98, 93);
+      this.femaleThrowComboBox.Name = "femaleThrowComboBox";
+      this.femaleThrowComboBox.Size = new System.Drawing.Size(357, 28);
+      this.femaleThrowComboBox.TabIndex = 6;
       // 
-      // maleThrowNameComboBox
+      // femaleJumpComboBox
       // 
-      this.maleThrowNameComboBox.FormattingEnabled = true;
-      this.maleThrowNameComboBox.Location = new System.Drawing.Point(152, 19);
-      this.maleThrowNameComboBox.Name = "maleThrowNameComboBox";
-      this.maleThrowNameComboBox.Size = new System.Drawing.Size(262, 28);
-      this.maleThrowNameComboBox.TabIndex = 9;
+      this.femaleJumpComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.femaleJumpComboBox.FormattingEnabled = true;
+      this.femaleJumpComboBox.Location = new System.Drawing.Point(98, 59);
+      this.femaleJumpComboBox.Name = "femaleJumpComboBox";
+      this.femaleJumpComboBox.Size = new System.Drawing.Size(357, 28);
+      this.femaleJumpComboBox.TabIndex = 5;
       // 
-      // maleThrowNameLabel
+      // femaleMiddleDistanceLabel
       // 
-      this.maleThrowNameLabel.AutoSize = true;
-      this.maleThrowNameLabel.Location = new System.Drawing.Point(6, 22);
-      this.maleThrowNameLabel.Name = "maleThrowNameLabel";
-      this.maleThrowNameLabel.Size = new System.Drawing.Size(140, 20);
-      this.maleThrowNameLabel.TabIndex = 7;
-      this.maleThrowNameLabel.Text = "Name der Disziplin";
+      this.femaleMiddleDistanceLabel.AutoSize = true;
+      this.femaleMiddleDistanceLabel.Location = new System.Drawing.Point(6, 130);
+      this.femaleMiddleDistanceLabel.Name = "femaleMiddleDistanceLabel";
+      this.femaleMiddleDistanceLabel.Size = new System.Drawing.Size(78, 20);
+      this.femaleMiddleDistanceLabel.TabIndex = 4;
+      this.femaleMiddleDistanceLabel.Text = "Ausdauer";
       // 
-      // maleThrowUnitLabel
+      // femaleThrowLabel
       // 
-      this.maleThrowUnitLabel.AutoSize = true;
-      this.maleThrowUnitLabel.Location = new System.Drawing.Point(88, 56);
-      this.maleThrowUnitLabel.Name = "maleThrowUnitLabel";
-      this.maleThrowUnitLabel.Size = new System.Drawing.Size(58, 20);
-      this.maleThrowUnitLabel.TabIndex = 8;
-      this.maleThrowUnitLabel.Text = "Einheit";
+      this.femaleThrowLabel.AutoSize = true;
+      this.femaleThrowLabel.Location = new System.Drawing.Point(6, 96);
+      this.femaleThrowLabel.Name = "femaleThrowLabel";
+      this.femaleThrowLabel.Size = new System.Drawing.Size(43, 20);
+      this.femaleThrowLabel.TabIndex = 3;
+      this.femaleThrowLabel.Text = "Wurf";
       // 
-      // maleJumpGroupBox
+      // femaleJumpLabel
       // 
-      this.maleJumpGroupBox.AutoSize = true;
-      this.maleJumpGroupBox.Controls.Add(this.maleJumpLowIsBetterCheckBox);
-      this.maleJumpGroupBox.Controls.Add(this.maleJumpLowIsBetterLabel);
-      this.maleJumpGroupBox.Controls.Add(this.maleJumpUnitComboBox);
-      this.maleJumpGroupBox.Controls.Add(this.maleJumpNameComboBox);
-      this.maleJumpGroupBox.Controls.Add(this.maleJumpNameLabel);
-      this.maleJumpGroupBox.Controls.Add(this.maleJumpUnitLabel);
-      this.maleJumpGroupBox.Location = new System.Drawing.Point(565, 25);
-      this.maleJumpGroupBox.Name = "maleJumpGroupBox";
-      this.maleJumpGroupBox.Size = new System.Drawing.Size(420, 163);
-      this.maleJumpGroupBox.TabIndex = 10;
-      this.maleJumpGroupBox.TabStop = false;
-      this.maleJumpGroupBox.Text = "Sprung";
+      this.femaleJumpLabel.AutoSize = true;
+      this.femaleJumpLabel.Location = new System.Drawing.Point(6, 62);
+      this.femaleJumpLabel.Name = "femaleJumpLabel";
+      this.femaleJumpLabel.Size = new System.Drawing.Size(61, 20);
+      this.femaleJumpLabel.TabIndex = 2;
+      this.femaleJumpLabel.Text = "Sprung";
       // 
-      // maleJumpLowIsBetterCheckBox
+      // femaleSprintComboBox
       // 
-      this.maleJumpLowIsBetterCheckBox.AutoSize = true;
-      this.maleJumpLowIsBetterCheckBox.Location = new System.Drawing.Point(152, 117);
-      this.maleJumpLowIsBetterCheckBox.Name = "maleJumpLowIsBetterCheckBox";
-      this.maleJumpLowIsBetterCheckBox.Size = new System.Drawing.Size(22, 21);
-      this.maleJumpLowIsBetterCheckBox.TabIndex = 14;
-      this.maleJumpLowIsBetterCheckBox.UseVisualStyleBackColor = true;
+      this.femaleSprintComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.femaleSprintComboBox.FormattingEnabled = true;
+      this.femaleSprintComboBox.Location = new System.Drawing.Point(98, 25);
+      this.femaleSprintComboBox.Name = "femaleSprintComboBox";
+      this.femaleSprintComboBox.Size = new System.Drawing.Size(357, 28);
+      this.femaleSprintComboBox.TabIndex = 1;
       // 
-      // maleJumpLowIsBetterLabel
+      // femaleSprintLabel
       // 
-      this.maleJumpLowIsBetterLabel.AutoSize = true;
-      this.maleJumpLowIsBetterLabel.Location = new System.Drawing.Point(6, 116);
-      this.maleJumpLowIsBetterLabel.Name = "maleJumpLowIsBetterLabel";
-      this.maleJumpLowIsBetterLabel.Size = new System.Drawing.Size(140, 20);
-      this.maleJumpLowIsBetterLabel.TabIndex = 13;
-      this.maleJumpLowIsBetterLabel.Text = "Weniger ist besser";
-      // 
-      // maleJumpUnitComboBox
-      // 
-      this.maleJumpUnitComboBox.FormattingEnabled = true;
-      this.maleJumpUnitComboBox.Location = new System.Drawing.Point(152, 53);
-      this.maleJumpUnitComboBox.Name = "maleJumpUnitComboBox";
-      this.maleJumpUnitComboBox.Size = new System.Drawing.Size(262, 28);
-      this.maleJumpUnitComboBox.TabIndex = 10;
-      // 
-      // maleJumpNameComboBox
-      // 
-      this.maleJumpNameComboBox.FormattingEnabled = true;
-      this.maleJumpNameComboBox.Location = new System.Drawing.Point(152, 19);
-      this.maleJumpNameComboBox.Name = "maleJumpNameComboBox";
-      this.maleJumpNameComboBox.Size = new System.Drawing.Size(262, 28);
-      this.maleJumpNameComboBox.TabIndex = 9;
-      // 
-      // maleJumpNameLabel
-      // 
-      this.maleJumpNameLabel.AutoSize = true;
-      this.maleJumpNameLabel.Location = new System.Drawing.Point(6, 22);
-      this.maleJumpNameLabel.Name = "maleJumpNameLabel";
-      this.maleJumpNameLabel.Size = new System.Drawing.Size(140, 20);
-      this.maleJumpNameLabel.TabIndex = 7;
-      this.maleJumpNameLabel.Text = "Name der Disziplin";
-      // 
-      // maleJumpUnitLabel
-      // 
-      this.maleJumpUnitLabel.AutoSize = true;
-      this.maleJumpUnitLabel.Location = new System.Drawing.Point(88, 56);
-      this.maleJumpUnitLabel.Name = "maleJumpUnitLabel";
-      this.maleJumpUnitLabel.Size = new System.Drawing.Size(58, 20);
-      this.maleJumpUnitLabel.TabIndex = 8;
-      this.maleJumpUnitLabel.Text = "Einheit";
-      // 
-      // maleSprintGroupBox
-      // 
-      this.maleSprintGroupBox.AutoSize = true;
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintElectronicMeasurementRadioButton);
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintManualMeasurementRadioButton);
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintLowIsBetterCheckBox);
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintLowIsBetterLabel);
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintMeasurementLabel);
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintUnitComboBox);
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintNameComboBox);
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintNameLabel);
-      this.maleSprintGroupBox.Controls.Add(this.maleSprintUnitLabel);
-      this.maleSprintGroupBox.Location = new System.Drawing.Point(6, 25);
-      this.maleSprintGroupBox.Name = "maleSprintGroupBox";
-      this.maleSprintGroupBox.Size = new System.Drawing.Size(553, 163);
-      this.maleSprintGroupBox.TabIndex = 9;
-      this.maleSprintGroupBox.TabStop = false;
-      this.maleSprintGroupBox.Text = "Sprint";
-      // 
-      // maleSprintElectronicMeasurementRadioButton
-      // 
-      this.maleSprintElectronicMeasurementRadioButton.AutoSize = true;
-      this.maleSprintElectronicMeasurementRadioButton.Location = new System.Drawing.Point(321, 87);
-      this.maleSprintElectronicMeasurementRadioButton.Name = "maleSprintElectronicMeasurementRadioButton";
-      this.maleSprintElectronicMeasurementRadioButton.Size = new System.Drawing.Size(226, 24);
-      this.maleSprintElectronicMeasurementRadioButton.TabIndex = 16;
-      this.maleSprintElectronicMeasurementRadioButton.TabStop = true;
-      this.maleSprintElectronicMeasurementRadioButton.Text = "Elektronische Zeitmessung";
-      this.maleSprintElectronicMeasurementRadioButton.UseVisualStyleBackColor = true;
-      // 
-      // maleSprintManualMeasurementRadioButton
-      // 
-      this.maleSprintManualMeasurementRadioButton.AutoSize = true;
-      this.maleSprintManualMeasurementRadioButton.Location = new System.Drawing.Point(152, 87);
-      this.maleSprintManualMeasurementRadioButton.Name = "maleSprintManualMeasurementRadioButton";
-      this.maleSprintManualMeasurementRadioButton.Size = new System.Drawing.Size(163, 24);
-      this.maleSprintManualMeasurementRadioButton.TabIndex = 15;
-      this.maleSprintManualMeasurementRadioButton.TabStop = true;
-      this.maleSprintManualMeasurementRadioButton.Text = "Handzeitmessung";
-      this.maleSprintManualMeasurementRadioButton.UseVisualStyleBackColor = true;
-      // 
-      // maleSprintLowIsBetterCheckBox
-      // 
-      this.maleSprintLowIsBetterCheckBox.AutoSize = true;
-      this.maleSprintLowIsBetterCheckBox.Location = new System.Drawing.Point(152, 117);
-      this.maleSprintLowIsBetterCheckBox.Name = "maleSprintLowIsBetterCheckBox";
-      this.maleSprintLowIsBetterCheckBox.Size = new System.Drawing.Size(22, 21);
-      this.maleSprintLowIsBetterCheckBox.TabIndex = 14;
-      this.maleSprintLowIsBetterCheckBox.UseVisualStyleBackColor = true;
-      // 
-      // maleSprintLowIsBetterLabel
-      // 
-      this.maleSprintLowIsBetterLabel.AutoSize = true;
-      this.maleSprintLowIsBetterLabel.Location = new System.Drawing.Point(6, 118);
-      this.maleSprintLowIsBetterLabel.Name = "maleSprintLowIsBetterLabel";
-      this.maleSprintLowIsBetterLabel.Size = new System.Drawing.Size(140, 20);
-      this.maleSprintLowIsBetterLabel.TabIndex = 13;
-      this.maleSprintLowIsBetterLabel.Text = "Weniger ist besser";
-      // 
-      // maleSprintMeasurementLabel
-      // 
-      this.maleSprintMeasurementLabel.AutoSize = true;
-      this.maleSprintMeasurementLabel.Location = new System.Drawing.Point(45, 89);
-      this.maleSprintMeasurementLabel.Name = "maleSprintMeasurementLabel";
-      this.maleSprintMeasurementLabel.Size = new System.Drawing.Size(101, 20);
-      this.maleSprintMeasurementLabel.TabIndex = 11;
-      this.maleSprintMeasurementLabel.Text = "Zeitmessung";
-      // 
-      // maleSprintNameComboBox
-      // 
-      this.maleSprintNameComboBox.FormattingEnabled = true;
-      this.maleSprintNameComboBox.Location = new System.Drawing.Point(152, 19);
-      this.maleSprintNameComboBox.Name = "maleSprintNameComboBox";
-      this.maleSprintNameComboBox.Size = new System.Drawing.Size(262, 28);
-      this.maleSprintNameComboBox.TabIndex = 9;
-      // 
-      // maleSprintUnitLabel
-      // 
-      this.maleSprintUnitLabel.AutoSize = true;
-      this.maleSprintUnitLabel.Location = new System.Drawing.Point(88, 56);
-      this.maleSprintUnitLabel.Name = "maleSprintUnitLabel";
-      this.maleSprintUnitLabel.Size = new System.Drawing.Size(58, 20);
-      this.maleSprintUnitLabel.TabIndex = 8;
-      this.maleSprintUnitLabel.Text = "Einheit";
-      // 
-      // maleSprintUnitComboBox
-      // 
-      this.maleSprintUnitComboBox.FormattingEnabled = true;
-      this.maleSprintUnitComboBox.Location = new System.Drawing.Point(152, 53);
-      this.maleSprintUnitComboBox.Name = "maleSprintUnitComboBox";
-      this.maleSprintUnitComboBox.Size = new System.Drawing.Size(262, 28);
-      this.maleSprintUnitComboBox.TabIndex = 10;
+      this.femaleSprintLabel.AutoSize = true;
+      this.femaleSprintLabel.Location = new System.Drawing.Point(6, 28);
+      this.femaleSprintLabel.Name = "femaleSprintLabel";
+      this.femaleSprintLabel.Size = new System.Drawing.Size(51, 20);
+      this.femaleSprintLabel.TabIndex = 0;
+      this.femaleSprintLabel.Text = "Sprint";
       // 
       // DisciplineConfiguration
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.AutoSize = true;
-      this.ClientSize = new System.Drawing.Size(1884, 652);
+      this.ClientSize = new System.Drawing.Size(500, 482);
+      this.Controls.Add(this.femaleGroupBox);
       this.Controls.Add(this.maleGroupBox);
       this.Controls.Add(this.gameTypeGroupBox);
       this.Controls.Add(this.classComboBox);
@@ -480,14 +322,8 @@
       this.gameTypeGroupBox.PerformLayout();
       this.maleGroupBox.ResumeLayout(false);
       this.maleGroupBox.PerformLayout();
-      this.maleMiddleDistanceGroupBox.ResumeLayout(false);
-      this.maleMiddleDistanceGroupBox.PerformLayout();
-      this.maleThrowGroupBox.ResumeLayout(false);
-      this.maleThrowGroupBox.PerformLayout();
-      this.maleJumpGroupBox.ResumeLayout(false);
-      this.maleJumpGroupBox.PerformLayout();
-      this.maleSprintGroupBox.ResumeLayout(false);
-      this.maleSprintGroupBox.PerformLayout();
+      this.femaleGroupBox.ResumeLayout(false);
+      this.femaleGroupBox.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -502,37 +338,23 @@
     private System.Windows.Forms.GroupBox gameTypeGroupBox;
     private System.Windows.Forms.RadioButton tradtitionalRadioButton;
     private System.Windows.Forms.RadioButton competitionRadioButton;
-    private System.Windows.Forms.Label maleSprintNameLabel;
     private System.Windows.Forms.GroupBox maleGroupBox;
-    private System.Windows.Forms.GroupBox maleSprintGroupBox;
-    private System.Windows.Forms.ComboBox maleSprintNameComboBox;
-    private System.Windows.Forms.RadioButton maleSprintElectronicMeasurementRadioButton;
-    private System.Windows.Forms.RadioButton maleSprintManualMeasurementRadioButton;
-    private System.Windows.Forms.CheckBox maleSprintLowIsBetterCheckBox;
-    private System.Windows.Forms.Label maleSprintLowIsBetterLabel;
-    private System.Windows.Forms.Label maleSprintMeasurementLabel;
-    private System.Windows.Forms.GroupBox maleMiddleDistanceGroupBox;
-    private System.Windows.Forms.CheckBox maleMiddleDistanceLowIsBetterCheckBox;
-    private System.Windows.Forms.Label maleMiddleDistanceLowIsBetterLabel;
-    private System.Windows.Forms.ComboBox maleMiddleDistanceUnitComboBox;
-    private System.Windows.Forms.ComboBox maleMiddleDistanceNameComboBox;
-    private System.Windows.Forms.Label maleMiddleDistanceNameLabel;
-    private System.Windows.Forms.Label maleMiddleDistanceUnitLabel;
-    private System.Windows.Forms.GroupBox maleThrowGroupBox;
-    private System.Windows.Forms.CheckBox maleThrowLowIsBetterCheckBox;
-    private System.Windows.Forms.Label maleThrowLowIsBetterLabel;
-    private System.Windows.Forms.ComboBox maleThrowUnitComboBox;
-    private System.Windows.Forms.ComboBox maleThrowNameComboBox;
-    private System.Windows.Forms.Label maleThrowNameLabel;
-    private System.Windows.Forms.Label maleThrowUnitLabel;
-    private System.Windows.Forms.GroupBox maleJumpGroupBox;
-    private System.Windows.Forms.CheckBox maleJumpLowIsBetterCheckBox;
-    private System.Windows.Forms.Label maleJumpLowIsBetterLabel;
-    private System.Windows.Forms.ComboBox maleJumpUnitComboBox;
-    private System.Windows.Forms.ComboBox maleJumpNameComboBox;
-    private System.Windows.Forms.Label maleJumpNameLabel;
-    private System.Windows.Forms.Label maleJumpUnitLabel;
-    private System.Windows.Forms.ComboBox maleSprintUnitComboBox;
-    private System.Windows.Forms.Label maleSprintUnitLabel;
+    private System.Windows.Forms.ComboBox maleMiddleDistanceComboBox;
+    private System.Windows.Forms.ComboBox maleThrowComboBox;
+    private System.Windows.Forms.ComboBox maleJumpComboBox;
+    private System.Windows.Forms.Label maleMiddleDistanceLabel;
+    private System.Windows.Forms.Label maleThrowLabel;
+    private System.Windows.Forms.Label maleJumpLabel;
+    private System.Windows.Forms.ComboBox maleSprintComboBox;
+    private System.Windows.Forms.Label maleSprintLabel;
+    private System.Windows.Forms.GroupBox femaleGroupBox;
+    private System.Windows.Forms.ComboBox femaleMiddleDistanceComboBox;
+    private System.Windows.Forms.ComboBox femaleThrowComboBox;
+    private System.Windows.Forms.ComboBox femaleJumpComboBox;
+    private System.Windows.Forms.Label femaleMiddleDistanceLabel;
+    private System.Windows.Forms.Label femaleThrowLabel;
+    private System.Windows.Forms.Label femaleJumpLabel;
+    private System.Windows.Forms.ComboBox femaleSprintComboBox;
+    private System.Windows.Forms.Label femaleSprintLabel;
   }
 }
