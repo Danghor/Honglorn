@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 using HonglornBL;
 using HonglornBL.Models.Entities;
@@ -42,20 +41,6 @@ namespace HonglornWinForm {
     void smartRefreshYearComboBox() {
       ICollection<short> retrievedYears = Honglorn.YearsWithStudentData();
       SmartRefreshComboBox(selectEditYearComboBox, retrievedYears);
-    }
-
-    /// <summary>
-    ///   Replaces the current data source with the retrieved items iff they are not the same.
-    /// </summary>
-    /// <typeparam name="CollectionType">The data type of the items contained in the combo box.</typeparam>
-    /// <param name="box">The combo box to be updated.</param>
-    /// <param name="retrievedItems">The items freshly retrieved from the database.</param>
-    static void SmartRefreshComboBox<CollectionType>(ComboBox box, ICollection<CollectionType> retrievedItems) {
-      ICollection<CollectionType> currentData = (ICollection<CollectionType>) box.DataSource;
-
-      if (retrievedItems != null && currentData?.SequenceEqual(retrievedItems) != true) {
-        box.DataSource = retrievedItems;
-      }
     }
 
     void RefreshDataGrid() {

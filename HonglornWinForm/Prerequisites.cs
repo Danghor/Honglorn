@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
-using static HonglornBL.Prerequisites;
 using HonglornBL.Models.Entities;
+using static HonglornBL.Prerequisites;
 
 namespace HonglornWinForm {
   static class Prerequisites {
@@ -43,6 +44,20 @@ namespace HonglornWinForm {
     internal static void ScaleScreenAware(Control form, float scalingFactor) {
       form.Height = Convert.ToInt32(Screen.PrimaryScreen.Bounds.Height * scalingFactor);
       form.Width = Convert.ToInt32(Screen.PrimaryScreen.Bounds.Width * scalingFactor);
+    }
+
+    /// <summary>
+    ///   Replaces the current data source with the retrieved items iff they are not the same.
+    /// </summary>
+    /// <typeparam name="CollectionType">The data type of the items contained in the combo box.</typeparam>
+    /// <param name="box">The combo box to be updated.</param>
+    /// <param name="retrievedItems">The items freshly retrieved from the database.</param>
+    internal static void SmartRefreshComboBox<CollectionType>(ComboBox box, ICollection<CollectionType> retrievedItems) {
+      ICollection<CollectionType> currentData = (ICollection<CollectionType>) box.DataSource;
+
+      if (retrievedItems != null && currentData?.SequenceEqual(retrievedItems) != true) {
+        box.DataSource = retrievedItems;
+      }
     }
   }
 }
