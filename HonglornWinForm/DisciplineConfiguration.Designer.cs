@@ -31,14 +31,14 @@
       this.competitionRadioButton = new System.Windows.Forms.RadioButton();
       this.tradtitionalRadioButton = new System.Windows.Forms.RadioButton();
       this.maleGroupBox = new System.Windows.Forms.GroupBox();
-      this.maleSprintLabel = new System.Windows.Forms.Label();
-      this.maleSprintComboBox = new System.Windows.Forms.ComboBox();
-      this.maleJumpLabel = new System.Windows.Forms.Label();
-      this.maleThrowLabel = new System.Windows.Forms.Label();
-      this.maleMiddleDistanceLabel = new System.Windows.Forms.Label();
-      this.maleJumpComboBox = new System.Windows.Forms.ComboBox();
-      this.maleThrowComboBox = new System.Windows.Forms.ComboBox();
       this.maleMiddleDistanceComboBox = new System.Windows.Forms.ComboBox();
+      this.maleThrowComboBox = new System.Windows.Forms.ComboBox();
+      this.maleJumpComboBox = new System.Windows.Forms.ComboBox();
+      this.maleMiddleDistanceLabel = new System.Windows.Forms.Label();
+      this.maleThrowLabel = new System.Windows.Forms.Label();
+      this.maleJumpLabel = new System.Windows.Forms.Label();
+      this.maleSprintComboBox = new System.Windows.Forms.ComboBox();
+      this.maleSprintLabel = new System.Windows.Forms.Label();
       this.femaleGroupBox = new System.Windows.Forms.GroupBox();
       this.femaleMiddleDistanceComboBox = new System.Windows.Forms.ComboBox();
       this.femaleThrowComboBox = new System.Windows.Forms.ComboBox();
@@ -70,6 +70,8 @@
       this.yearComboBox.Name = "yearComboBox";
       this.yearComboBox.Size = new System.Drawing.Size(121, 28);
       this.yearComboBox.TabIndex = 1;
+      this.yearComboBox.DropDown += new System.EventHandler(this.yearComboBox_DropDown);
+      this.yearComboBox.SelectedValueChanged += new System.EventHandler(this.yearComboBox_SelectedValueChanged);
       // 
       // classLabel
       // 
@@ -83,17 +85,20 @@
       // classComboBox
       // 
       this.classComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.classComboBox.Enabled = false;
       this.classComboBox.FormattingEnabled = true;
       this.classComboBox.Location = new System.Drawing.Point(357, 10);
       this.classComboBox.Name = "classComboBox";
       this.classComboBox.Size = new System.Drawing.Size(121, 28);
       this.classComboBox.TabIndex = 3;
+      this.classComboBox.SelectedValueChanged += new System.EventHandler(this.classComboBox_SelectedValueChanged);
       // 
       // gameTypeGroupBox
       // 
       this.gameTypeGroupBox.AutoSize = true;
       this.gameTypeGroupBox.Controls.Add(this.competitionRadioButton);
       this.gameTypeGroupBox.Controls.Add(this.tradtitionalRadioButton);
+      this.gameTypeGroupBox.Enabled = false;
       this.gameTypeGroupBox.Location = new System.Drawing.Point(17, 44);
       this.gameTypeGroupBox.Name = "gameTypeGroupBox";
       this.gameTypeGroupBox.Size = new System.Drawing.Size(250, 74);
@@ -134,6 +139,7 @@
       this.maleGroupBox.Controls.Add(this.maleJumpLabel);
       this.maleGroupBox.Controls.Add(this.maleSprintComboBox);
       this.maleGroupBox.Controls.Add(this.maleSprintLabel);
+      this.maleGroupBox.Enabled = false;
       this.maleGroupBox.Location = new System.Drawing.Point(17, 125);
       this.maleGroupBox.Name = "maleGroupBox";
       this.maleGroupBox.Size = new System.Drawing.Size(461, 163);
@@ -141,59 +147,14 @@
       this.maleGroupBox.TabStop = false;
       this.maleGroupBox.Text = "Männlich";
       // 
-      // maleSprintLabel
+      // maleMiddleDistanceComboBox
       // 
-      this.maleSprintLabel.AutoSize = true;
-      this.maleSprintLabel.Location = new System.Drawing.Point(6, 28);
-      this.maleSprintLabel.Name = "maleSprintLabel";
-      this.maleSprintLabel.Size = new System.Drawing.Size(51, 20);
-      this.maleSprintLabel.TabIndex = 0;
-      this.maleSprintLabel.Text = "Sprint";
-      // 
-      // maleSprintComboBox
-      // 
-      this.maleSprintComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.maleSprintComboBox.FormattingEnabled = true;
-      this.maleSprintComboBox.Location = new System.Drawing.Point(98, 25);
-      this.maleSprintComboBox.Name = "maleSprintComboBox";
-      this.maleSprintComboBox.Size = new System.Drawing.Size(357, 28);
-      this.maleSprintComboBox.TabIndex = 1;
-      // 
-      // maleJumpLabel
-      // 
-      this.maleJumpLabel.AutoSize = true;
-      this.maleJumpLabel.Location = new System.Drawing.Point(6, 62);
-      this.maleJumpLabel.Name = "maleJumpLabel";
-      this.maleJumpLabel.Size = new System.Drawing.Size(61, 20);
-      this.maleJumpLabel.TabIndex = 2;
-      this.maleJumpLabel.Text = "Sprung";
-      // 
-      // maleThrowLabel
-      // 
-      this.maleThrowLabel.AutoSize = true;
-      this.maleThrowLabel.Location = new System.Drawing.Point(6, 96);
-      this.maleThrowLabel.Name = "maleThrowLabel";
-      this.maleThrowLabel.Size = new System.Drawing.Size(43, 20);
-      this.maleThrowLabel.TabIndex = 3;
-      this.maleThrowLabel.Text = "Wurf";
-      // 
-      // maleMiddleDistanceLabel
-      // 
-      this.maleMiddleDistanceLabel.AutoSize = true;
-      this.maleMiddleDistanceLabel.Location = new System.Drawing.Point(6, 130);
-      this.maleMiddleDistanceLabel.Name = "maleMiddleDistanceLabel";
-      this.maleMiddleDistanceLabel.Size = new System.Drawing.Size(78, 20);
-      this.maleMiddleDistanceLabel.TabIndex = 4;
-      this.maleMiddleDistanceLabel.Text = "Ausdauer";
-      // 
-      // maleJumpComboBox
-      // 
-      this.maleJumpComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.maleJumpComboBox.FormattingEnabled = true;
-      this.maleJumpComboBox.Location = new System.Drawing.Point(98, 59);
-      this.maleJumpComboBox.Name = "maleJumpComboBox";
-      this.maleJumpComboBox.Size = new System.Drawing.Size(357, 28);
-      this.maleJumpComboBox.TabIndex = 5;
+      this.maleMiddleDistanceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.maleMiddleDistanceComboBox.FormattingEnabled = true;
+      this.maleMiddleDistanceComboBox.Location = new System.Drawing.Point(98, 127);
+      this.maleMiddleDistanceComboBox.Name = "maleMiddleDistanceComboBox";
+      this.maleMiddleDistanceComboBox.Size = new System.Drawing.Size(357, 28);
+      this.maleMiddleDistanceComboBox.TabIndex = 7;
       // 
       // maleThrowComboBox
       // 
@@ -204,14 +165,59 @@
       this.maleThrowComboBox.Size = new System.Drawing.Size(357, 28);
       this.maleThrowComboBox.TabIndex = 6;
       // 
-      // maleMiddleDistanceComboBox
+      // maleJumpComboBox
       // 
-      this.maleMiddleDistanceComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.maleMiddleDistanceComboBox.FormattingEnabled = true;
-      this.maleMiddleDistanceComboBox.Location = new System.Drawing.Point(98, 127);
-      this.maleMiddleDistanceComboBox.Name = "maleMiddleDistanceComboBox";
-      this.maleMiddleDistanceComboBox.Size = new System.Drawing.Size(357, 28);
-      this.maleMiddleDistanceComboBox.TabIndex = 7;
+      this.maleJumpComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.maleJumpComboBox.FormattingEnabled = true;
+      this.maleJumpComboBox.Location = new System.Drawing.Point(98, 59);
+      this.maleJumpComboBox.Name = "maleJumpComboBox";
+      this.maleJumpComboBox.Size = new System.Drawing.Size(357, 28);
+      this.maleJumpComboBox.TabIndex = 5;
+      // 
+      // maleMiddleDistanceLabel
+      // 
+      this.maleMiddleDistanceLabel.AutoSize = true;
+      this.maleMiddleDistanceLabel.Location = new System.Drawing.Point(6, 130);
+      this.maleMiddleDistanceLabel.Name = "maleMiddleDistanceLabel";
+      this.maleMiddleDistanceLabel.Size = new System.Drawing.Size(78, 20);
+      this.maleMiddleDistanceLabel.TabIndex = 4;
+      this.maleMiddleDistanceLabel.Text = "Ausdauer";
+      // 
+      // maleThrowLabel
+      // 
+      this.maleThrowLabel.AutoSize = true;
+      this.maleThrowLabel.Location = new System.Drawing.Point(6, 96);
+      this.maleThrowLabel.Name = "maleThrowLabel";
+      this.maleThrowLabel.Size = new System.Drawing.Size(43, 20);
+      this.maleThrowLabel.TabIndex = 3;
+      this.maleThrowLabel.Text = "Wurf";
+      // 
+      // maleJumpLabel
+      // 
+      this.maleJumpLabel.AutoSize = true;
+      this.maleJumpLabel.Location = new System.Drawing.Point(6, 62);
+      this.maleJumpLabel.Name = "maleJumpLabel";
+      this.maleJumpLabel.Size = new System.Drawing.Size(61, 20);
+      this.maleJumpLabel.TabIndex = 2;
+      this.maleJumpLabel.Text = "Sprung";
+      // 
+      // maleSprintComboBox
+      // 
+      this.maleSprintComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.maleSprintComboBox.FormattingEnabled = true;
+      this.maleSprintComboBox.Location = new System.Drawing.Point(98, 25);
+      this.maleSprintComboBox.Name = "maleSprintComboBox";
+      this.maleSprintComboBox.Size = new System.Drawing.Size(357, 28);
+      this.maleSprintComboBox.TabIndex = 1;
+      // 
+      // maleSprintLabel
+      // 
+      this.maleSprintLabel.AutoSize = true;
+      this.maleSprintLabel.Location = new System.Drawing.Point(6, 28);
+      this.maleSprintLabel.Name = "maleSprintLabel";
+      this.maleSprintLabel.Size = new System.Drawing.Size(51, 20);
+      this.maleSprintLabel.TabIndex = 0;
+      this.maleSprintLabel.Text = "Sprint";
       // 
       // femaleGroupBox
       // 
@@ -223,6 +229,7 @@
       this.femaleGroupBox.Controls.Add(this.femaleJumpLabel);
       this.femaleGroupBox.Controls.Add(this.femaleSprintComboBox);
       this.femaleGroupBox.Controls.Add(this.femaleSprintLabel);
+      this.femaleGroupBox.Enabled = false;
       this.femaleGroupBox.Location = new System.Drawing.Point(17, 294);
       this.femaleGroupBox.Name = "femaleGroupBox";
       this.femaleGroupBox.Size = new System.Drawing.Size(461, 163);

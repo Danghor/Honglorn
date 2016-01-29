@@ -53,10 +53,16 @@ namespace HonglornWinForm {
     /// <param name="box">The combo box to be updated.</param>
     /// <param name="retrievedItems">The items freshly retrieved from the database.</param>
     internal static void SmartRefreshComboBox<CollectionType>(ComboBox box, IEnumerable<CollectionType> retrievedItems) {
-      IEnumerable<CollectionType> currentData = box.DataSource as IEnumerable<CollectionType>;
+      if (retrievedItems == null) {
+        box.Enabled = false;
+        box.DataSource = null;
+      } else {
+        box.Enabled = true;
 
-      if (retrievedItems == null || currentData?.SequenceEqual(retrievedItems) != true) {
-        box.DataSource = retrievedItems;
+        IEnumerable<CollectionType> currentData = box.DataSource as IEnumerable<CollectionType>;
+        if (currentData?.SequenceEqual(retrievedItems) != true) {
+          box.DataSource = retrievedItems;
+        }
       }
     }
   }

@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using HonglornBL;
 using HonglornBL.Models.Entities;
 using static HonglornBL.Prerequisites;
-using static HonglornWinForm.Prerequisites;
 
 namespace HonglornWinForm {
   partial class CompetitionDisciplinesConfiguration : Form {
-
     bool isInAddMode;
     CompetitionDiscipline previousDiscipline;
 

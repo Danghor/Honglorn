@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using HonglornBL.APIClasses;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
-using System.Data.Entity;
-using System.Diagnostics;
 using static System.Windows.Forms.ProgressBarStyle;
 using static HonglornBL.Prerequisites;
 
@@ -214,10 +213,25 @@ namespace HonglornBL {
     /// <remarks></remarks>
     public static GameType? GetGameType(string className, short year) {
       using (HonglornDB db = new HonglornDB()) {
-        return (from c in db.DisciplineCollection
-                where c.ClassName == className
-                      && c.Year == year
-                select c.GameType).SingleOrDefault();
+        GameType[] typeArray = (from c in db.DisciplineCollection
+                                where c.ClassName == className
+                                      && c.Year == year
+                                select c.GameType).ToArray();
+
+        GameType? result;
+
+        switch (typeArray.Length) {
+          case 0:
+            result = null;
+            break;
+          case 1:
+            result = typeArray.Single();
+            break;
+          default:
+            throw new DataException($"Multiple GameTypes received from database for class name {className} and year {year}.");
+        }
+
+        return result;
       }
     }
 
@@ -256,9 +270,7 @@ namespace HonglornBL {
     /// <returns>A Char Array representing the valid class names.</returns>
     /// <remarks></remarks>
     public static ICollection<string> ValidClassNames(short year) {
-      ICollection<string> validCourseNames = ValidCourseNames(year);
-
-      return validCourseNames.Select(GetClassName).ToArray();
+      return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
     }
 
     #region "Import"
@@ -277,13 +289,13 @@ namespace HonglornBL {
         throw new ArgumentException($"{year} not a valid year.");
       }
 
-      worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
+      worker.ReportProgress(0, new ProgressInformer {Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..."});
 
       ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
       int currentlyImported = 0;
 
-      worker.ReportProgress(0, new ProgressInformer { Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..." });
+      worker.ReportProgress(0, new ProgressInformer {Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..."});
 
       foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet) {
         ImportSingleStudent(importStudent.Item1, importStudent.Item2, year);

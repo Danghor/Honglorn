@@ -30,7 +30,8 @@ namespace HonglornBL {
     internal static int PercentageValue(int x, int y) => (int) Math.Round(100d * x / y);
 
     #region Validation
-    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
+
+    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
 
     /// <summary>
     ///   Returns true iff the given character is a valid class name that can be used at all in the application.
@@ -48,9 +49,11 @@ namespace HonglornBL {
     internal static bool IsValidYear(short year) {
       return (year >= Settings.Default.MinValidYear && year <= Settings.Default.MaxValidYear);
     }
+
     #endregion
 
     #region Enums
+
     public enum Certificate {
       Honorary = 0,
       Victory = 1,
@@ -78,6 +81,7 @@ namespace HonglornBL {
       Male = 0,
       Female = 1
     }
+
     #endregion
   }
 }
