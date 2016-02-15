@@ -45,7 +45,7 @@ namespace HonglornWinForm {
       disciplineListBox.Items.Clear();
       previousDiscipline = null;
 
-      ICollection<CompetitionDiscipline> disciplines = Honglorn.CompetitionDisciplines();
+      ICollection<CompetitionDiscipline> disciplines = Honglorn.AllCompetitionDisciplines();
 
       foreach (CompetitionDiscipline discipline in disciplines) {
         disciplineListBox.Items.Add(discipline);

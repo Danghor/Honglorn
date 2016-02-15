@@ -136,27 +136,45 @@ namespace HonglornBL {
                                                  && c.Year == year
                                            select c).SingleOrDefault();
 
-        // Pre-load properties; otherwise they won't be available after the context is disposed.
-        IEnumerable<Expression<Func<DisciplineCollection, Discipline>>> references = new Expression<Func<DisciplineCollection, Discipline>>[] {
-          c => c.MaleSprint,
-          c => c.MaleJump,
-          c => c.MaleThrow,
-          c => c.MaleMiddleDistance,
-          c => c.FemaleSprint,
-          c => c.FemaleJump,
-          c => c.FemaleThrow,
-          c => c.FemaleMiddleDistance
-        };
+        if (collection != null) {
+          // Pre-load properties; otherwise they won't be available after the context is disposed.
+          IEnumerable<Expression<Func<DisciplineCollection, Discipline>>> references = new Expression<Func<DisciplineCollection, Discipline>>[] {
+            c => c.MaleSprint,
+            c => c.MaleJump,
+            c => c.MaleThrow,
+            c => c.MaleMiddleDistance,
+            c => c.FemaleSprint,
+            c => c.FemaleJump,
+            c => c.FemaleThrow,
+            c => c.FemaleMiddleDistance
+          };
 
-        foreach (Expression<Func<DisciplineCollection, Discipline>> reference in references) {
-          db.Entry(collection).Reference(reference).Load();
+          foreach (Expression<Func<DisciplineCollection, Discipline>> reference in references) {
+            db.Entry(collection).Reference(reference).Load();
+          }
         }
 
         return collection;
       }
     }
 
-    public static ICollection<CompetitionDiscipline> CompetitionDisciplines() {
+    public static ICollection<CompetitionDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType) {
+      using (HonglornDB db = new HonglornDB()) {
+        return (from d in db.CompetitionDiscipline
+                where d.Type == disciplineType
+                select d).OrderBy(d => d.Name).ToArray();
+      }
+    }
+
+    public static ICollection<TraditionalDiscipline> FilteredTraditionalDisciplines(DisciplineType disciplineType, Sex sex) {
+      using (HonglornDB db = new HonglornDB()) {
+        return (from d in db.TraditionalDiscipline
+                where d.Type == disciplineType && d.Sex == sex
+                select d).OrderBy(d => d.Name).ToArray();
+      }
+    }
+
+    public static ICollection<CompetitionDiscipline> AllCompetitionDisciplines() {
       using (HonglornDB db = new HonglornDB()) {
         return db.CompetitionDiscipline.ToArray();
       }
@@ -241,10 +259,8 @@ namespace HonglornBL {
     /// <returns>A short collection representing the valid years.</returns>
     public static ICollection<short> YearsWithStudentData() {
       using (HonglornDB db = new HonglornDB()) {
-        IQueryable<short> years = (from relations in db.StudentCourseRel
-                                   select relations.Year).Distinct();
-
-        return years.OrderByDescending(year => year).ToArray();
+        return (from relations in db.StudentCourseRel
+                select relations.Year).Distinct().OrderByDescending(year => year).ToArray();
       }
     }
 
@@ -255,11 +271,9 @@ namespace HonglornBL {
     /// <returns>All valid course names.</returns>
     public static ICollection<string> ValidCourseNames(short year) {
       using (HonglornDB db = new HonglornDB()) {
-        IQueryable<string> courseNames = (from r in db.StudentCourseRel
-                                          where r.Year == year
-                                          select r.CourseName).Distinct();
-
-        return courseNames.OrderBy(name => name).ToArray();
+        return (from r in db.StudentCourseRel
+                where r.Year == year
+                select r.CourseName).Distinct().OrderBy(name => name).ToArray();
       }
     }
 
@@ -289,13 +303,13 @@ namespace HonglornBL {
         throw new ArgumentException($"{year} not a valid year.");
       }
 
-      worker.ReportProgress(0, new ProgressInformer {Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..."});
+      worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
 
       ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
       int currentlyImported = 0;
 
-      worker.ReportProgress(0, new ProgressInformer {Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..."});
+      worker.ReportProgress(0, new ProgressInformer { Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..." });
 
       foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet) {
         ImportSingleStudent(importStudent.Item1, importStudent.Item2, year);

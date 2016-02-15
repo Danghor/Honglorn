@@ -117,6 +117,7 @@
       this.competitionRadioButton.TabStop = true;
       this.competitionRadioButton.Text = "Wettbewerb";
       this.competitionRadioButton.UseVisualStyleBackColor = true;
+      this.competitionRadioButton.CheckedChanged += new System.EventHandler(this.radioButtons_CheckedChanged);
       // 
       // tradtitionalRadioButton
       // 
@@ -128,6 +129,7 @@
       this.tradtitionalRadioButton.TabStop = true;
       this.tradtitionalRadioButton.Text = "Wettkampf";
       this.tradtitionalRadioButton.UseVisualStyleBackColor = true;
+      this.tradtitionalRadioButton.CheckedChanged += new System.EventHandler(this.radioButtons_CheckedChanged);
       // 
       // maleGroupBox
       // 
