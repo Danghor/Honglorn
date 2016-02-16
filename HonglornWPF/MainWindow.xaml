@@ -6,8 +6,18 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:HonglornWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" x:ClassModifier="internal">
-    <Grid>
-        
-    </Grid>
+        x:ClassModifier="internal"
+        Title="Honglorn"
+        Height="600"
+        Width="800"                   
+        WindowStartupLocation="CenterScreen">
+
+  <Controls:MetroAnimatedSingleRowTabControl>
+    <TabItem Header="Bearbeiten">
+      <Ellipse Fill="Red" Width="500" Height="200"/>
+    </TabItem>
+    <TabItem Header="Auswerten">
+      <Ellipse Fill="Red" Width="500" Height="200"/>
+    </TabItem>
+  </Controls:MetroAnimatedSingleRowTabControl>
 </Controls:MetroWindow>
