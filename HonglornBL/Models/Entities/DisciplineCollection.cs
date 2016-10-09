@@ -18,7 +18,7 @@ namespace HonglornBL.Models.Entities {
     public short Year { get; set; }
 
     [Required]
-    public Prerequisites.GameType GameType { get; set; }
+    public Prerequisites.Game Game { get; set; }
 
     // Male
     [Required]

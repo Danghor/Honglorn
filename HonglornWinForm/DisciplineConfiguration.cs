@@ -45,13 +45,13 @@ namespace HonglornWinForm {
         //Set GameType
         gameTypeGroupBox.Enabled = true;
 
-        GameType? gameType = GetGameType(SelectedClass, (short) SelectedYear);
+        Game? game = GetGameType(SelectedClass, (short) SelectedYear);
 
-        switch (gameType) {
-          case GameType.Competition:
+        switch (game) {
+          case Game.Competition:
             competitionRadioButton.Checked = true;
             break;
-          case GameType.Traditional:
+          case Game.Traditional:
             tradtitionalRadioButton.Checked = true;
             break;
           case null:
@@ -59,7 +59,7 @@ namespace HonglornWinForm {
             competitionRadioButton.Checked = false;
             break;
           default:
-            throw new ArgumentOutOfRangeException(nameof(GameType));
+            throw new ArgumentOutOfRangeException(nameof(Game));
         }
 
         //Set Disciplines

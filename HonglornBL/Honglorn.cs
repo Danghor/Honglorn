@@ -229,14 +229,14 @@ namespace HonglornBL {
     ///   in the given year.
     /// </returns>
     /// <remarks></remarks>
-    public static GameType? GetGameType(string className, short year) {
+    public static Game? GetGameType(string className, short year) {
       using (HonglornDB db = new HonglornDB()) {
-        GameType[] typeArray = (from c in db.DisciplineCollection
+        Game[] typeArray = (from c in db.DisciplineCollection
                                 where c.ClassName == className
                                       && c.Year == year
-                                select c.GameType).ToArray();
+                                select c.Game).ToArray();
 
-        GameType? result;
+        Game? result;
 
         switch (typeArray.Length) {
           case 0:

@@ -47,7 +47,7 @@ namespace HonglornBL {
     /// <param name="year">The year to be validated.</param>
     /// <returns>True iff the given year is a valid year.</returns>
     internal static bool IsValidYear(short year) {
-      return (year >= Settings.Default.MinValidYear && year <= Settings.Default.MaxValidYear);
+      return year >= Settings.Default.MinValidYear && year <= Settings.Default.MaxValidYear;
     }
 
     #endregion
@@ -67,7 +67,7 @@ namespace HonglornBL {
       MiddleDistance = 3
     }
 
-    public enum GameType {
+    public enum Game {
       Traditional = 0,
       Competition = 1
     }
