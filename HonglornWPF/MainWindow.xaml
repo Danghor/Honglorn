@@ -1,0 +1,23 @@
+﻿<Controls:MetroWindow x:Class="HonglornWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:HonglornWPF"
+        mc:Ignorable="d"
+        x:ClassModifier="internal"
+        Title="Honglorn"
+        Height="600"
+        Width="800"                   
+        WindowStartupLocation="CenterScreen">
+
+  <Controls:MetroAnimatedSingleRowTabControl>
+    <TabItem Header="Bearbeiten">
+      <Ellipse Fill="Red" Width="500" Height="200"/>
+    </TabItem>
+    <TabItem Header="Auswerten">
+      <Ellipse Fill="Red" Width="500" Height="200"/>
+    </TabItem>
+  </Controls:MetroAnimatedSingleRowTabControl>
+</Controls:MetroWindow>
