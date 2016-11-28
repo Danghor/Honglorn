@@ -77,16 +77,17 @@ namespace HonglornBL {
         workbook?.Close();
         excelInstance?.Quit();
 
-        if (workbook != null) {
-          Marshal.ReleaseComObject(workbook);
-        }
-
-        if (excelInstance != null) {
-          Marshal.ReleaseComObject(excelInstance);
-        }
+        SafelyReleaseComObject(workbook);
+        SafelyReleaseComObject(excelInstance);
       }
 
       return extractedStudents;
+    }
+
+    static void SafelyReleaseComObject(object obj) {
+      if (obj != null) {
+        Marshal.ReleaseComObject(obj);
+      }
     }
 
     static string GetTextFromRange(_Worksheet sheet, string range) {
