@@ -300,7 +300,7 @@ namespace HonglornBL {
     /// <param name="worker">The background worker used to process this method. Used for status updates.</param>
     public static void ImportStudentCourseExcelSheet(string filePath, short year, BackgroundWorker worker) {
       if (!IsValidYear(year)) {
-        throw new ArgumentException($"{year} not a valid year.");
+        throw new ArgumentException($"{year} is not a valid year.");
       }
 
       worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
