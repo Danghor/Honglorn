@@ -33,6 +33,10 @@ namespace HonglornBL.Models.Entities {
       studentCourseRel = new HashSet<StudentCourseRel>();
     }
 
+    internal Student(short year, string courseName) : this() {
+      AddStudentCourseRel(year, courseName);
+    }
+
     internal void AddStudentCourseRel(short year, string courseName) {
       StudentCourseRel rel = new StudentCourseRel {
         Year = year,
