@@ -29,6 +29,8 @@ namespace HonglornBL {
     /// <returns>The rounded fraction in percentage.</returns>
     internal static int PercentageValue(int x, int y) => (int) Math.Round(100d * x / y);
 
+    internal const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
     #region Validation
 
     static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};

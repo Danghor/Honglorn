@@ -46,15 +46,16 @@ namespace HonglornBL {
         int rowIdx = 2;
         bool rowIsEmpty = false;
         while (!rowIsEmpty) {
-          string surname = GetTextFromRange(worksheet, $"A{rowIdx}");
-          string forename = GetTextFromRange(worksheet, $"B{rowIdx}");
-          string courseName = GetTextFromRange(worksheet, $"C{rowIdx}");
-          string rawSex = GetTextFromRange(worksheet, $"D{rowIdx}");
-          string rawYearOfBirth = GetTextFromRange(worksheet, $"E{rowIdx}");
-
-          rowIsEmpty = CoalesceIsNullOrWhitespace(surname, forename, courseName, rawSex, rawYearOfBirth);
+          ICollection<string> row = worksheet.GetRow(rowIdx, 5);
+          rowIsEmpty = row.All(string.IsNullOrWhiteSpace);
 
           if (!rowIsEmpty) {
+            string surname = row.ElementAt(0);
+            string forename = row.ElementAt(1);
+            string courseName = row.ElementAt(2);
+            string rawSex = row.ElementAt(3);
+            string rawYearOfBirth = row.ElementAt(4);
+
             Sex sex;
             if (SexDictionary.TryGetValue(rawSex, out sex)) {
               short yearOfBirth = Convert.ToInt16(rawYearOfBirth);
@@ -84,32 +85,50 @@ namespace HonglornBL {
       return extractedStudents;
     }
 
-    static void SafelyReleaseComObject(object obj) {
+      static void SafelyReleaseComObject(object obj) {
       if (obj != null) {
         Marshal.ReleaseComObject(obj);
       }
     }
 
-    static string GetTextFromRange(_Worksheet sheet, string range) {
+    static string GetTextFromRange(this _Worksheet sheet, string range) {
       return sheet.Range[range].Text;
     }
 
+    static string GetTextFromCell(this _Worksheet sheet, int colIdx, int rowIdx) {
+      return sheet.Range[$"{GetColumnName(colIdx)}{rowIdx}"].Text;
+    }
+
+    static char GetColumnName(int colIdx) {
+      if (colIdx > 25) {
+        throw new NotImplementedException($"The {nameof(GetColumnName)}-function is only designed for column indices up to 25.");
+      }
+
+      return Alphabet[colIdx];
+    }
+
+    static ICollection<string> GetRow(this _Worksheet sheet, int rowIdx, int length) {
+      IList<string> row = new List<string>();
+
+      for (int colIdx = 0; colIdx < length; colIdx++) {
+        row.Add(sheet.GetTextFromCell(colIdx, rowIdx));
+      }
+
+      return row;
+    }
+
     static void ValidateHeaderRow(_Worksheet sheet) {
-      ValidateString(SURNAME_HEADER_COLUMN, GetTextFromRange(sheet, "A1"));
-      ValidateString(FORENAME_HEADER_COLUMN, GetTextFromRange(sheet, "B1"));
-      ValidateString(COURSENAME_HEADER_COLUMN, GetTextFromRange(sheet, "C1"));
-      ValidateString(SEX_HEADER_COLUMN, GetTextFromRange(sheet, "D1"));
-      ValidateString(YEAROFBIRTH_HEADER_COLUMN, GetTextFromRange(sheet, "E1"));
+      ValidateString(SURNAME_HEADER_COLUMN, sheet.GetTextFromRange("A1"));
+      ValidateString(FORENAME_HEADER_COLUMN, sheet.GetTextFromRange("B1"));
+      ValidateString(COURSENAME_HEADER_COLUMN, sheet.GetTextFromRange("C1"));
+      ValidateString(SEX_HEADER_COLUMN, sheet.GetTextFromRange("D1"));
+      ValidateString(YEAROFBIRTH_HEADER_COLUMN, sheet.GetTextFromRange("E1"));
     }
 
     static void ValidateString(string expected, string actual) {
       if (!actual.Equals(expected, StringComparison.InvariantCulture)) {
         throw new ArgumentException($"Header row was in unexpected condition. Expected {expected} but was {actual}.");
       }
-    }
-
-    static bool CoalesceIsNullOrWhitespace(params string[] args) {
-      return args.All(string.IsNullOrWhiteSpace);
     }
   }
 }
