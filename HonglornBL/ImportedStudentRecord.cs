@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 
 namespace HonglornBL {
   class ImportedStudentRecord {
@@ -12,7 +10,7 @@ namespace HonglornBL {
     string ImportedSex { get; }
     string ImportedYearOfBirth { get; }
 
-    RecordErrorInfo Error { get; }
+    internal RecordErrorInfo Error { get; private set; }
 
     //is it valid? which field is invalid? whats the content?
     public ImportedStudentRecord(string importedSurname, string importedForename, string importedCourseName, string importedSex, string importedYearOfBirth) {
@@ -24,10 +22,20 @@ namespace HonglornBL {
     }
 
     void ValidateFields() {
-      
+      List<FieldErrorInfo> fieldErrors = new List<FieldErrorInfo> {
+        FieldError(nameof(ImportedSurname), ImportedSurname, IsValidName, "Surname cannot be empty or contain any digits."),
+        FieldError(nameof(ImportedForename), ImportedForename, IsValidName, "Forename cannot be empty or contain any digits."),
+        FieldError(nameof(ImportedSex), ImportedSex, IsValidSex, "Sex can only be 'M', 'm', 'W' or 'w'.")
+      };
+
+      fieldErrors.RemoveAll(e => e == null);
+
+      if (fieldErrors.Any()) {
+        Error = new RecordErrorInfo(fieldErrors);
+      }
     }
 
-    static FieldErrorInfo ValidateField(string fieldName, string fieldContent, Func<string, bool> isValid, string errorMessage) {
+    static FieldErrorInfo FieldError(string fieldName, string fieldContent, Func<string, bool> isValid, string errorMessage) {
       FieldErrorInfo result = null;
 
       if (!isValid(fieldContent)) {
@@ -37,19 +45,22 @@ namespace HonglornBL {
       return result;
     }
 
-    FieldErrorInfo ValidateSurname() {
-      FieldErrorInfo result = null;
+    static readonly Func<string, bool> IsValidName = name => !string.IsNullOrWhiteSpace(name) && !name.Any(c => char.IsDigit(c));
+    static readonly Func<string, bool> IsValidSex = sex => sex.Equals("W", StringComparison.InvariantCultureIgnoreCase) || sex.Equals("M", StringComparison.InvariantCultureIgnoreCase);
+    static readonly Func<string, bool> IsValidYearOfBirth = delegate (string year) {
+                                                              bool isValid = false;
+                                                              short shortYear;
 
-      if (string.IsNullOrWhiteSpace(ImportedSurname)) {
-        result = new FieldErrorInfo(nameof(ImportedSurname), ImportedSurname, $"Expected {nameof(ImportedSurname)} to be a non-empty string.");
-      }
+                                                              if (short.TryParse(year, out shortYear)) {
+                                                                isValid = Prerequisites.IsValidYear(shortYear);
+                                                              }
 
-      return result;
-    }
+                                                              return isValid;
+                                                            };
   }
 
   class RecordErrorInfo {
-    ICollection<FieldErrorInfo> FieldErrorInfos { get; }
+    internal ICollection<FieldErrorInfo> FieldErrorInfos { get; }
 
     public RecordErrorInfo(ICollection<FieldErrorInfo> fieldErrorInfos) {
       FieldErrorInfos = fieldErrorInfos;
