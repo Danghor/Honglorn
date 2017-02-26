@@ -305,6 +305,8 @@ namespace HonglornBL {
 
       worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
 
+      //IEnumerable<Student> students = new StudentFile(filePath);
+
       ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
 
       int currentlyImported = 0;
