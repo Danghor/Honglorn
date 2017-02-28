@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HonglornWPF"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:Views="clr-namespace:HonglornWPF.Views"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+
+  <Grid>
+    <Controls:MetroAnimatedSingleRowTabControl>
+      <TabItem Header="Bearbeiten">
+        <Views:EditPerformanceView />
+      </TabItem>
+    </Controls:MetroAnimatedSingleRowTabControl>
+  </Grid>
 </Controls:MetroWindow>
