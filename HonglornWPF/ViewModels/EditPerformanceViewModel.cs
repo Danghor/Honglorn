@@ -16,6 +16,11 @@ namespace HonglornWPF.ViewModels {
     public EditPerformanceViewModel() {
       Courses = new ObservableCollection<string>();
       Years = new ObservableCollection<short>();
+
+      LoadYears();
+      if (Years.Any()) {
+        LoadCourseNames(Years.First());
+      }
     }
 
     public void LoadCourseNames(short year) {
