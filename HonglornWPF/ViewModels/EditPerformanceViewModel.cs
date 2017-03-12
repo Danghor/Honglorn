@@ -1,17 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HonglornWPF.ViewModels {
-  class EditPerformanceViewModel {
+  class EditPerformanceViewModel : INotifyPropertyChanged {
+    public event PropertyChangedEventHandler PropertyChanged;
     public event Action CoursesLoaded;
     public event Action YearsLoaded;
 
     public ObservableCollection<string> Courses { get; set; }
     public ObservableCollection<short> Years { get; set; }
+
+    string currentCourse;
+    short currentYear;
+
+    public short CurrentYear {
+      get {
+        return currentYear;
+      }
+
+      set {
+        currentYear = value;
+        OnPropertyChanged(nameof(CurrentYear));
+
+        string previouslySelectedCourse = CurrentCourse;
+
+        LoadCourseNames(currentYear);
+
+        int courseIndex = Courses.IndexOf(previouslySelectedCourse);
+        if (courseIndex != -1) {
+          CurrentCourse = previouslySelectedCourse;
+        } else {
+          CurrentCourse = Courses.FirstOrDefault();
+        }
+      }
+    }
+
+    public string CurrentCourse {
+      get {
+        return currentCourse;
+      }
+      set {
+        currentCourse = value;
+        OnPropertyChanged(nameof(CurrentCourse));
+      }
+    }
 
     public EditPerformanceViewModel() {
       Courses = new ObservableCollection<string>();
@@ -19,7 +54,7 @@ namespace HonglornWPF.ViewModels {
 
       LoadYears();
       if (Years.Any()) {
-        LoadCourseNames(Years.First());
+        CurrentYear = Years.First();
       }
     }
 
@@ -45,6 +80,10 @@ namespace HonglornWPF.ViewModels {
       }
 
       YearsLoaded?.Invoke();
+    }
+
+    private void OnPropertyChanged(string propertyName) {
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
   }
 }

@@ -21,9 +21,9 @@
       </Grid.ColumnDefinitions>
 
       <Label Content="Jahr"  Grid.Column="0"/>
-      <ComboBox x:Name="yearSelectionComboBox" HorizontalAlignment="Right" VerticalAlignment="Top"  Grid.Column="1" ItemsSource="{Binding Years}"/>
+      <ComboBox x:Name="yearSelectionComboBox" HorizontalAlignment="Right" VerticalAlignment="Top"  Grid.Column="1" ItemsSource="{Binding Years}" SelectedItem="{Binding CurrentYear}"/>
       <Label Content="Klasse" Grid.Column="2"/>
-      <ComboBox x:Name="classSelectionComboBox" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="3" ItemsSource="{Binding Courses}"/>
+      <ComboBox x:Name="classSelectionComboBox" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="3" ItemsSource="{Binding Courses}" SelectedItem="{Binding CurrentCourse}"/>
 
     </Grid>
     <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" >
