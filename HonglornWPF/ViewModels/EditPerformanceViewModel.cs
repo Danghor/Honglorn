@@ -30,11 +30,7 @@ namespace HonglornWPF.ViewModels {
         LoadCourseNames(currentYear);
 
         int courseIndex = Courses.IndexOf(previouslySelectedCourse);
-        if (courseIndex != -1) {
-          CurrentCourse = previouslySelectedCourse;
-        } else {
-          CurrentCourse = Courses.FirstOrDefault();
-        }
+        CurrentCourse = courseIndex != -1 ? previouslySelectedCourse : Courses.FirstOrDefault();
       }
     }
 
@@ -58,7 +54,7 @@ namespace HonglornWPF.ViewModels {
       }
     }
 
-    public void LoadCourseNames(short year) {
+    void LoadCourseNames(short year) {
       Courses.Clear();
 
       ICollection<string> courseNames = HonglornBL.Honglorn.ValidCourseNames(year);
@@ -70,7 +66,7 @@ namespace HonglornWPF.ViewModels {
       CoursesLoaded?.Invoke();
     }
 
-    public void LoadYears() {
+    void LoadYears() {
       Years.Clear();
 
       ICollection<short> years = HonglornBL.Honglorn.YearsWithStudentData();
@@ -82,7 +78,7 @@ namespace HonglornWPF.ViewModels {
       YearsLoaded?.Invoke();
     }
 
-    private void OnPropertyChanged(string propertyName) {
+    void OnPropertyChanged(string propertyName) {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
   }
