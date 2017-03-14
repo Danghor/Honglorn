@@ -25,12 +25,12 @@ namespace HonglornBL.Models.Entities {
     [Required]
     public short YearOfBirth { get; set; }
 
-    public virtual ICollection<Competition> competition { get; set; }
-    public virtual ICollection<StudentCourseRel> studentCourseRel { get; set; }
+    public virtual ICollection<Competition> Competition { get; set; }
+    public virtual ICollection<StudentCourseRel> StudentCourseRel { get; set; }
 
     public Student() {
-      competition = new HashSet<Competition>();
-      studentCourseRel = new HashSet<StudentCourseRel>();
+      Competition = new HashSet<Competition>();
+      StudentCourseRel = new HashSet<StudentCourseRel>();
     }
 
     internal Student(short year, string courseName) : this() {
@@ -43,7 +43,7 @@ namespace HonglornBL.Models.Entities {
         CourseName = courseName
       };
 
-      studentCourseRel.Add(rel);
+      StudentCourseRel.Add(rel);
     }
   }
 }

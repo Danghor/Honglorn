@@ -28,12 +28,12 @@ namespace HonglornBL {
 
       using (HonglornDB db = new HonglornDB()) {
         IEnumerable<Student> studentList = (from s in db.Student
-                                            where s.studentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
+                                            where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
                                             orderby s.Surname, s.Forename, s.YearOfBirth descending
                                             select s).ToList();
 
         foreach (Student student in studentList) {
-          Competition competition = (from c in student.competition
+          Competition competition = (from c in student.Competition
                                      where c.Year == year
                                      select c).SingleOrDefault();
 
@@ -92,7 +92,7 @@ namespace HonglornBL {
         Student student = db.Student.Find(pKey);
 
         if (student != null) {
-          Competition existingCompetition = (from c in student.competition
+          Competition existingCompetition = (from c in student.Competition
                                              where c.Year == year
                                              select c).SingleOrDefault();
 
@@ -112,7 +112,7 @@ namespace HonglornBL {
                 Throw = @throw,
                 MiddleDistance = middleDistance
               };
-              student.competition.Add(newCompetition);
+              student.Competition.Add(newCompetition);
             } else {
               // Update
               existingCompetition.Sprint = sprint;
@@ -360,7 +360,7 @@ namespace HonglornBL {
           newStudent.AddStudentCourseRel(year, courseName);
           db.Student.Add(newStudent);
         } else {
-          IEnumerable<StudentCourseRel> courseInformationQuery = from r in existingStudent.studentCourseRel
+          IEnumerable<StudentCourseRel> courseInformationQuery = from r in existingStudent.StudentCourseRel
                                                                  where r.Year == year
                                                                  select r;
 
