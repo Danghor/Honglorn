@@ -13,6 +13,15 @@ using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
   public class Honglorn {
+    public static ICollection<Student> GetStudents(string course, short year) {
+      using (HonglornDB db = new HonglornDB()) {
+        return (from s in db.Student
+                where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
+                orderby s.Surname, s.Forename, s.YearOfBirth descending
+                select s).ToList();
+      }
+    }
+
     public static DataTable GetStudentCompetitionTable(string courseName, short year) {
       // Prepare table
       DataTable table = new DataTable();
@@ -232,9 +241,9 @@ namespace HonglornBL {
     public static Game? GetGameType(string className, short year) {
       using (HonglornDB db = new HonglornDB()) {
         Game[] typeArray = (from c in db.DisciplineCollection
-                                where c.ClassName == className
-                                      && c.Year == year
-                                select c.Game).ToArray();
+                            where c.ClassName == className
+                                  && c.Year == year
+                            select c.Game).ToArray();
 
         Game? result;
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels {
   class EditPerformanceViewModel : INotifyPropertyChanged {
@@ -10,11 +11,15 @@ namespace HonglornWPF.ViewModels {
     public event Action CoursesLoaded;
     public event Action YearsLoaded;
 
-    public ObservableCollection<string> Courses { get; set; }
-    public ObservableCollection<short> Years { get; set; }
+    public ObservableCollection<string> Courses { get; set; } = new ObservableCollection<string>();
+    public ObservableCollection<short> Years { get; set; } = new ObservableCollection<short>();
+    public ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
+    public ObservableCollection<Competition> Competitions { get; set; } = new ObservableCollection<Competition>();
 
     string currentCourse;
     short currentYear;
+    Student currentStudent;
+    Competition currentCompetition;
 
     public short CurrentYear {
       get {
@@ -27,7 +32,7 @@ namespace HonglornWPF.ViewModels {
 
         string previouslySelectedCourse = CurrentCourse;
 
-        LoadCourseNames(currentYear);
+        LoadCourseNames();
 
         int courseIndex = Courses.IndexOf(previouslySelectedCourse);
         CurrentCourse = courseIndex != -1 ? previouslySelectedCourse : Courses.FirstOrDefault();
@@ -41,23 +46,22 @@ namespace HonglornWPF.ViewModels {
       set {
         currentCourse = value;
         OnPropertyChanged(nameof(CurrentCourse));
+
+        LoadStudents();
       }
     }
 
     public EditPerformanceViewModel() {
-      Courses = new ObservableCollection<string>();
-      Years = new ObservableCollection<short>();
-
       LoadYears();
       if (Years.Any()) {
         CurrentYear = Years.First();
       }
     }
 
-    void LoadCourseNames(short year) {
+    void LoadCourseNames() {
       Courses.Clear();
 
-      ICollection<string> courseNames = HonglornBL.Honglorn.ValidCourseNames(year);
+      ICollection<string> courseNames = HonglornBL.Honglorn.ValidCourseNames(CurrentYear);
 
       foreach (string courseName in courseNames) {
         Courses.Add(courseName);
@@ -76,6 +80,16 @@ namespace HonglornWPF.ViewModels {
       }
 
       YearsLoaded?.Invoke();
+    }
+
+    void LoadStudents() {
+      Students.Clear();
+
+      ICollection<Student> students = HonglornBL.Honglorn.GetStudents(CurrentCourse, CurrentYear);
+
+      foreach (Student student in students) {
+        Students.Add(student);
+      }
     }
 
     void OnPropertyChanged(string propertyName) {
