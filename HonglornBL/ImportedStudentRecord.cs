@@ -3,98 +3,115 @@ using System.Collections.Generic;
 using System.Linq;
 using HonglornBL.Properties;
 
-namespace HonglornBL {
-  class ImportedStudentRecord {
-    string ImportedSurname { get; }
-    string ImportedForename { get; }
-    string ImportedCourseName { get; }
-    string ImportedSex { get; }
-    string ImportedYearOfBirth { get; }
+namespace HonglornBL
+{
+    class ImportedStudentRecord
+    {
+        string ImportedSurname { get; }
+        string ImportedForename { get; }
+        string ImportedCourseName { get; }
+        string ImportedSex { get; }
+        string ImportedYearOfBirth { get; }
 
-    internal RecordErrorInfo Error { get; private set; }
+        internal RecordErrorInfo Error { get; private set; }
 
-    public ImportedStudentRecord(string importedSurname, string importedForename, string importedCourseName, string importedSex, string importedYearOfBirth) {
-      ImportedSurname = importedSurname;
-      ImportedForename = importedForename;
-      ImportedCourseName = importedCourseName;
-      ImportedSex = importedSex;
-      ImportedYearOfBirth = importedYearOfBirth;
+        public ImportedStudentRecord(string importedSurname, string importedForename, string importedCourseName, string importedSex, string importedYearOfBirth)
+        {
+            ImportedSurname = importedSurname;
+            ImportedForename = importedForename;
+            ImportedCourseName = importedCourseName;
+            ImportedSex = importedSex;
+            ImportedYearOfBirth = importedYearOfBirth;
 
-      ValidateFields();
+            ValidateFields();
+        }
+
+        void ValidateFields()
+        {
+            List<FieldErrorInfo> fieldErrors = new List<FieldErrorInfo>
+            {
+                FieldError(nameof(ImportedSurname), ImportedSurname, IsValidName, "Surname cannot be empty or contain any digits."),
+                FieldError(nameof(ImportedForename), ImportedForename, IsValidName, "Forename cannot be empty or contain any digits."),
+                FieldError(nameof(ImportedCourseName), ImportedCourseName, IsValidCourseName, "The course name has to match the regular expression 0?[5-9][A-Za-z]|(E|e)(0[1-9]|[1-9][0-9])."),
+                FieldError(nameof(ImportedSex), ImportedSex, IsValidSex, "Sex can only be 'M', 'm', 'W' or 'w'."),
+                FieldError(nameof(ImportedYearOfBirth), ImportedYearOfBirth, IsValidYearOfBirth, $"Year of birth must be a four-digit number between {Settings.Default.MinValidYear} and {Settings.Default.MaxValidYear}.")
+            };
+
+            fieldErrors.RemoveAll(e => e == null);
+
+            if (fieldErrors.Any())
+            {
+                Error = new RecordErrorInfo(fieldErrors);
+            }
+        }
+
+        static FieldErrorInfo FieldError(string fieldName, string fieldContent, Func<string, bool> isValid, string errorMessage)
+        {
+            FieldErrorInfo result = null;
+
+            if (!isValid(fieldContent))
+            {
+                result = new FieldErrorInfo(fieldName, fieldContent, errorMessage);
+            }
+
+            return result;
+        }
+
+        static readonly Func<string, bool> IsValidName = name => !string.IsNullOrWhiteSpace(name) && !name.Any(c => char.IsDigit(c));
+
+        static readonly Func<string, bool> IsValidCourseName = delegate(string courseName)
+        {
+            bool isValid = true;
+
+            try
+            {
+                Prerequisites.GetClassName(courseName);
+            }
+            catch
+            {
+                isValid = false;
+            }
+
+            return isValid;
+        };
+
+        static readonly Func<string, bool> IsValidSex = sex => sex.Equals("W", StringComparison.InvariantCultureIgnoreCase) || sex.Equals("M", StringComparison.InvariantCultureIgnoreCase);
+
+        static readonly Func<string, bool> IsValidYearOfBirth = delegate(string year)
+        {
+            bool isValid = false;
+            short shortYear;
+
+            if (short.TryParse(year, out shortYear))
+            {
+                isValid = Prerequisites.IsValidYear(shortYear);
+            }
+
+            return isValid;
+        };
     }
 
-    void ValidateFields() {
-      List<FieldErrorInfo> fieldErrors = new List<FieldErrorInfo> {
-        FieldError(nameof(ImportedSurname), ImportedSurname, IsValidName, "Surname cannot be empty or contain any digits."),
-        FieldError(nameof(ImportedForename), ImportedForename, IsValidName, "Forename cannot be empty or contain any digits."),
-        FieldError(nameof(ImportedCourseName), ImportedCourseName, IsValidCourseName, "The course name has to match the regular expression 0?[5-9][A-Za-z]|(E|e)(0[1-9]|[1-9][0-9])."),
-        FieldError(nameof(ImportedSex), ImportedSex, IsValidSex, "Sex can only be 'M', 'm', 'W' or 'w'."),
-        FieldError(nameof(ImportedYearOfBirth), ImportedYearOfBirth, IsValidYearOfBirth, $"Year of birth must be a four-digit number between {Settings.Default.MinValidYear} and {Settings.Default.MaxValidYear}.")
-      };
+    class RecordErrorInfo
+    {
+        internal ICollection<FieldErrorInfo> FieldErrorInfos { get; }
 
-      fieldErrors.RemoveAll(e => e == null);
-
-      if (fieldErrors.Any()) {
-        Error = new RecordErrorInfo(fieldErrors);
-      }
+        public RecordErrorInfo(ICollection<FieldErrorInfo> fieldErrorInfos)
+        {
+            FieldErrorInfos = fieldErrorInfos;
+        }
     }
 
-    static FieldErrorInfo FieldError(string fieldName, string fieldContent, Func<string, bool> isValid, string errorMessage) {
-      FieldErrorInfo result = null;
+    class FieldErrorInfo
+    {
+        string FieldName { get; }
+        string FieldContent { get; }
+        string Message { get; }
 
-      if (!isValid(fieldContent)) {
-        result = new FieldErrorInfo(fieldName, fieldContent, errorMessage);
-      }
-
-      return result;
+        public FieldErrorInfo(string fieldName, string fieldContent, string message)
+        {
+            FieldName = fieldName;
+            FieldContent = fieldContent;
+            Message = message;
+        }
     }
-
-    static readonly Func<string, bool> IsValidName = name => !string.IsNullOrWhiteSpace(name) && !name.Any(c => char.IsDigit(c));
-
-    static readonly Func<string, bool> IsValidCourseName = delegate(string courseName) {
-      bool isValid = true;
-
-      try {
-        Prerequisites.GetClassName(courseName);
-      }
-      catch {
-        isValid = false;
-      }
-
-      return isValid;
-    };
-
-    static readonly Func<string, bool> IsValidSex = sex => sex.Equals("W", StringComparison.InvariantCultureIgnoreCase) || sex.Equals("M", StringComparison.InvariantCultureIgnoreCase);
-
-    static readonly Func<string, bool> IsValidYearOfBirth = delegate(string year) {
-      bool isValid = false;
-      short shortYear;
-
-      if (short.TryParse(year, out shortYear)) {
-        isValid = Prerequisites.IsValidYear(shortYear);
-      }
-
-      return isValid;
-    };
-  }
-
-  class RecordErrorInfo {
-    internal ICollection<FieldErrorInfo> FieldErrorInfos { get; }
-
-    public RecordErrorInfo(ICollection<FieldErrorInfo> fieldErrorInfos) {
-      FieldErrorInfos = fieldErrorInfos;
-    }
-  }
-
-  class FieldErrorInfo {
-    string FieldName { get; }
-    string FieldContent { get; }
-    string Message { get; }
-
-    public FieldErrorInfo(string fieldName, string fieldContent, string message) {
-      FieldName = fieldName;
-      FieldContent = fieldContent;
-      Message = message;
-    }
-  }
 }
