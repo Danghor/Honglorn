@@ -14,11 +14,11 @@ namespace HonglornBL.Models.Framework {
       base.Seed(context);
     }
 
-    static void InitializeEntity<Entity>(string xmlContent, DbSet set) {
-      XmlSerializer serializer = new XmlSerializer(typeof(Entity[]));
+    static void InitializeEntity<TEntity>(string xmlContent, DbSet set) {
+      XmlSerializer serializer = new XmlSerializer(typeof(TEntity[]));
 
       using (StringReader reader = new StringReader(xmlContent)) {
-        set.AddRange(serializer.Deserialize(reader) as IEnumerable<Entity>);
+        set.AddRange(serializer.Deserialize(reader) as IEnumerable<TEntity>);
       }
     }
   }
