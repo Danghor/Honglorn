@@ -49,17 +49,17 @@ namespace HonglornWinForm {
     /// <summary>
     ///   Replaces the current data source with the retrieved items iff they are not the same.
     /// </summary>
-    /// <typeparam name="CollectionType">The data type of the items contained in the combo box.</typeparam>
+    /// <typeparam name="TCollectionType">The data type of the items contained in the combo box.</typeparam>
     /// <param name="box">The combo box to be updated.</param>
     /// <param name="retrievedItems">The items freshly retrieved from the database.</param>
-    internal static void SmartRefreshComboBox<CollectionType>(ComboBox box, IEnumerable<CollectionType> retrievedItems) {
+    internal static void SmartRefreshComboBox<TCollectionType>(ComboBox box, IEnumerable<TCollectionType> retrievedItems) {
       if (retrievedItems == null) {
         box.Enabled = false;
         box.DataSource = null;
       } else {
         box.Enabled = true;
 
-        IEnumerable<CollectionType> currentData = box.DataSource as IEnumerable<CollectionType>;
+        IEnumerable<TCollectionType> currentData = box.DataSource as IEnumerable<TCollectionType>;
         if (currentData?.SequenceEqual(retrievedItems) != true) {
           box.DataSource = retrievedItems;
         }

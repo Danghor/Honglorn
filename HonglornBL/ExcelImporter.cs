@@ -8,11 +8,11 @@ using static HonglornBL.Prerequisites;
 
 namespace HonglornBL {
   static class ExcelImporter {
-    const string SURNAME_HEADER_COLUMN = "Nachname";
-    const string FORENAME_HEADER_COLUMN = "Vorname";
-    const string COURSENAME_HEADER_COLUMN = "Kursbezeichnung";
-    const string SEX_HEADER_COLUMN = "Geschlecht";
-    const string YEAROFBIRTH_HEADER_COLUMN = "Geburtsjahr";
+    const string SurnameHeaderColumn = "Nachname";
+    const string ForenameHeaderColumn = "Vorname";
+    const string CoursenameHeaderColumn = "Kursbezeichnung";
+    const string SexHeaderColumn = "Geschlecht";
+    const string YearofbirthHeaderColumn = "Geburtsjahr";
 
     static readonly Dictionary<string, Sex> SexDictionary = new Dictionary<string, Sex> {
       {"W", Sex.Female},
@@ -118,11 +118,11 @@ namespace HonglornBL {
     }
 
     static void ValidateHeaderRow(_Worksheet sheet) {
-      ValidateString(SURNAME_HEADER_COLUMN, sheet.GetTextFromRange("A1"));
-      ValidateString(FORENAME_HEADER_COLUMN, sheet.GetTextFromRange("B1"));
-      ValidateString(COURSENAME_HEADER_COLUMN, sheet.GetTextFromRange("C1"));
-      ValidateString(SEX_HEADER_COLUMN, sheet.GetTextFromRange("D1"));
-      ValidateString(YEAROFBIRTH_HEADER_COLUMN, sheet.GetTextFromRange("E1"));
+      ValidateString(SurnameHeaderColumn, sheet.GetTextFromRange("A1"));
+      ValidateString(ForenameHeaderColumn, sheet.GetTextFromRange("B1"));
+      ValidateString(CoursenameHeaderColumn, sheet.GetTextFromRange("C1"));
+      ValidateString(SexHeaderColumn, sheet.GetTextFromRange("D1"));
+      ValidateString(YearofbirthHeaderColumn, sheet.GetTextFromRange("E1"));
     }
 
     static void ValidateString(string expected, string actual) {

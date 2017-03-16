@@ -6,8 +6,8 @@ using HonglornBL.Models.Entities;
 using HonglornBL.Properties;
 
 namespace HonglornBL.Models.Framework {
-  class HonglornDBInitializer : CreateDatabaseIfNotExists<HonglornDB> {
-    protected override void Seed(HonglornDB context) {
+  class HonglornDbInitializer : CreateDatabaseIfNotExists<HonglornDb> {
+    protected override void Seed(HonglornDb context) {
       InitializeEntity<TraditionalDiscipline>(Resources.ArrayOfTraditionalDiscipline, context.TraditionalDiscipline);
       InitializeEntity<TraditionalReportMeta>(Resources.ArrayOfTraditionalReportMeta, context.TraditionalReportMeta);
 

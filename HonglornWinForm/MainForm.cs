@@ -8,7 +8,7 @@ using static HonglornWinForm.Prerequisites;
 
 namespace HonglornWinForm {
   public partial class MainForm : Form {
-    const float SCALING_FACTOR = 0.8f;
+    const float ScalingFactor = 0.8f;
 
     short SelectedYear => selectEditYearComboBox.SelectedValue as short? ?? Convert.ToInt16(DateTime.Now.Year);
 
@@ -21,24 +21,24 @@ namespace HonglornWinForm {
     protected override void OnLoad(EventArgs e) {
       base.OnLoad(e);
 
-      ScaleScreenAware(this, SCALING_FACTOR);
+      ScaleScreenAware(this, ScalingFactor);
       CenterToScreen();
 
-      smartRefreshComboBoxes();
+      SmartRefreshComboBoxes();
       RefreshDataGrid();
     }
 
-    void smartRefreshComboBoxes() {
-      smartRefreshYearComboBox();
-      smartRefreshCourseComboBox();
+    void SmartRefreshComboBoxes() {
+      SmartRefreshYearComboBox();
+      SmartRefreshCourseComboBox();
     }
 
-    void smartRefreshCourseComboBox() {
+    void SmartRefreshCourseComboBox() {
       ICollection<string> retrievedCourseNames = Honglorn.ValidCourseNames(SelectedYear);
       SmartRefreshComboBox(selectEditCourseComboBox, retrievedCourseNames);
     }
 
-    void smartRefreshYearComboBox() {
+    void SmartRefreshYearComboBox() {
       ICollection<short> retrievedYears = Honglorn.YearsWithStudentData();
       SmartRefreshComboBox(selectEditYearComboBox, retrievedYears);
     }

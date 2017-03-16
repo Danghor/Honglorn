@@ -5,7 +5,7 @@ using MySql.Data.Entity;
 
 namespace HonglornBL.Models.Framework {
   [DbConfigurationType(typeof(MySqlEFConfiguration))]
-  class HonglornDB : DbContext {
+  class HonglornDb : DbContext {
     public virtual DbSet<Competition> Competition { get; set; }
     public virtual DbSet<CompetitionDiscipline> CompetitionDiscipline { get; set; }
     public virtual DbSet<CompetitionReportMeta> CompetitionReportMeta { get; set; }
@@ -15,9 +15,9 @@ namespace HonglornBL.Models.Framework {
     public virtual DbSet<TraditionalDiscipline> TraditionalDiscipline { get; set; }
     public virtual DbSet<TraditionalReportMeta> TraditionalReportMeta { get; set; }
 
-    public HonglornDB()
-      : base($"name={nameof(HonglornDB)}") {
-      Database.SetInitializer(new HonglornDBInitializer());
+    public HonglornDb()
+      : base($"name={nameof(HonglornDb)}") {
+      Database.SetInitializer(new HonglornDbInitializer());
     }
 
     protected override void OnModelCreating(DbModelBuilder modelBuilder) {

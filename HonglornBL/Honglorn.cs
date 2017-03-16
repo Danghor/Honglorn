@@ -14,7 +14,7 @@ using static HonglornBL.Prerequisites;
 namespace HonglornBL {
   public class Honglorn {
     public static ICollection<Student> GetStudents(string course, short year) {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         return (from s in db.Student
                 where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
                 orderby s.Surname, s.Forename, s.YearOfBirth descending
@@ -26,16 +26,16 @@ namespace HonglornBL {
       // Prepare table
       DataTable table = new DataTable();
 
-      DataColumn PKeyColumn = table.Columns.Add(nameof(Student.PKey), typeof(Guid));
-      DataColumn SurnameColumn = table.Columns.Add(nameof(Student.Surname), typeof(string));
-      DataColumn ForenameColumn = table.Columns.Add(nameof(Student.Forename), typeof(string));
-      DataColumn SexColumn = table.Columns.Add(nameof(Student.Sex), typeof(Sex));
-      DataColumn SprintColumn = table.Columns.Add(nameof(Competition.Sprint), typeof(float));
-      DataColumn JumpColumn = table.Columns.Add(nameof(Competition.Jump), typeof(float));
-      DataColumn ThrowColumn = table.Columns.Add(nameof(Competition.Throw), typeof(float));
-      DataColumn MiddleDistanceColumn = table.Columns.Add(nameof(Competition.MiddleDistance), typeof(float));
+      DataColumn pKeyColumn = table.Columns.Add(nameof(Student.PKey), typeof(Guid));
+      DataColumn surnameColumn = table.Columns.Add(nameof(Student.Surname), typeof(string));
+      DataColumn forenameColumn = table.Columns.Add(nameof(Student.Forename), typeof(string));
+      DataColumn sexColumn = table.Columns.Add(nameof(Student.Sex), typeof(Sex));
+      DataColumn sprintColumn = table.Columns.Add(nameof(Competition.Sprint), typeof(float));
+      DataColumn jumpColumn = table.Columns.Add(nameof(Competition.Jump), typeof(float));
+      DataColumn throwColumn = table.Columns.Add(nameof(Competition.Throw), typeof(float));
+      DataColumn middleDistanceColumn = table.Columns.Add(nameof(Competition.MiddleDistance), typeof(float));
 
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         IEnumerable<Student> studentList = (from s in db.Student
                                             where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
                                             orderby s.Surname, s.Forename, s.YearOfBirth descending
@@ -48,14 +48,14 @@ namespace HonglornBL {
 
           DataRow newRow = table.NewRow();
 
-          newRow.SetField(PKeyColumn, student.PKey);
-          newRow.SetField(SurnameColumn, student.Surname);
-          newRow.SetField(ForenameColumn, student.Forename);
-          newRow.SetField(SexColumn, student.Sex);
-          newRow.SetField(SprintColumn, competition?.Sprint);
-          newRow.SetField(JumpColumn, competition?.Jump);
-          newRow.SetField(ThrowColumn, competition?.Throw);
-          newRow.SetField(MiddleDistanceColumn, competition?.MiddleDistance);
+          newRow.SetField(pKeyColumn, student.PKey);
+          newRow.SetField(surnameColumn, student.Surname);
+          newRow.SetField(forenameColumn, student.Forename);
+          newRow.SetField(sexColumn, student.Sex);
+          newRow.SetField(sprintColumn, competition?.Sprint);
+          newRow.SetField(jumpColumn, competition?.Jump);
+          newRow.SetField(throwColumn, competition?.Throw);
+          newRow.SetField(middleDistanceColumn, competition?.MiddleDistance);
 
           table.Rows.Add(newRow);
         }
@@ -73,31 +73,31 @@ namespace HonglornBL {
         throw new ArgumentOutOfRangeException($"{year} is not a valid year.");
       }
 
-      DataColumn PKeyColumn = table.Columns[nameof(Student.PKey)];
-      DataColumn SurnameColumn = table.Columns[nameof(Student.Surname)];
-      DataColumn ForenameColumn = table.Columns[nameof(Student.Forename)];
-      DataColumn SexColumn = table.Columns[nameof(Student.Sex)];
-      DataColumn SprintColumn = table.Columns[nameof(Competition.Sprint)];
-      DataColumn JumpColumn = table.Columns[nameof(Competition.Jump)];
-      DataColumn ThrowColumn = table.Columns[nameof(Competition.Throw)];
-      DataColumn MiddleDistanceColumn = table.Columns[nameof(Competition.MiddleDistance)];
+      DataColumn pKeyColumn = table.Columns[nameof(Student.PKey)];
+      DataColumn surnameColumn = table.Columns[nameof(Student.Surname)];
+      DataColumn forenameColumn = table.Columns[nameof(Student.Forename)];
+      DataColumn sexColumn = table.Columns[nameof(Student.Sex)];
+      DataColumn sprintColumn = table.Columns[nameof(Competition.Sprint)];
+      DataColumn jumpColumn = table.Columns[nameof(Competition.Jump)];
+      DataColumn throwColumn = table.Columns[nameof(Competition.Throw)];
+      DataColumn middleDistanceColumn = table.Columns[nameof(Competition.MiddleDistance)];
 
       foreach (DataRow row in table.Rows) {
-        Guid PKey = (Guid) row[PKeyColumn];
-        string Surname = row[SurnameColumn].ToString();
-        string Forename = row[ForenameColumn].ToString();
-        Sex Sex = (Sex) row[SexColumn];
-        float? Sprint = row[SprintColumn] as float?;
-        float? Jump = row[JumpColumn] as float?;
-        float? Throw = row[ThrowColumn] as float?;
-        float? MiddleDistance = row[MiddleDistanceColumn] as float?;
+        Guid pKey = (Guid) row[pKeyColumn];
+        string surname = row[surnameColumn].ToString();
+        string forename = row[forenameColumn].ToString();
+        Sex sex = (Sex) row[sexColumn];
+        float? sprint = row[sprintColumn] as float?;
+        float? jump = row[jumpColumn] as float?;
+        float? Throw = row[throwColumn] as float?;
+        float? middleDistance = row[middleDistanceColumn] as float?;
 
-        UpdateSingleStudentCompetition(PKey, Sprint, Jump, Throw, MiddleDistance, year);
+        UpdateSingleStudentCompetition(pKey, sprint, jump, Throw, middleDistance, year);
       }
     }
 
     static void UpdateSingleStudentCompetition(Guid pKey, float? sprint, float? jump, float? @throw, float? middleDistance, short year) {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         Student student = db.Student.Find(pKey);
 
         if (student != null) {
@@ -139,7 +139,7 @@ namespace HonglornBL {
     }
 
     public static DisciplineCollection ConfiguredDisciplines(string className, short year) {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         DisciplineCollection collection = (from c in db.DisciplineCollection
                                            where c.ClassName == className
                                                  && c.Year == year
@@ -168,7 +168,7 @@ namespace HonglornBL {
     }
 
     public static ICollection<CompetitionDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType) {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         return (from d in db.CompetitionDiscipline
                 where d.Type == disciplineType
                 select d).OrderBy(d => d.Name).ToArray();
@@ -176,7 +176,7 @@ namespace HonglornBL {
     }
 
     public static ICollection<TraditionalDiscipline> FilteredTraditionalDisciplines(DisciplineType disciplineType, Sex sex) {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         return (from d in db.TraditionalDiscipline
                 where d.Type == disciplineType && d.Sex == sex
                 select d).OrderBy(d => d.Name).ToArray();
@@ -184,7 +184,7 @@ namespace HonglornBL {
     }
 
     public static ICollection<CompetitionDiscipline> AllCompetitionDisciplines() {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         return db.CompetitionDiscipline.ToArray();
       }
     }
@@ -194,7 +194,7 @@ namespace HonglornBL {
         throw new ArgumentNullException(nameof(CompetitionDiscipline));
       }
 
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         CompetitionDiscipline existing = (from d in db.CompetitionDiscipline
                                           where d.PKey == givenDiscipline.PKey
                                           select d).SingleOrDefault();
@@ -213,7 +213,7 @@ namespace HonglornBL {
     }
 
     public static void DeleteCompetitionDisciplineByPKey(Guid pKey) {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         try {
           CompetitionDiscipline discipline = new CompetitionDiscipline {
             PKey = pKey
@@ -239,7 +239,7 @@ namespace HonglornBL {
     /// </returns>
     /// <remarks></remarks>
     public static Game? GetGameType(string className, short year) {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         Game[] typeArray = (from c in db.DisciplineCollection
                             where c.ClassName == className
                                   && c.Year == year
@@ -267,7 +267,7 @@ namespace HonglornBL {
     /// </summary>
     /// <returns>A short collection representing the valid years.</returns>
     public static ICollection<short> YearsWithStudentData() {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         return (from relations in db.StudentCourseRel
                 select relations.Year).Distinct().OrderByDescending(year => year).ToArray();
       }
@@ -279,7 +279,7 @@ namespace HonglornBL {
     /// <param name="year">The year for which the valid course names should be retrieved.</param>
     /// <returns>All valid course names.</returns>
     public static ICollection<string> ValidCourseNames(short year) {
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         return (from r in db.StudentCourseRel
                 where r.Year == year
                 select r.CourseName).Distinct().OrderBy(name => name).ToArray();
@@ -348,7 +348,7 @@ namespace HonglornBL {
 
       //todo: verify year
 
-      using (HonglornDB db = new HonglornDB()) {
+      using (HonglornDb db = new HonglornDb()) {
         IQueryable<Student> studentQuery = from s in db.Student
                                            where s.Forename == student.Forename
                                                  && s.Surname == student.Surname

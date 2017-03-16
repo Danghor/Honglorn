@@ -33,7 +33,7 @@ namespace HonglornBL {
 
     #region Validation
 
-    static readonly HashSet<char> VALID_CLASSNAMES = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
+    static readonly HashSet<char> ValidClassnames = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
 
     /// <summary>
     ///   Returns true iff the given character is a valid class name that can be used at all in the application.
@@ -41,7 +41,7 @@ namespace HonglornBL {
     /// <param name="className">The class name to be validated.</param>
     /// <returns>True iff the given class name is a valid class name.</returns>
     /// <remarks>Valid classnames: 5, 6, 7, 8, 9, E</remarks>
-    internal static bool IsValidClassName(char className) => VALID_CLASSNAMES.Contains(className);
+    internal static bool IsValidClassName(char className) => ValidClassnames.Contains(className);
 
     /// <summary>
     ///   Returns true iff the given input year is valid based on the lower and upper bounds defined in the settings.
