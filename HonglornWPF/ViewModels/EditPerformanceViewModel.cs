@@ -20,6 +20,7 @@ namespace HonglornWPF.ViewModels
 
         string currentCourse;
         short currentYear;
+        StudentCompetition currentStudentCompetition;
 
         public short CurrentYear
         {
@@ -48,6 +49,16 @@ namespace HonglornWPF.ViewModels
                 OnPropertyChanged(nameof(CurrentCourse));
 
                 LoadStudentsCompetitionsTuples();
+            }
+        }
+
+        public StudentCompetition CurrentStudentCompetition
+        {
+            get { return currentStudentCompetition; }
+            set
+            {
+                currentStudentCompetition = value;
+                OnPropertyChanged(nameof(CurrentStudentCompetition));
             }
         }
 
