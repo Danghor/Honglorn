@@ -26,10 +26,10 @@
             <ComboBox x:Name="classSelectionComboBox" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="3" ItemsSource="{Binding Courses}" SelectedItem="{Binding CurrentCourse}"/>
 
         </Grid>
-        <DataGrid Margin="0 5 0 0"  AutoGenerateColumns="False" ItemsSource="{Binding StudentCompetitions}" SelectedItem="{Binding CurrentStudentCompetition}">
+        <DataGrid Margin="0 5 0 0"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding StudentCompetitions}" SelectedItem="{Binding CurrentStudentCompetition}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nachname" Binding="{Binding Surname}"/>
-                <DataGridTextColumn Header="Vorname" Binding="{Binding Forename}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Nachname" Binding="{Binding Surname}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Vorname" Binding="{Binding Forename}"/>
                 <DataGridTextColumn Header="Sprint" Binding="{Binding Sprint}"/>
                 <DataGridTextColumn Header="Sprung" Binding="{Binding Jump}"/>
                 <DataGridTextColumn Header="Wurf" Binding="{Binding Throw}"/>
