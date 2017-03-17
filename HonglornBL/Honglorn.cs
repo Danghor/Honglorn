@@ -103,15 +103,15 @@ namespace HonglornBL
                 float? Throw = row[throwColumn] as float?;
                 float? middleDistance = row[middleDistanceColumn] as float?;
 
-                UpdateSingleStudentCompetition(pKey, sprint, jump, Throw, middleDistance, year);
+                UpdateSingleStudentCompetition(pKey, year, sprint, jump, Throw, middleDistance);
             }
         }
 
-        static void UpdateSingleStudentCompetition(Guid pKey, float? sprint, float? jump, float? @throw, float? middleDistance, short year)
+        public static void UpdateSingleStudentCompetition(Guid studentPKey, short year, float? sprint, float? jump, float? @throw, float? middleDistance)
         {
             using (HonglornDb db = new HonglornDb())
             {
-                Student student = db.Student.Find(pKey);
+                Student student = db.Student.Find(studentPKey);
 
                 if (student != null)
                 {
@@ -157,7 +157,7 @@ namespace HonglornBL
                 }
                 else
                 {
-                    throw new ArgumentException($"No {nameof(Student)} with such key in database: {pKey}");
+                    throw new ArgumentException($"No {nameof(Student)} with such key in database: {studentPKey}");
                 }
             }
         }

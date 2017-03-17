@@ -113,6 +113,11 @@ namespace HonglornWPF.ViewModels
             }
         }
 
+        void SaveCompetition(StudentCompetition sc)
+        {
+            HonglornBL.Honglorn.UpdateSingleStudentCompetition(sc.StudentPKey, CurrentYear, sc.Sprint, sc.Jump, sc.Throw, sc.MiddleDistance);
+        }
+
         void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
