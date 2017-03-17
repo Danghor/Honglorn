@@ -22,7 +22,7 @@ namespace HonglornBL
                 return (from s in db.Student
                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
                         orderby s.Surname, s.Forename, s.YearOfBirth descending
-                        select s).ToList();
+                        select s).Include(s => s.Competition).ToList();
             }
         }
 

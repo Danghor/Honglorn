@@ -7,28 +7,35 @@
              xmlns:ViewModel="clr-namespace:HonglornWPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-  <UserControl.DataContext>
-    <ViewModel:EditPerformanceViewModel/>
-  </UserControl.DataContext>
+    <UserControl.DataContext>
+        <ViewModel:EditPerformanceViewModel/>
+    </UserControl.DataContext>
 
-  <StackPanel>
-    <Grid>
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="Auto" />
-        <ColumnDefinition Width="Auto" />
-      </Grid.ColumnDefinitions>
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
 
-      <Label Content="Jahr"  Grid.Column="0"/>
-      <ComboBox x:Name="yearSelectionComboBox" HorizontalAlignment="Right" VerticalAlignment="Top"  Grid.Column="1" ItemsSource="{Binding Years}" SelectedItem="{Binding CurrentYear}"/>
-      <Label Content="Klasse" Grid.Column="2"/>
-      <ComboBox x:Name="classSelectionComboBox" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="3" ItemsSource="{Binding Courses}" SelectedItem="{Binding CurrentCourse}"/>
+            <Label Content="Jahr"  Grid.Column="0"/>
+            <ComboBox x:Name="yearSelectionComboBox" HorizontalAlignment="Right" VerticalAlignment="Top"  Grid.Column="1" ItemsSource="{Binding Years}" SelectedItem="{Binding CurrentYear}"/>
+            <Label Content="Klasse" Grid.Column="2"/>
+            <ComboBox x:Name="classSelectionComboBox" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="3" ItemsSource="{Binding Courses}" SelectedItem="{Binding CurrentCourse}"/>
 
-    </Grid>
-    <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding Students}">
-
-    </DataGrid>
-  </StackPanel>
+        </Grid>
+        <DataGrid Margin="0 5 0 0"  AutoGenerateColumns="False" ItemsSource="{Binding Students}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nachname" Binding="{Binding Item1.Surname}"/>
+                <DataGridTextColumn Header="Vorname" Binding="{Binding Item1.Forename}"/>
+                <DataGridTextColumn Header="Sprint" Binding="{Binding Item2.Sprint}"/>
+                <DataGridTextColumn Header="Sprung" Binding="{Binding Item2.Jump}"/>
+                <DataGridTextColumn Header="Wurf" Binding="{Binding Item2.Throw}"/>
+                <DataGridTextColumn Header="Ausdauer" Binding="{Binding Item2.MiddleDistance}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 
 </UserControl>

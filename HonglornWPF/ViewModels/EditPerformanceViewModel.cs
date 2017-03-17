@@ -15,13 +15,11 @@ namespace HonglornWPF.ViewModels
 
         public ObservableCollection<string> Courses { get; set; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; set; } = new ObservableCollection<short>();
-        public ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
+        public ObservableCollection<Tuple<Student, Competition>> Students { get; set; } = new ObservableCollection<Tuple<Student, Competition>>(); //todo: rename
         public ObservableCollection<Competition> Competitions { get; set; } = new ObservableCollection<Competition>();
 
         string currentCourse;
         short currentYear;
-        Student currentStudent;
-        Competition currentCompetition;
 
         public short CurrentYear
         {
@@ -49,7 +47,7 @@ namespace HonglornWPF.ViewModels
                 currentCourse = value;
                 OnPropertyChanged(nameof(CurrentCourse));
 
-                LoadStudents();
+                LoadStudentsCompetitionsTuples();
             }
         }
 
@@ -90,7 +88,7 @@ namespace HonglornWPF.ViewModels
             YearsLoaded?.Invoke();
         }
 
-        void LoadStudents()
+        void LoadStudentsCompetitionsTuples()
         {
             Students.Clear();
 
@@ -98,7 +96,11 @@ namespace HonglornWPF.ViewModels
 
             foreach (Student student in students)
             {
-                Students.Add(student);
+                Competition competition = (from sc in student.Competition
+                                           where sc.Year == currentYear
+                                           select sc).SingleOrDefault() ?? new Competition();
+
+                Students.Add(new Tuple<Student, Competition>(student, competition));
             }
         }
 
