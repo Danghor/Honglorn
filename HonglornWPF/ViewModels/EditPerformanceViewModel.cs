@@ -57,6 +57,7 @@ namespace HonglornWPF.ViewModels
             get { return currentStudentCompetition; }
             set
             {
+                SaveCompetition(currentStudentCompetition);
                 currentStudentCompetition = value;
                 OnPropertyChanged(nameof(CurrentStudentCompetition));
             }
@@ -126,7 +127,10 @@ namespace HonglornWPF.ViewModels
 
         void SaveCompetition(StudentCompetition sc)
         {
-            HonglornBL.Honglorn.UpdateSingleStudentCompetition(sc.StudentPKey, CurrentYear, sc.Sprint, sc.Jump, sc.Throw, sc.MiddleDistance);
+            if (sc != null)
+            {
+                HonglornBL.Honglorn.UpdateSingleStudentCompetition(sc.StudentPKey, CurrentYear, sc.Sprint, sc.Jump, sc.Throw, sc.MiddleDistance);
+            }
         }
 
         void OnPropertyChanged(string propertyName)
