@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HonglornWPF.Views"
+             xmlns:local="clr-namespace:HonglornWPF"
              xmlns:ViewModel="clr-namespace:HonglornWPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -30,10 +30,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Header="Nachname" Binding="{Binding Surname}"/>
                 <DataGridTextColumn IsReadOnly="True" Header="Vorname" Binding="{Binding Forename}"/>
-                <DataGridTextColumn Header="Sprint" Binding="{Binding Sprint}"/>
-                <DataGridTextColumn Header="Sprung" Binding="{Binding Jump}"/>
-                <DataGridTextColumn Header="Wurf" Binding="{Binding Throw}"/>
-                <DataGridTextColumn Header="Ausdauer" Binding="{Binding MiddleDistance}"/>
+                <DataGridTextColumn Header="Sprint" Binding="{Binding Sprint, Converter={StaticResource CompetitionValueConverter}}"/>
+                <DataGridTextColumn Header="Sprung" Binding="{Binding Jump, Converter={StaticResource CompetitionValueConverter}}"/>
+                <DataGridTextColumn Header="Wurf" Binding="{Binding Throw, Converter={StaticResource CompetitionValueConverter}}"/>
+                <DataGridTextColumn Header="Ausdauer" Binding="{Binding MiddleDistance, Converter={StaticResource CompetitionValueConverter}}"/>
             </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
