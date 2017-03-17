@@ -15,7 +15,7 @@ namespace HonglornWPF.ViewModels
 
         public ObservableCollection<string> Courses { get; set; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; set; } = new ObservableCollection<short>();
-        public ObservableCollection<Tuple<Student, Competition>> Students { get; set; } = new ObservableCollection<Tuple<Student, Competition>>(); //todo: rename
+        public ObservableCollection<StudentCompetition> StudentCompetitions { get; set; } = new ObservableCollection<StudentCompetition>();
         public ObservableCollection<Competition> Competitions { get; set; } = new ObservableCollection<Competition>();
 
         string currentCourse;
@@ -90,7 +90,7 @@ namespace HonglornWPF.ViewModels
 
         void LoadStudentsCompetitionsTuples()
         {
-            Students.Clear();
+            StudentCompetitions.Clear();
 
             ICollection<Student> students = HonglornBL.Honglorn.GetStudents(CurrentCourse, CurrentYear);
 
@@ -100,7 +100,16 @@ namespace HonglornWPF.ViewModels
                                            where sc.Year == currentYear
                                            select sc).SingleOrDefault() ?? new Competition();
 
-                Students.Add(new Tuple<Student, Competition>(student, competition));
+                StudentCompetitions.Add(new StudentCompetition
+                {
+                    StudentPKey = student.PKey,
+                    Surname = student.Surname,
+                    Forename = student.Forename,
+                    Sprint = competition.Sprint,
+                    Jump = competition.Jump,
+                    Throw = competition.Throw,
+                    MiddleDistance = competition.MiddleDistance
+                });
             }
         }
 

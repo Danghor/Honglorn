@@ -67,6 +67,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="StudentCompetition.cs" />
     <Compile Include="ViewModels\EditPerformanceViewModel.cs" />
     <Compile Include="Views\EditPerformanceView.xaml.cs">
       <DependentUpon>EditPerformanceView.xaml</DependentUpon>
