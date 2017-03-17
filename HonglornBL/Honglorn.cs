@@ -121,7 +121,7 @@ namespace HonglornBL
 
                     if ((sprint ?? jump ?? @throw ?? middleDistance) == null)
                     {
-                        // Delete competition row
+                        // Delete
                         if (existingCompetition != null)
                         {
                             db.Competition.Remove(existingCompetition);
@@ -129,19 +129,17 @@ namespace HonglornBL
                     }
                     else
                     {
-                        // Update competition row
                         if (existingCompetition == null)
                         {
                             // Create
-                            Competition newCompetition = new Competition
+                            student.Competition.Add(new Competition
                             {
                                 Year = year,
                                 Sprint = sprint,
                                 Jump = jump,
                                 Throw = @throw,
                                 MiddleDistance = middleDistance
-                            };
-                            student.Competition.Add(newCompetition);
+                            });
                         }
                         else
                         {
