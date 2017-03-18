@@ -88,17 +88,17 @@ namespace HonglornBL
 
         static ushort CalculateRunningScoreManual(float seconds, ushort distance, float overhead, float constantA, float constantC)
         {
-            return (ushort) Math.Floor((distance / (seconds + overhead) - constantA) / constantC);
+            return (ushort) Math.Max(0, Math.Floor((distance / (seconds + overhead) - constantA) / constantC));
         }
 
         static ushort CalculateRunningScoreElectronic(float seconds, ushort distance, float constantA, float constantC)
         {
-            return (ushort) Math.Floor((distance / seconds - constantA) / constantC);
+            return (ushort) Math.Max(0,Math.Floor((distance / seconds - constantA) / constantC));
         }
 
         static ushort CalculateJumpThrowScore(float meters, float constantA, float constantC)
         {
-            return (ushort) Math.Floor((Math.Sqrt(meters) - constantA) / constantC);
+            return (ushort) Math.Max(0, Math.Floor((Math.Sqrt(meters) - constantA) / constantC));
         }
     }
 }
