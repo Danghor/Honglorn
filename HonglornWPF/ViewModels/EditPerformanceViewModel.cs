@@ -7,9 +7,8 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
 {
-    class EditPerformanceViewModel : INotifyPropertyChanged
+    class EditPerformanceViewModel : ViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         public event Action CoursesLoaded;
         public event Action YearsLoaded;
 
@@ -28,6 +27,7 @@ namespace HonglornWPF.ViewModels
 
             set
             {
+                SaveCompetition(currentStudentCompetition);
                 currentYear = value;
                 OnPropertyChanged(nameof(CurrentYear));
 
@@ -45,6 +45,7 @@ namespace HonglornWPF.ViewModels
             get { return currentCourse; }
             set
             {
+                SaveCompetition(currentStudentCompetition);
                 currentCourse = value;
                 OnPropertyChanged(nameof(CurrentCourse));
 
@@ -131,11 +132,6 @@ namespace HonglornWPF.ViewModels
             {
                 HonglornBL.Honglorn.UpdateSingleStudentCompetition(sc.StudentPKey, CurrentYear, sc.Sprint, sc.Jump, sc.Throw, sc.MiddleDistance);
             }
-        }
-
-        void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -70,6 +70,7 @@
     <Compile Include="CompetitionValueConverter.cs" />
     <Compile Include="StudentCompetition.cs" />
     <Compile Include="ViewModels\EditPerformanceViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\EditPerformanceView.xaml.cs">
       <DependentUpon>EditPerformanceView.xaml</DependentUpon>
     </Compile>
