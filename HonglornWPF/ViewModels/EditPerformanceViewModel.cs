@@ -15,7 +15,6 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<string> Courses { get; set; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; set; } = new ObservableCollection<short>();
         public ObservableCollection<StudentCompetition> StudentCompetitions { get; set; } = new ObservableCollection<StudentCompetition>();
-        public ObservableCollection<Competition> Competitions { get; set; } = new ObservableCollection<Competition>();
 
         string currentCourse;
         short currentYear;
