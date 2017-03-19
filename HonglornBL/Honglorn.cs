@@ -49,8 +49,19 @@ namespace HonglornBL
 
                 if (disciplineArray.All(d => d is TraditionalDiscipline))
                 {
-                    TraditionalDiscipline maleSprint = disciplines.MaleSprint as TraditionalDiscipline;
-                    results = CalculateTraditionalResults(students, year, maleSprint);
+                    TraditionalDisciplineCollection disciplineCollection = new TraditionalDisciplineCollection()
+                    {
+                        MaleSprint = disciplines.MaleSprint as TraditionalDiscipline,
+                        MaleJump = disciplines.MaleJump as TraditionalDiscipline,
+                        MaleThrow = disciplines.MaleThrow as TraditionalDiscipline,
+                        MaleMiddleDistance = disciplines.MaleMiddleDistance as TraditionalDiscipline,
+                        FemaleSprint = disciplines.FemaleSprint as TraditionalDiscipline,
+                        FemaleJump = disciplines.FemaleJump as TraditionalDiscipline,
+                        FemaleThrow = disciplines.FemaleThrow as TraditionalDiscipline,
+                        FemaleMiddleDistance = disciplines.FemaleMiddleDistance as TraditionalDiscipline
+                    };
+
+                    results = CalculateTraditionalResults(students, year, disciplineCollection);
                 }
                 else if (disciplineArray.All(d => d is CompetitionDiscipline))
                 {
@@ -65,7 +76,7 @@ namespace HonglornBL
             return results;
         }
 
-        static ICollection<Result> CalculateTraditionalResults(ICollection<Student> students, short year, TraditionalDiscipline maleSprint)
+        static ICollection<Result> CalculateTraditionalResults(ICollection<Student> students, short year, TraditionalDisciplineCollection disciplineCollection)
         {
             ICollection<Result> results = new List<Result>();
 
@@ -77,7 +88,20 @@ namespace HonglornBL
                                            where sc.Year == year
                                            select sc).SingleOrDefault() ?? new Competition();
 
-                totalScore += TraditionalCalculator.CalculateScore(maleSprint, competition.Sprint);
+                if (student.Sex == Sex.Male)
+                {
+                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.MaleSprint, competition.Sprint);
+                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.MaleJump, competition.Jump);
+                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.MaleThrow, competition.Throw);
+                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.MaleMiddleDistance, competition.MiddleDistance);
+                }
+                else
+                {
+                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleSprint, competition.Sprint);
+                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleJump, competition.Jump);
+                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleThrow, competition.Throw);
+                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleMiddleDistance, competition.MiddleDistance);
+                }
 
                 results.Add(new Result()
                 {
