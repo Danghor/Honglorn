@@ -69,8 +69,12 @@
     </ApplicationDefinition>
     <Compile Include="CompetitionValueConverter.cs" />
     <Compile Include="StudentCompetition.cs" />
+    <Compile Include="ViewModels\ClassResultsViewModel.cs" />
     <Compile Include="ViewModels\EditPerformanceViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\ClassResultsView.xaml.cs">
+      <DependentUpon>ClassResultsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditPerformanceView.xaml.cs">
       <DependentUpon>EditPerformanceView.xaml</DependentUpon>
     </Compile>
@@ -86,6 +90,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ClassResultsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditPerformanceView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

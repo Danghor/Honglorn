@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIClasses\ProgressInformer.cs" />
+    <Compile Include="Result.cs" />
     <Compile Include="ImportedStudentRecord.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

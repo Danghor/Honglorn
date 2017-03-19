@@ -22,8 +22,102 @@ namespace HonglornBL
                 return (from s in db.Student
                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
                         orderby s.Surname, s.Forename, s.YearOfBirth descending
-                        select s).Include(s => s.Competition).ToList();
+                        select s).Include(s => s.Competition).ToArray();
             }
+        }
+
+        public static ICollection<Result> GetResults(string course, short year)
+        {
+            ICollection<Result> results;
+
+            ICollection<Student> students = GetStudents(course, year);
+            string className = GetClassName(course);
+
+            using (HonglornDb db = new HonglornDb())
+            {
+                DisciplineCollection disciplines = (from d in db.DisciplineCollection
+                                                    where d.ClassName == className
+                                                          && d.Year == year
+                                                    select d).SingleOrDefault();
+
+                if (disciplines == null)
+                {
+                    throw new DataException($"No disciplines have been configured for class {className} in year {year}. Therefore, no results can be calculated.");
+                }
+
+                Discipline[] disciplineArray = new[] { disciplines.MaleSprint, disciplines.MaleJump, disciplines.MaleThrow, disciplines.MaleMiddleDistance, disciplines.FemaleSprint, disciplines.FemaleJump, disciplines.FemaleThrow, disciplines.FemaleMiddleDistance };
+
+                if (disciplineArray.All(d => d is TraditionalDiscipline))
+                {
+                    TraditionalDiscipline maleSprint = disciplines.MaleSprint as TraditionalDiscipline;
+                    results = CalculateTraditionalResults(students, year, maleSprint);
+                }
+                else if (disciplineArray.All(d => d is CompetitionDiscipline))
+                {
+                    throw new NotImplementedException();
+                }
+                else
+                {
+                    throw new DataException($"For class {className} in year {year}, some configured disciplines are traditional disciplines, while other disciplines are competition disciplines. A result can only be calculated when all disciplines are of the same type.");
+                }
+            }
+
+            return results;
+        }
+
+        static ICollection<Result> CalculateTraditionalResults(ICollection<Student> students, short year, TraditionalDiscipline maleSprint)
+        {
+            ICollection<Result> results = new List<Result>();
+
+            foreach (Student student in students)
+            {
+                ushort totalScore = 0;
+
+                Competition competition = (from sc in student.Competition
+                                           where sc.Year == year
+                                           select sc).SingleOrDefault() ?? new Competition();
+
+                totalScore += TraditionalCalculator.CalculateScore(maleSprint, competition.Sprint);
+
+                results.Add(new Result()
+                {
+                    Surname = student.Surname,
+                    Forename = student.Forename,
+                    Score = totalScore,
+                    Certificate = DetermineTraditionalCertificate(student.Sex, student.YearOfBirth, totalScore)
+                });
+            }
+
+            return results;
+        }
+
+        static Certificate DetermineTraditionalCertificate(Sex sex, short yearOfBirth, ushort totalScore)
+        {
+            Certificate result;
+            int studentAge = DateTime.Now.Year - yearOfBirth;
+
+            using (HonglornDb db = new HonglornDb())
+            {
+                var scoreBoundaries = (from meta in db.TraditionalReportMeta
+                                       where meta.Sex == sex
+                                             && meta.Age == studentAge
+                                       select new { meta.HonoraryCertificateScore, meta.VictoryCertificateScore }).Single();
+
+                if (totalScore >= scoreBoundaries.HonoraryCertificateScore)
+                {
+                    result = Certificate.Honorary;
+                }
+                else if (totalScore >= scoreBoundaries.VictoryCertificateScore)
+                {
+                    result = Certificate.Victory;
+                }
+                else
+                {
+                    result = Certificate.Participation;
+                }
+            }
+
+            return result;
         }
 
         public static DataTable GetStudentCompetitionTable(string courseName, short year)
@@ -285,29 +379,35 @@ namespace HonglornBL
         /// <remarks></remarks>
         public static Game? GetGameType(string className, short year)
         {
+            Game? result = null;
+
             using (HonglornDb db = new HonglornDb())
             {
-                Game[] typeArray = (from c in db.DisciplineCollection
-                                    where c.ClassName == className
-                                          && c.Year == year
-                                    select c.Game).ToArray();
+                Discipline[] disciplines = (from c in db.DisciplineCollection
+                                            where c.ClassName == className
+                                                  && c.Year == year
+                                            select new[] {
+                                              c.MaleSprint,
+                                              c.MaleJump,
+                                              c.MaleThrow,
+                                              c.MaleMiddleDistance,
+                                              c.FemaleSprint,
+                                              c.FemaleJump,
+                                              c.FemaleThrow,
+                                              c.FemaleMiddleDistance
+                                            }).SingleOrDefault();
 
-                Game? result;
-
-                switch (typeArray.Length)
+                if (disciplines.All(d => d is CompetitionDiscipline))
                 {
-                    case 0:
-                        result = null;
-                        break;
-                    case 1:
-                        result = typeArray.Single();
-                        break;
-                    default:
-                        throw new DataException($"Multiple GameTypes received from database for class name {className} and year {year}.");
+                    result = Game.Competition;
                 }
-
-                return result;
+                else if (disciplines.All(d => d is TraditionalDiscipline))
+                {
+                    result = Game.Traditional;
+                }
             }
+
+            return result;
         }
 
         /// <summary>

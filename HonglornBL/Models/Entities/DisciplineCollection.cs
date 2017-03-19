@@ -20,7 +20,8 @@ namespace HonglornBL.Models.Entities
         public short Year { get; set; }
 
         [Required]
-        public Prerequisites.Game Game { get; set; }
+        [Obsolete]
+        public Prerequisites.Game Game { get; set; } //todo: remove this
 
         // Male
         [Required]

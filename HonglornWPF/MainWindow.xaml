@@ -19,6 +19,9 @@
       <TabItem Header="Bearbeiten">
         <Views:EditPerformanceView />
       </TabItem>
+      <TabItem Header="Auswertung">
+        <Views:ClassResultsView />
+      </TabItem>
     </Controls:MetroAnimatedSingleRowTabControl>
   </Grid>
 </Controls:MetroWindow>
