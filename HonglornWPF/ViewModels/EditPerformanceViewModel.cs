@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using HonglornBL.Models.Entities;
 
@@ -9,9 +7,6 @@ namespace HonglornWPF.ViewModels
 {
     class EditPerformanceViewModel : ViewModel
     {
-        public event Action CoursesLoaded;
-        public event Action YearsLoaded;
-
         public ObservableCollection<string> Courses { get; set; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; set; } = new ObservableCollection<short>();
         public ObservableCollection<StudentCompetition> StudentCompetitions { get; set; } = new ObservableCollection<StudentCompetition>();
@@ -82,8 +77,6 @@ namespace HonglornWPF.ViewModels
             {
                 Courses.Add(courseName);
             }
-
-            CoursesLoaded?.Invoke();
         }
 
         void LoadYears()
@@ -96,8 +89,6 @@ namespace HonglornWPF.ViewModels
             {
                 Years.Add(year);
             }
-
-            YearsLoaded?.Invoke();
         }
 
         void LoadStudentsCompetitionsTuples()

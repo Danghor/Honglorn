@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using HonglornBL.Models.Entities;
-
-namespace HonglornBL
+﻿namespace HonglornBL
 {
     class StudentExcelFile : StudentFile
     {
