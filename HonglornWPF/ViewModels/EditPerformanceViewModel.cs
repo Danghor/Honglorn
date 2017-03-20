@@ -67,29 +67,9 @@ namespace HonglornWPF.ViewModels
             }
         }
 
-        void LoadCourseNames()
-        {
-            Courses.Clear();
+        void LoadCourseNames() => ClearAndFill(Courses, HonglornBL.Honglorn.ValidCourseNames(CurrentYear));
 
-            ICollection<string> courseNames = HonglornBL.Honglorn.ValidCourseNames(CurrentYear);
-
-            foreach (string courseName in courseNames)
-            {
-                Courses.Add(courseName);
-            }
-        }
-
-        void LoadYears()
-        {
-            Years.Clear();
-
-            ICollection<short> years = HonglornBL.Honglorn.YearsWithStudentData();
-
-            foreach (short year in years)
-            {
-                Years.Add(year);
-            }
-        }
+        void LoadYears() => ClearAndFill(Years, HonglornBL.Honglorn.YearsWithStudentData());
 
         void LoadStudentsCompetitionsTuples()
         {
@@ -113,6 +93,16 @@ namespace HonglornWPF.ViewModels
                     Throw = competition.Throw,
                     MiddleDistance = competition.MiddleDistance
                 });
+            }
+        }
+
+        void ClearAndFill<T>(ObservableCollection<T> collection, IEnumerable<T> content) //todo: move to superclass
+        {
+            collection.Clear();
+
+            foreach (T item in content)
+            {
+                collection.Add(item);
             }
         }
 
