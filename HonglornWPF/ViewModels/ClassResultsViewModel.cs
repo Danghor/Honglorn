@@ -53,40 +53,10 @@ namespace HonglornWPF.ViewModels
             }
         }
 
-        void LoadCourseNames()
-        {
-            Courses.Clear();
+        void LoadCourseNames() => ClearAndFill(Courses, Honglorn.ValidCourseNames(CurrentYear));
 
-            ICollection<string> courseNames = Honglorn.ValidCourseNames(CurrentYear);
+        void LoadYears() => ClearAndFill(Years, Honglorn.YearsWithStudentData());
 
-            foreach (string courseName in courseNames)
-            {
-                Courses.Add(courseName);
-            }
-        }
-
-        void LoadYears()
-        {
-            Years.Clear();
-
-            ICollection<short> years = Honglorn.YearsWithStudentData();
-
-            foreach (short year in years)
-            {
-                Years.Add(year);
-            }
-        }
-
-        void LoadResults()
-        {
-            Results.Clear();
-
-            ICollection<Result> results = Honglorn.GetResults(CurrentCourse, CurrentYear);
-
-            foreach (Result result in results)
-            {
-                Results.Add(result);
-            }
-        }
+        void LoadResults() => ClearAndFill(Results, Honglorn.GetResults(CurrentCourse, CurrentYear));
     }
 }

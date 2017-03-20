@@ -96,16 +96,6 @@ namespace HonglornWPF.ViewModels
             }
         }
 
-        void ClearAndFill<T>(ObservableCollection<T> collection, IEnumerable<T> content) //todo: move to superclass
-        {
-            collection.Clear();
-
-            foreach (T item in content)
-            {
-                collection.Add(item);
-            }
-        }
-
         void SaveCompetition(StudentCompetition sc)
         {
             if (sc != null)

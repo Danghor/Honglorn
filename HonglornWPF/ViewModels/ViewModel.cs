@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace HonglornWPF.ViewModels
 {
@@ -9,6 +11,16 @@ namespace HonglornWPF.ViewModels
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void ClearAndFill<T>(ObservableCollection<T> collection, IEnumerable<T> content)
+        {
+            collection.Clear();
+
+            foreach (T item in content)
+            {
+                collection.Add(item);
+            }
         }
     }
 }
