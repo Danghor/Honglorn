@@ -14,14 +14,14 @@
   GlowBrush="{DynamicResource AccentColorBrush}"
   NonActiveGlowBrush="#CDFF0000">
 
-  <Grid>
-    <Controls:MetroAnimatedSingleRowTabControl>
-      <TabItem Header="Bearbeiten">
-        <Views:EditPerformanceView />
-      </TabItem>
-      <TabItem Header="Auswertung">
-        <Views:ClassResultsView />
-      </TabItem>
-    </Controls:MetroAnimatedSingleRowTabControl>
-  </Grid>
+    <Grid>
+        <Controls:MetroAnimatedSingleRowTabControl>
+            <TabItem Header="Bearbeiten">
+                <Views:EditPerformanceView />
+            </TabItem>
+            <TabItem Header="Auswertung">
+                <Views:ClassResultsView />
+            </TabItem>
+        </Controls:MetroAnimatedSingleRowTabControl>
+    </Grid>
 </Controls:MetroWindow>
