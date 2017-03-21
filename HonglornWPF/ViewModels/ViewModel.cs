@@ -13,7 +13,7 @@ namespace HonglornWPF.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected void ClearAndFill<T>(ObservableCollection<T> collection, IEnumerable<T> content)
+        protected static void ClearAndFill<T>(ObservableCollection<T> collection, IEnumerable<T> content)
         {
             collection.Clear();
 
