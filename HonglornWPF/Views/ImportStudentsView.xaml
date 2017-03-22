@@ -1,0 +1,29 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HonglornWPF.Views"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls" x:Class="HonglornWPF.Views.ImportStudentsView"
+             mc:Ignorable="d">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Pfad"  Grid.Column="0"/>
+            <TextBox Grid.Column="1" BorderThickness="1" Margin="0,0,5,0" />
+            <Button Content="Durchsuchen" Grid.Column="2" />
+        </Grid>
+        <StackPanel Orientation="Horizontal" >
+            <Label Content="Aktuelles Jahr" />
+            <Custom:NumericUpDown HasDecimals="False" Speedup="False" />
+        </StackPanel>
+        <Button Content="Import starten"/>
+        <ProgressBar />
+        <Label />
+    </StackPanel>
+</UserControl>

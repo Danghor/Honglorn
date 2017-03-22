@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="HonglornWPF.Views.EditDisciplinesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HonglornWPF.Views"
+             mc:Ignorable="d">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel>
+            <ListBox />
+            <Button Content="Neue Disziplin hinzufügen" />
+            <Button Content="Disziplin löschen" />
+        </StackPanel>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Art" />
+                <ComboBox />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Name" />
+                <TextBox />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Einheit" />
+                <TextBox />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Weniger ist besser" />
+                <CheckBox VerticalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
+
+
+
