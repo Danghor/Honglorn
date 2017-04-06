@@ -3,33 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HonglornWPF.Views"
+             xmlns:local="clr-namespace:HonglornWPF"
+             xmlns:bl="clr-namespace:HonglornBL;assembly=HonglornBL"
+             xmlns:ViewModels="clr-namespace:HonglornWPF.ViewModels"
              mc:Ignorable="d">
-    <StackPanel Orientation="Horizontal">
-        <StackPanel>
-            <ListBox />
-            <Button Content="Neue Disziplin hinzufügen" />
-            <Button Content="Disziplin löschen" />
-        </StackPanel>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Art" />
-                <ComboBox />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Name" />
-                <TextBox />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Einheit" />
-                <TextBox />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Weniger ist besser" />
-                <CheckBox VerticalAlignment="Center" />
-            </StackPanel>
-        </StackPanel>
-    </StackPanel>
+
+    <UserControl.DataContext>
+        <ViewModels:EditDisciplinesViewModel/>
+    </UserControl.DataContext>
+
+    <DataGrid Margin="0 5 0 0" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+            <DataGridComboBoxColumn Header="Disziplin" ItemsSource="{local:EnumValues {x:Type bl:DisciplineType} }" />
+            <DataGridTextColumn Header="Einheit" Binding="{Binding Unit}"/>
+            <DataGridCheckBoxColumn Header="Weniger ist besser" Binding="{Binding LowIsBetter}"/>
+        </DataGrid.Columns>
+    </DataGrid>
 </UserControl>
 
 

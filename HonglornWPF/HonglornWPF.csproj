@@ -70,8 +70,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CompetitionValueConverter.cs" />
+    <Compile Include="EnumValuesExtension.cs" />
     <Compile Include="StudentCompetition.cs" />
     <Compile Include="ViewModels\ClassResultsViewModel.cs" />
+    <Compile Include="ViewModels\EditDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\EditPerformanceViewModel.cs" />
     <Compile Include="ViewModels\SetDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />

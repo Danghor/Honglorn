@@ -16,6 +16,9 @@
 
     <Grid>
         <Controls:MetroAnimatedSingleRowTabControl>
+            <TabItem Header="Disziplinen bearbeiten">
+                <Views:EditDisciplinesView />
+            </TabItem>
             <TabItem Header="Bearbeiten">
                 <Views:EditPerformanceView />
             </TabItem>

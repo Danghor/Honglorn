@@ -340,29 +340,30 @@ namespace HonglornBL
             }
         }
 
-        public static void CreateOrUpdateCompetitionDiscipline(CompetitionDiscipline givenDiscipline)
+        public static void CreateOrUpdateCompetitionDiscipline(Guid disciplinePKey, DisciplineType type, string name, string unit, bool lowIsBetter)
         {
-            if (givenDiscipline == null)
-            {
-                throw new ArgumentNullException(nameof(CompetitionDiscipline));
-            }
-
             using (HonglornDb db = new HonglornDb())
             {
-                CompetitionDiscipline existing = (from d in db.CompetitionDiscipline
-                                                  where d.PKey == givenDiscipline.PKey
-                                                  select d).SingleOrDefault();
+                CompetitionDiscipline competition = db.CompetitionDiscipline.Find(disciplinePKey);
 
-                if (existing == null)
+                if (competition == null)
                 {
-                    db.CompetitionDiscipline.Add(givenDiscipline);
+                    // Create
+                    db.CompetitionDiscipline.Add(new CompetitionDiscipline
+                    {
+                        Type = type,
+                        Name = name,
+                        Unit = unit,
+                        LowIsBetter = lowIsBetter
+                    });
                 }
                 else
                 {
-                    existing.Type = givenDiscipline.Type;
-                    existing.Name = givenDiscipline.Name;
-                    existing.Unit = givenDiscipline.Unit;
-                    existing.LowIsBetter = givenDiscipline.LowIsBetter;
+                    // Update
+                    competition.Type = type;
+                    competition.Name = name;
+                    competition.Unit = unit;
+                    competition.LowIsBetter = lowIsBetter;
                 }
 
                 db.SaveChanges();
@@ -371,9 +372,9 @@ namespace HonglornBL
 
         public static void DeleteCompetitionDisciplineByPKey(Guid pKey)
         {
-            using (HonglornDb db = new HonglornDb())
+            try
             {
-                try
+                using (HonglornDb db = new HonglornDb())
                 {
                     CompetitionDiscipline discipline = new CompetitionDiscipline
                     {
@@ -383,10 +384,10 @@ namespace HonglornBL
                     db.Entry(discipline).State = EntityState.Deleted;
                     db.SaveChanges();
                 }
-                catch (Exception ex)
-                {
-                    throw new ArgumentException($"This {nameof(CompetitionDiscipline)} does not exist in the database", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException($"A {nameof(CompetitionDiscipline)} with PKey {pKey} does not exist in the database.", ex);
             }
         }
 
@@ -491,7 +492,7 @@ namespace HonglornBL
                 throw new ArgumentException($"{year} is not a valid year.");
             }
 
-            worker.ReportProgress(0, new ProgressInformer {Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..."});
+            worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
 
             //IEnumerable<Student> students = new StudentFile(filePath);
 
@@ -499,7 +500,7 @@ namespace HonglornBL
 
             int currentlyImported = 0;
 
-            worker.ReportProgress(0, new ProgressInformer {Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..."});
+            worker.ReportProgress(0, new ProgressInformer { Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..." });
 
             foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet)
             {
