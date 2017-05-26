@@ -111,11 +111,6 @@ namespace HonglornBL
             return sheet.Range[range].Text;
         }
 
-        static string GetTextFromCell(this _Worksheet sheet, int colIdx, int rowIdx)
-        {
-            return sheet.Range[$"{GetColumnName(colIdx)}{rowIdx}"].Text;
-        }
-
         static char GetColumnName(int colIdx)
         {
             if (colIdx > 25)
@@ -128,7 +123,7 @@ namespace HonglornBL
 
         static ICollection<string> GetRow(this _Worksheet sheet, int rowIdx, int length)
         {
-            IList<string> row = new List<string>();
+            ICollection<string> row = new List<string>();
 
             for (int colIdx = 0; colIdx < length; colIdx++)
             {
@@ -136,6 +131,11 @@ namespace HonglornBL
             }
 
             return row;
+        }
+
+        static string GetTextFromCell (this _Worksheet sheet, int colIdx, int rowIdx)
+        {
+            return sheet.Range[$"{GetColumnName(colIdx)}{rowIdx}"].Text;
         }
 
         static void ValidateHeaderRow(_Worksheet sheet)
