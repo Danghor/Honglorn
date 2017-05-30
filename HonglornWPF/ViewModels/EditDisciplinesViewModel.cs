@@ -10,10 +10,10 @@ namespace HonglornWPF.ViewModels
 {
     class EditDisciplinesViewModel : ViewModel
     {
-        public static DisciplineType[] DisciplineTypes { get; } = (DisciplineType[]) Enum.GetValues(typeof(DisciplineType));
+        public ObservableCollection<DisciplineType> DisciplineTypes { get; set; } = new ObservableCollection<DisciplineType>();
         public ObservableCollection<CompetitionDiscipline> Disciplines { get; set; } = new ObservableCollection<CompetitionDiscipline>();
 
-        public CompetitionDiscipline currentDiscipline;
+        CompetitionDiscipline currentDiscipline;
 
         public CompetitionDiscipline CurrentDiscipline
         {
@@ -29,9 +29,11 @@ namespace HonglornWPF.ViewModels
         public EditDisciplinesViewModel()
         {
             LoadDisciplines();
+            LoadDisciplineTypes();
         }
 
         void LoadDisciplines() => ClearAndFill(Disciplines, HonglornBL.Honglorn.AllCompetitionDisciplines());
+        void LoadDisciplineTypes() => ClearAndFill(DisciplineTypes, HonglornBL.Honglorn.DisciplineTypes());
 
         static void SaveDiscipline(CompetitionDiscipline discipline)
         {

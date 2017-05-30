@@ -15,7 +15,7 @@
     <DataGrid Margin="0 5 0 0" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-            <DataGridComboBoxColumn Header="Disziplin" ItemsSource="{local:EnumValues {x:Type bl:DisciplineType} }" />
+            <DataGridComboBoxColumn Header="Disziplin" ItemsSource="{Binding DisciplineTypes}" SelectedItemBinding="{Binding Type}"/>
             <DataGridTextColumn Header="Einheit" Binding="{Binding Unit}"/>
             <DataGridCheckBoxColumn Header="Weniger ist besser" Binding="{Binding LowIsBetter}"/>
         </DataGrid.Columns>

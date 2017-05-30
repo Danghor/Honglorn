@@ -474,6 +474,11 @@ namespace HonglornBL
             return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
         }
 
+        public static ICollection<DisciplineType> DisciplineTypes ()
+        {
+            return (DisciplineType []) Enum.GetValues(typeof(DisciplineType));
+        }
+
         #region "Import"
 
         //todo: currently only works with a "perfect" Excel sheet
