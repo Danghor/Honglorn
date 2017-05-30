@@ -57,7 +57,10 @@ namespace HonglornBL
             return result;
         }
 
-        static readonly Func<string, bool> IsValidName = name => !string.IsNullOrWhiteSpace(name) && !name.Any(c => char.IsDigit(c));
+        static readonly Func<string, bool> IsValidName = delegate(string name)
+        {
+            return !string.IsNullOrWhiteSpace(name) && !name.Any(c => char.IsDigit(c));
+        };
 
         static readonly Func<string, bool> IsValidCourseName = delegate(string courseName)
         {
@@ -75,7 +78,10 @@ namespace HonglornBL
             return isValid;
         };
 
-        static readonly Func<string, bool> IsValidSex = sex => sex.Equals("W", StringComparison.InvariantCultureIgnoreCase) || sex.Equals("M", StringComparison.InvariantCultureIgnoreCase);
+        static readonly Func<string, bool> IsValidSex = delegate(string sex)
+        {
+            return sex.Equals("W", StringComparison.InvariantCultureIgnoreCase) || sex.Equals("M", StringComparison.InvariantCultureIgnoreCase);
+        };
 
         static readonly Func<string, bool> IsValidYearOfBirth = delegate(string year)
         {

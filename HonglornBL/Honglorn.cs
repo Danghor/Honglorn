@@ -76,7 +76,7 @@ namespace HonglornBL
             return results;
         }
 
-        static ICollection<Result> CalculateTraditionalResults(ICollection<Student> students, short year, TraditionalDisciplineCollection disciplineCollection)
+        static ICollection<Result> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineCollection disciplineCollection)
         {
             ICollection<Result> results = new List<Result>();
 
@@ -103,7 +103,7 @@ namespace HonglornBL
                     totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleMiddleDistance, competition.MiddleDistance);
                 }
 
-                results.Add(new Result()
+                results.Add(new Result
                 {
                     Surname = student.Surname,
                     Forename = student.Forename,
