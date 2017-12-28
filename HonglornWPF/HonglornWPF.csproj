@@ -75,6 +75,7 @@
     <Compile Include="ViewModels\ClassResultsViewModel.cs" />
     <Compile Include="ViewModels\EditDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\EditPerformanceViewModel.cs" />
+    <Compile Include="ViewModels\ImportStudentsViewModel.cs" />
     <Compile Include="ViewModels\SetDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\EditDisciplinesView.xaml.cs">

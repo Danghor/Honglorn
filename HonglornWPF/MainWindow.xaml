@@ -16,6 +16,9 @@
 
     <Grid>
         <Controls:MetroAnimatedSingleRowTabControl>
+            <TabItem Header="Schüler importieren">
+                <Views:ImportStudentsView />
+            </TabItem>
             <TabItem Header="Disziplinen bearbeiten">
                 <Views:EditDisciplinesView />
             </TabItem>
