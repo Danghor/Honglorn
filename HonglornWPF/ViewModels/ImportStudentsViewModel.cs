@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -8,10 +9,8 @@ namespace HonglornWPF.ViewModels
 {
     class ImportStudentsViewModel : ViewModel
     {
-
         short year;
         string path;
-        ICommand openFileDialogCommand;
 
         public short Year
         {
@@ -33,15 +32,7 @@ namespace HonglornWPF.ViewModels
             }
         }
 
-        public ICommand OpenFileDialogCommand
-        {
-            get { return openFileDialogCommand; }
-            set
-            {
-                openFileDialogCommand = value;
-                OnPropertyChanged(nameof(OpenFileDialogCommand));
-            }
-        }
+        public ICommand OpenFileDialogCommand { get; }
 
         public ImportStudentsViewModel()
         {
