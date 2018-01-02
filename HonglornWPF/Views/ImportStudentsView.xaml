@@ -26,7 +26,7 @@
             <Label Content="Aktuelles Jahr" />
             <Custom:NumericUpDown Value="{Binding Year}" HasDecimals="False" Speedup="False" />
         </StackPanel>
-        <Button Content="Import starten"/>
+        <Button Command="{Binding ImportStudentsAsynCommand}" Content="Import starten"/>
         <ProgressBar />
         <Label />
     </StackPanel>
