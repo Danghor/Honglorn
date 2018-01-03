@@ -13,7 +13,6 @@ namespace HonglornWPF.ViewModels
         readonly BackgroundWorker importWorker;
         short year;
         string path;
-        private object filePathTextBox;
 
         public short Year
         {
@@ -40,12 +39,14 @@ namespace HonglornWPF.ViewModels
 
         public ImportStudentsViewModel()
         {
-            Year = (short)(DateTime.Now.Year);
+            Year = (short) DateTime.Now.Year;
             OpenFileDialogCommand = new RelayCommand(OpenFileDialog);
             ImportStudentsAsynCommand = new RelayCommand(ImportStudentsAsync);
 
-            importWorker = new BackgroundWorker();
-            importWorker.WorkerReportsProgress = true;
+            importWorker = new BackgroundWorker
+            {
+                WorkerReportsProgress = true
+            };
             importWorker.DoWork += ImportStudents;
             importWorker.ProgressChanged += ProgressChanged;
         }
