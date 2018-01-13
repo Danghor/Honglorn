@@ -102,6 +102,9 @@
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\SetDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\AssignDisciplinesView.xaml.cs">
+      <DependentUpon>AssignDisciplinesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditDisciplinesView.xaml.cs">
       <DependentUpon>EditDisciplinesView.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AssignDisciplinesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditDisciplinesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
