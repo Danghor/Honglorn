@@ -212,10 +212,10 @@ namespace HonglornBL
 
             foreach (DataRow row in table.Rows)
             {
-                Guid pKey = (Guid) row[pKeyColumn];
+                Guid pKey = (Guid)row[pKeyColumn];
                 string surname = row[surnameColumn].ToString();
                 string forename = row[forenameColumn].ToString();
-                Sex sex = (Sex) row[sexColumn];
+                Sex sex = (Sex)row[sexColumn];
                 float? sprint = row[sprintColumn] as float?;
                 float? jump = row[jumpColumn] as float?;
                 float? Throw = row[throwColumn] as float?;
@@ -408,27 +408,23 @@ namespace HonglornBL
 
             using (HonglornDb db = new HonglornDb())
             {
-                Discipline[] disciplines = (from c in db.DisciplineCollection
-                                            where c.ClassName == className
-                                                  && c.Year == year
-                                            select new[] {
-                                              c.MaleSprint,
-                                              c.MaleJump,
-                                              c.MaleThrow,
-                                              c.MaleMiddleDistance,
-                                              c.FemaleSprint,
-                                              c.FemaleJump,
-                                              c.FemaleThrow,
-                                              c.FemaleMiddleDistance
-                                            }).SingleOrDefault();
+                DisciplineCollection disciplineCollection = (from c in db.DisciplineCollection
+                                                             where c.ClassName == className
+                                                                   && c.Year == year
+                                                             select c).SingleOrDefault();
 
-                if (disciplines.All(d => d is CompetitionDiscipline))
+                if (disciplineCollection != null)
                 {
-                    result = Game.Competition;
-                }
-                else if (disciplines.All(d => d is TraditionalDiscipline))
-                {
-                    result = Game.Traditional;
+                    Discipline[] disciplines = new[] { disciplineCollection.MaleSprint, disciplineCollection.MaleJump, disciplineCollection.MaleThrow, disciplineCollection.MaleMiddleDistance, disciplineCollection.FemaleSprint, disciplineCollection.FemaleJump, disciplineCollection.FemaleThrow, disciplineCollection.FemaleMiddleDistance };
+
+                    if (disciplines.All(d => d is CompetitionDiscipline))
+                    {
+                        result = Game.Competition;
+                    }
+                    else if (disciplines.All(d => d is TraditionalDiscipline))
+                    {
+                        result = Game.Traditional;
+                    }
                 }
             }
 
@@ -464,19 +460,19 @@ namespace HonglornBL
         }
 
         /// <summary>
-        ///     Get a Char Array representing the class names for which there is at least one student present in the given year.
+        ///     Get a String Array representing the class names for which there is at least one student present in the given year.
         /// </summary>
         /// <param name="year">The year for which the valid class names should be retrieved.</param>
-        /// <returns>A Char Array representing the valid class names.</returns>
+        /// <returns>A String Array representing the valid class names.</returns>
         /// <remarks></remarks>
         public static ICollection<string> ValidClassNames(short year)
         {
             return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
         }
 
-        public static ICollection<DisciplineType> DisciplineTypes ()
+        public static ICollection<DisciplineType> DisciplineTypes()
         {
-            return (DisciplineType []) Enum.GetValues(typeof(DisciplineType));
+            return (DisciplineType[])Enum.GetValues(typeof(DisciplineType));
         }
 
         #region "Import"

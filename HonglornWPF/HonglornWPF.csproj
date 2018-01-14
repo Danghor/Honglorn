@@ -93,14 +93,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CompetitionValueConverter.cs" />
+    <Compile Include="EnumToBoolConverter.cs" />
     <Compile Include="EnumValuesExtension.cs" />
     <Compile Include="StudentCompetition.cs" />
+    <Compile Include="ViewModels\AssignDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\ClassResultsViewModel.cs" />
     <Compile Include="ViewModels\EditDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\EditPerformanceViewModel.cs" />
     <Compile Include="ViewModels\ImportStudentsViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
-    <Compile Include="ViewModels\SetDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\AssignDisciplinesView.xaml.cs">
       <DependentUpon>AssignDisciplinesView.xaml</DependentUpon>
@@ -110,9 +111,6 @@
     </Compile>
     <Compile Include="Views\ImportStudentsView.xaml.cs">
       <DependentUpon>ImportStudentsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SetDisciplinesView.xaml.cs">
-      <DependentUpon>SetDisciplinesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ClassResultsView.xaml.cs">
       <DependentUpon>ClassResultsView.xaml</DependentUpon>
@@ -143,10 +141,6 @@
     <Page Include="Views\ImportStudentsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SetDisciplinesView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ClassResultsView.xaml">
       <SubType>Designer</SubType>

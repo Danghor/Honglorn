@@ -4,8 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF.Views"
+             xmlns:wpf="clr-namespace:HonglornWPF"
              xmlns:ViewModels="clr-namespace:HonglornWPF.ViewModels"
              mc:Ignorable="d">
+
+    <UserControl.DataContext>
+        <ViewModels:AssignDisciplinesViewModel/>
+    </UserControl.DataContext>
+
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -23,17 +29,21 @@
         </Grid>
         <GroupBox x:Name="gameTypeGroupBox" Header="Wettkampf">
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="traditionalRadioButton" GroupName="gameType" Content="Traditionell" />
-                <RadioButton x:Name="competitionRadioButton" GroupName="gameType" Content="Wettbewerb" />
+                <RadioButton x:Name="traditionalRadioButton" GroupName="gameType" Content="Traditionell" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static ViewModels:RadioButtonGame.Traditional}}" />
+                <RadioButton x:Name="competitionRadioButton" GroupName="gameType" Content="Wettbewerb" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static ViewModels:RadioButtonGame.Competition}}"/>
             </StackPanel>
         </GroupBox>
-        <StackPanel Orientation="Horizontal">
-            <GroupBox x:Name="maleGroupBox" Header="Männlich">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="0" x:Name="maleGroupBox" Header="Männlich">
                 <StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -43,22 +53,22 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Sprint" Grid.Row="0" Grid.Column="0"/>
-                        <ComboBox x:Name="maleSprintComboBox" Grid.Row="0" Grid.Column="1" Width="300"/>
+                        <ComboBox x:Name="maleSprintComboBox" Grid.Row="0" Grid.Column="1"/>
                         <Label Content="Sprung" Grid.Row="1" Grid.Column="0"/>
-                        <ComboBox x:Name="maleJumpComboBox" Grid.Row="1" Grid.Column="1" Width="300"/>
+                        <ComboBox x:Name="maleJumpComboBox" Grid.Row="1" Grid.Column="1"/>
                         <Label Content="Wurf" Grid.Row="2" Grid.Column="0"/>
-                        <ComboBox x:Name="malethrowComboBox" Grid.Row="2" Grid.Column="1" Width="300"/>
+                        <ComboBox x:Name="malethrowComboBox" Grid.Row="2" Grid.Column="1"/>
                         <Label Content="Ausdauer" Grid.Row="3" Grid.Column="0"/>
-                        <ComboBox x:Name="maleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1" Width="300"/>
+                        <ComboBox x:Name="maleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1"/>
                     </Grid>
                 </StackPanel>
             </GroupBox>
-            <GroupBox x:Name="femaleGroupBox" Header="Weiblich">
+            <GroupBox Grid.Column="1" x:Name="femaleGroupBox" Header="Weiblich">
                 <StackPanel>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -68,17 +78,17 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Sprint" Grid.Row="0" Grid.Column="0"/>
-                        <ComboBox x:Name="femaleSprintComboBox" Grid.Row="0" Grid.Column="1" Width="300"/>
+                        <ComboBox x:Name="femaleSprintComboBox" Grid.Row="0" Grid.Column="1"/>
                         <Label Content="Sprung" Grid.Row="1" Grid.Column="0"/>
-                        <ComboBox x:Name="femaleJumpComboBox" Grid.Row="1" Grid.Column="1" Width="300"/>
+                        <ComboBox x:Name="femaleJumpComboBox" Grid.Row="1" Grid.Column="1"/>
                         <Label Content="Wurf" Grid.Row="2" Grid.Column="0"/>
-                        <ComboBox x:Name="femalethrowComboBox" Grid.Row="2" Grid.Column="1" Width="300"/>
+                        <ComboBox x:Name="femalethrowComboBox" Grid.Row="2" Grid.Column="1"/>
                         <Label Content="Ausdauer" Grid.Row="3" Grid.Column="0"/>
-                        <ComboBox x:Name="femaleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1" Width="300"/>
+                        <ComboBox x:Name="femaleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1"/>
                     </Grid>
                 </StackPanel>
             </GroupBox>
-        </StackPanel>
+        </Grid>
 
     </StackPanel>
 </UserControl>
