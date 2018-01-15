@@ -9,7 +9,7 @@ namespace HonglornWPF.ViewModels
 {
     class AssignDisciplinesViewModel : ViewModel
     {
-        IDictionary<Game?, RadioButtonGame> GameTypeMap = new Dictionary<Game?, RadioButtonGame>
+        readonly IDictionary<Game?, RadioButtonGame> gameTypeMap = new Dictionary<Game?, RadioButtonGame>
         {
             { HonglornBL.Prerequisites.Game.Traditional, RadioButtonGame.Traditional },
             { HonglornBL.Prerequisites.Game.Competition, RadioButtonGame.Competition }
@@ -33,6 +33,10 @@ namespace HonglornWPF.ViewModels
         Discipline currentMaleJumpDiscipline;
         Discipline currentMaleThrowDiscipline;
         Discipline currentMaleMiddleDistanceDiscipline;
+        Discipline currentFemaleSprintDiscipline;
+        Discipline currentFemaleJumpDiscipline;
+        Discipline currentFemaleThrowDiscipline;
+        Discipline currentFemaleMiddleDistanceDiscipline;
 
         public short CurrentYear
         {
@@ -67,7 +71,7 @@ namespace HonglornWPF.ViewModels
                 }
                 else
                 {
-                    Game = GameTypeMap[gameFromDb];
+                    Game = gameTypeMap[gameFromDb];
                 }
             }
         }
@@ -104,70 +108,70 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentMaleJumpDiscipline
         {
-            get { return currentMaleSprintDiscipline; }
+            get { return currentMaleJumpDiscipline; }
             set
             {
-                currentMaleSprintDiscipline = value;
+                currentMaleJumpDiscipline = value;
                 OnPropertyChanged(nameof(CurrentMaleJumpDiscipline));
             }
         }
 
         public Discipline CurrentMaleThrowDiscipline
         {
-            get { return currentMaleSprintDiscipline; }
+            get { return currentMaleThrowDiscipline; }
             set
             {
-                currentMaleSprintDiscipline = value;
+                currentMaleThrowDiscipline = value;
                 OnPropertyChanged(nameof(CurrentMaleThrowDiscipline));
             }
         }
 
         public Discipline CurrentMaleMiddleDistanceDiscipline
         {
-            get { return currentMaleSprintDiscipline; }
+            get { return currentMaleMiddleDistanceDiscipline; }
             set
             {
-                currentMaleSprintDiscipline = value;
+                currentMaleMiddleDistanceDiscipline = value;
                 OnPropertyChanged(nameof(CurrentMaleMiddleDistanceDiscipline));
             }
         }
 
         public Discipline CurrentFemaleSprintDiscipline
         {
-            get { return currentMaleSprintDiscipline; }
+            get { return currentFemaleSprintDiscipline; }
             set
             {
-                currentMaleSprintDiscipline = value;
+                currentFemaleSprintDiscipline = value;
                 OnPropertyChanged(nameof(CurrentFemaleSprintDiscipline));
             }
         }
 
         public Discipline CurrentFemaleJumpDiscipline
         {
-            get { return currentMaleSprintDiscipline; }
+            get { return currentFemaleJumpDiscipline; }
             set
             {
-                currentMaleSprintDiscipline = value;
+                currentFemaleJumpDiscipline = value;
                 OnPropertyChanged(nameof(CurrentFemaleJumpDiscipline));
             }
         }
 
         public Discipline CurrentFemaleThrowDiscipline
         {
-            get { return currentMaleSprintDiscipline; }
+            get { return currentFemaleThrowDiscipline; }
             set
             {
-                currentMaleSprintDiscipline = value;
+                currentFemaleThrowDiscipline = value;
                 OnPropertyChanged(nameof(CurrentFemaleThrowDiscipline));
             }
         }
 
         public Discipline CurrentFemaleMiddleDistanceDiscipline
         {
-            get { return currentMaleSprintDiscipline; }
+            get { return currentFemaleMiddleDistanceDiscipline; }
             set
             {
-                currentMaleSprintDiscipline = value;
+                currentFemaleMiddleDistanceDiscipline = value;
                 OnPropertyChanged(nameof(CurrentFemaleMiddleDistanceDiscipline));
             }
         }
