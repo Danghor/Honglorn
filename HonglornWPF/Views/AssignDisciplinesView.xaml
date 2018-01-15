@@ -53,13 +53,13 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Sprint" Grid.Row="0" Grid.Column="0"/>
-                        <ComboBox x:Name="maleSprintComboBox" Grid.Row="0" Grid.Column="1"/>
+                        <ComboBox x:Name="maleSprintComboBox" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding MaleSprintDisciplines}" SelectedItem="{Binding CurrentMaleSprintDiscipline}"/>
                         <Label Content="Sprung" Grid.Row="1" Grid.Column="0"/>
-                        <ComboBox x:Name="maleJumpComboBox" Grid.Row="1" Grid.Column="1"/>
+                        <ComboBox x:Name="maleJumpComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding MaleJumpDisciplines}" SelectedItem="{Binding CurrentMaleJumpDiscipline}"/>
                         <Label Content="Wurf" Grid.Row="2" Grid.Column="0"/>
-                        <ComboBox x:Name="malethrowComboBox" Grid.Row="2" Grid.Column="1"/>
+                        <ComboBox x:Name="maleThrowComboBox" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding MaleThrowDisciplines}" SelectedItem="{Binding CurrentMaleThrowDiscipline}"/>
                         <Label Content="Ausdauer" Grid.Row="3" Grid.Column="0"/>
-                        <ComboBox x:Name="maleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1"/>
+                        <ComboBox x:Name="maleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding MaleMiddleDistanceDisciplines}" SelectedItem="{Binding CurrentMaleMiddleDistanceDiscipline}"/>
                     </Grid>
                 </StackPanel>
             </GroupBox>
@@ -78,13 +78,13 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Sprint" Grid.Row="0" Grid.Column="0"/>
-                        <ComboBox x:Name="femaleSprintComboBox" Grid.Row="0" Grid.Column="1"/>
+                        <ComboBox x:Name="femaleSprintComboBox" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding FemaleSprintDisciplines}" SelectedItem="{Binding CurrentFemaleSprintDiscipline}"/>
                         <Label Content="Sprung" Grid.Row="1" Grid.Column="0"/>
-                        <ComboBox x:Name="femaleJumpComboBox" Grid.Row="1" Grid.Column="1"/>
+                        <ComboBox x:Name="femaleJumpComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding FemaleJumpDisciplines}" SelectedItem="{Binding CurrentFemaleJumpDiscipline}"/>
                         <Label Content="Wurf" Grid.Row="2" Grid.Column="0"/>
-                        <ComboBox x:Name="femalethrowComboBox" Grid.Row="2" Grid.Column="1"/>
+                        <ComboBox x:Name="femaleThrowComboBox" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding FemaleThrowDisciplines}" SelectedItem="{Binding CurrentFemaleThrowDiscipline}"/>
                         <Label Content="Ausdauer" Grid.Row="3" Grid.Column="0"/>
-                        <ComboBox x:Name="femaleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1"/>
+                        <ComboBox x:Name="femaleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding FemaleMiddleDistanceDisciplines}" SelectedItem="{Binding CurrentFemaleMiddleDistanceDiscipline}"/>
                     </Grid>
                 </StackPanel>
             </GroupBox>
