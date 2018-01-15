@@ -70,13 +70,13 @@ namespace HonglornWPF.ViewModels
         }
 
         public RelayCommand OpenFileDialogCommand { get; }
-        public RelayCommand ImportStudentsAsynCommand { get; }
+        public RelayCommand ImportStudentsAsyncCommand { get; }
 
         public ImportStudentsViewModel()
         {
             Year = (short) DateTime.Now.Year;
             OpenFileDialogCommand = new RelayCommand(OpenFileDialog);
-            ImportStudentsAsynCommand = new RelayCommand(ImportStudentsAsync);
+            ImportStudentsAsyncCommand = new RelayCommand(ImportStudentsAsync);
 
             importWorker = new BackgroundWorker
             {
@@ -99,7 +99,7 @@ namespace HonglornWPF.ViewModels
 
         void ImportStudentsAsync()
         {
-            ImportStudentsAsynCommand.Enabled = false;
+            ImportStudentsAsyncCommand.Enabled = false;
 
             try
             {
@@ -107,7 +107,7 @@ namespace HonglornWPF.ViewModels
             }
             catch (Exception ex)
             {
-                ImportStudentsAsynCommand.Enabled = true;
+                ImportStudentsAsyncCommand.Enabled = true;
             }
         }
 
@@ -130,7 +130,7 @@ namespace HonglornWPF.ViewModels
             Status = 0;
             ProgressBarStyle = ProgressBarStyle.Continuous;
             StatusMessage = string.Empty;
-            ImportStudentsAsynCommand.Enabled = true;
+            ImportStudentsAsyncCommand.Enabled = true;
         }
     }
 }
