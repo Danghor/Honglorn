@@ -431,6 +431,16 @@ namespace HonglornBL
             return result;
         }
 
+        public static void CreateOrUpdateDisciplineCollection(string className, short year, Guid maleSprintPKey, Guid maleJumpPKey, Guid maleThrowPKey, Guid maleMiddleDistancePKey, Guid femaleSprintPKey, Guid femaleJumpPKey, Guid femaleThrowPKey, Guid femaleMiddleDistancePKey)
+        {
+            //todo: check for null pkeys
+
+            using (HonglornDb db = new HonglornDb())
+            {
+                throw new NotImplementedException(nameof(CreateOrUpdateDisciplineCollection));
+            }
+        }
+
         /// <summary>
         ///     Get the years for which student data is present in the database.
         /// </summary>

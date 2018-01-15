@@ -89,6 +89,6 @@
                 </StackPanel>
             </GroupBox>
         </Grid>
-
+        <Button Command="{Binding SaveDisciplineCollectionCommand}" Content="Speichern"/>
     </StackPanel>
 </UserControl>

@@ -38,6 +38,8 @@ namespace HonglornWPF.ViewModels
         Discipline currentFemaleThrowDiscipline;
         Discipline currentFemaleMiddleDistanceDiscipline;
 
+        public RelayCommand SaveDisciplineCollectionCommand { get; }
+
         public short CurrentYear
         {
             get { return currentYear; }
@@ -208,11 +210,18 @@ namespace HonglornWPF.ViewModels
 
         public AssignDisciplinesViewModel()
         {
+            SaveDisciplineCollectionCommand = new RelayCommand(SavedisciplineCollection);
+
             LoadYears();
             if (Years.Any())
             {
                 CurrentYear = Years.First();
             }
+        }
+
+        void SavedisciplineCollection()
+        {
+            CreateOrUpdateDisciplineCollection(CurrentClass, CurrentYear, CurrentMaleSprintDiscipline.PKey, CurrentMaleJumpDiscipline.PKey, CurrentMaleThrowDiscipline.PKey, CurrentMaleMiddleDistanceDiscipline.PKey, CurrentFemaleSprintDiscipline.PKey, CurrentFemaleJumpDiscipline.PKey, CurrentFemaleThrowDiscipline.PKey, CurrentFemaleMiddleDistanceDiscipline.PKey);
         }
     }
 
