@@ -1,7 +1,9 @@
-﻿using HonglornBL.Interfaces;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using HonglornBL;
+using HonglornBL.Interfaces;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace HonglornWPF.ViewModels
 {
@@ -85,7 +87,7 @@ namespace HonglornWPF.ViewModels
 
         void OpenFileDialog()
         {
-            Microsoft.Win32.OpenFileDialog dialog = new Microsoft.Win32.OpenFileDialog();
+            OpenFileDialog dialog = new OpenFileDialog();
 
             if (dialog.ShowDialog() == true)
             {
@@ -109,7 +111,7 @@ namespace HonglornWPF.ViewModels
 
         void ImportStudents(object sender, DoWorkEventArgs e)
         {
-            HonglornBL.Honglorn.ImportStudentCourseExcelSheet(Path, Year, importWorker);
+            Honglorn.ImportStudentCourseExcelSheet(Path, Year, importWorker);
         }
 
         void OnProgressChanged(object sender, ProgressChangedEventArgs e)

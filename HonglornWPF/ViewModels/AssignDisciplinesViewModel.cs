@@ -1,7 +1,8 @@
-﻿using HonglornBL.Models.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using HonglornBL;
+using HonglornBL.Models.Entities;
 using static HonglornBL.Prerequisites;
 using static HonglornBL.Honglorn;
 
@@ -11,8 +12,8 @@ namespace HonglornWPF.ViewModels
     {
         readonly IDictionary<Game?, RadioButtonGame> gameTypeMap = new Dictionary<Game?, RadioButtonGame>
         {
-            { HonglornBL.Prerequisites.Game.Traditional, RadioButtonGame.Traditional },
-            { HonglornBL.Prerequisites.Game.Competition, RadioButtonGame.Competition }
+            { Prerequisites.Game.Traditional, RadioButtonGame.Traditional },
+            { Prerequisites.Game.Competition, RadioButtonGame.Competition }
         };
 
         public ObservableCollection<string> Classes { get; set; } = new ObservableCollection<string>();

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using HonglornBL;
 using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
@@ -67,15 +68,15 @@ namespace HonglornWPF.ViewModels
             }
         }
 
-        void LoadCourseNames() => ClearAndFill(Courses, HonglornBL.Honglorn.ValidCourseNames(CurrentYear));
+        void LoadCourseNames() => ClearAndFill(Courses, Honglorn.ValidCourseNames(CurrentYear));
 
-        void LoadYears() => ClearAndFill(Years, HonglornBL.Honglorn.YearsWithStudentData());
+        void LoadYears() => ClearAndFill(Years, Honglorn.YearsWithStudentData());
 
         void LoadStudentsCompetitionsTuples()
         {
             StudentCompetitions.Clear();
 
-            ICollection<Student> students = HonglornBL.Honglorn.GetStudents(CurrentCourse, CurrentYear);
+            ICollection<Student> students = Honglorn.GetStudents(CurrentCourse, CurrentYear);
 
             foreach (Student student in students)
             {
@@ -100,7 +101,7 @@ namespace HonglornWPF.ViewModels
         {
             if (sc != null)
             {
-                HonglornBL.Honglorn.UpdateSingleStudentCompetition(sc.StudentPKey, CurrentYear, sc.Sprint, sc.Jump, sc.Throw, sc.MiddleDistance);
+                Honglorn.UpdateSingleStudentCompetition(sc.StudentPKey, CurrentYear, sc.Sprint, sc.Jump, sc.Throw, sc.MiddleDistance);
             }
         }
     }

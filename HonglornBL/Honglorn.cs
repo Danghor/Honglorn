@@ -45,11 +45,11 @@ namespace HonglornBL
                     throw new DataException($"No disciplines have been configured for class {className} in year {year}. Therefore, no results can be calculated.");
                 }
 
-                Discipline[] disciplineArray = new[] { disciplines.MaleSprint, disciplines.MaleJump, disciplines.MaleThrow, disciplines.MaleMiddleDistance, disciplines.FemaleSprint, disciplines.FemaleJump, disciplines.FemaleThrow, disciplines.FemaleMiddleDistance };
+                Discipline[] disciplineArray = { disciplines.MaleSprint, disciplines.MaleJump, disciplines.MaleThrow, disciplines.MaleMiddleDistance, disciplines.FemaleSprint, disciplines.FemaleJump, disciplines.FemaleThrow, disciplines.FemaleMiddleDistance };
 
                 if (disciplineArray.All(d => d is TraditionalDiscipline))
                 {
-                    TraditionalDisciplineCollection disciplineCollection = new TraditionalDisciplineCollection()
+                    TraditionalDisciplineCollection disciplineCollection = new TraditionalDisciplineCollection
                     {
                         MaleSprint = disciplines.MaleSprint as TraditionalDiscipline,
                         MaleJump = disciplines.MaleJump as TraditionalDiscipline,
@@ -415,7 +415,7 @@ namespace HonglornBL
 
                 if (disciplineCollection != null)
                 {
-                    Discipline[] disciplines = new[] { disciplineCollection.MaleSprint, disciplineCollection.MaleJump, disciplineCollection.MaleThrow, disciplineCollection.MaleMiddleDistance, disciplineCollection.FemaleSprint, disciplineCollection.FemaleJump, disciplineCollection.FemaleThrow, disciplineCollection.FemaleMiddleDistance };
+                    Discipline[] disciplines = { disciplineCollection.MaleSprint, disciplineCollection.MaleJump, disciplineCollection.MaleThrow, disciplineCollection.MaleMiddleDistance, disciplineCollection.FemaleSprint, disciplineCollection.FemaleJump, disciplineCollection.FemaleThrow, disciplineCollection.FemaleMiddleDistance };
 
                     if (disciplines.All(d => d is CompetitionDiscipline))
                     {

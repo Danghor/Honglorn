@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using HonglornBL;
 using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
@@ -26,13 +27,13 @@ namespace HonglornWPF.ViewModels
             LoadDisciplines();
         }
 
-        void LoadDisciplines() => ClearAndFill(Disciplines, HonglornBL.Honglorn.AllCompetitionDisciplines());
+        void LoadDisciplines() => ClearAndFill(Disciplines, Honglorn.AllCompetitionDisciplines());
 
         static void SaveDiscipline(CompetitionDiscipline discipline)
         {
             if (discipline != null)
             {
-                HonglornBL.Honglorn.CreateOrUpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
+                Honglorn.CreateOrUpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
             }
         }
     }
