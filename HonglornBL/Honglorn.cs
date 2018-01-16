@@ -433,11 +433,64 @@ namespace HonglornBL
 
         public static void CreateOrUpdateDisciplineCollection(string className, short year, Guid maleSprintPKey, Guid maleJumpPKey, Guid maleThrowPKey, Guid maleMiddleDistancePKey, Guid femaleSprintPKey, Guid femaleJumpPKey, Guid femaleThrowPKey, Guid femaleMiddleDistancePKey)
         {
-            //todo: check for null pkeys
-
             using (HonglornDb db = new HonglornDb())
             {
-                throw new NotImplementedException(nameof(CreateOrUpdateDisciplineCollection));
+                Discipline maleSprintDiscipline = db.Set<Discipline>().Find(maleSprintPKey);
+                Discipline maleJumpDiscipline = db.Set<Discipline>().Find(maleJumpPKey);
+                Discipline maleThrowDiscipline = db.Set<Discipline>().Find(maleThrowPKey);
+                Discipline maleMiddleDistanceDiscipline = db.Set<Discipline>().Find(maleMiddleDistancePKey);
+
+                Discipline femaleSprintDiscipline = db.Set<Discipline>().Find(femaleSprintPKey);
+                Discipline femaleJumpDiscipline = db.Set<Discipline>().Find(femaleJumpPKey);
+                Discipline femaleThrowDiscipline = db.Set<Discipline>().Find(femaleThrowPKey);
+                Discipline femaleMiddleDistanceDiscipline = db.Set<Discipline>().Find(femaleMiddleDistancePKey);
+
+                Discipline[] disciplines = new[] { maleSprintDiscipline, maleJumpDiscipline, maleThrowDiscipline, maleMiddleDistanceDiscipline, femaleSprintDiscipline, femaleJumpDiscipline, femaleThrowDiscipline, femaleMiddleDistanceDiscipline };
+
+                if (disciplines.All(d => d is CompetitionDiscipline) || disciplines.All(d => d is TraditionalDiscipline))
+                {
+                    DisciplineCollection existingCollection = (from col in db.DisciplineCollection
+                                                               where col.ClassName == className && col.Year == year
+                                                               select col).SingleOrDefault();
+
+                    if (existingCollection == null)
+                    {
+                        // Create
+                        db.DisciplineCollection.Add(new DisciplineCollection()
+                        {
+                            ClassName = className,
+                            Year = year,
+                            MaleSprintPKey = maleSprintPKey,
+                            MaleJumpPKey = maleJumpPKey,
+                            MaleThrowPKey = maleThrowPKey,
+                            MaleMiddleDistancePKey = maleMiddleDistancePKey,
+                            FemaleSprintPKey = femaleSprintPKey,
+                            FemaleJumpPKey = femaleJumpPKey,
+                            FemaleThrowPKey = femaleThrowPKey,
+                            FemaleMiddleDistancePKey = femaleMiddleDistancePKey
+                        });
+                    }
+                    else
+                    {
+                        // Update
+                        existingCollection.MaleSprintPKey = maleSprintPKey;
+                        existingCollection.MaleJumpPKey = maleJumpPKey;
+                        existingCollection.MaleThrowPKey = maleThrowPKey;
+                        existingCollection.MaleMiddleDistancePKey = maleMiddleDistancePKey;
+                        existingCollection.FemaleSprintPKey = femaleSprintPKey;
+                        existingCollection.FemaleJumpPKey = femaleJumpPKey;
+                        existingCollection.FemaleThrowPKey = femaleThrowPKey;
+                        existingCollection.FemaleMiddleDistancePKey = femaleMiddleDistancePKey;
+                    }
+
+                    db.SaveChanges();
+                }
+                else
+                {
+                    throw new ArgumentException("Could not save Discipline Collection. All discipline pkeys must be either entirely from competition disciplines, or from traditional disciplines, but you cannot mix them.");
+                }
+
+
             }
         }
 
