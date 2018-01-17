@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace HonglornBL.Models.Entities
 {
@@ -50,6 +51,13 @@ namespace HonglornBL.Models.Entities
             };
 
             StudentCourseRel.Add(rel);
+        }
+
+        public string CourseNameByYear(short year)
+        {
+            return (from rel in StudentCourseRel
+                    where rel.Year == year
+                    select rel.CourseName).Single();
         }
     }
 }

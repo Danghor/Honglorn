@@ -89,6 +89,28 @@ namespace HonglornBL
             return results;
         }
 
+        static IEnumerable<Result> CalculateCompetitionResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
+        {
+            using (HonglornDb db = new HonglornDb())
+            {
+                IEnumerable<string> courseNames = (from student in students
+                                                   select student.CourseNameByYear(year)).Distinct();
+
+                IEnumerable<string> classNames = courseNames.Select(c => GetClassName(c)).Distinct();
+
+                foreach(string className in classNames)
+                {
+                    IEnumerable<Student> maleStudents = from student in db.Student
+                                                        where GetClassName(student.CourseNameByYear(year)) == className && student.Sex == Sex.Male
+                                                        select student;
+
+
+                }
+            }
+
+            throw new NotImplementedException();
+        }
+
         static IEnumerable<Result> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
         {
             ICollection<Result> results = new List<Result>();
