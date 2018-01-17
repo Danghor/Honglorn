@@ -26,11 +26,11 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<Result> GetResults(string course, short year)
+        public static IEnumerable<Result> GetResults(string course, short year)
         {
-            ICollection<Result> results;
+            IEnumerable<Result> results;
 
-            ICollection<Student> students = GetStudents(course, year);
+            IEnumerable<Student> students = GetStudents(course, year);
             string className = GetClassName(course);
 
             using (HonglornDb db = new HonglornDb())
@@ -49,7 +49,7 @@ namespace HonglornBL
 
                 if (disciplineArray.All(d => d is TraditionalDiscipline))
                 {
-                    TraditionalDisciplineCollection disciplineCollection = new TraditionalDisciplineCollection
+                    TraditionalDisciplineContainer disciplineContainer = new TraditionalDisciplineContainer
                     {
                         MaleSprint = disciplines.MaleSprint as TraditionalDiscipline,
                         MaleJump = disciplines.MaleJump as TraditionalDiscipline,
@@ -61,10 +61,23 @@ namespace HonglornBL
                         FemaleMiddleDistance = disciplines.FemaleMiddleDistance as TraditionalDiscipline
                     };
 
-                    results = CalculateTraditionalResults(students, year, disciplineCollection);
+                    results = CalculateTraditionalResults(students, year, disciplineContainer);
                 }
                 else if (disciplineArray.All(d => d is CompetitionDiscipline))
                 {
+                    CompetitionDisciplineContainer disciplineContainer = new CompetitionDisciplineContainer
+                    {
+                        MaleSprint = disciplines.MaleSprint as CompetitionDiscipline,
+                        MaleJump = disciplines.MaleJump as CompetitionDiscipline,
+                        MaleThrow = disciplines.MaleThrow as CompetitionDiscipline,
+                        MaleMiddleDistance = disciplines.MaleMiddleDistance as CompetitionDiscipline,
+                        FemaleSprint = disciplines.FemaleSprint as CompetitionDiscipline,
+                        FemaleJump = disciplines.FemaleJump as CompetitionDiscipline,
+                        FemaleThrow = disciplines.FemaleThrow as CompetitionDiscipline,
+                        FemaleMiddleDistance = disciplines.FemaleMiddleDistance as CompetitionDiscipline
+                    };
+
+                    //results = CalculateCompetitionResults(students, year, disciplineContainer);
                     throw new NotImplementedException();
                 }
                 else
@@ -76,7 +89,7 @@ namespace HonglornBL
             return results;
         }
 
-        static ICollection<Result> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineCollection disciplineCollection)
+        static IEnumerable<Result> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
         {
             ICollection<Result> results = new List<Result>();
 

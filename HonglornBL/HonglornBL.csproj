@@ -81,6 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIClasses\ProgressInformer.cs" />
+    <Compile Include="CompetitionDisciplineContainer.cs" />
+    <Compile Include="DisciplineContainer.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="ImportedStudentRecord.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -113,7 +115,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TraditionalDisciplineCollection.cs" />
+    <Compile Include="TraditionalDisciplineContainer.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="VBIDE">
