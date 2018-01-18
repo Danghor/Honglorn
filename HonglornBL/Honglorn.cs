@@ -98,12 +98,21 @@ namespace HonglornBL
 
                 IEnumerable<string> classNames = courseNames.Select(c => GetClassName(c)).Distinct();
 
-                foreach(string className in classNames)
+                foreach (string className in classNames)
                 {
                     IEnumerable<Student> maleStudents = from student in db.Student
                                                         where GetClassName(student.CourseNameByYear(year)) == className && student.Sex == Sex.Male
                                                         select student;
 
+                    IEnumerable<Student> femaleStudents = from student in db.Student
+                                                          where GetClassName(student.CourseNameByYear(year)) == className && student.Sex == Sex.Female
+                                                          select student;
+
+                    IEnumerable<Tuple<Student, int>> studentScores = (from m in maleStudents
+                                                                      select new Tuple<Student, int>(m, 0))
+                                                                      .Concat(
+                                                                      from f in femaleStudents
+                                                                      select new Tuple<Student, int>(f, 0));
 
                 }
             }

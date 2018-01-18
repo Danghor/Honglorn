@@ -82,6 +82,9 @@
   <ItemGroup>
     <Compile Include="APIClasses\ProgressInformer.cs" />
     <Compile Include="CompetitionDisciplineContainer.cs" />
+    <Compile Include="CompetitionCalculator.cs" />
+    <Compile Include="CompetitionResult.cs" />
+    <Compile Include="RawMeasurement.cs" />
     <Compile Include="DisciplineContainer.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="ImportedStudentRecord.cs" />
