@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using HonglornBL.Models.Entities;
 using static HonglornBL.Prerequisites;
 
@@ -14,41 +15,6 @@ namespace HonglornBL
         /// <returns>The score calculated by designated formulas.</returns>
         internal static ushort CalculateScore(TraditionalDiscipline discipline, float? value)
         {
-            ValidateDiscipline(discipline);
-
-            ushort score = 0;
-
-            if (value != null)
-            {
-                switch (discipline.Type)
-                {
-                    case DisciplineType.Sprint:
-                        if (discipline.Measurement == Measurement.Manual)
-                        {
-                            score = CalculateRunningScoreManual((float) value, (ushort) discipline.Distance, (float) discipline.Overhead, discipline.ConstantA, discipline.ConstantC);
-                        }
-                        else if (discipline.Measurement == Measurement.Electronic)
-                        {
-                            score = CalculateRunningScoreElectronic((float) value, (ushort) discipline.Distance, discipline.ConstantA, discipline.ConstantC);
-                        }
-
-                        break;
-                    case DisciplineType.Jump:
-                    case DisciplineType.Throw:
-                        score = CalculateJumpThrowScore((float) value, discipline.ConstantA, discipline.ConstantC);
-                        break;
-                    case DisciplineType.MiddleDistance:
-                        score = CalculateRunningScoreElectronic((float) value, (ushort) discipline.Distance, discipline.ConstantA, discipline.ConstantC);
-                        break;
-                }
-            }
-
-            return score;
-        }
-
-
-        static void ValidateDiscipline(TraditionalDiscipline discipline)
-        {
             //discipline null
             if (discipline == null)
             {
@@ -61,44 +27,58 @@ namespace HonglornBL
                 throw new ArgumentOutOfRangeException(nameof(discipline.ConstantC), "Invalid value for constant would result in a division by 0.");
             }
 
-            if (discipline.Type == DisciplineType.Sprint)
-            {
-                //Sprint
-                if (discipline.Measurement == Measurement.Manual && discipline.Overhead == null)
-                {
-                    throw new ArgumentNullException(nameof(discipline.Overhead), $"{nameof(discipline.Overhead)} must not be null for {nameof(Measurement)} {nameof(Measurement.Manual)}");
-                }
+            ushort score;
 
-                VerifyDistanceIsNotNull(discipline);
-            }
-            else if (discipline.Type == DisciplineType.MiddleDistance)
+            float cleanedValue = value ?? 0;
+
+            switch (discipline.Type)
             {
-                //MiddleDistance
-                VerifyDistanceIsNotNull(discipline);
+                case DisciplineType.Sprint:
+                    float overhead = discipline.Measurement == Measurement.Manual ? discipline.Overhead ?? 0 : 0;
+                    score = CalculateRunningScore(cleanedValue, CleanedDistance(discipline.Distance), discipline.ConstantA, discipline.ConstantC, overhead);
+                    break;
+                case DisciplineType.Jump:
+                case DisciplineType.Throw:
+                    score = CalculateJumpThrowScore(cleanedValue, discipline.ConstantA, discipline.ConstantC);
+                    break;
+                case DisciplineType.MiddleDistance:
+                    score = CalculateRunningScore(cleanedValue, CleanedDistance(discipline.Distance), discipline.ConstantA, discipline.ConstantC);
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException(nameof(discipline.Type), (int) discipline.Type, typeof(DisciplineType));
             }
+
+            return score;
         }
 
-        static void VerifyDistanceIsNotNull(TraditionalDiscipline discipline)
+        static ushort CleanedDistance(short? rawDistance)
         {
-            if (discipline.Distance == null)
+            if (rawDistance == null)
             {
-                throw new ArgumentNullException(nameof(discipline.Distance), $"{nameof(discipline.Distance)} must not be null for a {discipline.Type} discipline.");
+                throw new ArgumentNullException(nameof(rawDistance));
             }
+
+            if (rawDistance <= 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(rawDistance));
+            }
+
+            return (ushort) rawDistance;
         }
 
-        static ushort CalculateRunningScoreManual(float seconds, ushort distance, float overhead, float constantA, float constantC)
+        static ushort CalculateRunningScore(float seconds, ushort distance, float constantA, float constantC, float overhead = 0)
         {
-            return (ushort) Math.Max(0, Math.Floor((distance / (seconds + overhead) - constantA) / constantC));
-        }
-
-        static ushort CalculateRunningScoreElectronic(float seconds, ushort distance, float constantA, float constantC)
-        {
-            return (ushort) Math.Max(0,Math.Floor((distance / seconds - constantA) / constantC));
+            return CleanScore((distance / (seconds + overhead) - constantA) / constantC);
         }
 
         static ushort CalculateJumpThrowScore(float meters, float constantA, float constantC)
         {
-            return (ushort) Math.Max(0, Math.Floor((Math.Sqrt(meters) - constantA) / constantC));
+            return CleanScore((Math.Sqrt(meters) - constantA) / constantC);
+        }
+
+        static ushort CleanScore(double rawScore)
+        {
+            return (ushort) Math.Max(0, Math.Floor(rawScore));
         }
     }
 }
