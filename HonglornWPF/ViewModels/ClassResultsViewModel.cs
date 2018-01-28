@@ -59,14 +59,14 @@ namespace HonglornWPF.ViewModels
 
         void LoadResults()
         {
-            try
-            {
+            /*try
+            {*/
                 ClearAndFill(Results, Honglorn.GetResults(CurrentCourse, CurrentYear));
-            }
+            /*}
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-            }
+            }*/
         }
     }
 }

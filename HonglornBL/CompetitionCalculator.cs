@@ -13,7 +13,7 @@ namespace HonglornBL
         bool throwLowIsBetter;
         bool middleDistanceLowIsBetter;
 
-        internal CompetitionCalculator(CompetitionDisciplineContainer competitionDisciplineContainer, bool sprintLowIsBetter, bool jumpLowIsBetter, bool throwLowIsBetter, bool middleDistanceLowIsBetter)
+        internal CompetitionCalculator(bool sprintLowIsBetter, bool jumpLowIsBetter, bool throwLowIsBetter, bool middleDistanceLowIsBetter)
         {
             studentMeasurements = new List<Tuple<Guid, RawMeasurement>>();
             this.sprintLowIsBetter = sprintLowIsBetter;
@@ -27,29 +27,73 @@ namespace HonglornBL
             studentMeasurements.Add(new Tuple<Guid, RawMeasurement>(identifier, measurement));
         }
 
-        IEnumerable<CompetitionResult> Results()
+        internal IEnumerable<ICompetitionResult> Results()
         {
-            List<CompetitionResult> results = (from t in studentMeasurements
-                                               select new CompetitionResult(t.Item1)).ToList();
-
-
+            IEnumerable<CompetitionCalculatorContainer> containers = from s in studentMeasurements
+                                                                     select new CompetitionCalculatorContainer(s.Item1, s.Item2.Sprint, s.Item2.Jump, s.Item2.Throw, s.Item2.MiddleDistance);
 
             if (sprintLowIsBetter)
             {
-                var sprintMeasurements = from s in studentMeasurements
-                                         orderby s.Item2.Sprint ascending
-                                         select s;
+                containers = containers.OrderBy(c => c.SprintValue);
             }
             else
             {
-                var sprintMeasurements = from s in studentMeasurements
-                                         orderby s.Item2.Sprint descending
-                                         select s;
+                containers = containers.OrderByDescending(c => c.SprintValue);
             }
 
+            float? lastValue = containers.First().SprintValue;
+            ushort lastScore = 1;
+            ushort count = 1;
 
+            foreach (var c in containers)
+            {
+                if (c.SprintValue == lastValue)
+                {
+                    c.SprintScore = lastScore;
+                }
+                else
+                {
+                    c.SprintScore = count;
+                    lastScore = c.SprintScore;
+                    lastValue = c.SprintValue;
+                }
 
-            throw new NotImplementedException();
+                count++;
+            }
+
+            return containers;
+        }
+
+        void CalculateScoresForDiscipline(IEnumerable<CompetitionCalculatorContainer> containers, bool lowIsBetter, Func<CompetitionCalculatorContainer, float?> selectValue, Func<CompetitionCalculatorContainer, ushort> selectScore)
+        {
+            if (lowIsBetter)
+            {
+                containers = containers.OrderBy(selectValue);
+            }
+            else
+            {
+                containers = containers.OrderByDescending(selectValue);
+            }
+
+            float? lastValue = selectValue(containers.First());
+            ushort lastScore = 1;
+            ushort count = 1;
+
+            foreach (var c in containers)
+            {
+                if (selectValue(c) == lastValue)
+                {
+                    //selectScore(c) = lastScore;
+                }
+                else
+                {
+                    c.SprintScore = count;
+                    lastScore = c.SprintScore;
+                    lastValue = c.SprintValue;
+                }
+
+                count++;
+            }
         }
     }
 }

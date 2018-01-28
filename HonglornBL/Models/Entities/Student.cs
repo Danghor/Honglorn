@@ -1,3 +1,4 @@
+using HonglornBL.Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -55,9 +56,12 @@ namespace HonglornBL.Models.Entities
 
         public string CourseNameByYear(short year)
         {
-            return (from rel in StudentCourseRel
-                    where rel.Year == year
-                    select rel.CourseName).Single();
+            using (HonglornDb db = new HonglornDb())
+            {
+                return (from rel in db.StudentCourseRel
+                        where rel.Year == year && rel.StudentPKey == PKey
+                        select rel.CourseName).Single();
+            }
         }
     }
 }

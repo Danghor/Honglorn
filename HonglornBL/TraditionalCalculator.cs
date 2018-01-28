@@ -76,6 +76,11 @@ namespace HonglornBL
             return CleanScore((Math.Sqrt(meters) - constantA) / constantC);
         }
 
+        /// <summary>
+        /// Sets the score to 0 if negative and cuts off all decimal places.
+        /// </summary>
+        /// <param name="rawScore">The score that has initially been calculated, without considering the boundaries.</param>
+        /// <returns>The score ready to be shown to the user.</returns>
         static ushort CleanScore(double rawScore)
         {
             return (ushort) Math.Max(0, Math.Floor(rawScore));

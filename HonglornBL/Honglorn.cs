@@ -77,8 +77,7 @@ namespace HonglornBL
                         FemaleMiddleDistance = disciplines.FemaleMiddleDistance as CompetitionDiscipline
                     };
 
-                    //results = CalculateCompetitionResults(students, year, disciplineContainer);
-                    throw new NotImplementedException();
+                    results = CalculateCompetitionResults(students, year, disciplineContainer);
                 }
                 else
                 {
@@ -89,35 +88,60 @@ namespace HonglornBL
             return results;
         }
 
-        static IEnumerable<Result> CalculateCompetitionResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
+        static IEnumerable<Result> CalculateCompetitionResults(IEnumerable<Student> students, short year, CompetitionDisciplineContainer disciplineCollection)
         {
-            using (HonglornDb db = new HonglornDb())
+            List<ICompetitionResult> competitionResults = new List<ICompetitionResult>();
+
+            IEnumerable<string> classes = (from s in students
+                                           select GetClassName(s.CourseNameByYear(year))).Distinct();
+
+            foreach (string @class in classes)
             {
-                IEnumerable<string> courseNames = (from student in students
-                                                   select student.CourseNameByYear(year)).Distinct();
+                IEnumerable<Student> maleStudents = from s in students
+                                                    where GetClassName(s.CourseNameByYear(year)) == @class && s.Sex == Sex.Male
+                                                    select s;
 
-                IEnumerable<string> classNames = courseNames.Select(c => GetClassName(c)).Distinct();
+                IEnumerable<Student> femaleStudents = from s in students
+                                                      where GetClassName(s.CourseNameByYear(year)) == @class && s.Sex == Sex.Female
+                                                      select s;
 
-                foreach (string className in classNames)
+                CompetitionCalculator maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter);
+
+                foreach (Student maleStudent in maleStudents)
                 {
-                    IEnumerable<Student> maleStudents = from student in db.Student
-                                                        where GetClassName(student.CourseNameByYear(year)) == className && student.Sex == Sex.Male
-                                                        select student;
+                    Competition competition = (from sc in maleStudent.Competition
+                                               where sc.Year == year
+                                               select sc).SingleOrDefault() ?? new Competition();
 
-                    IEnumerable<Student> femaleStudents = from student in db.Student
-                                                          where GetClassName(student.CourseNameByYear(year)) == className && student.Sex == Sex.Female
-                                                          select student;
-
-                    IEnumerable<Tuple<Student, int>> studentScores = (from m in maleStudents
-                                                                      select new Tuple<Student, int>(m, 0))
-                                                                      .Concat(
-                                                                      from f in femaleStudents
-                                                                      select new Tuple<Student, int>(f, 0));
-
+                    maleCalculator.AddStudentMeasurement(maleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
                 }
+
+                CompetitionCalculator femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter);
+
+                foreach (Student femaleStudent in femaleStudents)
+                {
+                    Competition competition = (from sc in femaleStudent.Competition
+                                               where sc.Year == year
+                                               select sc).SingleOrDefault() ?? new Competition();
+
+                    femaleCalculator.AddStudentMeasurement(femaleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
+                }
+
+                competitionResults.AddRange(maleCalculator.Results());
+                competitionResults.AddRange(femaleCalculator.Results());
             }
 
-            throw new NotImplementedException();
+            IEnumerable<Result> results = from c in competitionResults
+                                          join s in students on c.Identifier equals s.PKey
+                                          select new Result()
+                                          {
+                                              Forename = s.Forename,
+                                              Surname = s.Surname,
+                                              Score = (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore)
+                                          };
+
+            return results;
+            //throw new NotImplementedException();
         }
 
         static IEnumerable<Result> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
