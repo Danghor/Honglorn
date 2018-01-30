@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using HonglornBL;
 using HonglornBL.Models.Entities;
@@ -68,14 +70,7 @@ namespace HonglornWPF.ViewModels
                 OnPropertyChanged(nameof(CurrentClass));
 
                 Game? gameFromDb = GetGameType(CurrentClass, CurrentYear);
-                if (gameFromDb == null)
-                {
-                    Game = RadioButtonGame.Unknown;
-                }
-                else
-                {
-                    Game = gameTypeMap[gameFromDb];
-                }
+                Game = gameFromDb == null ? RadioButtonGame.Unknown : gameTypeMap[gameFromDb];
             }
         }
 
@@ -87,13 +82,18 @@ namespace HonglornWPF.ViewModels
                 game = value;
                 OnPropertyChanged(nameof(Game));
 
-                if (value == RadioButtonGame.Traditional)
+                switch (value)
                 {
-                    LoadAllTraditionalDisciplines();
-                }
-                else if (value == RadioButtonGame.Competition)
-                {
-                    LoadAllCompetitionDisciplines();
+                    case RadioButtonGame.Traditional:
+                        LoadAllTraditionalDisciplines();
+                        break;
+                    case RadioButtonGame.Competition:
+                        LoadAllCompetitionDisciplines();
+                        break;
+                    case RadioButtonGame.Unknown:
+                        break;
+                    default:
+                        throw new InvalidEnumArgumentException(nameof(value), (int) value, typeof(RadioButtonGame));
                 }
 
             }
