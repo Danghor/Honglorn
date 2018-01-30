@@ -117,8 +117,16 @@ namespace HonglornWPF.ViewModels
         void OnProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             IProgressInformer informer = e.UserState as IProgressInformer;
-            StatusMessage = informer.StatusMessage;
-            ProgressBarStyle = informer.Style;
+            if (informer != null)
+            {
+                StatusMessage = informer.StatusMessage;
+                ProgressBarStyle = informer.Style;
+            }
+            else
+            {
+                StatusMessage = "Error: Cannot display progress.";
+                ProgressBarStyle = ProgressBarStyle.Marquee;
+            }
 
             Status = e.ProgressPercentage;
         }
