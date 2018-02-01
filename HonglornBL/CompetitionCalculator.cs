@@ -29,50 +29,26 @@ namespace HonglornBL
 
         internal IEnumerable<ICompetitionResult> Results()
         {
-            IEnumerable<CompetitionCalculatorContainer> containers = from s in studentMeasurements
-                                                                     select new CompetitionCalculatorContainer(s.Item1, s.Item2.Sprint, s.Item2.Jump, s.Item2.Throw, s.Item2.MiddleDistance);
+            ICollection<CompetitionCalculatorContainer> containers = (from s in studentMeasurements
+                                                                      select new CompetitionCalculatorContainer(s.Item1, s.Item2.Sprint, s.Item2.Jump, s.Item2.Throw, s.Item2.MiddleDistance)).ToList();
 
-            if (sprintLowIsBetter)
-            {
-                containers = containers.OrderBy(c => c.SprintValue);
-            }
-            else
-            {
-                containers = containers.OrderByDescending(c => c.SprintValue);
-            }
-
-            float? lastValue = containers.First().SprintValue;
-            ushort lastScore = 1;
-            ushort count = 1;
-
-            foreach (var c in containers)
-            {
-                if (c.SprintValue == lastValue)
-                {
-                    c.SprintScore = lastScore;
-                }
-                else
-                {
-                    c.SprintScore = count;
-                    lastScore = c.SprintScore;
-                    lastValue = c.SprintValue;
-                }
-
-                count++;
-            }
+            CalculateScoresForDiscipline(containers, sprintLowIsBetter, c => c.SprintValue, c => c.SprintScore, (c, s) => c.SprintScore = s);
+            CalculateScoresForDiscipline(containers, jumpLowIsBetter, c => c.JumpValue, c => c.JumpScore, (c, s) => c.JumpScore = s);
+            CalculateScoresForDiscipline(containers, throwLowIsBetter, c => c.ThrowValue, c => c.ThrowScore, (c, s) => c.ThrowScore = s);
+            CalculateScoresForDiscipline(containers, middleDistanceLowIsBetter, c => c.MiddleDistanceValue, c => c.MiddleDistanceScore, (c, s) => c.MiddleDistanceScore = s);
 
             return containers;
         }
 
-        void CalculateScoresForDiscipline(IEnumerable<CompetitionCalculatorContainer> containers, bool lowIsBetter, Func<CompetitionCalculatorContainer, float?> selectValue, Func<CompetitionCalculatorContainer, ushort> selectScore)
+        void CalculateScoresForDiscipline(ICollection<CompetitionCalculatorContainer> containers, bool lowIsBetter, Func<CompetitionCalculatorContainer, float?> selectValue, Func<CompetitionCalculatorContainer, ushort> selectScore, Action<CompetitionCalculatorContainer, ushort> setScore)
         {
             if (lowIsBetter)
             {
-                containers = containers.OrderBy(selectValue);
+                containers = containers.OrderBy(c => selectValue(c) == null).ThenBy(selectValue).ToList();
             }
             else
             {
-                containers = containers.OrderByDescending(selectValue);
+                containers = containers.OrderBy(c => selectValue(c) == null).ThenByDescending(selectValue).ToList();
             }
 
             float? lastValue = selectValue(containers.First());
@@ -83,13 +59,13 @@ namespace HonglornBL
             {
                 if (selectValue(c) == lastValue)
                 {
-                    //selectScore(c) = lastScore;
+                    setScore(c, lastScore);
                 }
                 else
                 {
-                    c.SprintScore = count;
-                    lastScore = c.SprintScore;
-                    lastValue = c.SprintValue;
+                    setScore(c, count);
+                    lastScore = selectScore(c);
+                    lastValue = selectValue(c);
                 }
 
                 count++;

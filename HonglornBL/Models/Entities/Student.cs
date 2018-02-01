@@ -63,5 +63,7 @@ namespace HonglornBL.Models.Entities
                         select rel.CourseName).Single();
             }
         }
+
+        public override string ToString() => $"{Forename} {Surname}, {Sex}, YOB: {YearOfBirth}, ID: {PKey}";
     }
 }
