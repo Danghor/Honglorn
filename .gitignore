@@ -192,3 +192,5 @@ ModelManifest.xml
 *.mwb.bak
 /credentials.txt
 /ImportTemplate.xlsx
+/HonglornBL/docs
+/HonglornWPF/docs

@@ -7,7 +7,9 @@
              xmlns:bl="clr-namespace:HonglornBL;assembly=HonglornBL"
              xmlns:ViewModels="clr-namespace:HonglornWPF.ViewModels"
              mc:Ignorable="d">
-
+    <UserControl.Resources>
+        <ViewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
+    </UserControl.Resources>
     <UserControl.DataContext>
         <ViewModels:EditDisciplinesViewModel/>
     </UserControl.DataContext>
@@ -15,7 +17,18 @@
     <DataGrid Margin="0 5 0 0" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}">
         <DataGrid.Columns>
             <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-            <DataGridComboBoxColumn Header="Disziplin" ItemsSource="{Binding DisciplineTypes}" SelectedItemBinding="{Binding Type}"/>
+            <DataGridTemplateColumn Header="Disziplin">
+            <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Type}" />
+                </DataTemplate>
+            </DataGridTemplateColumn.CellTemplate>
+            <DataGridTemplateColumn.CellEditingTemplate>
+                <DataTemplate>
+                        <ComboBox ItemsSource="{StaticResource DisciplineTypesList}"  SelectedItem="{Binding Type}" />
+                </DataTemplate>
+            </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
             <DataGridTextColumn Header="Einheit" Binding="{Binding Unit}"/>
             <DataGridCheckBoxColumn Header="Weniger ist besser" Binding="{Binding LowIsBetter}"/>
         </DataGrid.Columns>

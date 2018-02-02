@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+using HonglornBL;
 using HonglornBL.Models.Entities;
-using static HonglornBL.Prerequisites;
 
 namespace HonglornWPF.ViewModels
 {
     class EditDisciplinesViewModel : ViewModel
     {
-        public ObservableCollection<DisciplineType> DisciplineTypes { get; set; } = new ObservableCollection<DisciplineType>();
         public ObservableCollection<CompetitionDiscipline> Disciplines { get; set; } = new ObservableCollection<CompetitionDiscipline>();
 
         CompetitionDiscipline currentDiscipline;
@@ -29,18 +25,24 @@ namespace HonglornWPF.ViewModels
         public EditDisciplinesViewModel()
         {
             LoadDisciplines();
-            LoadDisciplineTypes();
         }
 
-        void LoadDisciplines() => ClearAndFill(Disciplines, HonglornBL.Honglorn.AllCompetitionDisciplines());
-        void LoadDisciplineTypes() => ClearAndFill(DisciplineTypes, HonglornBL.Honglorn.DisciplineTypes());
+        void LoadDisciplines() => ClearAndFill(Disciplines, Honglorn.AllCompetitionDisciplines());
 
         static void SaveDiscipline(CompetitionDiscipline discipline)
         {
             if (discipline != null)
             {
-                HonglornBL.Honglorn.CreateOrUpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
+                Honglorn.CreateOrUpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
             }
+        }
+    }
+
+    public class DisciplineTypesList : List<string>
+    {
+        public DisciplineTypesList()
+        {
+            AddRange(new[] { "Sprint", "Jump", "Throw", "MiddleDistance" });
         }
     }
 }

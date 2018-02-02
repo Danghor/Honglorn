@@ -8,16 +8,20 @@
   xmlns:Views="clr-namespace:HonglornWPF.Views"
   mc:Ignorable="d"
   x:ClassModifier="internal"
-  Title="Honglorn"
-  Height="350" 
-  Width="525" 
+  Title="Honglorn" 
   GlowBrush="{DynamicResource AccentColorBrush}"
   NonActiveGlowBrush="#CDFF0000">
 
     <Grid>
         <Controls:MetroAnimatedSingleRowTabControl>
+            <TabItem Header="Schüler importieren">
+                <Views:ImportStudentsView />
+            </TabItem>
             <TabItem Header="Disziplinen bearbeiten">
                 <Views:EditDisciplinesView />
+            </TabItem>
+            <TabItem Header="Disziplinen zuweisen">
+                <Views:AssignDisciplinesView />
             </TabItem>
             <TabItem Header="Bearbeiten">
                 <Views:EditPerformanceView />

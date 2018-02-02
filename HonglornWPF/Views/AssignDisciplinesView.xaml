@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="HonglornWPF.Views.AssignDisciplinesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HonglornWPF.Views"
+             xmlns:wpf="clr-namespace:HonglornWPF"
+             xmlns:ViewModels="clr-namespace:HonglornWPF.ViewModels"
+             mc:Ignorable="d">
+
+    <UserControl.DataContext>
+        <ViewModels:AssignDisciplinesViewModel/>
+    </UserControl.DataContext>
+
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Jahr"  Grid.Column="0"/>
+            <ComboBox x:Name="yearSelectionComboBox" HorizontalAlignment="Right" Grid.Column="1" ItemsSource="{Binding Years}" SelectedItem="{Binding CurrentYear}"/>
+            <Label Content="Jahrgang" Grid.Column="2"/>
+            <ComboBox x:Name="classSelectionComboBox" HorizontalAlignment="Left" Grid.Column="3" ItemsSource="{Binding Classes}" SelectedItem="{Binding CurrentClass}"/>
+
+        </Grid>
+        <GroupBox x:Name="gameTypeGroupBox" Header="Wettkampf">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="traditionalRadioButton" GroupName="gameType" Content="Traditionell" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static ViewModels:RadioButtonGame.Traditional}}" />
+                <RadioButton x:Name="competitionRadioButton" GroupName="gameType" Content="Wettbewerb" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static ViewModels:RadioButtonGame.Competition}}"/>
+            </StackPanel>
+        </GroupBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="0" x:Name="maleGroupBox" Header="Männlich">
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Sprint" Grid.Row="0" Grid.Column="0"/>
+                        <ComboBox x:Name="maleSprintComboBox" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding MaleSprintDisciplines}" SelectedItem="{Binding CurrentMaleSprintDiscipline}"/>
+                        <Label Content="Sprung" Grid.Row="1" Grid.Column="0"/>
+                        <ComboBox x:Name="maleJumpComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding MaleJumpDisciplines}" SelectedItem="{Binding CurrentMaleJumpDiscipline}"/>
+                        <Label Content="Wurf" Grid.Row="2" Grid.Column="0"/>
+                        <ComboBox x:Name="maleThrowComboBox" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding MaleThrowDisciplines}" SelectedItem="{Binding CurrentMaleThrowDiscipline}"/>
+                        <Label Content="Ausdauer" Grid.Row="3" Grid.Column="0"/>
+                        <ComboBox x:Name="maleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding MaleMiddleDistanceDisciplines}" SelectedItem="{Binding CurrentMaleMiddleDistanceDiscipline}"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Grid.Column="1" x:Name="femaleGroupBox" Header="Weiblich">
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Sprint" Grid.Row="0" Grid.Column="0"/>
+                        <ComboBox x:Name="femaleSprintComboBox" Grid.Row="0" Grid.Column="1" ItemsSource="{Binding FemaleSprintDisciplines}" SelectedItem="{Binding CurrentFemaleSprintDiscipline}"/>
+                        <Label Content="Sprung" Grid.Row="1" Grid.Column="0"/>
+                        <ComboBox x:Name="femaleJumpComboBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding FemaleJumpDisciplines}" SelectedItem="{Binding CurrentFemaleJumpDiscipline}"/>
+                        <Label Content="Wurf" Grid.Row="2" Grid.Column="0"/>
+                        <ComboBox x:Name="femaleThrowComboBox" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding FemaleThrowDisciplines}" SelectedItem="{Binding CurrentFemaleThrowDiscipline}"/>
+                        <Label Content="Ausdauer" Grid.Row="3" Grid.Column="0"/>
+                        <ComboBox x:Name="femaleMiddleDistanceComboBox" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding FemaleMiddleDistanceDisciplines}" SelectedItem="{Binding CurrentFemaleMiddleDistanceDiscipline}"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <Button Command="{Binding SaveDisciplineCollectionCommand}" Content="Speichern"/>
+    </StackPanel>
+</UserControl>

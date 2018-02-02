@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using HonglornBL.Models.Entities;
 using HonglornBL.Properties;
@@ -23,7 +25,14 @@ namespace HonglornBL.Models.Framework
 
             using (StringReader reader = new StringReader(xmlContent))
             {
-                set.AddRange(serializer.Deserialize(reader) as IEnumerable<TEntity>);
+                try
+                {
+                    set.AddRange((IEnumerable<TEntity>) serializer.Deserialize(reader));
+                }
+                catch (InvalidCastException ex)
+                {
+                    throw new SerializationException($"Could not initialize database. The content of the XML file used could not be casted to '{typeof(TEntity).FullName}'. XML content: {xmlContent}", ex);
+                }
             }
         }
     }

@@ -26,11 +26,11 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<Result> GetResults(string course, short year)
+        public static IEnumerable<Result> GetResults(string course, short year)
         {
-            ICollection<Result> results;
+            IEnumerable<Result> results;
 
-            ICollection<Student> students = GetStudents(course, year);
+            IEnumerable<Student> students = GetStudents(course, year);
             string className = GetClassName(course);
 
             using (HonglornDb db = new HonglornDb())
@@ -45,11 +45,11 @@ namespace HonglornBL
                     throw new DataException($"No disciplines have been configured for class {className} in year {year}. Therefore, no results can be calculated.");
                 }
 
-                Discipline[] disciplineArray = new[] { disciplines.MaleSprint, disciplines.MaleJump, disciplines.MaleThrow, disciplines.MaleMiddleDistance, disciplines.FemaleSprint, disciplines.FemaleJump, disciplines.FemaleThrow, disciplines.FemaleMiddleDistance };
+                Discipline[] disciplineArray = { disciplines.MaleSprint, disciplines.MaleJump, disciplines.MaleThrow, disciplines.MaleMiddleDistance, disciplines.FemaleSprint, disciplines.FemaleJump, disciplines.FemaleThrow, disciplines.FemaleMiddleDistance };
 
                 if (disciplineArray.All(d => d is TraditionalDiscipline))
                 {
-                    TraditionalDisciplineCollection disciplineCollection = new TraditionalDisciplineCollection()
+                    TraditionalDisciplineContainer disciplineContainer = new TraditionalDisciplineContainer
                     {
                         MaleSprint = disciplines.MaleSprint as TraditionalDiscipline,
                         MaleJump = disciplines.MaleJump as TraditionalDiscipline,
@@ -61,10 +61,23 @@ namespace HonglornBL
                         FemaleMiddleDistance = disciplines.FemaleMiddleDistance as TraditionalDiscipline
                     };
 
-                    results = CalculateTraditionalResults(students, year, disciplineCollection);
+                    results = CalculateTraditionalResults(students, year, disciplineContainer);
                 }
                 else if (disciplineArray.All(d => d is CompetitionDiscipline))
                 {
+                    CompetitionDisciplineContainer disciplineContainer = new CompetitionDisciplineContainer
+                    {
+                        MaleSprint = disciplines.MaleSprint as CompetitionDiscipline,
+                        MaleJump = disciplines.MaleJump as CompetitionDiscipline,
+                        MaleThrow = disciplines.MaleThrow as CompetitionDiscipline,
+                        MaleMiddleDistance = disciplines.MaleMiddleDistance as CompetitionDiscipline,
+                        FemaleSprint = disciplines.FemaleSprint as CompetitionDiscipline,
+                        FemaleJump = disciplines.FemaleJump as CompetitionDiscipline,
+                        FemaleThrow = disciplines.FemaleThrow as CompetitionDiscipline,
+                        FemaleMiddleDistance = disciplines.FemaleMiddleDistance as CompetitionDiscipline
+                    };
+
+                    //results = CalculateCompetitionResults(students, year, disciplineContainer);
                     throw new NotImplementedException();
                 }
                 else
@@ -76,7 +89,38 @@ namespace HonglornBL
             return results;
         }
 
-        static ICollection<Result> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineCollection disciplineCollection)
+        static IEnumerable<Result> CalculateCompetitionResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
+        {
+            using (HonglornDb db = new HonglornDb())
+            {
+                IEnumerable<string> courseNames = (from student in students
+                                                   select student.CourseNameByYear(year)).Distinct();
+
+                IEnumerable<string> classNames = courseNames.Select(c => GetClassName(c)).Distinct();
+
+                foreach (string className in classNames)
+                {
+                    IEnumerable<Student> maleStudents = from student in db.Student
+                                                        where GetClassName(student.CourseNameByYear(year)) == className && student.Sex == Sex.Male
+                                                        select student;
+
+                    IEnumerable<Student> femaleStudents = from student in db.Student
+                                                          where GetClassName(student.CourseNameByYear(year)) == className && student.Sex == Sex.Female
+                                                          select student;
+
+                    IEnumerable<Tuple<Student, int>> studentScores = (from m in maleStudents
+                                                                      select new Tuple<Student, int>(m, 0))
+                                                                      .Concat(
+                                                                      from f in femaleStudents
+                                                                      select new Tuple<Student, int>(f, 0));
+
+                }
+            }
+
+            throw new NotImplementedException();
+        }
+
+        static IEnumerable<Result> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
         {
             ICollection<Result> results = new List<Result>();
 
@@ -212,10 +256,10 @@ namespace HonglornBL
 
             foreach (DataRow row in table.Rows)
             {
-                Guid pKey = (Guid) row[pKeyColumn];
+                Guid pKey = (Guid)row[pKeyColumn];
                 string surname = row[surnameColumn].ToString();
                 string forename = row[forenameColumn].ToString();
-                Sex sex = (Sex) row[sexColumn];
+                Sex sex = (Sex)row[sexColumn];
                 float? sprint = row[sprintColumn] as float?;
                 float? jump = row[jumpColumn] as float?;
                 float? Throw = row[throwColumn] as float?;
@@ -408,31 +452,90 @@ namespace HonglornBL
 
             using (HonglornDb db = new HonglornDb())
             {
-                Discipline[] disciplines = (from c in db.DisciplineCollection
-                                            where c.ClassName == className
-                                                  && c.Year == year
-                                            select new[] {
-                                              c.MaleSprint,
-                                              c.MaleJump,
-                                              c.MaleThrow,
-                                              c.MaleMiddleDistance,
-                                              c.FemaleSprint,
-                                              c.FemaleJump,
-                                              c.FemaleThrow,
-                                              c.FemaleMiddleDistance
-                                            }).SingleOrDefault();
+                DisciplineCollection disciplineCollection = (from c in db.DisciplineCollection
+                                                             where c.ClassName == className
+                                                                   && c.Year == year
+                                                             select c).SingleOrDefault();
 
-                if (disciplines.All(d => d is CompetitionDiscipline))
+                if (disciplineCollection != null)
                 {
-                    result = Game.Competition;
-                }
-                else if (disciplines.All(d => d is TraditionalDiscipline))
-                {
-                    result = Game.Traditional;
+                    Discipline[] disciplines = { disciplineCollection.MaleSprint, disciplineCollection.MaleJump, disciplineCollection.MaleThrow, disciplineCollection.MaleMiddleDistance, disciplineCollection.FemaleSprint, disciplineCollection.FemaleJump, disciplineCollection.FemaleThrow, disciplineCollection.FemaleMiddleDistance };
+
+                    if (disciplines.All(d => d is CompetitionDiscipline))
+                    {
+                        result = Game.Competition;
+                    }
+                    else if (disciplines.All(d => d is TraditionalDiscipline))
+                    {
+                        result = Game.Traditional;
+                    }
                 }
             }
 
             return result;
+        }
+
+        public static void CreateOrUpdateDisciplineCollection(string className, short year, Guid maleSprintPKey, Guid maleJumpPKey, Guid maleThrowPKey, Guid maleMiddleDistancePKey, Guid femaleSprintPKey, Guid femaleJumpPKey, Guid femaleThrowPKey, Guid femaleMiddleDistancePKey)
+        {
+            using (HonglornDb db = new HonglornDb())
+            {
+                Discipline maleSprintDiscipline = db.Set<Discipline>().Find(maleSprintPKey);
+                Discipline maleJumpDiscipline = db.Set<Discipline>().Find(maleJumpPKey);
+                Discipline maleThrowDiscipline = db.Set<Discipline>().Find(maleThrowPKey);
+                Discipline maleMiddleDistanceDiscipline = db.Set<Discipline>().Find(maleMiddleDistancePKey);
+
+                Discipline femaleSprintDiscipline = db.Set<Discipline>().Find(femaleSprintPKey);
+                Discipline femaleJumpDiscipline = db.Set<Discipline>().Find(femaleJumpPKey);
+                Discipline femaleThrowDiscipline = db.Set<Discipline>().Find(femaleThrowPKey);
+                Discipline femaleMiddleDistanceDiscipline = db.Set<Discipline>().Find(femaleMiddleDistancePKey);
+
+                Discipline[] disciplines = new[] { maleSprintDiscipline, maleJumpDiscipline, maleThrowDiscipline, maleMiddleDistanceDiscipline, femaleSprintDiscipline, femaleJumpDiscipline, femaleThrowDiscipline, femaleMiddleDistanceDiscipline };
+
+                if (disciplines.All(d => d is CompetitionDiscipline) || disciplines.All(d => d is TraditionalDiscipline))
+                {
+                    DisciplineCollection existingCollection = (from col in db.DisciplineCollection
+                                                               where col.ClassName == className && col.Year == year
+                                                               select col).SingleOrDefault();
+
+                    if (existingCollection == null)
+                    {
+                        // Create
+                        db.DisciplineCollection.Add(new DisciplineCollection()
+                        {
+                            ClassName = className,
+                            Year = year,
+                            MaleSprintPKey = maleSprintPKey,
+                            MaleJumpPKey = maleJumpPKey,
+                            MaleThrowPKey = maleThrowPKey,
+                            MaleMiddleDistancePKey = maleMiddleDistancePKey,
+                            FemaleSprintPKey = femaleSprintPKey,
+                            FemaleJumpPKey = femaleJumpPKey,
+                            FemaleThrowPKey = femaleThrowPKey,
+                            FemaleMiddleDistancePKey = femaleMiddleDistancePKey
+                        });
+                    }
+                    else
+                    {
+                        // Update
+                        existingCollection.MaleSprintPKey = maleSprintPKey;
+                        existingCollection.MaleJumpPKey = maleJumpPKey;
+                        existingCollection.MaleThrowPKey = maleThrowPKey;
+                        existingCollection.MaleMiddleDistancePKey = maleMiddleDistancePKey;
+                        existingCollection.FemaleSprintPKey = femaleSprintPKey;
+                        existingCollection.FemaleJumpPKey = femaleJumpPKey;
+                        existingCollection.FemaleThrowPKey = femaleThrowPKey;
+                        existingCollection.FemaleMiddleDistancePKey = femaleMiddleDistancePKey;
+                    }
+
+                    db.SaveChanges();
+                }
+                else
+                {
+                    throw new ArgumentException("Could not save Discipline Collection. All discipline pkeys must be either entirely from competition disciplines, or from traditional disciplines, but you cannot mix them.");
+                }
+
+
+            }
         }
 
         /// <summary>
@@ -464,19 +567,19 @@ namespace HonglornBL
         }
 
         /// <summary>
-        ///     Get a Char Array representing the class names for which there is at least one student present in the given year.
+        ///     Get a String Array representing the class names for which there is at least one student present in the given year.
         /// </summary>
         /// <param name="year">The year for which the valid class names should be retrieved.</param>
-        /// <returns>A Char Array representing the valid class names.</returns>
+        /// <returns>A String Array representing the valid class names.</returns>
         /// <remarks></remarks>
         public static ICollection<string> ValidClassNames(short year)
         {
             return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
         }
 
-        public static ICollection<DisciplineType> DisciplineTypes ()
+        public static ICollection<DisciplineType> DisciplineTypes()
         {
-            return (DisciplineType []) Enum.GetValues(typeof(DisciplineType));
+            return (DisciplineType[])Enum.GetValues(typeof(DisciplineType));
         }
 
         #region "Import"

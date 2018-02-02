@@ -3,11 +3,11 @@
 namespace HonglornWPF.Views
 {
     /// <summary>
-    /// Interaction logic for ImportStudentsView.xaml
+    /// Interaction logic for AssignDisciplinesView.xaml
     /// </summary>
-    public partial class ImportStudentsView : UserControl
+    public partial class AssignDisciplinesView : UserControl
     {
-        public ImportStudentsView()
+        public AssignDisciplinesView()
         {
             InitializeComponent();
         }

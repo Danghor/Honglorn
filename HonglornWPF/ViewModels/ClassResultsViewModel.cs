@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using HonglornBL;
@@ -57,6 +57,16 @@ namespace HonglornWPF.ViewModels
 
         void LoadYears() => ClearAndFill(Years, Honglorn.YearsWithStudentData());
 
-        void LoadResults() => ClearAndFill(Results, Honglorn.GetResults(CurrentCourse, CurrentYear));
+        void LoadResults()
+        {
+            try
+            {
+                ClearAndFill(Results, Honglorn.GetResults(CurrentCourse, CurrentYear));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
     }
 }

@@ -36,11 +36,10 @@ namespace HonglornBL.Models.Entities
         [Required]
         public Guid MaleMiddleDistancePKey { get; set; }
 
+        // Female
         [Required]
         public Guid FemaleSprintPKey { get; set; }
 
-
-        // Female
         [Required]
         public Guid FemaleJumpPKey { get; set; }
 
