@@ -85,10 +85,12 @@
     <Compile Include="CompetitionDisciplineContainer.cs" />
     <Compile Include="CompetitionCalculator.cs" />
     <Compile Include="ICompetitionResult.cs" />
+    <Compile Include="Import\FieldErrorInfo.cs" />
+    <Compile Include="Import\RecordErrorInfo.cs" />
     <Compile Include="RawMeasurement.cs" />
     <Compile Include="DisciplineContainer.cs" />
     <Compile Include="Result.cs" />
-    <Compile Include="ImportedStudentRecord.cs" />
+    <Compile Include="Import\ImportedStudentRecord.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

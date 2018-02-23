@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HonglornBL.Properties;
 
-namespace HonglornBL
+namespace HonglornBL.Import
 {
     class ImportedStudentRecord
     {
@@ -57,12 +57,12 @@ namespace HonglornBL
             return result;
         }
 
-        static readonly Func<string, bool> IsValidName = delegate(string name)
+        static readonly Func<string, bool> IsValidName = delegate (string name)
         {
             return !string.IsNullOrWhiteSpace(name) && !name.Any(c => char.IsDigit(c));
         };
 
-        static readonly Func<string, bool> IsValidCourseName = delegate(string courseName)
+        static readonly Func<string, bool> IsValidCourseName = delegate (string courseName)
         {
             bool isValid = true;
 
@@ -78,12 +78,12 @@ namespace HonglornBL
             return isValid;
         };
 
-        static readonly Func<string, bool> IsValidSex = delegate(string sex)
+        static readonly Func<string, bool> IsValidSex = delegate (string sex)
         {
             return sex.Equals("W", StringComparison.InvariantCultureIgnoreCase) || sex.Equals("M", StringComparison.InvariantCultureIgnoreCase);
         };
 
-        static readonly Func<string, bool> IsValidYearOfBirth = delegate(string year)
+        static readonly Func<string, bool> IsValidYearOfBirth = delegate (string year)
         {
             bool isValid = false;
             short shortYear;
@@ -95,29 +95,5 @@ namespace HonglornBL
 
             return isValid;
         };
-    }
-
-    class RecordErrorInfo
-    {
-        internal ICollection<FieldErrorInfo> FieldErrorInfos { get; }
-
-        public RecordErrorInfo(ICollection<FieldErrorInfo> fieldErrorInfos)
-        {
-            FieldErrorInfos = fieldErrorInfos;
-        }
-    }
-
-    class FieldErrorInfo
-    {
-        string FieldName { get; }
-        string FieldContent { get; }
-        string Message { get; }
-
-        public FieldErrorInfo(string fieldName, string fieldContent, string message)
-        {
-            FieldName = fieldName;
-            FieldContent = fieldContent;
-            Message = message;
-        }
     }
 }
