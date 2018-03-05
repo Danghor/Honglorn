@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using HonglornBL.Models.Entities;
 using Microsoft.Office.Interop.Excel;
 using static HonglornBL.Prerequisites;
+using HonglornBL.Import;
 
 namespace HonglornBL
 {
@@ -53,33 +54,23 @@ namespace HonglornBL
                 bool rowIsEmpty = false;
                 while (!rowIsEmpty)
                 {
-                    ICollection<string> row = worksheet.GetRow(rowIdx, 5);
+                    string[] row = worksheet.GetRow(rowIdx, 5);
                     rowIsEmpty = row.All(string.IsNullOrWhiteSpace);
 
                     if (!rowIsEmpty)
                     {
-                        string surname = row.ElementAt(0);
-                        string forename = row.ElementAt(1);
-                        string courseName = row.ElementAt(2);
-                        string rawSex = row.ElementAt(3);
-                        string rawYearOfBirth = row.ElementAt(4);
-
-                        Sex sex;
-                        if (SexDictionary.TryGetValue(rawSex, out sex))
+                        ImportedStudentRecord studentRecord = new ImportedStudentRecord(row[0], row[1], row[2], row[3], row[4]);
+                        if (studentRecord.Error == null)
                         {
-                            short yearOfBirth = Convert.ToInt16(rawYearOfBirth);
-                            if (IsValidYear(yearOfBirth))
+                            Student student = new Student
                             {
-                                Student student = new Student
-                                {
-                                    Surname = surname,
-                                    Forename = forename,
-                                    Sex = sex,
-                                    YearOfBirth = yearOfBirth
-                                };
+                                Surname = studentRecord.ImportedSurname,
+                                Forename = studentRecord.ImportedForename,
+                                Sex = SexDictionary[studentRecord.ImportedSex],
+                                YearOfBirth = short.Parse(studentRecord.ImportedYearOfBirth)
+                            };
 
-                                extractedStudents.Add(new Tuple<Student, string>(student, courseName));
-                            }
+                            extractedStudents.Add(new Tuple<Student, string>(student, studentRecord.ImportedCourseName));
                         }
                     }
 
@@ -121,19 +112,19 @@ namespace HonglornBL
             return Alphabet[colIdx];
         }
 
-        static ICollection<string> GetRow(this _Worksheet sheet, int rowIdx, int length)
+        static string[] GetRow(this _Worksheet sheet, int rowIdx, int length)
         {
-            ICollection<string> row = new List<string>();
+            var row = new string[length];
 
             for (int colIdx = 0; colIdx < length; colIdx++)
             {
-                row.Add(sheet.GetTextFromCell(colIdx, rowIdx));
+                row[colIdx] = sheet.GetTextFromCell(colIdx, rowIdx);
             }
 
             return row;
         }
 
-        static string GetTextFromCell (this _Worksheet sheet, int colIdx, int rowIdx)
+        static string GetTextFromCell(this _Worksheet sheet, int colIdx, int rowIdx)
         {
             return sheet.Range[$"{GetColumnName(colIdx)}{rowIdx}"].Text;
         }
