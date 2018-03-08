@@ -10,6 +10,7 @@ using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using static System.Windows.Forms.ProgressBarStyle;
 using static HonglornBL.Prerequisites;
+using System.Threading.Tasks;
 
 namespace HonglornBL
 {
@@ -26,7 +27,15 @@ namespace HonglornBL
             }
         }
 
-        public static IEnumerable<Result> GetResults(string course, short year)
+        public static async Task<IEnumerable<Result>> GetResultsAsync(string course, short year)
+        {
+            //var task = Task.Factory.StartNew(() => GetResults(course, year));
+            //var result = await task;
+            //return result;
+            return await Task.Factory.StartNew(() => GetResults(course, year));
+        }
+
+        static IEnumerable<Result> GetResults(string course, short year)
         {
             IEnumerable<Result> results;
 

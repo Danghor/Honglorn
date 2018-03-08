@@ -2,6 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using HonglornBL;
+using System.Windows;
+using MahApps.Metro.Controls.Dialogs;
+using MahApps.Metro.Controls;
 
 namespace HonglornWPF.ViewModels
 {
@@ -57,16 +60,17 @@ namespace HonglornWPF.ViewModels
 
         void LoadYears() => ClearAndFill(Years, Honglorn.YearsWithStudentData());
 
-        void LoadResults()
+        async void LoadResults()
         {
-            /*try
-            {*/
-                ClearAndFill(Results, Honglorn.GetResults(CurrentCourse, CurrentYear));
-            /*}
+            try
+            {
+                ClearAndFill(Results, await Honglorn.GetResultsAsync(CurrentCourse, CurrentYear));
+            }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-            }*/
+                var mainWindow = Application.Current.MainWindow as MetroWindow;
+                await mainWindow.ShowMessageAsync("Error", ex.Message);
+            }
         }
     }
 }
