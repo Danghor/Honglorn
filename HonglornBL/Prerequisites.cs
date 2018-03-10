@@ -2,30 +2,31 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using HonglornBL.Properties;
+using System.Linq;
 
 namespace HonglornBL
 {
     public static class Prerequisites
     {
+        static IEnumerable<Tuple<string, Func<string, string>>> classNameFunctionMap = new[]
+        {
+            new Tuple<string, Func<string, string>>("0[5-9][A-Za-z]", c => c[1].ToString()),
+            new Tuple<string, Func<string, string>>("[5-9][A-Za-z]", c => c[0].ToString()),
+            new Tuple<string, Func<string, string>>("(E|e)(0[1-9]|[1-9][0-9])", c => "E")
+        };
+
         internal static string GetClassName(string courseName)
         {
             string className;
+            var pair = classNameFunctionMap.FirstOrDefault(tuple => Regex.IsMatch(courseName, tuple.Item1));
 
-            if (Regex.IsMatch(courseName, "0[5-9][A-Za-z]"))
+            if (pair == null)
             {
-                className = courseName[1].ToString();
-            }
-            else if (Regex.IsMatch(courseName, "[5-9][A-Za-z]"))
-            {
-                className = courseName[0].ToString();
-            }
-            else if (Regex.IsMatch(courseName, "(E|e)(0[1-9]|[1-9][0-9])"))
-            {
-                className = "E";
+                throw new ArgumentException($"Invalid course name: {courseName}. Automatic mapping to class name failed.");
             }
             else
             {
-                throw new ArgumentException($"Invalid course name: {courseName}. Automatic mapping to class name failed.");
+                className = pair.Item2(courseName);
             }
 
             return className;
@@ -37,13 +38,13 @@ namespace HonglornBL
         /// <param name="x">The numerator.</param>
         /// <param name="y">The denominator.</param>
         /// <returns>The rounded fraction in percentage.</returns>
-        internal static int PercentageValue(int x, int y) => (int) Math.Round(100d * x / y);
+        internal static int PercentageValue(int x, int y) => (int)Math.Round(100d * x / y);
 
         internal const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         #region Validation
 
-        static readonly HashSet<char> ValidClassnames = new HashSet<char> {'5', '6', '7', '8', '9', 'E'};
+        static readonly HashSet<char> ValidClassnames = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
 
         /// <summary>
         ///     Returns true iff the given character is a valid class name that can be used at all in the application.
