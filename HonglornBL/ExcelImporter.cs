@@ -59,10 +59,10 @@ namespace HonglornBL
 
                     if (!rowIsEmpty)
                     {
-                        ImportedStudentRecord studentRecord = new ImportedStudentRecord(row[0], row[1], row[2], row[3], row[4]);
+                        var studentRecord = new ImportedStudentRecord(row[0], row[1], row[2], row[3], row[4]);
                         if (studentRecord.Error == null)
                         {
-                            Student student = new Student
+                            var student = new Student
                             {
                                 Surname = studentRecord.ImportedSurname,
                                 Forename = studentRecord.ImportedForename,
@@ -114,7 +114,7 @@ namespace HonglornBL
 
         static string[] GetRow(this _Worksheet sheet, int rowIdx, int length)
         {
-            var row = new string[length];
+            string[] row = new string[length];
 
             for (int colIdx = 0; colIdx < length; colIdx++)
             {

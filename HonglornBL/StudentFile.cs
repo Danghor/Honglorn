@@ -12,7 +12,7 @@ namespace HonglornBL
 
         protected StudentFile(string filePath)
         {
-            FileInfo file = new FileInfo(filePath);
+            var file = new FileInfo(filePath);
 
             if (!file.Exists)
             {

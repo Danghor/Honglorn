@@ -45,7 +45,7 @@ namespace HonglornBL.Models.Entities
 
         internal void AddStudentCourseRel(short year, string courseName)
         {
-            StudentCourseRel rel = new StudentCourseRel
+            var rel = new StudentCourseRel
             {
                 Year = year,
                 CourseName = courseName
@@ -56,7 +56,7 @@ namespace HonglornBL.Models.Entities
 
         public string CourseNameByYear(short year)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 return (from rel in db.StudentCourseRel
                         where rel.Year == year && rel.StudentPKey == PKey

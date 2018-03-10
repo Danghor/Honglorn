@@ -87,7 +87,7 @@ namespace HonglornWPF.ViewModels
 
         void OpenFileDialog()
         {
-            OpenFileDialog dialog = new OpenFileDialog();
+            var dialog = new OpenFileDialog();
 
             if (dialog.ShowDialog() == true)
             {
@@ -116,7 +116,7 @@ namespace HonglornWPF.ViewModels
 
         void OnProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            IProgressInformer informer = e.UserState as IProgressInformer;
+            var informer = e.UserState as IProgressInformer;
             if (informer != null)
             {
                 StatusMessage = informer.StatusMessage;
