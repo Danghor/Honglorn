@@ -20,7 +20,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 progressBarStyle = value;
-                OnPropertyChanged(nameof(ProgressBarStyle));
+                OnPropertyChanged();
             }
         }
 
@@ -30,7 +30,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 status = value;
-                OnPropertyChanged(nameof(Status));
+                OnPropertyChanged();
             }
         }
 
@@ -40,7 +40,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 statusMessage = value;
-                OnPropertyChanged(nameof(StatusMessage));
+                OnPropertyChanged();
             }
         }
 
@@ -53,7 +53,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 year = value;
-                OnPropertyChanged(nameof(Year));
+                OnPropertyChanged();
             }
         }
 
@@ -63,7 +63,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 path = value;
-                OnPropertyChanged(nameof(Path));
+                OnPropertyChanged();
             }
         }
 

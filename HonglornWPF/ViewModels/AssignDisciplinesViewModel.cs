@@ -50,7 +50,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentYear = value;
-                OnPropertyChanged(nameof(CurrentYear));
+                OnPropertyChanged();
 
                 string previouslySelectedClass = CurrentClass;
 
@@ -67,7 +67,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentClass = value;
-                OnPropertyChanged(nameof(CurrentClass));
+                OnPropertyChanged();
 
                 Game? gameFromDb = GetGameType(CurrentClass, CurrentYear);
                 Game = gameFromDb == null ? RadioButtonGame.Unknown : gameTypeMap[gameFromDb];
@@ -80,7 +80,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 game = value;
-                OnPropertyChanged(nameof(Game));
+                OnPropertyChanged();
 
                 switch (value)
                 {
@@ -105,7 +105,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentMaleSprintDiscipline = value;
-                OnPropertyChanged(nameof(CurrentMaleSprintDiscipline));
+                OnPropertyChanged();
             }
         }
 
@@ -115,7 +115,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentMaleJumpDiscipline = value;
-                OnPropertyChanged(nameof(CurrentMaleJumpDiscipline));
+                OnPropertyChanged();
             }
         }
 
@@ -125,7 +125,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentMaleThrowDiscipline = value;
-                OnPropertyChanged(nameof(CurrentMaleThrowDiscipline));
+                OnPropertyChanged();
             }
         }
 
@@ -135,7 +135,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentMaleMiddleDistanceDiscipline = value;
-                OnPropertyChanged(nameof(CurrentMaleMiddleDistanceDiscipline));
+                OnPropertyChanged();
             }
         }
 
@@ -145,7 +145,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentFemaleSprintDiscipline = value;
-                OnPropertyChanged(nameof(CurrentFemaleSprintDiscipline));
+                OnPropertyChanged();
             }
         }
 
@@ -155,7 +155,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentFemaleJumpDiscipline = value;
-                OnPropertyChanged(nameof(CurrentFemaleJumpDiscipline));
+                OnPropertyChanged();
             }
         }
 
@@ -165,7 +165,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentFemaleThrowDiscipline = value;
-                OnPropertyChanged(nameof(CurrentFemaleThrowDiscipline));
+                OnPropertyChanged();
             }
         }
 
@@ -175,7 +175,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentFemaleMiddleDistanceDiscipline = value;
-                OnPropertyChanged(nameof(CurrentFemaleMiddleDistanceDiscipline));
+                OnPropertyChanged();
             }
         }
 

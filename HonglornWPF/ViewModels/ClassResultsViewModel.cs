@@ -24,7 +24,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentYear = value;
-                OnPropertyChanged(nameof(CurrentYear));
+                OnPropertyChanged();
 
                 string previouslySelectedCourse = CurrentCourse;
 
@@ -41,7 +41,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 currentCourse = value;
-                OnPropertyChanged(nameof(CurrentCourse));
+                OnPropertyChanged();
 
                 LoadResults();
             }
