@@ -1,11 +1,11 @@
-﻿<controls:MetroWindow x:Class="HonglornWPF.MainWindow"
+﻿<Controls:MetroWindow x:Class="HonglornWPF.MainWindow"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:local="clr-namespace:HonglornWPF"
-  xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
-  xmlns:views="clr-namespace:HonglornWPF.Views"
+  xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+  xmlns:Views="clr-namespace:HonglornWPF.Views"
   mc:Ignorable="d"
   x:ClassModifier="internal"
   Title="Honglorn" 
@@ -13,23 +13,22 @@
   NonActiveGlowBrush="#CDFF0000">
 
     <Grid>
-        <controls:MetroAnimatedSingleRowTabControl>
+        <Controls:MetroAnimatedSingleRowTabControl>
             <TabItem Header="Schüler importieren">
-                <views:ImportStudentsView />
+                <Views:ImportStudentsView />
             </TabItem>
             <TabItem Header="Disziplinen bearbeiten">
-                <views:EditDisciplinesView />
+                <Views:EditDisciplinesView />
             </TabItem>
             <TabItem Header="Disziplinen zuweisen">
-                <views:AssignDisciplinesView />
+                <Views:AssignDisciplinesView />
             </TabItem>
             <TabItem Header="Bearbeiten">
-                <views:EditPerformanceView />
+                <Views:EditPerformanceView />
             </TabItem>
             <TabItem Header="Auswertung">
-                <views:ClassResultsView />
+                <Views:ClassResultsView />
             </TabItem>
-        </controls:MetroAnimatedSingleRowTabControl>
+        </Controls:MetroAnimatedSingleRowTabControl>
     </Grid>
-</controls:MetroWindow>
-
+</Controls:MetroWindow>

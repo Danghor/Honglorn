@@ -1,9 +1,11 @@
-﻿namespace HonglornWPF.Views
+﻿using System.Windows.Controls;
+
+namespace HonglornWPF.Views
 {
     /// <summary>
     /// Interaction logic for ClassResultsView.xaml
     /// </summary>
-    partial class ClassResultsView
+    public partial class ClassResultsView : UserControl
     {
         public ClassResultsView()
         {

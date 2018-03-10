@@ -11,7 +11,7 @@ namespace HonglornWPF.ViewModels
 
         internal bool Enabled
         {
-            get => enabled;
+            get { return enabled; }
             set
             {
                 enabled = value;

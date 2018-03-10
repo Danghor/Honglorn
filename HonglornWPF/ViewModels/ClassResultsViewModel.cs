@@ -19,7 +19,7 @@ namespace HonglornWPF.ViewModels
 
         public short CurrentYear
         {
-            get => currentYear;
+            get { return currentYear; }
 
             set
             {
@@ -37,7 +37,7 @@ namespace HonglornWPF.ViewModels
 
         public string CurrentCourse
         {
-            get => currentCourse;
+            get { return currentCourse; }
             set
             {
                 currentCourse = value;

@@ -1,9 +1,11 @@
-﻿namespace HonglornWPF.Views
+﻿using System.Windows.Controls;
+
+namespace HonglornWPF.Views
 {
     /// <summary>
     /// Interaction logic for EditDisciplinesView.xaml
     /// </summary>
-    partial class EditDisciplinesView
+    public partial class EditDisciplinesView : UserControl
     {
         public EditDisciplinesView()
         {

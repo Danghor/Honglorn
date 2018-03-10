@@ -44,7 +44,7 @@ namespace HonglornWPF.ViewModels
 
         public short CurrentYear
         {
-            get => currentYear;
+            get { return currentYear; }
 
             set
             {
@@ -62,7 +62,7 @@ namespace HonglornWPF.ViewModels
 
         public string CurrentClass
         {
-            get => currentClass;
+            get { return currentClass; }
             set
             {
                 currentClass = value;
@@ -75,7 +75,7 @@ namespace HonglornWPF.ViewModels
 
         public RadioButtonGame Game
         {
-            get => game;
+            get { return game; }
             set
             {
                 game = value;
@@ -100,7 +100,7 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentMaleSprintDiscipline
         {
-            get => currentMaleSprintDiscipline;
+            get { return currentMaleSprintDiscipline; }
             set
             {
                 currentMaleSprintDiscipline = value;
@@ -110,7 +110,7 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentMaleJumpDiscipline
         {
-            get => currentMaleJumpDiscipline;
+            get { return currentMaleJumpDiscipline; }
             set
             {
                 currentMaleJumpDiscipline = value;
@@ -120,7 +120,7 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentMaleThrowDiscipline
         {
-            get => currentMaleThrowDiscipline;
+            get { return currentMaleThrowDiscipline; }
             set
             {
                 currentMaleThrowDiscipline = value;
@@ -130,7 +130,7 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentMaleMiddleDistanceDiscipline
         {
-            get => currentMaleMiddleDistanceDiscipline;
+            get { return currentMaleMiddleDistanceDiscipline; }
             set
             {
                 currentMaleMiddleDistanceDiscipline = value;
@@ -140,7 +140,7 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentFemaleSprintDiscipline
         {
-            get => currentFemaleSprintDiscipline;
+            get { return currentFemaleSprintDiscipline; }
             set
             {
                 currentFemaleSprintDiscipline = value;
@@ -150,7 +150,7 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentFemaleJumpDiscipline
         {
-            get => currentFemaleJumpDiscipline;
+            get { return currentFemaleJumpDiscipline; }
             set
             {
                 currentFemaleJumpDiscipline = value;
@@ -160,7 +160,7 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentFemaleThrowDiscipline
         {
-            get => currentFemaleThrowDiscipline;
+            get { return currentFemaleThrowDiscipline; }
             set
             {
                 currentFemaleThrowDiscipline = value;
@@ -170,7 +170,7 @@ namespace HonglornWPF.ViewModels
 
         public Discipline CurrentFemaleMiddleDistanceDiscipline
         {
-            get => currentFemaleMiddleDistanceDiscipline;
+            get { return currentFemaleMiddleDistanceDiscipline; }
             set
             {
                 currentFemaleMiddleDistanceDiscipline = value;
