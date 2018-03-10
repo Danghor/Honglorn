@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF.Views"
              xmlns:wpf="clr-namespace:HonglornWPF"
-             xmlns:ViewModels="clr-namespace:HonglornWPF.ViewModels"
-             mc:Ignorable="d">
+             xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             mc:Ignorable="d" x:ClassModifier="internal">
 
     <UserControl.DataContext>
-        <ViewModels:AssignDisciplinesViewModel/>
+        <viewModels:AssignDisciplinesViewModel/>
     </UserControl.DataContext>
 
     <StackPanel>
@@ -29,8 +29,8 @@
         </Grid>
         <GroupBox x:Name="gameTypeGroupBox" Header="Wettkampf">
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="traditionalRadioButton" GroupName="gameType" Content="Traditionell" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static ViewModels:RadioButtonGame.Traditional}}" />
-                <RadioButton x:Name="competitionRadioButton" GroupName="gameType" Content="Wettbewerb" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static ViewModels:RadioButtonGame.Competition}}"/>
+                <RadioButton x:Name="traditionalRadioButton" GroupName="gameType" Content="Traditionell" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static viewModels:RadioButtonGame.Traditional}}" />
+                <RadioButton x:Name="competitionRadioButton" GroupName="gameType" Content="Wettbewerb" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static viewModels:RadioButtonGame.Competition}}"/>
             </StackPanel>
         </GroupBox>
         <Grid>

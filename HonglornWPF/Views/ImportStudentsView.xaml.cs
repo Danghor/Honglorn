@@ -1,11 +1,9 @@
-﻿using System.Windows.Controls;
-
-namespace HonglornWPF.Views
+﻿namespace HonglornWPF.Views
 {
     /// <summary>
     /// Interaction logic for ImportStudentsView.xaml
     /// </summary>
-    public partial class ImportStudentsView : UserControl
+    partial class ImportStudentsView
     {
         public ImportStudentsView()
         {

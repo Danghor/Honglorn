@@ -1,11 +1,9 @@
-﻿using System.Windows.Controls;
-
-namespace HonglornWPF.Views
+﻿namespace HonglornWPF.Views
 {
     /// <summary>
     ///     Interaction logic for EditPerformanceView.xaml
     /// </summary>
-    public partial class EditPerformanceView : UserControl
+    partial class EditPerformanceView
     {
         public EditPerformanceView()
         {

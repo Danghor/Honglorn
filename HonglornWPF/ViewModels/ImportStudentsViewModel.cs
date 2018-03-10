@@ -16,7 +16,7 @@ namespace HonglornWPF.ViewModels
 
         public ProgressBarStyle ProgressBarStyle
         {
-            get { return progressBarStyle; }
+            get => progressBarStyle;
             set
             {
                 progressBarStyle = value;
@@ -26,7 +26,7 @@ namespace HonglornWPF.ViewModels
 
         public int Status
         {
-            get { return status; }
+            get => status;
             set
             {
                 status = value;
@@ -36,7 +36,7 @@ namespace HonglornWPF.ViewModels
 
         public string StatusMessage
         {
-            get { return statusMessage; }
+            get => statusMessage;
             set
             {
                 statusMessage = value;
@@ -49,7 +49,7 @@ namespace HonglornWPF.ViewModels
 
         public short Year
         {
-            get { return year; }
+            get => year;
             set
             {
                 year = value;
@@ -59,7 +59,7 @@ namespace HonglornWPF.ViewModels
 
         public string Path
         {
-            get { return path; }
+            get => path;
             set
             {
                 path = value;

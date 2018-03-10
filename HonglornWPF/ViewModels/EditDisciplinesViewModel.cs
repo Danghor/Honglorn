@@ -13,7 +13,7 @@ namespace HonglornWPF.ViewModels
 
         public CompetitionDiscipline CurrentDiscipline
         {
-            get { return currentDiscipline; }
+            get => currentDiscipline;
             set
             {
                 SaveDiscipline(currentDiscipline);
