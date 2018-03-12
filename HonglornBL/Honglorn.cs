@@ -220,51 +220,6 @@ namespace HonglornBL
             return result;
         }
 
-        public static DataTable GetStudentCompetitionTable(string courseName, short year)
-        {
-            // Prepare table
-            var table = new DataTable();
-
-            DataColumn pKeyColumn = table.Columns.Add(nameof(Student.PKey), typeof(Guid));
-            DataColumn surnameColumn = table.Columns.Add(nameof(Student.Surname), typeof(string));
-            DataColumn forenameColumn = table.Columns.Add(nameof(Student.Forename), typeof(string));
-            DataColumn sexColumn = table.Columns.Add(nameof(Student.Sex), typeof(Sex));
-            DataColumn sprintColumn = table.Columns.Add(nameof(Competition.Sprint), typeof(float));
-            DataColumn jumpColumn = table.Columns.Add(nameof(Competition.Jump), typeof(float));
-            DataColumn throwColumn = table.Columns.Add(nameof(Competition.Throw), typeof(float));
-            DataColumn middleDistanceColumn = table.Columns.Add(nameof(Competition.MiddleDistance), typeof(float));
-
-            using (var db = new HonglornDb())
-            {
-                IEnumerable<Student> studentList = (from s in db.Student
-                                                    where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
-                                                    orderby s.Surname, s.Forename, s.YearOfBirth descending
-                                                    select s).ToList();
-
-                foreach (Student student in studentList)
-                {
-                    Competition competition = (from c in student.Competition
-                                               where c.Year == year
-                                               select c).SingleOrDefault();
-
-                    DataRow newRow = table.NewRow();
-
-                    newRow.SetField(pKeyColumn, student.PKey);
-                    newRow.SetField(surnameColumn, student.Surname);
-                    newRow.SetField(forenameColumn, student.Forename);
-                    newRow.SetField(sexColumn, student.Sex);
-                    newRow.SetField(sprintColumn, competition?.Sprint);
-                    newRow.SetField(jumpColumn, competition?.Jump);
-                    newRow.SetField(throwColumn, competition?.Throw);
-                    newRow.SetField(middleDistanceColumn, competition?.MiddleDistance);
-
-                    table.Rows.Add(newRow);
-                }
-            }
-
-            return table;
-        }
-
         public static void UpdateSingleStudentCompetition(Guid studentPKey, short year, float? sprint, float? jump, float? @throw, float? middleDistance)
         {
             using (var db = new HonglornDb())
@@ -571,11 +526,6 @@ namespace HonglornBL
         public static ICollection<string> ValidClassNames(short year)
         {
             return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
-        }
-
-        public static ICollection<DisciplineType> DisciplineTypes()
-        {
-            return (DisciplineType[]) Enum.GetValues(typeof(DisciplineType));
         }
 
         #region "Import"
