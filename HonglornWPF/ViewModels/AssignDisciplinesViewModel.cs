@@ -210,7 +210,7 @@ namespace HonglornWPF.ViewModels
 
         public AssignDisciplinesViewModel()
         {
-            SaveDisciplineCollectionCommand = new RelayCommand(SavedisciplineCollection);
+            SaveDisciplineCollectionCommand = new RelayCommand(SaveDisciplineCollection);
 
             LoadYears();
             if (Years.Any())
@@ -219,7 +219,7 @@ namespace HonglornWPF.ViewModels
             }
         }
 
-        void SavedisciplineCollection()
+        void SaveDisciplineCollection()
         {
             CreateOrUpdateDisciplineCollection(CurrentClass, CurrentYear, CurrentMaleSprintDiscipline.PKey, CurrentMaleJumpDiscipline.PKey, CurrentMaleThrowDiscipline.PKey, CurrentMaleMiddleDistanceDiscipline.PKey, CurrentFemaleSprintDiscipline.PKey, CurrentFemaleJumpDiscipline.PKey, CurrentFemaleThrowDiscipline.PKey, CurrentFemaleMiddleDistanceDiscipline.PKey);
         }
