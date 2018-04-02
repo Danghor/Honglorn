@@ -428,17 +428,8 @@ namespace HonglornBL
         {
             using (var db = new HonglornDb())
             {
-                Discipline maleSprintDiscipline = db.Set<Discipline>().Find(maleSprintPKey);
-                Discipline maleJumpDiscipline = db.Set<Discipline>().Find(maleJumpPKey);
-                Discipline maleThrowDiscipline = db.Set<Discipline>().Find(maleThrowPKey);
-                Discipline maleMiddleDistanceDiscipline = db.Set<Discipline>().Find(maleMiddleDistancePKey);
-
-                Discipline femaleSprintDiscipline = db.Set<Discipline>().Find(femaleSprintPKey);
-                Discipline femaleJumpDiscipline = db.Set<Discipline>().Find(femaleJumpPKey);
-                Discipline femaleThrowDiscipline = db.Set<Discipline>().Find(femaleThrowPKey);
-                Discipline femaleMiddleDistanceDiscipline = db.Set<Discipline>().Find(femaleMiddleDistancePKey);
-
-                Discipline[] disciplines = new[] { maleSprintDiscipline, maleJumpDiscipline, maleThrowDiscipline, maleMiddleDistanceDiscipline, femaleSprintDiscipline, femaleJumpDiscipline, femaleThrowDiscipline, femaleMiddleDistanceDiscipline };
+                IEnumerable<Discipline> disciplines = from d in new[] { maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey }
+                                                      select db.Set<Discipline>().Find(d);
 
                 if (disciplines.All(d => d is CompetitionDiscipline) || disciplines.All(d => d is TraditionalDiscipline))
                 {
@@ -482,8 +473,6 @@ namespace HonglornBL
                 {
                     throw new ArgumentException("Could not save Discipline Collection. All discipline pkeys must be either entirely from competition disciplines, or from traditional disciplines, but you cannot mix them.");
                 }
-
-
             }
         }
 
