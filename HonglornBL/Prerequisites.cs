@@ -38,7 +38,7 @@ namespace HonglornBL
         /// <param name="x">The numerator.</param>
         /// <param name="y">The denominator.</param>
         /// <returns>The rounded fraction in percentage.</returns>
-        internal static int PercentageValue(int x, int y) => (int)Math.Round(100d * x / y);
+        internal static byte PercentageValue(int x, int y) => (byte)Math.Round(100d * x / y);
 
         internal const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

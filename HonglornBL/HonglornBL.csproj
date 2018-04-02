@@ -100,6 +100,7 @@
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\FieldErrorInfo.cs" />
     <Compile Include="Import\RecordErrorInfo.cs" />
+    <Compile Include="ProgressReport.cs" />
     <Compile Include="RawMeasurement.cs" />
     <Compile Include="DisciplineContainer.cs" />
     <Compile Include="Result.cs" />

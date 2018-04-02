@@ -1,16 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using HonglornBL.APIClasses;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
-using static System.Windows.Forms.ProgressBarStyle;
 using static HonglornBL.Prerequisites;
 using System.Threading.Tasks;
+using HonglornBL.Import;
 
 namespace HonglornBL
 {
@@ -146,7 +144,7 @@ namespace HonglornBL
                                           {
                                               Forename = s.Forename,
                                               Surname = s.Surname,
-                                              Score = (ushort) (c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore)
+                                              Score = (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore)
                                           };
 
             return results;
@@ -530,6 +528,12 @@ namespace HonglornBL
 
         #region "Import"
 
+        static readonly Dictionary<string, Sex> SexDictionary = new Dictionary<string, Sex>
+        {
+            {"W", Sex.Female},
+            {"M", Sex.Male}
+        };
+
         //todo: currently only works with a "perfect" Excel sheet
         //todo: test inserting an already existing student
 
@@ -539,40 +543,43 @@ namespace HonglornBL
         /// <param name="filePath">The full path to the Excel file to be imported.</param>
         /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
         /// <param name="worker">The background worker used to process this method. Used for status updates.</param>
-        public static void ImportStudentCourseExcelSheet(string filePath, short year, BackgroundWorker worker)
+        public static async Task<ICollection<ImportedStudentRecord>> ImportStudentCourseExcelSheet(string filePath, short year, IProgress<ProgressReport> progress)
         {
             if (!IsValidYear(year))
             {
                 throw new ArgumentException($"{year} is not a valid year.");
             }
 
-            worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
+            progress.Report(new ProgressReport { Percentage = 0, IsIndeterminate = true, Message = "Lese Daten aus Excel Datei..." });
 
-            //IEnumerable<Student> students = new StudentFile(filePath);
-
-            ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
+            ICollection<ImportedStudentRecord> studentsFromExcelSheet = await Task.Factory.StartNew(() => ExcelImporter.GetStudentDataTableFromExcelFile(filePath));
 
             int currentlyImported = 0;
 
-            worker.ReportProgress(0, new ProgressInformer { Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..." });
+            progress.Report(new ProgressReport { Percentage = 0, IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
 
-            foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet)
+            foreach (ImportedStudentRecord importStudent in studentsFromExcelSheet)
             {
-                ImportSingleStudent(importStudent.Item1, importStudent.Item2, year);
+                if (importStudent.Error == null)
+                {
+                    Student student = new Student
+                    {
+                        Forename = importStudent.ImportedForename,
+                        Surname = importStudent.ImportedSurname,
+                        Sex = SexDictionary[importStudent.ImportedSex],
+                        YearOfBirth = short.Parse(importStudent.ImportedYearOfBirth)
+                    };
+
+                    await Task.Factory.StartNew(() => ImportSingleStudent(student, importStudent.ImportedCourseName, year));
+                }
 
                 currentlyImported++;
-                worker.ReportProgress(PercentageValue(currentlyImported, studentsFromExcelSheet.Count), new ProgressInformer
-                {
-                    Style = Continuous,
-                    StatusMessage = "Schreibe Daten in die Datenbank..."
-                });
+                progress.Report(new ProgressReport { Percentage = PercentageValue(currentlyImported, studentsFromExcelSheet.Count), IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
             }
 
-            worker.ReportProgress(100, new ProgressInformer
-            {
-                Style = Continuous,
-                StatusMessage = "Fertig!"
-            });
+            progress.Report(new ProgressReport { Percentage = 100, IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
+
+            return studentsFromExcelSheet;
         }
 
         /// <summary>
