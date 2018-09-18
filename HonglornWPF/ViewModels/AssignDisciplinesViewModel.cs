@@ -48,8 +48,7 @@ namespace HonglornWPF.ViewModels
 
             set
             {
-                currentYear = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentYear, value);
 
                 string previouslySelectedClass = CurrentClass;
 
@@ -65,8 +64,7 @@ namespace HonglornWPF.ViewModels
             get { return currentClass; }
             set
             {
-                currentClass = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentClass, value);
 
                 Game? gameFromDb = GetGameType(CurrentClass, CurrentYear);
                 Game = gameFromDb == null ? RadioButtonGame.Unknown : gameTypeMap[gameFromDb];
@@ -78,8 +76,7 @@ namespace HonglornWPF.ViewModels
             get { return game; }
             set
             {
-                game = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref game, value);
 
                 switch (value)
                 {
@@ -92,7 +89,7 @@ namespace HonglornWPF.ViewModels
                     case RadioButtonGame.Unknown:
                         break;
                     default:
-                        throw new InvalidEnumArgumentException(nameof(value), (int) value, typeof(RadioButtonGame));
+                        throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(RadioButtonGame));
                 }
 
             }
@@ -103,8 +100,7 @@ namespace HonglornWPF.ViewModels
             get { return currentMaleSprintDiscipline; }
             set
             {
-                currentMaleSprintDiscipline = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentMaleSprintDiscipline, value);
             }
         }
 
@@ -113,8 +109,7 @@ namespace HonglornWPF.ViewModels
             get { return currentMaleJumpDiscipline; }
             set
             {
-                currentMaleJumpDiscipline = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentMaleJumpDiscipline, value);
             }
         }
 
@@ -123,8 +118,7 @@ namespace HonglornWPF.ViewModels
             get { return currentMaleThrowDiscipline; }
             set
             {
-                currentMaleThrowDiscipline = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentMaleThrowDiscipline, value);
             }
         }
 
@@ -133,8 +127,7 @@ namespace HonglornWPF.ViewModels
             get { return currentMaleMiddleDistanceDiscipline; }
             set
             {
-                currentMaleMiddleDistanceDiscipline = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentMaleMiddleDistanceDiscipline, value);
             }
         }
 
@@ -143,8 +136,7 @@ namespace HonglornWPF.ViewModels
             get { return currentFemaleSprintDiscipline; }
             set
             {
-                currentFemaleSprintDiscipline = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentFemaleSprintDiscipline, value);
             }
         }
 
@@ -153,8 +145,7 @@ namespace HonglornWPF.ViewModels
             get { return currentFemaleJumpDiscipline; }
             set
             {
-                currentFemaleJumpDiscipline = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentFemaleJumpDiscipline, value);
             }
         }
 
@@ -163,8 +154,7 @@ namespace HonglornWPF.ViewModels
             get { return currentFemaleThrowDiscipline; }
             set
             {
-                currentFemaleThrowDiscipline = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentFemaleThrowDiscipline, value);
             }
         }
 
@@ -173,8 +163,7 @@ namespace HonglornWPF.ViewModels
             get { return currentFemaleMiddleDistanceDiscipline; }
             set
             {
-                currentFemaleMiddleDistanceDiscipline = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentFemaleMiddleDistanceDiscipline, value);
             }
         }
 
