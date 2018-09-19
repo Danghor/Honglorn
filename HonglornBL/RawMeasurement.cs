@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace HonglornBL
+﻿namespace HonglornBL
 {
     class RawMeasurement
     {
-        public float? Sprint { get; }
+        internal float? Sprint { get; }
 
-        public float? Jump { get; }
+        internal float? Jump { get; }
 
-        public float? Throw { get; }
+        internal float? Throw { get; }
 
-        public float? MiddleDistance { get; }
+        internal float? MiddleDistance { get; }
 
         internal RawMeasurement(float? sprint, float? jump, float? @throw, float? middleDistance)
         {

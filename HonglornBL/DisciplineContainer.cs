@@ -1,6 +1,8 @@
-﻿namespace HonglornBL
+﻿using HonglornBL.Models.Entities;
+
+namespace HonglornBL
 {
-    class DisciplineContainer<T>
+    class DisciplineContainer<T> where T : Discipline
     {
         internal T MaleSprint { get; set; }
         internal T MaleJump { get; set; }

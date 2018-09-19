@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace HonglornBL.Import
+﻿namespace HonglornBL.Import
 {
-    class FieldErrorInfo
+    public class FieldErrorInfo
     {
-        string FieldName { get; }
-        string FieldContent { get; }
-        string Message { get; }
+        public string FieldName { get; }
+        public string FieldContent { get; }
+        public string Message { get; }
 
         public FieldErrorInfo(string fieldName, string fieldContent, string message)
         {

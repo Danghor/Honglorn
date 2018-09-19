@@ -21,9 +21,9 @@ namespace HonglornBL.Models.Framework
 
         static void InitializeEntity<TEntity>(string xmlContent, DbSet set)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(TEntity[]));
+            var serializer = new XmlSerializer(typeof(TEntity[]));
 
-            using (StringReader reader = new StringReader(xmlContent))
+            using (var reader = new StringReader(xmlContent))
             {
                 try
                 {

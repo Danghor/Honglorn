@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace HonglornBL.Import
 {
-    class RecordErrorInfo
+    public class RecordErrorInfo
     {
-        internal ICollection<FieldErrorInfo> FieldErrorInfos { get; }
+        public ICollection<FieldErrorInfo> FieldErrorInfos { get; }
 
-        public RecordErrorInfo(ICollection<FieldErrorInfo> fieldErrorInfos)
+        internal RecordErrorInfo(ICollection<FieldErrorInfo> fieldErrorInfos)
         {
             FieldErrorInfos = fieldErrorInfos;
         }

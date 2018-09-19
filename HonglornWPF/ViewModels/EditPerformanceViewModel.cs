@@ -23,8 +23,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 SaveCompetition(currentStudentCompetition);
-                currentYear = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentYear, value);
 
                 string previouslySelectedCourse = CurrentCourse;
 
@@ -41,8 +40,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 SaveCompetition(currentStudentCompetition);
-                currentCourse = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentCourse, value);
 
                 LoadStudentsCompetitionsTuples();
             }
@@ -54,8 +52,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 SaveCompetition(currentStudentCompetition);
-                currentStudentCompetition = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref currentStudentCompetition, value);
             }
         }
 

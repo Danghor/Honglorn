@@ -5,7 +5,7 @@ using HonglornBL.Properties;
 
 namespace HonglornBL.Import
 {
-    class ImportedStudentRecord
+    public class ImportedStudentRecord
     {
         internal string ImportedSurname { get; }
         internal string ImportedForename { get; }
@@ -13,7 +13,7 @@ namespace HonglornBL.Import
         internal string ImportedSex { get; }
         internal string ImportedYearOfBirth { get; }
 
-        internal RecordErrorInfo Error { get; private set; }
+        public RecordErrorInfo Error { get; private set; }
 
         public ImportedStudentRecord(string importedSurname, string importedForename, string importedCourseName, string importedSex, string importedYearOfBirth)
         {

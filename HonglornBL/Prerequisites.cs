@@ -8,7 +8,7 @@ namespace HonglornBL
 {
     public static class Prerequisites
     {
-        static IEnumerable<Tuple<string, Func<string, string>>> classNameFunctionMap = new[]
+        static readonly IEnumerable<Tuple<string, Func<string, string>>> classNameFunctionMap = new[]
         {
             new Tuple<string, Func<string, string>>("0[5-9][A-Za-z]", c => c[1].ToString()),
             new Tuple<string, Func<string, string>>("[5-9][A-Za-z]", c => c[0].ToString()),
@@ -18,7 +18,7 @@ namespace HonglornBL
         internal static string GetClassName(string courseName)
         {
             string className;
-            var pair = classNameFunctionMap.FirstOrDefault(tuple => Regex.IsMatch(courseName, tuple.Item1));
+            Tuple<string, Func<string, string>> pair = classNameFunctionMap.FirstOrDefault(tuple => Regex.IsMatch(courseName, tuple.Item1));
 
             if (pair == null)
             {
@@ -38,7 +38,7 @@ namespace HonglornBL
         /// <param name="x">The numerator.</param>
         /// <param name="y">The denominator.</param>
         /// <returns>The rounded fraction in percentage.</returns>
-        internal static int PercentageValue(int x, int y) => (int)Math.Round(100d * x / y);
+        internal static byte PercentageValue(int x, int y) => (byte)Math.Round(100d * x / y);
 
         internal const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using HonglornBL.Models.Entities;
 using Microsoft.Office.Interop.Excel;
 using static HonglornBL.Prerequisites;
 using HonglornBL.Import;
@@ -28,14 +27,14 @@ namespace HonglornBL
         ///     Designed to work together with the DBHandler to import the data into the database.
         /// </summary>
         /// <param name="filePath">The file path of the Excel-file containing the relevant data.</param>
-        internal static ICollection<Tuple<Student, string>> GetStudentDataTableFromExcelFile(string filePath)
+        internal static ICollection<ImportedStudentRecord> GetStudentDataTableFromExcelFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
             {
                 throw new ArgumentException("File path is null, empty or consist of only white-space characters.");
             }
 
-            ICollection<Tuple<Student, string>> extractedStudents = new List<Tuple<Student, string>>();
+            ICollection<ImportedStudentRecord> extractedStudents = new List<ImportedStudentRecord>();
 
             _Application excelInstance = null;
             _Workbook workbook = null;
@@ -48,8 +47,6 @@ namespace HonglornBL
 
                 ValidateHeaderRow(worksheet);
 
-                //import content
-                //todo: handle half-empty rows correctly! (Error message and removal from DataTable, so it's not imported)
                 int rowIdx = 2;
                 bool rowIsEmpty = false;
                 while (!rowIsEmpty)
@@ -59,19 +56,7 @@ namespace HonglornBL
 
                     if (!rowIsEmpty)
                     {
-                        ImportedStudentRecord studentRecord = new ImportedStudentRecord(row[0], row[1], row[2], row[3], row[4]);
-                        if (studentRecord.Error == null)
-                        {
-                            Student student = new Student
-                            {
-                                Surname = studentRecord.ImportedSurname,
-                                Forename = studentRecord.ImportedForename,
-                                Sex = SexDictionary[studentRecord.ImportedSex],
-                                YearOfBirth = short.Parse(studentRecord.ImportedYearOfBirth)
-                            };
-
-                            extractedStudents.Add(new Tuple<Student, string>(student, studentRecord.ImportedCourseName));
-                        }
+                        extractedStudents.Add(new ImportedStudentRecord(row[0], row[1], row[2], row[3], row[4]));
                     }
 
                     rowIdx++;
@@ -114,7 +99,7 @@ namespace HonglornBL
 
         static string[] GetRow(this _Worksheet sheet, int rowIdx, int length)
         {
-            var row = new string[length];
+            string[] row = new string[length];
 
             for (int colIdx = 0; colIdx < length; colIdx++)
             {

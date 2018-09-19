@@ -4,12 +4,17 @@ using System.Windows.Forms;
 using HonglornBL;
 using HonglornBL.Interfaces;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
+using Microsoft;
+using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
+using HonglornBL.Import;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HonglornWPF.ViewModels
 {
     class ImportStudentsViewModel : ViewModel
     {
-        readonly BackgroundWorker importWorker;
         short year;
         string path;
         ProgressBarStyle progressBarStyle;
@@ -19,8 +24,7 @@ namespace HonglornWPF.ViewModels
             get { return progressBarStyle; }
             set
             {
-                progressBarStyle = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref progressBarStyle, value);
             }
         }
 
@@ -29,8 +33,7 @@ namespace HonglornWPF.ViewModels
             get { return status; }
             set
             {
-                status = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref status, value);
             }
         }
 
@@ -39,8 +42,7 @@ namespace HonglornWPF.ViewModels
             get { return statusMessage; }
             set
             {
-                statusMessage = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref statusMessage, value);
             }
         }
 
@@ -52,8 +54,7 @@ namespace HonglornWPF.ViewModels
             get { return year; }
             set
             {
-                year = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref year, value);
             }
         }
 
@@ -62,8 +63,7 @@ namespace HonglornWPF.ViewModels
             get { return path; }
             set
             {
-                path = value;
-                OnPropertyChanged();
+                OnPropertyChanged(ref path, value);
             }
         }
 
@@ -72,22 +72,14 @@ namespace HonglornWPF.ViewModels
 
         public ImportStudentsViewModel()
         {
-            Year = (short) DateTime.Now.Year;
+            Year = (short)DateTime.Now.Year;
             OpenFileDialogCommand = new RelayCommand(OpenFileDialog);
             ImportStudentsAsyncCommand = new RelayCommand(ImportStudentsAsync);
-
-            importWorker = new BackgroundWorker
-            {
-                WorkerReportsProgress = true
-            };
-            importWorker.DoWork += ImportStudents;
-            importWorker.ProgressChanged += OnProgressChanged;
-            importWorker.RunWorkerCompleted += OnRunWorkerCompleted;
         }
 
         void OpenFileDialog()
         {
-            OpenFileDialog dialog = new OpenFileDialog();
+            var dialog = new OpenFileDialog();
 
             if (dialog.ShowDialog() == true)
             {
@@ -95,48 +87,37 @@ namespace HonglornWPF.ViewModels
             }
         }
 
-        void ImportStudentsAsync()
+        async void ImportStudentsAsync()
         {
-            ImportStudentsAsyncCommand.Enabled = false;
+            var mainWindow = System.Windows.Application.Current.MainWindow as MetroWindow;
 
             try
             {
-                importWorker.RunWorkerAsync();
+                ICollection<ImportedStudentRecord> importedStudents = await Honglorn.ImportStudentCourseExcelSheet(Path, Year, new Progress<ProgressReport>(r => OnProgressChanged(r)));
+
+                int successfullyImported = importedStudents.Count(s => s.Error == null);
+                int unsuccessfullyImported = importedStudents.Count(s => s.Error != null);
+
+                await mainWindow.ShowMessageAsync("Notification", $"Successfully imported: {successfullyImported} \r\nFailed to import: {unsuccessfullyImported}");
             }
             catch (Exception ex)
             {
+                await mainWindow.ShowMessageAsync("Error", ex.Message);
+            }
+            finally
+            {
+                Status = 0;
+                ProgressBarStyle = ProgressBarStyle.Continuous;
+                StatusMessage = string.Empty;
                 ImportStudentsAsyncCommand.Enabled = true;
             }
         }
 
-        void ImportStudents(object sender, DoWorkEventArgs e)
+        void OnProgressChanged(ProgressReport report)
         {
-            Honglorn.ImportStudentCourseExcelSheet(Path, Year, importWorker);
-        }
-
-        void OnProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            IProgressInformer informer = e.UserState as IProgressInformer;
-            if (informer != null)
-            {
-                StatusMessage = informer.StatusMessage;
-                ProgressBarStyle = informer.Style;
-            }
-            else
-            {
-                StatusMessage = "Error: Cannot display progress.";
-                ProgressBarStyle = ProgressBarStyle.Marquee;
-            }
-
-            Status = e.ProgressPercentage;
-        }
-
-        void OnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Status = 0;
-            ProgressBarStyle = ProgressBarStyle.Continuous;
-            StatusMessage = string.Empty;
-            ImportStudentsAsyncCommand.Enabled = true;
+            StatusMessage = report.Message;
+            ProgressBarStyle = report.IsIndeterminate ? ProgressBarStyle.Marquee : ProgressBarStyle.Continuous;
+            Status = report.Percentage;
         }
     }
 }

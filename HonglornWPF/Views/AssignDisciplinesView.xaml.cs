@@ -1,11 +1,9 @@
-﻿using System.Windows.Controls;
-
-namespace HonglornWPF.Views
+﻿namespace HonglornWPF.Views
 {
     /// <summary>
     /// Interaction logic for AssignDisciplinesView.xaml
     /// </summary>
-    public partial class AssignDisciplinesView : UserControl
+    partial class AssignDisciplinesView
     {
         public AssignDisciplinesView()
         {

@@ -1,16 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using HonglornBL.APIClasses;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
-using static System.Windows.Forms.ProgressBarStyle;
 using static HonglornBL.Prerequisites;
 using System.Threading.Tasks;
+using HonglornBL.Import;
 
 namespace HonglornBL
 {
@@ -18,7 +16,7 @@ namespace HonglornBL
     {
         public static ICollection<Student> GetStudents(string course, short year)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 return (from s in db.Student
                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
@@ -39,7 +37,7 @@ namespace HonglornBL
             IEnumerable<Student> students = GetStudents(course, year);
             string className = GetClassName(course);
 
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 DisciplineCollection disciplines = (from d in db.DisciplineCollection
                                                     where d.ClassName == className
@@ -55,7 +53,7 @@ namespace HonglornBL
 
                 if (disciplineArray.All(d => d is TraditionalDiscipline))
                 {
-                    TraditionalDisciplineContainer disciplineContainer = new TraditionalDisciplineContainer
+                    var disciplineContainer = new TraditionalDisciplineContainer
                     {
                         MaleSprint = disciplines.MaleSprint as TraditionalDiscipline,
                         MaleJump = disciplines.MaleJump as TraditionalDiscipline,
@@ -71,7 +69,7 @@ namespace HonglornBL
                 }
                 else if (disciplineArray.All(d => d is CompetitionDiscipline))
                 {
-                    CompetitionDisciplineContainer disciplineContainer = new CompetitionDisciplineContainer
+                    var disciplineContainer = new CompetitionDisciplineContainer
                     {
                         MaleSprint = disciplines.MaleSprint as CompetitionDiscipline,
                         MaleJump = disciplines.MaleJump as CompetitionDiscipline,
@@ -100,7 +98,7 @@ namespace HonglornBL
 
             IEnumerable<string> classes = (from s in students
                                            select GetClassName(s.CourseNameByYear(year))).Distinct();
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 foreach (string @class in classes)
                 {
@@ -112,7 +110,7 @@ namespace HonglornBL
                                                            where s.Sex == Sex.Female
                                                            select s).AsEnumerable().Where(s => GetClassName(s.CourseNameByYear(year)) == @class).ToList();
 
-                    CompetitionCalculator maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter);
+                    var maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter);
 
                     foreach (Student maleStudent in maleStudents)
                     {
@@ -123,7 +121,7 @@ namespace HonglornBL
                         maleCalculator.AddStudentMeasurement(maleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
                     }
 
-                    CompetitionCalculator femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter);
+                    var femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter);
 
                     foreach (Student femaleStudent in femaleStudents)
                     {
@@ -196,7 +194,7 @@ namespace HonglornBL
             Certificate result;
             int studentAge = DateTime.Now.Year - yearOfBirth;
 
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 var scoreBoundaries = (from meta in db.TraditionalReportMeta
                                        where meta.Sex == sex
@@ -220,90 +218,9 @@ namespace HonglornBL
             return result;
         }
 
-        public static DataTable GetStudentCompetitionTable(string courseName, short year)
-        {
-            // Prepare table
-            DataTable table = new DataTable();
-
-            DataColumn pKeyColumn = table.Columns.Add(nameof(Student.PKey), typeof(Guid));
-            DataColumn surnameColumn = table.Columns.Add(nameof(Student.Surname), typeof(string));
-            DataColumn forenameColumn = table.Columns.Add(nameof(Student.Forename), typeof(string));
-            DataColumn sexColumn = table.Columns.Add(nameof(Student.Sex), typeof(Sex));
-            DataColumn sprintColumn = table.Columns.Add(nameof(Competition.Sprint), typeof(float));
-            DataColumn jumpColumn = table.Columns.Add(nameof(Competition.Jump), typeof(float));
-            DataColumn throwColumn = table.Columns.Add(nameof(Competition.Throw), typeof(float));
-            DataColumn middleDistanceColumn = table.Columns.Add(nameof(Competition.MiddleDistance), typeof(float));
-
-            using (HonglornDb db = new HonglornDb())
-            {
-                IEnumerable<Student> studentList = (from s in db.Student
-                                                    where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == courseName)
-                                                    orderby s.Surname, s.Forename, s.YearOfBirth descending
-                                                    select s).ToList();
-
-                foreach (Student student in studentList)
-                {
-                    Competition competition = (from c in student.Competition
-                                               where c.Year == year
-                                               select c).SingleOrDefault();
-
-                    DataRow newRow = table.NewRow();
-
-                    newRow.SetField(pKeyColumn, student.PKey);
-                    newRow.SetField(surnameColumn, student.Surname);
-                    newRow.SetField(forenameColumn, student.Forename);
-                    newRow.SetField(sexColumn, student.Sex);
-                    newRow.SetField(sprintColumn, competition?.Sprint);
-                    newRow.SetField(jumpColumn, competition?.Jump);
-                    newRow.SetField(throwColumn, competition?.Throw);
-                    newRow.SetField(middleDistanceColumn, competition?.MiddleDistance);
-
-                    table.Rows.Add(newRow);
-                }
-            }
-
-            return table;
-        }
-
-        public static void UpdateStudentCompetitionData(DataTable table, short year)
-        {
-            if (table == null)
-            {
-                throw new ArgumentNullException(nameof(DataTable));
-            }
-
-            if (!IsValidYear(year))
-            {
-                throw new ArgumentOutOfRangeException($"{year} is not a valid year.");
-            }
-
-            DataColumn pKeyColumn = table.Columns[nameof(Student.PKey)];
-            DataColumn surnameColumn = table.Columns[nameof(Student.Surname)];
-            DataColumn forenameColumn = table.Columns[nameof(Student.Forename)];
-            DataColumn sexColumn = table.Columns[nameof(Student.Sex)];
-            DataColumn sprintColumn = table.Columns[nameof(Competition.Sprint)];
-            DataColumn jumpColumn = table.Columns[nameof(Competition.Jump)];
-            DataColumn throwColumn = table.Columns[nameof(Competition.Throw)];
-            DataColumn middleDistanceColumn = table.Columns[nameof(Competition.MiddleDistance)];
-
-            foreach (DataRow row in table.Rows)
-            {
-                Guid pKey = (Guid)row[pKeyColumn];
-                string surname = row[surnameColumn].ToString();
-                string forename = row[forenameColumn].ToString();
-                Sex sex = (Sex)row[sexColumn];
-                float? sprint = row[sprintColumn] as float?;
-                float? jump = row[jumpColumn] as float?;
-                float? Throw = row[throwColumn] as float?;
-                float? middleDistance = row[middleDistanceColumn] as float?;
-
-                UpdateSingleStudentCompetition(pKey, year, sprint, jump, Throw, middleDistance);
-            }
-        }
-
         public static void UpdateSingleStudentCompetition(Guid studentPKey, short year, float? sprint, float? jump, float? @throw, float? middleDistance)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 Student student = db.Student.Find(studentPKey);
 
@@ -356,7 +273,7 @@ namespace HonglornBL
 
         public static DisciplineCollection ConfiguredDisciplines(string className, short year)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 DisciplineCollection collection = (from c in db.DisciplineCollection
                                                    where c.ClassName == className
@@ -390,7 +307,7 @@ namespace HonglornBL
 
         public static ICollection<CompetitionDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 return (from d in db.CompetitionDiscipline
                         where d.Type == disciplineType
@@ -400,7 +317,7 @@ namespace HonglornBL
 
         public static ICollection<TraditionalDiscipline> FilteredTraditionalDisciplines(DisciplineType disciplineType, Sex sex)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 return (from d in db.TraditionalDiscipline
                         where d.Type == disciplineType && d.Sex == sex
@@ -410,7 +327,7 @@ namespace HonglornBL
 
         public static ICollection<CompetitionDiscipline> AllCompetitionDisciplines()
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 return db.CompetitionDiscipline.ToArray();
             }
@@ -418,7 +335,7 @@ namespace HonglornBL
 
         public static void CreateOrUpdateCompetitionDiscipline(Guid disciplinePKey, DisciplineType type, string name, string unit, bool lowIsBetter)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 CompetitionDiscipline competition = db.CompetitionDiscipline.Find(disciplinePKey);
 
@@ -450,9 +367,9 @@ namespace HonglornBL
         {
             try
             {
-                using (HonglornDb db = new HonglornDb())
+                using (var db = new HonglornDb())
                 {
-                    CompetitionDiscipline discipline = new CompetitionDiscipline
+                    var discipline = new CompetitionDiscipline
                     {
                         PKey = pKey
                     };
@@ -482,7 +399,7 @@ namespace HonglornBL
         {
             Game? result = null;
 
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 DisciplineCollection disciplineCollection = (from c in db.DisciplineCollection
                                                              where c.ClassName == className
@@ -509,19 +426,10 @@ namespace HonglornBL
 
         public static void CreateOrUpdateDisciplineCollection(string className, short year, Guid maleSprintPKey, Guid maleJumpPKey, Guid maleThrowPKey, Guid maleMiddleDistancePKey, Guid femaleSprintPKey, Guid femaleJumpPKey, Guid femaleThrowPKey, Guid femaleMiddleDistancePKey)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
-                Discipline maleSprintDiscipline = db.Set<Discipline>().Find(maleSprintPKey);
-                Discipline maleJumpDiscipline = db.Set<Discipline>().Find(maleJumpPKey);
-                Discipline maleThrowDiscipline = db.Set<Discipline>().Find(maleThrowPKey);
-                Discipline maleMiddleDistanceDiscipline = db.Set<Discipline>().Find(maleMiddleDistancePKey);
-
-                Discipline femaleSprintDiscipline = db.Set<Discipline>().Find(femaleSprintPKey);
-                Discipline femaleJumpDiscipline = db.Set<Discipline>().Find(femaleJumpPKey);
-                Discipline femaleThrowDiscipline = db.Set<Discipline>().Find(femaleThrowPKey);
-                Discipline femaleMiddleDistanceDiscipline = db.Set<Discipline>().Find(femaleMiddleDistancePKey);
-
-                Discipline[] disciplines = new[] { maleSprintDiscipline, maleJumpDiscipline, maleThrowDiscipline, maleMiddleDistanceDiscipline, femaleSprintDiscipline, femaleJumpDiscipline, femaleThrowDiscipline, femaleMiddleDistanceDiscipline };
+                IEnumerable<Discipline> disciplines = from d in new[] { maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey }
+                                                      select db.Set<Discipline>().Find(d);
 
                 if (disciplines.All(d => d is CompetitionDiscipline) || disciplines.All(d => d is TraditionalDiscipline))
                 {
@@ -565,8 +473,6 @@ namespace HonglornBL
                 {
                     throw new ArgumentException("Could not save Discipline Collection. All discipline pkeys must be either entirely from competition disciplines, or from traditional disciplines, but you cannot mix them.");
                 }
-
-
             }
         }
 
@@ -576,7 +482,7 @@ namespace HonglornBL
         /// <returns>A short collection representing the valid years.</returns>
         public static ICollection<short> YearsWithStudentData()
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 return (from relations in db.StudentCourseRel
                         select relations.Year).Distinct().OrderByDescending(year => year).ToArray();
@@ -590,7 +496,7 @@ namespace HonglornBL
         /// <returns>All valid course names.</returns>
         public static ICollection<string> ValidCourseNames(short year)
         {
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 return (from r in db.StudentCourseRel
                         where r.Year == year
@@ -609,12 +515,13 @@ namespace HonglornBL
             return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
         }
 
-        public static ICollection<DisciplineType> DisciplineTypes()
-        {
-            return (DisciplineType[])Enum.GetValues(typeof(DisciplineType));
-        }
-
         #region "Import"
+
+        static readonly Dictionary<string, Sex> SexDictionary = new Dictionary<string, Sex>
+        {
+            {"W", Sex.Female},
+            {"M", Sex.Male}
+        };
 
         //todo: currently only works with a "perfect" Excel sheet
         //todo: test inserting an already existing student
@@ -625,40 +532,43 @@ namespace HonglornBL
         /// <param name="filePath">The full path to the Excel file to be imported.</param>
         /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
         /// <param name="worker">The background worker used to process this method. Used for status updates.</param>
-        public static void ImportStudentCourseExcelSheet(string filePath, short year, BackgroundWorker worker)
+        public static async Task<ICollection<ImportedStudentRecord>> ImportStudentCourseExcelSheet(string filePath, short year, IProgress<ProgressReport> progress)
         {
             if (!IsValidYear(year))
             {
                 throw new ArgumentException($"{year} is not a valid year.");
             }
 
-            worker.ReportProgress(0, new ProgressInformer { Style = Marquee, StatusMessage = "Lese Daten aus Excel Datei..." });
+            progress.Report(new ProgressReport { Percentage = 0, IsIndeterminate = true, Message = "Lese Daten aus Excel Datei..." });
 
-            //IEnumerable<Student> students = new StudentFile(filePath);
-
-            ICollection<Tuple<Student, string>> studentsFromExcelSheet = ExcelImporter.GetStudentDataTableFromExcelFile(filePath);
+            ICollection<ImportedStudentRecord> studentsFromExcelSheet = await Task.Factory.StartNew(() => ExcelImporter.GetStudentDataTableFromExcelFile(filePath));
 
             int currentlyImported = 0;
 
-            worker.ReportProgress(0, new ProgressInformer { Style = Continuous, StatusMessage = "Schreibe Daten in die Datenbank..." });
+            progress.Report(new ProgressReport { Percentage = 0, IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
 
-            foreach (Tuple<Student, string> importStudent in studentsFromExcelSheet)
+            foreach (ImportedStudentRecord importStudent in studentsFromExcelSheet)
             {
-                ImportSingleStudent(importStudent.Item1, importStudent.Item2, year);
+                if (importStudent.Error == null)
+                {
+                    Student student = new Student
+                    {
+                        Forename = importStudent.ImportedForename,
+                        Surname = importStudent.ImportedSurname,
+                        Sex = SexDictionary[importStudent.ImportedSex],
+                        YearOfBirth = short.Parse(importStudent.ImportedYearOfBirth)
+                    };
+
+                    await Task.Factory.StartNew(() => ImportSingleStudent(student, importStudent.ImportedCourseName, year));
+                }
 
                 currentlyImported++;
-                worker.ReportProgress(PercentageValue(currentlyImported, studentsFromExcelSheet.Count), new ProgressInformer
-                {
-                    Style = Continuous,
-                    StatusMessage = "Schreibe Daten in die Datenbank..."
-                });
+                progress.Report(new ProgressReport { Percentage = PercentageValue(currentlyImported, studentsFromExcelSheet.Count), IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
             }
 
-            worker.ReportProgress(100, new ProgressInformer
-            {
-                Style = Continuous,
-                StatusMessage = "Fertig!"
-            });
+            progress.Report(new ProgressReport { Percentage = 100, IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
+
+            return studentsFromExcelSheet;
         }
 
         /// <summary>
@@ -672,7 +582,7 @@ namespace HonglornBL
 
             //todo: verify year
 
-            using (HonglornDb db = new HonglornDb())
+            using (var db = new HonglornDb())
             {
                 IQueryable<Student> studentQuery = from s in db.Student
                                                    where s.Forename == student.Forename
@@ -685,7 +595,7 @@ namespace HonglornBL
 
                 if (existingStudent == null)
                 {
-                    Student newStudent = new Student
+                    var newStudent = new Student
                     {
                         Forename = student.Forename,
                         Surname = student.Surname,

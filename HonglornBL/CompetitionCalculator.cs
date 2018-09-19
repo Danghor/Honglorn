@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace HonglornBL
 {
     class CompetitionCalculator
     {
-        ICollection<Tuple<Guid, RawMeasurement>> studentMeasurements;
-        bool sprintLowIsBetter;
-        bool jumpLowIsBetter;
-        bool throwLowIsBetter;
-        bool middleDistanceLowIsBetter;
+        readonly ICollection<Tuple<Guid, RawMeasurement>> studentMeasurements;
+        readonly bool sprintLowIsBetter;
+        readonly bool jumpLowIsBetter;
+        readonly bool throwLowIsBetter;
+        readonly bool middleDistanceLowIsBetter;
 
         internal CompetitionCalculator(bool sprintLowIsBetter, bool jumpLowIsBetter, bool throwLowIsBetter, bool middleDistanceLowIsBetter)
         {
@@ -40,7 +39,7 @@ namespace HonglornBL
             return containers;
         }
 
-        void CalculateScoresForDiscipline(ICollection<CompetitionCalculatorContainer> containers, bool lowIsBetter, Func<CompetitionCalculatorContainer, float?> selectValue, Func<CompetitionCalculatorContainer, ushort> selectScore, Action<CompetitionCalculatorContainer, ushort> setScore)
+        static void CalculateScoresForDiscipline(ICollection<CompetitionCalculatorContainer> containers, bool lowIsBetter, Func<CompetitionCalculatorContainer, float?> selectValue, Func<CompetitionCalculatorContainer, ushort> selectScore, Action<CompetitionCalculatorContainer, ushort> setScore)
         {
             if (lowIsBetter)
             {
@@ -55,7 +54,7 @@ namespace HonglornBL
             ushort lastScore = 1;
             ushort count = 1;
 
-            foreach (var c in containers)
+            foreach (CompetitionCalculatorContainer c in containers)
             {
                 if (selectValue(c) == lastValue)
                 {
