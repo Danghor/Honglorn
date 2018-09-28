@@ -1,7 +1,7 @@
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using HonglornBL.Models.Entities;
 using MySql.Data.Entity;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace HonglornBL.Models.Framework
 {
@@ -17,8 +17,7 @@ namespace HonglornBL.Models.Framework
         public virtual DbSet<TraditionalDiscipline> TraditionalDiscipline { get; set; }
         public virtual DbSet<TraditionalReportMeta> TraditionalReportMeta { get; set; }
 
-        public HonglornDb()
-            : base($"name={nameof(HonglornDb)}")
+        public HonglornDb() : base($"name={nameof(HonglornDb)}")
         {
             Database.SetInitializer(new HonglornDbInitializer());
         }
