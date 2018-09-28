@@ -1,70 +1,51 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Forms;
-using HonglornBL;
-using HonglornBL.Interfaces;
-using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
-using Microsoft;
+﻿using HonglornBL;
+using HonglornBL.Import;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
-using HonglornBL.Import;
+using Microsoft;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
+using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace HonglornWPF.ViewModels
 {
     class ImportStudentsViewModel : ViewModel
     {
-        short year;
-        string path;
         ProgressBarStyle progressBarStyle;
-
         public ProgressBarStyle ProgressBarStyle
         {
             get { return progressBarStyle; }
-            set
-            {
-                OnPropertyChanged(ref progressBarStyle, value);
-            }
-        }
-
-        public int Status
-        {
-            get { return status; }
-            set
-            {
-                OnPropertyChanged(ref status, value);
-            }
-        }
-
-        public string StatusMessage
-        {
-            get { return statusMessage; }
-            set
-            {
-                OnPropertyChanged(ref statusMessage, value);
-            }
+            set { OnPropertyChanged(ref progressBarStyle, value); }
         }
 
         int status;
-        string statusMessage;
+        public int Status
+        {
+            get { return status; }
+            set { OnPropertyChanged(ref status, value); }
+        }
 
+        string statusMessage;
+        public string StatusMessage
+        {
+            get { return statusMessage; }
+            set { OnPropertyChanged(ref statusMessage, value); }
+        }
+
+        short year;
         public short Year
         {
             get { return year; }
-            set
-            {
-                OnPropertyChanged(ref year, value);
-            }
+            set { OnPropertyChanged(ref year, value); }
         }
 
+        string path;
         public string Path
         {
             get { return path; }
-            set
-            {
-                OnPropertyChanged(ref path, value);
-            }
+            set { OnPropertyChanged(ref path, value); }
         }
 
         public RelayCommand OpenFileDialogCommand { get; }
@@ -79,7 +60,7 @@ namespace HonglornWPF.ViewModels
 
         void OpenFileDialog()
         {
-            var dialog = new OpenFileDialog();
+            OpenFileDialog dialog = new OpenFileDialog();
 
             if (dialog.ShowDialog() == true)
             {
@@ -89,7 +70,7 @@ namespace HonglornWPF.ViewModels
 
         async void ImportStudentsAsync()
         {
-            var mainWindow = System.Windows.Application.Current.MainWindow as MetroWindow;
+            MetroWindow mainWindow = System.Windows.Application.Current.MainWindow as MetroWindow;
 
             try
             {

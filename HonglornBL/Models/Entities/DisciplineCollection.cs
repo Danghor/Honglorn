@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace HonglornBL.Models.Entities
 {
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public class DisciplineCollection
     {
         [Key]
@@ -18,10 +17,6 @@ namespace HonglornBL.Models.Entities
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public short Year { get; set; }
-
-        [Required]
-        [Obsolete]
-        public Prerequisites.Game Game { get; set; } //todo: remove this
 
         // Male
         [Required]

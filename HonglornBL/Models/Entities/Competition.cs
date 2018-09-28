@@ -5,7 +5,6 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace HonglornBL.Models.Entities
 {
-    [SuppressMessage("ReSharper", "MemberCanBePrivate.Global")]
     public class Competition
     {
         [Key]

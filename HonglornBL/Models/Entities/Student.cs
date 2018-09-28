@@ -8,7 +8,6 @@ using System.Linq;
 
 namespace HonglornBL.Models.Entities
 {
-    [SuppressMessage("ReSharper", "MemberCanBeInternal")]
     public class Student
     {
         [Key]
