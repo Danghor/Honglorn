@@ -14,6 +14,28 @@ namespace HonglornBL
 {
     public class Honglorn
     {
+        public static IEnumerable<IStudentPerformance> StudentPerformances(string course, short year)
+        {
+            using (var db = new HonglornDb())
+            {
+                var result = new List<IStudentPerformance>();
+
+                var relevantStudents = (from s in db.Student
+                                       where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
+                                       orderby s.Surname, s.Forename, s.YearOfBirth descending
+                                       select s).Include(s => s.Competitions);
+
+                foreach (var student in relevantStudents)
+                {
+                    var competition = student.Competitions.SingleOrDefault(c => c.Year == year);
+
+                    result.Add(new StudentPerformance(student.PKey, student.Forename, student.Surname, competition?.Sprint, competition?.Jump, competition?.Throw, competition?.MiddleDistance));
+                }
+
+                return result;
+            }
+        }
+
         public static ICollection<Student> GetStudents(string course, short year)
         {
             using (var db = new HonglornDb())
@@ -21,7 +43,7 @@ namespace HonglornBL
                 return (from s in db.Student
                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
                         orderby s.Surname, s.Forename, s.YearOfBirth descending
-                        select s).Include(s => s.Competition).ToArray();
+                        select s).Include(s => s.Competitions).ToArray();
             }
         }
 
@@ -114,7 +136,7 @@ namespace HonglornBL
 
                     foreach (Student maleStudent in maleStudents)
                     {
-                        Competition competition = (from sc in maleStudent.Competition
+                        Competition competition = (from sc in maleStudent.Competitions
                                                    where sc.Year == year
                                                    select sc).SingleOrDefault() ?? new Competition();
 
@@ -125,7 +147,7 @@ namespace HonglornBL
 
                     foreach (Student femaleStudent in femaleStudents)
                     {
-                        Competition competition = (from sc in femaleStudent.Competition
+                        Competition competition = (from sc in femaleStudent.Competitions
                                                    where sc.Year == year
                                                    select sc).SingleOrDefault() ?? new Competition();
 
@@ -158,7 +180,7 @@ namespace HonglornBL
             {
                 ushort totalScore = 0;
 
-                Competition competition = (from sc in student.Competition
+                Competition competition = (from sc in student.Competitions
                                            where sc.Year == year
                                            select sc).SingleOrDefault() ?? new Competition();
 
@@ -226,7 +248,7 @@ namespace HonglornBL
 
                 if (student != null)
                 {
-                    Competition existingCompetition = (from c in student.Competition
+                    Competition existingCompetition = (from c in student.Competitions
                                                        where c.Year == year
                                                        select c).SingleOrDefault();
 
@@ -243,7 +265,7 @@ namespace HonglornBL
                         if (existingCompetition == null)
                         {
                             // Create
-                            student.Competition.Add(new Competition
+                            student.Competitions.Add(new Competition
                             {
                                 Year = year,
                                 Sprint = sprint,

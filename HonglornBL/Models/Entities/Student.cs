@@ -27,12 +27,12 @@ namespace HonglornBL.Models.Entities
         [Required]
         public short YearOfBirth { get; set; }
 
-        public virtual ICollection<Competition> Competition { get; set; }
+        public virtual ICollection<Competition> Competitions { get; set; }
         public virtual ICollection<StudentCourseRel> StudentCourseRel { get; set; }
 
         public Student()
         {
-            Competition = new HashSet<Competition>();
+            Competitions = new HashSet<Competition>();
             StudentCourseRel = new HashSet<StudentCourseRel>();
         }
 

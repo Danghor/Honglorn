@@ -1,20 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using HonglornBL;
-using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
 {
     class EditPerformanceViewModel : ViewModel
     {
-        public ObservableCollection<string> Courses { get; set; } = new ObservableCollection<string>();
-        public ObservableCollection<short> Years { get; set; } = new ObservableCollection<short>();
-        public ObservableCollection<StudentCompetition> StudentCompetitions { get; set; } = new ObservableCollection<StudentCompetition>();
+        public ObservableCollection<string> Courses { get; } = new ObservableCollection<string>();
+        public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
+        public ObservableCollection<StudentPerformance> StudentCompetitions { get; } = new ObservableCollection<StudentPerformance>();
 
         string currentCourse;
         short currentYear;
-        StudentCompetition currentStudentCompetition;
+        StudentPerformance currentStudentCompetition;
 
         public short CurrentYear
         {
@@ -46,7 +44,7 @@ namespace HonglornWPF.ViewModels
             }
         }
 
-        public StudentCompetition CurrentStudentCompetition
+        public StudentPerformance CurrentStudentCompetition
         {
             get { return currentStudentCompetition; }
             set
@@ -71,30 +69,10 @@ namespace HonglornWPF.ViewModels
 
         void LoadStudentsCompetitionsTuples()
         {
-            StudentCompetitions.Clear();
-
-            ICollection<Student> students = Honglorn.GetStudents(CurrentCourse, CurrentYear);
-
-            foreach (Student student in students)
-            {
-                Competition competition = (from sc in student.Competition
-                                           where sc.Year == currentYear
-                                           select sc).SingleOrDefault() ?? new Competition();
-
-                StudentCompetitions.Add(new StudentCompetition
-                {
-                    StudentPKey = student.PKey,
-                    Surname = student.Surname,
-                    Forename = student.Forename,
-                    Sprint = competition.Sprint,
-                    Jump = competition.Jump,
-                    Throw = competition.Throw,
-                    MiddleDistance = competition.MiddleDistance
-                });
-            }
+            ClearAndFill(StudentCompetitions, Honglorn.StudentPerformances(CurrentCourse, CurrentYear).Select(i => new StudentPerformance(i)));
         }
 
-        void SaveCompetition(StudentCompetition sc)
+        void SaveCompetition(IStudentPerformance sc)
         {
             if (sc != null)
             {

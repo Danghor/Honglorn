@@ -101,6 +101,7 @@
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\FieldErrorInfo.cs" />
     <Compile Include="Import\RecordErrorInfo.cs" />
+    <Compile Include="Interfaces\IStudentPerformance.cs" />
     <Compile Include="ProgressReport.cs" />
     <Compile Include="RawMeasurement.cs" />
     <Compile Include="DisciplineContainer.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="StudentExcelFile.cs" />
     <Compile Include="StudentFile.cs" />
+    <Compile Include="StudentPerformance.cs" />
     <Compile Include="TraditionalCalculator.cs" />
     <Compile Include="ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />

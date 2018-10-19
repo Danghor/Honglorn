@@ -113,7 +113,7 @@
     <Compile Include="CompetitionValueConverter.cs" />
     <Compile Include="EnumToBoolConverter.cs" />
     <Compile Include="EnumValuesExtension.cs" />
-    <Compile Include="StudentCompetition.cs" />
+    <Compile Include="StudentPerformance.cs" />
     <Compile Include="ViewModels\AssignDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\ClassResultsViewModel.cs" />
     <Compile Include="ViewModels\EditDisciplinesViewModel.cs" />
