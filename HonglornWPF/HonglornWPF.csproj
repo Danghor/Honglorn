@@ -110,6 +110,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="StringToVisibilityConverter.cs" />
+    <Compile Include="BooleanToVisibilityConverter.cs" />
     <Compile Include="CompetitionValueConverter.cs" />
     <Compile Include="EnumToBoolConverter.cs" />
     <Compile Include="EnumValuesExtension.cs" />

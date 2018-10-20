@@ -2,21 +2,36 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using HonglornBL;
-using System.Windows;
-using MahApps.Metro.Controls.Dialogs;
-using MahApps.Metro.Controls;
 
 namespace HonglornWPF.ViewModels
 {
     class ClassResultsViewModel : ViewModel
     {
-        public ObservableCollection<string> Courses { get; set; } = new ObservableCollection<string>();
-        public ObservableCollection<short> Years { get; set; } = new ObservableCollection<short>();
-        public ObservableCollection<Result> Results { get; set; } = new ObservableCollection<Result>();
+        public ObservableCollection<string> Courses { get; } = new ObservableCollection<string>();
+        public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
+        public ObservableCollection<Result> Results { get; } = new ObservableCollection<Result>();
 
-        string currentCourse;
+        bool isLoading;
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            private set
+            {
+                OnPropertyChanged(ref isLoading, value);
+            }
+        }
+
+        string message;
+        public string Message
+        {
+            get { return message; }
+            private set
+            {
+                OnPropertyChanged(ref message, value);
+            }
+        }
+
         short currentYear;
-
         public short CurrentYear
         {
             get { return currentYear; }
@@ -34,6 +49,7 @@ namespace HonglornWPF.ViewModels
             }
         }
 
+        string currentCourse;
         public string CurrentCourse
         {
             get { return currentCourse; }
@@ -60,14 +76,20 @@ namespace HonglornWPF.ViewModels
 
         async void LoadResults()
         {
+            Message = null;
+            IsLoading = true;
+
             try
             {
                 ClearAndFill(Results, await Honglorn.GetResultsAsync(CurrentCourse, CurrentYear));
             }
             catch (Exception ex)
             {
-                var mainWindow = Application.Current.MainWindow as MetroWindow;
-                await mainWindow.ShowMessageAsync("Error", ex.Message);
+                Message = ex.Message;
+            }
+            finally
+            {
+                IsLoading = false;
             }
         }
     }
