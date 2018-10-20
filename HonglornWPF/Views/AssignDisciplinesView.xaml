@@ -29,8 +29,8 @@
         </Grid>
         <GroupBox x:Name="gameTypeGroupBox" Header="Wettkampf">
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="traditionalRadioButton" GroupName="gameType" Content="Traditionell" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static viewModels:RadioButtonGame.Traditional}}" />
-                <RadioButton x:Name="competitionRadioButton" GroupName="gameType" Content="Wettbewerb" IsChecked="{Binding Game, Converter={wpf:EnumToBoolConverter}, ConverterParameter={x:Static viewModels:RadioButtonGame.Competition}}"/>
+                <RadioButton x:Name="traditionalRadioButton" GroupName="gameType" Content="Traditionell" IsChecked="{Binding Game, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static viewModels:RadioButtonGame.Traditional}}" />
+                <RadioButton x:Name="competitionRadioButton" GroupName="gameType" Content="Wettbewerb" IsChecked="{Binding Game, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static viewModels:RadioButtonGame.Competition}}"/>
             </StackPanel>
         </GroupBox>
         <Grid>

@@ -6,15 +6,15 @@ using System.Windows.Markup;
 
 namespace HonglornWPF
 {
-    [ValueConversion(typeof(string), typeof(Visibility))]
-    class StringToVisibilityConverter : MarkupExtension, IValueConverter
+    [ValueConversion(typeof(bool), typeof(Visibility))]
+    class BooleanToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Visibility trueValue;
             Visibility falseValue;
 
-            if (parameter == null || !((bool)parameter))
+            if (parameter == null || !((bool) parameter))
             {
                 trueValue = Visibility.Visible;
                 falseValue = Visibility.Collapsed;
@@ -25,14 +25,12 @@ namespace HonglornWPF
                 falseValue = Visibility.Visible;
             }
 
-            return !string.IsNullOrWhiteSpace(value?.ToString()) ? trueValue : falseValue;
+            return value == null || (bool) value ? trueValue : falseValue;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
-
-        public override object ProvideValue(IServiceProvider serviceProvider) => this;
     }
 }
