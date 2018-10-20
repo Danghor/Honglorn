@@ -20,7 +20,7 @@ namespace HonglornWPF.ViewModels
 
             set
             {
-                SaveCompetition(currentStudentCompetition);
+                SaveCompetition();
                 OnPropertyChanged(ref currentYear, value);
 
                 string previouslySelectedCourse = CurrentCourse;
@@ -37,7 +37,7 @@ namespace HonglornWPF.ViewModels
             get { return currentCourse; }
             set
             {
-                SaveCompetition(currentStudentCompetition);
+                SaveCompetition();
                 OnPropertyChanged(ref currentCourse, value);
 
                 LoadStudentsCompetitionsTuples();
@@ -49,7 +49,7 @@ namespace HonglornWPF.ViewModels
             get { return currentStudentCompetition; }
             set
             {
-                SaveCompetition(currentStudentCompetition);
+                SaveCompetition();
                 OnPropertyChanged(ref currentStudentCompetition, value);
             }
         }
@@ -72,11 +72,11 @@ namespace HonglornWPF.ViewModels
             ClearAndFill(StudentCompetitions, Honglorn.StudentPerformances(CurrentCourse, CurrentYear).Select(i => new StudentPerformance(i)));
         }
 
-        void SaveCompetition(IStudentPerformance sc)
+        void SaveCompetition()
         {
-            if (sc != null)
+            if (currentStudentCompetition != null)
             {
-                Honglorn.UpdateSingleStudentCompetition(sc.StudentPKey, CurrentYear, sc.Sprint, sc.Jump, sc.Throw, sc.MiddleDistance);
+                Honglorn.UpdateSingleStudentCompetition(currentStudentCompetition.StudentPKey, CurrentYear, currentStudentCompetition.Sprint, currentStudentCompetition.Jump, currentStudentCompetition.Throw, currentStudentCompetition.MiddleDistance);
             }
         }
     }

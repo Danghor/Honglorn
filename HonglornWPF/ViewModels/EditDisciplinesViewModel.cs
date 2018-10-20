@@ -7,7 +7,7 @@ namespace HonglornWPF.ViewModels
 {
     class EditDisciplinesViewModel : ViewModel
     {
-        public ObservableCollection<CompetitionDiscipline> Disciplines { get; set; } = new ObservableCollection<CompetitionDiscipline>();
+        public ObservableCollection<CompetitionDiscipline> Disciplines { get; } = new ObservableCollection<CompetitionDiscipline>();
 
         CompetitionDiscipline currentDiscipline;
 
