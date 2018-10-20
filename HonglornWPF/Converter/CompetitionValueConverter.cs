@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace HonglornWPF
+namespace HonglornWPF.Converter
 {
     class CompetitionValueConverter : IValueConverter
     {

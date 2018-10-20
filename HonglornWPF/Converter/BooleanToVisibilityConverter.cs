@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace HonglornWPF
+namespace HonglornWPF.Converter
 {
     [ValueConversion(typeof(bool), typeof(Visibility))]
     class BooleanToVisibilityConverter : IValueConverter

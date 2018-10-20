@@ -33,7 +33,13 @@
         <Label Content="{Binding Message}" Visibility="{Binding Message, Converter={StaticResource StringToVisibilityConverter}}" />
 
         <!-- Todo: only show grid when no message is shown-->
-        <DataGrid Margin="0 5 0 0"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Results}" Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter={StaticResource True}}" >
+        <DataGrid Margin="0 5 0 0"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Results}">
+            <DataGrid.Visibility>
+                <MultiBinding Converter="{StaticResource ResultGridVisibilityConverter}">
+                    <Binding Path="IsLoading" />
+                    <Binding Path="Message" />
+                </MultiBinding>
+            </DataGrid.Visibility>
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Header="Nachname" Binding="{Binding Surname}"/>
                 <DataGridTextColumn IsReadOnly="True" Header="Vorname" Binding="{Binding Forename}"/>
