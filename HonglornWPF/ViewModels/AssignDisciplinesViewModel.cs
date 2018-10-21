@@ -17,16 +17,16 @@ namespace HonglornWPF.ViewModels
             { Prerequisites.Game.Competition, RadioButtonGame.Competition }
         };
 
-        public ObservableCollection<string> Classes { get; set; } = new ObservableCollection<string>();
-        public ObservableCollection<short> Years { get; set; } = new ObservableCollection<short>();
-        public ObservableCollection<Discipline> MaleSprintDisciplines { get; set; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> MaleJumpDisciplines { get; set; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> MaleThrowDisciplines { get; set; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> MaleMiddleDistanceDisciplines { get; set; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> FemaleSprintDisciplines { get; set; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> FemaleJumpDisciplines { get; set; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> FemaleThrowDisciplines { get; set; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> FemaleMiddleDistanceDisciplines { get; set; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<string> Classes { get; } = new ObservableCollection<string>();
+        public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
+        public ObservableCollection<Discipline> MaleSprintDisciplines { get; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<Discipline> MaleJumpDisciplines { get; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<Discipline> MaleThrowDisciplines { get; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<Discipline> MaleMiddleDistanceDisciplines { get; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<Discipline> FemaleSprintDisciplines { get; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<Discipline> FemaleJumpDisciplines { get; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<Discipline> FemaleThrowDisciplines { get; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<Discipline> FemaleMiddleDistanceDisciplines { get; } = new ObservableCollection<Discipline>();
 
         string currentClass;
         short currentYear;
