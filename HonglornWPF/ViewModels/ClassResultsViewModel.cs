@@ -9,7 +9,7 @@ namespace HonglornWPF.ViewModels
     {
         public ObservableCollection<string> Courses { get; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
-        public ObservableCollection<Result> Results { get; } = new ObservableCollection<Result>();
+        public ObservableCollection<IResult> Results { get; } = new ObservableCollection<IResult>();
 
         bool isLoading;
         public bool IsLoading

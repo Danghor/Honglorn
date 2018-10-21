@@ -21,9 +21,9 @@ namespace HonglornBL
                 var result = new List<IStudentPerformance>();
 
                 var relevantStudents = (from s in db.Student
-                                       where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
-                                       orderby s.Surname, s.Forename, s.YearOfBirth descending
-                                       select s).Include(s => s.Competitions);
+                                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
+                                        orderby s.Surname, s.Forename, s.YearOfBirth descending
+                                        select s).Include(s => s.Competitions);
 
                 foreach (var student in relevantStudents)
                 {
@@ -47,14 +47,14 @@ namespace HonglornBL
             }
         }
 
-        public static async Task<IEnumerable<Result>> GetResultsAsync(string course, short year)
+        public static async Task<IEnumerable<IResult>> GetResultsAsync(string course, short year)
         {
             return await Task.Factory.StartNew(() => GetResults(course, year));
         }
 
-        static IEnumerable<Result> GetResults(string course, short year)
+        static IEnumerable<IResult> GetResults(string course, short year)
         {
-            IEnumerable<Result> results;
+            IEnumerable<IResult> results;
 
             IEnumerable<Student> students = GetStudents(course, year);
             string className = GetClassName(course);
@@ -114,7 +114,7 @@ namespace HonglornBL
             return results;
         }
 
-        static IEnumerable<Result> CalculateCompetitionResults(IEnumerable<Student> students, short year, CompetitionDisciplineContainer disciplineCollection)
+        static IEnumerable<IResult> CalculateCompetitionResults(IEnumerable<Student> students, short year, CompetitionDisciplineContainer disciplineCollection)
         {
             List<ICompetitionResult> competitionResults = new List<ICompetitionResult>();
 
@@ -159,22 +159,18 @@ namespace HonglornBL
                 }
             }
 
+            //todo: determine certificate correctly
             IEnumerable<Result> results = from c in competitionResults
                                           join s in students on c.Identifier equals s.PKey
                                           orderby s.Surname, s.Forename, s.YearOfBirth descending
-                                          select new Result()
-                                          {
-                                              Forename = s.Forename,
-                                              Surname = s.Surname,
-                                              Score = (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore)
-                                          };
+                                          select new Result(s.Forename, s.Surname, (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), Certificate.Participation);
 
             return results;
         }
 
-        static IEnumerable<Result> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
+        static IEnumerable<IResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
         {
-            ICollection<Result> results = new List<Result>();
+            ICollection<IResult> results = new List<IResult>();
 
             foreach (Student student in students)
             {
@@ -184,28 +180,23 @@ namespace HonglornBL
                                            where sc.Year == year
                                            select sc).SingleOrDefault() ?? new Competition();
 
+                TraditionalDiscipline[] disciplines;
+
                 if (student.Sex == Sex.Male)
                 {
-                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.MaleSprint, competition.Sprint);
-                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.MaleJump, competition.Jump);
-                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.MaleThrow, competition.Throw);
-                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.MaleMiddleDistance, competition.MiddleDistance);
+                    disciplines = new[] { disciplineCollection.MaleSprint, disciplineCollection.MaleJump, disciplineCollection.MaleThrow, disciplineCollection.MaleMiddleDistance };
                 }
                 else
                 {
-                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleSprint, competition.Sprint);
-                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleJump, competition.Jump);
-                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleThrow, competition.Throw);
-                    totalScore += TraditionalCalculator.CalculateScore(disciplineCollection.FemaleMiddleDistance, competition.MiddleDistance);
+                    disciplines = new[] { disciplineCollection.FemaleSprint, disciplineCollection.FemaleJump, disciplineCollection.FemaleThrow, disciplineCollection.FemaleMiddleDistance };
                 }
 
-                results.Add(new Result
-                {
-                    Surname = student.Surname,
-                    Forename = student.Forename,
-                    Score = totalScore,
-                    Certificate = DetermineTraditionalCertificate(student.Sex, student.YearOfBirth, totalScore)
-                });
+                totalScore += TraditionalCalculator.CalculateScore(disciplines[0], competition.Sprint);
+                totalScore += TraditionalCalculator.CalculateScore(disciplines[1], competition.Jump);
+                totalScore += TraditionalCalculator.CalculateScore(disciplines[2], competition.Throw);
+                totalScore += TraditionalCalculator.CalculateScore(disciplines[3], competition.MiddleDistance);
+
+                results.Add(new Result(student.Surname, student.Forename, totalScore, DetermineTraditionalCertificate(student.Sex, student.YearOfBirth, totalScore)));
             }
 
             return results;
