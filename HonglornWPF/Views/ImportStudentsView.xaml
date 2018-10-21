@@ -27,7 +27,7 @@
             <controls:NumericUpDown Value="{Binding Year}" HasDecimals="False" Speedup="False" />
         </StackPanel>
         <Button Command="{Binding ImportStudentsAsyncCommand}" Content="Import starten"/>
-        <ProgressBar Style="{Binding ProgressBarStyle}" Value="{Binding Status}" Height="10"/>
+        <ProgressBar Style="{Binding ProgressBarStyle}" Value="{Binding StatusPercentage}" Height="10"/>
         <Label Content="{Binding StatusMessage}" />
     </StackPanel>
 </UserControl>

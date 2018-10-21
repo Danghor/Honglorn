@@ -10,7 +10,6 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<CompetitionDiscipline> Disciplines { get; } = new ObservableCollection<CompetitionDiscipline>();
 
         CompetitionDiscipline currentDiscipline;
-
         public CompetitionDiscipline CurrentDiscipline
         {
             get { return currentDiscipline; }

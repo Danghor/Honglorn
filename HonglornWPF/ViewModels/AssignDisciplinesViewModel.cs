@@ -28,20 +28,9 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<Discipline> FemaleThrowDisciplines { get; } = new ObservableCollection<Discipline>();
         public ObservableCollection<Discipline> FemaleMiddleDistanceDisciplines { get; } = new ObservableCollection<Discipline>();
 
-        string currentClass;
-        short currentYear;
-        RadioButtonGame game;
-        Discipline currentMaleSprintDiscipline;
-        Discipline currentMaleJumpDiscipline;
-        Discipline currentMaleThrowDiscipline;
-        Discipline currentMaleMiddleDistanceDiscipline;
-        Discipline currentFemaleSprintDiscipline;
-        Discipline currentFemaleJumpDiscipline;
-        Discipline currentFemaleThrowDiscipline;
-        Discipline currentFemaleMiddleDistanceDiscipline;
-
         public RelayCommand SaveDisciplineCollectionCommand { get; }
 
+        short currentYear;
         public short CurrentYear
         {
             get { return currentYear; }
@@ -59,6 +48,7 @@ namespace HonglornWPF.ViewModels
             }
         }
 
+        string currentClass;
         public string CurrentClass
         {
             get { return currentClass; }
@@ -71,6 +61,7 @@ namespace HonglornWPF.ViewModels
             }
         }
 
+        RadioButtonGame game;
         public RadioButtonGame Game
         {
             get { return game; }
@@ -95,76 +86,60 @@ namespace HonglornWPF.ViewModels
             }
         }
 
+        Discipline currentMaleSprintDiscipline;
         public Discipline CurrentMaleSprintDiscipline
         {
             get { return currentMaleSprintDiscipline; }
-            set
-            {
-                OnPropertyChanged(ref currentMaleSprintDiscipline, value);
-            }
+            set { OnPropertyChanged(ref currentMaleSprintDiscipline, value); }
         }
 
+        Discipline currentMaleJumpDiscipline;
         public Discipline CurrentMaleJumpDiscipline
         {
             get { return currentMaleJumpDiscipline; }
-            set
-            {
-                OnPropertyChanged(ref currentMaleJumpDiscipline, value);
-            }
+            set { OnPropertyChanged(ref currentMaleJumpDiscipline, value); }
         }
 
+        Discipline currentMaleThrowDiscipline;
         public Discipline CurrentMaleThrowDiscipline
         {
             get { return currentMaleThrowDiscipline; }
-            set
-            {
-                OnPropertyChanged(ref currentMaleThrowDiscipline, value);
-            }
+            set { OnPropertyChanged(ref currentMaleThrowDiscipline, value); }
         }
 
+        Discipline currentMaleMiddleDistanceDiscipline;
         public Discipline CurrentMaleMiddleDistanceDiscipline
         {
             get { return currentMaleMiddleDistanceDiscipline; }
-            set
-            {
-                OnPropertyChanged(ref currentMaleMiddleDistanceDiscipline, value);
-            }
+            set { OnPropertyChanged(ref currentMaleMiddleDistanceDiscipline, value); }
         }
 
+        Discipline currentFemaleSprintDiscipline;
         public Discipline CurrentFemaleSprintDiscipline
         {
             get { return currentFemaleSprintDiscipline; }
-            set
-            {
-                OnPropertyChanged(ref currentFemaleSprintDiscipline, value);
-            }
+            set { OnPropertyChanged(ref currentFemaleSprintDiscipline, value); }
         }
 
+        Discipline currentFemaleJumpDiscipline;
         public Discipline CurrentFemaleJumpDiscipline
         {
             get { return currentFemaleJumpDiscipline; }
-            set
-            {
-                OnPropertyChanged(ref currentFemaleJumpDiscipline, value);
-            }
+            set { OnPropertyChanged(ref currentFemaleJumpDiscipline, value); }
         }
 
+        Discipline currentFemaleThrowDiscipline;
         public Discipline CurrentFemaleThrowDiscipline
         {
             get { return currentFemaleThrowDiscipline; }
-            set
-            {
-                OnPropertyChanged(ref currentFemaleThrowDiscipline, value);
-            }
+            set { OnPropertyChanged(ref currentFemaleThrowDiscipline, value); }
         }
 
+        Discipline currentFemaleMiddleDistanceDiscipline;
         public Discipline CurrentFemaleMiddleDistanceDiscipline
         {
             get { return currentFemaleMiddleDistanceDiscipline; }
-            set
-            {
-                OnPropertyChanged(ref currentFemaleMiddleDistanceDiscipline, value);
-            }
+            set { OnPropertyChanged(ref currentFemaleMiddleDistanceDiscipline, value); }
         }
 
         void LoadClassNames() => ClearAndFill(Classes, ValidClassNames(CurrentYear));

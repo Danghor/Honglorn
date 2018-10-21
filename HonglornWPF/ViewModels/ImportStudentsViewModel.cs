@@ -20,11 +20,11 @@ namespace HonglornWPF.ViewModels
             set { OnPropertyChanged(ref progressBarStyle, value); }
         }
 
-        int status;
-        public int Status
+        int statusPercentage;
+        public int StatusPercentage
         {
-            get { return status; }
-            set { OnPropertyChanged(ref status, value); }
+            get { return statusPercentage; }
+            set { OnPropertyChanged(ref statusPercentage, value); }
         }
 
         string statusMessage;
@@ -87,7 +87,7 @@ namespace HonglornWPF.ViewModels
             }
             finally
             {
-                Status = 0;
+                StatusPercentage = 0;
                 ProgressBarStyle = ProgressBarStyle.Continuous;
                 StatusMessage = string.Empty;
                 ImportStudentsAsyncCommand.Enabled = true;
@@ -98,7 +98,7 @@ namespace HonglornWPF.ViewModels
         {
             StatusMessage = report.Message;
             ProgressBarStyle = report.IsIndeterminate ? ProgressBarStyle.Marquee : ProgressBarStyle.Continuous;
-            Status = report.Percentage;
+            StatusPercentage = report.Percentage;
         }
     }
 }

@@ -10,10 +10,7 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
         public ObservableCollection<StudentPerformance> StudentCompetitions { get; } = new ObservableCollection<StudentPerformance>();
 
-        string currentCourse;
         short currentYear;
-        StudentPerformance currentStudentCompetition;
-
         public short CurrentYear
         {
             get { return currentYear; }
@@ -32,6 +29,7 @@ namespace HonglornWPF.ViewModels
             }
         }
 
+        string currentCourse;
         public string CurrentCourse
         {
             get { return currentCourse; }
@@ -44,6 +42,7 @@ namespace HonglornWPF.ViewModels
             }
         }
 
+        StudentPerformance currentStudentCompetition;
         public StudentPerformance CurrentStudentCompetition
         {
             get { return currentStudentCompetition; }
