@@ -3,9 +3,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using HonglornBL;
+using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
-using static HonglornBL.Prerequisites;
 using static HonglornBL.Honglorn;
+using static HonglornBL.Prerequisites;
 
 namespace HonglornWPF.ViewModels
 {
@@ -19,14 +20,14 @@ namespace HonglornWPF.ViewModels
 
         public ObservableCollection<string> Classes { get; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
-        public ObservableCollection<Discipline> MaleSprintDisciplines { get; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> MaleJumpDisciplines { get; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> MaleThrowDisciplines { get; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> MaleMiddleDistanceDisciplines { get; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> FemaleSprintDisciplines { get; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> FemaleJumpDisciplines { get; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> FemaleThrowDisciplines { get; } = new ObservableCollection<Discipline>();
-        public ObservableCollection<Discipline> FemaleMiddleDistanceDisciplines { get; } = new ObservableCollection<Discipline>();
+        public ObservableCollection<IDiscipline> MaleSprintDisciplines { get; } = new ObservableCollection<IDiscipline>();
+        public ObservableCollection<IDiscipline> MaleJumpDisciplines { get; } = new ObservableCollection<IDiscipline>();
+        public ObservableCollection<IDiscipline> MaleThrowDisciplines { get; } = new ObservableCollection<IDiscipline>();
+        public ObservableCollection<IDiscipline> MaleMiddleDistanceDisciplines { get; } = new ObservableCollection<IDiscipline>();
+        public ObservableCollection<IDiscipline> FemaleSprintDisciplines { get; } = new ObservableCollection<IDiscipline>();
+        public ObservableCollection<IDiscipline> FemaleJumpDisciplines { get; } = new ObservableCollection<IDiscipline>();
+        public ObservableCollection<IDiscipline> FemaleThrowDisciplines { get; } = new ObservableCollection<IDiscipline>();
+        public ObservableCollection<IDiscipline> FemaleMiddleDistanceDisciplines { get; } = new ObservableCollection<IDiscipline>();
 
         public RelayCommand SaveDisciplineCollectionCommand { get; }
 
@@ -80,71 +81,77 @@ namespace HonglornWPF.ViewModels
                     case RadioButtonGame.Unknown:
                         break;
                     default:
-                        throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(RadioButtonGame));
+                        throw new InvalidEnumArgumentException(nameof(value), (int) value, typeof(RadioButtonGame));
                 }
 
             }
         }
 
-        Discipline currentMaleSprintDiscipline;
-        public Discipline CurrentMaleSprintDiscipline
+        IDiscipline currentMaleSprintDiscipline;
+        public IDiscipline CurrentMaleSprintDiscipline
         {
             get { return currentMaleSprintDiscipline; }
             set { OnPropertyChanged(ref currentMaleSprintDiscipline, value); }
         }
 
-        Discipline currentMaleJumpDiscipline;
-        public Discipline CurrentMaleJumpDiscipline
+        IDiscipline currentMaleJumpDiscipline;
+        public IDiscipline CurrentMaleJumpDiscipline
         {
             get { return currentMaleJumpDiscipline; }
             set { OnPropertyChanged(ref currentMaleJumpDiscipline, value); }
         }
 
-        Discipline currentMaleThrowDiscipline;
-        public Discipline CurrentMaleThrowDiscipline
+        IDiscipline currentMaleThrowDiscipline;
+        public IDiscipline CurrentMaleThrowDiscipline
         {
             get { return currentMaleThrowDiscipline; }
             set { OnPropertyChanged(ref currentMaleThrowDiscipline, value); }
         }
 
-        Discipline currentMaleMiddleDistanceDiscipline;
-        public Discipline CurrentMaleMiddleDistanceDiscipline
+        IDiscipline currentMaleMiddleDistanceDiscipline;
+        public IDiscipline CurrentMaleMiddleDistanceDiscipline
         {
             get { return currentMaleMiddleDistanceDiscipline; }
             set { OnPropertyChanged(ref currentMaleMiddleDistanceDiscipline, value); }
         }
 
-        Discipline currentFemaleSprintDiscipline;
-        public Discipline CurrentFemaleSprintDiscipline
+        IDiscipline currentFemaleSprintDiscipline;
+        public IDiscipline CurrentFemaleSprintDiscipline
         {
             get { return currentFemaleSprintDiscipline; }
             set { OnPropertyChanged(ref currentFemaleSprintDiscipline, value); }
         }
 
-        Discipline currentFemaleJumpDiscipline;
-        public Discipline CurrentFemaleJumpDiscipline
+        IDiscipline currentFemaleJumpDiscipline;
+        public IDiscipline CurrentFemaleJumpDiscipline
         {
             get { return currentFemaleJumpDiscipline; }
             set { OnPropertyChanged(ref currentFemaleJumpDiscipline, value); }
         }
 
-        Discipline currentFemaleThrowDiscipline;
-        public Discipline CurrentFemaleThrowDiscipline
+        IDiscipline currentFemaleThrowDiscipline;
+        public IDiscipline CurrentFemaleThrowDiscipline
         {
             get { return currentFemaleThrowDiscipline; }
             set { OnPropertyChanged(ref currentFemaleThrowDiscipline, value); }
         }
 
-        Discipline currentFemaleMiddleDistanceDiscipline;
-        public Discipline CurrentFemaleMiddleDistanceDiscipline
+        IDiscipline currentFemaleMiddleDistanceDiscipline;
+        public IDiscipline CurrentFemaleMiddleDistanceDiscipline
         {
             get { return currentFemaleMiddleDistanceDiscipline; }
             set { OnPropertyChanged(ref currentFemaleMiddleDistanceDiscipline, value); }
         }
 
-        void LoadClassNames() => ClearAndFill(Classes, ValidClassNames(CurrentYear));
+        void LoadClassNames()
+        {
+            ClearAndFill(Classes, ValidClassNames(CurrentYear));
+        }
 
-        void LoadYears() => ClearAndFill(Years, YearsWithStudentData());
+        void LoadYears()
+        {
+            ClearAndFill(Years, YearsWithStudentData());
+        }
 
         void LoadAllCompetitionDisciplines()
         {

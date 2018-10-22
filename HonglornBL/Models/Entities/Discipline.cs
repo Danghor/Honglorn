@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HonglornBL.Interfaces;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class Discipline
+    public abstract class Discipline : IDiscipline
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -21,6 +22,9 @@ namespace HonglornBL.Models.Entities
         [StringLength(25)]
         public string Unit { get; set; }
 
-        public override string ToString() => Name;
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

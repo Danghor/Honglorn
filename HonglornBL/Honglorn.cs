@@ -9,6 +9,7 @@ using HonglornBL.Models.Framework;
 using static HonglornBL.Prerequisites;
 using System.Threading.Tasks;
 using HonglornBL.Import;
+using HonglornBL.Interfaces;
 
 namespace HonglornBL
 {
@@ -36,7 +37,7 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<Student> GetStudents(string course, short year)
+        static ICollection<Student> GetStudents(string course, short year)
         {
             using (var db = new HonglornDb())
             {
@@ -318,7 +319,7 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<CompetitionDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType)
+        public static ICollection<IDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType)
         {
             using (var db = new HonglornDb())
             {
@@ -328,7 +329,7 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<TraditionalDiscipline> FilteredTraditionalDisciplines(DisciplineType disciplineType, Sex sex)
+        public static ICollection<IDiscipline> FilteredTraditionalDisciplines(DisciplineType disciplineType, Sex sex)
         {
             using (var db = new HonglornDb())
             {
@@ -338,7 +339,7 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<CompetitionDiscipline> AllCompetitionDisciplines()
+        public static ICollection<IDiscipline> AllCompetitionDisciplines()
         {
             using (var db = new HonglornDb())
             {
