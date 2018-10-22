@@ -1,11 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using static HonglornBL.Prerequisites;
 
 namespace HonglornBL.Models.Entities
 {
     public class TraditionalDiscipline : Discipline
     {
         [Required]
-        public Prerequisites.Sex Sex { get; set; }
+        public Sex Sex { get; set; }
 
         public short? Distance { get; set; }
 
@@ -15,6 +16,11 @@ namespace HonglornBL.Models.Entities
 
         public float ConstantC { get; set; }
 
-        public Prerequisites.Measurement? Measurement { get; set; }
+        public Measurement? Measurement { get; set; }
+
+        public override string ToString()
+        {
+            return Type == DisciplineType.Sprint ? $"{base.ToString()} ({Measurement})" : base.ToString();
+        }
     }
 }
