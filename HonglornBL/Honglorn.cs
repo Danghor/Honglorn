@@ -339,7 +339,7 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<IDiscipline> AllCompetitionDisciplines()
+        public static ICollection<CompetitionDiscipline> AllCompetitionDisciplines()
         {
             using (var db = new HonglornDb())
             {
