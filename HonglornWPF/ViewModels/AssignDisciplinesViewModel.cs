@@ -1,22 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using HonglornBL;
+using HonglornBL.Enums;
 using HonglornBL.Interfaces;
 using static HonglornBL.Honglorn;
-using static HonglornBL.Prerequisites;
 
 namespace HonglornWPF.ViewModels
 {
     class AssignDisciplinesViewModel : ViewModel
     {
-        readonly IDictionary<Game?, RadioButtonGame> gameTypeMap = new Dictionary<Game?, RadioButtonGame>
-        {
-            { Prerequisites.Game.Traditional, RadioButtonGame.Traditional },
-            { Prerequisites.Game.Competition, RadioButtonGame.Competition }
-        };
-
         public ObservableCollection<string> Classes { get; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
         public ObservableCollection<IDiscipline> MaleSprintDisciplines { get; } = new ObservableCollection<IDiscipline>();
@@ -56,13 +48,12 @@ namespace HonglornWPF.ViewModels
             {
                 OnPropertyChanged(out currentClass, value);
 
-                Game? gameFromDb = GetGameType(CurrentClass, CurrentYear);
-                Game = gameFromDb == null ? RadioButtonGame.Unknown : gameTypeMap[gameFromDb];
+                Game = GetGameType(CurrentClass, CurrentYear);
             }
         }
 
-        RadioButtonGame game;
-        public RadioButtonGame Game
+        Game? game;
+        public Game? Game
         {
             get { return game; }
             set
@@ -71,16 +62,12 @@ namespace HonglornWPF.ViewModels
 
                 switch (value)
                 {
-                    case RadioButtonGame.Traditional:
+                    case HonglornBL.Enums.Game.Traditional:
                         LoadAllTraditionalDisciplines();
                         break;
-                    case RadioButtonGame.Competition:
+                    case HonglornBL.Enums.Game.Competition:
                         LoadAllCompetitionDisciplines();
                         break;
-                    case RadioButtonGame.Unknown:
-                        break;
-                    default:
-                        throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(RadioButtonGame));
                 }
 
             }
@@ -198,12 +185,5 @@ namespace HonglornWPF.ViewModels
         {
             CreateOrUpdateDisciplineCollection(CurrentClass, CurrentYear, CurrentMaleSprintDiscipline.PKey, CurrentMaleJumpDiscipline.PKey, CurrentMaleThrowDiscipline.PKey, CurrentMaleMiddleDistanceDiscipline.PKey, CurrentFemaleSprintDiscipline.PKey, CurrentFemaleJumpDiscipline.PKey, CurrentFemaleThrowDiscipline.PKey, CurrentFemaleMiddleDistanceDiscipline.PKey);
         }
-    }
-
-    public enum RadioButtonGame
-    {
-        Traditional,
-        Competition,
-        Unknown
     }
 }

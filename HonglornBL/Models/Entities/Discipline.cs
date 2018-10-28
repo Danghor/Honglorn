@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HonglornBL.Enums;
 using HonglornBL.Interfaces;
 
 namespace HonglornBL.Models.Entities
@@ -12,7 +13,7 @@ namespace HonglornBL.Models.Entities
         public Guid PKey { get; set; } = Guid.NewGuid();
 
         [Required]
-        public Prerequisites.DisciplineType Type { get; set; }
+        public DisciplineType Type { get; set; }
 
         [Required]
         [StringLength(45)]

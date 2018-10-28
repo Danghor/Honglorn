@@ -1,4 +1,4 @@
-﻿using static HonglornBL.Prerequisites;
+﻿using HonglornBL.Enums;
 
 namespace HonglornBL
 {

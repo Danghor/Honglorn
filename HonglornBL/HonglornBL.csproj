@@ -98,6 +98,7 @@
     <Compile Include="CompetitionCalculatorContainer.cs" />
     <Compile Include="CompetitionDisciplineContainer.cs" />
     <Compile Include="CompetitionCalculator.cs" />
+    <Compile Include="Enums.cs" />
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\FieldErrorInfo.cs" />
     <Compile Include="Import\RecordErrorInfo.cs" />

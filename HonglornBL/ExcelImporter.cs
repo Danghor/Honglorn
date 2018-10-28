@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using HonglornBL.Enums;
 using Microsoft.Office.Interop.Excel;
 using static HonglornBL.Prerequisites;
 using HonglornBL.Import;

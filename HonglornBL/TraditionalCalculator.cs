@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using HonglornBL.Enums;
 using HonglornBL.Models.Entities;
-using static HonglornBL.Prerequisites;
 
 namespace HonglornBL
 {

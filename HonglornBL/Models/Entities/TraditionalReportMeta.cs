@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HonglornBL.Enums;
 
 namespace HonglornBL.Models.Entities
 {
@@ -8,7 +9,7 @@ namespace HonglornBL.Models.Entities
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Prerequisites.Sex Sex { get; set; }
+        public Sex Sex { get; set; }
 
         [Key]
         [Column(Order = 1)]

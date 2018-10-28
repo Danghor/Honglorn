@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using HonglornBL.Enums;
 
 namespace HonglornBL.Models.Entities
 {
@@ -22,7 +23,7 @@ namespace HonglornBL.Models.Entities
         public string Forename { get; set; }
 
         [Required]
-        public Prerequisites.Sex Sex { get; set; }
+        public Sex Sex { get; set; }
 
         [Required]
         public short YearOfBirth { get; set; }
