@@ -8,7 +8,7 @@ namespace HonglornBL
 {
     public static class Prerequisites
     {
-        static readonly IEnumerable<Tuple<string, Func<string, string>>> classNameFunctionMap = new[]
+        static readonly IEnumerable<Tuple<string, Func<string, string>>> ClassNameFunctionMap = new[]
         {
             new Tuple<string, Func<string, string>>("0[5-9][A-Za-z]", c => c[1].ToString()),
             new Tuple<string, Func<string, string>>("[5-9][A-Za-z]", c => c[0].ToString()),
@@ -17,19 +17,14 @@ namespace HonglornBL
 
         internal static string GetClassName(string courseName)
         {
-            string className;
-            Tuple<string, Func<string, string>> pair = classNameFunctionMap.FirstOrDefault(tuple => Regex.IsMatch(courseName, tuple.Item1));
+            Tuple<string, Func<string, string>> pair = ClassNameFunctionMap.FirstOrDefault(tuple => Regex.IsMatch(courseName, tuple.Item1));
 
             if (pair == null)
             {
                 throw new ArgumentException($"Invalid course name: {courseName}. Automatic mapping to class name failed.");
             }
-            else
-            {
-                className = pair.Item2(courseName);
-            }
 
-            return className;
+            return pair.Item2(courseName);
         }
 
         /// <summary>
