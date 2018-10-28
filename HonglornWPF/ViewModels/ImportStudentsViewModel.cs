@@ -17,35 +17,35 @@ namespace HonglornWPF.ViewModels
         public ProgressBarStyle ProgressBarStyle
         {
             get { return progressBarStyle; }
-            set { OnPropertyChanged(ref progressBarStyle, value); }
+            set { OnPropertyChanged(out progressBarStyle, value); }
         }
 
         int statusPercentage;
         public int StatusPercentage
         {
             get { return statusPercentage; }
-            set { OnPropertyChanged(ref statusPercentage, value); }
+            set { OnPropertyChanged(out statusPercentage, value); }
         }
 
         string statusMessage;
         public string StatusMessage
         {
             get { return statusMessage; }
-            set { OnPropertyChanged(ref statusMessage, value); }
+            set { OnPropertyChanged(out statusMessage, value); }
         }
 
         short year;
         public short Year
         {
             get { return year; }
-            set { OnPropertyChanged(ref year, value); }
+            set { OnPropertyChanged(out year, value); }
         }
 
         string path;
         public string Path
         {
             get { return path; }
-            set { OnPropertyChanged(ref path, value); }
+            set { OnPropertyChanged(out path, value); }
         }
 
         public RelayCommand OpenFileDialogCommand { get; }

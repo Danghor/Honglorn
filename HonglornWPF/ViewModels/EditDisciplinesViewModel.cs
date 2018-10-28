@@ -16,7 +16,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 SaveDiscipline(currentDiscipline);
-                OnPropertyChanged(ref currentDiscipline, value);
+                OnPropertyChanged(out currentDiscipline, value);
             }
         }
 

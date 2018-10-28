@@ -38,7 +38,7 @@ namespace HonglornWPF.ViewModels
 
             set
             {
-                OnPropertyChanged(ref currentYear, value);
+                OnPropertyChanged(out currentYear, value);
 
                 string previouslySelectedClass = CurrentClass;
 
@@ -55,7 +55,7 @@ namespace HonglornWPF.ViewModels
             get { return currentClass; }
             set
             {
-                OnPropertyChanged(ref currentClass, value);
+                OnPropertyChanged(out currentClass, value);
 
                 Game? gameFromDb = GetGameType(CurrentClass, CurrentYear);
                 Game = gameFromDb == null ? RadioButtonGame.Unknown : gameTypeMap[gameFromDb];
@@ -68,7 +68,7 @@ namespace HonglornWPF.ViewModels
             get { return game; }
             set
             {
-                OnPropertyChanged(ref game, value);
+                OnPropertyChanged(out game, value);
 
                 switch (value)
                 {
@@ -91,56 +91,56 @@ namespace HonglornWPF.ViewModels
         public IDiscipline CurrentMaleSprintDiscipline
         {
             get { return currentMaleSprintDiscipline; }
-            set { OnPropertyChanged(ref currentMaleSprintDiscipline, value); }
+            set { OnPropertyChanged(out currentMaleSprintDiscipline, value); }
         }
 
         IDiscipline currentMaleJumpDiscipline;
         public IDiscipline CurrentMaleJumpDiscipline
         {
             get { return currentMaleJumpDiscipline; }
-            set { OnPropertyChanged(ref currentMaleJumpDiscipline, value); }
+            set { OnPropertyChanged(out currentMaleJumpDiscipline, value); }
         }
 
         IDiscipline currentMaleThrowDiscipline;
         public IDiscipline CurrentMaleThrowDiscipline
         {
             get { return currentMaleThrowDiscipline; }
-            set { OnPropertyChanged(ref currentMaleThrowDiscipline, value); }
+            set { OnPropertyChanged(out currentMaleThrowDiscipline, value); }
         }
 
         IDiscipline currentMaleMiddleDistanceDiscipline;
         public IDiscipline CurrentMaleMiddleDistanceDiscipline
         {
             get { return currentMaleMiddleDistanceDiscipline; }
-            set { OnPropertyChanged(ref currentMaleMiddleDistanceDiscipline, value); }
+            set { OnPropertyChanged(out currentMaleMiddleDistanceDiscipline, value); }
         }
 
         IDiscipline currentFemaleSprintDiscipline;
         public IDiscipline CurrentFemaleSprintDiscipline
         {
             get { return currentFemaleSprintDiscipline; }
-            set { OnPropertyChanged(ref currentFemaleSprintDiscipline, value); }
+            set { OnPropertyChanged(out currentFemaleSprintDiscipline, value); }
         }
 
         IDiscipline currentFemaleJumpDiscipline;
         public IDiscipline CurrentFemaleJumpDiscipline
         {
             get { return currentFemaleJumpDiscipline; }
-            set { OnPropertyChanged(ref currentFemaleJumpDiscipline, value); }
+            set { OnPropertyChanged(out currentFemaleJumpDiscipline, value); }
         }
 
         IDiscipline currentFemaleThrowDiscipline;
         public IDiscipline CurrentFemaleThrowDiscipline
         {
             get { return currentFemaleThrowDiscipline; }
-            set { OnPropertyChanged(ref currentFemaleThrowDiscipline, value); }
+            set { OnPropertyChanged(out currentFemaleThrowDiscipline, value); }
         }
 
         IDiscipline currentFemaleMiddleDistanceDiscipline;
         public IDiscipline CurrentFemaleMiddleDistanceDiscipline
         {
             get { return currentFemaleMiddleDistanceDiscipline; }
-            set { OnPropertyChanged(ref currentFemaleMiddleDistanceDiscipline, value); }
+            set { OnPropertyChanged(out currentFemaleMiddleDistanceDiscipline, value); }
         }
 
         void LoadClassNames()

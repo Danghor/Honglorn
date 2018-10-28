@@ -17,7 +17,7 @@ namespace HonglornWPF.ViewModels
             get { return isLoading; }
             private set
             {
-                OnPropertyChanged(ref isLoading, value);
+                OnPropertyChanged(out isLoading, value);
             }
         }
 
@@ -27,7 +27,7 @@ namespace HonglornWPF.ViewModels
             get { return message; }
             private set
             {
-                OnPropertyChanged(ref message, value);
+                OnPropertyChanged(out message, value);
             }
         }
 
@@ -38,7 +38,7 @@ namespace HonglornWPF.ViewModels
 
             set
             {
-                OnPropertyChanged(ref currentYear, value);
+                OnPropertyChanged(out currentYear, value);
 
                 string previouslySelectedCourse = CurrentCourse;
 
@@ -55,7 +55,7 @@ namespace HonglornWPF.ViewModels
             get { return currentCourse; }
             set
             {
-                OnPropertyChanged(ref currentCourse, value);
+                OnPropertyChanged(out currentCourse, value);
 
                 LoadResults();
             }

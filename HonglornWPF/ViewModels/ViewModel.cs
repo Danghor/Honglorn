@@ -9,7 +9,7 @@ namespace HonglornWPF.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged<T>(out T field, T value, [CallerMemberName] string propertyName = null)
         {
             field = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
