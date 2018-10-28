@@ -80,7 +80,7 @@ namespace HonglornWPF.ViewModels
                     case RadioButtonGame.Unknown:
                         break;
                     default:
-                        throw new InvalidEnumArgumentException(nameof(value), (int) value, typeof(RadioButtonGame));
+                        throw new InvalidEnumArgumentException(nameof(value), (int)value, typeof(RadioButtonGame));
                 }
 
             }
@@ -154,15 +154,20 @@ namespace HonglornWPF.ViewModels
 
         void LoadAllCompetitionDisciplines()
         {
-            ClearAndFill(MaleSprintDisciplines, FilteredCompetitionDisciplines(DisciplineType.Sprint));
-            ClearAndFill(MaleJumpDisciplines, FilteredCompetitionDisciplines(DisciplineType.Jump));
-            ClearAndFill(MaleThrowDisciplines, FilteredCompetitionDisciplines(DisciplineType.Throw));
-            ClearAndFill(MaleMiddleDistanceDisciplines, FilteredCompetitionDisciplines(DisciplineType.MiddleDistance));
+            ICollection<IDiscipline> sprintDisciplines = FilteredCompetitionDisciplines(DisciplineType.Sprint);
+            ICollection<IDiscipline> jumpDisciplines = FilteredCompetitionDisciplines(DisciplineType.Jump);
+            ICollection<IDiscipline> throwDisciplines = FilteredCompetitionDisciplines(DisciplineType.Throw);
+            ICollection<IDiscipline> middleDistanceDisciplines = FilteredCompetitionDisciplines(DisciplineType.MiddleDistance);
 
-            ClearAndFill(FemaleSprintDisciplines, FilteredCompetitionDisciplines(DisciplineType.Sprint));
-            ClearAndFill(FemaleJumpDisciplines, FilteredCompetitionDisciplines(DisciplineType.Jump));
-            ClearAndFill(FemaleThrowDisciplines, FilteredCompetitionDisciplines(DisciplineType.Throw));
-            ClearAndFill(FemaleMiddleDistanceDisciplines, FilteredCompetitionDisciplines(DisciplineType.MiddleDistance));
+            ClearAndFill(MaleSprintDisciplines, sprintDisciplines);
+            ClearAndFill(MaleJumpDisciplines, jumpDisciplines);
+            ClearAndFill(MaleThrowDisciplines, throwDisciplines);
+            ClearAndFill(MaleMiddleDistanceDisciplines, middleDistanceDisciplines);
+
+            ClearAndFill(FemaleSprintDisciplines, sprintDisciplines);
+            ClearAndFill(FemaleJumpDisciplines, jumpDisciplines);
+            ClearAndFill(FemaleThrowDisciplines, throwDisciplines);
+            ClearAndFill(FemaleMiddleDistanceDisciplines, middleDistanceDisciplines);
         }
 
         void LoadAllTraditionalDisciplines()
