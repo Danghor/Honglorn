@@ -24,7 +24,7 @@
         </Grid>
         <StackPanel Orientation="Horizontal" >
             <Label Content="Aktuelles Jahr" />
-            <controls:NumericUpDown Value="{Binding Year}" HasDecimals="False" Speedup="False" />
+            <controls:NumericUpDown Value="{Binding Year}" NumericInputMode="Numbers" Speedup="False" />
         </StackPanel>
         <Button Command="{Binding ImportStudentsAsyncCommand}" Content="Import starten"/>
         <ProgressBar Style="{Binding ProgressBarStyle}" Value="{Binding StatusPercentage}" Height="10"/>

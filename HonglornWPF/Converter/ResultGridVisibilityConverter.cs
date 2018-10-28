@@ -9,7 +9,7 @@ namespace HonglornWPF.Converter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            bool isLoading = (bool)values[0];
+            var isLoading = (bool)values[0];
             string message = values[1]?.ToString();
 
             return isLoading || !string.IsNullOrWhiteSpace(message) ? Visibility.Collapsed : Visibility.Visible;

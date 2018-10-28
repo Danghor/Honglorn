@@ -13,7 +13,7 @@ namespace HonglornWPF.Converter
             Visibility trueValue;
             Visibility falseValue;
 
-            if (parameter == null || !((bool)parameter))
+            if (parameter == null || !(bool)parameter)
             {
                 trueValue = Visibility.Visible;
                 falseValue = Visibility.Collapsed;

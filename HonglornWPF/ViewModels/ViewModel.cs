@@ -19,7 +19,7 @@ namespace HonglornWPF.ViewModels
         {
             collection.Clear();
 
-            foreach (T item in content)
+            foreach (var item in content)
             {
                 collection.Add(item);
             }

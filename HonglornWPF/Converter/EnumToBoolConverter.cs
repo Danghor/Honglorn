@@ -9,6 +9,6 @@ namespace HonglornWPF.Converter
     public class EnumToBoolConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => parameter.Equals(value);
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => ((bool)value) == true ? parameter : DependencyProperty.UnsetValue;
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => (bool)value ? parameter : DependencyProperty.UnsetValue;
     }
 }

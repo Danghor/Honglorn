@@ -442,8 +442,8 @@ namespace HonglornBL
         {
             using (var db = new HonglornDb())
             {
-                IEnumerable<Discipline> disciplines = from d in new[] { maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey }
-                                                      select db.Set<Discipline>().Find(d);
+                IEnumerable<Discipline> disciplines = (from d in new[] { maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey }
+                                                      select db.Set<Discipline>().Find(d)).ToArray();
 
                 if (disciplines.All(d => d is CompetitionDiscipline) || disciplines.All(d => d is TraditionalDiscipline))
                 {
@@ -454,7 +454,7 @@ namespace HonglornBL
                     if (existingCollection == null)
                     {
                         // Create
-                        db.DisciplineCollection.Add(new DisciplineCollection()
+                        db.DisciplineCollection.Add(new DisciplineCollection
                         {
                             ClassName = className,
                             Year = year,
@@ -545,7 +545,7 @@ namespace HonglornBL
         /// </summary>
         /// <param name="filePath">The full path to the Excel file to be imported.</param>
         /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
-        /// <param name="worker">The background worker used to process this method. Used for status updates.</param>
+        /// <param name="progress"></param>
         public static async Task<ICollection<ImportedStudentRecord>> ImportStudentCourseExcelSheet(string filePath, short year, IProgress<ProgressReport> progress)
         {
             if (!IsValidYear(year))

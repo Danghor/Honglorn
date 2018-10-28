@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using HonglornBL;
 
@@ -83,7 +83,7 @@ namespace HonglornWPF.ViewModels
             {
                 ClearAndFill(Results, await Honglorn.GetResultsAsync(CurrentCourse, CurrentYear));
             }
-            catch (Exception ex)
+            catch (DataException ex)
             {
                 Message = ex.Message;
             }
