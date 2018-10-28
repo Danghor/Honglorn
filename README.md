@@ -1,7 +1,22 @@
 # Honglorn
-[![Build status](https://ci.appveyor.com/api/projects/status/0x46y0yevktvbw1l/branch/master?svg=true)](https://ci.appveyor.com/project/Danghor/honglorn/branch/master)
+
+## Description
+A program to calculate results for the German sports event "Bundesjugendspiele".
+
+***work in progress***
+
+## Continuous Integration
+
+### Master
+[![Build status](https://danghor.visualstudio.com/Honglorn/_apis/build/status/Honglorn?branchName=master)](https://danghor.visualstudio.com/Honglorn/_build/latest?definitionId=3)
+
+### Develop
+[![Build status](https://danghor.visualstudio.com/Honglorn/_apis/build/status/Honglorn?branchName=develop)](https://danghor.visualstudio.com/Honglorn/_build/latest?definitionId=3)
+
+## Chat
 [![Gitter](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Honglorn)
 
-Ein Programm zur computergestützten Auswertung der Bundesjugendspiele.
-
-Die Software wird auf genau einen konkreten Anwendungsfall maßgeschneidert, also keine Garantie, dass andere Schulen das Ganze ohne Weiteres einsetzen können. ;)
+## Requirements/Contribution
+- Visual Studio 2015 or higher (C# 6)
+- MySQL Database
+- .NET Framework 4 for Application, 4.7 for Unit Testing

@@ -1,7 +1,7 @@
-using HonglornBL.Models.Entities;
-using MySql.Data.Entity;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using HonglornBL.Models.Entities;
+using MySql.Data.Entity;
 
 namespace HonglornBL.Models.Framework
 {
