@@ -285,40 +285,6 @@ namespace HonglornBL
             }
         }
 
-        public static DisciplineCollection ConfiguredDisciplines(string className, short year)
-        {
-            using (var db = new HonglornDb())
-            {
-                DisciplineCollection collection = (from c in db.DisciplineCollection
-                                                   where c.ClassName == className
-                                                         && c.Year == year
-                                                   select c).SingleOrDefault();
-
-                if (collection != null)
-                {
-                    // Pre-load properties; otherwise they won't be available after the context is disposed.
-                    IEnumerable<Expression<Func<DisciplineCollection, Discipline>>> references = new Expression<Func<DisciplineCollection, Discipline>>[]
-                    {
-                        c => c.MaleSprint,
-                        c => c.MaleJump,
-                        c => c.MaleThrow,
-                        c => c.MaleMiddleDistance,
-                        c => c.FemaleSprint,
-                        c => c.FemaleJump,
-                        c => c.FemaleThrow,
-                        c => c.FemaleMiddleDistance
-                    };
-
-                    foreach (Expression<Func<DisciplineCollection, Discipline>> reference in references)
-                    {
-                        db.Entry(collection).Reference(reference).Load();
-                    }
-                }
-
-                return collection;
-            }
-        }
-
         public static ICollection<IDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType)
         {
             using (var db = new HonglornDb())
