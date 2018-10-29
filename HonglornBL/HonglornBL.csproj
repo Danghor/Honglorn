@@ -103,6 +103,7 @@
     <Compile Include="Import\FieldErrorInfo.cs" />
     <Compile Include="Import\RecordErrorInfo.cs" />
     <Compile Include="Interfaces\IDiscipline.cs" />
+    <Compile Include="Interfaces\IDisciplineCollection.cs" />
     <Compile Include="Interfaces\IStudentPerformance.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="ProgressReport.cs" />

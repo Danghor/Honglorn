@@ -313,6 +313,16 @@ namespace HonglornBL
             }
         }
 
+        public static IDisciplineCollection AssignedDisciplines(string className, short year)
+        {
+            using (var db = new HonglornDb())
+            {
+                return (from col in db.DisciplineCollection
+                        where col.ClassName == className && col.Year == year
+                        select col).SingleOrDefault();
+            }
+        }
+
         public static void CreateOrUpdateCompetitionDiscipline(Guid disciplinePKey, DisciplineType type, string name, string unit, bool lowIsBetter)
         {
             using (var db = new HonglornDb())

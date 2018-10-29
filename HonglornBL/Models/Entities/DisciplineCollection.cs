@@ -1,10 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HonglornBL.Interfaces;
 
 namespace HonglornBL.Models.Entities
 {
-    public class DisciplineCollection
+    public class DisciplineCollection : IDisciplineCollection
     {
         [Key]
         [Column(Order = 0)]

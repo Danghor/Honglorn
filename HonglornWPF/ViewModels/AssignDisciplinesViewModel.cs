@@ -35,8 +35,7 @@ namespace HonglornWPF.ViewModels
 
                 LoadClassNames();
 
-                int courseIndex = Classes.IndexOf(previouslySelectedClass);
-                CurrentClass = courseIndex != -1 ? previouslySelectedClass : Classes.FirstOrDefault();
+                CurrentClass = Classes.Contains(previouslySelectedClass) ? previouslySelectedClass : Classes.FirstOrDefault();
             }
         }
 
@@ -155,6 +154,8 @@ namespace HonglornWPF.ViewModels
             ClearAndFill(FemaleJumpDisciplines, jumpDisciplines);
             ClearAndFill(FemaleThrowDisciplines, throwDisciplines);
             ClearAndFill(FemaleMiddleDistanceDisciplines, middleDistanceDisciplines);
+
+            SelectSavedDisiciplines();
         }
 
         void LoadAllTraditionalDisciplines()
@@ -168,6 +169,22 @@ namespace HonglornWPF.ViewModels
             ClearAndFill(FemaleJumpDisciplines, FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Female));
             ClearAndFill(FemaleThrowDisciplines, FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Female));
             ClearAndFill(FemaleMiddleDistanceDisciplines, FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Female));
+
+            SelectSavedDisiciplines();
+        }
+
+        void SelectSavedDisiciplines()
+        {
+            IDisciplineCollection disciplineCollection = AssignedDisciplines(CurrentClass, CurrentYear);
+
+            if (disciplineCollection != null)
+            {
+                CurrentMaleSprintDiscipline = MaleSprintDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.MaleSprintPKey);
+
+                //todo: preselect other disciplines
+
+                    //CurrentClass = Classes.Contains(previouslySelectedClass) ? previouslySelectedClass : Classes.FirstOrDefault();
+            }
         }
 
         public AssignDisciplinesViewModel()
