@@ -63,12 +63,16 @@ namespace HonglornWPF.ViewModels
                 {
                     case HonglornBL.Enums.Game.Traditional:
                         LoadAllTraditionalDisciplines();
+                        SelectSavedDisiciplines();
                         break;
                     case HonglornBL.Enums.Game.Competition:
                         LoadAllCompetitionDisciplines();
+                        SelectSavedDisiciplines();
+                        break;
+                    case null:
+                        SetSelectedDisciplinesToNull();
                         break;
                 }
-
             }
         }
 
@@ -154,8 +158,6 @@ namespace HonglornWPF.ViewModels
             ClearAndFill(FemaleJumpDisciplines, jumpDisciplines);
             ClearAndFill(FemaleThrowDisciplines, throwDisciplines);
             ClearAndFill(FemaleMiddleDistanceDisciplines, middleDistanceDisciplines);
-
-            SelectSavedDisiciplines();
         }
 
         void LoadAllTraditionalDisciplines()
@@ -169,22 +171,41 @@ namespace HonglornWPF.ViewModels
             ClearAndFill(FemaleJumpDisciplines, FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Female));
             ClearAndFill(FemaleThrowDisciplines, FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Female));
             ClearAndFill(FemaleMiddleDistanceDisciplines, FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Female));
-
-            SelectSavedDisiciplines();
         }
 
         void SelectSavedDisiciplines()
         {
             IDisciplineCollection disciplineCollection = AssignedDisciplines(CurrentClass, CurrentYear);
 
-            if (disciplineCollection != null)
+            if (disciplineCollection == null)
+            {
+                SetSelectedDisciplinesToNull();
+            }
+            else
             {
                 CurrentMaleSprintDiscipline = MaleSprintDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.MaleSprintPKey);
+                CurrentMaleJumpDiscipline = MaleJumpDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.MaleJumpPKey);
+                CurrentMaleThrowDiscipline = MaleThrowDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.MaleThrowPKey);
+                CurrentMaleMiddleDistanceDiscipline = MaleMiddleDistanceDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.MaleMiddleDistancePKey);
 
-                //todo: preselect other disciplines
-
-                    //CurrentClass = Classes.Contains(previouslySelectedClass) ? previouslySelectedClass : Classes.FirstOrDefault();
+                CurrentFemaleSprintDiscipline = FemaleSprintDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.FemaleSprintPKey);
+                CurrentFemaleJumpDiscipline = FemaleJumpDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.FemaleJumpPKey);
+                CurrentFemaleThrowDiscipline = FemaleThrowDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.FemaleThrowPKey);
+                CurrentFemaleMiddleDistanceDiscipline = FemaleMiddleDistanceDisciplines.SingleOrDefault(d => d.PKey == disciplineCollection.FemaleMiddleDistancePKey);
             }
+        }
+
+        void SetSelectedDisciplinesToNull()
+        {
+            CurrentMaleSprintDiscipline = null;
+            CurrentMaleJumpDiscipline = null;
+            CurrentMaleThrowDiscipline = null;
+            CurrentMaleMiddleDistanceDiscipline = null;
+
+            CurrentFemaleSprintDiscipline = null;
+            CurrentFemaleJumpDiscipline = null;
+            CurrentFemaleThrowDiscipline = null;
+            CurrentFemaleMiddleDistanceDiscipline = null;
         }
 
         public AssignDisciplinesViewModel()
