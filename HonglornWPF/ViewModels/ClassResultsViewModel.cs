@@ -44,8 +44,8 @@ namespace HonglornWPF.ViewModels
 
                 LoadCourseNames();
 
-                int courseIndex = Courses.IndexOf(previouslySelectedCourse);
-                CurrentCourse = courseIndex != -1 ? previouslySelectedCourse : Courses.FirstOrDefault();
+                //todo: move to superclass
+                CurrentCourse = Courses.Contains(previouslySelectedCourse) ? previouslySelectedCourse : Courses.FirstOrDefault();
             }
         }
 
