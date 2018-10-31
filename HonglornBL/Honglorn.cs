@@ -531,7 +531,9 @@ namespace HonglornBL
 
             progress.Report(new ProgressReport { Percentage = 0, IsIndeterminate = true, Message = "Lese Daten aus Excel Datei..." });
 
-            ICollection<ImportedStudentRecord> studentsFromExcelSheet = await Task.Factory.StartNew(() => ExcelImporter.GetStudentDataTableFromExcelFile(filePath));
+            IStudentImporter importer = new ExcelImporter();
+
+            ICollection<ImportedStudentRecord> studentsFromExcelSheet = await Task.Factory.StartNew(() => importer.ReadStudentsFromFile(filePath));
 
             int currentlyImported = 0;
 

@@ -5,10 +5,11 @@ using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
 using static HonglornBL.Prerequisites;
 using HonglornBL.Import;
+using HonglornBL.Interfaces;
 
 namespace HonglornBL
 {
-    static class ExcelImporter
+    internal class ExcelImporter : IStudentImporter
     {
         const string SurnameHeaderColumn = "Nachname";
         const string ForenameHeaderColumn = "Vorname";
@@ -21,7 +22,7 @@ namespace HonglornBL
         ///     Designed to work together with the DBHandler to import the data into the database.
         /// </summary>
         /// <param name="filePath">The file path of the Excel-file containing the relevant data.</param>
-        internal static ICollection<ImportedStudentRecord> GetStudentDataTableFromExcelFile(string filePath)
+        public ICollection<ImportedStudentRecord> ReadStudentsFromFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
             {
@@ -45,7 +46,7 @@ namespace HonglornBL
                 bool rowIsEmpty = false;
                 while (!rowIsEmpty)
                 {
-                    string[] row = worksheet.GetRow(rowIdx, 5);
+                    string[] row = GetRow(worksheet, rowIdx, 5);
                     rowIsEmpty = row.All(string.IsNullOrWhiteSpace);
 
                     if (!rowIsEmpty)
@@ -76,7 +77,7 @@ namespace HonglornBL
             }
         }
 
-        static string GetTextFromRange(this _Worksheet sheet, string range)
+        static string GetTextFromRange(_Worksheet sheet, string range)
         {
             return sheet.Range[range].Text;
         }
@@ -91,30 +92,30 @@ namespace HonglornBL
             return Alphabet[colIdx];
         }
 
-        static string[] GetRow(this _Worksheet sheet, int rowIdx, int length)
+        static string[] GetRow(_Worksheet sheet, int rowIdx, int length)
         {
             string[] row = new string[length];
 
             for (int colIdx = 0; colIdx < length; colIdx++)
             {
-                row[colIdx] = sheet.GetTextFromCell(colIdx, rowIdx);
+                row[colIdx] = GetTextFromCell(sheet, colIdx, rowIdx);
             }
 
             return row;
         }
 
-        static string GetTextFromCell(this _Worksheet sheet, int colIdx, int rowIdx)
+        static string GetTextFromCell(_Worksheet sheet, int colIdx, int rowIdx)
         {
             return sheet.Range[$"{GetColumnName(colIdx)}{rowIdx}"].Text;
         }
 
         static void ValidateHeaderRow(_Worksheet sheet)
         {
-            ValidateString(SurnameHeaderColumn, sheet.GetTextFromRange("A1"));
-            ValidateString(ForenameHeaderColumn, sheet.GetTextFromRange("B1"));
-            ValidateString(CoursenameHeaderColumn, sheet.GetTextFromRange("C1"));
-            ValidateString(SexHeaderColumn, sheet.GetTextFromRange("D1"));
-            ValidateString(YearofbirthHeaderColumn, sheet.GetTextFromRange("E1"));
+            ValidateString(SurnameHeaderColumn, GetTextFromRange(sheet, "A1"));
+            ValidateString(ForenameHeaderColumn, GetTextFromRange(sheet, "B1"));
+            ValidateString(CoursenameHeaderColumn, GetTextFromRange(sheet, "C1"));
+            ValidateString(SexHeaderColumn, GetTextFromRange(sheet, "D1"));
+            ValidateString(YearofbirthHeaderColumn, GetTextFromRange(sheet, "E1"));
         }
 
         static void ValidateString(string expected, string actual)
