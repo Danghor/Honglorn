@@ -3,7 +3,7 @@ using HonglornBL.Import;
 
 namespace HonglornBL.Interfaces
 {
-    internal interface IStudentImporter
+    interface IStudentImporter
     {
         ICollection<ImportedStudentRecord> ReadStudentsFromFile(string filePath);
     }
