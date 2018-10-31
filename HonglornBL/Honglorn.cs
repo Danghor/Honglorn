@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
@@ -419,7 +420,7 @@ namespace HonglornBL
             using (var db = new HonglornDb())
             {
                 IEnumerable<Discipline> disciplines = (from d in new[] { maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey }
-                                                      select db.Set<Discipline>().Find(d)).ToArray();
+                                                       select db.Set<Discipline>().Find(d)).ToArray();
 
                 if (disciplines.All(d => d is CompetitionDiscipline) || disciplines.All(d => d is TraditionalDiscipline))
                 {
@@ -522,7 +523,7 @@ namespace HonglornBL
         /// <param name="filePath">The full path to the Excel file to be imported.</param>
         /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
         /// <param name="progress"></param>
-        public static async Task<ICollection<ImportedStudentRecord>> ImportStudentCourseExcelSheet(string filePath, short year, IProgress<ProgressReport> progress)
+        public static async Task<ICollection<ImportedStudentRecord>> ImportStudentsFromFile(string filePath, short year, IProgress<ProgressReport> progress)
         {
             if (!IsValidYear(year))
             {
@@ -531,9 +532,7 @@ namespace HonglornBL
 
             progress.Report(new ProgressReport { Percentage = 0, IsIndeterminate = true, Message = "Lese Daten aus Excel Datei..." });
 
-            IStudentImporter importer = new ExcelImporter();
-
-            ICollection<ImportedStudentRecord> studentsFromExcelSheet = await Task.Factory.StartNew(() => importer.ReadStudentsFromFile(filePath));
+            ICollection<ImportedStudentRecord> studentsFromExcelSheet = await Task.Factory.StartNew(() => GetImporter(filePath).ReadStudentsFromFile(filePath));
 
             int currentlyImported = 0;
 
@@ -561,6 +560,31 @@ namespace HonglornBL
             progress.Report(new ProgressReport { Percentage = 100, IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
 
             return studentsFromExcelSheet;
+        }
+
+        static readonly IDictionary<string, Func<IStudentImporter>> ExtensionImporterMap = new Dictionary<string, Func<IStudentImporter>>
+        {
+            { ".xls", () => new ExcelImporter() },
+            { ".xlsx", () => new ExcelImporter() }
+        };
+
+        static IStudentImporter GetImporter(string filePath)
+        {
+            string extension = Path.GetExtension(filePath);
+
+            if (string.IsNullOrWhiteSpace(extension))
+            {
+                throw new ArgumentException($"The file {filePath} has no extension.", filePath);
+            }
+
+            try
+            {
+                return ExtensionImporterMap[extension]();
+            }
+            catch (KeyNotFoundException e)
+            {
+                throw new NotSupportedException($"Importing students from a file with the extension {extension} is not supported.", e);
+            }
         }
 
         /// <summary>

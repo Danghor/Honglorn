@@ -74,7 +74,7 @@ namespace HonglornWPF.ViewModels
 
             try
             {
-                ICollection<ImportedStudentRecord> importedStudents = await Honglorn.ImportStudentCourseExcelSheet(Path, Year, new Progress<ProgressReport>(r => OnProgressChanged(r)));
+                ICollection<ImportedStudentRecord> importedStudents = await Honglorn.ImportStudentsFromFile(Path, Year, new Progress<ProgressReport>(r => OnProgressChanged(r)));
 
                 int successfullyImported = importedStudents.Count(s => s.Error == null);
                 int unsuccessfullyImported = importedStudents.Count(s => s.Error != null);
