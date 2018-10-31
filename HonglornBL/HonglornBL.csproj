@@ -122,7 +122,7 @@
     <Compile Include="StudentFile.cs" />
     <Compile Include="StudentPerformance.cs" />
     <Compile Include="TraditionalCalculator.cs" />
-    <Compile Include="ExcelImporter.cs" />
+    <Compile Include="Import\ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
     <Compile Include="Interfaces\IProgressInformer.cs" />
     <Compile Include="Models\Entities\Competition.cs" />

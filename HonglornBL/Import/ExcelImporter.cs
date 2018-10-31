@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Microsoft.Office.Interop.Excel;
-using static HonglornBL.Prerequisites;
-using HonglornBL.Import;
 using HonglornBL.Interfaces;
+using Microsoft.Office.Interop.Excel;
 
-namespace HonglornBL
+namespace HonglornBL.Import
 {
     class ExcelImporter : IStudentImporter
     {
@@ -89,7 +87,7 @@ namespace HonglornBL
                 throw new NotImplementedException($"The {nameof(GetColumnName)}-function is only designed for column indices up to 25.");
             }
 
-            return Alphabet[colIdx];
+            return Prerequisites.Alphabet[colIdx];
         }
 
         static string[] GetRow(_Worksheet sheet, int rowIdx, int length)
