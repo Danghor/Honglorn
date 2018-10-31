@@ -565,7 +565,8 @@ namespace HonglornBL
         static readonly IDictionary<string, Func<IStudentImporter>> ExtensionImporterMap = new Dictionary<string, Func<IStudentImporter>>
         {
             { ".xls", () => new ExcelImporter() },
-            { ".xlsx", () => new ExcelImporter() }
+            { ".xlsx", () => new ExcelImporter() },
+            { ".csv", () => new CsvImporter() }
         };
 
         static IStudentImporter GetImporter(string filePath)

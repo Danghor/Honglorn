@@ -100,6 +100,7 @@
     <Compile Include="CompetitionCalculator.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ICompetitionResult.cs" />
+    <Compile Include="Import\CsvImporter.cs" />
     <Compile Include="Import\FieldErrorInfo.cs" />
     <Compile Include="Import\RecordErrorInfo.cs" />
     <Compile Include="Interfaces\IDiscipline.cs" />
