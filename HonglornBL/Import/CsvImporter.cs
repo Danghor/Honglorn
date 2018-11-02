@@ -21,7 +21,7 @@ namespace HonglornBL.Import
                 if (!reader.EndOfStream)
                 {
                     string[] headerValues = reader.ReadLine()?.Split(',');
-                    if (!headerValues.SequenceEqual(new [] { "Nachname", "Vorname", "Kursbezeichnung", "Geschlecht", "Geburtsjahr" }))
+                    if (!headerValues.SequenceEqual(new[] { SurnameHeaderColumn, ForenameHeaderColumn, CoursenameHeaderColumn, SexHeaderColumn, YearofbirthHeaderColumn }))
                     {
                         throw new ArgumentException("Header row was not in the expected condition.");
                     }
