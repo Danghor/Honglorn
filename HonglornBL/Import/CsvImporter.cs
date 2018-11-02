@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace HonglornBL.Import
 {
-    class CsvImporter : IStudentImporter
+    class CsvImporter : StudentImporter
     {
-        ICollection<ImportedStudentRecord> IStudentImporter.ReadStudentsFromFile(string filePath)
+        public override ICollection<ImportedStudentRecord> ReadStudentsFromFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
             {

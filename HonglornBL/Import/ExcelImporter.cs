@@ -6,7 +6,7 @@ using Microsoft.Office.Interop.Excel;
 
 namespace HonglornBL.Import
 {
-    class ExcelImporter : IStudentImporter
+    class ExcelImporter : StudentImporter
     {
         const string SurnameHeaderColumn = "Nachname";
         const string ForenameHeaderColumn = "Vorname";
@@ -19,7 +19,7 @@ namespace HonglornBL.Import
         ///     Designed to work together with the DBHandler to import the data into the database.
         /// </summary>
         /// <param name="filePath">The file path of the Excel-file containing the relevant data.</param>
-        ICollection<ImportedStudentRecord> IStudentImporter.ReadStudentsFromFile(string filePath)
+        public override ICollection<ImportedStudentRecord> ReadStudentsFromFile(string filePath)
         {
             if (string.IsNullOrWhiteSpace(filePath))
             {
