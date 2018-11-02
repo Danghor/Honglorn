@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using HonglornBL.Import;
 
-namespace HonglornBL.Interfaces
+namespace HonglornBL.Import
 {
     interface IStudentImporter
     {
