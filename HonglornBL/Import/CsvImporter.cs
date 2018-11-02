@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using HonglornBL.Interfaces;
 
 namespace HonglornBL.Import
@@ -18,15 +19,23 @@ namespace HonglornBL.Import
 
             using (var reader = new StreamReader(filePath))
             {
+                if (!reader.EndOfStream)
+                {
+                    string[] headerValues = reader.ReadLine()?.Split(',');
+                    if (!headerValues.SequenceEqual(new [] { "Nachname", "Vorname", "Kursbezeichnung", "Geschlecht", "Geburtsjahr" }))
+                    {
+                        throw new ArgumentException("Header row was not in the expected condition.");
+                    }
+                }
+
                 while (!reader.EndOfStream)
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(';');
-
+                    string[] row = reader.ReadLine()?.Split(',');
+                    extractedStudents.Add(new ImportedStudentRecord(row?[0], row?[1], row?[2], row?[3], row?[4]));
                 }
             }
 
-            throw new NotImplementedException();
+            return extractedStudents;
         }
     }
 }
