@@ -8,12 +8,6 @@ namespace HonglornBL.Import
 {
     class ExcelImporter : StudentImporter
     {
-        const string SurnameHeaderColumn = "Nachname";
-        const string ForenameHeaderColumn = "Vorname";
-        const string CoursenameHeaderColumn = "Kursbezeichnung";
-        const string SexHeaderColumn = "Geschlecht";
-        const string YearofbirthHeaderColumn = "Geburtsjahr";
-
         /// <summary>
         ///     Takes a file path as a string as input and returns a DataTable containing the extracted data.
         ///     Designed to work together with the DBHandler to import the data into the database.
