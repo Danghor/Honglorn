@@ -107,7 +107,7 @@
     <Compile Include="Interfaces\IDisciplineCollection.cs" />
     <Compile Include="Interfaces\IStudentPerformance.cs" />
     <Compile Include="Interfaces\IResult.cs" />
-    <Compile Include="Interfaces\IStudentImporter.cs" />
+    <Compile Include="Import\IStudentImporter.cs" />
     <Compile Include="ProgressReport.cs" />
     <Compile Include="RawMeasurement.cs" />
     <Compile Include="DisciplineContainer.cs" />
