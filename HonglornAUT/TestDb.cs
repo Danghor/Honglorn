@@ -3,7 +3,7 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornAUT
 {
-    public partial class TraditionalCalculatorTest
+    public partial class HonglornTest
     {
         sealed class TestDb : DbContext
         {
