@@ -9,7 +9,7 @@ using HonglornAUT.Properties;
 
 namespace HonglornAUT
 {
-    public partial class TraditionalCalculatorTest
+    public partial class HonglornTest
     {
         class TestDbInitializer : DropCreateDatabaseAlways<TestDb>
         {
