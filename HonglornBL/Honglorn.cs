@@ -16,9 +16,21 @@ namespace HonglornBL
 {
     public class Honglorn
     {
-        public static IEnumerable<IStudentPerformance> StudentPerformances(string course, short year)
+        readonly string connectionString;
+
+        public Honglorn(string connectionString)
         {
-            using (var db = new HonglornDb())
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new ArgumentException("The connection string must not be empty.", nameof(connectionString));
+            }
+
+            this.connectionString = connectionString;
+        }
+
+        public IEnumerable<IStudentPerformance> StudentPerformances(string course, short year)
+        {
+            using (var db = new HonglornDb(connectionString))
             {
                 var result = new List<IStudentPerformance>();
 
@@ -38,9 +50,9 @@ namespace HonglornBL
             }
         }
 
-        static ICollection<Student> GetStudents(string course, short year)
+        ICollection<Student> GetStudents(string course, short year)
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 return (from s in db.Student
                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
@@ -49,19 +61,19 @@ namespace HonglornBL
             }
         }
 
-        public static async Task<IEnumerable<IResult>> GetResultsAsync(string course, short year)
+        public async Task<IEnumerable<IResult>> GetResultsAsync(string course, short year)
         {
             return await Task.Factory.StartNew(() => GetResults(course, year));
         }
 
-        static IEnumerable<IResult> GetResults(string course, short year)
+        IEnumerable<IResult> GetResults(string course, short year)
         {
             IEnumerable<IResult> results;
 
             IEnumerable<Student> students = GetStudents(course, year);
             string className = GetClassName(course);
 
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 DisciplineCollection disciplines = (from d in db.DisciplineCollection
                                                     where d.ClassName == className
@@ -116,13 +128,13 @@ namespace HonglornBL
             return results;
         }
 
-        static IEnumerable<IResult> CalculateCompetitionResults(IEnumerable<Student> students, short year, CompetitionDisciplineContainer disciplineCollection)
+        IEnumerable<IResult> CalculateCompetitionResults(IEnumerable<Student> students, short year, CompetitionDisciplineContainer disciplineCollection)
         {
             List<ICompetitionResult> competitionResults = new List<ICompetitionResult>();
 
             IEnumerable<string> classes = (from s in students
                                            select GetClassName(s.CourseNameByYear(year))).Distinct();
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 foreach (string @class in classes)
                 {
@@ -170,7 +182,7 @@ namespace HonglornBL
             return results;
         }
 
-        static IEnumerable<IResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
+        IEnumerable<IResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
         {
             ICollection<IResult> results = new List<IResult>();
 
@@ -204,12 +216,12 @@ namespace HonglornBL
             return results;
         }
 
-        static Certificate DetermineTraditionalCertificate(Sex sex, short yearOfBirth, ushort totalScore)
+        Certificate DetermineTraditionalCertificate(Sex sex, short yearOfBirth, ushort totalScore)
         {
             Certificate result;
             int studentAge = DateTime.Now.Year - yearOfBirth;
 
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 var scoreBoundaries = (from meta in db.TraditionalReportMeta
                                        where meta.Sex == sex
@@ -233,9 +245,9 @@ namespace HonglornBL
             return result;
         }
 
-        public static void UpdateSingleStudentCompetition(Guid studentPKey, short year, float? sprint, float? jump, float? @throw, float? middleDistance)
+        public void UpdateSingleStudentCompetition(Guid studentPKey, short year, float? sprint, float? jump, float? @throw, float? middleDistance)
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 Student student = db.Student.Find(studentPKey);
 
@@ -286,9 +298,9 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<IDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType)
+        public ICollection<IDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType)
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 return (from d in db.CompetitionDiscipline
                         where d.Type == disciplineType
@@ -296,9 +308,9 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<IDiscipline> FilteredTraditionalDisciplines(DisciplineType disciplineType, Sex sex)
+        public ICollection<IDiscipline> FilteredTraditionalDisciplines(DisciplineType disciplineType, Sex sex)
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 return (from d in db.TraditionalDiscipline
                         where d.Type == disciplineType && d.Sex == sex
@@ -306,17 +318,17 @@ namespace HonglornBL
             }
         }
 
-        public static ICollection<CompetitionDiscipline> AllCompetitionDisciplines()
+        public ICollection<CompetitionDiscipline> AllCompetitionDisciplines()
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 return db.CompetitionDiscipline.ToArray();
             }
         }
 
-        public static IDisciplineCollection AssignedDisciplines(string className, short year)
+        public IDisciplineCollection AssignedDisciplines(string className, short year)
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 return (from col in db.DisciplineCollection
                         where col.ClassName == className && col.Year == year
@@ -324,9 +336,9 @@ namespace HonglornBL
             }
         }
 
-        public static void CreateOrUpdateCompetitionDiscipline(Guid disciplinePKey, DisciplineType type, string name, string unit, bool lowIsBetter)
+        public void CreateOrUpdateCompetitionDiscipline(Guid disciplinePKey, DisciplineType type, string name, string unit, bool lowIsBetter)
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 CompetitionDiscipline competition = db.CompetitionDiscipline.Find(disciplinePKey);
 
@@ -354,11 +366,11 @@ namespace HonglornBL
             }
         }
 
-        public static void DeleteCompetitionDisciplineByPKey(Guid pKey)
+        public void DeleteCompetitionDisciplineByPKey(Guid pKey)
         {
             try
             {
-                using (var db = new HonglornDb())
+                using (var db = new HonglornDb(connectionString))
                 {
                     var discipline = new CompetitionDiscipline
                     {
@@ -386,11 +398,11 @@ namespace HonglornBL
         ///     in the given year.
         /// </returns>
         /// <remarks></remarks>
-        public static Game? GetGameType(string className, short year)
+        public Game? GetGameType(string className, short year)
         {
             Game? result = null;
 
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 DisciplineCollection disciplineCollection = (from c in db.DisciplineCollection
                                                              where c.ClassName == className
@@ -415,9 +427,9 @@ namespace HonglornBL
             return result;
         }
 
-        public static void CreateOrUpdateDisciplineCollection(string className, short year, Guid maleSprintPKey, Guid maleJumpPKey, Guid maleThrowPKey, Guid maleMiddleDistancePKey, Guid femaleSprintPKey, Guid femaleJumpPKey, Guid femaleThrowPKey, Guid femaleMiddleDistancePKey)
+        public void CreateOrUpdateDisciplineCollection(string className, short year, Guid maleSprintPKey, Guid maleJumpPKey, Guid maleThrowPKey, Guid maleMiddleDistancePKey, Guid femaleSprintPKey, Guid femaleJumpPKey, Guid femaleThrowPKey, Guid femaleMiddleDistancePKey)
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 IEnumerable<Discipline> disciplines = (from d in new[] { maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey }
                                                        select db.Set<Discipline>().Find(d)).ToArray();
@@ -471,9 +483,9 @@ namespace HonglornBL
         ///     Get the years for which student data is present in the database.
         /// </summary>
         /// <returns>A short collection representing the valid years.</returns>
-        public static ICollection<short> YearsWithStudentData()
+        public ICollection<short> YearsWithStudentData()
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 return (from relations in db.StudentCourseRel
                         select relations.Year).Distinct().OrderByDescending(year => year).ToArray();
@@ -485,9 +497,9 @@ namespace HonglornBL
         /// </summary>
         /// <param name="year">The year for which the valid course names should be retrieved.</param>
         /// <returns>All valid course names.</returns>
-        public static ICollection<string> ValidCourseNames(short year)
+        public ICollection<string> ValidCourseNames(short year)
         {
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 return (from r in db.StudentCourseRel
                         where r.Year == year
@@ -501,7 +513,7 @@ namespace HonglornBL
         /// <param name="year">The year for which the valid class names should be retrieved.</param>
         /// <returns>A String Array representing the valid class names.</returns>
         /// <remarks></remarks>
-        public static ICollection<string> ValidClassNames(short year)
+        public ICollection<string> ValidClassNames(short year)
         {
             return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
         }
@@ -523,7 +535,7 @@ namespace HonglornBL
         /// <param name="filePath">The full path to the Excel file to be imported.</param>
         /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
         /// <param name="progress"></param>
-        public static async Task<ICollection<ImportedStudentRecord>> ImportStudentsFromFile(string filePath, short year, IProgress<ProgressReport> progress)
+        public async Task<ICollection<ImportedStudentRecord>> ImportStudentsFromFile(string filePath, short year, IProgress<ProgressReport> progress)
         {
             if (!IsValidYear(year))
             {
@@ -592,14 +604,14 @@ namespace HonglornBL
         ///     Imports data of a single student into the database.
         /// </summary>
         /// <remarks></remarks>
-        static void ImportSingleStudent(Student student, string courseName, short year)
+        void ImportSingleStudent(Student student, string courseName, short year)
         {
             //todo: handle exception
             GetClassName(courseName); //check whether the course name can be mapped to a class name
 
             //todo: verify year
 
-            using (var db = new HonglornDb())
+            using (var db = new HonglornDb(connectionString))
             {
                 IQueryable<Student> studentQuery = from s in db.Student
                                                    where s.Forename == student.Forename
