@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using HonglornBL;
 using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
@@ -27,7 +26,7 @@ namespace HonglornWPF.ViewModels
 
         void LoadDisciplines() => ClearAndFill(Disciplines, Honglorn.AllCompetitionDisciplines());
 
-        static void SaveDiscipline(CompetitionDiscipline discipline)
+        void SaveDiscipline(CompetitionDiscipline discipline)
         {
             if (discipline != null)
             {

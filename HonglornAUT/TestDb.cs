@@ -16,7 +16,7 @@ namespace HonglornAUT
             public DbSet<TraditionalDiscipline> TraditionalDiscipline { get; set; }
             public DbSet<TraditionalReportMeta> TraditionalReportMeta { get; set; }
 
-            public TestDb() : base("name=test")
+            public TestDb(string connectionString) : base(connectionString)
             {
                 Database.SetInitializer(new TestDbInitializer());
             }

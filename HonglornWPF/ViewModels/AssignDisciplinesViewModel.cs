@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using HonglornBL.Enums;
 using HonglornBL.Interfaces;
-using static HonglornBL.Honglorn;
 
 namespace HonglornWPF.ViewModels
 {
@@ -47,7 +46,7 @@ namespace HonglornWPF.ViewModels
             {
                 OnPropertyChanged(out currentClass, value);
 
-                Game = GetGameType(CurrentClass, CurrentYear);
+                Game = Honglorn.GetGameType(CurrentClass, CurrentYear);
             }
         }
 
@@ -134,20 +133,20 @@ namespace HonglornWPF.ViewModels
 
         void LoadClassNames()
         {
-            ClearAndFill(Classes, ValidClassNames(CurrentYear));
+            ClearAndFill(Classes, Honglorn.ValidClassNames(CurrentYear));
         }
 
         void LoadYears()
         {
-            ClearAndFill(Years, YearsWithStudentData());
+            ClearAndFill(Years, Honglorn.YearsWithStudentData());
         }
 
         void LoadAllCompetitionDisciplines()
         {
-            ICollection<IDiscipline> sprintDisciplines = FilteredCompetitionDisciplines(DisciplineType.Sprint);
-            ICollection<IDiscipline> jumpDisciplines = FilteredCompetitionDisciplines(DisciplineType.Jump);
-            ICollection<IDiscipline> throwDisciplines = FilteredCompetitionDisciplines(DisciplineType.Throw);
-            ICollection<IDiscipline> middleDistanceDisciplines = FilteredCompetitionDisciplines(DisciplineType.MiddleDistance);
+            ICollection<IDiscipline> sprintDisciplines = Honglorn.FilteredCompetitionDisciplines(DisciplineType.Sprint);
+            ICollection<IDiscipline> jumpDisciplines = Honglorn.FilteredCompetitionDisciplines(DisciplineType.Jump);
+            ICollection<IDiscipline> throwDisciplines = Honglorn.FilteredCompetitionDisciplines(DisciplineType.Throw);
+            ICollection<IDiscipline> middleDistanceDisciplines = Honglorn.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance);
 
             ClearAndFill(MaleSprintDisciplines, sprintDisciplines);
             ClearAndFill(MaleJumpDisciplines, jumpDisciplines);
@@ -162,20 +161,20 @@ namespace HonglornWPF.ViewModels
 
         void LoadAllTraditionalDisciplines()
         {
-            ClearAndFill(MaleSprintDisciplines, FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Male));
-            ClearAndFill(MaleJumpDisciplines, FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Male));
-            ClearAndFill(MaleThrowDisciplines, FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Male));
-            ClearAndFill(MaleMiddleDistanceDisciplines, FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Male));
+            ClearAndFill(MaleSprintDisciplines, Honglorn.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Male));
+            ClearAndFill(MaleJumpDisciplines, Honglorn.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Male));
+            ClearAndFill(MaleThrowDisciplines, Honglorn.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Male));
+            ClearAndFill(MaleMiddleDistanceDisciplines, Honglorn.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Male));
 
-            ClearAndFill(FemaleSprintDisciplines, FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Female));
-            ClearAndFill(FemaleJumpDisciplines, FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Female));
-            ClearAndFill(FemaleThrowDisciplines, FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Female));
-            ClearAndFill(FemaleMiddleDistanceDisciplines, FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Female));
+            ClearAndFill(FemaleSprintDisciplines, Honglorn.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Female));
+            ClearAndFill(FemaleJumpDisciplines, Honglorn.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Female));
+            ClearAndFill(FemaleThrowDisciplines, Honglorn.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Female));
+            ClearAndFill(FemaleMiddleDistanceDisciplines, Honglorn.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Female));
         }
 
         void SelectSavedDisiciplines()
         {
-            IDisciplineCollection disciplineCollection = AssignedDisciplines(CurrentClass, CurrentYear);
+            IDisciplineCollection disciplineCollection = Honglorn.AssignedDisciplines(CurrentClass, CurrentYear);
 
             if (disciplineCollection == null)
             {
@@ -221,7 +220,7 @@ namespace HonglornWPF.ViewModels
 
         void SaveDisciplineCollection()
         {
-            CreateOrUpdateDisciplineCollection(CurrentClass, CurrentYear, CurrentMaleSprintDiscipline.PKey, CurrentMaleJumpDiscipline.PKey, CurrentMaleThrowDiscipline.PKey, CurrentMaleMiddleDistanceDiscipline.PKey, CurrentFemaleSprintDiscipline.PKey, CurrentFemaleJumpDiscipline.PKey, CurrentFemaleThrowDiscipline.PKey, CurrentFemaleMiddleDistanceDiscipline.PKey);
+            Honglorn.CreateOrUpdateDisciplineCollection(CurrentClass, CurrentYear, CurrentMaleSprintDiscipline.PKey, CurrentMaleJumpDiscipline.PKey, CurrentMaleThrowDiscipline.PKey, CurrentMaleMiddleDistanceDiscipline.PKey, CurrentFemaleSprintDiscipline.PKey, CurrentFemaleJumpDiscipline.PKey, CurrentFemaleThrowDiscipline.PKey, CurrentFemaleMiddleDistanceDiscipline.PKey);
         }
     }
 }

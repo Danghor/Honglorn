@@ -7,10 +7,12 @@ namespace HonglornAUT
     [TestClass]
     public partial class TraditionalCalculatorTest
     {
+        readonly string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["test"].ConnectionString;
+
         [TestMethod]
         public void TestMethod1()
         {
-            using (var db = new TestDb())
+            using (var db = new TestDb(connectionString))
             {
                 db.Student.Add(new Student
                 {
@@ -21,7 +23,7 @@ namespace HonglornAUT
                 db.SaveChanges();
             }
 
-            using (var db = new TestDb())
+            using (var db = new TestDb(connectionString))
             {
                 Assert.AreEqual(1, db.Student.Count());
             }

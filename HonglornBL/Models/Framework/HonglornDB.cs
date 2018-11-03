@@ -15,7 +15,7 @@ namespace HonglornBL.Models.Framework
         public virtual DbSet<TraditionalDiscipline> TraditionalDiscipline { get; set; }
         public virtual DbSet<TraditionalReportMeta> TraditionalReportMeta { get; set; }
 
-        public HonglornDb() : base($"name=local")
+        public HonglornDb(string connectionString) : base(connectionString)
         {
             Database.SetInitializer(new HonglornDbInitializer());
         }
