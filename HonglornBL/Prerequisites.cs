@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HonglornBL
 {
-    public static class Prerequisites
+    static class Prerequisites
     {
         static readonly IEnumerable<Tuple<string, Func<string, string>>> ClassNameFunctionMap = new[]
         {
