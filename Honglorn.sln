@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HonglornBL", "HonglornBL\Ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HonglornWPF", "HonglornWPF\HonglornWPF.csproj", "{067A9E95-D7B6-4C0B-8E1F-FECA402426DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HonglornAUT", "HonglornAUT\HonglornAUT.csproj", "{B4553E9D-AB13-4936-8379-A2F11D8E15CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{067A9E95-D7B6-4C0B-8E1F-FECA402426DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{067A9E95-D7B6-4C0B-8E1F-FECA402426DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{067A9E95-D7B6-4C0B-8E1F-FECA402426DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4553E9D-AB13-4936-8379-A2F11D8E15CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4553E9D-AB13-4936-8379-A2F11D8E15CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4553E9D-AB13-4936-8379-A2F11D8E15CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4553E9D-AB13-4936-8379-A2F11D8E15CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
