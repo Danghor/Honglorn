@@ -37,9 +37,12 @@ namespace HonglornBL.Models.Entities
             StudentCourseRel = new HashSet<StudentCourseRel>();
         }
 
-        internal Student(short year, string courseName) : this()
+        internal Student(string forename, string surname, Sex sex, short yearOfBirth) : this()
         {
-            AddStudentCourseRel(year, courseName);
+            Forename = forename;
+            Surname = surname;
+            Sex = sex;
+            YearOfBirth = yearOfBirth;
         }
 
         internal void AddStudentCourseRel(short year, string courseName)

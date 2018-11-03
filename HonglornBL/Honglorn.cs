@@ -562,7 +562,7 @@ namespace HonglornBL
                         YearOfBirth = short.Parse(importStudent.ImportedYearOfBirth)
                     };
 
-                    await Task.Factory.StartNew(() => ImportSingleStudent(student, importStudent.ImportedCourseName, year));
+                    await Task.Factory.StartNew(() => ImportSingleStudent(student.Forename, student.Surname, student.Sex, student.YearOfBirth, importStudent.ImportedCourseName, year));
                 }
 
                 currentlyImported++;
@@ -601,10 +601,15 @@ namespace HonglornBL
         }
 
         /// <summary>
-        ///     Imports data of a single student into the database.
+        /// Adds a single student to the database
         /// </summary>
-        /// <remarks></remarks>
-        void ImportSingleStudent(Student student, string courseName, short year)
+        /// <param name="forename">The student's forename.</param>
+        /// <param name="surname">The student's surname.</param>
+        /// <param name="courseName">The name of the course this student is part of, for the given year.</param>
+        /// <param name="sex">The student's gender.</param>
+        /// <param name="yearOfBirth">The year the student was born in.</param>
+        /// <param name="year">The year this record is valid in. This is usually the current year.</param>
+        public void ImportSingleStudent(string forename, string surname, Sex sex, short yearOfBirth, string courseName, short year)
         {
             //todo: handle exception
             GetClassName(courseName); //check whether the course name can be mapped to a class name
@@ -614,23 +619,17 @@ namespace HonglornBL
             using (var db = new HonglornDb(connectionString))
             {
                 IQueryable<Student> studentQuery = from s in db.Student
-                                                   where s.Forename == student.Forename
-                                                         && s.Surname == student.Surname
-                                                         && s.Sex == student.Sex
-                                                         && s.YearOfBirth == student.YearOfBirth
+                                                   where s.Forename == forename
+                                                         && s.Surname == surname
+                                                         && s.Sex == sex
+                                                         && s.YearOfBirth == yearOfBirth
                                                    select s;
 
                 Student existingStudent = studentQuery.SingleOrDefault();
 
                 if (existingStudent == null)
                 {
-                    var newStudent = new Student
-                    {
-                        Forename = student.Forename,
-                        Surname = student.Surname,
-                        Sex = student.Sex,
-                        YearOfBirth = student.YearOfBirth
-                    };
+                    var newStudent = new Student(forename, surname, sex, yearOfBirth);
 
                     newStudent.AddStudentCourseRel(year, courseName);
                     db.Student.Add(newStudent);
