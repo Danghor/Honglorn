@@ -2,15 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using HonglornBL;
+using HonglornBL.Enums;
 using HonglornBL.Import;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HonglornAUT
 {
     [TestClass]
-    public partial class HonglornTest
+    public class HonglornTest
     {
         readonly string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["test"].ConnectionString;
+
+        [TestMethod]
+        public void ImportSingleStudent_Regular_StudentSuccessfullyAdded()
+        {
+            var sut = new Honglorn(connectionString);
+
+            sut.ImportSingleStudent("Cave", "Johnson", Sex.Male, 1928, "08B", 2018);
+
+            IEnumerable<IStudentPerformance> studentPerformance = sut.StudentPerformances("08B", 2018);
+
+            Assert.AreEqual(1, studentPerformance.Count());
+        }
 
         [TestMethod]
         public void ImportStudentsFromFile_EmptyFileName_RaisesException()
