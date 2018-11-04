@@ -1,3 +1,4 @@
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using HonglornBL.Models.Entities;
@@ -15,7 +16,7 @@ namespace HonglornBL.Models.Framework
         public virtual DbSet<TraditionalDiscipline> TraditionalDiscipline { get; set; }
         public virtual DbSet<TraditionalReportMeta> TraditionalReportMeta { get; set; }
 
-        public HonglornDb(string connectionString) : base(connectionString)
+        public HonglornDb(ConnectionStringSettings connectionString) : base(connectionString.ConnectionString)
         {
             Database.SetInitializer(new HonglornDbInitializer());
         }

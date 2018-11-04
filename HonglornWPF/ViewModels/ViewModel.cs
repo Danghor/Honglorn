@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
 using System.Runtime.CompilerServices;
 using HonglornBL;
 
@@ -13,7 +14,7 @@ namespace HonglornWPF.ViewModels
 
         protected ViewModel()
         {
-            Honglorn = new Honglorn(System.Configuration.ConfigurationManager.ConnectionStrings["local"].ConnectionString);
+            Honglorn = new Honglorn(ConfigurationManager.ConnectionStrings["HonglornDb"]);
         }
 
         protected void OnPropertyChanged<T>(out T field, T value, [CallerMemberName] string propertyName = null)
