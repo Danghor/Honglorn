@@ -1,22 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.EntityClient;
 using System.Linq;
 using HonglornBL;
 using HonglornBL.Enums;
 using HonglornBL.Import;
+using HonglornBL.Models.Framework;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Data.Common;
 
 namespace HonglornAUT
 {
     [TestClass]
     public class HonglornTest
     {
-        readonly string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["test"].ConnectionString;
-
         [TestMethod]
         public void ImportSingleStudent_Regular_StudentSuccessfullyAdded()
         {
-            var sut = new Honglorn(connectionString);
+            DbConnection connection = Effort.DbConnectionFactory.CreateTransient();
+
+            var sut = new Honglorn(connection);
 
             sut.ImportSingleStudent("Cave", "Johnson", Sex.Male, 1928, "08B", 2018);
 
@@ -26,9 +29,25 @@ namespace HonglornAUT
         }
 
         [TestMethod]
+        public void ImportSingleStudent_Regular_StudentSuccessfullyAdded2()
+        {
+            DbConnection connection = Effort.DbConnectionFactory.CreateTransient();
+
+            var sut = new Honglorn(connection);
+
+            sut.ImportSingleStudent("Cave", "Johnson", Sex.Male, 1928, "08C", 2018);
+
+            IEnumerable<IStudentPerformance> studentPerformance = sut.StudentPerformances("08B", 2018);
+
+            Assert.AreEqual(0, studentPerformance.Count());
+        }
+
+        [TestMethod]
         public void ImportStudentsFromFile_EmptyFileName_RaisesException()
         {
-            var sut = new Honglorn(connectionString);
+            DbConnection connection = Effort.DbConnectionFactory.CreateTransient();
+
+            var sut = new Honglorn(connection);
 
             try
             {
