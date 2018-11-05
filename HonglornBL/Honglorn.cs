@@ -235,22 +235,24 @@ namespace HonglornBL
                 totalScore += TraditionalCalculator.CalculateScore(disciplines[2], competition.Throw);
                 totalScore += TraditionalCalculator.CalculateScore(disciplines[3], competition.MiddleDistance);
 
-                results.Add(new Result(student.Surname, student.Forename, totalScore, DetermineTraditionalCertificate(student.Sex, student.YearOfBirth, totalScore)));
+                int studentAge = year - student.YearOfBirth;
+
+                results.Add(new Result(student.Forename, student.Surname, totalScore, DetermineTraditionalCertificate(student.Sex, studentAge, totalScore)));
             }
 
             return results;
         }
 
-        Certificate DetermineTraditionalCertificate(Sex sex, short yearOfBirth, ushort totalScore)
+        Certificate DetermineTraditionalCertificate(Sex sex, int age, ushort totalScore)
         {
             Certificate result;
-            int studentAge = DateTime.Now.Year - yearOfBirth;
 
             using (var db = ContextFactory.GetDbContext(Connection))
             {
+                //bug: exception when students are too old to be in this list
                 var scoreBoundaries = (from meta in db.TraditionalReportMeta
                                        where meta.Sex == sex
-                                             && meta.Age == studentAge
+                                             && meta.Age == age
                                        select new { meta.HonoraryCertificateScore, meta.VictoryCertificateScore }).Single();
 
                 if (totalScore >= scoreBoundaries.HonoraryCertificateScore)
