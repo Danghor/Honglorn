@@ -12,18 +12,15 @@ namespace HonglornAUT
     [TestClass]
     public class HonglornTest
     {
-        DbConnection CreateConnection()
-        {
-            return Effort.DbConnectionFactory.CreateTransient();
-        }
+        static DbConnection CreateConnection() => Effort.DbConnectionFactory.CreateTransient();
 
         [TestMethod]
         public void ImportSingleStudent_Regular_StudentSuccessfullyAdded()
         {
-            string forename = "Cave";
-            string surname = "Johnson";
-            string courseName = "08B";
-            short year = 2018;
+            const string forename = "Cave";
+            const string surname = "Johnson";
+            const string courseName = "08B";
+            const short year = 2018;
 
             var sut = new Honglorn(CreateConnection());
 
@@ -31,8 +28,8 @@ namespace HonglornAUT
 
             IStudentPerformance studentPerformance = sut.StudentPerformances(courseName, year).Single();
 
-            Assert.IsNull(forename, studentPerformance.Forename);
-            Assert.IsNull(surname, studentPerformance.Surname);
+            Assert.AreEqual(forename, studentPerformance.Forename);
+            Assert.AreEqual(surname, studentPerformance.Surname);
             Assert.IsNull(studentPerformance.Sprint);
             Assert.IsNull(studentPerformance.Jump);
             Assert.IsNull(studentPerformance.Throw);
@@ -56,8 +53,6 @@ namespace HonglornAUT
         [TestMethod]
         public void ImportStudentsFromFile_EmptyFileName_RaisesException()
         {
-            DbConnection connection = Effort.DbConnectionFactory.CreateTransient();
-
             var sut = new Honglorn(CreateConnection());
 
             try
