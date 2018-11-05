@@ -110,6 +110,8 @@
     <Compile Include="Interfaces\IStudentPerformance.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Import\IStudentImporter.cs" />
+    <Compile Include="Models\Framework\HonglornDbFactory.cs" />
+    <Compile Include="Models\Framework\HonglornMySqlDb.cs" />
     <Compile Include="ProgressReport.cs" />
     <Compile Include="RawMeasurement.cs" />
     <Compile Include="DisciplineContainer.cs" />
