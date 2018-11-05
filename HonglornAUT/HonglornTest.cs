@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using System.Transactions;
 using HonglornBL;
 using HonglornBL.Enums;
 using HonglornBL.Import;
-using HonglornBL.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HonglornAUT
@@ -15,6 +13,8 @@ namespace HonglornAUT
     public class HonglornTest
     {
         static DbConnection CreateConnection() => Effort.DbConnectionFactory.CreateTransient();
+
+        public TestContext TestContext { get; set; }
 
         [TestMethod]
         public void ImportSingleStudent_Regular_StudentSuccessfullyAdded()
@@ -47,36 +47,36 @@ namespace HonglornAUT
             sut.ImportSingleStudent("Hannah", "Smith", Sex.Female, 2007, "08C", 2018);
 
             Guid sprintPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Male)
-                              where d.ToString() == "Sprint 100 m (Manual)"
-                              select d.PKey).Single();
-
-            Guid jumpPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Male)
-                            where d.ToString() == "Weitsprung"
-                            select d.PKey).Single();
-
-            Guid throwPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Male)
-                             where d.ToString() == "Kugelstoß"
-                             select d.PKey).Single();
-
-            Guid middleDistancePKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Male)
-                                      where d.ToString() == "Lauf 1000 m"
-                                      select d.PKey).Single();
-
-            Guid sprintFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Female)
                                where d.ToString() == "Sprint 100 m (Manual)"
                                select d.PKey).Single();
 
-            Guid jumpFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Female)
-                where d.ToString() == "Hochsprung"
-                select d.PKey).Single();
+            Guid jumpPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Male)
+                             where d.ToString() == "Weitsprung"
+                             select d.PKey).Single();
 
-            Guid throwFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Female)
-                              where d.ToString() == "200-g-Ballwurf"
+            Guid throwPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Male)
+                              where d.ToString() == "Kugelstoß"
                               select d.PKey).Single();
 
-            Guid middleDistanceFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Female)
-                                       where d.ToString() == "Lauf 800 m"
+            Guid middleDistancePKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Male)
+                                       where d.ToString() == "Lauf 1000 m"
                                        select d.PKey).Single();
+
+            Guid sprintFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Female)
+                                where d.ToString() == "Sprint 100 m (Manual)"
+                                select d.PKey).Single();
+
+            Guid jumpFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Female)
+                              where d.ToString() == "Hochsprung"
+                              select d.PKey).Single();
+
+            Guid throwFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Female)
+                               where d.ToString() == "200-g-Ballwurf"
+                               select d.PKey).Single();
+
+            Guid middleDistanceFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Female)
+                                        where d.ToString() == "Lauf 800 m"
+                                        select d.PKey).Single();
 
             sut.CreateOrUpdateDisciplineCollection("8", 2018, sprintPKey, jumpPKey, throwPKey, middleDistancePKey, sprintFPKey, jumpFPKey, throwFPKey, middleDistanceFPKey);
 
@@ -115,5 +115,22 @@ namespace HonglornAUT
                 throw e.InnerExceptions.Single();
             }
         }
+
+        //[TestMethod]
+        //[DeploymentItem("SumTestData.xml")]
+        //[DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\SumTestData.xml", "Row", DataAccessMethod.Sequential)]
+        //public void SumTest()
+        //{
+        //    int a1 = Int32.Parse((string)TestContext.DataRow["A1"]);
+        //    int a2 = Int32.Parse((string)TestContext.DataRow["A2"]);
+        //    int result = Int32.Parse((string)TestContext.DataRow["Result"]);
+        //    ExecSumTest(a1, a2, result);
+        //}
+
+
+        //static void ExecSumTest(int a1, int a2, int result)
+        //{
+        //    Assert.AreEqual(a1 + a2, result);
+        //}
     }
 }
