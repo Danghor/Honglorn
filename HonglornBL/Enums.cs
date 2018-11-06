@@ -32,10 +32,4 @@
         Male = 0,
         Female = 1
     }
-
-    public enum DatabaseManagementSystem
-    {
-        MySql,
-        Invariant
-    }
 }
