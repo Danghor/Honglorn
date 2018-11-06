@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.Entity;
-using System.Data.OleDb;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,14 +11,12 @@ using HonglornBL.Import;
 using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
-using MySql.Data.MySqlClient;
 using static HonglornBL.Prerequisites;
 
 namespace HonglornBL
 {
     public class Honglorn
     {
-        DbConnection Connection { get; }
         HonglornDbFactory ContextFactory { get; }
 
         public Honglorn(System.Configuration.ConnectionStringSettings connectionStringSettings)
@@ -34,30 +31,19 @@ namespace HonglornBL
                 throw new ArgumentException(nameof(connectionStringSettings.ConnectionString));
             }
 
-            if (connectionStringSettings.ProviderName == "MySql.Data.MySqlClient")
-            {
-                ContextFactory = new HonglornDbFactory(DatabaseManagementSystem.MySql);
-                //todo: Connection may be better stored in the Factory (or pass the whole connectionStringSettings to the factory constructor)
-                Connection = new MySqlConnection(connectionStringSettings.ConnectionString);
-            }
-            else
-            {
-                ContextFactory = new HonglornDbFactory(DatabaseManagementSystem.Invariant);
-                Connection = new OleDbConnection(connectionStringSettings.ConnectionString);
-            }
+            ContextFactory = new HonglornDbFactory(connectionStringSettings);
         }
 
         internal Honglorn(DbConnection connection)
         {
-            ContextFactory = new HonglornDbFactory(DatabaseManagementSystem.Invariant);
-            Connection = connection;
+            ContextFactory = new HonglornDbFactory(connection);
         }
 
         public IEnumerable<IStudentPerformance> StudentPerformances(string course, short year)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
-                List<IStudentPerformance> result = new List<IStudentPerformance>();
+                var result = new List<IStudentPerformance>();
 
                 IQueryable<Student> relevantStudents = (from s in db.Student
                                                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
@@ -77,7 +63,7 @@ namespace HonglornBL
 
         ICollection<Student> GetStudents(string course, short year)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 return (from s in db.Student
                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
@@ -98,7 +84,7 @@ namespace HonglornBL
             IEnumerable<Student> students = GetStudents(course, year);
             string className = GetClassName(course);
 
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 DisciplineCollection disciplines = (from d in db.DisciplineCollection
                                                     where d.ClassName == className
@@ -157,7 +143,7 @@ namespace HonglornBL
         {
             List<ICompetitionResult> competitionResults = new List<ICompetitionResult>();
 
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 IEnumerable<string> classes = (from s in students
                                                select GetClassName(s.CourseNameByYear(year))).Distinct();
@@ -247,7 +233,7 @@ namespace HonglornBL
         {
             Certificate result;
 
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 //bug: exception when students are too old to be in this list
                 var scoreBoundaries = (from meta in db.TraditionalReportMeta
@@ -274,7 +260,7 @@ namespace HonglornBL
 
         public void UpdateSingleStudentCompetition(Guid studentPKey, short year, float? sprint, float? jump, float? @throw, float? middleDistance)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 Student student = db.Student.Find(studentPKey);
 
@@ -327,7 +313,7 @@ namespace HonglornBL
 
         public ICollection<IDiscipline> FilteredCompetitionDisciplines(DisciplineType disciplineType)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 return (from d in db.CompetitionDiscipline
                         where d.Type == disciplineType
@@ -337,7 +323,7 @@ namespace HonglornBL
 
         public ICollection<IDiscipline> FilteredTraditionalDisciplines(DisciplineType disciplineType, Sex sex)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 return (from d in db.TraditionalDiscipline
                         where d.Type == disciplineType && d.Sex == sex
@@ -347,7 +333,7 @@ namespace HonglornBL
 
         public ICollection<CompetitionDiscipline> AllCompetitionDisciplines()
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 return db.CompetitionDiscipline.ToArray();
             }
@@ -355,7 +341,7 @@ namespace HonglornBL
 
         public IDisciplineCollection AssignedDisciplines(string className, short year)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 return (from col in db.DisciplineCollection
                         where col.ClassName == className && col.Year == year
@@ -365,7 +351,7 @@ namespace HonglornBL
 
         public void CreateOrUpdateCompetitionDiscipline(Guid disciplinePKey, DisciplineType type, string name, string unit, bool lowIsBetter)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 CompetitionDiscipline competition = db.CompetitionDiscipline.Find(disciplinePKey);
 
@@ -397,7 +383,7 @@ namespace HonglornBL
         {
             try
             {
-                using (var db = ContextFactory.GetDbContext(Connection))
+                using (var db = ContextFactory.CreateContext())
                 {
                     CompetitionDiscipline discipline = new CompetitionDiscipline
                     {
@@ -429,7 +415,7 @@ namespace HonglornBL
         {
             Game? result = null;
 
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 DisciplineCollection disciplineCollection = (from c in db.DisciplineCollection
                                                              where c.ClassName == className
@@ -456,7 +442,7 @@ namespace HonglornBL
 
         public void CreateOrUpdateDisciplineCollection(string className, short year, Guid maleSprintPKey, Guid maleJumpPKey, Guid maleThrowPKey, Guid maleMiddleDistancePKey, Guid femaleSprintPKey, Guid femaleJumpPKey, Guid femaleThrowPKey, Guid femaleMiddleDistancePKey)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 IEnumerable<Discipline> disciplines = (from d in new[] { maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey }
                                                        select db.Set<Discipline>().Find(d)).ToArray();
@@ -512,7 +498,7 @@ namespace HonglornBL
         /// <returns>A short collection representing the valid years.</returns>
         public ICollection<short> YearsWithStudentData()
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 return (from relations in db.StudentCourseRel
                         select relations.Year).Distinct().OrderByDescending(year => year).ToArray();
@@ -526,7 +512,7 @@ namespace HonglornBL
         /// <returns>All valid course names.</returns>
         public ICollection<string> ValidCourseNames(short year)
         {
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 return (from r in db.StudentCourseRel
                         where r.Year == year
@@ -643,7 +629,7 @@ namespace HonglornBL
 
             //todo: verify year
 
-            using (var db = ContextFactory.GetDbContext(Connection))
+            using (var db = ContextFactory.CreateContext())
             {
                 IQueryable<Student> studentQuery = from s in db.Student
                                                    where s.Forename == forename

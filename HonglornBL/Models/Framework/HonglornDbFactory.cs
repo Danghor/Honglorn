@@ -1,28 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Common;
-using HonglornBL.Enums;
+using MySql.Data.MySqlClient;
 
 namespace HonglornBL.Models.Framework
 {
-    internal class HonglornDbFactory
+    class HonglornDbFactory
     {
-        static readonly IDictionary<DatabaseManagementSystem, Func<DbConnection, HonglornDb>> providerMap = new Dictionary<DatabaseManagementSystem, Func<DbConnection, HonglornDb>>
+        static readonly IDictionary<string, Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>>> ProviderMap = new Dictionary<string, Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>>>
         {
-            { DatabaseManagementSystem.Invariant, (con) => new HonglornDb(con) },
-            { DatabaseManagementSystem.MySql, (con) => new HonglornMySqlDb(con) }
+            {
+                "MySql.Data.MySqlClient",
+                new Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>> (conString => new MySqlConnection(conString), con => new HonglornMySqlDb(con))
+            }
         };
 
-        DatabaseManagementSystem ManagementSystem { get; }
+        DbConnection Connection { get; }
 
-        internal HonglornDbFactory(DatabaseManagementSystem managementSystem)
+        internal Func<HonglornDb> CreateContext { get; }
+
+        internal HonglornDbFactory(ConnectionStringSettings settings)
         {
-            ManagementSystem = managementSystem;
+            Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>> functions = ProviderMap[settings.ProviderName];
+            Connection = functions.Item1(settings.ConnectionString);
+            CreateContext = () => functions.Item2(Connection);
         }
 
-        internal HonglornDb GetDbContext(DbConnection connection)
+        internal HonglornDbFactory(DbConnection connection)
         {
-            return providerMap[ManagementSystem](connection);
+            Connection = connection;
+            CreateContext = () => new HonglornDb(Connection);
         }
     }
 }
