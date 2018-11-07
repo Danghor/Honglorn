@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Globalization;
 using System.Linq;
 using HonglornBL;
 using HonglornBL.Enums;
@@ -23,6 +24,11 @@ namespace HonglornAUT
         string GetData(string tagName)
         {
             return TestContext.DataRow[tagName] as string;
+        }
+
+        float GetFloat(string tagName)
+        {
+            return float.Parse(GetData(tagName), CultureInfo.InvariantCulture);
         }
 
         [TestMethod]
@@ -96,8 +102,8 @@ namespace HonglornAUT
             Guid davePKey = performances.Single(p => p.Forename == "Dave").StudentPKey;
             Guid hannahPKey = performances.Single(p => p.Forename == "Hannah").StudentPKey;
 
-            sut.UpdateSingleStudentCompetition(davePKey, 2018, 13.9f, 4.37f, 8.2f, 294);
-            sut.UpdateSingleStudentCompetition(hannahPKey, 2018, 14.9f, 1.44f, 32.5f, 234);
+            sut.UpdateSingleStudentCompetition(davePKey, 2018, GetFloat("MaleSprintPerformance"), GetFloat("MaleJumpPerformance"), GetFloat("MaleThrowPerformance"), GetFloat("MaleMiddleDistancePerformance"));
+            sut.UpdateSingleStudentCompetition(hannahPKey, 2018, GetFloat("FemaleSprintPerformance"), GetFloat("FemaleJumpPerformance"), GetFloat("FemaleThrowPerformance"), GetFloat("FemaleMiddleDistancePerformance"));
 
             IEnumerable<IResult> results = sut.GetResultsAsync("08C", 2018).Result.ToList();
 
@@ -136,23 +142,6 @@ namespace HonglornAUT
             {
                 throw e.InnerExceptions.Single();
             }
-        }
-
-        [TestMethod]
-        [DeploymentItem("SumTestData.xml")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\SumTestData.xml", "Row", DataAccessMethod.Sequential)]
-        public void SumTest()
-        {
-            int a1 = int.Parse((string) TestContext.DataRow["A1"]);
-            int a2 = int.Parse((string) TestContext.DataRow["A2"]);
-            int result = int.Parse((string) TestContext.DataRow["Result"]);
-            ExecSumTest(a1, a2, result);
-        }
-
-
-        static void ExecSumTest(int a1, int a2, int result)
-        {
-            Assert.AreEqual(a1 + a2, result);
         }
     }
 }
