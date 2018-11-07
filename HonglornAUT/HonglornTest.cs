@@ -10,11 +10,20 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace HonglornAUT
 {
     [TestClass]
+    [DeploymentItem(@"EntityFramework.SqlServer.dll")]
     public class HonglornTest
     {
-        static DbConnection CreateConnection() => Effort.DbConnectionFactory.CreateTransient();
+        static DbConnection CreateConnection()
+        {
+            return Effort.DbConnectionFactory.CreateTransient();
+        }
 
         public TestContext TestContext { get; set; }
+
+        string GetData(string tagName)
+        {
+            return TestContext.DataRow[tagName] as string;
+        }
 
         [TestMethod]
         public void ImportSingleStudent_Regular_StudentSuccessfullyAdded()
@@ -39,6 +48,8 @@ namespace HonglornAUT
         }
 
         [TestMethod]
+        [DeploymentItem("TraditionalResults.xml")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\TraditionalResults.xml", "Row", DataAccessMethod.Sequential)]
         public void GetResults_TraditionalCompetition_CorrectScoresAndCertificatesCalculated()
         {
             var sut = new Honglorn(CreateConnection());
@@ -47,35 +58,35 @@ namespace HonglornAUT
             sut.ImportSingleStudent("Hannah", "Smith", Sex.Female, 2007, "08C", 2018);
 
             Guid sprintPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Male)
-                               where d.ToString() == "Sprint 100 m (Manual)"
+                               where d.ToString() == GetData("MaleSprintName")
                                select d.PKey).Single();
 
             Guid jumpPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Male)
-                             where d.ToString() == "Weitsprung"
+                             where d.ToString() == GetData("MaleJumpName")
                              select d.PKey).Single();
 
             Guid throwPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Male)
-                              where d.ToString() == "Kugelstoß"
+                              where d.ToString() == GetData("MaleThrowName")
                               select d.PKey).Single();
 
             Guid middleDistancePKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Male)
-                                       where d.ToString() == "Lauf 1000 m"
+                                       where d.ToString() == GetData("MaleMiddleDistanceName")
                                        select d.PKey).Single();
 
             Guid sprintFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Female)
-                                where d.ToString() == "Sprint 100 m (Manual)"
+                                where d.ToString() == GetData("FemaleSprintName")
                                 select d.PKey).Single();
 
             Guid jumpFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Female)
-                              where d.ToString() == "Hochsprung"
+                              where d.ToString() == GetData("FemaleJumpName")
                               select d.PKey).Single();
 
             Guid throwFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Female)
-                               where d.ToString() == "200-g-Ballwurf"
+                               where d.ToString() == GetData("FemaleThrowName")
                                select d.PKey).Single();
 
             Guid middleDistanceFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Female)
-                                        where d.ToString() == "Lauf 800 m"
+                                        where d.ToString() == GetData("FemaleMiddleDistanceName")
                                         select d.PKey).Single();
 
             sut.CreateOrUpdateDisciplineCollection("8", 2018, sprintPKey, jumpPKey, throwPKey, middleDistancePKey, sprintFPKey, jumpFPKey, throwFPKey, middleDistanceFPKey);
@@ -93,11 +104,22 @@ namespace HonglornAUT
             IResult daveResult = results.Single(r => r.Forename == "Dave");
             IResult hannahResult = results.Single(r => r.Forename == "Hannah");
 
-            Assert.AreEqual(1428, daveResult.Score);
-            Assert.AreEqual(Certificate.Honorary, daveResult.Certificate);
+            Assert.AreEqual(ushort.Parse(GetData("ExpectedMaleScore")), daveResult.Score);
+            Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("ExpectedMaleCertificate")), daveResult.Certificate);
 
-            Assert.AreEqual(1492, hannahResult.Score);
-            Assert.AreEqual(Certificate.Honorary, hannahResult.Certificate);
+            Assert.AreEqual(ushort.Parse(GetData("ExpectedFemaleScore")), hannahResult.Score);
+            Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("ExpectedFemaleCertificate")), hannahResult.Certificate);
+        }
+
+        [TestMethod]
+        public void GetResults_CompetitionResults_CorrectScoresAndCertificatesCalculated()
+        {
+            var sut = new Honglorn(CreateConnection());
+
+            sut.ImportSingleStudent("Dave", "Pennington", Sex.Male, 2008, "08C", 2018);
+            sut.ImportSingleStudent("Hannah", "Smith", Sex.Female, 2007, "08C", 2018);
+
+            Assert.Inconclusive();
         }
 
         [TestMethod]
@@ -121,9 +143,9 @@ namespace HonglornAUT
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\SumTestData.xml", "Row", DataAccessMethod.Sequential)]
         public void SumTest()
         {
-            int a1 = Int32.Parse((string)TestContext.DataRow["A1"]);
-            int a2 = Int32.Parse((string)TestContext.DataRow["A2"]);
-            int result = Int32.Parse((string)TestContext.DataRow["Result"]);
+            int a1 = int.Parse((string) TestContext.DataRow["A1"]);
+            int a2 = int.Parse((string) TestContext.DataRow["A2"]);
+            int result = int.Parse((string) TestContext.DataRow["Result"]);
             ExecSumTest(a1, a2, result);
         }
 
