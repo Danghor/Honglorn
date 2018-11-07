@@ -116,7 +116,6 @@
     <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converter\CompetitionValueConverter.cs" />
     <Compile Include="Converter\EnumToBoolConverter.cs" />
-    <Compile Include="EnumValuesExtension.cs" />
     <Compile Include="StudentPerformance.cs" />
     <Compile Include="ViewModels\AssignDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\ClassResultsViewModel.cs" />
