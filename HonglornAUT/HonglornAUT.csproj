@@ -85,6 +85,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TraditionalResults.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="SumTestData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
