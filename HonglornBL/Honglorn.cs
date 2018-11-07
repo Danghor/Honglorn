@@ -199,8 +199,6 @@ namespace HonglornBL
 
             foreach (Student student in students)
             {
-                ushort totalScore = 0;
-
                 Competition competition = (from sc in student.Competitions
                                            where sc.Year == year
                                            select sc).SingleOrDefault() ?? new Competition();
@@ -216,10 +214,15 @@ namespace HonglornBL
                     disciplines = new[] { disciplineCollection.FemaleSprint, disciplineCollection.FemaleJump, disciplineCollection.FemaleThrow, disciplineCollection.FemaleMiddleDistance };
                 }
 
-                totalScore += TraditionalCalculator.CalculateScore(disciplines[0], competition.Sprint);
-                totalScore += TraditionalCalculator.CalculateScore(disciplines[1], competition.Jump);
-                totalScore += TraditionalCalculator.CalculateScore(disciplines[2], competition.Throw);
-                totalScore += TraditionalCalculator.CalculateScore(disciplines[3], competition.MiddleDistance);
+                ushort[] scores =
+                {
+                    TraditionalCalculator.CalculateScore(disciplines[0], competition.Sprint),
+                    TraditionalCalculator.CalculateScore(disciplines[1], competition.Jump),
+                    TraditionalCalculator.CalculateScore(disciplines[2], competition.Throw),
+                    TraditionalCalculator.CalculateScore(disciplines[3], competition.MiddleDistance)
+                };
+
+                var totalScore = (ushort) scores.OrderBy(s => s).Take(3).Sum(s => s);
 
                 int studentAge = year - student.YearOfBirth;
 
