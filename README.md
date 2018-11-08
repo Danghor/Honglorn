@@ -8,10 +8,10 @@ A program to calculate results for the German sports event "Bundesjugendspiele".
 ## Continuous Integration
 
 ### Master
-[![Build status](https://danghor.visualstudio.com/Honglorn/_apis/build/status/Honglorn?branchName=master)](https://danghor.visualstudio.com/Honglorn/_build/latest?definitionId=3)
+[![Build status](https://danghor.visualstudio.com/Honglorn/_apis/build/status/Honglorn%20master)]
 
 ### Develop
-[![Build status](https://danghor.visualstudio.com/Honglorn/_apis/build/status/Honglorn?branchName=develop)](https://danghor.visualstudio.com/Honglorn/_build/latest?definitionId=3)
+[![Build status](https://danghor.visualstudio.com/Honglorn/_apis/build/status/Honglorn%20develop)
 
 ## Chat
 [![Gitter](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Honglorn)
