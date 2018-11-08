@@ -125,7 +125,36 @@ namespace HonglornAUT
             sut.ImportSingleStudent("Dave", "Pennington", Sex.Male, 2008, "08C", 2018);
             sut.ImportSingleStudent("Hannah", "Smith", Sex.Female, 2007, "08C", 2018);
 
-            Assert.Inconclusive();
+            var sprintGuid = Guid.NewGuid();
+            var jumpGuid = Guid.NewGuid();
+            var throwGuid = Guid.NewGuid();
+            var middleDistanceGuid = Guid.NewGuid();
+
+            sut.CreateOrUpdateCompetitionDiscipline(sprintGuid, DisciplineType.Sprint, "Sprint über Hürden", "s", true);
+            sut.CreateOrUpdateCompetitionDiscipline(jumpGuid, DisciplineType.Jump, "Zonenweitsprung über die Zauberschnur", "Zonen", false);
+            sut.CreateOrUpdateCompetitionDiscipline(sprintGuid, DisciplineType.Throw, "Zonenweitwurf mit dem Vortexball", "Zonen", false);
+            sut.CreateOrUpdateCompetitionDiscipline(sprintGuid, DisciplineType.MiddleDistance, "Ausdauerlauf", "s", true);
+
+            sut.CreateOrUpdateDisciplineCollection("8", 2018, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid);
+
+            IEnumerable<IStudentPerformance> performances = sut.StudentPerformances("08C", 2018).ToList();
+
+            Guid davePKey = performances.Single(p => p.Forename == "Dave").StudentPKey;
+            Guid hannahPKey = performances.Single(p => p.Forename == "Hannah").StudentPKey;
+
+            sut.UpdateSingleStudentCompetition(davePKey, 2018, 1, 2, 3, 4);
+            sut.UpdateSingleStudentCompetition(hannahPKey, 2018, 1, 2, 3, 4);
+
+            IEnumerable<IResult> results = sut.GetResultsAsync("08C", 2018).Result.ToList();
+
+            IResult daveResult = results.Single(r => r.Forename == "Dave");
+            IResult hannahResult = results.Single(r => r.Forename == "Hannah");
+
+            Assert.AreEqual(1, daveResult.Score);
+            Assert.AreEqual(Certificate.Honorary, daveResult.Certificate);
+
+            Assert.AreEqual(1, hannahResult.Score);
+            Assert.AreEqual(Certificate.Honorary, hannahResult.Certificate);
         }
 
         [TestMethod]
