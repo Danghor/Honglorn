@@ -55,14 +55,6 @@ namespace HonglornBL.Models.Entities
             StudentCourseRel.Add(rel);
         }
 
-        //todo: currently throws objectDisposedException
-        public string CourseNameByYear(short year)
-        {
-            return (from rel in StudentCourseRel
-                    where rel.Year == year && rel.StudentPKey == PKey
-                    select rel.CourseName).Single();
-        }
-
         public override string ToString() => $"{Forename} {Surname}, {Sex}, YOB: {YearOfBirth}, ID: {PKey}";
     }
 }

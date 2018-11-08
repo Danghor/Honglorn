@@ -141,21 +141,26 @@ namespace HonglornBL
 
         IEnumerable<IResult> CalculateCompetitionResults(IEnumerable<Student> students, short year, CompetitionDisciplineContainer disciplineCollection)
         {
-            List<ICompetitionResult> competitionResults = new List<ICompetitionResult>();
+            var competitionResults = new List<ICompetitionResult>();
 
             using (var db = ContextFactory.CreateContext())
             {
                 IEnumerable<string> classes = (from s in students
-                                               select GetClassName(s.CourseNameByYear(year))).Distinct();
+                                               join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
+                                               where rel.Year == year
+                                               select GetClassName(rel.CourseName)).Distinct();
+
                 foreach (string @class in classes)
                 {
                     IEnumerable<Student> maleStudents = (from s in db.Student
-                                                         where s.Sex == Sex.Male
-                                                         select s).AsEnumerable().Where(s => GetClassName(s.CourseNameByYear(year)) == @class).ToList();
+                                                         join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
+                                                         where s.Sex == Sex.Male && rel.Year == year
+                                                         select new { s, rel.CourseName }).AsEnumerable().Where(i => GetClassName(i.CourseName) == @class).Select(i => i.s).ToList();
 
                     IEnumerable<Student> femaleStudents = (from s in db.Student
-                                                           where s.Sex == Sex.Female
-                                                           select s).AsEnumerable().Where(s => GetClassName(s.CourseNameByYear(year)) == @class).ToList();
+                                                           join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
+                                                           where s.Sex == Sex.Female && rel.Year == year
+                                                           select new { s, rel.CourseName }).AsEnumerable().Where(i => GetClassName(i.CourseName) == @class).Select(i => i.s).ToList();
 
                     var maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter);
 
@@ -222,7 +227,7 @@ namespace HonglornBL
                     TraditionalCalculator.CalculateScore(disciplines[3], competition.MiddleDistance)
                 };
 
-                var totalScore = (ushort) scores.OrderBy(s => s).Take(3).Sum(s => s);
+                var totalScore = (ushort)scores.OrderBy(s => s).Take(3).Sum(s => s);
 
                 int studentAge = year - student.YearOfBirth;
 
