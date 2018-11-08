@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Globalization;
@@ -125,15 +125,15 @@ namespace HonglornAUT
             sut.ImportSingleStudent("Dave", "Pennington", Sex.Male, 2008, "08C", 2018);
             sut.ImportSingleStudent("Hannah", "Smith", Sex.Female, 2007, "08C", 2018);
 
-            var sprintGuid = Guid.NewGuid();
-            var jumpGuid = Guid.NewGuid();
-            var throwGuid = Guid.NewGuid();
-            var middleDistanceGuid = Guid.NewGuid();
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "A", "s", true);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "B", "Zonen", false);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "C", "Zonen", false);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "D", "s", true);
 
-            sut.CreateOrUpdateCompetitionDiscipline(sprintGuid, DisciplineType.Sprint, "Sprint über Hürden", "s", true);
-            sut.CreateOrUpdateCompetitionDiscipline(jumpGuid, DisciplineType.Jump, "Zonenweitsprung über die Zauberschnur", "Zonen", false);
-            sut.CreateOrUpdateCompetitionDiscipline(sprintGuid, DisciplineType.Throw, "Zonenweitwurf mit dem Vortexball", "Zonen", false);
-            sut.CreateOrUpdateCompetitionDiscipline(sprintGuid, DisciplineType.MiddleDistance, "Ausdauerlauf", "s", true);
+            var sprintGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single().PKey;
+            var jumpGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single().PKey;
+            var throwGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single().PKey;
+            var middleDistanceGuid = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single().PKey;
 
             sut.CreateOrUpdateDisciplineCollection("8", 2018, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid);
 
