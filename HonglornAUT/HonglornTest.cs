@@ -137,6 +137,8 @@ namespace HonglornAUT
 
             sut.CreateOrUpdateDisciplineCollection("8", 2018, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid);
 
+            sut.CreateOrUpdateCompetitionReportMeta(2018, 80, 30, 85, 70, 55, 39, 20);
+
             IEnumerable<IStudentPerformance> performances = sut.StudentPerformances("08C", 2018).ToList();
 
             Guid davePKey = performances.Single(p => p.Forename == "Dave").StudentPKey;

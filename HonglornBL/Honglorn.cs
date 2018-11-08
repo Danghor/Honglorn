@@ -190,12 +190,10 @@ namespace HonglornBL
             }
 
             //todo: determine certificate correctly
-            IEnumerable<Result> results = from c in competitionResults
-                                          join s in students on c.Identifier equals s.PKey
-                                          orderby s.Surname, s.Forename, s.YearOfBirth descending
-                                          select new Result(s.Forename, s.Surname, (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), Certificate.Participation);
-
-            return results;
+            return from c in competitionResults
+                   join s in students on c.Identifier equals s.PKey
+                   orderby s.Surname, s.Forename, s.YearOfBirth descending
+                   select new Result(s.Forename, s.Surname, (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), Certificate.Participation);
         }
 
         IEnumerable<IResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
@@ -678,5 +676,42 @@ namespace HonglornBL
         }
 
         #endregion
+
+        public void CreateOrUpdateCompetitionReportMeta(short year, byte honoraryCertificatePercentage, byte victoryCertificatePercentage, byte grade1Percentage, byte grade2Percentage, byte grade3Percentage, byte grade4Percentage, byte grade5Percentage)
+        {
+            //todo: validation
+
+            using (var db = ContextFactory.CreateContext())
+            {
+                CompetitionReportMeta existingMeta = db.CompetitionReportMeta.SingleOrDefault(m => m.Year == year);
+
+                if (existingMeta == null)
+                {
+                    db.CompetitionReportMeta.Add(new CompetitionReportMeta
+                    {
+                        Year = year,
+                        HonoraryCertificatePercentage = honoraryCertificatePercentage,
+                        VictoryCertificatePercentage = victoryCertificatePercentage,
+                        Grade1Percentage = grade1Percentage,
+                        Grade2Percentage = grade2Percentage,
+                        Grade3Percentage = grade3Percentage,
+                        Grade4Percentage = grade4Percentage,
+                        Grade5Percentage = grade5Percentage
+                    });
+                }
+                else
+                {
+                    existingMeta.HonoraryCertificatePercentage = honoraryCertificatePercentage;
+                    existingMeta.VictoryCertificatePercentage = victoryCertificatePercentage;
+                    existingMeta.Grade1Percentage = grade1Percentage;
+                    existingMeta.Grade2Percentage = grade2Percentage;
+                    existingMeta.Grade3Percentage = grade3Percentage;
+                    existingMeta.Grade4Percentage = grade4Percentage;
+                    existingMeta.Grade5Percentage = grade5Percentage;
+                }
+
+                db.SaveChanges();
+            }
+        }
     }
 }
