@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Globalization;
@@ -150,10 +150,10 @@ namespace HonglornAUT
             IResult daveResult = results.Single(r => r.Forename == "Dave");
             IResult hannahResult = results.Single(r => r.Forename == "Hannah");
 
-            Assert.AreEqual(1, daveResult.Score);
+            Assert.AreEqual(4, daveResult.Score);
             Assert.AreEqual(Certificate.Honorary, daveResult.Certificate);
 
-            Assert.AreEqual(1, hannahResult.Score);
+            Assert.AreEqual(4, hannahResult.Score);
             Assert.AreEqual(Certificate.Honorary, hannahResult.Certificate);
         }
 
