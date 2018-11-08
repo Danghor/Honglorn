@@ -85,6 +85,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CompetitionResults.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="TraditionalResults.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
