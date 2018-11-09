@@ -225,7 +225,7 @@ namespace HonglornBL
                     TraditionalCalculator.CalculateScore(disciplines[3], competition.MiddleDistance)
                 };
 
-                var totalScore = (ushort)scores.OrderBy(s => s).Take(3).Sum(s => s);
+                var totalScore = (ushort)scores.OrderByDescending(s => s).Take(3).Sum(s => s);
 
                 int studentAge = year - student.YearOfBirth;
 
