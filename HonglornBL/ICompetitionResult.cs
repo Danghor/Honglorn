@@ -1,4 +1,5 @@
 ﻿using System;
+using HonglornBL.Enums;
 
 namespace HonglornBL
 {
@@ -9,5 +10,6 @@ namespace HonglornBL
         ushort JumpScore { get; set; }
         ushort ThrowScore { get; set; }
         ushort MiddleDistanceScore { get; set; }
+        Certificate Certificate { get; set; }
     }
 }

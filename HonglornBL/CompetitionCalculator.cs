@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using HonglornBL.Enums;
 
 namespace HonglornBL
 {
@@ -11,20 +12,26 @@ namespace HonglornBL
         readonly bool jumpLowIsBetter;
         readonly bool throwLowIsBetter;
         readonly bool middleDistanceLowIsBetter;
+        readonly byte honoraryCertificatePercentage;
+        readonly byte victoryCertificatePercentage;
 
-        internal CompetitionCalculator(bool sprintLowIsBetter, bool jumpLowIsBetter, bool throwLowIsBetter, bool middleDistanceLowIsBetter)
+        internal CompetitionCalculator(bool sprintLowIsBetter, bool jumpLowIsBetter, bool throwLowIsBetter, bool middleDistanceLowIsBetter, byte honoraryCertificatePercentage, byte victoryCertificatePercentage)
         {
             studentMeasurements = new List<Tuple<Guid, RawMeasurement>>();
             this.sprintLowIsBetter = sprintLowIsBetter;
             this.jumpLowIsBetter = jumpLowIsBetter;
             this.throwLowIsBetter = throwLowIsBetter;
             this.middleDistanceLowIsBetter = middleDistanceLowIsBetter;
+            this.honoraryCertificatePercentage = honoraryCertificatePercentage;
+            this.victoryCertificatePercentage = victoryCertificatePercentage;
         }
 
         internal void AddStudentMeasurement(Guid identifier, RawMeasurement measurement)
         {
             studentMeasurements.Add(new Tuple<Guid, RawMeasurement>(identifier, measurement));
         }
+
+        static readonly Certificate[] Certificates = { Certificate.Honorary, Certificate.Victory, Certificate.Participation };
 
         internal IEnumerable<ICompetitionResult> Results()
         {
@@ -35,6 +42,34 @@ namespace HonglornBL
             CalculateScoresForDiscipline(containers, jumpLowIsBetter, c => c.JumpValue, c => c.JumpScore, (c, s) => c.JumpScore = s);
             CalculateScoresForDiscipline(containers, throwLowIsBetter, c => c.ThrowValue, c => c.ThrowScore, (c, s) => c.ThrowScore = s);
             CalculateScoresForDiscipline(containers, middleDistanceLowIsBetter, c => c.MiddleDistanceValue, c => c.MiddleDistanceScore, (c, s) => c.MiddleDistanceScore = s);
+
+            containers = containers.OrderBy(c => c.TotalScore).ToList();
+
+            int lastScore = containers.First().TotalScore;
+            var currentCertificate = Certificate.Honorary;
+            var count = 1;
+
+            foreach (CompetitionCalculatorContainer container in containers)
+            {
+                if (container.TotalScore != lastScore)
+                {
+                    int percentile = count / containers.Count * 100;
+
+                    if (percentile > 100 - victoryCertificatePercentage)
+                    {
+                        currentCertificate = Certificate.Victory;
+                    }
+                    else if (percentile > 100 - honoraryCertificatePercentage)
+                    {
+                        currentCertificate = Certificate.Participation;
+                    }
+
+                    lastScore = container.TotalScore;
+                }
+
+                container.Certificate = currentCertificate;
+                count++;
+            }
 
             return containers;
         }

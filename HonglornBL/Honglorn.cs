@@ -150,6 +150,10 @@ namespace HonglornBL
                                                where rel.Year == year
                                                select GetClassName(rel.CourseName)).Distinct();
 
+                var meta = (from m in db.CompetitionReportMeta
+                            where m.Year == year
+                            select new { m.HonoraryCertificatePercentage, m.VictoryCertificatePercentage }).Single();
+
                 foreach (string @class in classes)
                 {
                     IEnumerable<Student> maleStudents = (from s in db.Student
@@ -162,7 +166,7 @@ namespace HonglornBL
                                                            where s.Sex == Sex.Female && rel.Year == year
                                                            select new { s, rel.CourseName }).AsEnumerable().Where(i => GetClassName(i.CourseName) == @class).Select(i => i.s).ToList();
 
-                    var maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter);
+                    var maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter, meta.HonoraryCertificatePercentage, meta.VictoryCertificatePercentage);
 
                     foreach (Student maleStudent in maleStudents)
                     {
@@ -173,7 +177,7 @@ namespace HonglornBL
                         maleCalculator.AddStudentMeasurement(maleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
                     }
 
-                    var femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter);
+                    var femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter,  meta.HonoraryCertificatePercentage, meta.VictoryCertificatePercentage);
 
                     foreach (Student femaleStudent in femaleStudents)
                     {
@@ -189,11 +193,10 @@ namespace HonglornBL
                 }
             }
 
-            //todo: determine certificate correctly
             return from c in competitionResults
                    join s in students on c.Identifier equals s.PKey
                    orderby s.Surname, s.Forename, s.YearOfBirth descending
-                   select new Result(s.Forename, s.Surname, (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), Certificate.Participation);
+                   select new Result(s.Forename, s.Surname, (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), c.Certificate);
         }
 
         IEnumerable<IResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
