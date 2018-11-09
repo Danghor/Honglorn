@@ -13,16 +13,24 @@
     <FemaleThrowName>200-g-Ballwurf</FemaleThrowName>
     <FemaleMiddleDistanceName>Lauf 800 m</FemaleMiddleDistanceName>
     <MaleSprintPerformance>13.9</MaleSprintPerformance>
+    <!-- 404 -->
     <MaleJumpPerformance>4.37</MaleJumpPerformance>
+    <!-- 429 -->
     <MaleThrowPerformance>8.2</MaleThrowPerformance>
+    <!-- 388 -->
     <MaleMiddleDistancePerformance>294</MaleMiddleDistancePerformance>
+    <!-- 207 -->
     <FemaleSprintPerformance>14.9</FemaleSprintPerformance>
+    <!-- 396 -->
     <FemaleJumpPerformance>1.44</FemaleJumpPerformance>
+    <!-- 469 -->
     <FemaleThrowPerformance>32.5</FemaleThrowPerformance>
+    <!-- 412 -->
     <FemaleMiddleDistancePerformance>234</FemaleMiddleDistancePerformance>
-    <ExpectedMaleScore>1428</ExpectedMaleScore>
+    <!-- 215 -->
+    <ExpectedMaleScore>1221</ExpectedMaleScore>
     <ExpectedMaleCertificate>Honorary</ExpectedMaleCertificate>
-    <ExpectedFemaleScore>1492</ExpectedFemaleScore>
+    <ExpectedFemaleScore>1277</ExpectedFemaleScore>
     <ExpectedFemaleCertificate>Honorary</ExpectedFemaleCertificate>
   </Row>
 </Rows>
