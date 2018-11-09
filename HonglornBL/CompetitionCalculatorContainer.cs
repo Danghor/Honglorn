@@ -1,4 +1,5 @@
 ﻿using System;
+using HonglornBL.Enums;
 
 namespace HonglornBL
 {
@@ -16,6 +17,8 @@ namespace HonglornBL
         public ushort ThrowScore { get; set; }
         public ushort MiddleDistanceScore { get; set; }
 
+        public Certificate Certificate { get; set; }
+
         internal CompetitionCalculatorContainer(Guid identifier, float? sprintValue, float? jumpValue, float? throwValue, float? middleDistanceValue)
         {
             Identifier = identifier;
@@ -26,5 +29,7 @@ namespace HonglornBL
         }
 
         public override string ToString() => $"({SprintValue},{SprintScore})({JumpValue},{JumpScore})({ThrowValue},{ThrowScore})({MiddleDistanceValue},{MiddleDistanceScore})";
+
+        internal ushort TotalScore => (ushort) (SprintScore + JumpScore + ThrowScore + MiddleDistanceScore);
     }
 }
