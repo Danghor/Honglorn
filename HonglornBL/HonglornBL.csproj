@@ -95,10 +95,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\Certificate.cs" />
     <Compile Include="CompetitionCalculatorContainer.cs" />
     <Compile Include="CompetitionDisciplineContainer.cs" />
     <Compile Include="CompetitionCalculator.cs" />
-    <Compile Include="Enums.cs" />
+    <Compile Include="Enums\DisciplineType.cs" />
+    <Compile Include="Enums\Game.cs" />
+    <Compile Include="Enums\Measurement.cs" />
+    <Compile Include="Enums\Sex.cs" />
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\CsvImporter.cs" />
     <Compile Include="Import\FieldErrorInfo.cs" />
