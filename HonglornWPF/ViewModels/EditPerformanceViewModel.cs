@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
@@ -8,6 +9,8 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<string> Courses { get; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
         public ObservableCollection<StudentPerformance> StudentCompetitions { get; } = new ObservableCollection<StudentPerformance>();
+
+        public ICommand RefreshYears { get; }
 
         short currentYear;
         public short CurrentYear
@@ -53,11 +56,15 @@ namespace HonglornWPF.ViewModels
 
         public EditPerformanceViewModel()
         {
+            RefreshYears = new RelayCommand(RefreshYearsFromDb);
+            RefreshYearsFromDb();
+        }
+
+        void RefreshYearsFromDb()
+        {
+            short previouslySelectedYear = CurrentYear;
             LoadYears();
-            if (Years.Any())
-            {
-                CurrentYear = Years.First();
-            }
+            CurrentYear = Years.Contains(previouslySelectedYear) ? previouslySelectedYear : Years.FirstOrDefault();
         }
 
         void LoadCourseNames() => ClearAndFill(Courses, Honglorn.ValidCourseNames(CurrentYear));

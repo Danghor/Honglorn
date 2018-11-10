@@ -1,4 +1,4 @@
-﻿using HonglornBL;
+using HonglornBL;
 using HonglornBL.Import;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Input;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace HonglornWPF.ViewModels
@@ -48,7 +49,7 @@ namespace HonglornWPF.ViewModels
             set { OnPropertyChanged(out path, value); }
         }
 
-        public RelayCommand OpenFileDialogCommand { get; }
+        public ICommand OpenFileDialogCommand { get; }
         public RelayCommand ImportStudentsAsyncCommand { get; }
 
         public ImportStudentsViewModel()
@@ -70,7 +71,7 @@ namespace HonglornWPF.ViewModels
 
         async void ImportStudentsAsync()
         {
-            MetroWindow mainWindow = System.Windows.Application.Current.MainWindow as MetroWindow;
+            var mainWindow = (MetroWindow)System.Windows.Application.Current.MainWindow;
 
             try
             {

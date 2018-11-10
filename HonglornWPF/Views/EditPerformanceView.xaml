@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" x:ClassModifier="internal">
     <UserControl.DataContext>
         <viewModels:EditPerformanceViewModel/>
@@ -20,9 +21,15 @@
             </Grid.ColumnDefinitions>
 
             <Label Content="Jahr"  Grid.Column="0"/>
-            <ComboBox x:Name="yearSelectionComboBox" HorizontalAlignment="Right" VerticalAlignment="Top"  Grid.Column="1" ItemsSource="{Binding Years}" SelectedItem="{Binding CurrentYear}"/>
+            <ComboBox HorizontalAlignment="Right" VerticalAlignment="Top"  Grid.Column="1" ItemsSource="{Binding Years}" SelectedItem="{Binding CurrentYear}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="DropDownOpened">
+                        <i:InvokeCommandAction Command="{Binding RefreshYears}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
             <Label Content="Klasse" Grid.Column="2"/>
-            <ComboBox x:Name="classSelectionComboBox" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="3" ItemsSource="{Binding Courses}" SelectedItem="{Binding CurrentCourse}"/>
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Column="3" ItemsSource="{Binding Courses}" SelectedItem="{Binding CurrentCourse}"/>
 
         </Grid>
         <DataGrid Margin="0 5 0 0"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding StudentCompetitions}" SelectedItem="{Binding CurrentStudentCompetition}">
