@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Configuration;
 using System.Runtime.CompilerServices;
 using HonglornBL;
 
@@ -13,26 +11,10 @@ namespace HonglornWPF.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         protected Honglorn Honglorn { get; }
 
-#if DEBUG
         protected ViewModel()
         {
-            string[] cmdArgs = Environment.GetCommandLineArgs();
-
-            if (cmdArgs.Length >= 2 && cmdArgs[1] == "memory")
-            {
-                Honglorn = new Honglorn(Effort.DbConnectionFactory.CreateTransient());
-            }
-            else
-            {
-                Honglorn = new Honglorn(ConfigurationManager.ConnectionStrings["HonglornDb"]);
-            }
+            Honglorn = HonglornApi.Instance;
         }
-#else
-        protected ViewModel()
-        {
-            Honglorn = new Honglorn(ConfigurationManager.ConnectionStrings["HonglornDb"]);
-        }
-#endif
 
         protected void OnPropertyChanged<T>(out T field, T value, [CallerMemberName] string propertyName = null)
         {
@@ -44,7 +26,7 @@ namespace HonglornWPF.ViewModels
         {
             collection.Clear();
 
-            foreach (var item in content)
+            foreach (T item in content)
             {
                 collection.Add(item);
             }
