@@ -34,7 +34,7 @@ namespace HonglornBL
             ContextFactory = new HonglornDbFactory(connectionStringSettings);
         }
 
-        internal Honglorn(DbConnection connection)
+        public Honglorn(DbConnection connection)
         {
             ContextFactory = new HonglornDbFactory(connection);
         }

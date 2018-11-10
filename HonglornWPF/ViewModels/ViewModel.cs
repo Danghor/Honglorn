@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
@@ -12,10 +13,26 @@ namespace HonglornWPF.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         protected Honglorn Honglorn { get; }
 
+#if DEBUG
+        protected ViewModel()
+        {
+            string[] cmdArgs = Environment.GetCommandLineArgs();
+
+            if (cmdArgs.Length >= 2 && cmdArgs[1] == "memory")
+            {
+                Honglorn = new Honglorn(Effort.DbConnectionFactory.CreateTransient());
+            }
+            else
+            {
+                Honglorn = new Honglorn(ConfigurationManager.ConnectionStrings["HonglornDb"]);
+            }
+        }
+#else
         protected ViewModel()
         {
             Honglorn = new Honglorn(ConfigurationManager.ConnectionStrings["HonglornDb"]);
         }
+#endif
 
         protected void OnPropertyChanged<T>(out T field, T value, [CallerMemberName] string propertyName = null)
         {
