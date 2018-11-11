@@ -223,9 +223,6 @@ namespace HonglornAUT
                 sut.ImportSingleStudent(s.Forename, s.Surname, s.Sex, (short) (DateTime.Now.Year - 10), s.Course, year);
             }
 
-            sut.ImportSingleStudent(maleForename, "Pennington", Sex.Male, 2008, course, year);
-            sut.ImportSingleStudent(femaleForename, "Smith", Sex.Female, 2007, course, year);
-
             sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "A", "a", GetBool("SprintLowIsBetterMale"));
             sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "B", "b", GetBool("JumpLowIsBetterMale"));
             sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "C", "c", GetBool("ThrowLowIsBetterMale"));
@@ -246,9 +243,10 @@ namespace HonglornAUT
             Guid femaleThrowGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single(d => d.ToString() == "G").PKey;
             Guid femaleMiddleDistanceGuid = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single(d => d.ToString() == "H").PKey;
 
-            string className = sut.ValidClassNames(year).Single();
-
-            sut.CreateOrUpdateDisciplineCollection(className, year, maleSprintGuid, maleJumpGuid, maleThrowGuid, maleMiddleDistanceGuid, femaleSprintGuid, femaleJumpGuid, femaleThrowGuid, femaleMiddleDistanceGuid);
+            foreach (string className in sut.ValidClassNames(year))
+            {
+                sut.CreateOrUpdateDisciplineCollection(className, year, maleSprintGuid, maleJumpGuid, maleThrowGuid, maleMiddleDistanceGuid, femaleSprintGuid, femaleJumpGuid, femaleThrowGuid, femaleMiddleDistanceGuid);
+            }
 
             sut.CreateOrUpdateCompetitionReportMeta(year, 80, 30, 85, 70, 55, 39, 20);
 
