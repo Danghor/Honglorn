@@ -54,6 +54,58 @@ namespace HonglornAUT
         }
 
         [TestMethod]
+        public void EditStudentPerformance_SuccessfullyAddedSaved()
+        {
+            const string forename = "Cave";
+            const string surname = "Johnson";
+            const string courseName = "08B";
+            const short year = 2018;
+            const float sprintPerformance = 12.56f;
+            const float throwPerformance = 22.59f;
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.ImportSingleStudent(forename, surname, Sex.Male, 1928, courseName, year);
+
+            Guid pKey = sut.StudentPerformances(courseName, year).Single().StudentPKey;
+
+            sut.UpdateSingleStudentCompetition(pKey, year, sprintPerformance, null, throwPerformance, null);
+
+            IStudentPerformance studentPerformance = sut.StudentPerformances(courseName, year).Single();
+
+            Assert.AreEqual(forename, studentPerformance.Forename);
+            Assert.AreEqual(surname, studentPerformance.Surname);
+            Assert.AreEqual(sprintPerformance, studentPerformance.Sprint);
+            Assert.IsNull(studentPerformance.Jump);
+            Assert.AreEqual(throwPerformance, studentPerformance.Throw);
+            Assert.IsNull(studentPerformance.MiddleDistance);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void UpdateSingleStudentCompetition_UnknownStudent_ThrowsException()
+        {
+            var sut = new Honglorn(CreateConnection());
+            sut.UpdateSingleStudentCompetition(new Guid(), 2018, 1, 2, 3, 4);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetResults_NoDisciplinesSet_ThrowsException()
+        {
+            var sut = new Honglorn(CreateConnection());
+
+            try
+            {
+                IEnumerable<IResult> result = sut.GetResultsAsync("A", 2000).Result;
+            }
+            catch (AggregateException e)
+            {
+                throw e.InnerExceptions.Single();
+            }
+        }
+
+        [TestMethod]
         [DeploymentItem("TraditionalResults.xml")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\TraditionalResults.xml", "Row", DataAccessMethod.Sequential)]
         public void GetResults_TraditionalCompetition_CorrectScoresAndCertificatesCalculated()
