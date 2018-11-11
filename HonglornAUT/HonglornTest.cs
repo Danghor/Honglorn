@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Globalization;
 using System.Linq;
@@ -31,9 +32,27 @@ namespace HonglornAUT
             return float.Parse(GetData(tagName), CultureInfo.InvariantCulture);
         }
 
-        float GetUshort(string tagName)
+        ushort GetUshort(string tagName)
         {
             return ushort.Parse(GetData(tagName), CultureInfo.InvariantCulture);
+        }
+
+        short GetShort(string tagName)
+        {
+            return short.Parse(GetData(tagName), CultureInfo.InvariantCulture);
+        }
+
+        bool GetBool(string tagName)
+        {
+            return bool.Parse(GetData(tagName));
+        }
+
+        static readonly Random Random = new Random();
+
+        static string RandomString()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            return new string(Enumerable.Repeat(chars, 5).Select(s => s[Random.Next(s.Length)]).ToArray());
         }
 
         [TestMethod]
@@ -162,31 +181,74 @@ namespace HonglornAUT
         }
 
         [TestMethod]
+        [DeploymentItem("CompetitionResults.xml")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\CompetitionResults.xml", "Row", DataAccessMethod.Sequential)]
         public void GetResults_CompetitionResults_CorrectScoresAndCertificatesCalculated()
         {
             const string course = "08D";
             const string maleForename = "Dave";
             const string femaleForename = "Hannah";
-            const short year = 2018;
+            short year = GetShort("Year");
+
+            ICollection<CompetitionStudent> students = new List<CompetitionStudent>();
+
+            foreach (DataRow courseRow in TestContext.DataRow.GetChildRows("Row_Course"))
+            {
+                var courseName = courseRow["Name"] as string;
+
+                foreach (DataRow student in courseRow.GetChildRows("Course_Student"))
+                {
+                    var sex = (Sex) Enum.Parse(typeof(Sex), student["Sex"] as string);
+
+                    float sprint = float.Parse(student["Sprint"] as string);
+                    float jump = float.Parse(student["Jump"] as string);
+                    float @throw = float.Parse(student["Throw"] as string);
+                    float middleDistance = float.Parse(student["MiddleDistance"] as string);
+
+                    ushort sprintScore = ushort.Parse(student["SprintScore"] as string);
+                    ushort jumpScore = ushort.Parse(student["JumpScore"] as string);
+                    ushort throwScore = ushort.Parse(student["ThrowScore"] as string);
+                    ushort middleDistanceScore = ushort.Parse(student["MiddleDistanceScore"] as string);
+
+                    var certificate = (Certificate) Enum.Parse(typeof(Certificate), student["Certificate"] as string);
+
+                    students.Add(new CompetitionStudent(courseName, RandomString(), RandomString(), sex, sprint, jump, @throw, middleDistance, sprintScore, jumpScore, throwScore, middleDistanceScore, certificate));
+                }
+            }
 
             var sut = new Honglorn(CreateConnection());
+
+            foreach (CompetitionStudent s in students)
+            {
+                sut.ImportSingleStudent(s.Forename, s.Surname, s.Sex, (short) (DateTime.Now.Year - 10), s.Course, year);
+            }
 
             sut.ImportSingleStudent(maleForename, "Pennington", Sex.Male, 2008, course, year);
             sut.ImportSingleStudent(femaleForename, "Smith", Sex.Female, 2007, course, year);
 
-            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "A", "s", true);
-            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "B", "Zonen", false);
-            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "C", "Zonen", false);
-            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "D", "s", true);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "A", "a", GetBool("SprintLowIsBetterMale"));
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "B", "b", GetBool("JumpLowIsBetterMale"));
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "C", "c", GetBool("ThrowLowIsBetterMale"));
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "D", "d", GetBool("MiddleDistanceLowIsBetterMale"));
 
-            Guid sprintGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single().PKey;
-            Guid jumpGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single().PKey;
-            Guid throwGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single().PKey;
-            Guid middleDistanceGuid = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single().PKey;
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "E", "e", GetBool("SprintLowIsBetterFemale"));
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "F", "f", GetBool("JumpLowIsBetterFemale"));
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "G", "g", GetBool("ThrowLowIsBetterFemale"));
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "H", "h", GetBool("MiddleDistanceLowIsBetterFemale"));
+
+            Guid maleSprintGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single(d => d.ToString() == "A").PKey;
+            Guid maleJumpGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single(d => d.ToString() == "B").PKey;
+            Guid maleThrowGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single(d => d.ToString() == "C").PKey;
+            Guid maleMiddleDistanceGuid = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single(d => d.ToString() == "D").PKey;
+
+            Guid femaleSprintGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single(d => d.ToString() == "E").PKey;
+            Guid femaleJumpGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single(d => d.ToString() == "F").PKey;
+            Guid femaleThrowGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single(d => d.ToString() == "G").PKey;
+            Guid femaleMiddleDistanceGuid = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single(d => d.ToString() == "H").PKey;
 
             string className = sut.ValidClassNames(year).Single();
 
-            sut.CreateOrUpdateDisciplineCollection(className, year, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid);
+            sut.CreateOrUpdateDisciplineCollection(className, year, maleSprintGuid, maleJumpGuid, maleThrowGuid, maleMiddleDistanceGuid, femaleSprintGuid, femaleJumpGuid, femaleThrowGuid, femaleMiddleDistanceGuid);
 
             sut.CreateOrUpdateCompetitionReportMeta(year, 80, 30, 85, 70, 55, 39, 20);
 

@@ -2,27 +2,65 @@
 <Rows>
   <Row>
     <Year>2018</Year>
-    <MaleStudentYob>2008</MaleStudentYob>
-    <FemaleStudentYob>2007</FemaleStudentYob>
-    <MaleSprintName>Sprint 100 m (Manual)</MaleSprintName>
-    <MaleJumpName>Weitsprung</MaleJumpName>
-    <MaleThrowName>Kugelstoß</MaleThrowName>
-    <MaleMiddleDistanceName>Lauf 1000 m</MaleMiddleDistanceName>
-    <FemaleSprintName>Sprint 100 m (Manual)</FemaleSprintName>
-    <FemaleJumpName>Hochsprung</FemaleJumpName>
-    <FemaleThrowName>200-g-Ballwurf</FemaleThrowName>
-    <FemaleMiddleDistanceName>Lauf 800 m</FemaleMiddleDistanceName>
-    <MaleSprintPerformance>13.9</MaleSprintPerformance>
-    <MaleJumpPerformance>4.37</MaleJumpPerformance>
-    <MaleThrowPerformance>8.2</MaleThrowPerformance>
-    <MaleMiddleDistancePerformance>294</MaleMiddleDistancePerformance>
-    <FemaleSprintPerformance>14.9</FemaleSprintPerformance>
-    <FemaleJumpPerformance>1.44</FemaleJumpPerformance>
-    <FemaleThrowPerformance>32.5</FemaleThrowPerformance>
-    <FemaleMiddleDistancePerformance>234</FemaleMiddleDistancePerformance>
-    <ExpectedMaleScore>1428</ExpectedMaleScore>
-    <ExpectedMaleCertificate>Honorary</ExpectedMaleCertificate>
-    <ExpectedFemaleScore>1492</ExpectedFemaleScore>
-    <ExpectedFemaleCertificate>Honorary</ExpectedFemaleCertificate>
+    <SprintLowIsBetterMale>true</SprintLowIsBetterMale>
+    <JumpLowIsBetterMale>false</JumpLowIsBetterMale>
+    <ThrowLowIsBetterMale>false</ThrowLowIsBetterMale>
+    <MiddleDistanceLowIsBetterMale>true</MiddleDistanceLowIsBetterMale>
+    <SprintLowIsBetterFemale>true</SprintLowIsBetterFemale>
+    <JumpLowIsBetterFemale>false</JumpLowIsBetterFemale>
+    <ThrowLowIsBetterFemale>false</ThrowLowIsBetterFemale>
+    <MiddleDistanceLowIsBetterFemale>true</MiddleDistanceLowIsBetterFemale>
+    <Course Name="08A">
+      <Student>
+        <Sex>Male</Sex>
+        <Sprint>1</Sprint>
+        <Jump>1</Jump>
+        <Throw>1</Throw>
+        <MiddleDistance>1</MiddleDistance>
+        <SprintScore>1</SprintScore>
+        <JumpScore>1</JumpScore>
+        <ThrowScore>1</ThrowScore>
+        <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Certificate>Honorary</Certificate>
+      </Student>
+      <Student>
+        <Sex>Female</Sex>
+        <Sprint>1</Sprint>
+        <Jump>1</Jump>
+        <Throw>1</Throw>
+        <MiddleDistance>1</MiddleDistance>
+        <SprintScore>1</SprintScore>
+        <JumpScore>1</JumpScore>
+        <ThrowScore>1</ThrowScore>
+        <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Certificate>Honorary</Certificate>
+      </Student>
+    </Course>
+    <Course Name="09A">
+      <Student>
+        <Sex>Male</Sex>
+        <Sprint>1</Sprint>
+        <Jump>1</Jump>
+        <Throw>1</Throw>
+        <MiddleDistance>1</MiddleDistance>
+        <SprintScore>1</SprintScore>
+        <JumpScore>1</JumpScore>
+        <ThrowScore>1</ThrowScore>
+        <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Certificate>Honorary</Certificate>
+      </Student>
+      <Student>
+        <Sex>Female</Sex>
+        <Sprint>1</Sprint>
+        <Jump>1</Jump>
+        <Throw>1</Throw>
+        <MiddleDistance>1</MiddleDistance>
+        <SprintScore>1</SprintScore>
+        <JumpScore>1</JumpScore>
+        <ThrowScore>1</ThrowScore>
+        <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Certificate>Honorary</Certificate>
+      </Student>
+    </Course>
   </Row>
 </Rows>
