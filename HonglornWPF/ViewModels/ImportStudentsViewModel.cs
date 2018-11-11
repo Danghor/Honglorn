@@ -6,7 +6,6 @@ using Microsoft;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 using System.Windows.Input;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
@@ -14,11 +13,11 @@ namespace HonglornWPF.ViewModels
 {
     class ImportStudentsViewModel : ViewModel
     {
-        ProgressBarStyle progressBarStyle;
-        public ProgressBarStyle ProgressBarStyle
+        bool isIndeterminate;
+        public bool IsIndeterminate
         {
-            get { return progressBarStyle; }
-            set { OnPropertyChanged(out progressBarStyle, value); }
+            get { return isIndeterminate; }
+            set { OnPropertyChanged(out isIndeterminate, value); }
         }
 
         int statusPercentage;
@@ -54,14 +53,14 @@ namespace HonglornWPF.ViewModels
 
         public ImportStudentsViewModel()
         {
-            Year = (short)DateTime.Now.Year;
+            Year = (short) DateTime.Now.Year;
             OpenFileDialogCommand = new RelayCommand(OpenFileDialog);
             ImportStudentsAsyncCommand = new RelayCommand(ImportStudentsAsync);
         }
 
         void OpenFileDialog()
         {
-            OpenFileDialog dialog = new OpenFileDialog();
+            var dialog = new OpenFileDialog();
 
             if (dialog.ShowDialog() == true)
             {
@@ -71,7 +70,7 @@ namespace HonglornWPF.ViewModels
 
         async void ImportStudentsAsync()
         {
-            var mainWindow = (MetroWindow)System.Windows.Application.Current.MainWindow;
+            var mainWindow = (MetroWindow) System.Windows.Application.Current.MainWindow;
 
             try
             {
@@ -89,7 +88,7 @@ namespace HonglornWPF.ViewModels
             finally
             {
                 StatusPercentage = 0;
-                ProgressBarStyle = ProgressBarStyle.Continuous;
+                IsIndeterminate = false;
                 StatusMessage = string.Empty;
                 ImportStudentsAsyncCommand.Enabled = true;
             }
@@ -98,7 +97,7 @@ namespace HonglornWPF.ViewModels
         void OnProgressChanged(ProgressReport report)
         {
             StatusMessage = report.Message;
-            ProgressBarStyle = report.IsIndeterminate ? ProgressBarStyle.Marquee : ProgressBarStyle.Continuous;
+            IsIndeterminate = report.IsIndeterminate;
             StatusPercentage = report.Percentage;
         }
     }
