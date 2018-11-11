@@ -115,10 +115,15 @@ namespace HonglornAUT
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\TraditionalResults.xml", "Row", DataAccessMethod.Sequential)]
         public void GetResults_TraditionalCompetition_CorrectScoresAndCertificatesCalculated()
         {
+            const string course = "08D";
+            const string maleForename = "Dave";
+            const string femaleForename = "Hannah";
+            const short year = 2018;
+
             var sut = new Honglorn(CreateConnection());
 
-            sut.ImportSingleStudent("Dave", "Pennington", Sex.Male, 2008, "08C", 2018);
-            sut.ImportSingleStudent("Hannah", "Smith", Sex.Female, 2007, "08C", 2018);
+            sut.ImportSingleStudent(maleForename, "Pennington", Sex.Male, 2008, course, year);
+            sut.ImportSingleStudent(femaleForename, "Smith", Sex.Female, 2007, course, year);
 
             Func<DisciplineType, Sex, string, Guid> getDisciplineKey = (type, sex, name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == GetData(name)).PKey;
 
@@ -132,20 +137,22 @@ namespace HonglornAUT
             Guid femaleThrowPKey = getDisciplineKey(DisciplineType.Throw, Sex.Female, "FemaleThrowName");
             Guid femaleMiddleDistancePKey = getDisciplineKey(DisciplineType.MiddleDistance, Sex.Female, "FemaleMiddleDistanceName");
 
-            sut.CreateOrUpdateDisciplineCollection("8", 2018, maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey);
+            string className = sut.ValidClassNames(year).Single();
 
-            IEnumerable<IStudentPerformance> performances = sut.StudentPerformances("08C", 2018).ToList();
+            sut.CreateOrUpdateDisciplineCollection(className, year, maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey);
 
-            Guid davePKey = performances.Single(p => p.Forename == "Dave").StudentPKey;
-            Guid hannahPKey = performances.Single(p => p.Forename == "Hannah").StudentPKey;
+            IEnumerable<IStudentPerformance> performances = sut.StudentPerformances(course, year).ToList();
 
-            sut.UpdateSingleStudentCompetition(davePKey, 2018, GetFloat("MaleSprintPerformance"), GetFloat("MaleJumpPerformance"), GetFloat("MaleThrowPerformance"), GetFloat("MaleMiddleDistancePerformance"));
-            sut.UpdateSingleStudentCompetition(hannahPKey, 2018, GetFloat("FemaleSprintPerformance"), GetFloat("FemaleJumpPerformance"), GetFloat("FemaleThrowPerformance"), GetFloat("FemaleMiddleDistancePerformance"));
+            Guid davePKey = performances.Single(p => p.Forename == maleForename).StudentPKey;
+            Guid hannahPKey = performances.Single(p => p.Forename == femaleForename).StudentPKey;
 
-            IEnumerable<IResult> results = sut.GetResultsAsync("08C", 2018).Result.ToList();
+            sut.UpdateSingleStudentCompetition(davePKey, year, GetFloat("MaleSprintPerformance"), GetFloat("MaleJumpPerformance"), GetFloat("MaleThrowPerformance"), GetFloat("MaleMiddleDistancePerformance"));
+            sut.UpdateSingleStudentCompetition(hannahPKey, year, GetFloat("FemaleSprintPerformance"), GetFloat("FemaleJumpPerformance"), GetFloat("FemaleThrowPerformance"), GetFloat("FemaleMiddleDistancePerformance"));
 
-            IResult daveResult = results.Single(r => r.Forename == "Dave");
-            IResult hannahResult = results.Single(r => r.Forename == "Hannah");
+            IEnumerable<IResult> results = sut.GetResultsAsync(course, year).Result.ToList();
+
+            IResult daveResult = results.Single(r => r.Forename == maleForename);
+            IResult hannahResult = results.Single(r => r.Forename == femaleForename);
 
             Assert.AreEqual(GetUshort("ExpectedMaleScore"), daveResult.Score);
             Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("ExpectedMaleCertificate")), daveResult.Certificate);
@@ -157,37 +164,44 @@ namespace HonglornAUT
         [TestMethod]
         public void GetResults_CompetitionResults_CorrectScoresAndCertificatesCalculated()
         {
+            const string course = "08D";
+            const string maleForename = "Dave";
+            const string femaleForename = "Hannah";
+            const short year = 2018;
+
             var sut = new Honglorn(CreateConnection());
 
-            sut.ImportSingleStudent("Dave", "Pennington", Sex.Male, 2008, "08C", 2018);
-            sut.ImportSingleStudent("Hannah", "Smith", Sex.Female, 2007, "08C", 2018);
+            sut.ImportSingleStudent(maleForename, "Pennington", Sex.Male, 2008, course, year);
+            sut.ImportSingleStudent(femaleForename, "Smith", Sex.Female, 2007, course, year);
 
             sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "A", "s", true);
             sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "B", "Zonen", false);
             sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "C", "Zonen", false);
             sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "D", "s", true);
 
-            var sprintGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single().PKey;
-            var jumpGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single().PKey;
-            var throwGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single().PKey;
-            var middleDistanceGuid = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single().PKey;
+            Guid sprintGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single().PKey;
+            Guid jumpGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single().PKey;
+            Guid throwGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single().PKey;
+            Guid middleDistanceGuid = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single().PKey;
 
-            sut.CreateOrUpdateDisciplineCollection("8", 2018, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid);
+            string className = sut.ValidClassNames(year).Single();
 
-            sut.CreateOrUpdateCompetitionReportMeta(2018, 80, 30, 85, 70, 55, 39, 20);
+            sut.CreateOrUpdateDisciplineCollection(className, year, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid, sprintGuid, jumpGuid, throwGuid, middleDistanceGuid);
 
-            IEnumerable<IStudentPerformance> performances = sut.StudentPerformances("08C", 2018).ToList();
+            sut.CreateOrUpdateCompetitionReportMeta(year, 80, 30, 85, 70, 55, 39, 20);
 
-            Guid davePKey = performances.Single(p => p.Forename == "Dave").StudentPKey;
-            Guid hannahPKey = performances.Single(p => p.Forename == "Hannah").StudentPKey;
+            IEnumerable<IStudentPerformance> performances = sut.StudentPerformances(course, year).ToList();
 
-            sut.UpdateSingleStudentCompetition(davePKey, 2018, 1, 2, 3, 4);
-            sut.UpdateSingleStudentCompetition(hannahPKey, 2018, 1, 2, 3, 4);
+            Guid davePKey = performances.Single(p => p.Forename == maleForename).StudentPKey;
+            Guid hannahPKey = performances.Single(p => p.Forename == femaleForename).StudentPKey;
 
-            IEnumerable<IResult> results = sut.GetResultsAsync("08C", 2018).Result.ToList();
+            sut.UpdateSingleStudentCompetition(davePKey, year, 1, 2, 3, 4);
+            sut.UpdateSingleStudentCompetition(hannahPKey, year, 1, 2, 3, 4);
 
-            IResult daveResult = results.Single(r => r.Forename == "Dave");
-            IResult hannahResult = results.Single(r => r.Forename == "Hannah");
+            IEnumerable<IResult> results = sut.GetResultsAsync(course, year).Result.ToList();
+
+            IResult daveResult = results.Single(r => r.Forename == maleForename);
+            IResult hannahResult = results.Single(r => r.Forename == femaleForename);
 
             Assert.AreEqual(4, daveResult.Score);
             Assert.AreEqual(Certificate.Honorary, daveResult.Certificate);
@@ -198,7 +212,7 @@ namespace HonglornAUT
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void ImportStudentsFromFile_EmptyFileName_RaisesException()
+        public void ImportStudentsFromFile_EmptyFileName_ThrowsException()
         {
             var sut = new Honglorn(CreateConnection());
 
