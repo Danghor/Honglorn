@@ -31,6 +31,11 @@ namespace HonglornAUT
             return float.Parse(GetData(tagName), CultureInfo.InvariantCulture);
         }
 
+        float GetUshort(string tagName)
+        {
+            return ushort.Parse(GetData(tagName), CultureInfo.InvariantCulture);
+        }
+
         [TestMethod]
         public void ImportSingleStudent_Regular_StudentSuccessfullyAdded()
         {
@@ -115,39 +120,19 @@ namespace HonglornAUT
             sut.ImportSingleStudent("Dave", "Pennington", Sex.Male, 2008, "08C", 2018);
             sut.ImportSingleStudent("Hannah", "Smith", Sex.Female, 2007, "08C", 2018);
 
-            Guid sprintPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Male)
-                               where d.ToString() == GetData("MaleSprintName")
-                               select d.PKey).Single();
+            Func<DisciplineType, Sex, string, Guid> getDisciplineKey = (type, sex, name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == GetData(name)).PKey;
 
-            Guid jumpPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Male)
-                             where d.ToString() == GetData("MaleJumpName")
-                             select d.PKey).Single();
+            Guid maleSprintPKey = getDisciplineKey(DisciplineType.Sprint, Sex.Male, "MaleSprintName");
+            Guid maleJumpPKey = getDisciplineKey(DisciplineType.Jump, Sex.Male, "MaleJumpName");
+            Guid maleThrowPKey = getDisciplineKey(DisciplineType.Throw, Sex.Male, "MaleThrowName");
+            Guid maleMiddleDistancePKey = getDisciplineKey(DisciplineType.MiddleDistance, Sex.Male, "MaleMiddleDistanceName");
 
-            Guid throwPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Male)
-                              where d.ToString() == GetData("MaleThrowName")
-                              select d.PKey).Single();
+            Guid femaleSprintPKey = getDisciplineKey(DisciplineType.Sprint, Sex.Female, "FemaleSprintName");
+            Guid femaleJumpPKey = getDisciplineKey(DisciplineType.Jump, Sex.Female, "FemaleJumpName");
+            Guid femaleThrowPKey = getDisciplineKey(DisciplineType.Throw, Sex.Female, "FemaleThrowName");
+            Guid femaleMiddleDistancePKey = getDisciplineKey(DisciplineType.MiddleDistance, Sex.Female, "FemaleMiddleDistanceName");
 
-            Guid middleDistancePKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Male)
-                                       where d.ToString() == GetData("MaleMiddleDistanceName")
-                                       select d.PKey).Single();
-
-            Guid sprintFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Sprint, Sex.Female)
-                                where d.ToString() == GetData("FemaleSprintName")
-                                select d.PKey).Single();
-
-            Guid jumpFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Jump, Sex.Female)
-                              where d.ToString() == GetData("FemaleJumpName")
-                              select d.PKey).Single();
-
-            Guid throwFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.Throw, Sex.Female)
-                               where d.ToString() == GetData("FemaleThrowName")
-                               select d.PKey).Single();
-
-            Guid middleDistanceFPKey = (from d in sut.FilteredTraditionalDisciplines(DisciplineType.MiddleDistance, Sex.Female)
-                                        where d.ToString() == GetData("FemaleMiddleDistanceName")
-                                        select d.PKey).Single();
-
-            sut.CreateOrUpdateDisciplineCollection("8", 2018, sprintPKey, jumpPKey, throwPKey, middleDistancePKey, sprintFPKey, jumpFPKey, throwFPKey, middleDistanceFPKey);
+            sut.CreateOrUpdateDisciplineCollection("8", 2018, maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey);
 
             IEnumerable<IStudentPerformance> performances = sut.StudentPerformances("08C", 2018).ToList();
 
@@ -162,10 +147,10 @@ namespace HonglornAUT
             IResult daveResult = results.Single(r => r.Forename == "Dave");
             IResult hannahResult = results.Single(r => r.Forename == "Hannah");
 
-            Assert.AreEqual(ushort.Parse(GetData("ExpectedMaleScore")), daveResult.Score);
+            Assert.AreEqual(GetUshort("ExpectedMaleScore"), daveResult.Score);
             Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("ExpectedMaleCertificate")), daveResult.Certificate);
 
-            Assert.AreEqual(ushort.Parse(GetData("ExpectedFemaleScore")), hannahResult.Score);
+            Assert.AreEqual(GetUshort("ExpectedFemaleScore"), hannahResult.Score);
             Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("ExpectedFemaleCertificate")), hannahResult.Certificate);
         }
 
