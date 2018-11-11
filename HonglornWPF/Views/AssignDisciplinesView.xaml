@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
              xmlns:enums="clr-namespace:HonglornBL.Enums;assembly=HonglornBL"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" x:ClassModifier="internal">
 
     <UserControl.DataContext>
@@ -21,15 +22,21 @@
             </Grid.ColumnDefinitions>
 
             <Label Content="Jahr"  Grid.Column="0"/>
-            <ComboBox x:Name="yearSelectionComboBox" HorizontalAlignment="Right" Grid.Column="1" ItemsSource="{Binding Years}" SelectedItem="{Binding CurrentYear}"/>
+            <ComboBox HorizontalAlignment="Right" Grid.Column="1" ItemsSource="{Binding Years}" SelectedItem="{Binding CurrentYear}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="DropDownOpened">
+                        <i:InvokeCommandAction Command="{Binding RefreshYears}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ComboBox>
             <Label Content="Jahrgang" Grid.Column="2"/>
-            <ComboBox x:Name="classSelectionComboBox" HorizontalAlignment="Left" Grid.Column="3" ItemsSource="{Binding Classes}" SelectedItem="{Binding CurrentClass}"/>
+            <ComboBox HorizontalAlignment="Left" Grid.Column="3" ItemsSource="{Binding Classes}" SelectedItem="{Binding CurrentClass}"/>
 
         </Grid>
-        <GroupBox x:Name="gameTypeGroupBox" Header="Wettkampfart">
+        <GroupBox Header="Wettkampfart">
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="traditionalRadioButton" GroupName="gameType" Content="Traditionell" IsChecked="{Binding Game, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:Game.Traditional}}" />
-                <RadioButton x:Name="competitionRadioButton" GroupName="gameType" Content="Wettbewerb" IsChecked="{Binding Game, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:Game.Competition}}"/>
+                <RadioButton GroupName="gameType" Content="Traditionell" IsChecked="{Binding Game, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:Game.Traditional}}" />
+                <RadioButton GroupName="gameType" Content="Wettbewerb" IsChecked="{Binding Game, Converter={StaticResource EnumToBoolConverter}, ConverterParameter={x:Static enums:Game.Competition}}"/>
             </StackPanel>
         </GroupBox>
         <Grid>

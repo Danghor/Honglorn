@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
+using System.Windows.Input;
 using HonglornBL;
 
 namespace HonglornWPF.ViewModels
@@ -10,6 +11,8 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<string> Courses { get; } = new ObservableCollection<string>();
         public ObservableCollection<short> Years { get; } = new ObservableCollection<short>();
         public ObservableCollection<IResult> Results { get; } = new ObservableCollection<IResult>();
+
+        public ICommand RefreshYears { get; }
 
         bool isLoading;
         public bool IsLoading
@@ -57,17 +60,24 @@ namespace HonglornWPF.ViewModels
             {
                 OnPropertyChanged(out currentCourse, value);
 
-                LoadResults();
+                if (CurrentCourse != null)
+                {
+                    LoadResults();
+                }
             }
         }
 
         public ClassResultsViewModel()
         {
+            RefreshYears = new RelayCommand(RefreshYearsFromDb);
+            RefreshYearsFromDb();
+        }
+
+        void RefreshYearsFromDb()
+        {
+            short previouslySelectedYear = CurrentYear;
             LoadYears();
-            if (Years.Any())
-            {
-                CurrentYear = Years.First();
-            }
+            CurrentYear = Years.Contains(previouslySelectedYear) ? previouslySelectedYear : Years.FirstOrDefault();
         }
 
         void LoadCourseNames() => ClearAndFill(Courses, Honglorn.ValidCourseNames(CurrentYear));

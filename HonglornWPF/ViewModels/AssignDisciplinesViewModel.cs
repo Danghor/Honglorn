@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using HonglornBL.Enums;
 using HonglornBL.Interfaces;
 
@@ -18,6 +19,8 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<IDiscipline> FemaleJumpDisciplines { get; } = new ObservableCollection<IDiscipline>();
         public ObservableCollection<IDiscipline> FemaleThrowDisciplines { get; } = new ObservableCollection<IDiscipline>();
         public ObservableCollection<IDiscipline> FemaleMiddleDistanceDisciplines { get; } = new ObservableCollection<IDiscipline>();
+
+        public ICommand RefreshYears { get; }
 
         public RelayCommand SaveDisciplineCollectionCommand { get; }
 
@@ -211,11 +214,15 @@ namespace HonglornWPF.ViewModels
         {
             SaveDisciplineCollectionCommand = new RelayCommand(SaveDisciplineCollection);
 
+            RefreshYears = new RelayCommand(RefreshYearsFromDb);
+            RefreshYearsFromDb();
+        }
+
+        void RefreshYearsFromDb()
+        {
+            short previouslySelectedYear = CurrentYear;
             LoadYears();
-            if (Years.Any())
-            {
-                CurrentYear = Years.First();
-            }
+            CurrentYear = Years.Contains(previouslySelectedYear) ? previouslySelectedYear : Years.FirstOrDefault();
         }
 
         void SaveDisciplineCollection()
