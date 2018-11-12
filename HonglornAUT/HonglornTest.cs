@@ -197,10 +197,10 @@ namespace HonglornAUT
                 {
                     var sex = (Sex) Enum.Parse(typeof(Sex), student["Sex"] as string);
 
-                    float sprint = float.Parse(student["Sprint"] as string);
-                    float jump = float.Parse(student["Jump"] as string);
-                    float @throw = float.Parse(student["Throw"] as string);
-                    float middleDistance = float.Parse(student["MiddleDistance"] as string);
+                    float sprint = float.Parse(student["Sprint"] as string, CultureInfo.InvariantCulture);
+                    float jump = float.Parse(student["Jump"] as string, CultureInfo.InvariantCulture);
+                    float @throw = float.Parse(student["Throw"] as string, CultureInfo.InvariantCulture);
+                    float middleDistance = float.Parse(student["MiddleDistance"] as string, CultureInfo.InvariantCulture);
 
                     ushort sprintScore = ushort.Parse(student["SprintScore"] as string);
                     ushort jumpScore = ushort.Parse(student["JumpScore"] as string);
