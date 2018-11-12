@@ -166,30 +166,37 @@ namespace HonglornBL
                                                            where s.Sex == Sex.Female && rel.Year == year
                                                            select new { s, rel.CourseName }).AsEnumerable().Where(i => GetClassName(i.CourseName) == @class).Select(i => i.s).ToList();
 
-                    var maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter, meta.HonoraryCertificatePercentage, meta.VictoryCertificatePercentage);
-
-                    foreach (Student maleStudent in maleStudents)
+                    if (maleStudents.Any())
                     {
-                        Competition competition = (from sc in maleStudent.Competitions
-                                                   where sc.Year == year
-                                                   select sc).SingleOrDefault() ?? new Competition();
+                        var maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter, meta.HonoraryCertificatePercentage, meta.VictoryCertificatePercentage);
 
-                        maleCalculator.AddStudentMeasurement(maleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
+                        foreach (Student maleStudent in maleStudents)
+                        {
+                            Competition competition = (from sc in maleStudent.Competitions
+                                                          where sc.Year == year
+                                                          select sc).SingleOrDefault() ?? new Competition();
+
+                            maleCalculator.AddStudentMeasurement(maleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
+                        }
+
+                        competitionResults.AddRange(maleCalculator.Results());
                     }
 
-                    var femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter,  meta.HonoraryCertificatePercentage, meta.VictoryCertificatePercentage);
-
-                    foreach (Student femaleStudent in femaleStudents)
+                    if (femaleStudents.Any())
                     {
-                        Competition competition = (from sc in femaleStudent.Competitions
-                                                   where sc.Year == year
-                                                   select sc).SingleOrDefault() ?? new Competition();
+                        var femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter, meta.HonoraryCertificatePercentage, meta.VictoryCertificatePercentage);
 
-                        femaleCalculator.AddStudentMeasurement(femaleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
+                        foreach (Student femaleStudent in femaleStudents)
+                        {
+                            Competition competition = (from sc in femaleStudent.Competitions
+                                                          where sc.Year == year
+                                                          select sc).SingleOrDefault() ?? new Competition();
+
+                            femaleCalculator.AddStudentMeasurement(femaleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
+                        }
+
+                        competitionResults.AddRange(femaleCalculator.Results());
                     }
-
-                    competitionResults.AddRange(maleCalculator.Results());
-                    competitionResults.AddRange(femaleCalculator.Results());
                 }
             }
 
