@@ -43,28 +43,30 @@ namespace HonglornBL
             CalculateScoresForDiscipline(containers, throwLowIsBetter, c => c.ThrowValue, c => c.ThrowScore, (c, s) => c.ThrowScore = s);
             CalculateScoresForDiscipline(containers, middleDistanceLowIsBetter, c => c.MiddleDistanceValue, c => c.MiddleDistanceScore, (c, s) => c.MiddleDistanceScore = s);
 
-            containers = containers.OrderBy(c => c.TotalScore).ToList();
+            CalculateScoresForDiscipline(containers, true, c => c.TotalScore, c => c.Rank, (c, r) => c.Rank = r);
 
-            int lastScore = containers.First().TotalScore;
+            containers = containers.OrderBy(c => c.Rank).ToList();
+
+            int lastRank = containers.First().Rank;
             var currentCertificate = Certificate.Honorary;
-            var count = 1;
+            var count = 0;
 
             foreach (CompetitionCalculatorContainer container in containers)
             {
-                if (container.TotalScore != lastScore)
+                if (container.Rank != lastRank)
                 {
-                    int percentile = count / containers.Count * 100;
+                    float percentile = (float) count / containers.Count * 100;
 
                     if (percentile > 100 - victoryCertificatePercentage)
                     {
-                        currentCertificate = Certificate.Victory;
+                        currentCertificate = Certificate.Participation;
                     }
                     else if (percentile > 100 - honoraryCertificatePercentage)
                     {
-                        currentCertificate = Certificate.Participation;
+                        currentCertificate = Certificate.Victory;
                     }
 
-                    lastScore = container.TotalScore;
+                    lastRank = container.Rank;
                 }
 
                 container.Certificate = currentCertificate;

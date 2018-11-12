@@ -17,6 +17,8 @@ namespace HonglornBL
         public ushort ThrowScore { get; set; }
         public ushort MiddleDistanceScore { get; set; }
 
+        public ushort Rank { get; set; }
+
         public Certificate Certificate { get; set; }
 
         internal CompetitionCalculatorContainer(Guid identifier, float? sprintValue, float? jumpValue, float? throwValue, float? middleDistanceValue)
@@ -28,7 +30,7 @@ namespace HonglornBL
             MiddleDistanceValue = middleDistanceValue;
         }
 
-        public override string ToString() => $"({SprintValue},{SprintScore})({JumpValue},{JumpScore})({ThrowValue},{ThrowScore})({MiddleDistanceValue},{MiddleDistanceScore})";
+        public override string ToString() => $"({SprintValue},{SprintScore})({JumpValue},{JumpScore})({ThrowValue},{ThrowScore})({MiddleDistanceValue},{MiddleDistanceScore}) {Rank} {Certificate}";
 
         internal ushort TotalScore => (ushort) (SprintScore + JumpScore + ThrowScore + MiddleDistanceScore);
     }
