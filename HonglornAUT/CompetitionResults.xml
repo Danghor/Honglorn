@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Rows>
   <Row>
     <Year>2018</Year>
@@ -128,10 +128,10 @@
         <SprintScore>2</SprintScore>
         <Jump>7</Jump>
         <JumpScore>3</JumpScore>
-        <Throw>3</Throw>
-        <ThrowScore>7</ThrowScore>
-        <MiddleDistance>3</MiddleDistance>
-        <MiddleDistanceScore>2</MiddleDistanceScore>
+        <Throw>15</Throw>
+        <ThrowScore>3</ThrowScore>
+        <MiddleDistance>7</MiddleDistance>
+        <MiddleDistanceScore>3</MiddleDistanceScore>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -140,10 +140,10 @@
         <SprintScore>16</SprintScore>
         <Jump>3</Jump>
         <JumpScore>14</JumpScore>
-        <Throw>12</Throw>
-        <ThrowScore>3</ThrowScore>
-        <MiddleDistance>15</MiddleDistance>
-        <MiddleDistanceScore>16</MiddleDistanceScore>
+        <Throw>6</Throw>
+        <ThrowScore>12</ThrowScore>
+        <MiddleDistance>3</MiddleDistance>
+        <MiddleDistanceScore>15</MiddleDistanceScore>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -153,9 +153,9 @@
         <Jump>7</Jump>
         <JumpScore>3</JumpScore>
         <Throw>9</Throw>
-        <ThrowScore>5</ThrowScore>
-        <MiddleDistance>9</MiddleDistance>
-        <MiddleDistanceScore>5</MiddleDistanceScore>
+        <ThrowScore>9</ThrowScore>
+        <MiddleDistance>5</MiddleDistance>
+        <MiddleDistanceScore>9</MiddleDistanceScore>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -174,36 +174,36 @@
         <Sex>Female</Sex>
         <Sprint>13.4</Sprint>
         <SprintScore>10</SprintScore>
-        <Jump>12</Jump>
-        <JumpScore>1</JumpScore>
-        <Throw>12</Throw>
-        <ThrowScore>4</ThrowScore>
-        <MiddleDistance>12</MiddleDistance>
-        <MiddleDistanceScore>10</MiddleDistanceScore>
+        <Jump>4</Jump>
+        <JumpScore>12</JumpScore>
+        <Throw>6</Throw>
+        <ThrowScore>12</ThrowScore>
+        <MiddleDistance>4</MiddleDistance>
+        <MiddleDistanceScore>12</MiddleDistanceScore>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
         <Sex>Female</Sex>
         <Sprint>13.4</Sprint>
         <SprintScore>10</SprintScore>
-        <Jump>3</Jump>
-        <JumpScore>2</JumpScore>
-        <Throw>12</Throw>
-        <ThrowScore>10</ThrowScore>
-        <MiddleDistance>9</MiddleDistance>
-        <MiddleDistanceScore>11</MiddleDistanceScore>
+        <Jump>5</Jump>
+        <JumpScore>9</JumpScore>
+        <Throw>7</Throw>
+        <ThrowScore>11</ThrowScore>
+        <MiddleDistance>4</MiddleDistance>
+        <MiddleDistanceScore>12</MiddleDistanceScore>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
         <Sex>Female</Sex>
         <Sprint>14.1</Sprint>
         <SprintScore>15</SprintScore>
-        <Jump>14</Jump>
-        <JumpScore>1</JumpScore>
-        <Throw>3</Throw>
-        <ThrowScore>15</ThrowScore>
-        <MiddleDistance>15</MiddleDistance>
-        <MiddleDistanceScore>14</MiddleDistanceScore>
+        <Jump>3</Jump>
+        <JumpScore>14</JumpScore>
+        <Throw>5</Throw>
+        <ThrowScore>14</ThrowScore>
+        <MiddleDistance>3</MiddleDistance>
+        <MiddleDistanceScore>15</MiddleDistanceScore>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -213,33 +213,33 @@
         <Jump>3</Jump>
         <JumpScore>14</JumpScore>
         <Throw>9</Throw>
-        <ThrowScore>4</ThrowScore>
-        <MiddleDistance>12</MiddleDistance>
-        <MiddleDistanceScore>14</MiddleDistanceScore>
+        <ThrowScore>9</ThrowScore>
+        <MiddleDistance>4</MiddleDistance>
+        <MiddleDistanceScore>12</MiddleDistanceScore>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
         <Sex>Female</Sex>
         <Sprint>13.9</Sprint>
         <SprintScore>13</SprintScore>
-        <Jump>9</Jump>
-        <JumpScore>3</JumpScore>
-        <Throw>4</Throw>
-        <ThrowScore>5</ThrowScore>
-        <MiddleDistance>9</MiddleDistance>
-        <MiddleDistanceScore>13</MiddleDistanceScore>
+        <Jump>5</Jump>
+        <JumpScore>9</JumpScore>
+        <Throw>13</Throw>
+        <ThrowScore>4</ThrowScore>
+        <MiddleDistance>5</MiddleDistance>
+        <MiddleDistanceScore>9</MiddleDistanceScore>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
         <Sex>Female</Sex>
         <Sprint>13.1</Sprint>
         <SprintScore>9</SprintScore>
-        <Jump>9</Jump>
-        <JumpScore>5</JumpScore>
-        <Throw>2</Throw>
-        <ThrowScore>6</ThrowScore>
+        <Jump>5</Jump>
+        <JumpScore>9</JumpScore>
+        <Throw>18</Throw>
+        <ThrowScore>2</ThrowScore>
         <MiddleDistance>6</MiddleDistance>
-        <MiddleDistanceScore>9</MiddleDistanceScore>
+        <MiddleDistanceScore>6</MiddleDistanceScore>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -248,10 +248,10 @@
         <SprintScore>12</SprintScore>
         <Jump>4</Jump>
         <JumpScore>12</JumpScore>
-        <Throw>14</Throw>
-        <ThrowScore>5</ThrowScore>
-        <MiddleDistance>9</MiddleDistance>
-        <MiddleDistanceScore>12</MiddleDistanceScore>
+        <Throw>5</Throw>
+        <ThrowScore>14</ThrowScore>
+        <MiddleDistance>5</MiddleDistance>
+        <MiddleDistanceScore>9</MiddleDistanceScore>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -260,10 +260,10 @@
         <SprintScore>6</SprintScore>
         <Jump>6</Jump>
         <JumpScore>6</JumpScore>
-        <Throw>7</Throw>
-        <ThrowScore>3</ThrowScore>
-        <MiddleDistance>6</MiddleDistance>
-        <MiddleDistanceScore>8</MiddleDistanceScore>
+        <Throw>4</Throw>
+        <ThrowScore>16</ThrowScore>
+        <MiddleDistance>7</MiddleDistance>
+        <MiddleDistanceScore>3</MiddleDistanceScore>
         <Certificate>Victory</Certificate>
       </Student>
     </Course>
