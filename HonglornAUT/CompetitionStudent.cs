@@ -17,7 +17,7 @@ namespace HonglornAUT
         internal ushort ThrowScore { get; }
         internal ushort MiddleDistanceScore { get; }
 
-        Certificate Certificate { get; }
+        internal Certificate Certificate { get; }
 
         internal CompetitionStudent(string course, string forename, string surname, Sex sex, float? sprint, float? jump, float? @throw, float? middleDistance, ushort sprintScore, ushort jumpScore, ushort throwScore, ushort middleDistanceScore, Certificate certificate)
         {

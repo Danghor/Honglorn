@@ -185,16 +185,13 @@ namespace HonglornAUT
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\CompetitionResults.xml", "Row", DataAccessMethod.Sequential)]
         public void GetResults_CompetitionResults_CorrectScoresAndCertificatesCalculated()
         {
-            const string course = "08D";
-            const string maleForename = "Dave";
-            const string femaleForename = "Hannah";
             short year = GetShort("Year");
 
             ICollection<CompetitionStudent> students = new List<CompetitionStudent>();
 
             foreach (DataRow courseRow in TestContext.DataRow.GetChildRows("Row_Course"))
             {
-                var courseName = courseRow["Name"] as string;
+                string courseName = courseRow["Name"] as string;
 
                 foreach (DataRow student in courseRow.GetChildRows("Course_Student"))
                 {
@@ -250,24 +247,29 @@ namespace HonglornAUT
 
             sut.CreateOrUpdateCompetitionReportMeta(year, 80, 30, 85, 70, 55, 39, 20);
 
-            IEnumerable<IStudentPerformance> performances = sut.StudentPerformances(course, year).ToList();
+            foreach (string course in students.Select(s => s.Course).Distinct())
+            {
+                IEnumerable<IStudentPerformance> performances = sut.StudentPerformances(course, year).ToList();
 
-            Guid davePKey = performances.Single(p => p.Forename == maleForename).StudentPKey;
-            Guid hannahPKey = performances.Single(p => p.Forename == femaleForename).StudentPKey;
+                foreach (CompetitionStudent student in students.Where(s => s.Course == course))
+                {
+                    Guid studentKey = performances.Single(p => p.Forename == student.Forename).StudentPKey;
+                    sut.UpdateSingleStudentCompetition(studentKey, year, student.Sprint, student.Jump, student.Throw, student.MiddleDistance);
+                }
+            }
 
-            sut.UpdateSingleStudentCompetition(davePKey, year, 1, 2, 3, 4);
-            sut.UpdateSingleStudentCompetition(hannahPKey, year, 1, 2, 3, 4);
+            foreach (string course in students.Select(s => s.Course).Distinct())
+            {
+                IEnumerable<IResult> results = sut.GetResultsAsync(course, year).Result.ToList();
 
-            IEnumerable<IResult> results = sut.GetResultsAsync(course, year).Result.ToList();
+                foreach (CompetitionStudent student in students.Where(s => s.Course == course))
+                {
+                    IResult studentResult = results.Single(r => r.Forename == student.Forename);
 
-            IResult daveResult = results.Single(r => r.Forename == maleForename);
-            IResult hannahResult = results.Single(r => r.Forename == femaleForename);
-
-            Assert.AreEqual(4, daveResult.Score);
-            Assert.AreEqual(Certificate.Honorary, daveResult.Certificate);
-
-            Assert.AreEqual(4, hannahResult.Score);
-            Assert.AreEqual(Certificate.Honorary, hannahResult.Certificate);
+                    Assert.AreEqual(student.SprintScore + student.JumpScore + student.ThrowScore + student.MiddleDistanceScore, studentResult.Score);
+                    Assert.AreEqual(student.Certificate, studentResult.Certificate);
+                }
+            }
         }
 
         [TestMethod]
