@@ -26,12 +26,10 @@ namespace HonglornBL
             this.victoryCertificatePercentage = victoryCertificatePercentage;
         }
 
-        internal void AddStudentMeasurement(Guid identifier, RawMeasurement measurement)
+        internal void AddStudentMeasurement(Guid identifier, float? sprint, float? jump, float? @throw, float? middleDistance)
         {
-            studentMeasurements.Add(new Tuple<Guid, RawMeasurement>(identifier, measurement));
+            studentMeasurements.Add(new Tuple<Guid, RawMeasurement>(identifier, new RawMeasurement(sprint, jump, @throw, middleDistance)));
         }
-
-        static readonly Certificate[] Certificates = { Certificate.Honorary, Certificate.Victory, Certificate.Participation };
 
         internal IEnumerable<ICompetitionResult> Results()
         {

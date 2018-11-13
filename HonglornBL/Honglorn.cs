@@ -176,7 +176,7 @@ namespace HonglornBL
                                                           where sc.Year == year
                                                           select sc).SingleOrDefault() ?? new Competition();
 
-                            maleCalculator.AddStudentMeasurement(maleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
+                            maleCalculator.AddStudentMeasurement(maleStudent.PKey, competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance);
                         }
 
                         competitionResults.AddRange(maleCalculator.Results());
@@ -192,7 +192,7 @@ namespace HonglornBL
                                                           where sc.Year == year
                                                           select sc).SingleOrDefault() ?? new Competition();
 
-                            femaleCalculator.AddStudentMeasurement(femaleStudent.PKey, new RawMeasurement(competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance));
+                            femaleCalculator.AddStudentMeasurement(femaleStudent.PKey, competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance);
                         }
 
                         competitionResults.AddRange(femaleCalculator.Results());
