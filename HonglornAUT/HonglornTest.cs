@@ -152,15 +152,17 @@ namespace HonglornAUT
             Guid middleDistancePKey = getDisciplineKey(DisciplineType.MiddleDistance, "MiddleDistanceName");
 
             string className = sut.ValidClassNames(year).Single();
-
             sut.CreateOrUpdateDisciplineCollection(className, year, sprintPKey, jumpPKey, throwPKey, middleDistancePKey, sprintPKey, jumpPKey, throwPKey, middleDistancePKey);
 
             Guid studentPKey = sut.StudentPerformances(course, year).Single().StudentPKey;
-
             sut.UpdateSingleStudentCompetition(studentPKey, year, GetFloat("SprintPerformance"), GetFloat("JumpPerformance"), GetFloat("ThrowPerformance"), GetFloat("MiddleDistancePerformance"));
 
             IResult result = sut.GetResultsAsync(course, year).Result.Single();
 
+            Assert.AreEqual(GetUshort("SprintScore"), result.SprintScore);
+            Assert.AreEqual(GetUshort("JumpScore"), result.JumpScore);
+            Assert.AreEqual(GetUshort("ThrowScore"), result.ThrowScore);
+            Assert.AreEqual(GetUshort("MiddleDistanceScore"), result.MiddleDistanceScore);
             Assert.AreEqual(GetUshort("TotalScore"), result.Score);
             Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("Certificate")), result.Certificate);
         }
