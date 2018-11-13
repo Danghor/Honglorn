@@ -2,35 +2,50 @@
 <Rows>
   <Row>
     <Year>2018</Year>
-    <MaleStudentYob>2008</MaleStudentYob>
-    <FemaleStudentYob>2007</FemaleStudentYob>
-    <MaleSprintName>Sprint 100 m (Manual)</MaleSprintName>
-    <MaleJumpName>Weitsprung</MaleJumpName>
-    <MaleThrowName>Kugelstoß</MaleThrowName>
-    <MaleMiddleDistanceName>Lauf 1000 m</MaleMiddleDistanceName>
-    <FemaleSprintName>Sprint 100 m (Manual)</FemaleSprintName>
-    <FemaleJumpName>Hochsprung</FemaleJumpName>
-    <FemaleThrowName>200-g-Ballwurf</FemaleThrowName>
-    <FemaleMiddleDistanceName>Lauf 800 m</FemaleMiddleDistanceName>
-    <MaleSprintPerformance>13.9</MaleSprintPerformance>
-    <!-- 404 -->
-    <MaleJumpPerformance>4.37</MaleJumpPerformance>
-    <!-- 429 -->
-    <MaleThrowPerformance>8.2</MaleThrowPerformance>
-    <!-- 388 -->
-    <MaleMiddleDistancePerformance>294</MaleMiddleDistancePerformance>
-    <!-- 207 -->
-    <FemaleSprintPerformance>14.9</FemaleSprintPerformance>
-    <!-- 396 -->
-    <FemaleJumpPerformance>1.44</FemaleJumpPerformance>
-    <!-- 469 -->
-    <FemaleThrowPerformance>32.5</FemaleThrowPerformance>
-    <!-- 412 -->
-    <FemaleMiddleDistancePerformance>234</FemaleMiddleDistancePerformance>
-    <!-- 215 -->
-    <ExpectedMaleScore>1221</ExpectedMaleScore>
-    <ExpectedMaleCertificate>Honorary</ExpectedMaleCertificate>
-    <ExpectedFemaleScore>1277</ExpectedFemaleScore>
-    <ExpectedFemaleCertificate>Honorary</ExpectedFemaleCertificate>
+    <YearOfBirth>2008</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>13.9</SprintPerformance>
+    <SprintScore>404</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.37</JumpPerformance>
+    <JumpScore>429</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>8.2</ThrowPerformance>
+    <ThrowScore>388</ThrowScore>
+
+    <MiddleDistanceName>Lauf 1000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>294</MiddleDistancePerformance>
+    <MiddleDistanceScore>207</MiddleDistanceScore>
+
+    <TotalScore>1221</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2007</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>14.9</SprintPerformance>
+    <SprintScore>396</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>1.44</JumpPerformance>
+    <JumpScore>469</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>32.5</ThrowPerformance>
+    <ThrowScore>412</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>234</MiddleDistancePerformance>
+    <MiddleDistanceScore>215</MiddleDistanceScore>
+
+    <TotalScore>1277</TotalScore>
+    <Certificate>Honorary</Certificate>
   </Row>
 </Rows>

@@ -135,49 +135,34 @@ namespace HonglornAUT
         public void GetResults_TraditionalCompetition_CorrectScoresAndCertificatesCalculated()
         {
             const string course = "08D";
-            const string maleForename = "Dave";
-            const string femaleForename = "Hannah";
-            const short year = 2018;
+            const string forename = "Kim";
+            var sex = (Sex) Enum.Parse(typeof(Sex), GetData("Sex"));
+            short yearOfBirth = GetShort("YearOfBirth");
+            short year = GetShort("Year");
 
             var sut = new Honglorn(CreateConnection());
 
-            sut.ImportSingleStudent(maleForename, "Pennington", Sex.Male, 2008, course, year);
-            sut.ImportSingleStudent(femaleForename, "Smith", Sex.Female, 2007, course, year);
+            sut.ImportSingleStudent(forename, "Pennington", sex, yearOfBirth, course, year);
 
-            Func<DisciplineType, Sex, string, Guid> getDisciplineKey = (type, sex, name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == GetData(name)).PKey;
+            Func<DisciplineType, string, Guid> getDisciplineKey = (type, name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == GetData(name)).PKey;
 
-            Guid maleSprintPKey = getDisciplineKey(DisciplineType.Sprint, Sex.Male, "MaleSprintName");
-            Guid maleJumpPKey = getDisciplineKey(DisciplineType.Jump, Sex.Male, "MaleJumpName");
-            Guid maleThrowPKey = getDisciplineKey(DisciplineType.Throw, Sex.Male, "MaleThrowName");
-            Guid maleMiddleDistancePKey = getDisciplineKey(DisciplineType.MiddleDistance, Sex.Male, "MaleMiddleDistanceName");
-
-            Guid femaleSprintPKey = getDisciplineKey(DisciplineType.Sprint, Sex.Female, "FemaleSprintName");
-            Guid femaleJumpPKey = getDisciplineKey(DisciplineType.Jump, Sex.Female, "FemaleJumpName");
-            Guid femaleThrowPKey = getDisciplineKey(DisciplineType.Throw, Sex.Female, "FemaleThrowName");
-            Guid femaleMiddleDistancePKey = getDisciplineKey(DisciplineType.MiddleDistance, Sex.Female, "FemaleMiddleDistanceName");
+            Guid sprintPKey = getDisciplineKey(DisciplineType.Sprint, "SprintName");
+            Guid jumpPKey = getDisciplineKey(DisciplineType.Jump, "JumpName");
+            Guid throwPKey = getDisciplineKey(DisciplineType.Throw, "ThrowName");
+            Guid middleDistancePKey = getDisciplineKey(DisciplineType.MiddleDistance, "MiddleDistanceName");
 
             string className = sut.ValidClassNames(year).Single();
 
-            sut.CreateOrUpdateDisciplineCollection(className, year, maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey);
+            sut.CreateOrUpdateDisciplineCollection(className, year, sprintPKey, jumpPKey, throwPKey, middleDistancePKey, sprintPKey, jumpPKey, throwPKey, middleDistancePKey);
 
-            IEnumerable<IStudentPerformance> performances = sut.StudentPerformances(course, year).ToList();
+            Guid studentPKey = sut.StudentPerformances(course, year).Single().StudentPKey;
 
-            Guid davePKey = performances.Single(p => p.Forename == maleForename).StudentPKey;
-            Guid hannahPKey = performances.Single(p => p.Forename == femaleForename).StudentPKey;
+            sut.UpdateSingleStudentCompetition(studentPKey, year, GetFloat("SprintPerformance"), GetFloat("JumpPerformance"), GetFloat("ThrowPerformance"), GetFloat("MiddleDistancePerformance"));
 
-            sut.UpdateSingleStudentCompetition(davePKey, year, GetFloat("MaleSprintPerformance"), GetFloat("MaleJumpPerformance"), GetFloat("MaleThrowPerformance"), GetFloat("MaleMiddleDistancePerformance"));
-            sut.UpdateSingleStudentCompetition(hannahPKey, year, GetFloat("FemaleSprintPerformance"), GetFloat("FemaleJumpPerformance"), GetFloat("FemaleThrowPerformance"), GetFloat("FemaleMiddleDistancePerformance"));
+            IResult result = sut.GetResultsAsync(course, year).Result.Single();
 
-            IEnumerable<IResult> results = sut.GetResultsAsync(course, year).Result.ToList();
-
-            IResult daveResult = results.Single(r => r.Forename == maleForename);
-            IResult hannahResult = results.Single(r => r.Forename == femaleForename);
-
-            Assert.AreEqual(GetUshort("ExpectedMaleScore"), daveResult.Score);
-            Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("ExpectedMaleCertificate")), daveResult.Certificate);
-
-            Assert.AreEqual(GetUshort("ExpectedFemaleScore"), hannahResult.Score);
-            Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("ExpectedFemaleCertificate")), hannahResult.Certificate);
+            Assert.AreEqual(GetUshort("TotalScore"), result.Score);
+            Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("Certificate")), result.Certificate);
         }
 
         [TestMethod]
