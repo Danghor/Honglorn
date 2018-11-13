@@ -48,4 +48,52 @@
     <TotalScore>1277</TotalScore>
     <Certificate>Honorary</Certificate>
   </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2010</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 50 m (Manual)</SprintName>
+    <SprintPerformance>12.9</SprintPerformance>
+    <SprintScore>2</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>0.71</JumpPerformance>
+    <JumpScore>2</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>8</ThrowPerformance>
+    <ThrowScore>2</ThrowScore>
+
+    <MiddleDistanceName>Lauf 1000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>460</MiddleDistancePerformance>
+    <MiddleDistanceScore>2</MiddleDistanceScore>
+
+    <TotalScore>6</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2002</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 50 m (Manual)</SprintName>
+    <SprintPerformance>9.3</SprintPerformance>
+    <SprintScore>210</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>1.58</JumpPerformance>
+    <JumpScore>519</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>38.5</ThrowPerformance>
+    <ThrowScore>309</ThrowScore>
+
+    <MiddleDistanceName>Lauf 1000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>201</MiddleDistancePerformance>
+    <MiddleDistanceScore>469</MiddleDistanceScore>
+
+    <TotalScore>1297</TotalScore>
+    <Certificate>Victory</Certificate>
+  </Row>
 </Rows>
