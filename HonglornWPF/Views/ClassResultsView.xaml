@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="HonglornWPF.Views.ClassResultsView"
+<UserControl x:Class="HonglornWPF.Views.ClassResultsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -50,7 +50,11 @@
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Header="Nachname" Binding="{Binding Surname}"/>
                 <DataGridTextColumn IsReadOnly="True" Header="Vorname" Binding="{Binding Forename}"/>
-                <DataGridTextColumn IsReadOnly="True" Header="Punkte" Binding="{Binding Score}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Punkte Sprint" Binding="{Binding SprintScore}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Punkte Sprung" Binding="{Binding JumpScore}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Punkte Wurf" Binding="{Binding ThrowScore}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Punkte Ausdauer" Binding="{Binding MiddleDistanceScore}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Punkte Gesamt" Binding="{Binding Score}"/>
                 <DataGridTextColumn IsReadOnly="True" Header="Urkunde" Binding="{Binding Certificate}"/>
             </DataGrid.Columns>
         </DataGrid>
