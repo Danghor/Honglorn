@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Rows>
+
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2008</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>0</SprintPerformance>
+    <SprintScore>0</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>0</JumpPerformance>
+    <JumpScore>0</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>0</ThrowPerformance>
+    <ThrowScore>0</ThrowScore>
+
+    <MiddleDistanceName>Lauf 1000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>0</MiddleDistancePerformance>
+    <MiddleDistanceScore>0</MiddleDistanceScore>
+
+    <TotalScore>0</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+
   <Row>
     <Year>2018</Year>
     <YearOfBirth>2008</YearOfBirth>
