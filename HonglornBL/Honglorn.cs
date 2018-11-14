@@ -251,11 +251,12 @@ namespace HonglornBL
 
             using (var db = ContextFactory.CreateContext())
             {
-                //bug: exception when students are too old to be in this list
+                //bug: exception when students are too young to be in this list
                 var scoreBoundaries = (from meta in db.TraditionalReportMeta
                                        where meta.Sex == sex
-                                             && meta.Age == age
-                                       select new { meta.HonoraryCertificateScore, meta.VictoryCertificateScore }).Single();
+                                             && meta.Age <= age
+                                       orderby meta.Age descending
+                                       select new { meta.Age, meta.HonoraryCertificateScore, meta.VictoryCertificateScore }).First();
 
                 if (totalScore >= scoreBoundaries.HonoraryCertificateScore)
                 {
