@@ -48,6 +48,32 @@
     <TotalScore>1277</TotalScore>
     <Certificate>Honorary</Certificate>
   </Row>
+  
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2010</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 50 m (Manual)</SprintName>
+    <SprintPerformance>12.95</SprintPerformance>
+    <SprintScore>0</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>0.708</JumpPerformance>
+    <JumpScore>0</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>7.84</ThrowPerformance>
+    <ThrowScore>0</ThrowScore>
+
+    <MiddleDistanceName>Lauf 1000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>463</MiddleDistancePerformance>
+    <MiddleDistanceScore>0</MiddleDistanceScore>
+
+    <TotalScore>0</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  
   <Row>
     <Year>2018</Year>
     <YearOfBirth>2010</YearOfBirth>
