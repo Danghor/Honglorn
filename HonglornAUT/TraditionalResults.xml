@@ -48,7 +48,7 @@
     <TotalScore>1277</TotalScore>
     <Certificate>Honorary</Certificate>
   </Row>
-  
+
   <Row>
     <Year>2018</Year>
     <YearOfBirth>2010</YearOfBirth>
@@ -73,7 +73,6 @@
     <TotalScore>0</TotalScore>
     <Certificate>Participation</Certificate>
   </Row>
-  
   <Row>
     <Year>2018</Year>
     <YearOfBirth>2010</YearOfBirth>
@@ -146,4 +145,78 @@
     <TotalScore>2249</TotalScore>
     <Certificate>Honorary</Certificate>
   </Row>
+
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 75 m (Manual)</SprintName>
+    <SprintPerformance>17.9</SprintPerformance>
+    <SprintScore>5</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.33</JumpPerformance>
+    <JumpScore>1</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>4</ThrowPerformance>
+    <ThrowScore>5</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>1100</MiddleDistancePerformance>
+    <MiddleDistanceScore>5</MiddleDistanceScore>
+
+    <TotalScore>15</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 75 m (Manual)</SprintName>
+    <SprintPerformance>11.7</SprintPerformance>
+    <SprintScore>328</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.81</JumpPerformance>
+    <JumpScore>476</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>47.5</ThrowPerformance>
+    <ThrowScore>399</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>447</MiddleDistancePerformance>
+    <MiddleDistanceScore>448</MiddleDistanceScore>
+
+    <TotalScore>1323</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 75 m (Manual)</SprintName>
+    <SprintPerformance>8.3</SprintPerformance>
+    <SprintScore>705</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>8.05</JumpPerformance>
+    <JumpScore>770</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>88</ThrowPerformance>
+    <ThrowScore>600</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>320</MiddleDistancePerformance>
+    <MiddleDistanceScore>744</MiddleDistanceScore>
+
+    <TotalScore>2219</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+
 </Rows>
