@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -163,6 +163,40 @@ namespace HonglornAUT
             Assert.AreEqual(GetUshort("MiddleDistanceScore"), result.MiddleDistanceScore);
             Assert.AreEqual(GetUshort("TotalScore"), result.Score);
             Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("Certificate")), result.Certificate);
+        }
+
+        [TestMethod]
+        public void GetResults_TraditionalCompetitionNullValues_ZeroScore()
+        {
+            const string course = "08D";
+            const Sex sex = Sex.Male;
+            const short year = 2017;
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.ImportSingleStudent("Kim", "Pennington", sex, 2008, course, year);
+
+            Func<DisciplineType, string, Guid> getDisciplineKey = (type, name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == name).PKey;
+
+            Guid sprintPKey = getDisciplineKey(DisciplineType.Sprint, "Sprint 100 m (Manual)");
+            Guid jumpPKey = getDisciplineKey(DisciplineType.Jump, "Weitsprung");
+            Guid throwPKey = getDisciplineKey(DisciplineType.Throw, "Kugelstoß");
+            Guid middleDistancePKey = getDisciplineKey(DisciplineType.MiddleDistance, "Lauf 1000 m");
+
+            string className = sut.ValidClassNames(year).Single();
+            sut.CreateOrUpdateDisciplineCollection(className, year, sprintPKey, jumpPKey, throwPKey, middleDistancePKey, sprintPKey, jumpPKey, throwPKey, middleDistancePKey);
+
+            Guid studentPKey = sut.StudentPerformances(course, year).Single().StudentPKey;
+            sut.UpdateSingleStudentCompetition(studentPKey, year, null, null, null, null);
+
+            IResult result = sut.GetResultsAsync(course, year).Result.Single();
+
+            Assert.AreEqual(0, result.SprintScore);
+            Assert.AreEqual(0, result.JumpScore);
+            Assert.AreEqual(0, result.ThrowScore);
+            Assert.AreEqual(0, result.MiddleDistanceScore);
+            Assert.AreEqual(0, result.Score);
+            Assert.AreEqual(Certificate.Participation, result.Certificate);
         }
 
         [TestMethod]

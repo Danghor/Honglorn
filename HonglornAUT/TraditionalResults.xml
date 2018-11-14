@@ -7,8 +7,8 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 100 m (Manual)</SprintName>
-    <SprintPerformance>0</SprintPerformance>
-    <SprintScore>0</SprintScore>
+    <SprintPerformance>13.9</SprintPerformance>
+    <SprintScore>404</SprintScore>
 
     <JumpName>Weitsprung</JumpName>
     <JumpPerformance>0</JumpPerformance>
@@ -19,11 +19,11 @@
     <ThrowScore>0</ThrowScore>
 
     <MiddleDistanceName>Lauf 1000 m</MiddleDistanceName>
-    <MiddleDistancePerformance>0</MiddleDistancePerformance>
-    <MiddleDistanceScore>0</MiddleDistanceScore>
+    <MiddleDistancePerformance>294</MiddleDistancePerformance>
+    <MiddleDistanceScore>207</MiddleDistanceScore>
 
-    <TotalScore>0</TotalScore>
-    <Certificate>Participation</Certificate>
+    <TotalScore>611</TotalScore>
+    <Certificate>Victory</Certificate>
   </Row>
 
   <Row>
