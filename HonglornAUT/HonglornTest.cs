@@ -135,14 +135,12 @@ namespace HonglornAUT
         public void GetResults_TraditionalCompetition_CorrectScoresAndCertificatesCalculated()
         {
             const string course = "08D";
-            const string forename = "Kim";
             var sex = (Sex) Enum.Parse(typeof(Sex), GetData("Sex"));
-            short yearOfBirth = GetShort("YearOfBirth");
             short year = GetShort("Year");
 
             var sut = new Honglorn(CreateConnection());
 
-            sut.ImportSingleStudent(forename, "Pennington", sex, yearOfBirth, course, year);
+            sut.ImportSingleStudent("Kim", "Pennington", sex, GetShort("YearOfBirth"), course, year);
 
             Func<DisciplineType, string, Guid> getDisciplineKey = (type, name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == GetData(name)).PKey;
 
