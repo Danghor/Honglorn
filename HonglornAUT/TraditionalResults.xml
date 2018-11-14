@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Rows>
   <Row>
     <Year>2018</Year>
@@ -95,5 +95,29 @@
 
     <TotalScore>1297</TotalScore>
     <Certificate>Victory</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>1998</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 50 m (Manual)</SprintName>
+    <SprintPerformance>5.8</SprintPerformance>
+    <SprintScore>650</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>2.14</JumpPerformance>
+    <JumpScore>777</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>79.5</ThrowPerformance>
+    <ThrowScore>556</ThrowScore>
+
+    <MiddleDistanceName>Lauf 1000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>141</MiddleDistancePerformance>
+    <MiddleDistanceScore>822</MiddleDistanceScore>
+
+    <TotalScore>2249</TotalScore>
+    <Certificate>Honorary</Certificate>
   </Row>
 </Rows>
