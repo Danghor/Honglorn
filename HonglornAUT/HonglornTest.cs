@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -121,7 +121,7 @@ namespace HonglornAUT
 
             try
             {
-                IEnumerable<IResult> result = sut.GetResultsAsync("A", 2000).Result;
+                IEnumerable<IResult> unused = sut.GetResultsAsync("A", 2000).Result;
             }
             catch (AggregateException e)
             {
