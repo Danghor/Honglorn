@@ -2,22 +2,10 @@
 
 <ArrayOfTraditionalReportMeta xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <TraditionalReportMeta>
-    <Sex>Male</Sex>
-    <Age>8</Age>
-    <HonoraryCertificateScore>575</HonoraryCertificateScore>
-    <VictoryCertificateScore>450</VictoryCertificateScore>
-  </TraditionalReportMeta>
-  <TraditionalReportMeta>
     <Sex>Female</Sex>
     <Age>8</Age>
     <HonoraryCertificateScore>625</HonoraryCertificateScore>
     <VictoryCertificateScore>475</VictoryCertificateScore>
-  </TraditionalReportMeta>
-  <TraditionalReportMeta>
-    <Sex>Male</Sex>
-    <Age>9</Age>
-    <HonoraryCertificateScore>675</HonoraryCertificateScore>
-    <VictoryCertificateScore>525</VictoryCertificateScore>
   </TraditionalReportMeta>
   <TraditionalReportMeta>
     <Sex>Female</Sex>
@@ -26,22 +14,10 @@
     <VictoryCertificateScore>550</VictoryCertificateScore>
   </TraditionalReportMeta>
   <TraditionalReportMeta>
-    <Sex>Male</Sex>
-    <Age>10</Age>
-    <HonoraryCertificateScore>775</HonoraryCertificateScore>
-    <VictoryCertificateScore>600</VictoryCertificateScore>
-  </TraditionalReportMeta>
-  <TraditionalReportMeta>
     <Sex>Female</Sex>
     <Age>10</Age>
     <HonoraryCertificateScore>825</HonoraryCertificateScore>
     <VictoryCertificateScore>625</VictoryCertificateScore>
-  </TraditionalReportMeta>
-  <TraditionalReportMeta>
-    <Sex>Male</Sex>
-    <Age>11</Age>
-    <HonoraryCertificateScore>875</HonoraryCertificateScore>
-    <VictoryCertificateScore>675</VictoryCertificateScore>
   </TraditionalReportMeta>
   <TraditionalReportMeta>
     <Sex>Female</Sex>
@@ -56,21 +32,9 @@
     <VictoryCertificateScore>775</VictoryCertificateScore>
   </TraditionalReportMeta>
   <TraditionalReportMeta>
-    <Sex>Male</Sex>
-    <Age>12</Age>
-    <HonoraryCertificateScore>975</HonoraryCertificateScore>
-    <VictoryCertificateScore>750</VictoryCertificateScore>
-  </TraditionalReportMeta>
-  <TraditionalReportMeta>
     <Sex>Female</Sex>
     <Age>13</Age>
     <HonoraryCertificateScore>1025</HonoraryCertificateScore>
-    <VictoryCertificateScore>825</VictoryCertificateScore>
-  </TraditionalReportMeta>
-  <TraditionalReportMeta>
-    <Sex>Male</Sex>
-    <Age>13</Age>
-    <HonoraryCertificateScore>1050</HonoraryCertificateScore>
     <VictoryCertificateScore>825</VictoryCertificateScore>
   </TraditionalReportMeta>
   <TraditionalReportMeta>
@@ -98,16 +62,53 @@
     <VictoryCertificateScore>925</VictoryCertificateScore>
   </TraditionalReportMeta>
   <TraditionalReportMeta>
-    <Sex>Male</Sex>
-    <Age>14</Age>
-    <HonoraryCertificateScore>1125</HonoraryCertificateScore>
-    <VictoryCertificateScore>900</VictoryCertificateScore>
-  </TraditionalReportMeta>
-  <TraditionalReportMeta>
     <Sex>Female</Sex>
     <Age>18</Age>
     <HonoraryCertificateScore>1150</HonoraryCertificateScore>
     <VictoryCertificateScore>950</VictoryCertificateScore>
+  </TraditionalReportMeta>
+
+  <TraditionalReportMeta>
+    <Sex>Male</Sex>
+    <Age>8</Age>
+    <HonoraryCertificateScore>575</HonoraryCertificateScore>
+    <VictoryCertificateScore>450</VictoryCertificateScore>
+  </TraditionalReportMeta>
+  <TraditionalReportMeta>
+    <Sex>Male</Sex>
+    <Age>9</Age>
+    <HonoraryCertificateScore>675</HonoraryCertificateScore>
+    <VictoryCertificateScore>525</VictoryCertificateScore>
+  </TraditionalReportMeta>
+  <TraditionalReportMeta>
+    <Sex>Male</Sex>
+    <Age>10</Age>
+    <HonoraryCertificateScore>775</HonoraryCertificateScore>
+    <VictoryCertificateScore>600</VictoryCertificateScore>
+  </TraditionalReportMeta>
+  <TraditionalReportMeta>
+    <Sex>Male</Sex>
+    <Age>11</Age>
+    <HonoraryCertificateScore>875</HonoraryCertificateScore>
+    <VictoryCertificateScore>675</VictoryCertificateScore>
+  </TraditionalReportMeta>
+  <TraditionalReportMeta>
+    <Sex>Male</Sex>
+    <Age>12</Age>
+    <HonoraryCertificateScore>975</HonoraryCertificateScore>
+    <VictoryCertificateScore>750</VictoryCertificateScore>
+  </TraditionalReportMeta>
+  <TraditionalReportMeta>
+    <Sex>Male</Sex>
+    <Age>13</Age>
+    <HonoraryCertificateScore>1050</HonoraryCertificateScore>
+    <VictoryCertificateScore>825</VictoryCertificateScore>
+  </TraditionalReportMeta>
+  <TraditionalReportMeta>
+    <Sex>Male</Sex>
+    <Age>14</Age>
+    <HonoraryCertificateScore>1125</HonoraryCertificateScore>
+    <VictoryCertificateScore>900</VictoryCertificateScore>
   </TraditionalReportMeta>
   <TraditionalReportMeta>
     <Sex>Male</Sex>
