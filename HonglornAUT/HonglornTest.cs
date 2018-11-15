@@ -327,5 +327,15 @@ namespace HonglornAUT
                 throw e.InnerExceptions.Single();
             }
         }
+
+        [TestMethod]
+        public void GetGameType_EmptyStringAndZero_Null()
+        {
+            var sut = new Honglorn(CreateConnection());
+
+            Game? gameType = sut.GetGameType(string.Empty, 0);
+
+            Assert.IsNull(gameType);
+        }
     }
 }
