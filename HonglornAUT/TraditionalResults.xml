@@ -245,4 +245,29 @@
     <Certificate>Honorary</Certificate>
   </Row>
 
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>1999</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>22.6</SprintPerformance>
+    <SprintScore>5</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>7.69</JumpPerformance>
+    <JumpScore>741</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>13.3</ThrowPerformance>
+    <ThrowScore>600</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>1740</MiddleDistancePerformance>
+    <MiddleDistanceScore>4</MiddleDistanceScore>
+
+    <TotalScore>1346</TotalScore>
+    <Certificate>Victory</Certificate>
+  </Row>
+
 </Rows>
