@@ -7,6 +7,7 @@ using System.Linq;
 using HonglornBL;
 using HonglornBL.Enums;
 using HonglornBL.Import;
+using HonglornBL.Models.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace HonglornAUT
@@ -197,6 +198,26 @@ namespace HonglornAUT
             Assert.AreEqual(0, result.MiddleDistanceScore);
             Assert.AreEqual(0, result.Score);
             Assert.AreEqual(Certificate.Participation, result.Certificate);
+        }
+
+        [TestMethod]
+        public void AllCompetitionDisciplines_CreateCompetitionDiscipline_SuccessfullyCreated()
+        {
+            const DisciplineType type = DisciplineType.Sprint;
+            const string name = "Run very fast";
+            const string unit = "seconds";
+            const bool lowIsBetter = true;
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, type, name, unit, lowIsBetter);
+
+            CompetitionDiscipline discipline = sut.AllCompetitionDisciplines().Single();
+
+            Assert.AreEqual(type, discipline.Type);
+            Assert.AreEqual(name, discipline.Name);
+            Assert.AreEqual(unit, discipline.Unit);
+            Assert.AreEqual(lowIsBetter, discipline.LowIsBetter);
         }
 
         [TestMethod]
