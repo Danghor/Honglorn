@@ -318,4 +318,76 @@
     <Certificate>Honorary</Certificate>
   </Row>
 
+  <Row>
+    <Year>2016</Year>
+    <YearOfBirth>2000</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>13</SprintPerformance>
+    <SprintScore>475</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.17</JumpPerformance>
+    <JumpScore>407</JumpScore>
+
+    <ThrowName>Schleuderball</ThrowName>
+    <ThrowPerformance>3</ThrowPerformance>
+    <ThrowScore>15</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>765</MiddleDistancePerformance>
+    <MiddleDistanceScore>383</MiddleDistanceScore>
+
+    <TotalScore>1265</TotalScore>
+    <Certificate>Victory</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2000</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>13</SprintPerformance>
+    <SprintScore>475</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.17</JumpPerformance>
+    <JumpScore>407</JumpScore>
+
+    <ThrowName>Schleuderball</ThrowName>
+    <ThrowPerformance>47.5</ThrowPerformance>
+    <ThrowScore>580</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>765</MiddleDistancePerformance>
+    <MiddleDistanceScore>383</MiddleDistanceScore>
+
+    <TotalScore>1462</TotalScore>
+    <Certificate>Victory</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2000</YearOfBirth>
+    <Sex>Male</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>13</SprintPerformance>
+    <SprintScore>475</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.17</JumpPerformance>
+    <JumpScore>407</JumpScore>
+
+    <ThrowName>Schleuderball</ThrowName>
+    <ThrowPerformance>70</ThrowPerformance>
+    <ThrowScore>742</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>765</MiddleDistancePerformance>
+    <MiddleDistanceScore>383</MiddleDistanceScore>
+
+    <TotalScore>1624</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
 </Rows>
