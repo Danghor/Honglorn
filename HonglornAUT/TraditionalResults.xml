@@ -1034,8 +1034,8 @@
     <SprintScore>770</SprintScore>
 
     <JumpName>Weitsprung</JumpName>
-    <JumpPerformance>1.21/JumpPerformance>
-    <JumpScore>1</JumpScore>
+    <JumpPerformance>1.21</JumpPerformance>
+    <JumpScore>3</JumpScore>
 
     <ThrowName>Kugelstoß</ThrowName>
     <ThrowPerformance>18.4</ThrowPerformance>
@@ -1108,7 +1108,7 @@
 
     <JumpName>Weitsprung</JumpName>
     <JumpPerformance>1.21</JumpPerformance>
-    <JumpScore>1</JumpScore>
+    <JumpScore>3</JumpScore>
 
     <ThrowName>Kugelstoß</ThrowName>
     <ThrowPerformance>18.4</ThrowPerformance>
