@@ -179,7 +179,7 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 50 m (Electronic)</SprintName>
-    <SprintPerformance>12.71</SprintPerformance>
+    <SprintPerformance>13.23</SprintPerformance>
     <SprintScore>0</SprintScore>
 
     <JumpName>Hochsprung</JumpName>
@@ -203,7 +203,7 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 50 m (Electronic)</SprintName>
-    <SprintPerformance>12.66</SprintPerformance>
+    <SprintPerformance>13.14</SprintPerformance>
     <SprintScore>2</SprintScore>
 
     <JumpName>Hochsprung</JumpName>
@@ -227,7 +227,7 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 50 m (Electronic)</SprintName>
-    <SprintPerformance>9.06</SprintPerformance>
+    <SprintPerformance>9.54</SprintPerformance>
     <SprintScore>210</SprintScore>
 
     <JumpName>Hochsprung</JumpName>
@@ -251,7 +251,7 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 50 m (Electronic)</SprintName>
-    <SprintPerformance>5.56</SprintPerformance>
+    <SprintPerformance>6.04</SprintPerformance>
     <SprintScore>650</SprintScore>
 
     <JumpName>Hochsprung</JumpName>
@@ -349,7 +349,7 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 75 m (Electronic)</SprintName>
-    <SprintPerformance>17.66</SprintPerformance>
+    <SprintPerformance>18.14</SprintPerformance>
     <SprintScore>5</SprintScore>
 
     <JumpName>Weitsprung</JumpName>
@@ -373,7 +373,7 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 75 m (Electronic)</SprintName>
-    <SprintPerformance>11.46</SprintPerformance>
+    <SprintPerformance>11.94</SprintPerformance>
     <SprintScore>328</SprintScore>
 
     <JumpName>Weitsprung</JumpName>
@@ -397,7 +397,7 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 75 m (Electronic)</SprintName>
-    <SprintPerformance>8.06</SprintPerformance>
+    <SprintPerformance>8.54</SprintPerformance>
     <SprintScore>705</SprintScore>
 
     <JumpName>Weitsprung</JumpName>
@@ -495,7 +495,7 @@
     <Sex>Male</Sex>
 
     <SprintName>Sprint 100 m (Electronic)</SprintName>
-    <SprintPerformance>22.36</SprintPerformance>
+    <SprintPerformance>22.84</SprintPerformance>
     <SprintScore>5</SprintScore>
 
     <JumpName>Weitsprung</JumpName>
@@ -518,8 +518,8 @@
     <YearOfBirth>1999</YearOfBirth>
     <Sex>Male</Sex>
 
-    <SprintName>Sprint 100 m (Manual)</SprintName>
-    <SprintPerformance>16.16</SprintPerformance>
+    <SprintName>Sprint 100 m (Electronic)</SprintName>
+    <SprintPerformance>16.64</SprintPerformance>
     <SprintScore>246</SprintScore>
 
     <JumpName>Weitsprung</JumpName>
@@ -542,8 +542,8 @@
     <YearOfBirth>1999</YearOfBirth>
     <Sex>Male</Sex>
 
-    <SprintName>Sprint 100 m (Manual)</SprintName>
-    <SprintPerformance>10.26</SprintPerformance>
+    <SprintName>Sprint 100 m (Electronic)</SprintName>
+    <SprintPerformance>10.74</SprintPerformance>
     <SprintScore>735</SprintScore>
 
     <JumpName>Weitsprung</JumpName>
@@ -634,4 +634,565 @@
     <TotalScore>1624</TotalScore>
     <Certificate>Honorary</Certificate>
   </Row>
+  
+<!-- Female -->  
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2010</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 50 m (Manual)</SprintName>
+    <SprintPerformance>13.47</SprintPerformance>
+    <SprintScore>0</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>0.77</JumpPerformance>
+    <JumpScore>0</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>4.09</ThrowPerformance>
+    <ThrowScore>0</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>395</MiddleDistancePerformance>
+    <MiddleDistanceScore>0</MiddleDistanceScore>
+
+    <TotalScore>0</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2010</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 50 m (Manual)</SprintName>
+    <SprintPerformance>13.4</SprintPerformance>
+    <SprintScore>2</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>0.78</JumpPerformance>
+    <JumpScore>3</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>4.5</ThrowPerformance>
+    <ThrowScore>11</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>390</MiddleDistancePerformance>
+    <MiddleDistanceScore>4</MiddleDistanceScore>
+
+    <TotalScore>18</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2002</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 50 m (Manual)</SprintName>
+    <SprintPerformance>9.3</SprintPerformance>
+    <SprintScore>241</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>1.58</JumpPerformance>
+    <JumpScore>553</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>38.5</ThrowPerformance>
+    <ThrowScore>478</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>155</MiddleDistancePerformance>
+    <MiddleDistanceScore>485</MiddleDistanceScore>
+
+    <TotalScore>1516</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>1998</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 50 m (Manual)</SprintName>
+    <SprintPerformance>6.3</SprintPerformance>
+    <SprintScore>605</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>1.96</JumpPerformance>
+    <JumpScore>763</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>76</ThrowPerformance>
+    <ThrowScore>765</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>120</MiddleDistancePerformance>
+    <MiddleDistanceScore>717</MiddleDistanceScore>
+
+    <TotalScore>2245</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2010</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 50 m (Electronic)</SprintName>
+    <SprintPerformance>13.71</SprintPerformance>
+    <SprintScore>0</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>0.77</JumpPerformance>
+    <JumpScore>0</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>4.09</ThrowPerformance>
+    <ThrowScore>0</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>395</MiddleDistancePerformance>
+    <MiddleDistanceScore>0</MiddleDistanceScore>
+
+    <TotalScore>0</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2010</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 50 m (Electronic)</SprintName>
+    <SprintPerformance>13.64</SprintPerformance>
+    <SprintScore>2</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>0.78</JumpPerformance>
+    <JumpScore>3</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>4.5</ThrowPerformance>
+    <ThrowScore>11</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>390</MiddleDistancePerformance>
+    <MiddleDistanceScore>4</MiddleDistanceScore>
+
+    <TotalScore>18</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2002</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 50 m (Electronic)</SprintName>
+    <SprintPerformance>9.54</SprintPerformance>
+    <SprintScore>241</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>1.58</JumpPerformance>
+    <JumpScore>553</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>38.5</ThrowPerformance>
+    <ThrowScore>478</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>155</MiddleDistancePerformance>
+    <MiddleDistanceScore>485</MiddleDistanceScore>
+
+    <TotalScore>1516</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>1998</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 50 m (Electronic)</SprintName>
+    <SprintPerformance>6.54</SprintPerformance>
+    <SprintScore>605</SprintScore>
+
+    <JumpName>Hochsprung</JumpName>
+    <JumpPerformance>1.96</JumpPerformance>
+    <JumpScore>763</JumpScore>
+
+    <ThrowName>80-g-Schlagballwurf</ThrowName>
+    <ThrowPerformance>76</ThrowPerformance>
+    <ThrowScore>765</ThrowScore>
+
+    <MiddleDistanceName>Lauf 800 m</MiddleDistanceName>
+    <MiddleDistancePerformance>120</MiddleDistancePerformance>
+    <MiddleDistanceScore>717</MiddleDistanceScore>
+
+    <TotalScore>2245</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 75 m (Manual)</SprintName>
+    <SprintPerformance>18.4</SprintPerformance>
+    <SprintScore>3</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.21</JumpPerformance>
+    <JumpScore>3</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>2.5</ThrowPerformance>
+    <ThrowScore>15</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>1100</MiddleDistancePerformance>
+    <MiddleDistanceScore>3</MiddleDistanceScore>
+
+    <TotalScore>21</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 75 m (Manual)</SprintName>
+    <SprintPerformance>12.3</SprintPerformance>
+    <SprintScore>300</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.69</JumpPerformance>
+    <JumpScore>515</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>33</ThrowPerformance>
+    <ThrowScore>416</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>466</MiddleDistancePerformance>
+    <MiddleDistanceScore>461</MiddleDistanceScore>
+
+    <TotalScore>1392</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 75 m (Manual)</SprintName>
+    <SprintPerformance>8.8</SprintPerformance>
+    <SprintScore>651</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>6.81</JumpPerformance>
+    <JumpScore>728</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>74</ThrowPerformance>
+    <ThrowScore>691</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>344</MiddleDistancePerformance>
+    <MiddleDistanceScore>743</MiddleDistanceScore>
+
+    <TotalScore>2162</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 75 m (Electronic)</SprintName>
+    <SprintPerformance>18.64</SprintPerformance>
+    <SprintScore>3</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.21</JumpPerformance>
+    <JumpScore>3</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>2.5</ThrowPerformance>
+    <ThrowScore>15</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>1100</MiddleDistancePerformance>
+    <MiddleDistanceScore>3</MiddleDistanceScore>
+
+    <TotalScore>21</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 75 m (Electronic)</SprintName>
+    <SprintPerformance>12.54</SprintPerformance>
+    <SprintScore>300</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.69</JumpPerformance>
+    <JumpScore>515</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>33</ThrowPerformance>
+    <ThrowScore>416</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>466</MiddleDistancePerformance>
+    <MiddleDistanceScore>461</MiddleDistanceScore>
+
+    <TotalScore>1392</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>2004</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 75 m (Electronic)</SprintName>
+    <SprintPerformance>9.04</SprintPerformance>
+    <SprintScore>651</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>6.81</JumpPerformance>
+    <JumpScore>728</JumpScore>
+
+    <ThrowName>200-g-Ballwurf</ThrowName>
+    <ThrowPerformance>74</ThrowPerformance>
+    <ThrowScore>691</ThrowScore>
+
+    <MiddleDistanceName>Lauf 2000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>344</MiddleDistancePerformance>
+    <MiddleDistanceScore>743</MiddleDistanceScore>
+
+    <TotalScore>2162</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>1999</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>24.6</SprintPerformance>
+    <SprintScore>2</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.196</JumpPerformance>
+    <JumpScore>0</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>1.7</ThrowPerformance>
+    <ThrowScore>6</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>1680</MiddleDistancePerformance>
+    <MiddleDistanceScore>7</MiddleDistanceScore>
+
+    <TotalScore>15</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>1999</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>16.4</SprintPerformance>
+    <SprintScore>305</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.21</JumpPerformance>
+    <JumpScore>3</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>10.5</ThrowPerformance>
+    <ThrowScore>492</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>840</MiddleDistancePerformance>
+    <MiddleDistanceScore>364</MiddleDistanceScore>
+
+    <TotalScore>1161</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>1999</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>10.8</SprintPerformance>
+    <SprintScore>770</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.21/JumpPerformance>
+    <JumpScore>1</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>18.4</ThrowPerformance>
+    <ThrowScore>756</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>528</MiddleDistancePerformance>
+    <MiddleDistanceScore>786</MiddleDistanceScore>
+
+    <TotalScore>2312</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>1999</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Electronic)</SprintName>
+    <SprintPerformance>24.84</SprintPerformance>
+    <SprintScore>2</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.196</JumpPerformance>
+    <JumpScore>0</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>1.7</ThrowPerformance>
+    <ThrowScore>6</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>1680</MiddleDistancePerformance>
+    <MiddleDistanceScore>7</MiddleDistanceScore>
+
+    <TotalScore>15</TotalScore>
+    <Certificate>Participation</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>1999</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Electronic)</SprintName>
+    <SprintPerformance>16.64</SprintPerformance>
+    <SprintScore>305</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.21</JumpPerformance>
+    <JumpScore>3</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>10.5</ThrowPerformance>
+    <ThrowScore>492</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>840</MiddleDistancePerformance>
+    <MiddleDistanceScore>364</MiddleDistanceScore>
+
+    <TotalScore>1161</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2017</Year>
+    <YearOfBirth>1999</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Electronic)</SprintName>
+    <SprintPerformance>11.04</SprintPerformance>
+    <SprintScore>770</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>1.21</JumpPerformance>
+    <JumpScore>1</JumpScore>
+
+    <ThrowName>Kugelstoß</ThrowName>
+    <ThrowPerformance>18.4</ThrowPerformance>
+    <ThrowScore>756</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>528</MiddleDistancePerformance>
+    <MiddleDistanceScore>786</MiddleDistanceScore>
+
+    <TotalScore>2312</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+
+  <Row>
+    <Year>2016</Year>
+    <YearOfBirth>2000</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>13</SprintPerformance>
+    <SprintScore>540</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.17</JumpPerformance>
+    <JumpScore>456</JumpScore>
+
+    <ThrowName>Schleuderball</ThrowName>
+    <ThrowPerformance>1.5</ThrowPerformance>
+    <ThrowScore>15</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>765</MiddleDistancePerformance>
+    <MiddleDistanceScore>434</MiddleDistanceScore>
+
+    <TotalScore>1430</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2000</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>13</SprintPerformance>
+    <SprintScore>540</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.17</JumpPerformance>
+    <JumpScore>456</JumpScore>
+
+    <ThrowName>Schleuderball</ThrowName>
+    <ThrowPerformance>47.5</ThrowPerformance>
+    <ThrowScore>630</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>765</MiddleDistancePerformance>
+    <MiddleDistanceScore>434</MiddleDistanceScore>
+
+    <TotalScore>1626</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+  <Row>
+    <Year>2018</Year>
+    <YearOfBirth>2000</YearOfBirth>
+    <Sex>Female</Sex>
+
+    <SprintName>Sprint 100 m (Manual)</SprintName>
+    <SprintPerformance>13</SprintPerformance>
+    <SprintScore>540</SprintScore>
+
+    <JumpName>Weitsprung</JumpName>
+    <JumpPerformance>4.17</JumpPerformance>
+    <JumpScore>456</JumpScore>
+
+    <ThrowName>Schleuderball</ThrowName>
+    <ThrowPerformance>65</ThrowPerformance>
+    <ThrowScore>757</ThrowScore>
+
+    <MiddleDistanceName>Lauf 3000 m</MiddleDistanceName>
+    <MiddleDistancePerformance>765</MiddleDistancePerformance>
+    <MiddleDistanceScore>434</MiddleDistanceScore>
+
+    <TotalScore>1753</TotalScore>
+    <Certificate>Honorary</Certificate>
+  </Row>
+
 </Rows>
