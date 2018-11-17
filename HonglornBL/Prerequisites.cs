@@ -35,8 +35,6 @@ namespace HonglornBL
         /// <returns>The rounded fraction in percentage.</returns>
         internal static byte PercentageValue(int x, int y) => (byte)Math.Round(100d * x / y);
 
-        internal const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
         #region Validation
 
         static readonly HashSet<char> ValidClassnames = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
