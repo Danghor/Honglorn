@@ -18,7 +18,7 @@ namespace HonglornBL.Models.Framework
 
         internal HonglornDb(DbConnection connection) : base(connection, true)
         {
-            Database.SetInitializer(new HonglornDbInitializer());
+            Database.SetInitializer(new HonglornDbInitializer<HonglornDb>());
         }
 
         protected sealed override void OnModelCreating(DbModelBuilder modelBuilder)

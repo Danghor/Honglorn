@@ -7,6 +7,9 @@ namespace HonglornBL.Models.Framework
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     class HonglornMySqlDb : HonglornDb
     {
-        internal HonglornMySqlDb(DbConnection connection) : base(connection) { }
+        internal HonglornMySqlDb(DbConnection connection) : base(connection)
+        {
+            Database.SetInitializer(new HonglornDbInitializer<HonglornMySqlDb>());
+        }
     }
 }

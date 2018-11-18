@@ -9,9 +9,9 @@ using HonglornBL.Properties;
 
 namespace HonglornBL.Models.Framework
 {
-    class HonglornDbInitializer : CreateDatabaseIfNotExists<HonglornDb>
+    class HonglornDbInitializer<T> : CreateDatabaseIfNotExists<T> where T : HonglornDb
     {
-        protected override void Seed(HonglornDb context)
+        protected override void Seed(T context)
         {
             InitializeEntity<TraditionalDiscipline>(Resources.ArrayOfTraditionalDiscipline, context.TraditionalDiscipline);
             InitializeEntity<TraditionalReportMeta>(Resources.ArrayOfTraditionalReportMeta, context.TraditionalReportMeta);
