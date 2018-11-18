@@ -1,4 +1,4 @@
-# Honglorn
+﻿# Honglorn
 
 ## Description
 A program to calculate results for the German sports event "Bundesjugendspiele".
