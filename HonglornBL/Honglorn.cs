@@ -400,9 +400,9 @@ namespace HonglornBL
         {
             try
             {
-                using (var db = ContextFactory.CreateContext())
+                using (HonglornDb db = ContextFactory.CreateContext())
                 {
-                    CompetitionDiscipline discipline = new CompetitionDiscipline
+                    var discipline = new CompetitionDiscipline
                     {
                         PKey = pKey
                     };
