@@ -304,7 +304,7 @@ namespace HonglornAUT
 
                 foreach (CompetitionStudent student in students.Where(s => s.Course == course))
                 {
-                    IResult studentResult = results.Single(r => r.Forename == student.Forename);
+                    IResult studentResult = results.Single(r => r.Forename == student.Forename && r.Surname == student.Surname);
 
                     Assert.AreEqual(student.SprintScore + student.JumpScore + student.ThrowScore + student.MiddleDistanceScore, studentResult.Score);
                     Assert.AreEqual(student.Certificate, studentResult.Certificate);
