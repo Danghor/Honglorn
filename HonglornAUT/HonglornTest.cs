@@ -221,6 +221,28 @@ namespace HonglornAUT
         }
 
         [TestMethod]
+        public void DeleteCompetitionDisciplineByPKey_DeleteDiscipline_SuccessfullyDeleted()
+        {
+            var sut = new Honglorn(CreateConnection());
+
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "Run very fast", "seconds", true);
+
+            Guid disciplinePKey = sut.AllCompetitionDisciplines().Single().PKey;
+            sut.DeleteCompetitionDisciplineByPKey(disciplinePKey);
+
+            bool competitionDisciplinesExist = sut.AllCompetitionDisciplines().Any();
+            Assert.IsFalse(competitionDisciplinesExist);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void DeleteCompetitionDisciplineByPKey_UnknownDiscipline_ThrowsException()
+        {
+            var sut = new Honglorn(CreateConnection());
+            sut.DeleteCompetitionDisciplineByPKey(Guid.Empty);
+        }
+
+        [TestMethod]
         [DeploymentItem("CompetitionResults.xml")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\CompetitionResults.xml", "Row", DataAccessMethod.Sequential)]
         public void GetResults_CompetitionResults_CorrectScoresAndCertificatesCalculated()
