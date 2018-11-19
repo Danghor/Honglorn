@@ -602,7 +602,6 @@ namespace HonglornBL
 
         static readonly IDictionary<string, Func<IStudentImporter>> ExtensionImporterMap = new Dictionary<string, Func<IStudentImporter>>
         {
-            { ".xls", () => new ExcelImporter() },
             { ".xlsx", () => new ExcelImporter() },
             { ".csv", () => new CsvImporter() }
         };
@@ -622,7 +621,7 @@ namespace HonglornBL
             }
             catch (KeyNotFoundException e)
             {
-                throw new NotSupportedException($"Importing students from a file with the extension {extension} is not supported.", e);
+                throw new NotSupportedException($"Importing students from a file with the extension {extension} is not supported. Supported are {string.Join(", ", ExtensionImporterMap.Keys)}", e);
             }
         }
 
