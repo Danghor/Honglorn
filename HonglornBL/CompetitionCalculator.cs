@@ -12,18 +12,14 @@ namespace HonglornBL
         readonly bool jumpLowIsBetter;
         readonly bool throwLowIsBetter;
         readonly bool middleDistanceLowIsBetter;
-        readonly byte honoraryCertificatePercentage;
-        readonly byte victoryCertificatePercentage;
 
-        internal CompetitionCalculator(bool sprintLowIsBetter, bool jumpLowIsBetter, bool throwLowIsBetter, bool middleDistanceLowIsBetter, byte honoraryCertificatePercentage, byte victoryCertificatePercentage)
+        internal CompetitionCalculator(bool sprintLowIsBetter, bool jumpLowIsBetter, bool throwLowIsBetter, bool middleDistanceLowIsBetter)
         {
             studentMeasurements = new List<Tuple<Guid, RawMeasurement>>();
             this.sprintLowIsBetter = sprintLowIsBetter;
             this.jumpLowIsBetter = jumpLowIsBetter;
             this.throwLowIsBetter = throwLowIsBetter;
             this.middleDistanceLowIsBetter = middleDistanceLowIsBetter;
-            this.honoraryCertificatePercentage = honoraryCertificatePercentage;
-            this.victoryCertificatePercentage = victoryCertificatePercentage;
         }
 
         internal void AddStudentMeasurement(Guid identifier, float? sprint, float? jump, float? @throw, float? middleDistance)
@@ -55,11 +51,11 @@ namespace HonglornBL
                 {
                     float percentile = (float) count / containers.Count * 100;
 
-                    if (percentile > 100 - victoryCertificatePercentage)
+                    if (percentile > 70)
                     {
                         currentCertificate = Certificate.Participation;
                     }
-                    else if (percentile > 100 - honoraryCertificatePercentage)
+                    else if (percentile > 20)
                     {
                         currentCertificate = Certificate.Victory;
                     }

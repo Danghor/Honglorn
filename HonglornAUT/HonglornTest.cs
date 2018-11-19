@@ -307,8 +307,6 @@ namespace HonglornAUT
                 sut.CreateOrUpdateDisciplineCollection(className, year, maleSprintGuid, maleJumpGuid, maleThrowGuid, maleMiddleDistanceGuid, femaleSprintGuid, femaleJumpGuid, femaleThrowGuid, femaleMiddleDistanceGuid);
             }
 
-            sut.CreateOrUpdateCompetitionReportMeta(year, 80, 30, 85, 70, 55, 39, 20);
-
             foreach (string course in students.Select(s => s.Course).Distinct())
             {
                 IEnumerable<IStudentPerformance> performances = sut.StudentPerformances(course, year).ToList();

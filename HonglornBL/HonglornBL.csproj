@@ -132,7 +132,6 @@
     <Compile Include="Honglorn.cs" />
     <Compile Include="Models\Entities\Competition.cs" />
     <Compile Include="Models\Entities\CompetitionDiscipline.cs" />
-    <Compile Include="Models\Entities\CompetitionReportMeta.cs" />
     <Compile Include="Models\Entities\Discipline.cs" />
     <Compile Include="Models\Entities\DisciplineCollection.cs" />
     <Compile Include="Models\Framework\HonglornDb.cs" />

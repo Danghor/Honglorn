@@ -9,7 +9,6 @@ namespace HonglornBL.Models.Framework
     {
         public virtual DbSet<Competition> Competition { get; set; }
         public virtual DbSet<CompetitionDiscipline> CompetitionDiscipline { get; set; }
-        public virtual DbSet<CompetitionReportMeta> CompetitionReportMeta { get; set; }
         public virtual DbSet<DisciplineCollection> DisciplineCollection { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudentCourseRel> StudentCourseRel { get; set; }

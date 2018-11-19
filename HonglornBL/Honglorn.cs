@@ -150,10 +150,6 @@ namespace HonglornBL
                                                where rel.Year == year
                                                select GetClassName(rel.CourseName)).Distinct();
 
-                var meta = (from m in db.CompetitionReportMeta
-                            where m.Year == year
-                            select new { m.HonoraryCertificatePercentage, m.VictoryCertificatePercentage }).Single();
-
                 foreach (string @class in classes)
                 {
                     IEnumerable<Student> maleStudents = (from s in db.Student
@@ -168,7 +164,7 @@ namespace HonglornBL
 
                     if (maleStudents.Any())
                     {
-                        var maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter, meta.HonoraryCertificatePercentage, meta.VictoryCertificatePercentage);
+                        var maleCalculator = new CompetitionCalculator(disciplineCollection.MaleSprint.LowIsBetter, disciplineCollection.MaleJump.LowIsBetter, disciplineCollection.MaleThrow.LowIsBetter, disciplineCollection.MaleMiddleDistance.LowIsBetter);
 
                         foreach (Student maleStudent in maleStudents)
                         {
@@ -184,7 +180,7 @@ namespace HonglornBL
 
                     if (femaleStudents.Any())
                     {
-                        var femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter, meta.HonoraryCertificatePercentage, meta.VictoryCertificatePercentage);
+                        var femaleCalculator = new CompetitionCalculator(disciplineCollection.FemaleSprint.LowIsBetter, disciplineCollection.FemaleJump.LowIsBetter, disciplineCollection.FemaleThrow.LowIsBetter, disciplineCollection.FemaleMiddleDistance.LowIsBetter);
 
                         foreach (Student femaleStudent in femaleStudents)
                         {
@@ -686,43 +682,6 @@ namespace HonglornBL
             }
         }
 
-        #endregion
-
-        public void CreateOrUpdateCompetitionReportMeta(short year, byte honoraryCertificatePercentage, byte victoryCertificatePercentage, byte grade1Percentage, byte grade2Percentage, byte grade3Percentage, byte grade4Percentage, byte grade5Percentage)
-        {
-            //todo: validation
-
-            using (var db = ContextFactory.CreateContext())
-            {
-                CompetitionReportMeta existingMeta = db.CompetitionReportMeta.SingleOrDefault(m => m.Year == year);
-
-                if (existingMeta == null)
-                {
-                    db.CompetitionReportMeta.Add(new CompetitionReportMeta
-                    {
-                        Year = year,
-                        HonoraryCertificatePercentage = honoraryCertificatePercentage,
-                        VictoryCertificatePercentage = victoryCertificatePercentage,
-                        Grade1Percentage = grade1Percentage,
-                        Grade2Percentage = grade2Percentage,
-                        Grade3Percentage = grade3Percentage,
-                        Grade4Percentage = grade4Percentage,
-                        Grade5Percentage = grade5Percentage
-                    });
-                }
-                else
-                {
-                    existingMeta.HonoraryCertificatePercentage = honoraryCertificatePercentage;
-                    existingMeta.VictoryCertificatePercentage = victoryCertificatePercentage;
-                    existingMeta.Grade1Percentage = grade1Percentage;
-                    existingMeta.Grade2Percentage = grade2Percentage;
-                    existingMeta.Grade3Percentage = grade3Percentage;
-                    existingMeta.Grade4Percentage = grade4Percentage;
-                    existingMeta.Grade5Percentage = grade5Percentage;
-                }
-
-                db.SaveChanges();
-            }
-        }
+        #endregion        
     }
 }
