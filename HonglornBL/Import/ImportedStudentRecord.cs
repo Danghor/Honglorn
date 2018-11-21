@@ -7,11 +7,11 @@ namespace HonglornBL.Import
 {
     public class ImportedStudentRecord
     {
-        internal string ImportedSurname { get; }
-        internal string ImportedForename { get; }
-        internal string ImportedCourseName { get; }
-        internal string ImportedSex { get; }
-        internal string ImportedYearOfBirth { get; }
+        public string ImportedSurname { get; }
+        public string ImportedForename { get; }
+        public string ImportedCourseName { get; }
+        public string ImportedSex { get; }
+        public string ImportedYearOfBirth { get; }
 
         public RecordErrorInfo Error { get; private set; }
 

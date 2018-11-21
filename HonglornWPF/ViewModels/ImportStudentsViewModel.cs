@@ -1,12 +1,13 @@
-﻿using HonglornBL;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Input;
+using HonglornBL;
 using HonglornBL.Import;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace HonglornWPF.ViewModels
@@ -75,11 +76,28 @@ namespace HonglornWPF.ViewModels
             try
             {
                 ICollection<ImportedStudentRecord> importedStudents = await Honglorn.ImportStudentsFromFile(Path, Year, new Progress<ProgressReport>(OnProgressChanged));
+                ICollection<ImportedStudentRecord> unsuccessfullyImported = importedStudents.Where(s => s.Error != null).ToList();
 
-                int successfullyImported = importedStudents.Count(s => s.Error == null);
-                int unsuccessfullyImported = importedStudents.Count(s => s.Error != null);
+                var messageBuilder = new StringBuilder($"Successfully imported {importedStudents.Count - unsuccessfullyImported.Count()} of {importedStudents.Count} students.");
 
-                await mainWindow.ShowMessageAsync("Notification", $"Successfully imported: {successfullyImported} \r\nFailed to import: {unsuccessfullyImported}");
+                if (unsuccessfullyImported.Any())
+                {
+                    messageBuilder.AppendLine("The following students could not be imported: ");
+                    foreach (var student in unsuccessfullyImported)
+                    {
+                        messageBuilder.AppendLine($"{student.ImportedForename} {student.ImportedSurname} {student.ImportedSex} {student.ImportedYearOfBirth} in Course {student.ImportedCourseName}");
+                        messageBuilder.AppendLine($"Errors: ");
+
+                        foreach (var error in student.Error.FieldErrorInfos)
+                        {
+                            messageBuilder.AppendLine($"Fieldname: {error.FieldName}");
+                            messageBuilder.AppendLine($"Fieldcontent: {error.FieldContent}");
+                            messageBuilder.AppendLine($"Message: {error.Message}");
+                        }
+                    }
+                }
+
+                await mainWindow.ShowMessageAsync("Notification", messageBuilder.ToString());
             }
             catch (Exception ex)
             {
