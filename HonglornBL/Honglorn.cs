@@ -169,8 +169,8 @@ namespace HonglornBL
                         foreach (Student maleStudent in maleStudents)
                         {
                             Competition competition = (from sc in maleStudent.Competitions
-                                                          where sc.Year == year
-                                                          select sc).SingleOrDefault() ?? new Competition();
+                                                       where sc.Year == year
+                                                       select sc).SingleOrDefault() ?? new Competition();
 
                             maleCalculator.AddStudentMeasurement(maleStudent.PKey, competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance);
                         }
@@ -185,8 +185,8 @@ namespace HonglornBL
                         foreach (Student femaleStudent in femaleStudents)
                         {
                             Competition competition = (from sc in femaleStudent.Competitions
-                                                          where sc.Year == year
-                                                          select sc).SingleOrDefault() ?? new Competition();
+                                                       where sc.Year == year
+                                                       select sc).SingleOrDefault() ?? new Competition();
 
                             femaleCalculator.AddStudentMeasurement(femaleStudent.PKey, competition.Sprint, competition.Jump, competition.Throw, competition.MiddleDistance);
                         }
@@ -568,13 +568,13 @@ namespace HonglornBL
                 throw new ArgumentException($"{year} is not a valid year.");
             }
 
-            progress.Report(new ProgressReport { Percentage = 0, IsIndeterminate = true, Message = "Lese Daten aus Excel Datei..." });
+            progress.Report(new ProgressReport(0, "Lese Daten aus Datei...", true));
 
             ICollection<ImportedStudentRecord> studentsFromExcelSheet = await Task.Factory.StartNew(() => GetImporter(filePath).ReadStudentsFromFile(filePath));
 
             int currentlyImported = 0;
 
-            progress.Report(new ProgressReport { Percentage = 0, IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
+            progress.Report(new ProgressReport(0, "Schreibe Daten in die Datenbank...", false));
 
             foreach (ImportedStudentRecord importStudent in studentsFromExcelSheet)
             {
@@ -592,10 +592,10 @@ namespace HonglornBL
                 }
 
                 currentlyImported++;
-                progress.Report(new ProgressReport { Percentage = PercentageValue(currentlyImported, studentsFromExcelSheet.Count), IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
+                progress.Report(new ProgressReport(PercentageValue(currentlyImported, studentsFromExcelSheet.Count), "Schreibe Daten in die Datenbank...", false));
             }
 
-            progress.Report(new ProgressReport { Percentage = 100, IsIndeterminate = false, Message = "Schreibe Daten in die Datenbank..." });
+            progress.Report(new ProgressReport(100, "Schreibe Daten in die Datenbank...", false));
 
             return studentsFromExcelSheet;
         }
