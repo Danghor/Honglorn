@@ -106,7 +106,6 @@
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\CsvImporter.cs" />
     <Compile Include="Import\FieldErrorInfo.cs" />
-    <Compile Include="Import\RecordErrorInfo.cs" />
     <Compile Include="Import\StudentImporter.cs" />
     <Compile Include="Interfaces\IDiscipline.cs" />
     <Compile Include="Interfaces\IDisciplineCollection.cs" />

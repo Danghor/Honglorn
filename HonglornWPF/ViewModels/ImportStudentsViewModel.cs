@@ -76,19 +76,22 @@ namespace HonglornWPF.ViewModels
             try
             {
                 ICollection<ImportedStudentRecord> importedStudents = await Honglorn.ImportStudentsFromFile(Path, Year, new Progress<ProgressReport>(OnProgressChanged));
-                ICollection<ImportedStudentRecord> unsuccessfullyImported = importedStudents.Where(s => s.Error != null).ToList();
+                ICollection<ImportedStudentRecord> unsuccessfullyImported = importedStudents.Where(s => s.Errors != null).ToList();
 
                 var messageBuilder = new StringBuilder($"Successfully imported {importedStudents.Count - unsuccessfullyImported.Count()} of {importedStudents.Count} students.");
 
                 if (unsuccessfullyImported.Any())
                 {
+                    messageBuilder.AppendLine();
                     messageBuilder.AppendLine("The following students could not be imported: ");
                     foreach (var student in unsuccessfullyImported)
                     {
-                        messageBuilder.AppendLine($"{student.ImportedForename} {student.ImportedSurname} {student.ImportedSex} {student.ImportedYearOfBirth} in Course {student.ImportedCourseName}");
+                        messageBuilder.AppendLine();
+                        messageBuilder.AppendLine();
+                        messageBuilder.AppendLine($"{student.ImportedForename} {student.ImportedSurname}, {student.ImportedSex}, born in {student.ImportedYearOfBirth}, in Course {student.ImportedCourseName}");
                         messageBuilder.AppendLine($"Errors: ");
 
-                        foreach (var error in student.Error.FieldErrorInfos)
+                        foreach (var error in student.Errors)
                         {
                             messageBuilder.AppendLine($"Fieldname: {error.FieldName}");
                             messageBuilder.AppendLine($"Fieldcontent: {error.FieldContent}");

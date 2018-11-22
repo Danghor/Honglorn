@@ -13,7 +13,7 @@ namespace HonglornBL.Import
         public string ImportedSex { get; }
         public string ImportedYearOfBirth { get; }
 
-        public RecordErrorInfo Error { get; private set; }
+        public IEnumerable<FieldErrorInfo> Errors { get; private set; }
 
         public ImportedStudentRecord(string importedSurname, string importedForename, string importedCourseName, string importedSex, string importedYearOfBirth)
         {
@@ -23,12 +23,12 @@ namespace HonglornBL.Import
             ImportedSex = importedSex;
             ImportedYearOfBirth = importedYearOfBirth;
 
-            ValidateFields();
+            Errors = FieldErrors();
         }
 
-        void ValidateFields()
+        IEnumerable<FieldErrorInfo> FieldErrors()
         {
-            List<FieldErrorInfo> fieldErrors = new List<FieldErrorInfo>
+            var fieldErrors = new List<FieldErrorInfo>
             {
                 FieldError(nameof(ImportedSurname), ImportedSurname, IsValidName, "Surname cannot be empty or contain any digits."),
                 FieldError(nameof(ImportedForename), ImportedForename, IsValidName, "Forename cannot be empty or contain any digits."),
@@ -39,30 +39,20 @@ namespace HonglornBL.Import
 
             fieldErrors.RemoveAll(e => e == null);
 
-            if (fieldErrors.Any())
-            {
-                Error = new RecordErrorInfo(fieldErrors);
-            }
+            return fieldErrors.Any() ? fieldErrors : null;
         }
 
         static FieldErrorInfo FieldError(string fieldName, string fieldContent, Func<string, bool> isValid, string errorMessage)
         {
-            FieldErrorInfo result = null;
-
-            if (!isValid(fieldContent))
-            {
-                result = new FieldErrorInfo(fieldName, fieldContent, errorMessage);
-            }
-
-            return result;
+            return isValid(fieldContent) ? null : new FieldErrorInfo(fieldName, fieldContent, errorMessage);
         }
 
-        static readonly Func<string, bool> IsValidName = delegate (string name)
+        static readonly Func<string, bool> IsValidName = (name) =>
         {
             return !string.IsNullOrWhiteSpace(name) && !name.Any(c => char.IsDigit(c));
         };
 
-        static readonly Func<string, bool> IsValidCourseName = delegate (string courseName)
+        static readonly Func<string, bool> IsValidCourseName = (courseName) =>
         {
             bool isValid = true;
 
@@ -78,12 +68,12 @@ namespace HonglornBL.Import
             return isValid;
         };
 
-        static readonly Func<string, bool> IsValidSex = delegate (string sex)
+        static readonly Func<string, bool> IsValidSex = (sex) =>
         {
             return sex.Equals("W", StringComparison.InvariantCultureIgnoreCase) || sex.Equals("M", StringComparison.InvariantCultureIgnoreCase);
         };
 
-        static readonly Func<string, bool> IsValidYearOfBirth = delegate (string year)
+        static readonly Func<string, bool> IsValidYearOfBirth = (year) =>
         {
             bool isValid = false;
             short shortYear;

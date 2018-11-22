@@ -578,7 +578,7 @@ namespace HonglornBL
 
             foreach (ImportedStudentRecord importStudent in studentsFromExcelSheet)
             {
-                if (importStudent.Error == null)
+                if (importStudent.Errors == null)
                 {
                     Student student = new Student
                     {
