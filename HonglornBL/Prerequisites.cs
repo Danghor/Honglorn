@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using HonglornBL.Properties;
-using System.Linq;
 
 namespace HonglornBL
 {
@@ -17,7 +17,7 @@ namespace HonglornBL
 
         internal static string GetClassName(string courseName)
         {
-            Tuple<string, Func<string, string>> pair = ClassNameFunctionMap.FirstOrDefault(tuple => Regex.IsMatch(courseName, tuple.Item1));
+            Tuple<string, Func<string, string>> pair = ClassNameFunctionMap.FirstOrDefault(tuple => Regex.IsMatch(courseName, $"^{tuple.Item1}$"));
 
             if (pair == null)
             {
