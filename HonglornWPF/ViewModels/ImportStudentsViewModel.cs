@@ -61,7 +61,12 @@ namespace HonglornWPF.ViewModels
 
         void OpenFileDialog()
         {
-            var dialog = new OpenFileDialog();
+            var dialog = new OpenFileDialog
+            {
+                ReadOnlyChecked = true,
+                Filter = "Microsoft Excel, CSV (*.xlsx; *.csv) |*.xlsx;*.csv",
+                Title = "Schülerdatei"
+            };
 
             if (dialog.ShowDialog() == true)
             {
@@ -78,23 +83,23 @@ namespace HonglornWPF.ViewModels
                 ICollection<ImportedStudentRecord> importedStudents = await Honglorn.ImportStudentsFromFile(Path, Year, new Progress<ProgressReport>(OnProgressChanged));
                 ICollection<ImportedStudentRecord> unsuccessfullyImported = importedStudents.Where(s => s.Errors != null).ToList();
 
-                var messageBuilder = new StringBuilder($"Successfully imported {importedStudents.Count - unsuccessfullyImported.Count()} of {importedStudents.Count} students.");
+                var messageBuilder = new StringBuilder($"Successfully imported {importedStudents.Count - unsuccessfullyImported.Count} of {importedStudents.Count} students.");
 
                 if (unsuccessfullyImported.Any())
                 {
                     messageBuilder.AppendLine();
                     messageBuilder.AppendLine("The following students could not be imported: ");
-                    foreach (var student in unsuccessfullyImported)
+                    foreach (ImportedStudentRecord student in unsuccessfullyImported)
                     {
                         messageBuilder.AppendLine();
                         messageBuilder.AppendLine();
                         messageBuilder.AppendLine($"{student.ImportedForename} {student.ImportedSurname}, {student.ImportedSex}, born in {student.ImportedYearOfBirth}, in Course {student.ImportedCourseName}");
 
-                        foreach (var error in student.Errors)
+                        foreach (FieldErrorInfo error in student.Errors)
                         {
                             messageBuilder.AppendLine();
-                            messageBuilder.AppendLine($"Fieldname: {error.FieldName}");
-                            messageBuilder.AppendLine($"Fieldcontent: {error.FieldContent}");
+                            messageBuilder.AppendLine($"Field name: {error.FieldName}");
+                            messageBuilder.AppendLine($"Field content: {error.FieldContent}");
                             messageBuilder.AppendLine($"Message: {error.Message}");
                         }
                     }
