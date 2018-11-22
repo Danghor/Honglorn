@@ -625,6 +625,7 @@ namespace HonglornBL
             }
         }
 
+        //todo: make this method private and create new public method that performs validation
         /// <summary>
         /// Adds a single student to the database
         /// </summary>
