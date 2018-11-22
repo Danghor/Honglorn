@@ -89,10 +89,10 @@ namespace HonglornWPF.ViewModels
                         messageBuilder.AppendLine();
                         messageBuilder.AppendLine();
                         messageBuilder.AppendLine($"{student.ImportedForename} {student.ImportedSurname}, {student.ImportedSex}, born in {student.ImportedYearOfBirth}, in Course {student.ImportedCourseName}");
-                        messageBuilder.AppendLine($"Errors: ");
 
                         foreach (var error in student.Errors)
                         {
+                            messageBuilder.AppendLine();
                             messageBuilder.AppendLine($"Fieldname: {error.FieldName}");
                             messageBuilder.AppendLine($"Fieldcontent: {error.FieldContent}");
                             messageBuilder.AppendLine($"Message: {error.Message}");
