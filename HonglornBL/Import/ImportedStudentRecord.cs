@@ -13,7 +13,7 @@ namespace HonglornBL.Import
         public string ImportedSex { get; }
         public string ImportedYearOfBirth { get; }
 
-        public IEnumerable<FieldErrorInfo> Errors { get; private set; }
+        public IEnumerable<FieldErrorInfo> Errors { get; }
 
         public ImportedStudentRecord(string importedSurname, string importedForename, string importedCourseName, string importedSex, string importedYearOfBirth)
         {
