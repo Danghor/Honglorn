@@ -25,14 +25,7 @@ namespace HonglornBL.Models.Framework
 
             using (var reader = new StringReader(xmlContent))
             {
-                try
-                {
-                    set.AddRange((IEnumerable<TEntity>) serializer.Deserialize(reader));
-                }
-                catch (InvalidCastException ex)
-                {
-                    throw new SerializationException($"Could not initialize database. The content of the XML file used could not be casted to '{typeof(TEntity).FullName}'. XML content: {xmlContent}", ex);
-                }
+                set.AddRange((IEnumerable<TEntity>) serializer.Deserialize(reader));
             }
         }
     }
