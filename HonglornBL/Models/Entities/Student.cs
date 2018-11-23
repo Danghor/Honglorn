@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using HonglornBL.Enums;
 
 namespace HonglornBL.Models.Entities
 {
+    [DebuggerDisplay("{Forename} {Surname}, {Sex}, YOB: {YearOfBirth}, ID: {PKey}")]
     public class Student
     {
         [Key]
@@ -53,7 +55,5 @@ namespace HonglornBL.Models.Entities
 
             StudentCourseRel.Add(rel);
         }
-
-        public override string ToString() => $"{Forename} {Surname}, {Sex}, YOB: {YearOfBirth}, ID: {PKey}";
     }
 }

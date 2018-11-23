@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using HonglornBL.Enums;
 
 namespace HonglornBL
 {
+    [DebuggerDisplay("({SprintValue},{SprintScore})({JumpValue},{JumpScore})({ThrowValue},{ThrowScore})({MiddleDistanceValue},{MiddleDistanceScore}) {Rank} {Certificate}")]
     class CompetitionCalculatorContainer : ICompetitionResult
     {
         public Guid Identifier { get; set; }
@@ -29,8 +31,6 @@ namespace HonglornBL
             ThrowValue = throwValue;
             MiddleDistanceValue = middleDistanceValue;
         }
-
-        public override string ToString() => $"({SprintValue},{SprintScore})({JumpValue},{JumpScore})({ThrowValue},{ThrowScore})({MiddleDistanceValue},{MiddleDistanceScore}) {Rank} {Certificate}";
 
         internal ushort TotalScore => (ushort) (SprintScore + JumpScore + ThrowScore + MiddleDistanceScore);
     }
