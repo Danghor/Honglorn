@@ -16,37 +16,19 @@ namespace HonglornAUT
     [DeploymentItem(@"EntityFramework.SqlServer.dll")]
     public class HonglornTest
     {
-        static DbConnection CreateConnection()
-        {
-            return Effort.DbConnectionFactory.CreateTransient();
-        }
+        static DbConnection CreateConnection() => Effort.DbConnectionFactory.CreateTransient();
 
         public TestContext TestContext { get; set; }
 
-        string GetData(string tagName)
-        {
-            return TestContext.DataRow[tagName] as string;
-        }
+        string GetData(string tagName) => TestContext.DataRow[tagName] as string;
 
-        float GetFloat(string tagName)
-        {
-            return float.Parse(GetData(tagName), CultureInfo.InvariantCulture);
-        }
+        float GetFloat(string tagName) => float.Parse(GetData(tagName), CultureInfo.InvariantCulture);
 
-        ushort GetUshort(string tagName)
-        {
-            return ushort.Parse(GetData(tagName), CultureInfo.InvariantCulture);
-        }
+        ushort GetUshort(string tagName) => ushort.Parse(GetData(tagName), CultureInfo.InvariantCulture);
 
-        short GetShort(string tagName)
-        {
-            return short.Parse(GetData(tagName), CultureInfo.InvariantCulture);
-        }
+        short GetShort(string tagName) => short.Parse(GetData(tagName), CultureInfo.InvariantCulture);
 
-        bool GetBool(string tagName)
-        {
-            return bool.Parse(GetData(tagName));
-        }
+        bool GetBool(string tagName) => bool.Parse(GetData(tagName));
 
         static readonly Random Random = new Random();
 
@@ -356,6 +338,35 @@ namespace HonglornAUT
             Game? gameType = sut.GetGameType(string.Empty, 0);
 
             Assert.IsNull(gameType);
+        }
+
+        [TestMethod]
+        public void ValidCourseNames_StudentInserted_CourseNowValid()
+        {
+            short year = 2019;
+            string courseName = "6D";
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.ImportSingleStudent("Cave", "Johnson", Sex.Male, 1980, "6D", year);
+
+            var validCourse = sut.ValidCourseNames(year).Single();
+
+            Assert.AreEqual(courseName, validCourse);
+        }
+
+        [TestMethod]
+        public void YearsWithStudentDate_StudentInserted_YearReturned()
+        {
+            short year = 2019;
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.ImportSingleStudent("Cave", "Johnson", Sex.Male, 1980, "6D", year);
+
+            var yearWithStudentData = sut.YearsWithStudentData().Single();
+
+            Assert.AreEqual(year, yearWithStudentData);
         }
     }
 }
