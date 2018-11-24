@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Globalization;
@@ -7,6 +8,7 @@ using System.Linq;
 using HonglornBL;
 using HonglornBL.Enums;
 using HonglornBL.Import;
+using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -341,6 +343,63 @@ namespace HonglornAUT
         }
 
         [TestMethod]
+        public void GetGameType_CompetitionDisciplines_CompetitionGame()
+        {
+            const string className = "7";
+            const int year = 2015;
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "Sprinten", "Sekunden", true);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "Springen", "Meter", false);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "Werfen", "Meter", false);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
+
+            Guid sprintKey = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single().PKey;
+            Guid jumpKey = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single().PKey;
+            Guid throwKey = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single().PKey;
+            Guid middleDistanceKey = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single().PKey;
+
+            sut.CreateOrUpdateDisciplineCollection(className, year, sprintKey, jumpKey, throwKey, middleDistanceKey, sprintKey, jumpKey, throwKey, middleDistanceKey);
+
+            Game? gameType = sut.GetGameType(className, year);
+
+            Assert.AreEqual(Game.Competition, gameType);
+        }
+
+        [TestMethod]
+        public void GetGameType_TraditionalDisciplines_TraditionalGame()
+        {
+            const string className = "7";
+            const int year = 2015;
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "Sprinten", "Sekunden", true);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "Springen", "Meter", false);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "Werfen", "Meter", false);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
+
+            Func<DisciplineType, Sex, Guid> getDiscipline = (t, s) => sut.FilteredTraditionalDisciplines(t, s).First().PKey;
+
+            Guid maleSprintKey = getDiscipline(DisciplineType.Sprint, Sex.Male);
+            Guid maleJumpKey = getDiscipline(DisciplineType.Jump, Sex.Male);
+            Guid maleThrowKey = getDiscipline(DisciplineType.Throw, Sex.Male);
+            Guid malemMiddleDistanceKey = getDiscipline(DisciplineType.MiddleDistance, Sex.Male);
+
+            Guid femaleSprintKey = getDiscipline(DisciplineType.Sprint, Sex.Female);
+            Guid femaleJumpKey = getDiscipline(DisciplineType.Jump, Sex.Female);
+            Guid femaleThrowKey = getDiscipline(DisciplineType.Throw, Sex.Female);
+            Guid femalemMddleDistanceKey = getDiscipline(DisciplineType.MiddleDistance, Sex.Female);
+
+            sut.CreateOrUpdateDisciplineCollection(className, year, maleSprintKey, maleJumpKey, maleThrowKey, malemMiddleDistanceKey, femaleSprintKey, femaleJumpKey, femaleThrowKey, femalemMddleDistanceKey);
+
+            Game? gameType = sut.GetGameType(className, year);
+
+            Assert.AreEqual(Game.Traditional, gameType);
+        }
+
+        [TestMethod]
         public void ValidCourseNames_StudentInserted_CourseNowValid()
         {
             short year = 2019;
@@ -367,6 +426,58 @@ namespace HonglornAUT
             var yearWithStudentData = sut.YearsWithStudentData().Single();
 
             Assert.AreEqual(year, yearWithStudentData);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Constructor_NoProviderName_ThrowsException()
+        {
+            var settings = new ConnectionStringSettings("Foo", "Bar");
+            var unused = new Honglorn(settings);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Constructor_NoConnectionString_ThrowsException()
+        {
+            var settings = new ConnectionStringSettings
+            {
+                ProviderName = "Foobar"
+            };
+
+            var unused = new Honglorn(settings);
+        }
+
+        [TestMethod]
+        public void AssignedDisciplines_CompetitionDisciplines_AssignedCorrectly()
+        {
+            const string className = "7";
+            const int year = 2015;
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "Sprinten", "Sekunden", true);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "Springen", "Meter", false);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "Werfen", "Meter", false);
+            sut.CreateOrUpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
+
+            Guid sprintKey = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single().PKey;
+            Guid jumpKey = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single().PKey;
+            Guid throwKey = sut.FilteredCompetitionDisciplines(DisciplineType.Throw).Single().PKey;
+            Guid middleDistanceKey = sut.FilteredCompetitionDisciplines(DisciplineType.MiddleDistance).Single().PKey;
+
+            sut.CreateOrUpdateDisciplineCollection(className, year, sprintKey, jumpKey, throwKey, middleDistanceKey, sprintKey, jumpKey, throwKey, middleDistanceKey);
+
+            IDisciplineCollection assignedDisciplines = sut.AssignedDisciplines(className, year);
+
+            Assert.AreEqual(sprintKey, assignedDisciplines.MaleSprintPKey);
+            Assert.AreEqual(jumpKey, assignedDisciplines.MaleJumpPKey);
+            Assert.AreEqual(throwKey, assignedDisciplines.MaleThrowPKey);
+            Assert.AreEqual(middleDistanceKey, assignedDisciplines.MaleMiddleDistancePKey);
+            Assert.AreEqual(sprintKey, assignedDisciplines.FemaleSprintPKey);
+            Assert.AreEqual(jumpKey, assignedDisciplines.FemaleJumpPKey);
+            Assert.AreEqual(throwKey, assignedDisciplines.FemaleThrowPKey);
+            Assert.AreEqual(middleDistanceKey, assignedDisciplines.FemaleMiddleDistancePKey);
         }
     }
 }
