@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Xml.Serialization;
 using HonglornBL.Models.Entities;
 using HonglornBL.Properties;
