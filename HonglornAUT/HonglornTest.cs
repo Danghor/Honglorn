@@ -355,7 +355,7 @@ namespace HonglornAUT
 
             try
             {
-                ICollection<ImportedStudentRecord> result = sut.ImportStudentsFromFile(string.Empty, 2018, new Progress<ProgressReport>()).Result;
+                ICollection<ImportedStudentRecord> unused = sut.ImportStudentsFromFile(string.Empty, 2018, new Progress<ProgressReport>()).Result;
             }
             catch (AggregateException e)
             {
@@ -509,6 +509,22 @@ namespace HonglornAUT
             Assert.AreEqual(jumpKey, assignedDisciplines.FemaleJumpPKey);
             Assert.AreEqual(throwKey, assignedDisciplines.FemaleThrowPKey);
             Assert.AreEqual(middleDistanceKey, assignedDisciplines.FemaleMiddleDistancePKey);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DataException))]
+        public void GetResults_NoDisciplinesConfigured_ThrowsException()
+        {
+            var sut = new Honglorn(CreateConnection());
+
+            try
+            {
+                IEnumerable<IResult> unused = sut.GetResultsAsync("6A", 2014).Result;
+            }
+            catch (AggregateException ex)
+            {
+                throw ex.InnerExceptions.Single();
+            }
         }
     }
 }
