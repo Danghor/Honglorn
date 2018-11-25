@@ -63,7 +63,7 @@ namespace HonglornAUT
         }
 
         [TestMethod]
-        public void EditStudentPerformance_SuccessfullyAddedSaved()
+        public void UpdateSingleStudentCompetition_CompetitionDataAdded_SuccessfullySaved()
         {
             const string forename = "Cave";
             const string surname = "Johnson";
@@ -88,6 +88,37 @@ namespace HonglornAUT
             Assert.IsNull(studentPerformance.Jump);
             Assert.AreEqual(throwPerformance, studentPerformance.Throw);
             Assert.IsNull(studentPerformance.MiddleDistance);
+        }
+
+        [TestMethod]
+        public void UpdateSingleStudentCompetition_CompetitionDataChanged_SuccessfullyChanged()
+        {
+            const string forename = "Cave";
+            const string surname = "Johnson";
+            const string courseName = "08B";
+            const short year = 2018;
+            const float sprintPerformance = 5;
+            const float jumpPerformance = 6;
+            const float throwPerformance = 7;
+            const float middleDistancePerformance = 8;
+
+            var sut = new Honglorn(CreateConnection());
+
+            sut.ImportSingleStudent(forename, surname, Sex.Male, 1928, courseName, year);
+
+            Guid pKey = sut.StudentPerformances(courseName, year).Single().StudentPKey;
+
+            sut.UpdateSingleStudentCompetition(pKey, year, 1, 2, 3, 4);
+            sut.UpdateSingleStudentCompetition(pKey, year, sprintPerformance, jumpPerformance, throwPerformance, middleDistancePerformance);
+
+            IStudentPerformance studentPerformance = sut.StudentPerformances(courseName, year).Single();
+
+            Assert.AreEqual(forename, studentPerformance.Forename);
+            Assert.AreEqual(surname, studentPerformance.Surname);
+            Assert.AreEqual(sprintPerformance, studentPerformance.Sprint);
+            Assert.AreEqual(jumpPerformance, studentPerformance.Jump);
+            Assert.AreEqual(throwPerformance, studentPerformance.Throw);
+            Assert.AreEqual(middleDistancePerformance, studentPerformance.MiddleDistance);
         }
 
         [TestMethod]
