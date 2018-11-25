@@ -1,7 +1,9 @@
-﻿using HonglornBL.Enums;
+﻿using System.Diagnostics;
+using HonglornBL.Enums;
 
 namespace HonglornAUT
 {
+    [DebuggerDisplay("{Sex} ({Sprint}|{SprintScore}) ({Jump}|{JumpScore}) ({Throw}|{ThrowScore}) ({MiddleDistance}|{MiddleDistanceScore}) {Certificate}")]
     class CompetitionStudent
     {
         internal string Course { get; }
@@ -35,7 +37,5 @@ namespace HonglornAUT
             MiddleDistanceScore = middleDistanceScore;
             Certificate = certificate;
         }
-
-        public override string ToString() => $"{Sex} ({Sprint}|{SprintScore}) ({Jump}|{JumpScore}) ({Throw}|{ThrowScore}) ({MiddleDistance}|{MiddleDistanceScore}) {Certificate}";
     }
 }
