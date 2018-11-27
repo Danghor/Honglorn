@@ -268,23 +268,23 @@ namespace HonglornAUT
 
             foreach (DataRow courseRow in TestContext.DataRow.GetChildRows("Row_Course"))
             {
-                string courseName = courseRow["Name"] as string;
+                string courseName = courseRow["Name"].ToString();
 
                 foreach (DataRow student in courseRow.GetChildRows("Course_Student"))
                 {
-                    var sex = (Sex) Enum.Parse(typeof(Sex), student["Sex"] as string);
+                    var sex = (Sex) Enum.Parse(typeof(Sex), student["Sex"].ToString());
 
-                    float sprint = float.Parse(student["Sprint"] as string, CultureInfo.InvariantCulture);
-                    float jump = float.Parse(student["Jump"] as string, CultureInfo.InvariantCulture);
-                    float @throw = float.Parse(student["Throw"] as string, CultureInfo.InvariantCulture);
-                    float middleDistance = float.Parse(student["MiddleDistance"] as string, CultureInfo.InvariantCulture);
+                    float sprint = float.Parse(student["Sprint"].ToString(), CultureInfo.InvariantCulture);
+                    float jump = float.Parse(student["Jump"].ToString(), CultureInfo.InvariantCulture);
+                    float @throw = float.Parse(student["Throw"].ToString(), CultureInfo.InvariantCulture);
+                    float middleDistance = float.Parse(student["MiddleDistance"].ToString(), CultureInfo.InvariantCulture);
 
-                    ushort sprintScore = ushort.Parse(student["SprintScore"] as string);
-                    ushort jumpScore = ushort.Parse(student["JumpScore"] as string);
-                    ushort throwScore = ushort.Parse(student["ThrowScore"] as string);
-                    ushort middleDistanceScore = ushort.Parse(student["MiddleDistanceScore"] as string);
+                    ushort sprintScore = ushort.Parse(student["SprintScore"].ToString());
+                    ushort jumpScore = ushort.Parse(student["JumpScore"].ToString());
+                    ushort throwScore = ushort.Parse(student["ThrowScore"].ToString());
+                    ushort middleDistanceScore = ushort.Parse(student["MiddleDistanceScore"].ToString());
 
-                    var certificate = (Certificate) Enum.Parse(typeof(Certificate), student["Certificate"] as string);
+                    var certificate = (Certificate) Enum.Parse(typeof(Certificate), student["Certificate"].ToString());
 
                     students.Add(new CompetitionStudent(courseName, RandomString(), RandomString(), sex, sprint, jump, @throw, middleDistance, sprintScore, jumpScore, throwScore, middleDistanceScore, certificate));
                 }
