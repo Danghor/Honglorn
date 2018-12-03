@@ -387,21 +387,19 @@ namespace HonglornBL
 
                 if (competition == null)
                 {
-                    throw new ArgumentException("No discipline with such key in database.", nameof(disciplinePKey));
+                    throw new ArgumentException($"A {nameof(CompetitionDiscipline)} with PKey {disciplinePKey} does not exist in the database.", nameof(disciplinePKey));
                 }
-                else
-                {
-                    competition.Type = type;
-                    competition.Name = name;
-                    competition.Unit = unit;
-                    competition.LowIsBetter = lowIsBetter;
-                }
+
+                competition.Type = type;
+                competition.Name = name;
+                competition.Unit = unit;
+                competition.LowIsBetter = lowIsBetter;
 
                 db.SaveChanges();
             }
         }
 
-        public void DeleteCompetitionDiscipline(Guid pKey)
+        public void DeleteCompetitionDiscipline(Guid disciplinePKey)
         {
             try
             {
@@ -409,7 +407,7 @@ namespace HonglornBL
                 {
                     var discipline = new CompetitionDiscipline
                     {
-                        PKey = pKey
+                        PKey = disciplinePKey
                     };
 
                     db.Entry(discipline).State = EntityState.Deleted;
@@ -418,7 +416,7 @@ namespace HonglornBL
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                throw new ArgumentException($"A {nameof(CompetitionDiscipline)} with PKey {pKey} does not exist in the database.", nameof(pKey), ex);
+                throw new ArgumentException($"A {nameof(CompetitionDiscipline)} with PKey {disciplinePKey} does not exist in the database.", nameof(disciplinePKey), ex);
             }
         }
 
