@@ -19,7 +19,7 @@
       <ColumnDefinition Width="Auto" />
     </Grid.ColumnDefinitions>
 
-    <DataGrid Grid.Column="0" Margin="5 5 5 5" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}">
+    <DataGrid Grid.Column="0" Margin="5 5 5 5" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}" IsReadOnly="True">
       <DataGrid.Columns>
         <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
         <DataGridTemplateColumn Header="Disziplin">
@@ -49,16 +49,19 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
 
       <Label Grid.Row="0" Grid.Column="0" Content="Name" />
       <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentDiscipline.Name}"/>
       <Label Grid.Row="1" Grid.Column="0" Content="Disziplin" />
-      <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding DisciplineTypesList}" SelectedItem="{Binding CurrentDiscipline.Type}"/>
+      <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{StaticResource DisciplineTypesList}" SelectedItem="{Binding CurrentDiscipline.Type}"/>
       <Label Grid.Row="2" Grid.Column="0" Content="Einheit" />
       <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentDiscipline.Unit}"/>
       <Label Grid.Row="3" Grid.Column="0" Content="Weniger ist besser" />
       <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding CurrentDiscipline.LowIsBetter}"/>
+      <Button Grid.Row="4" Grid.Column="0" Content="Änderungen speichern" />
+      <Button Grid.Row="4" Grid.Column="1" Content="Disziplin löschen" />
     </Grid>
   </Grid>
 </UserControl>
