@@ -225,7 +225,7 @@ namespace HonglornAUT
 
             var sut = new Honglorn(CreateConnection());
 
-            sut.UpdateCompetitionDiscipline(Guid.Empty, type, name, unit, lowIsBetter);
+            sut.CreateCompetitionDiscipline(type, name, unit, lowIsBetter);
 
             CompetitionDiscipline discipline = sut.AllCompetitionDisciplines().Single();
 
@@ -240,7 +240,7 @@ namespace HonglornAUT
         {
             var sut = new Honglorn(CreateConnection());
 
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "Run very fast", "seconds", true);
+            sut.CreateCompetitionDiscipline(DisciplineType.Sprint, "Run very fast", "seconds", true);
 
             Guid disciplinePKey = sut.AllCompetitionDisciplines().Single().PKey;
             sut.DeleteCompetitionDiscipline(disciplinePKey);
@@ -298,15 +298,15 @@ namespace HonglornAUT
                 sut.ImportSingleStudent(s.Forename, s.Surname, s.Sex, (short) (DateTime.Now.Year - 10), s.Course, year);
             }
 
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "A", "a", GetBool("SprintLowIsBetterMale"));
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "B", "b", GetBool("JumpLowIsBetterMale"));
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "C", "c", GetBool("ThrowLowIsBetterMale"));
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "D", "d", GetBool("MiddleDistanceLowIsBetterMale"));
+            sut.CreateCompetitionDiscipline(DisciplineType.Sprint, "A", "a", GetBool("SprintLowIsBetterMale"));
+            sut.CreateCompetitionDiscipline(DisciplineType.Jump, "B", "b", GetBool("JumpLowIsBetterMale"));
+            sut.CreateCompetitionDiscipline(DisciplineType.Throw, "C", "c", GetBool("ThrowLowIsBetterMale"));
+            sut.CreateCompetitionDiscipline(DisciplineType.MiddleDistance, "D", "d", GetBool("MiddleDistanceLowIsBetterMale"));
 
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "E", "e", GetBool("SprintLowIsBetterFemale"));
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "F", "f", GetBool("JumpLowIsBetterFemale"));
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "G", "g", GetBool("ThrowLowIsBetterFemale"));
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "H", "h", GetBool("MiddleDistanceLowIsBetterFemale"));
+            sut.CreateCompetitionDiscipline(DisciplineType.Sprint, "E", "e", GetBool("SprintLowIsBetterFemale"));
+            sut.CreateCompetitionDiscipline(DisciplineType.Jump, "F", "f", GetBool("JumpLowIsBetterFemale"));
+            sut.CreateCompetitionDiscipline(DisciplineType.Throw, "G", "g", GetBool("ThrowLowIsBetterFemale"));
+            sut.CreateCompetitionDiscipline(DisciplineType.MiddleDistance, "H", "h", GetBool("MiddleDistanceLowIsBetterFemale"));
 
             Guid maleSprintGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single(d => d.ToString() == "A").PKey;
             Guid maleJumpGuid = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single(d => d.ToString() == "B").PKey;
@@ -383,10 +383,10 @@ namespace HonglornAUT
 
             var sut = new Honglorn(CreateConnection());
 
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "Sprinten", "Sekunden", true);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "Springen", "Meter", false);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "Werfen", "Meter", false);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
+            sut.CreateCompetitionDiscipline(DisciplineType.Sprint, "Sprinten", "Sekunden", true);
+            sut.CreateCompetitionDiscipline(DisciplineType.Jump, "Springen", "Meter", false);
+            sut.CreateCompetitionDiscipline(DisciplineType.Throw, "Werfen", "Meter", false);
+            sut.CreateCompetitionDiscipline(DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
 
             Guid sprintKey = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single().PKey;
             Guid jumpKey = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single().PKey;
@@ -408,10 +408,10 @@ namespace HonglornAUT
 
             var sut = new Honglorn(CreateConnection());
 
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "Sprinten", "Sekunden", true);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "Springen", "Meter", false);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "Werfen", "Meter", false);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
+            sut.CreateCompetitionDiscipline(DisciplineType.Sprint, "Sprinten", "Sekunden", true);
+            sut.CreateCompetitionDiscipline(DisciplineType.Jump, "Springen", "Meter", false);
+            sut.CreateCompetitionDiscipline(DisciplineType.Throw, "Werfen", "Meter", false);
+            sut.CreateCompetitionDiscipline(DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
 
             Func<DisciplineType, Sex, Guid> getDiscipline = (t, s) => sut.FilteredTraditionalDisciplines(t, s).First().PKey;
 
@@ -489,10 +489,10 @@ namespace HonglornAUT
 
             var sut = new Honglorn(CreateConnection());
 
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Sprint, "Sprinten", "Sekunden", true);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Jump, "Springen", "Meter", false);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.Throw, "Werfen", "Meter", false);
-            sut.UpdateCompetitionDiscipline(Guid.Empty, DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
+            sut.CreateCompetitionDiscipline(DisciplineType.Sprint, "Sprinten", "Sekunden", true);
+            sut.CreateCompetitionDiscipline(DisciplineType.Jump, "Springen", "Meter", false);
+            sut.CreateCompetitionDiscipline(DisciplineType.Throw, "Werfen", "Meter", false);
+            sut.CreateCompetitionDiscipline(DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
 
             Guid sprintKey = sut.FilteredCompetitionDisciplines(DisciplineType.Sprint).Single().PKey;
             Guid jumpKey = sut.FilteredCompetitionDisciplines(DisciplineType.Jump).Single().PKey;
