@@ -30,7 +30,7 @@ namespace HonglornWPF.ViewModels
         {
             if (discipline != null)
             {
-                Honglorn.CreateOrUpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
+                Honglorn.UpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
             }
         }
     }

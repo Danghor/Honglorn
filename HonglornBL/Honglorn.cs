@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -362,7 +363,23 @@ namespace HonglornBL
             }
         }
 
-        public void CreateOrUpdateCompetitionDiscipline(Guid disciplinePKey, DisciplineType type, string name, string unit, bool lowIsBetter)
+        public void CreateCompetitionDiscipline(DisciplineType type, string name, string unit, bool lowIsBetter)
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                db.CompetitionDiscipline.Add(new CompetitionDiscipline
+                {
+                    Type = type,
+                    Name = name,
+                    Unit = unit,
+                    LowIsBetter = lowIsBetter
+                });
+
+                db.SaveChanges();
+            }
+        }
+
+        public void UpdateCompetitionDiscipline(Guid disciplinePKey, DisciplineType type, string name, string unit, bool lowIsBetter)
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
@@ -370,18 +387,10 @@ namespace HonglornBL
 
                 if (competition == null)
                 {
-                    // Create
-                    db.CompetitionDiscipline.Add(new CompetitionDiscipline
-                    {
-                        Type = type,
-                        Name = name,
-                        Unit = unit,
-                        LowIsBetter = lowIsBetter
-                    });
+                    throw new ArgumentException("No discipline with such key in database.", nameof(disciplinePKey));
                 }
                 else
                 {
-                    // Update
                     competition.Type = type;
                     competition.Name = name;
                     competition.Unit = unit;
@@ -392,7 +401,7 @@ namespace HonglornBL
             }
         }
 
-        public void DeleteCompetitionDisciplineByPKey(Guid pKey)
+        public void DeleteCompetitionDiscipline(Guid pKey)
         {
             try
             {
@@ -407,9 +416,9 @@ namespace HonglornBL
                     db.SaveChanges();
                 }
             }
-            catch (Exception ex)
+            catch (DbUpdateConcurrencyException ex)
             {
-                throw new ArgumentException($"A {nameof(CompetitionDiscipline)} with PKey {pKey} does not exist in the database.", ex);
+                throw new ArgumentException($"A {nameof(CompetitionDiscipline)} with PKey {pKey} does not exist in the database.", nameof(pKey), ex);
             }
         }
 
@@ -682,6 +691,6 @@ namespace HonglornBL
             }
         }
 
-        #endregion        
+        #endregion
     }
 }
