@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
@@ -199,7 +199,7 @@ namespace HonglornBL
             return from c in competitionResults
                    join s in students on c.Identifier equals s.PKey
                    orderby s.Surname, s.Forename, s.YearOfBirth descending
-                   select new Result(s.Forename, s.Surname, c.SprintScore, c.JumpScore, c.ThrowScore, c.MiddleDistanceScore, (ushort) (c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), c.Certificate);
+                   select new Result(s.Forename, s.Surname, c.SprintScore, c.JumpScore, c.ThrowScore, c.MiddleDistanceScore, c.Rank, (ushort) (c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), c.Certificate);
         }
 
         IEnumerable<IResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
@@ -235,7 +235,7 @@ namespace HonglornBL
 
                 int studentAge = year - student.YearOfBirth;
 
-                results.Add(new Result(student.Forename, student.Surname, scores[0], scores[1], scores[2], scores[3], totalScore, DetermineTraditionalCertificate(student.Sex, studentAge, totalScore)));
+                results.Add(new Result(student.Forename, student.Surname, scores[0], scores[1], scores[2], scores[3], 0, totalScore, DetermineTraditionalCertificate(student.Sex, studentAge, totalScore)));
             }
 
             return results;

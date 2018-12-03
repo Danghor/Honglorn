@@ -177,7 +177,7 @@ namespace HonglornAUT
             Assert.AreEqual(GetUshort("JumpScore"), result.JumpScore);
             Assert.AreEqual(GetUshort("ThrowScore"), result.ThrowScore);
             Assert.AreEqual(GetUshort("MiddleDistanceScore"), result.MiddleDistanceScore);
-            Assert.AreEqual(GetUshort("TotalScore"), result.Score);
+            Assert.AreEqual(GetUshort("TotalScore"), result.TotalScore);
             Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("Certificate")), result.Certificate);
         }
 
@@ -211,7 +211,7 @@ namespace HonglornAUT
             Assert.AreEqual(0, result.JumpScore);
             Assert.AreEqual(0, result.ThrowScore);
             Assert.AreEqual(0, result.MiddleDistanceScore);
-            Assert.AreEqual(0, result.Score);
+            Assert.AreEqual(0, result.TotalScore);
             Assert.AreEqual(Certificate.Participation, result.Certificate);
         }
 
@@ -284,9 +284,10 @@ namespace HonglornAUT
                     ushort throwScore = ushort.Parse(student["ThrowScore"].ToString());
                     ushort middleDistanceScore = ushort.Parse(student["MiddleDistanceScore"].ToString());
 
+                    ushort rank = ushort.Parse(student["Rank"].ToString());
                     var certificate = (Certificate) Enum.Parse(typeof(Certificate), student["Certificate"].ToString());
 
-                    students.Add(new CompetitionStudent(courseName, RandomString(), RandomString(), sex, sprint, jump, @throw, middleDistance, sprintScore, jumpScore, throwScore, middleDistanceScore, certificate));
+                    students.Add(new CompetitionStudent(courseName, RandomString(), RandomString(), sex, sprint, jump, @throw, middleDistance, sprintScore, jumpScore, throwScore, middleDistanceScore, rank, certificate));
                 }
             }
 
@@ -341,7 +342,8 @@ namespace HonglornAUT
                 {
                     IResult studentResult = results.Single(r => r.Forename == student.Forename && r.Surname == student.Surname);
 
-                    Assert.AreEqual(student.SprintScore + student.JumpScore + student.ThrowScore + student.MiddleDistanceScore, studentResult.Score);
+                    Assert.AreEqual(student.SprintScore + student.JumpScore + student.ThrowScore + student.MiddleDistanceScore, studentResult.TotalScore);
+                    Assert.AreEqual(student.Rank, studentResult.Rank);
                     Assert.AreEqual(student.Certificate, studentResult.Certificate);
                 }
             }

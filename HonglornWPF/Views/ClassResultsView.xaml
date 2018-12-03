@@ -54,7 +54,8 @@
                 <DataGridTextColumn IsReadOnly="True" Header="Punkte Sprung" Binding="{Binding JumpScore}"/>
                 <DataGridTextColumn IsReadOnly="True" Header="Punkte Wurf" Binding="{Binding ThrowScore}"/>
                 <DataGridTextColumn IsReadOnly="True" Header="Punkte Ausdauer" Binding="{Binding MiddleDistanceScore}"/>
-                <DataGridTextColumn IsReadOnly="True" Header="Punkte Gesamt" Binding="{Binding Score}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Punkte Gesamt" Binding="{Binding TotalScore}"/>
+                <DataGridTextColumn IsReadOnly="True" Header="Rang" Binding="{Binding Rank}"/>
                 <DataGridTextColumn IsReadOnly="True" Header="Urkunde" Binding="{Binding Certificate}"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -12,7 +12,8 @@ namespace HonglornBL
         ushort ThrowScore { get; }
         ushort MiddleDistanceScore { get; }
 
-        ushort Score { get; }
+        ushort Rank { get; }
+        ushort TotalScore { get; }
         Certificate Certificate { get; }
     }
 }

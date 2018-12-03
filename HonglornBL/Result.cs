@@ -12,10 +12,11 @@ namespace HonglornBL
         public ushort ThrowScore { get; }
         public ushort MiddleDistanceScore { get; }
 
-        public ushort Score { get; }
+        public ushort Rank { get; }
+        public ushort TotalScore { get; }
         public Certificate Certificate { get; }
 
-        internal Result(string forename, string surname, ushort sprintScore, ushort jumpScore, ushort throwScore, ushort middleDistanceScore, ushort score, Certificate certificate)
+        internal Result(string forename, string surname, ushort sprintScore, ushort jumpScore, ushort throwScore, ushort middleDistanceScore, ushort rank, ushort totalScore, Certificate certificate)
         {
             Forename = forename;
             Surname = surname;
@@ -23,7 +24,8 @@ namespace HonglornBL
             JumpScore = jumpScore;
             ThrowScore = throwScore;
             MiddleDistanceScore = middleDistanceScore;
-            Score = score;
+            Rank = rank;
+            TotalScore = totalScore;
             Certificate = certificate;
         }
     }

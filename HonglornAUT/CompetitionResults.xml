@@ -21,6 +21,7 @@
         <JumpScore>1</JumpScore>
         <ThrowScore>1</ThrowScore>
         <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Rank>1</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -33,6 +34,7 @@
         <JumpScore>1</JumpScore>
         <ThrowScore>1</ThrowScore>
         <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Rank>1</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
     </Course>
@@ -47,6 +49,7 @@
         <JumpScore>1</JumpScore>
         <ThrowScore>1</ThrowScore>
         <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Rank>1</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -59,6 +62,7 @@
         <JumpScore>1</JumpScore>
         <ThrowScore>1</ThrowScore>
         <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Rank>1</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
     </Course>
@@ -84,6 +88,7 @@
         <ThrowScore>1</ThrowScore>
         <MiddleDistance>7</MiddleDistance>
         <MiddleDistanceScore>3</MiddleDistanceScore>
+        <Rank>1</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -96,6 +101,7 @@
         <ThrowScore>5</ThrowScore>
         <MiddleDistance>9</MiddleDistance>
         <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Rank>2</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -108,6 +114,7 @@
         <ThrowScore>5</ThrowScore>
         <MiddleDistance>8</MiddleDistance>
         <MiddleDistanceScore>2</MiddleDistanceScore>
+        <Rank>4</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -120,6 +127,7 @@
         <ThrowScore>8</ThrowScore>
         <MiddleDistance>6</MiddleDistance>
         <MiddleDistanceScore>6</MiddleDistanceScore>
+        <Rank>8</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -132,6 +140,7 @@
         <ThrowScore>3</ThrowScore>
         <MiddleDistance>7</MiddleDistance>
         <MiddleDistanceScore>3</MiddleDistanceScore>
+        <Rank>3</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -144,6 +153,7 @@
         <ThrowScore>12</ThrowScore>
         <MiddleDistance>3</MiddleDistance>
         <MiddleDistanceScore>15</MiddleDistanceScore>
+        <Rank>15</Rank>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -156,6 +166,7 @@
         <ThrowScore>9</ThrowScore>
         <MiddleDistance>5</MiddleDistance>
         <MiddleDistanceScore>9</MiddleDistanceScore>
+        <Rank>6</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -168,6 +179,7 @@
         <ThrowScore>5</ThrowScore>
         <MiddleDistance>6</MiddleDistance>
         <MiddleDistanceScore>6</MiddleDistanceScore>
+        <Rank>5</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -180,6 +192,7 @@
         <ThrowScore>12</ThrowScore>
         <MiddleDistance>4</MiddleDistance>
         <MiddleDistanceScore>12</MiddleDistanceScore>
+        <Rank>12</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -192,6 +205,7 @@
         <ThrowScore>11</ThrowScore>
         <MiddleDistance>4</MiddleDistance>
         <MiddleDistanceScore>12</MiddleDistanceScore>
+        <Rank>11</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -204,6 +218,7 @@
         <ThrowScore>14</ThrowScore>
         <MiddleDistance>3</MiddleDistance>
         <MiddleDistanceScore>15</MiddleDistanceScore>
+        <Rank>16</Rank>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -216,6 +231,7 @@
         <ThrowScore>9</ThrowScore>
         <MiddleDistance>4</MiddleDistance>
         <MiddleDistanceScore>12</MiddleDistanceScore>
+        <Rank>14</Rank>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -228,6 +244,7 @@
         <ThrowScore>4</ThrowScore>
         <MiddleDistance>5</MiddleDistance>
         <MiddleDistanceScore>9</MiddleDistanceScore>
+        <Rank>10</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -240,6 +257,7 @@
         <ThrowScore>2</ThrowScore>
         <MiddleDistance>6</MiddleDistance>
         <MiddleDistanceScore>6</MiddleDistanceScore>
+        <Rank>6</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -252,6 +270,7 @@
         <ThrowScore>14</ThrowScore>
         <MiddleDistance>5</MiddleDistance>
         <MiddleDistanceScore>9</MiddleDistanceScore>
+        <Rank>13</Rank>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -264,6 +283,7 @@
         <ThrowScore>16</ThrowScore>
         <MiddleDistance>7</MiddleDistance>
         <MiddleDistanceScore>3</MiddleDistanceScore>
+        <Rank>9</Rank>
         <Certificate>Victory</Certificate>
       </Student>
     </Course>
@@ -289,6 +309,7 @@
         <ThrowScore>1</ThrowScore>
         <MiddleDistance>7</MiddleDistance>
         <MiddleDistanceScore>3</MiddleDistanceScore>
+        <Rank>1</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -301,6 +322,7 @@
         <ThrowScore>5</ThrowScore>
         <MiddleDistance>9</MiddleDistance>
         <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Rank>2</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -313,6 +335,7 @@
         <ThrowScore>5</ThrowScore>
         <MiddleDistance>8</MiddleDistance>
         <MiddleDistanceScore>2</MiddleDistanceScore>
+        <Rank>4</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -325,6 +348,7 @@
         <ThrowScore>8</ThrowScore>
         <MiddleDistance>6</MiddleDistance>
         <MiddleDistanceScore>6</MiddleDistanceScore>
+        <Rank>8</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -337,6 +361,7 @@
         <ThrowScore>3</ThrowScore>
         <MiddleDistance>7</MiddleDistance>
         <MiddleDistanceScore>3</MiddleDistanceScore>
+        <Rank>3</Rank>
         <Certificate>Honorary</Certificate>
       </Student>
       <Student>
@@ -349,6 +374,7 @@
         <ThrowScore>12</ThrowScore>
         <MiddleDistance>3</MiddleDistance>
         <MiddleDistanceScore>15</MiddleDistanceScore>
+        <Rank>15</Rank>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -361,6 +387,7 @@
         <ThrowScore>9</ThrowScore>
         <MiddleDistance>5</MiddleDistance>
         <MiddleDistanceScore>9</MiddleDistanceScore>
+        <Rank>6</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -373,6 +400,7 @@
         <ThrowScore>5</ThrowScore>
         <MiddleDistance>6</MiddleDistance>
         <MiddleDistanceScore>6</MiddleDistanceScore>
+        <Rank>5</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -385,6 +413,7 @@
         <ThrowScore>12</ThrowScore>
         <MiddleDistance>4</MiddleDistance>
         <MiddleDistanceScore>12</MiddleDistanceScore>
+        <Rank>12</Rank>
         <Certificate>Victory</Certificate>
       </Student>
     </Course>
@@ -399,6 +428,7 @@
         <ThrowScore>11</ThrowScore>
         <MiddleDistance>4</MiddleDistance>
         <MiddleDistanceScore>12</MiddleDistanceScore>
+        <Rank>11</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -411,6 +441,7 @@
         <ThrowScore>14</ThrowScore>
         <MiddleDistance>3</MiddleDistance>
         <MiddleDistanceScore>15</MiddleDistanceScore>
+        <Rank>16</Rank>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -423,6 +454,7 @@
         <ThrowScore>9</ThrowScore>
         <MiddleDistance>4</MiddleDistance>
         <MiddleDistanceScore>12</MiddleDistanceScore>
+        <Rank>14</Rank>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -435,6 +467,7 @@
         <ThrowScore>4</ThrowScore>
         <MiddleDistance>5</MiddleDistance>
         <MiddleDistanceScore>9</MiddleDistanceScore>
+        <Rank>10</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -447,6 +480,7 @@
         <ThrowScore>2</ThrowScore>
         <MiddleDistance>6</MiddleDistance>
         <MiddleDistanceScore>6</MiddleDistanceScore>
+        <Rank>6</Rank>
         <Certificate>Victory</Certificate>
       </Student>
       <Student>
@@ -459,6 +493,7 @@
         <ThrowScore>14</ThrowScore>
         <MiddleDistance>5</MiddleDistance>
         <MiddleDistanceScore>9</MiddleDistanceScore>
+        <Rank>13</Rank>
         <Certificate>Participation</Certificate>
       </Student>
       <Student>
@@ -471,6 +506,7 @@
         <ThrowScore>16</ThrowScore>
         <MiddleDistance>7</MiddleDistance>
         <MiddleDistanceScore>3</MiddleDistanceScore>
+        <Rank>9</Rank>
         <Certificate>Victory</Certificate>
       </Student>
     </Course>
