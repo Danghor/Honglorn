@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using HonglornBL.Models.Entities;
 
@@ -12,11 +12,7 @@ namespace HonglornWPF.ViewModels
         public CompetitionDiscipline CurrentDiscipline
         {
             get { return currentDiscipline; }
-            set
-            {
-                SaveDiscipline(currentDiscipline);
-                OnPropertyChanged(out currentDiscipline, value);
-            }
+            set { OnPropertyChanged(out currentDiscipline, value); }
         }
 
         public EditDisciplinesViewModel()
