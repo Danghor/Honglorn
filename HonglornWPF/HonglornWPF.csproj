@@ -137,6 +137,9 @@
     <Compile Include="Views\AssignDisciplinesView.xaml.cs">
       <DependentUpon>AssignDisciplinesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CreateCompetitionDisciplineView.xaml.cs">
+      <DependentUpon>CreateCompetitionDisciplineView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditDisciplinesView.xaml.cs">
       <DependentUpon>EditDisciplinesView.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AssignDisciplinesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateCompetitionDisciplineView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
