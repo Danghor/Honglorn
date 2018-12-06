@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
@@ -7,6 +9,8 @@ namespace HonglornWPF.ViewModels
     class EditDisciplinesViewModel : ViewModel
     {
         public ObservableCollection<CompetitionDiscipline> Disciplines { get; } = new ObservableCollection<CompetitionDiscipline>();
+
+        public ICommand ShowCreateCompetitionDisciplineViewCommand { get; }
 
         CompetitionDiscipline currentDiscipline;
         public CompetitionDiscipline CurrentDiscipline
@@ -17,7 +21,13 @@ namespace HonglornWPF.ViewModels
 
         public EditDisciplinesViewModel()
         {
+            ShowCreateCompetitionDisciplineViewCommand = new RelayCommand(ShowCreateCompetitionDisciplineView);
             LoadDisciplines();
+        }
+
+        void ShowCreateCompetitionDisciplineView()
+        {
+            throw new NotImplementedException();
         }
 
         void LoadDisciplines() => ClearAndFill(Disciplines, Honglorn.AllCompetitionDisciplines());

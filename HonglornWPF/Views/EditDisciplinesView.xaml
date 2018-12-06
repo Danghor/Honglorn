@@ -50,6 +50,7 @@
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
       </Grid.RowDefinitions>
 
       <Label Grid.Row="0" Grid.Column="0" Content="Name" />
@@ -62,6 +63,7 @@
       <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding CurrentDiscipline.LowIsBetter}"/>
       <Button Grid.Row="4" Grid.Column="0" Content="Änderungen speichern" />
       <Button Grid.Row="4" Grid.Column="1" Content="Disziplin löschen" />
+      <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Neue Disziplin" Command="{Binding ShowCreateCompetitionDisciplineViewCommand}"/>
     </Grid>
   </Grid>
 </UserControl>
