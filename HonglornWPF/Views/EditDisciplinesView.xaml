@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF"
+             xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             dialog:DialogParticipation.Register="{Binding}"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
-             mc:Ignorable="d" x:ClassModifier="internal">
+             mc:Ignorable="d"
+             x:ClassModifier="internal">
   <UserControl.Resources>
     <viewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
   </UserControl.Resources>
-  <UserControl.DataContext>
-    <viewModels:EditDisciplinesViewModel/>
-  </UserControl.DataContext>
 
   <Grid>
     <Grid.ColumnDefinitions>

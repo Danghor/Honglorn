@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using HonglornBL.Models.Entities;
+using HonglornWPF.Views;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace HonglornWPF.ViewModels
 {
@@ -12,6 +14,8 @@ namespace HonglornWPF.ViewModels
 
         public ICommand ShowCreateCompetitionDisciplineViewCommand { get; }
 
+        readonly IDialogCoordinator dialogCoordinator;
+
         CompetitionDiscipline currentDiscipline;
         public CompetitionDiscipline CurrentDiscipline
         {
@@ -19,15 +23,28 @@ namespace HonglornWPF.ViewModels
             set { OnPropertyChanged(out currentDiscipline, value); }
         }
 
-        public EditDisciplinesViewModel()
+        public EditDisciplinesViewModel(IDialogCoordinator dialogCoordinator)
         {
+            this.dialogCoordinator = dialogCoordinator;
             ShowCreateCompetitionDisciplineViewCommand = new RelayCommand(ShowCreateCompetitionDisciplineView);
             LoadDisciplines();
         }
 
-        void ShowCreateCompetitionDisciplineView()
+        async void ShowCreateCompetitionDisciplineView()
         {
-            throw new NotImplementedException();
+            var customDialog = new CustomDialog
+            {
+                Title = "Custom Dialog",
+                Content = new CreateCompetitionDisciplineView()
+            };
+
+            //var customDialogExampleContent = new CustomDialogExampleContent(instance =>
+            //{
+            //    _dialogCoordinator.HideMetroDialogAsync(this, customDialog);
+            //    System.Diagnostics.Debug.WriteLine(instance.FirstName);
+            //});
+
+            await dialogCoordinator.ShowMetroDialogAsync(this, customDialog);
         }
 
         void LoadDisciplines() => ClearAndFill(Disciplines, Honglorn.AllCompetitionDisciplines());
