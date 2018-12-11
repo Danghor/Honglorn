@@ -129,6 +129,7 @@
     <Compile Include="StudentPerformance.cs" />
     <Compile Include="ViewModels\AssignDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\ClassResultsViewModel.cs" />
+    <Compile Include="ViewModels\CreateCompetitionDisciplineViewModel.cs" />
     <Compile Include="ViewModels\EditDisciplinesViewModel.cs" />
     <Compile Include="ViewModels\EditPerformanceViewModel.cs" />
     <Compile Include="ViewModels\ImportStudentsViewModel.cs" />

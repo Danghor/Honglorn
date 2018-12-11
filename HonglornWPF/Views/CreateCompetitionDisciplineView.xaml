@@ -9,9 +9,9 @@
   <UserControl.Resources>
     <viewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
   </UserControl.Resources>
-  <!--<UserControl.DataContext>
-    <viewModels:CreateCompetitionDisciplineView/>
-  </UserControl.DataContext>-->
+  <UserControl.DataContext>
+    <viewModels:CreateCompetitionDisciplineViewModel/>
+  </UserControl.DataContext>
 
   <Grid>
     <Grid Margin="5 5 5 5">
