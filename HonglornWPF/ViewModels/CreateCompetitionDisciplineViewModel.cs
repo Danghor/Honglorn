@@ -1,9 +1,13 @@
-﻿using HonglornBL.Enums;
+﻿using System;
+using System.Windows.Input;
+using HonglornBL.Enums;
 
 namespace HonglornWPF.ViewModels
 {
     class CreateCompetitionDisciplineViewModel : ViewModel
     {
+        public ICommand CloseCommand { get; }
+
         string name;
         public string Name
         {
@@ -30,6 +34,11 @@ namespace HonglornWPF.ViewModels
         {
             get { return lowIsBetter; }
             set { OnPropertyChanged(out lowIsBetter, value); }
+        }
+
+        public CreateCompetitionDisciplineViewModel(Action<CreateCompetitionDisciplineViewModel> closeHandler)
+        {
+            CloseCommand = new RelayCommand(() => closeHandler(this));
         }
     }
 }

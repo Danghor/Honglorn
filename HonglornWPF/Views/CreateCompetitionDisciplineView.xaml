@@ -9,9 +9,6 @@
   <UserControl.Resources>
     <viewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
   </UserControl.Resources>
-  <UserControl.DataContext>
-    <viewModels:CreateCompetitionDisciplineViewModel/>
-  </UserControl.DataContext>
 
   <Grid>
     <Grid Margin="5 5 5 5">
@@ -28,15 +25,15 @@
       </Grid.RowDefinitions>
 
       <Label Grid.Row="0" Grid.Column="0" Content="Name" />
-      <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentDiscipline.Name}"/>
+      <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
       <Label Grid.Row="1" Grid.Column="0" Content="Disziplin" />
-      <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{StaticResource DisciplineTypesList}" SelectedItem="{Binding CurrentDiscipline.Type}"/>
+      <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{StaticResource DisciplineTypesList}" SelectedItem="{Binding Type}"/>
       <Label Grid.Row="2" Grid.Column="0" Content="Einheit" />
-      <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentDiscipline.Unit}"/>
+      <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Unit}"/>
       <Label Grid.Row="3" Grid.Column="0" Content="Weniger ist besser" />
-      <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding CurrentDiscipline.LowIsBetter}"/>
-      <Button Grid.Row="4" Grid.Column="0" Content="Änderungen speichern" />
-      <Button Grid.Row="4" Grid.Column="1" Content="Disziplin löschen" />
+      <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding LowIsBetter}"/>
+      <Button Grid.Row="4" Grid.Column="0" Content="OK" Command="{Binding CloseCommand}" />
+      <Button Grid.Row="4" Grid.Column="1" Content="Abbrechen" />
     </Grid>
   </Grid>
 </UserControl>

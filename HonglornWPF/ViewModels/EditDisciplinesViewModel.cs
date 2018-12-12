@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -35,14 +34,18 @@ namespace HonglornWPF.ViewModels
             var customDialog = new CustomDialog
             {
                 Title = "Custom Dialog",
-                Content = new CreateCompetitionDisciplineView()
             };
 
-            //var customDialogExampleContent = new CustomDialogExampleContent(instance =>
-            //{
-            //    _dialogCoordinator.HideMetroDialogAsync(this, customDialog);
-            //    System.Diagnostics.Debug.WriteLine(instance.FirstName);
-            //});
+            var dialogViewModel = new CreateCompetitionDisciplineViewModel(instance =>
+            {
+                dialogCoordinator.HideMetroDialogAsync(this, customDialog);
+                System.Diagnostics.Debug.WriteLine(instance.Name);
+            });
+
+            customDialog.Content = new CreateCompetitionDisciplineView
+            {
+                DataContext = dialogViewModel
+            };
 
             await dialogCoordinator.ShowMetroDialogAsync(this, customDialog);
         }
