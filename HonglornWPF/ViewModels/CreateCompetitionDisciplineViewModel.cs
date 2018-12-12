@@ -6,7 +6,8 @@ namespace HonglornWPF.ViewModels
 {
     class CreateCompetitionDisciplineViewModel : ViewModel
     {
-        public ICommand CloseCommand { get; }
+        public ICommand AcceptCommand { get; }
+        public ICommand AbortCommand { get; }
 
         string name;
         public string Name
@@ -16,7 +17,7 @@ namespace HonglornWPF.ViewModels
         }
 
         DisciplineType type;
-        DisciplineType Type
+        public DisciplineType Type
         {
             get { return type; }
             set { OnPropertyChanged(out type, value); }
@@ -36,9 +37,10 @@ namespace HonglornWPF.ViewModels
             set { OnPropertyChanged(out lowIsBetter, value); }
         }
 
-        public CreateCompetitionDisciplineViewModel(Action<CreateCompetitionDisciplineViewModel> closeHandler)
+        public CreateCompetitionDisciplineViewModel(Action<CreateCompetitionDisciplineViewModel> acceptHandle, Action<CreateCompetitionDisciplineViewModel> abortHandle)
         {
-            CloseCommand = new RelayCommand(() => closeHandler(this));
+            AcceptCommand = new RelayCommand(() => acceptHandle(this));
+            AbortCommand = new RelayCommand(() => abortHandle(this));
         }
     }
 }

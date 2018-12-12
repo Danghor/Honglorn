@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
-             mc:Ignorable="d" x:ClassModifier="internal">
+             mc:Ignorable="d" x:ClassModifier="internal"
+             d:DataContext="{d:DesignInstance viewModels:CreateCompetitionDisciplineViewModel}">
   <UserControl.Resources>
     <viewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
   </UserControl.Resources>
@@ -32,8 +33,8 @@
       <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Unit}"/>
       <Label Grid.Row="3" Grid.Column="0" Content="Weniger ist besser" />
       <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding LowIsBetter}"/>
-      <Button Grid.Row="4" Grid.Column="0" Content="OK" Command="{Binding CloseCommand}" />
-      <Button Grid.Row="4" Grid.Column="1" Content="Abbrechen" />
+      <Button Grid.Row="4" Grid.Column="0" Content="OK" Command="{Binding AcceptCommand}" />
+      <Button Grid.Row="4" Grid.Column="1" Content="Abbrechen" Command="{Binding AbortCommand}" />
     </Grid>
   </Grid>
 </UserControl>

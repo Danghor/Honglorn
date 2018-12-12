@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using HonglornBL.Enums;
 using HonglornBL.Models.Entities;
 using HonglornWPF.Views;
 using MahApps.Metro.Controls.Dialogs;
@@ -12,6 +13,7 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<CompetitionDiscipline> Disciplines { get; } = new ObservableCollection<CompetitionDiscipline>();
 
         public ICommand ShowCreateCompetitionDisciplineViewCommand { get; }
+        public ICommand DeleteDisciplineCommand { get; }
 
         readonly IDialogCoordinator dialogCoordinator;
 
@@ -26,6 +28,7 @@ namespace HonglornWPF.ViewModels
         {
             this.dialogCoordinator = dialogCoordinator;
             ShowCreateCompetitionDisciplineViewCommand = new RelayCommand(ShowCreateCompetitionDisciplineView);
+            DeleteDisciplineCommand = new RelayCommand(DeleteDiscipline);
             LoadDisciplines();
         }
 
@@ -38,8 +41,12 @@ namespace HonglornWPF.ViewModels
 
             var dialogViewModel = new CreateCompetitionDisciplineViewModel(instance =>
             {
+                CreateDiscipline(instance.Type, instance.Name, instance.Unit, instance.LowIsBetter);
                 dialogCoordinator.HideMetroDialogAsync(this, customDialog);
-                System.Diagnostics.Debug.WriteLine(instance.Name);
+            },
+            instance =>
+            {
+                dialogCoordinator.HideMetroDialogAsync(this, customDialog);
             });
 
             customDialog.Content = new CreateCompetitionDisciplineView
@@ -58,6 +65,21 @@ namespace HonglornWPF.ViewModels
             {
                 Honglorn.UpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
             }
+        }
+
+        void DeleteDiscipline()
+        {
+            if (currentDiscipline != null)
+            {
+                Honglorn.DeleteCompetitionDiscipline(currentDiscipline.PKey);
+                LoadDisciplines();
+            }
+        }
+
+        void CreateDiscipline(DisciplineType type, string name, string unit, bool lowIsBetter)
+        {
+            Honglorn.CreateCompetitionDiscipline(type, name, unit, lowIsBetter);
+            LoadDisciplines();
         }
     }
 

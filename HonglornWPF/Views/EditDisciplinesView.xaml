@@ -8,7 +8,9 @@
              dialog:DialogParticipation.Register="{Binding}"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
              mc:Ignorable="d"
-             x:ClassModifier="internal">
+             x:ClassModifier="internal"
+             d:DataContext="{d:DesignInstance viewModels:EditDisciplinesViewModel}">
+
   <UserControl.Resources>
     <viewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
   </UserControl.Resources>
@@ -62,11 +64,8 @@
       <Label Grid.Row="3" Grid.Column="0" Content="Weniger ist besser" />
       <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding CurrentDiscipline.LowIsBetter}"/>
       <Button Grid.Row="4" Grid.Column="0" Content="Änderungen speichern" />
-      <Button Grid.Row="4" Grid.Column="1" Content="Disziplin löschen" />
-      <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Neue Disziplin" Command="{Binding ShowCreateCompetitionDisciplineViewCommand}"/>
+      <Button Grid.Row="4" Grid.Column="1" Content="Disziplin löschen" Command="{Binding DeleteDisciplineCommand}"/>
+      <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="Neue Disziplin" Command="{Binding ShowCreateCompetitionDisciplineViewCommand}"/>
     </Grid>
   </Grid>
 </UserControl>
-
-
-
