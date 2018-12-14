@@ -34,10 +34,7 @@ namespace HonglornWPF.ViewModels
 
         async void ShowCreateCompetitionDisciplineView()
         {
-            var customDialog = new CustomDialog
-            {
-                Title = "Custom Dialog",
-            };
+            var customDialog = new CustomDialog();
 
             var dialogViewModel = new CreateCompetitionDisciplineViewModel(instance =>
             {
