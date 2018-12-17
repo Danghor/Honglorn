@@ -63,8 +63,8 @@
       <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentDiscipline.Unit}"/>
       <Label Grid.Row="3" Grid.Column="0" Content="Weniger ist besser" />
       <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding CurrentDiscipline.LowIsBetter}"/>
-      <Button Grid.Row="4" Grid.Column="0" Content="Änderungen speichern" />
-      <Button Grid.Row="4" Grid.Column="1" Content="Disziplin löschen" Command="{Binding DeleteDisciplineCommand}"/>
+      <Button Grid.Row="4" Grid.Column="0" Content="Änderungen speichern" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
+      <Button Grid.Row="4" Grid.Column="1" Content="Disziplin löschen" Command="{Binding DeleteDisciplineCommand}" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
       <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Content="Neue Disziplin" Command="{Binding ShowCreateCompetitionDisciplineViewCommand}"/>
     </Grid>
   </Grid>
