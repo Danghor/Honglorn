@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Configuration;
 using HonglornBL;
+using System.ComponentModel;
 
 namespace HonglornWPF
 {
@@ -15,7 +16,7 @@ namespace HonglornWPF
 
             string[] cmdArgs = Environment.GetCommandLineArgs();
 
-            if (cmdArgs.Length >= 2 && cmdArgs[1] == "memory")
+            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime || cmdArgs.Length >= 2 && cmdArgs[1] == "memory")
             {
                 result = new Honglorn(Effort.DbConnectionFactory.CreateTransient());
             }
