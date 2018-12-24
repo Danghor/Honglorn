@@ -37,7 +37,7 @@ namespace HonglornBL
 
         #region Validation
 
-        static readonly HashSet<char> ValidClassnames = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
+        static readonly ISet<char> ValidClassnames = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
 
         /// <summary>
         ///     Returns true iff the given character is a valid class name that can be used at all in the application.
