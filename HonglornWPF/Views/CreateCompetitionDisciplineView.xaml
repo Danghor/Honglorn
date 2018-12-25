@@ -11,7 +11,6 @@
     <viewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
   </UserControl.Resources>
   <StackPanel>
-    <TextBlock Text="Neue Disziplin" FontSize="{DynamicResource {x:Static SystemParameters.WindowCaptionHeightKey}}" />
     <Grid>
       <Grid Margin="5 5 5 5">
         <Grid.ColumnDefinitions>

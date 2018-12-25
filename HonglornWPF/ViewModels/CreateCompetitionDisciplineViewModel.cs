@@ -1,4 +1,4 @@
-using HonglornBL.Enums;
+﻿using HonglornBL.Enums;
 using System;
 using System.Windows.Input;
 
@@ -37,10 +37,15 @@ namespace HonglornWPF.ViewModels
             set { OnPropertyChanged(out lowIsBetter, value); }
         }
 
-        public CreateCompetitionDisciplineViewModel(Action<CreateCompetitionDisciplineViewModel> acceptHandle, Action<CreateCompetitionDisciplineViewModel> abortHandle)
+        public CreateCompetitionDisciplineViewModel(Action<CreateCompetitionDisciplineViewModel> acceptHandle, Action<CreateCompetitionDisciplineViewModel> abortHandle, string name = null, DisciplineType type = DisciplineType.Sprint, string unit = null, bool lowIsBetter = false)
         {
             AcceptCommand = new RelayCommand(() => acceptHandle(this));
             AbortCommand = new RelayCommand(() => abortHandle(this));
+
+            Name = name;
+            Type = type;
+            Unit = unit;
+            LowIsBetter = LowIsBetter;
         }
     }
 }
