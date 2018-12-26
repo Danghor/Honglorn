@@ -119,6 +119,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\DisciplineTypeToStringConverter.cs" />
     <Compile Include="Converter\ObjectToBoolConverter.cs" />
     <Compile Include="Converter\ResultGridVisibilityConverter.cs" />
     <Compile Include="Converter\StringToVisibilityConverter.cs" />
