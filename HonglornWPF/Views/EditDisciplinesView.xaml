@@ -15,13 +15,8 @@
     <viewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
   </UserControl.Resources>
 
-  <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*" />
-      <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
-
-    <DataGrid Grid.Column="0" Margin="5 5 5 5" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}" IsReadOnly="True">
+  <StackPanel>
+    <DataGrid Margin="5 5 5 5" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}" IsReadOnly="True">
       <DataGrid.Columns>
         <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
         <DataGridTemplateColumn Header="Disziplin">
@@ -41,7 +36,7 @@
       </DataGrid.Columns>
     </DataGrid>
 
-    <Grid Grid.Column="1" Margin="5 5 5 5">
+    <Grid Margin="5 5 5 5">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="*" />
@@ -55,5 +50,5 @@
       <Button Grid.Row="0" Grid.Column="1" Content="Disziplin löschen" Command="{Binding DeleteDisciplineCommand}" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
       <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Neue Disziplin" Command="{Binding ShowCreateCompetitionDisciplineViewCommand}"/>
     </Grid>
-  </Grid>
+  </StackPanel>
 </UserControl>
