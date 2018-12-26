@@ -12,5 +12,16 @@ namespace HonglornBL.Models.Entities
         /// </remarks>
         [Required]
         public bool LowIsBetter { get; set; }
+
+        public CompetitionDiscipline Clone()
+        {
+            return new CompetitionDiscipline
+            {
+                Name = Name,
+                Type = Type,
+                Unit = Unit,
+                LowIsBetter = LowIsBetter
+            };
+        }
     }
 }

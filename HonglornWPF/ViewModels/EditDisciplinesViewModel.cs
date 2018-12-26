@@ -40,7 +40,7 @@ namespace HonglornWPF.ViewModels
 
             var dialogViewModel = new CreateCompetitionDisciplineViewModel(instance =>
             {
-                CreateDiscipline(instance.Type, instance.Name, instance.Unit, instance.LowIsBetter);
+                CreateDiscipline(instance.CurrentDiscipline.Type, instance.CurrentDiscipline.Name, instance.CurrentDiscipline.Unit, instance.CurrentDiscipline.LowIsBetter);
                 dialogCoordinator.HideMetroDialogAsync(this, customDialog);
             },
             instance =>
@@ -62,13 +62,13 @@ namespace HonglornWPF.ViewModels
 
             var dialogViewModel = new CreateCompetitionDisciplineViewModel(instance =>
             {
-                UpdateDiscipline(instance.Type, instance.Name, instance.Unit, instance.LowIsBetter);
+                UpdateDiscipline(instance.CurrentDiscipline.Type, instance.CurrentDiscipline.Name, instance.CurrentDiscipline.Unit, instance.CurrentDiscipline.LowIsBetter);
                 dialogCoordinator.HideMetroDialogAsync(this, customDialog);
             },
             instance =>
             {
                 dialogCoordinator.HideMetroDialogAsync(this, customDialog);
-            }, CurrentDiscipline.Name, CurrentDiscipline.Type, CurrentDiscipline.Unit, CurrentDiscipline.LowIsBetter);
+            }, CurrentDiscipline.Clone());
 
             customDialog.Content = new CreateCompetitionDisciplineView
             {
