@@ -13,8 +13,8 @@ namespace HonglornWPF.ViewModels
 
         public MainWindowViewModel()
         {
-            AppThemes = ThemeManager.AppThemes.Select(a => new AppThemeMenuData(a.Name, (Brush) a.Resources["BlackColorBrush"], (Brush) a.Resources["WhiteColorBrush"]));
-            AccentColors = ThemeManager.Accents.Select(a => new AccentColorMenuData(a.Name, null, (Brush) a.Resources["AccentColorBrush"]));
+            AppThemes = ThemeManager.AppThemes.Select(a => new AppThemeMenuData(a.Name, (Brush)a.Resources["BlackColorBrush"], (Brush)a.Resources["WhiteColorBrush"]));
+            AccentColors = ThemeManager.Accents.Select(a => new AccentColorMenuData(a.Name, null, (Brush)a.Resources["AccentColorBrush"]));
         }
     }
 }

@@ -12,28 +12,28 @@
              d:DataContext="{d:DesignInstance viewModels:EditDisciplinesViewModel}">
 
     <StackPanel>
-    <DataGrid Margin="5 5 5 5" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}" IsReadOnly="True">
-      <DataGrid.Columns>
-        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-        <DataGridTextColumn Header="Disziplin" Binding="{Binding Type}"/>
-        <DataGridTextColumn Header="Einheit" Binding="{Binding Unit}"/>
-        <DataGridCheckBoxColumn Header="Weniger ist besser" Binding="{Binding LowIsBetter}"/>
-      </DataGrid.Columns>
-    </DataGrid>
+        <DataGrid Margin="5 5 5 5" AutoGenerateColumns="False" ItemsSource="{Binding Disciplines}" SelectedItem="{Binding CurrentDiscipline}" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Disziplin" Binding="{Binding Type}"/>
+                <DataGridTextColumn Header="Einheit" Binding="{Binding Unit}"/>
+                <DataGridCheckBoxColumn Header="Weniger ist besser" Binding="{Binding LowIsBetter}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
-    <Grid Margin="5 5 5 5">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="Auto" />
-        <RowDefinition Height="Auto" />
-      </Grid.RowDefinitions>
+        <Grid Margin="5 5 5 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
-      <Button Grid.Row="0" Grid.Column="0" Content="Disziplin bearbeiten" Command="{Binding EditDisciplineCommand}" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
-      <Button Grid.Row="0" Grid.Column="1" Content="Disziplin löschen" Command="{Binding DeleteDisciplineCommand}" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
-      <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Neue Disziplin" Command="{Binding ShowCreateCompetitionDisciplineViewCommand}"/>
-    </Grid>
-  </StackPanel>
+            <Button Grid.Row="0" Grid.Column="0" Content="Disziplin bearbeiten" Command="{Binding EditDisciplineCommand}" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
+            <Button Grid.Row="0" Grid.Column="1" Content="Disziplin löschen" Command="{Binding DeleteDisciplineCommand}" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Neue Disziplin" Command="{Binding ShowCreateCompetitionDisciplineViewCommand}"/>
+        </Grid>
+    </StackPanel>
 </UserControl>

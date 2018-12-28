@@ -10,32 +10,32 @@
              mc:Ignorable="d" x:ClassModifier="internal"
              d:DataContext="{d:DesignInstance viewModels:CreateCompetitionDisciplineViewModel}">
 
-  <StackPanel>
-    <Grid>
-      <Grid Margin="5 5 5 5">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="*" />
-          <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-          <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <StackPanel>
+        <Grid>
+            <Grid Margin="5 5 5 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Content="Name" />
-        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentDiscipline.Name}"/>
-        <Label Grid.Row="1" Grid.Column="0" Content="Disziplin" />
-        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={extensions:EnumBindingSource {x:Type enums:DisciplineType}}}" SelectedItem="{Binding CurrentDiscipline.Type, Converter={StaticResource DisciplineTypeToStringConverter}}"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Einheit" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentDiscipline.Unit}"/>
-        <Label Grid.Row="3" Grid.Column="0" Content="Weniger ist besser" />
-        <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding CurrentDiscipline.LowIsBetter}"/>
-        <Button Grid.Row="4" Grid.Column="0" Content="OK" Command="{Binding AcceptCommand}" />
-        <Button Grid.Row="4" Grid.Column="1" Content="Abbrechen" Command="{Binding AbortCommand}" />
-      </Grid>
-    </Grid>
-  </StackPanel>
+                <Label Grid.Row="0" Grid.Column="0" Content="Name" />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentDiscipline.Name}"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="Disziplin" />
+                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={extensions:EnumBindingSource {x:Type enums:DisciplineType}}}" SelectedItem="{Binding CurrentDiscipline.Type, Converter={StaticResource DisciplineTypeToStringConverter}}"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="Einheit" />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentDiscipline.Unit}"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="Weniger ist besser" />
+                <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding CurrentDiscipline.LowIsBetter}"/>
+                <Button Grid.Row="4" Grid.Column="0" Content="OK" Command="{Binding AcceptCommand}" />
+                <Button Grid.Row="4" Grid.Column="1" Content="Abbrechen" Command="{Binding AbortCommand}" />
+            </Grid>
+        </Grid>
+    </StackPanel>
 </UserControl>
