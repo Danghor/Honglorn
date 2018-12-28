@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             xmlns:extensions="clr-namespace:HonglornWPF.Extensions"
+             xmlns:enums="clr-namespace:HonglornBL.Enums;assembly=HonglornBL"
              mc:Ignorable="d" x:ClassModifier="internal"
              d:DataContext="{d:DesignInstance viewModels:CreateCompetitionDisciplineViewModel}">
-  <UserControl.Resources>
-    <viewModels:DisciplineTypesList x:Key="DisciplineTypesList" />
-  </UserControl.Resources>
+
   <StackPanel>
     <Grid>
       <Grid Margin="5 5 5 5">
@@ -28,7 +28,7 @@
         <Label Grid.Row="0" Grid.Column="0" Content="Name" />
         <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CurrentDiscipline.Name}"/>
         <Label Grid.Row="1" Grid.Column="0" Content="Disziplin" />
-        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{StaticResource DisciplineTypesList}" SelectedItem="{Binding CurrentDiscipline.Type, Converter={StaticResource DisciplineTypeToStringConverter}}"/>
+        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Source={extensions:EnumBindingSource {x:Type enums:DisciplineType}}}" SelectedItem="{Binding CurrentDiscipline.Type, Converter={StaticResource DisciplineTypeToStringConverter}}"/>
         <Label Grid.Row="2" Grid.Column="0" Content="Einheit" />
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CurrentDiscipline.Unit}"/>
         <Label Grid.Row="3" Grid.Column="0" Content="Weniger ist besser" />

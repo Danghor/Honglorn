@@ -109,12 +109,4 @@ namespace HonglornWPF.ViewModels
             LoadDisciplines();
         }
     }
-
-    public class DisciplineTypesList : List<string>
-    {
-        public DisciplineTypesList()
-        {
-            AddRange(new[] { "Sprint", "Jump", "Throw", "MiddleDistance" });
-        }
-    }
 }
