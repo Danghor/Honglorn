@@ -95,6 +95,19 @@
                 </StackPanel>
             </GroupBox>
         </Grid>
-        <Button Command="{Binding SaveDisciplineCollectionCommand}" Content="Speichern"/>
+        <Button Command="{Binding SaveDisciplineCollectionCommand}" Content="Speichern">
+            <Button.IsEnabled>
+                <MultiBinding Converter="{StaticResource ObjectsNotNullToBoolConverter}">
+                    <Binding Path="CurrentMaleSprintDiscipline" />
+                    <Binding Path="CurrentMaleJumpDiscipline" />
+                    <Binding Path="CurrentMaleThrowDiscipline" />
+                    <Binding Path="CurrentMaleMiddleDistanceDiscipline" />
+                    <Binding Path="CurrentFemaleSprintDiscipline" />
+                    <Binding Path="CurrentFemaleJumpDiscipline" />
+                    <Binding Path="CurrentFemaleThrowDiscipline" />
+                    <Binding Path="CurrentFemaleMiddleDistanceDiscipline" />
+                </MultiBinding>
+            </Button.IsEnabled>
+        </Button>
     </StackPanel>
 </UserControl>

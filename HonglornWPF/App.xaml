@@ -24,7 +24,7 @@
                     <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
                     <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
                     <converter:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
-                    <converter:ObjectToBoolConverter x:Key="ObjectToBoolConverter"/>
+                    <converter:ObjectsNotNullToBoolConverter x:Key="ObjectsNotNullToBoolConverter"/>
                     <converter:ResultGridVisibilityConverter x:Key="ResultGridVisibilityConverter"/>
                     <System:Boolean x:Key="True">True</System:Boolean>
                     <System:Boolean x:Key="False">False</System:Boolean>

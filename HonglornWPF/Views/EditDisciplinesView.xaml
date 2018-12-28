@@ -31,8 +31,20 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" Content="Disziplin bearbeiten" Command="{Binding EditDisciplineCommand}" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
-            <Button Grid.Row="0" Grid.Column="1" Content="Disziplin löschen" Command="{Binding DeleteDisciplineCommand}" IsEnabled="{Binding CurrentDiscipline, Converter={StaticResource ObjectToBoolConverter}}" />
+            <Button Grid.Row="0" Grid.Column="0" Content="Disziplin bearbeiten" Command="{Binding EditDisciplineCommand}" >
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource ObjectsNotNullToBoolConverter}">
+                        <Binding Path="CurrentDiscipline" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
+            <Button Grid.Row="0" Grid.Column="1" Content="Disziplin löschen" Command="{Binding DeleteDisciplineCommand}">
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource ObjectsNotNullToBoolConverter}">
+                        <Binding Path="CurrentDiscipline" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+            </Button>
             <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Neue Disziplin" Command="{Binding ShowCreateCompetitionDisciplineViewCommand}"/>
         </Grid>
     </StackPanel>
