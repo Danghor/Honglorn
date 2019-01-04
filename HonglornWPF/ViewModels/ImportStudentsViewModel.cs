@@ -80,7 +80,7 @@ namespace HonglornWPF.ViewModels
 
             try
             {
-                ICollection<ImportedStudentRecord> importedStudents = await Honglorn.ImportStudentsFromFile(Path, Year, new Progress<ProgressReport>(OnProgressChanged));
+                ICollection<ImportedStudentRecord> importedStudents = await Honglorn.ImportStudentsFromFileAsync(Path, Year, new Progress<ProgressReport>(OnProgressChanged));
                 ICollection<ImportedStudentRecord> unsuccessfullyImported = importedStudents.Where(s => s.Errors != null).ToList();
 
                 var messageBuilder = new StringBuilder($"Successfully imported {importedStudents.Count - unsuccessfullyImported.Count} of {importedStudents.Count} students.");

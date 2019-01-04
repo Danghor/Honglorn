@@ -357,7 +357,7 @@ namespace HonglornAUT
 
             try
             {
-                ICollection<ImportedStudentRecord> unused = sut.ImportStudentsFromFile(string.Empty, 2018, new Progress<ProgressReport>()).Result;
+                ICollection<ImportedStudentRecord> unused = sut.ImportStudentsFromFileAsync(string.Empty, 2018, new Progress<ProgressReport>()).Result;
             }
             catch (AggregateException e)
             {

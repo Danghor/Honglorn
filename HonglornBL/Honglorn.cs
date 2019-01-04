@@ -568,7 +568,7 @@ namespace HonglornBL
         /// <param name="filePath">The full path to the Excel file to be imported.</param>
         /// <param name="year">The year in which the imported data is valid (relevant for mapping the courses).</param>
         /// <param name="progress"></param>
-        public async Task<ICollection<ImportedStudentRecord>> ImportStudentsFromFile(string filePath, short year, IProgress<ProgressReport> progress)
+        public async Task<ICollection<ImportedStudentRecord>> ImportStudentsFromFileAsync(string filePath, short year, IProgress<ProgressReport> progress)
         {
             if (!IsValidYear(year))
             {
