@@ -81,19 +81,13 @@ namespace HonglornWPF.ViewModels
 
         void SaveDiscipline(CompetitionDiscipline discipline)
         {
-            if (discipline != null)
-            {
-                Honglorn.UpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
-            }
+            Honglorn.UpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
         }
 
         void DeleteDiscipline()
         {
-            if (currentDiscipline != null)
-            {
-                Honglorn.DeleteCompetitionDiscipline(currentDiscipline.PKey);
-                LoadDisciplines();
-            }
+            Honglorn.DeleteCompetitionDiscipline(currentDiscipline.PKey);
+            LoadDisciplines();
         }
 
         void CreateDiscipline(DisciplineType type, string name, string unit, bool lowIsBetter)

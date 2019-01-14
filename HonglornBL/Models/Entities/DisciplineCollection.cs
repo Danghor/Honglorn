@@ -20,43 +20,26 @@ namespace HonglornBL.Models.Entities
 
         // Male
         public Guid? MaleSprintPKey { get; set; }
-
         public Guid? MaleJumpPKey { get; set; }
-
         public Guid? MaleThrowPKey { get; set; }
-
         public Guid? MaleMiddleDistancePKey { get; set; }
 
         // Female
         public Guid? FemaleSprintPKey { get; set; }
-
         public Guid? FemaleJumpPKey { get; set; }
-
         public Guid? FemaleThrowPKey { get; set; }
-
         public Guid? FemaleMiddleDistancePKey { get; set; }
-
-        #region ForeignKeys
 
         // Male
         public virtual Discipline MaleSprint { get; set; }
-
         public virtual Discipline MaleJump { get; set; }
-
         public virtual Discipline MaleThrow { get; set; }
-
         public virtual Discipline MaleMiddleDistance { get; set; }
-
 
         // Female
         public virtual Discipline FemaleSprint { get; set; }
-
         public virtual Discipline FemaleJump { get; set; }
-
         public virtual Discipline FemaleThrow { get; set; }
-
         public virtual Discipline FemaleMiddleDistance { get; set; }
-
-        #endregion
     }
 }

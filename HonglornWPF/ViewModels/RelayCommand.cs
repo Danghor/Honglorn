@@ -8,7 +8,6 @@ namespace HonglornWPF.ViewModels
         Action Action { get; }
         bool enabled;
 
-
         internal bool Enabled
         {
             get { return enabled; }

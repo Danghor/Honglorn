@@ -35,8 +35,6 @@ namespace HonglornBL
         /// <returns>The rounded fraction in percentage.</returns>
         internal static byte PercentageValue(int x, int y) => (byte)Math.Round(100d * x / y);
 
-        #region Validation
-
         static readonly ISet<char> ValidClassnames = new HashSet<char> { '5', '6', '7', '8', '9', 'E' };
 
         /// <summary>
@@ -44,7 +42,7 @@ namespace HonglornBL
         /// </summary>
         /// <param name="className">The class name to be validated.</param>
         /// <returns>True iff the given class name is a valid class name.</returns>
-        /// <remarks>Valid classnames: 5, 6, 7, 8, 9, E</remarks>
+        /// <remarks>Valid class names: 5, 6, 7, 8, 9, E</remarks>
         internal static bool IsValidClassName(char className) => ValidClassnames.Contains(className);
 
         /// <summary>
@@ -56,7 +54,5 @@ namespace HonglornBL
         {
             return year >= Settings.Default.MinValidYear && year <= Settings.Default.MaxValidYear;
         }
-
-        #endregion
     }
 }

@@ -200,7 +200,7 @@ namespace HonglornBL
             return from c in competitionResults
                    join s in students on c.Identifier equals s.PKey
                    orderby s.Surname, s.Forename, s.YearOfBirth descending
-                   select new Result(s.Forename, s.Surname, c.SprintScore, c.JumpScore, c.ThrowScore, c.MiddleDistanceScore, c.Rank, (ushort) (c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), c.Certificate);
+                   select new Result(s.Forename, s.Surname, c.SprintScore, c.JumpScore, c.ThrowScore, c.MiddleDistanceScore, c.Rank, (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), c.Certificate);
         }
 
         IEnumerable<IResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
@@ -232,7 +232,7 @@ namespace HonglornBL
                     TraditionalCalculator.CalculateScore(disciplines[3], competition.MiddleDistance)
                 };
 
-                var totalScore = (ushort) scores.OrderByDescending(s => s).Take(3).Sum(s => s);
+                var totalScore = (ushort)scores.OrderByDescending(s => s).Take(3).Sum(s => s);
 
                 int studentAge = year - student.YearOfBirth;
 
@@ -551,8 +551,6 @@ namespace HonglornBL
             return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
         }
 
-        #region "Import"
-
         static readonly Dictionary<string, Sex> SexDictionary = new Dictionary<string, Sex>
         {
             {"W", Sex.Female},
@@ -688,7 +686,5 @@ namespace HonglornBL
                 db.SaveChanges();
             }
         }
-
-        #endregion
     }
 }
