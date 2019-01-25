@@ -17,6 +17,6 @@ A program to calculate results for the German sports event "Bundesjugendspiele".
 [![Gitter](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Honglorn)
 
 ## Requirements/Contribution
-- Visual Studio 2015 or higher (C# 6)
+- Visual Studio 2017 or higher (C# 7)
 - MySQL Database
 - .NET Framework 4 for Application, 4.7 for Unit Testing
