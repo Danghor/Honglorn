@@ -158,7 +158,7 @@ namespace HonglornAUT
 
             sut.ImportSingleStudent("Kim", "Pennington", sex, GetShort("YearOfBirth"), course, year);
 
-            Func<DisciplineType, string, Guid> getDisciplineKey = (type, name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == GetData(name)).PKey;
+            Guid getDisciplineKey(DisciplineType type, string name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == GetData(name)).PKey;
 
             Guid sprintPKey = getDisciplineKey(DisciplineType.Sprint, "SprintName");
             Guid jumpPKey = getDisciplineKey(DisciplineType.Jump, "JumpName");
@@ -192,7 +192,7 @@ namespace HonglornAUT
 
             sut.ImportSingleStudent("Kim", "Pennington", sex, 2008, course, year);
 
-            Func<DisciplineType, string, Guid> getDisciplineKey = (type, name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == name).PKey;
+            Guid getDisciplineKey(DisciplineType type, string name) => sut.FilteredTraditionalDisciplines(type, sex).Single(d => d.ToString() == name).PKey;
 
             Guid sprintPKey = getDisciplineKey(DisciplineType.Sprint, "Sprint 100 m (Manual)");
             Guid jumpPKey = getDisciplineKey(DisciplineType.Jump, "Weitsprung");
@@ -413,7 +413,7 @@ namespace HonglornAUT
             sut.CreateCompetitionDiscipline(DisciplineType.Throw, "Werfen", "Meter", false);
             sut.CreateCompetitionDiscipline(DisciplineType.MiddleDistance, "LangLaufen", "Minuten", true);
 
-            Func<DisciplineType, Sex, Guid> getDiscipline = (t, s) => sut.FilteredTraditionalDisciplines(t, s).First().PKey;
+            Guid getDiscipline(DisciplineType t, Sex s) => sut.FilteredTraditionalDisciplines(t, s).First().PKey;
 
             Guid maleSprintKey = getDiscipline(DisciplineType.Sprint, Sex.Male);
             Guid maleJumpKey = getDiscipline(DisciplineType.Jump, Sex.Male);

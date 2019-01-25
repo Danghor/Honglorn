@@ -76,9 +76,8 @@ namespace HonglornBL.Import
         static readonly Func<string, bool> IsValidYearOfBirth = (year) =>
         {
             bool isValid = false;
-            short shortYear;
 
-            if (short.TryParse(year, out shortYear))
+            if (short.TryParse(year, out short shortYear))
             {
                 isValid = Prerequisites.IsValidYear(shortYear);
             }
