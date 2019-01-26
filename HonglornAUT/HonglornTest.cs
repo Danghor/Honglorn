@@ -146,8 +146,8 @@ namespace HonglornAUT
         }
 
         [TestMethod]
-        [DeploymentItem("TraditionalResults.xml")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\TraditionalResults.xml", "Row", DataAccessMethod.Sequential)]
+        [DeploymentItem("TestData\\TraditionalResults.xml")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\TestData\\TraditionalResults.xml", "Row", DataAccessMethod.Sequential)]
         public void GetResults_TraditionalCompetition_CorrectScoresAndCertificatesCalculated()
         {
             const string course = "08D";
@@ -258,8 +258,8 @@ namespace HonglornAUT
         }
 
         [TestMethod]
-        [DeploymentItem("CompetitionResults.xml")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\CompetitionResults.xml", "Row", DataAccessMethod.Sequential)]
+        [DeploymentItem("TestData\\CompetitionResults.xml")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.XML", "|DataDirectory|\\TestData\\CompetitionResults.xml", "Row", DataAccessMethod.Sequential)]
         public void GetResults_CompetitionResults_CorrectScoresAndCertificatesCalculated()
         {
             short year = GetShort("Year");
