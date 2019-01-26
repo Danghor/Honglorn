@@ -15,7 +15,7 @@ namespace HonglornWPF.ViewModels
         short currentYear;
         public short CurrentYear
         {
-            get { return currentYear; }
+            get => currentYear;
 
             set
             {
@@ -33,7 +33,7 @@ namespace HonglornWPF.ViewModels
         string currentCourse;
         public string CurrentCourse
         {
-            get { return currentCourse; }
+            get => currentCourse;
             set
             {
                 SaveCompetition();
@@ -46,7 +46,7 @@ namespace HonglornWPF.ViewModels
         StudentPerformance currentStudentCompetition;
         public StudentPerformance CurrentStudentCompetition
         {
-            get { return currentStudentCompetition; }
+            get => currentStudentCompetition;
             set
             {
                 SaveCompetition();

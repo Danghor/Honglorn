@@ -17,27 +17,21 @@ namespace HonglornWPF.ViewModels
         bool isLoading;
         public bool IsLoading
         {
-            get { return isLoading; }
-            private set
-            {
-                OnPropertyChanged(out isLoading, value);
-            }
+            get => isLoading;
+            private set => OnPropertyChanged(out isLoading, value);
         }
 
         string message;
         public string Message
         {
-            get { return message; }
-            private set
-            {
-                OnPropertyChanged(out message, value);
-            }
+            get => message;
+            private set => OnPropertyChanged(out message, value);
         }
 
         short currentYear;
         public short CurrentYear
         {
-            get { return currentYear; }
+            get => currentYear;
 
             set
             {
@@ -55,7 +49,7 @@ namespace HonglornWPF.ViewModels
         string currentCourse;
         public string CurrentCourse
         {
-            get { return currentCourse; }
+            get => currentCourse;
             set
             {
                 OnPropertyChanged(out currentCourse, value);

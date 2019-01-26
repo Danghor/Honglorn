@@ -20,8 +20,8 @@ namespace HonglornWPF.ViewModels
         CompetitionDiscipline currentDiscipline;
         public CompetitionDiscipline CurrentDiscipline
         {
-            get { return currentDiscipline; }
-            set { OnPropertyChanged(out currentDiscipline, value); }
+            get => currentDiscipline;
+            set => OnPropertyChanged(out currentDiscipline, value);
         }
 
         public EditDisciplinesViewModel(IDialogCoordinator dialogCoordinator)

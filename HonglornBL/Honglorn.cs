@@ -577,7 +577,7 @@ namespace HonglornBL
 
             ICollection<ImportedStudentRecord> studentsFromExcelSheet = await Task.Factory.StartNew(() => GetImporter(filePath).ReadStudentsFromFile(filePath));
 
-            int currentlyImported = 0;
+            var currentlyImported = 0;
 
             progress.Report(new ProgressReport(0, "Schreibe Daten in die Datenbank...", false));
 
@@ -585,7 +585,7 @@ namespace HonglornBL
             {
                 if (importStudent.Errors == null)
                 {
-                    Student student = new Student
+                    var student = new Student
                     {
                         Forename = importStudent.ImportedForename,
                         Surname = importStudent.ImportedSurname,

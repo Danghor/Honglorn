@@ -17,36 +17,36 @@ namespace HonglornWPF.ViewModels
         bool isIndeterminate;
         public bool IsIndeterminate
         {
-            get { return isIndeterminate; }
-            set { OnPropertyChanged(out isIndeterminate, value); }
+            get => isIndeterminate;
+            set => OnPropertyChanged(out isIndeterminate, value);
         }
 
         int statusPercentage;
         public int StatusPercentage
         {
-            get { return statusPercentage; }
-            set { OnPropertyChanged(out statusPercentage, value); }
+            get => statusPercentage;
+            set => OnPropertyChanged(out statusPercentage, value);
         }
 
         string statusMessage;
         public string StatusMessage
         {
-            get { return statusMessage; }
-            set { OnPropertyChanged(out statusMessage, value); }
+            get => statusMessage;
+            set => OnPropertyChanged(out statusMessage, value);
         }
 
         short year;
         public short Year
         {
-            get { return year; }
-            set { OnPropertyChanged(out year, value); }
+            get => year;
+            set => OnPropertyChanged(out year, value);
         }
 
         string path;
         public string Path
         {
-            get { return path; }
-            set { OnPropertyChanged(out path, value); }
+            get => path;
+            set => OnPropertyChanged(out path, value);
         }
 
         public ICommand OpenFileDialogCommand { get; }
