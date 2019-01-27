@@ -49,12 +49,12 @@ namespace HonglornBL.Import
 
         static readonly Func<string, bool> IsValidName = (name) =>
         {
-            return !string.IsNullOrWhiteSpace(name) && !name.Any(c => char.IsDigit(c));
+            return !string.IsNullOrWhiteSpace(name) && !name.Any(char.IsDigit);
         };
 
         static readonly Func<string, bool> IsValidCourseName = (courseName) =>
         {
-            bool isValid = true;
+            var isValid = true;
 
             try
             {
