@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using HonglornBL;
 using HonglornBL.Enums;
@@ -60,6 +61,22 @@ namespace HonglornAUT
             Assert.IsNull(studentPerformance.Jump);
             Assert.IsNull(studentPerformance.Throw);
             Assert.IsNull(studentPerformance.MiddleDistance);
+        }
+
+        [TestMethod]
+        public void ImportSingleStudentRegular_StudentSuccessfullyAdded()
+        {
+            string tempFilePath = Path.Combine(Environment.CurrentDirectory, $"{Guid.NewGuid().ToString()}.xlsx");
+
+            File.WriteAllBytes(tempFilePath, Properties.Resources.ImportTemplate);
+
+            var sut = new Honglorn(CreateConnection());
+
+            ICollection<ImportedStudentRecord> unused = sut.ImportStudentsFromFileAsync(tempFilePath, 2018, new Progress<ProgressReport>()).Result;
+
+            File.Delete(tempFilePath);
+
+            Assert.Inconclusive("Not finished");
         }
 
         [TestMethod]
@@ -151,7 +168,7 @@ namespace HonglornAUT
         public void GetResults_TraditionalCompetition_CorrectScoresAndCertificatesCalculated()
         {
             const string course = "08D";
-            var sex = (Sex) Enum.Parse(typeof(Sex), GetData("Sex"));
+            var sex = (Sex)Enum.Parse(typeof(Sex), GetData("Sex"));
             short year = GetShort("Year");
 
             var sut = new Honglorn(CreateConnection());
@@ -272,7 +289,7 @@ namespace HonglornAUT
 
                 foreach (DataRow student in courseRow.GetChildRows("Course_Student"))
                 {
-                    var sex = (Sex) Enum.Parse(typeof(Sex), student["Sex"].ToString());
+                    var sex = (Sex)Enum.Parse(typeof(Sex), student["Sex"].ToString());
 
                     float sprint = float.Parse(student["Sprint"].ToString(), CultureInfo.InvariantCulture);
                     float jump = float.Parse(student["Jump"].ToString(), CultureInfo.InvariantCulture);
@@ -285,7 +302,7 @@ namespace HonglornAUT
                     ushort middleDistanceScore = ushort.Parse(student["MiddleDistanceScore"].ToString());
 
                     ushort rank = ushort.Parse(student["Rank"].ToString());
-                    var certificate = (Certificate) Enum.Parse(typeof(Certificate), student["Certificate"].ToString());
+                    var certificate = (Certificate)Enum.Parse(typeof(Certificate), student["Certificate"].ToString());
 
                     students.Add(new CompetitionStudent(courseName, RandomString(), RandomString(), sex, sprint, jump, @throw, middleDistance, sprintScore, jumpScore, throwScore, middleDistanceScore, rank, certificate));
                 }
@@ -295,7 +312,7 @@ namespace HonglornAUT
 
             foreach (CompetitionStudent s in students)
             {
-                sut.ImportSingleStudent(s.Forename, s.Surname, s.Sex, (short) (DateTime.Now.Year - 10), s.Course, year);
+                sut.ImportSingleStudent(s.Forename, s.Surname, s.Sex, (short)(DateTime.Now.Year - 10), s.Course, year);
             }
 
             sut.CreateCompetitionDiscipline(DisciplineType.Sprint, "A", "a", GetBool("SprintLowIsBetterMale"));
