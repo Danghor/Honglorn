@@ -64,19 +64,34 @@ namespace HonglornAUT
         }
 
         [TestMethod]
-        public void ImportSingleStudentRegular_StudentSuccessfullyAdded()
+        public void ImportStudentsFromFileAsync_BlessedFile_NoErrors()
         {
+            const short currentYear = 2018;
+            const string expectedSurname = "Coleman";
+            const string expectedForename = "Bruce";
+            const string expectedCourse = "05A";
+
             string tempFilePath = Path.Combine(Environment.CurrentDirectory, $"{Guid.NewGuid().ToString()}.xlsx");
 
             File.WriteAllBytes(tempFilePath, Properties.Resources.ImportTemplate);
 
             var sut = new Honglorn(CreateConnection());
-
-            ICollection<ImportedStudentRecord> unused = sut.ImportStudentsFromFileAsync(tempFilePath, 2018, new Progress<ProgressReport>()).Result;
+            ICollection<ImportedStudentRecord> importedStudents = sut.ImportStudentsFromFileAsync(tempFilePath, 2018, new Progress<ProgressReport>()).Result;
 
             File.Delete(tempFilePath);
 
-            Assert.Inconclusive("Not finished");
+            var importedStudent = importedStudents.Single();
+            var studentInDatabase = sut.StudentPerformances(expectedCourse, currentYear).Single();
+
+            Assert.AreEqual(1, importedStudents.Count);
+            Assert.AreEqual(expectedSurname, importedStudent.ImportedSurname);
+            Assert.AreEqual(expectedForename, importedStudent.ImportedForename);
+            Assert.AreEqual(expectedCourse, importedStudent.ImportedCourseName);
+            Assert.AreEqual("M", importedStudent.ImportedSex);
+            Assert.AreEqual("2005", importedStudent.ImportedYearOfBirth);
+
+            Assert.AreEqual(expectedSurname, studentInDatabase.Surname);
+            Assert.AreEqual(expectedForename, studentInDatabase.Forename);
         }
 
         [TestMethod]
