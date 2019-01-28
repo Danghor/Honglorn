@@ -16,7 +16,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace HonglornAUT
 {
     [TestClass]
-    [DeploymentItem(@"EntityFramework.SqlServer.dll")]
+    [DeploymentItem("EntityFramework.SqlServer.dll")]
     public class HonglornTest
     {
         static DbConnection CreateConnection() => Effort.DbConnectionFactory.CreateTransient();
