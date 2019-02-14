@@ -79,11 +79,6 @@ namespace HonglornWPF.ViewModels
 
         void LoadDisciplines() => ClearAndFill(Disciplines, Honglorn.AllCompetitionDisciplines());
 
-        void SaveDiscipline(CompetitionDiscipline discipline)
-        {
-            Honglorn.UpdateCompetitionDiscipline(discipline.PKey, discipline.Type, discipline.Name, discipline.Unit, discipline.LowIsBetter);
-        }
-
         void DeleteDiscipline()
         {
             Honglorn.DeleteCompetitionDiscipline(currentDiscipline.PKey);
