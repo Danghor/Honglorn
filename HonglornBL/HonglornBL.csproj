@@ -123,7 +123,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Settings.cs" />
     <Compile Include="StudentPerformance.cs" />
     <Compile Include="TraditionalCalculator.cs" />
     <Compile Include="Import\ExcelImporter.cs" />
