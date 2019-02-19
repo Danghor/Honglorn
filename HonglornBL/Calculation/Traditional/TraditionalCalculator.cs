@@ -3,7 +3,7 @@ using System.Data;
 using HonglornBL.Enums;
 using HonglornBL.Models.Entities;
 
-namespace HonglornBL
+namespace HonglornBL.Calculation.Traditional
 {
     static class TraditionalCalculator
     {

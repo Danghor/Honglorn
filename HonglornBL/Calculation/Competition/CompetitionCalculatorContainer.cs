@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using HonglornBL.Enums;
 
-namespace HonglornBL
+namespace HonglornBL.Calculation.Competition
 {
     [DebuggerDisplay("({SprintValue},{SprintScore})({JumpValue},{JumpScore})({ThrowValue},{ThrowScore})({MiddleDistanceValue},{MiddleDistanceScore}) {Rank} {Certificate}")]
     class CompetitionCalculatorContainer : ICompetitionResult

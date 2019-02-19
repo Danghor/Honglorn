@@ -7,6 +7,8 @@ using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using HonglornBL.Calculation.Competition;
+using HonglornBL.Calculation.Traditional;
 using HonglornBL.Enums;
 using HonglornBL.Import;
 using HonglornBL.Interfaces;

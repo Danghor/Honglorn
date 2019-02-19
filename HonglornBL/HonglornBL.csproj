@@ -95,9 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\Certificate.cs" />
-    <Compile Include="CompetitionCalculatorContainer.cs" />
+    <Compile Include="Calculation\Competition\CompetitionCalculatorContainer.cs" />
     <Compile Include="CompetitionDisciplineContainer.cs" />
-    <Compile Include="CompetitionCalculator.cs" />
+    <Compile Include="Calculation\Competition\CompetitionCalculator.cs" />
     <Compile Include="Enums\DisciplineType.cs" />
     <Compile Include="Enums\Game.cs" />
     <Compile Include="Enums\Measurement.cs" />
@@ -124,7 +124,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="StudentPerformance.cs" />
-    <Compile Include="TraditionalCalculator.cs" />
+    <Compile Include="Calculation\Traditional\TraditionalCalculator.cs" />
     <Compile Include="Import\ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
     <Compile Include="Models\Entities\Competition.cs" />

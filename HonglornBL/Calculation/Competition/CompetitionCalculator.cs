@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HonglornBL.Enums;
 
-namespace HonglornBL
+namespace HonglornBL.Calculation.Competition
 {
     class CompetitionCalculator
     {
