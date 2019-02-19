@@ -13,6 +13,7 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<IResult> Results { get; } = new ObservableCollection<IResult>();
 
         public ICommand RefreshYears { get; }
+        public ICommand Print { get; }
 
         bool isLoading;
         public bool IsLoading
@@ -64,6 +65,7 @@ namespace HonglornWPF.ViewModels
         public ClassResultsViewModel()
         {
             RefreshYears = new RelayCommand(RefreshYearsFromDb);
+            Print = new RelayCommand(PrintReport);
             RefreshYearsFromDb();
         }
 
@@ -72,6 +74,11 @@ namespace HonglornWPF.ViewModels
             short previouslySelectedYear = CurrentYear;
             LoadYears();
             CurrentYear = Years.Contains(previouslySelectedYear) ? previouslySelectedYear : Years.FirstOrDefault();
+        }
+
+        void PrintReport()
+        {
+            Honglorn.PrintReport(CurrentCourse, CurrentYear);
         }
 
         void LoadCourseNames() => ClearAndFill(Courses, Honglorn.ValidCourseNames(CurrentYear));

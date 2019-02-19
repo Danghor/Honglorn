@@ -696,5 +696,10 @@ namespace HonglornBL
                 db.SaveChanges();
             }
         }
+
+        public void PrintReport(string course, short year)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

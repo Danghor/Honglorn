@@ -58,5 +58,6 @@
                 <DataGridTextColumn IsReadOnly="True" Header="Urkunde" Binding="{Binding Certificate}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Command="{Binding Print}">Drucken</Button>
     </StackPanel>
 </UserControl>
