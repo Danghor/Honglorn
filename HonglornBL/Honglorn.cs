@@ -73,9 +73,9 @@ namespace HonglornBL
             }
         }
 
-        public async Task<IEnumerable<IResult>> GetResultsAsync(string course, short year)
+        public Task<IEnumerable<IResult>> GetResultsAsync(string course, short year)
         {
-            return await Task.Factory.StartNew(() => GetResults(course, year));
+            return Task.Factory.StartNew(() => GetResults(course, year));
         }
 
         IEnumerable<IResult> GetResults(string course, short year)
