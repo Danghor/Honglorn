@@ -226,13 +226,21 @@ namespace HonglornBL
                     disciplines = new[] { disciplineCollection.FemaleSprint, disciplineCollection.FemaleJump, disciplineCollection.FemaleThrow, disciplineCollection.FemaleMiddleDistance };
                 }
 
-                ushort[] scores =
+                var scores = new List<ushort>();
+
+                var disciplineValuePairs = new Dictionary<TraditionalDiscipline, float?>
                 {
-                    TraditionalCalculator.CalculateScore(disciplines[0], competition.Sprint),
-                    TraditionalCalculator.CalculateScore(disciplines[1], competition.Jump),
-                    TraditionalCalculator.CalculateScore(disciplines[2], competition.Throw),
-                    TraditionalCalculator.CalculateScore(disciplines[3], competition.MiddleDistance)
+                    { disciplines[0], competition.Sprint },
+                    { disciplines[1], competition.Jump },
+                    { disciplines[2], competition.Throw },
+                    { disciplines[3], competition.MiddleDistance }
                 };
+
+                foreach (var pair in disciplineValuePairs)
+                {
+                    var calculator = new TraditionalCalculator(pair.Key, pair.Value);
+                    scores.Add(calculator.CalculateScore());
+                }
 
                 var totalScore = (ushort)scores.OrderByDescending(s => s).Take(3).Sum(s => s);
 

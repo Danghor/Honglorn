@@ -94,6 +94,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calculation\IScoreCalculator.cs" />
+    <Compile Include="Calculation\Traditional\JumpThrowScoreCalculator.cs" />
+    <Compile Include="Calculation\Traditional\RunningScoreCalculator.cs" />
+    <Compile Include="Calculation\Traditional\ScoreCalculator.cs" />
+    <Compile Include="Calculation\Traditional\ZeroScoreCalculator.cs" />
     <Compile Include="Enums\Certificate.cs" />
     <Compile Include="Calculation\Competition\CompetitionCalculatorContainer.cs" />
     <Compile Include="CompetitionDisciplineContainer.cs" />
