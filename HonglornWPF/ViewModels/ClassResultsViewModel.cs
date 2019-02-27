@@ -1,4 +1,6 @@
 ﻿using HonglornBL;
+using HonglornWPF.Properties;
+using Microsoft.Win32;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
@@ -76,9 +78,18 @@ namespace HonglornWPF.ViewModels
             CurrentYear = Years.Contains(previouslySelectedYear) ? previouslySelectedYear : Years.FirstOrDefault();
         }
 
-        void PrintReport()
+        async void PrintReport()
         {
-            Honglorn.PrintReport(CurrentCourse, CurrentYear);
+            var dialog = new SaveFileDialog
+            {
+                Filter = "PDF (*.pdf)|*.pdf",
+                Title = "Bericht"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                await Honglorn.PrintReportAsync(dialog.FileName, Settings.Default.SchoolName, CurrentCourse, CurrentYear);
+            }
         }
 
         void LoadCourseNames() => ClearAndFill(Courses, Honglorn.ValidCourseNames(CurrentYear));

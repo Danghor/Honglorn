@@ -14,6 +14,7 @@ using HonglornBL.Import;
 using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
+using HonglornBL.Properties;
 using static HonglornBL.Prerequisites;
 
 namespace HonglornBL
@@ -697,9 +698,16 @@ namespace HonglornBL
             }
         }
 
-        public void PrintReport(string course, short year)
+        public async Task PrintReportAsync(string filePath, string schoolName, string course, short year)
         {
-            throw new NotImplementedException();
+            var results = await GetResultsAsync(course, year);
+
+            var printer = new PdfCompetitionReportPrinter(filePath)
+            {
+                SchoolName = schoolName
+            };
+
+            printer.PrintReport();
         }
     }
 }
