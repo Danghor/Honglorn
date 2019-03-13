@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Data.Entity.Core.Common.EntitySql;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -306,10 +307,12 @@ namespace HonglornAUT
                 {
                     var sex = (Sex)Enum.Parse(typeof(Sex), student["Sex"].ToString());
 
-                    float sprint = float.Parse(student["Sprint"].ToString(), CultureInfo.InvariantCulture);
-                    float jump = float.Parse(student["Jump"].ToString(), CultureInfo.InvariantCulture);
-                    float @throw = float.Parse(student["Throw"].ToString(), CultureInfo.InvariantCulture);
-                    float middleDistance = float.Parse(student["MiddleDistance"].ToString(), CultureInfo.InvariantCulture);
+                    Func<string, float?> readNullableFloat = identifier => student[identifier] is DBNull ? (float?) null : float.Parse(student[identifier].ToString(), CultureInfo.InvariantCulture);
+
+                    float? sprint = readNullableFloat("Sprint");
+                    float? jump = readNullableFloat("Jump");
+                    float? @throw = readNullableFloat("Throw");
+                    float? middleDistance = readNullableFloat("MiddleDistance");
 
                     ushort sprintScore = ushort.Parse(student["SprintScore"].ToString());
                     ushort jumpScore = ushort.Parse(student["JumpScore"].ToString());

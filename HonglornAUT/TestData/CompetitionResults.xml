@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Rows>
+<Rows xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Row>
     <Year>2018</Year>
     <SprintLowIsBetterMale>true</SprintLowIsBetterMale>
@@ -508,6 +508,45 @@
         <MiddleDistanceScore>3</MiddleDistanceScore>
         <Rank>9</Rank>
         <Certificate>Victory</Certificate>
+      </Student>
+    </Course>
+  </Row>
+  <Row>
+    <Year>2008</Year>
+    <SprintLowIsBetterMale>true</SprintLowIsBetterMale>
+    <JumpLowIsBetterMale>false</JumpLowIsBetterMale>
+    <ThrowLowIsBetterMale>false</ThrowLowIsBetterMale>
+    <MiddleDistanceLowIsBetterMale>true</MiddleDistanceLowIsBetterMale>
+    <SprintLowIsBetterFemale>true</SprintLowIsBetterFemale>
+    <JumpLowIsBetterFemale>false</JumpLowIsBetterFemale>
+    <ThrowLowIsBetterFemale>false</ThrowLowIsBetterFemale>
+    <MiddleDistanceLowIsBetterFemale>true</MiddleDistanceLowIsBetterFemale>
+    <Course Name="5A">
+      <Student>
+        <Sex>Female</Sex>
+        <Sprint>1</Sprint>
+        <SprintScore>1</SprintScore>
+        <Jump>1</Jump>
+        <JumpScore>2</JumpScore>
+        <Throw>1</Throw>
+        <ThrowScore>2</ThrowScore>
+        <MiddleDistance xsi:nil="true" />
+        <MiddleDistanceScore>2</MiddleDistanceScore>
+        <Rank>2</Rank>
+        <Certificate>Victory</Certificate>
+      </Student>
+      <Student>
+        <Sex>Female</Sex>
+        <Sprint>2</Sprint>
+        <SprintScore>2</SprintScore>
+        <Jump>2</Jump>
+        <JumpScore>1</JumpScore>
+        <Throw>2</Throw>
+        <ThrowScore>1</ThrowScore>
+        <MiddleDistance>2</MiddleDistance>
+        <MiddleDistanceScore>1</MiddleDistanceScore>
+        <Rank>1</Rank>
+        <Certificate>Honorary</Certificate>
       </Student>
     </Course>
   </Row>
