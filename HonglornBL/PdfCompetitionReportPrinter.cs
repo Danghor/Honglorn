@@ -148,8 +148,12 @@ namespace HonglornBL
                 row1.Cells[i].AddParagraph(values[i]);
             }
 
-            var pdfRenderer = new PdfDocumentRenderer(true) { Document = document };
-            pdfRenderer.Language = "de-DE";
+            var pdfRenderer = new PdfDocumentRenderer(true)
+            {
+                Document = document,
+                Language = "de-DE"
+            };
+
             pdfRenderer.RenderDocument();
 
             pdfRenderer.PdfDocument.Save(path);
