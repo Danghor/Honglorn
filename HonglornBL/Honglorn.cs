@@ -700,14 +700,28 @@ namespace HonglornBL
 
         public async Task PrintReportAsync(string filePath, string schoolName, string course, short year)
         {
+            var className = GetClassName(course);
+            var gameType = GetGameType(className, year);
+
             var results = await GetResultsAsync(course, year);
 
-            var printer = new PdfCompetitionReportPrinter(filePath)
+            if (gameType == Game.Competition)
             {
-                SchoolName = schoolName
-            };
-
-            printer.PrintReport();
+                var printer = new PdfCompetitionReportPrinter(filePath)
+                {
+                    SchoolName = schoolName,
+                    ClassName = className,
+                    SexName = "Männlich"
+                };
+            }
+            else if (gameType == Game.Traditional)
+            {
+                throw new NotImplementedException();
+            }
+            else
+            {
+                throw new InvalidOperationException("Cannot print reports, because no game type is set for this class.");
+            }
         }
     }
 }
