@@ -700,7 +700,7 @@ namespace HonglornBL
 
         public async Task PrintReportAsync(string filePath, string schoolName, string course, short year)
         {
-            var className = GetClassName(course);
+            string className = GetClassName(course);
             var gameType = GetGameType(className, year);
 
             var results = await GetResultsAsync(course, year);
