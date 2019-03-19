@@ -72,7 +72,7 @@ namespace HonglornAUT
             const string expectedForename = "Bruce";
             const string expectedCourse = "05A";
 
-            string tempFilePath = Path.Combine(Environment.CurrentDirectory, $"{Guid.NewGuid().ToString()}.xlsx");
+            string tempFilePath = Path.ChangeExtension(Path.GetTempFileName(), "xlsx");
 
             File.WriteAllBytes(tempFilePath, Properties.Resources.ImportTemplate);
 
