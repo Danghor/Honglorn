@@ -710,9 +710,14 @@ namespace HonglornBL
                 var printer = new PdfCompetitionReportPrinter(filePath)
                 {
                     SchoolName = schoolName,
-                    ClassName = className,
-                    SexName = "Männlich"
+                    ClassName = className
                 };
+
+                int count = 1;
+                foreach (IResult result in results)
+                {
+                    printer.AddStudentRow(new[] { $"{count}.", result.Surname, result.Forename });
+                }
             }
             else if (gameType == Game.Traditional)
             {

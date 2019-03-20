@@ -116,7 +116,7 @@
     <Compile Include="Calculation\Traditional\RunningScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\ScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\ZeroScoreCalculator.cs" />
-    <Compile Include="PdfCompetitionReportPrinter.cs" />
+    <Compile Include="Print\PdfCompetitionReportPrinter.cs" />
     <Compile Include="Enums\Certificate.cs" />
     <Compile Include="Calculation\Competition\CompetitionCalculatorContainer.cs" />
     <Compile Include="CompetitionDisciplineContainer.cs" />

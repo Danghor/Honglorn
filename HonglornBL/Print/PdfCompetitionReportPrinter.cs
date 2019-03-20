@@ -4,8 +4,6 @@ using MigraDoc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace HonglornBL
 {
@@ -13,7 +11,6 @@ namespace HonglornBL
     {
         internal string SchoolName { get; set; }
         internal string ClassName { get; set; }
-        internal string SexName { get; set; }
         internal DateTime Date { get; set; }
         internal sbyte FirstPercentile { get; set; }
         internal sbyte SecondPercentile { get; set; }
@@ -21,17 +18,18 @@ namespace HonglornBL
         internal int FirstPercentileCount { get; set; }
         internal int SecondPercentileCount { get; set; }
         internal int ThirdPercentileCount { get; set; }
-
+     
         readonly string path;
+        readonly ICollection<string[]> rows = new List<string[]>();
 
         internal PdfCompetitionReportPrinter(string filePath)
         {
-            path = filePath;
+            path = Path.ChangeExtension(filePath, ".pdf");
+        }
 
-            if (!Path.HasExtension(path))
-            {
-                path = Path.Combine(filePath, ".pdf");
-            }
+        internal void AddStudentRow(string[] values)
+        {
+            rows.Add(values);
         }
 
         public void PrintReport()
@@ -81,7 +79,7 @@ namespace HonglornBL
 
             headlineRow.Cells[1].Style = "Normal";
             headlineRow.Cells[1].AddParagraph($"Schule: {SchoolName}");
-            headlineRow.Cells[1].AddParagraph($"Klassenstufe: {ClassName} - {SexName}");
+            headlineRow.Cells[1].AddParagraph($"Klassenstufe: {ClassName}");
             headlineRow.Cells[1].AddParagraph($"Teilnehmerzahl: {numberOfParticipants}");
 
             headlineRow.Cells[2].AddParagraph($"Datum: {date}");
