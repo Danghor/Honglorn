@@ -138,12 +138,14 @@ namespace HonglornBL
             secondHeader.Cells[19].AddParagraph("Sieger");
             secondHeader.Cells[20].AddParagraph("Teiln.");
 
-            var values = new[] { "1.", "Campo, Pia", "11,5", "1", "8", "1", "19", "1", "7", "3", "", "1", "1", "1", "3", "6", "1", "", "x", "", "" };
-
-            Row row1 = table.AddRow();
-            for (int i = 0; i < values.Length; i++)
+            foreach(var studentRow in rows)
             {
-                row1.Cells[i].AddParagraph(values[i]);
+                Row tableRow = table.AddRow();
+
+                for (int i = 0; i < studentRow.Length; i++)
+                {
+                    tableRow.Cells[i].AddParagraph(studentRow[i]);
+                }
             }
 
             var pdfRenderer = new PdfDocumentRenderer(true)

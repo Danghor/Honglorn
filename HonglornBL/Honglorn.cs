@@ -647,9 +647,9 @@ namespace HonglornBL
         /// </summary>
         /// <param name="forename">The student's forename.</param>
         /// <param name="surname">The student's surname.</param>
-        /// <param name="courseName">The name of the course this student is part of, for the given year.</param>
         /// <param name="sex">The student's gender.</param>
         /// <param name="yearOfBirth">The year the student was born in.</param>
+        /// <param name="courseName">The name of the course this student is part of, for the given year.</param>
         /// <param name="year">The year this record is valid in. This is usually the current year.</param>
         public void ImportSingleStudent(string forename, string surname, Sex sex, short yearOfBirth, string courseName, short year)
         {
@@ -717,7 +717,10 @@ namespace HonglornBL
                 foreach (IResult result in results)
                 {
                     printer.AddStudentRow(new[] { $"{count}.", result.Surname, result.Forename });
+                    count++;
                 }
+
+                printer.PrintReport();
             }
             else if (gameType == Game.Traditional)
             {
