@@ -45,12 +45,12 @@ namespace HonglornBL.Models.Entities
             YearOfBirth = yearOfBirth;
         }
 
-        internal void AddStudentCourseRel(short year, string courseName)
+        internal void AddStudentCourseRel(short year, Course course)
         {
             var rel = new StudentCourseRel
             {
                 Year = year,
-                CourseName = courseName
+                Course = course
             };
 
             StudentCourseRel.Add(rel);

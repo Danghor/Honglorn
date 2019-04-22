@@ -652,13 +652,12 @@ namespace HonglornBL
         /// <param name="year">The year this record is valid in. This is usually the current year.</param>
         public void ImportSingleStudent(string forename, string surname, Sex sex, short yearOfBirth, string courseName, short year)
         {
-            //todo: handle exception
-            GetClassName(courseName); //check whether the course name can be mapped to a class name
-
             //todo: verify year
 
             using (HonglornDb db = ContextFactory.CreateContext())
             {
+                Course course = db.Course.Single(c => c.Name == courseName);
+
                 IQueryable<Student> studentQuery = from s in db.Student
                                                    where s.Forename == forename
                                                          && s.Surname == surname
@@ -672,7 +671,7 @@ namespace HonglornBL
                 {
                     var newStudent = new Student(forename, surname, sex, yearOfBirth);
 
-                    newStudent.AddStudentCourseRel(year, courseName);
+                    newStudent.AddStudentCourseRel(year, course);
                     db.Student.Add(newStudent);
                 }
                 else
@@ -685,11 +684,11 @@ namespace HonglornBL
 
                     if (existingCourseInformation == null)
                     {
-                        existingStudent.AddStudentCourseRel(year, courseName);
+                        existingStudent.AddStudentCourseRel(year, course);
                     }
                     else
                     {
-                        existingCourseInformation.CourseName = courseName;
+                        existingCourseInformation.Course = course;
                     }
                 }
 

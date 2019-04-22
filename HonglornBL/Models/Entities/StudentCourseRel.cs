@@ -17,10 +17,12 @@ namespace HonglornBL.Models.Entities
         public short Year { get; set; }
 
         [Required]
-        [StringLength(3)]
-        public string CourseName { get; set; }
+        public Guid CoursePKey { get; set; }
 
         [ForeignKey(nameof(StudentPKey))]
         public virtual Student Student { get; set; }
+
+        [ForeignKey(nameof(CoursePKey))]
+        public virtual Class Course { get; set; }
     }
 }
