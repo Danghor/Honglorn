@@ -116,6 +116,8 @@
     <Compile Include="Interfaces\IStudentPerformance.cs" />
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Import\IStudentImporter.cs" />
+    <Compile Include="Models\Entities\Class.cs" />
+    <Compile Include="Models\Entities\Course.cs" />
     <Compile Include="Models\Framework\HonglornDbFactory.cs" />
     <Compile Include="Models\Framework\HonglornSqlDb.cs" />
     <Compile Include="Models\Framework\HonglornMySqlDb.cs" />

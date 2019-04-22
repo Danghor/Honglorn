@@ -7,7 +7,9 @@ namespace HonglornBL.Models.Framework
 {
     class HonglornDb : DbContext
     {
+        public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<Competition> Competition { get; set; }
+        public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<CompetitionDiscipline> CompetitionDiscipline { get; set; }
         public virtual DbSet<DisciplineCollection> DisciplineCollection { get; set; }
         public virtual DbSet<Student> Student { get; set; }
