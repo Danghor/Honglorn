@@ -23,6 +23,6 @@ namespace HonglornBL.Models.Entities
         public virtual Student Student { get; set; }
 
         [ForeignKey(nameof(CoursePKey))]
-        public virtual Class Course { get; set; }
+        public virtual Course Course { get; set; }
     }
 }
