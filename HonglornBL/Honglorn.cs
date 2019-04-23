@@ -42,16 +42,18 @@ namespace HonglornBL
             ContextFactory = new HonglornDbFactory(connection);
         }
 
-        public IEnumerable<IStudentPerformance> StudentPerformances(string course, short year)
+        public IEnumerable<IStudentPerformance> StudentPerformances(string courseName, short year)
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                var result = new List<IStudentPerformance>();
+                var course = db.Course.Single(c => c.Name == courseName);
 
                 IQueryable<Student> relevantStudents = (from s in db.Student
-                                                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
+                                                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.Course == course)
                                                         orderby s.Surname, s.Forename, s.YearOfBirth descending
                                                         select s).Include(s => s.Competitions);
+
+                var result = new List<IStudentPerformance>();
 
                 foreach (Student student in relevantStudents)
                 {
@@ -69,7 +71,7 @@ namespace HonglornBL
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 return (from s in db.Student
-                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.CourseName == course)
+                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.Course.Name == course)
                         orderby s.Surname, s.Forename, s.YearOfBirth descending
                         select s).Include(s => s.Competitions).ToArray();
             }
@@ -80,15 +82,16 @@ namespace HonglornBL
             return Task.Factory.StartNew(() => GetResults(course, year));
         }
 
-        IEnumerable<IResult> GetResults(string course, short year)
+        IEnumerable<IResult> GetResults(string courseName, short year)
         {
             IEnumerable<IResult> results;
 
-            IEnumerable<Student> students = GetStudents(course, year);
-            string className = GetClassName(course);
+            IEnumerable<Student> students = GetStudents(courseName, year);
 
             using (HonglornDb db = ContextFactory.CreateContext())
             {
+                var className = db.Course.Single(course => course.Name == courseName);
+
                 DisciplineCollection disciplines = (from d in db.DisciplineCollection
                                                     where d.ClassName == className
                                                           && d.Year == year
@@ -148,22 +151,22 @@ namespace HonglornBL
 
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                IEnumerable<string> classes = (from s in students
-                                               join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
-                                               where rel.Year == year
-                                               select GetClassName(rel.CourseName)).Distinct();
+                IEnumerable<Class> classes = (from s in students
+                                              join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
+                                              where rel.Year == year
+                                              select rel.Course.Class).Distinct();
 
-                foreach (string @class in classes)
+                foreach (Class @class in classes)
                 {
                     IEnumerable<Student> maleStudents = (from s in db.Student
                                                          join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
                                                          where s.Sex == Sex.Male && rel.Year == year
-                                                         select new { s, rel.CourseName }).AsEnumerable().Where(i => GetClassName(i.CourseName) == @class).Select(i => i.s).ToList();
+                                                         select new { s, rel.Course.Class }).AsEnumerable().Where(i => i.Class == @class).Select(i => i.s).ToList();
 
                     IEnumerable<Student> femaleStudents = (from s in db.Student
                                                            join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
                                                            where s.Sex == Sex.Female && rel.Year == year
-                                                           select new { s, rel.CourseName }).AsEnumerable().Where(i => GetClassName(i.CourseName) == @class).Select(i => i.s).ToList();
+                                                           select new { s, rel.Course.Class }).AsEnumerable().Where(i => i.Class == @class).Select(i => i.s).ToList();
 
                     if (maleStudents.Any())
                     {
@@ -546,7 +549,7 @@ namespace HonglornBL
             {
                 return (from r in db.StudentCourseRel
                         where r.Year == year
-                        select r.CourseName).Distinct().OrderBy(name => name).ToArray();
+                        select r.Course).Distinct().Select(course => course.Name).OrderBy(name => name).ToArray();
             }
         }
 
