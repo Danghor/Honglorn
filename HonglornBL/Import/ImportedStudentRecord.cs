@@ -54,18 +54,8 @@ namespace HonglornBL.Import
 
         static readonly Func<string, bool> IsValidCourseName = (courseName) =>
         {
-            var isValid = true;
-
-            try
-            {
-                Prerequisites.GetClassName(courseName);
-            }
-            catch
-            {
-                isValid = false;
-            }
-
-            return isValid;
+            // TODO: verify if entity exists in database
+            return true;
         };
 
         static readonly Func<string, bool> IsValidSex = (sex) =>

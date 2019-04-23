@@ -6,10 +6,12 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using HonglornBL.Calculation.Competition;
 using HonglornBL.Calculation.Traditional;
 using HonglornBL.Enums;
+using HonglornBL.Exceptions;
 using HonglornBL.Import;
 using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
@@ -46,10 +48,8 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                var course = db.Course.Single(c => c.Name == courseName);
-
                 IQueryable<Student> relevantStudents = (from s in db.Student
-                                                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.Course == course)
+                                                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.Course.Name == courseName)
                                                         orderby s.Surname, s.Forename, s.YearOfBirth descending
                                                         select s).Include(s => s.Competitions);
 
@@ -90,16 +90,16 @@ namespace HonglornBL
 
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                var className = db.Course.Single(course => course.Name == courseName);
+                var @class = db.Course.Single(c => c.Name == courseName).Class;
 
                 DisciplineCollection disciplines = (from d in db.DisciplineCollection
-                                                    where d.ClassName == className
+                                                    where d.Class == @class
                                                           && d.Year == year
                                                     select d).SingleOrDefault();
 
                 if (disciplines == null)
                 {
-                    throw new DataException($"No disciplines have been configured for class {className} in year {year}. Therefore, no results can be calculated.");
+                    throw new DataException($"No disciplines have been configured for class {@class.Name} in year {year}. Therefore, no results can be calculated.");
                 }
 
                 Discipline[] disciplineArray = { disciplines.MaleSprint, disciplines.MaleJump, disciplines.MaleThrow, disciplines.MaleMiddleDistance, disciplines.FemaleSprint, disciplines.FemaleJump, disciplines.FemaleThrow, disciplines.FemaleMiddleDistance };
@@ -138,7 +138,7 @@ namespace HonglornBL
                 }
                 else
                 {
-                    throw new DataException($"For class {className} in year {year}, some configured disciplines are traditional disciplines, while other disciplines are competition disciplines. A result can only be calculated when all disciplines are of the same type.");
+                    throw new DataException($"For class {@class.Name} in year {year}, some configured disciplines are traditional disciplines, while other disciplines are competition disciplines. A result can only be calculated when all disciplines are of the same type.");
                 }
             }
 
@@ -371,7 +371,7 @@ namespace HonglornBL
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 return (from col in db.DisciplineCollection
-                        where col.ClassName == className && col.Year == year
+                        where col.Class.Name == className && col.Year == year
                         select col).SingleOrDefault();
             }
         }
@@ -451,7 +451,7 @@ namespace HonglornBL
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 DisciplineCollection disciplineCollection = (from c in db.DisciplineCollection
-                                                             where c.ClassName == className
+                                                             where c.Class.Name == className
                                                                    && c.Year == year
                                                              select c).SingleOrDefault();
 
@@ -477,13 +477,15 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
+                var @class = db.Class.Single(c => c.Name == className);
+
                 IEnumerable<Discipline> disciplines = (from d in new[] { maleSprintPKey, maleJumpPKey, maleThrowPKey, maleMiddleDistancePKey, femaleSprintPKey, femaleJumpPKey, femaleThrowPKey, femaleMiddleDistancePKey }
                                                        select db.Set<Discipline>().Find(d)).ToArray();
 
                 if (disciplines.All(d => d is CompetitionDiscipline) || disciplines.All(d => d is TraditionalDiscipline))
                 {
                     DisciplineCollection existingCollection = (from col in db.DisciplineCollection
-                                                               where col.ClassName == className && col.Year == year
+                                                               where col.Class == @class && col.Year == year
                                                                select col).SingleOrDefault();
 
                     if (existingCollection == null)
@@ -491,7 +493,7 @@ namespace HonglornBL
                         // Create
                         db.DisciplineCollection.Add(new DisciplineCollection
                         {
-                            ClassName = className,
+                            Class = @class,
                             Year = year,
                             MaleSprintPKey = maleSprintPKey,
                             MaleJumpPKey = maleJumpPKey,
@@ -561,7 +563,12 @@ namespace HonglornBL
         /// <remarks></remarks>
         public ICollection<string> ValidClassNames(short year)
         {
-            return ValidCourseNames(year).Select(GetClassName).Distinct().ToArray();
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                return (from r in db.StudentCourseRel
+                        where r.Year == year
+                        select r.Course.Class).Distinct().Select(@class => @class.Name).OrderBy(name => name).ToArray();
+            }
         }
 
         static readonly Dictionary<string, Sex> SexDictionary = new Dictionary<string, Sex>
@@ -659,43 +666,50 @@ namespace HonglornBL
 
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                Course course = db.Course.Single(c => c.Name == courseName);
-
-                IQueryable<Student> studentQuery = from s in db.Student
-                                                   where s.Forename == forename
-                                                         && s.Surname == surname
-                                                         && s.Sex == sex
-                                                         && s.YearOfBirth == yearOfBirth
-                                                   select s;
-
-                Student existingStudent = studentQuery.SingleOrDefault();
-
-                if (existingStudent == null)
+                try
                 {
-                    var newStudent = new Student(forename, surname, sex, yearOfBirth);
+                    Course course = db.Course.Single(c => c.Name == courseName);
 
-                    newStudent.AddStudentCourseRel(year, course);
-                    db.Student.Add(newStudent);
-                }
-                else
-                {
-                    IEnumerable<StudentCourseRel> courseInformationQuery = from r in existingStudent.StudentCourseRel
-                                                                           where r.Year == year
-                                                                           select r;
+                    IQueryable<Student> studentQuery = from s in db.Student
+                                                       where s.Forename == forename
+                                                             && s.Surname == surname
+                                                             && s.Sex == sex
+                                                             && s.YearOfBirth == yearOfBirth
+                                                       select s;
 
-                    StudentCourseRel existingCourseInformation = courseInformationQuery.SingleOrDefault();
+                    Student existingStudent = studentQuery.SingleOrDefault();
 
-                    if (existingCourseInformation == null)
+                    if (existingStudent == null)
                     {
-                        existingStudent.AddStudentCourseRel(year, course);
+                        var newStudent = new Student(forename, surname, sex, yearOfBirth);
+
+                        newStudent.AddStudentCourseRel(year, course);
+                        db.Student.Add(newStudent);
                     }
                     else
                     {
-                        existingCourseInformation.Course = course;
-                    }
-                }
+                        IEnumerable<StudentCourseRel> courseInformationQuery = from r in existingStudent.StudentCourseRel
+                                                                               where r.Year == year
+                                                                               select r;
 
-                db.SaveChanges();
+                        StudentCourseRel existingCourseInformation = courseInformationQuery.SingleOrDefault();
+
+                        if (existingCourseInformation == null)
+                        {
+                            existingStudent.AddStudentCourseRel(year, course);
+                        }
+                        else
+                        {
+                            existingCourseInformation.Course = course;
+                        }
+                    }
+
+                    db.SaveChanges();
+                }
+                catch (InvalidOperationException ex)
+                {
+                    throw new CourseNotFoundException($"Course {courseName} is not present in the database.", ex);
+                }
             }
         }
     }
