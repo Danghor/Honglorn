@@ -366,6 +366,14 @@ namespace HonglornBL
             }
         }
 
+        public ICollection<Class> AllClasses()
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                return db.Class.ToArray();
+            }
+        }
+
         public IDisciplineCollection AssignedDisciplines(string className, short year)
         {
             using (HonglornDb db = ContextFactory.CreateContext())
