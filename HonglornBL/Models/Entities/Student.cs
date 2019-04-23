@@ -1,19 +1,13 @@
-﻿using System;
+﻿using HonglornBL.Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
-using HonglornBL.Enums;
 
 namespace HonglornBL.Models.Entities
 {
     [DebuggerDisplay("{Forename} {Surname}, {Sex}, YOB: {YearOfBirth}, ID: {PKey}")]
-    public class Student
+    public class Student : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; set; } = Guid.NewGuid();
-
         [Required]
         [StringLength(45)]
         public string Surname { get; set; }

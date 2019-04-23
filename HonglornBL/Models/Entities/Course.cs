@@ -4,12 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Course
+    public class Course : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; set; } = Guid.NewGuid();
-
         [Required]
         [Index(IsUnique = true)]
         [StringLength(25)]
@@ -17,7 +13,6 @@ namespace HonglornBL.Models.Entities
 
         [Required]
         public Guid ClassPKey { get; set; }
-
 
         [ForeignKey(nameof(ClassPKey))]
         public virtual Class Class { get; set; }

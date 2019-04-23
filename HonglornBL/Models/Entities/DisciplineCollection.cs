@@ -5,17 +5,14 @@ using HonglornBL.Interfaces;
 
 namespace HonglornBL.Models.Entities
 {
-    public class DisciplineCollection : IDisciplineCollection
+    public class DisciplineCollection : Entity, IDisciplineCollection
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [StringLength(1)]
-        public string ClassName { get; set; }
+        [Required]
+        [Index("IX_FirstAndSecond", 1, IsUnique = true)]
+        public Guid ClassPKey { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required]
+        [Index("IX_FirstAndSecond", 2, IsUnique = true)]
         public short Year { get; set; }
 
         // Male
@@ -41,5 +38,8 @@ namespace HonglornBL.Models.Entities
         public virtual Discipline FemaleJump { get; set; }
         public virtual Discipline FemaleThrow { get; set; }
         public virtual Discipline FemaleMiddleDistance { get; set; }
+
+        [ForeignKey(nameof(ClassPKey))]
+        public virtual Class Class { get; set; }
     }
 }

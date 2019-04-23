@@ -4,16 +4,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Competition
+    public class Competition : Entity
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required]
+        [Index("IX_FirstAndSecond", 1, IsUnique = true)]
         public Guid StudentPKey { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required]
+        [Index("IX_FirstAndSecond", 2, IsUnique = true)]
         public short Year { get; set; }
 
         public float? Sprint { get; set; }

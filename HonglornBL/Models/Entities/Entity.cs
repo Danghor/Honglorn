@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Class : Entity
+    public class Entity
     {
-        [Required]
-        [Index(IsUnique = true)]
-        [StringLength(25)]
-        public string Name { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Guid PKey { get; set; } = Guid.NewGuid();
     }
 }

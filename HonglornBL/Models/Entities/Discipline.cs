@@ -1,17 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using HonglornBL.Enums;
+﻿using HonglornBL.Enums;
 using HonglornBL.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class Discipline : IDiscipline
+    public abstract class Discipline : Entity, IDiscipline
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; set; } = Guid.NewGuid();
-
         [Required]
         public DisciplineType Type { get; set; }
 

@@ -4,16 +4,14 @@ using HonglornBL.Enums;
 
 namespace HonglornBL.Models.Entities
 {
-    public class TraditionalReportMeta
+    public class TraditionalReportMeta : Entity
     {
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required]
+        [Index("IX_FirstAndSecond", 1, IsUnique = true)]
         public Sex Sex { get; set; }
 
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Required]
+        [Index("IX_FirstAndSecond", 2, IsUnique = true)]
         public byte Age { get; set; }
 
         [Required]
