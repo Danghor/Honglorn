@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\ColorMenuData\AccentColorMenuData.cs" />
     <Compile Include="ViewModels\ColorMenuData\AppThemeMenuData.cs" />
     <Compile Include="ViewModels\ColorMenuData\ColorMenuData.cs" />
+    <Compile Include="ViewModels\CreateClassViewModel.cs" />
     <Compile Include="ViewModels\CreateCompetitionDisciplineViewModel.cs" />
     <Compile Include="ViewModels\EditClassesViewModel.cs" />
     <Compile Include="ViewModels\EditDisciplinesViewModel.cs" />
@@ -142,6 +143,9 @@
     <Compile Include="ViewModels\ViewModel.cs" />
     <Compile Include="Views\AssignDisciplinesView.xaml.cs">
       <DependentUpon>AssignDisciplinesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateClassView.xaml.cs">
+      <DependentUpon>CreateClassView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CreateCompetitionDisciplineView.xaml.cs">
       <DependentUpon>CreateCompetitionDisciplineView.xaml</DependentUpon>
@@ -174,6 +178,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\AssignDisciplinesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateClassView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

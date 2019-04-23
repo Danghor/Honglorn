@@ -10,5 +10,13 @@ namespace HonglornBL.Models.Entities
         [Index(IsUnique = true)]
         [StringLength(25)]
         public string Name { get; set; }
+
+        public Class Clone()
+        {
+            return new Class()
+            {
+                Name = Name
+            };
+        }
     }
 }

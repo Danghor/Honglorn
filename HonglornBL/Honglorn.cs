@@ -384,6 +384,19 @@ namespace HonglornBL
             }
         }
 
+        public void CreateClass(string className)
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                db.Class.Add(new Class
+                {
+                    Name = className
+                });
+
+                db.SaveChanges();
+            }
+        }
+
         public void CreateCompetitionDiscipline(DisciplineType type, string name, string unit, bool lowIsBetter)
         {
             using (HonglornDb db = ContextFactory.CreateContext())
@@ -420,6 +433,23 @@ namespace HonglornBL
             }
         }
 
+        public void UpdateClass(Guid classPKey, string className)
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                Class @class = db.Class.Find(classPKey);
+
+                if (@class == null)
+                {
+                    throw new ArgumentException($"A {nameof(Class)} with PKey {classPKey} does not exist in the database.", nameof(classPKey));
+                }
+
+                @class.Name = className;
+
+                db.SaveChanges();
+            }
+        }
+
         public void DeleteCompetitionDiscipline(Guid disciplinePKey)
         {
             try
@@ -438,6 +468,27 @@ namespace HonglornBL
             catch (DbUpdateConcurrencyException ex)
             {
                 throw new ArgumentException($"A {nameof(CompetitionDiscipline)} with PKey {disciplinePKey} does not exist in the database.", nameof(disciplinePKey), ex);
+            }
+        }
+
+        public void DeleteClass(Guid classPKey)
+        {
+            try
+            {
+                using (HonglornDb db = ContextFactory.CreateContext())
+                {
+                    var @class = new Class
+                    {
+                        PKey = classPKey
+                    };
+
+                    db.Entry(@class).State = EntityState.Deleted;
+                    db.SaveChanges();
+                }
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                throw new ArgumentException($"A {nameof(Class)} with PKey {classPKey} does not exist in the database.", nameof(classPKey), ex);
             }
         }
 

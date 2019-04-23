@@ -48,6 +48,9 @@
 
         <Grid Grid.Row="1">
             <controls:MetroAnimatedSingleRowTabControl>
+                <TabItem Header="Jahrgänge">
+                    <views:EditClassesView />
+                </TabItem>
                 <TabItem Header="Schüler importieren">
                     <views:ImportStudentsView />
                 </TabItem>
