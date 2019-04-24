@@ -1,10 +1,10 @@
-﻿using HonglornBL.Models.Entities;
-using System.Collections.ObjectModel;
-using MahApps.Metro.Controls.Dialogs;
-using System.Windows.Input;
+﻿using HonglornBL.Exceptions;
+using HonglornBL.Models.Entities;
 using HonglornWPF.Views;
 using MahApps.Metro.Controls;
-using System;
+using MahApps.Metro.Controls.Dialogs;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
@@ -85,8 +85,16 @@ namespace HonglornWPF.ViewModels
 
         void CreateClass(string className)
         {
-            Honglorn.CreateClass(className);
-            LoadClasses();
+            try
+            {
+                Honglorn.CreateClass(className);
+                LoadClasses();
+            }
+            catch (DuplicateClassException ex)
+            {
+                var mainWindow = (MetroWindow)System.Windows.Application.Current.MainWindow;
+                mainWindow.ShowMessageAsync("Error", ex.Message);
+            }
         }
 
         void UpdateClass(string className)
@@ -96,7 +104,7 @@ namespace HonglornWPF.ViewModels
                 Honglorn.UpdateClass(CurrentClass.PKey, className);
                 LoadClasses();
             }
-            catch (Exception ex)
+            catch (DuplicateClassException ex)
             {
                 var mainWindow = (MetroWindow)System.Windows.Application.Current.MainWindow;
                 mainWindow.ShowMessageAsync("Error", ex.Message);

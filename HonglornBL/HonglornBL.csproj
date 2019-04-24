@@ -107,6 +107,7 @@
     <Compile Include="Enums\Measurement.cs" />
     <Compile Include="Enums\Sex.cs" />
     <Compile Include="Exceptions\CourseNotFoundException.cs" />
+    <Compile Include="Exceptions\DuplicateClassException.cs" />
     <Compile Include="FloatComparer.cs" />
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\CsvImporter.cs" />

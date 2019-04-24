@@ -393,7 +393,14 @@ namespace HonglornBL
                     Name = className
                 });
 
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    throw new DuplicateClassException($"A class named {className} already exists in the database.", ex);
+                }
             }
         }
 
@@ -446,7 +453,14 @@ namespace HonglornBL
 
                 @class.Name = className;
 
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    throw new DuplicateClassException($"A class named {className} already exists in the database.", ex);
+                }
             }
         }
 
