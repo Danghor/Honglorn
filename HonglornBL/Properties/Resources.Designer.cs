@@ -19,7 +19,7 @@ namespace HonglornBL.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,9 +61,24 @@ namespace HonglornBL.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
         ///
-        ///&lt;ArrayOfTraditionalDiscipline xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+        ///&lt;ArrayOfHandicap xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+        ///  &lt;Handicap&gt;
+        ///    &lt;Name&gt;A 1&lt;/Name&gt;
+        ///  &lt;/Handicap&gt;
+        ///&lt;/ArrayOfHandicap&gt;.
+        /// </summary>
+        internal static string ArrayOfHandicap {
+            get {
+                return ResourceManager.GetString("ArrayOfHandicap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
+        ///
+        ///&lt;ArrayOfTraditionalDiscipline xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
         ///  &lt;TraditionalDiscipline&gt;
         ///    &lt;Type&gt;Sprint&lt;/Type&gt;
         ///    &lt;Name&gt;Sprint 100 m&lt;/Name&gt;
@@ -75,7 +90,9 @@ namespace HonglornBL.Properties {
         ///    &lt;ConstantC&gt;0.00656&lt;/ConstantC&gt;
         ///    &lt;Measurement&gt;Electronic&lt;/Measurement&gt;
         ///  &lt;/TraditionalDiscipline&gt;
-        ///  &lt;TraditionalDiscipline&gt; [rest of string was truncated]&quot;;.
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;Sprint&lt;/Type&gt;
+        ///    &lt;Name&gt;Sprint  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ArrayOfTraditionalDiscipline {
             get {
@@ -84,20 +101,20 @@ namespace HonglornBL.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
         ///
-        ///&lt;ArrayOfTraditionalReportMeta xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
-        ///  &lt;TraditionalReportMeta&gt;
-        ///    &lt;Sex&gt;Male&lt;/Sex&gt;
-        ///    &lt;Age&gt;8&lt;/Age&gt;
-        ///    &lt;HonoraryCertificateScore&gt;575&lt;/HonoraryCertificateScore&gt;
-        ///    &lt;VictoryCertificateScore&gt;450&lt;/VictoryCertificateScore&gt;
-        ///  &lt;/TraditionalReportMeta&gt;
+        ///&lt;ArrayOfTraditionalReportMeta xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
         ///  &lt;TraditionalReportMeta&gt;
         ///    &lt;Sex&gt;Female&lt;/Sex&gt;
         ///    &lt;Age&gt;8&lt;/Age&gt;
         ///    &lt;HonoraryCertificateScore&gt;625&lt;/HonoraryCertificateScore&gt;
-        ///    &lt;Victo [rest of string was truncated]&quot;;.
+        ///    &lt;VictoryCertificateScore&gt;475&lt;/VictoryCertificateScore&gt;
+        ///  &lt;/TraditionalReportMeta&gt;
+        ///  &lt;TraditionalReportMeta&gt;
+        ///    &lt;Sex&gt;Female&lt;/Sex&gt;
+        ///    &lt;Age&gt;9&lt;/Age&gt;
+        ///    &lt;HonoraryCertificateScore&gt;725&lt;/HonoraryCertificateScore&gt;
+        ///    &lt;VictoryCertificateScore&gt;550&lt;/VictoryCertificate [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ArrayOfTraditionalReportMeta {
             get {

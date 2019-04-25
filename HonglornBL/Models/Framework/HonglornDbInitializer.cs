@@ -11,6 +11,7 @@ namespace HonglornBL.Models.Framework
     {
         protected override void Seed(T context)
         {
+            InitializeEntity<Handicap>(Resources.ArrayOfHandicap, context.Handicap);
             InitializeEntity<TraditionalDiscipline>(Resources.ArrayOfTraditionalDiscipline, context.TraditionalDiscipline);
             InitializeEntity<TraditionalReportMeta>(Resources.ArrayOfTraditionalReportMeta, context.TraditionalReportMeta);
 

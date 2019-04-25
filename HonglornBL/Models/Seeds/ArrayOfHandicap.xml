@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" ?>
+
+<ArrayOfHandicap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Handicap>
+    <Name>A 1</Name>
+  </Handicap>
+  <Handicap>
+    <Name>A 2</Name>
+  </Handicap>
+  <Handicap>
+    <Name>A 3</Name>
+  </Handicap>
+  <Handicap>
+    <Name>A 4</Name>
+  </Handicap>
+  <Handicap>
+    <Name>A 5</Name>
+  </Handicap>
+  <Handicap>
+    <Name>A 6</Name>
+  </Handicap>
+  <Handicap>
+    <Name>B 1</Name>
+  </Handicap>
+  <Handicap>
+    <Name>B 2</Name>
+  </Handicap>
+  <Handicap>
+    <Name>C 1</Name>
+  </Handicap>
+  <Handicap>
+    <Name>C 2</Name>
+  </Handicap>
+  <Handicap>
+    <Name>D</Name>
+  </Handicap>
+  <Handicap>
+    <Name>E</Name>
+  </Handicap>
+</ArrayOfHandicap>

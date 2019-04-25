@@ -121,6 +121,7 @@
     <Compile Include="Models\Entities\Class.cs" />
     <Compile Include="Models\Entities\Course.cs" />
     <Compile Include="Models\Entities\Entity.cs" />
+    <Compile Include="Models\Entities\Handicap.cs" />
     <Compile Include="Models\Framework\HonglornDbFactory.cs" />
     <Compile Include="Models\Framework\HonglornSqlDb.cs" />
     <Compile Include="Models\Framework\HonglornMySqlDb.cs" />
@@ -180,6 +181,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Models\Seeds\ArrayOfHandicap.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalReportMeta.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalDiscipline.xml" />
   </ItemGroup>
