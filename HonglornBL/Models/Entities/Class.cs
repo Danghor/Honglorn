@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
@@ -13,7 +12,7 @@ namespace HonglornBL.Models.Entities
 
         public Class Clone()
         {
-            return new Class()
+            return new Class
             {
                 Name = Name
             };
