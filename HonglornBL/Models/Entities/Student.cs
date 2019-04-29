@@ -1,4 +1,5 @@
-﻿using HonglornBL.Enums;
+﻿using System;
+using HonglornBL.Enums;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
@@ -20,7 +21,7 @@ namespace HonglornBL.Models.Entities
         public Sex Sex { get; set; }
 
         [Required]
-        public short YearOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         public virtual ICollection<Competition> Competitions { get; set; }
         public virtual ICollection<StudentCourseRel> StudentCourseRel { get; set; }
@@ -36,7 +37,7 @@ namespace HonglornBL.Models.Entities
             Forename = forename;
             Surname = surname;
             Sex = sex;
-            YearOfBirth = yearOfBirth;
+            DateOfBirth = yearOfBirth;
         }
 
         internal void AddStudentCourseRel(short year, Course course)

@@ -50,7 +50,7 @@ namespace HonglornBL
             {
                 IQueryable<Student> relevantStudents = (from s in db.Student
                                                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.Course.Name == courseName)
-                                                        orderby s.Surname, s.Forename, s.YearOfBirth descending
+                                                        orderby s.Surname, s.Forename, s.DateOfBirth descending
                                                         select s).Include(s => s.Competitions);
 
                 var result = new List<IStudentPerformance>();
@@ -72,7 +72,7 @@ namespace HonglornBL
             {
                 return (from s in db.Student
                         where s.StudentCourseRel.Any(rel => rel.Year == year && rel.Course.Name == course)
-                        orderby s.Surname, s.Forename, s.YearOfBirth descending
+                        orderby s.Surname, s.Forename, s.DateOfBirth descending
                         select s).Include(s => s.Competitions).ToArray();
             }
         }
@@ -204,7 +204,7 @@ namespace HonglornBL
 
             return from c in competitionResults
                    join s in students on c.Identifier equals s.PKey
-                   orderby s.Surname, s.Forename, s.YearOfBirth descending
+                   orderby s.Surname, s.Forename, s.DateOfBirth descending
                    select new Result(s.Forename, s.Surname, c.SprintScore, c.JumpScore, c.ThrowScore, c.MiddleDistanceScore, c.Rank, (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), c.Certificate);
         }
 
@@ -247,7 +247,7 @@ namespace HonglornBL
 
                 var totalScore = (ushort)scores.OrderByDescending(s => s).Take(3).Sum(s => s);
 
-                int studentAge = year - student.YearOfBirth;
+                int studentAge = year - student.DateOfBirth;
 
                 results.Add(new Result(student.Forename, student.Surname, scores[0], scores[1], scores[2], scores[3], 0, totalScore, DetermineTraditionalCertificate(student.Sex, studentAge, totalScore)));
             }
@@ -683,10 +683,10 @@ namespace HonglornBL
                         Forename = importStudent.ImportedForename,
                         Surname = importStudent.ImportedSurname,
                         Sex = SexDictionary[importStudent.ImportedSex],
-                        YearOfBirth = short.Parse(importStudent.ImportedYearOfBirth)
+                        DateOfBirth = short.Parse(importStudent.ImportedYearOfBirth)
                     };
 
-                    await Task.Factory.StartNew(() => ImportSingleStudent(student.Forename, student.Surname, student.Sex, student.YearOfBirth, importStudent.ImportedCourseName, year));
+                    await Task.Factory.StartNew(() => ImportSingleStudent(student.Forename, student.Surname, student.Sex, student.DateOfBirth, importStudent.ImportedCourseName, year));
                 }
 
                 currentlyImported++;
@@ -747,7 +747,7 @@ namespace HonglornBL
                                                        where s.Forename == forename
                                                              && s.Surname == surname
                                                              && s.Sex == sex
-                                                             && s.YearOfBirth == yearOfBirth
+                                                             && s.DateOfBirth == yearOfBirth
                                                        select s;
 
                     Student existingStudent = studentQuery.SingleOrDefault();
