@@ -14,7 +14,7 @@ namespace HonglornBL.Models.Framework
         public virtual DbSet<DisciplineCollection> DisciplineCollection { get; set; }
         public virtual DbSet<Handicap> Handicap { get; set; }
         public virtual DbSet<Student> Student { get; set; }
-        public virtual DbSet<StudentCourseRel> StudentCourseRel { get; set; }
+        public virtual DbSet<StudentCourse> StudentCourseRel { get; set; }
         public virtual DbSet<TraditionalDiscipline> TraditionalDiscipline { get; set; }
         public virtual DbSet<TraditionalReportMeta> TraditionalReportMeta { get; set; }
 

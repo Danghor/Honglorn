@@ -24,12 +24,12 @@ namespace HonglornBL.Models.Entities
         public DateTime DateOfBirth { get; set; }
 
         public virtual ICollection<Competition> Competitions { get; set; }
-        public virtual ICollection<StudentCourseRel> StudentCourseRel { get; set; }
+        public virtual ICollection<StudentCourse> StudentCourseRel { get; set; }
 
         public Student()
         {
             Competitions = new HashSet<Competition>();
-            StudentCourseRel = new HashSet<StudentCourseRel>();
+            StudentCourseRel = new HashSet<StudentCourse>();
         }
 
         internal Student(string forename, string surname, Sex sex, short yearOfBirth) : this()
@@ -42,9 +42,9 @@ namespace HonglornBL.Models.Entities
 
         internal void AddStudentCourseRel(short year, Course course)
         {
-            var rel = new StudentCourseRel
+            var rel = new StudentCourse
             {
-                Year = year,
+                DateStart = year,
                 Course = course
             };
 

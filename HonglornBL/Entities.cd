@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="HonglornBL.Models.Entities.Class">
-    <Position X="6.75" Y="1.75" Width="1.5" />
+    <Position X="7" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Models\Entities\Class.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Models.Entities.Competition">
-    <Position X="8.5" Y="7.5" Width="2" />
+    <Position X="4.25" Y="9" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAEQRgAAAAAAAAAAAEAAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Competition.cs</FileName>
@@ -18,14 +18,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="HonglornBL.Models.Entities.CompetitionDiscipline">
-    <Position X="11" Y="5.75" Width="2.5" />
+    <Position X="11.25" Y="5.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABA=</HashCode>
       <FileName>Models\Entities\CompetitionDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Models.Entities.Course">
-    <Position X="4" Y="2" Width="1.5" />
+    <Position X="4.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Course.cs</FileName>
@@ -35,7 +35,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="HonglornBL.Models.Entities.Discipline">
-    <Position X="14.25" Y="2" Width="1.75" />
+    <Position X="16" Y="3" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEIAAAAAQAAAAAAAAAAQAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Discipline.cs</FileName>
@@ -43,66 +43,77 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Models.Entities.DisciplineCollection" BaseTypeListCollapsed="true">
-    <Position X="9.75" Y="1.5" Width="2.5" />
+    <Position X="10" Y="1.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAgVAECAACAAAIAAEFIAAIAAAQAAAAAAkAABAE=</HashCode>
       <FileName>Models\Entities\DisciplineCollection.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Class" />
-      <Property Name="FemaleJump" />
-      <Property Name="FemaleMiddleDistance" />
-      <Property Name="FemaleSprint" />
-      <Property Name="FemaleThrow" />
-      <Property Name="MaleJump" />
-      <Property Name="MaleMiddleDistance" />
       <Property Name="MaleSprint" />
+      <Property Name="MaleJump" />
       <Property Name="MaleThrow" />
+      <Property Name="MaleMiddleDistance" />
+      <Property Name="FemaleSprint" />
+      <Property Name="FemaleJump" />
+      <Property Name="FemaleThrow" />
+      <Property Name="FemaleMiddleDistance" />
+      <Property Name="Class" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="HonglornBL.Models.Entities.Handicap" Collapsed="true">
-    <Position X="17.5" Y="1.5" Width="1.5" />
+  <Class Name="HonglornBL.Models.Entities.Handicap">
+    <Position X="10.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Handicap.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Models.Entities.Student">
-    <Position X="3.5" Y="6.75" Width="3.5" />
+    <Position X="6.5" Y="5.25" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABABAAAAAABAAAABACQAAAAAAAIAAAAAAA=</HashCode>
       <FileName>Models\Entities\Student.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HonglornBL.Models.Entities.StudentCourseRel">
-    <Position X="4" Y="4.5" Width="1.5" />
+  <Class Name="HonglornBL.Models.Entities.StudentCourse">
+    <Position X="3.5" Y="5.5" Width="1.5" />
     <Members>
       <Property Name="CoursePKey" Hidden="true" />
       <Property Name="StudentPKey" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAQRAAAAAAAAIAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <HashCode>BAAACAAQQAAAAAAAAIAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
       <FileName>Models\Entities\StudentCourseRel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Course" />
       <Property Name="Student" />
+      <Property Name="Course" />
     </ShowAsAssociation>
   </Class>
   <Class Name="HonglornBL.Models.Entities.TraditionalDiscipline">
-    <Position X="14.25" Y="5.75" Width="2.25" />
+    <Position X="14.5" Y="5.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAEAAAAAAAAAAAAAAhAABAQAAAAAAA=</HashCode>
       <FileName>Models\Entities\TraditionalDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Models.Entities.TraditionalReportMeta" Collapsed="true">
-    <Position X="19.25" Y="1.5" Width="1.5" />
+    <Position X="17.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAAABAAAAEAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\TraditionalReportMeta.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.Models.Entities.StudentHandicap">
+    <Position X="7.5" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAQQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Models\Entities\StudentHandicap.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Handicap" />
+      <Property Name="Student" />
+    </ShowAsAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

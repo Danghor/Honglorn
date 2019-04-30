@@ -135,6 +135,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\StudentHandicap.cs" />
     <Compile Include="StudentPerformance.cs" />
     <Compile Include="Calculation\Traditional\TraditionalCalculator.cs" />
     <Compile Include="Import\ExcelImporter.cs" />
@@ -172,7 +173,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="Entities.cd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>

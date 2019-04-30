@@ -49,7 +49,7 @@ namespace HonglornBL
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 IQueryable<Student> relevantStudents = (from s in db.Student
-                                                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.Course.Name == courseName)
+                                                        where s.StudentCourseRel.Any(rel => rel.DateStart == year && rel.Course.Name == courseName)
                                                         orderby s.Surname, s.Forename, s.DateOfBirth descending
                                                         select s).Include(s => s.Competitions);
 
@@ -71,7 +71,7 @@ namespace HonglornBL
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 return (from s in db.Student
-                        where s.StudentCourseRel.Any(rel => rel.Year == year && rel.Course.Name == course)
+                        where s.StudentCourseRel.Any(rel => rel.DateStart == year && rel.Course.Name == course)
                         orderby s.Surname, s.Forename, s.DateOfBirth descending
                         select s).Include(s => s.Competitions).ToArray();
             }
@@ -153,19 +153,19 @@ namespace HonglornBL
             {
                 IEnumerable<Class> classes = (from s in students
                                               join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
-                                              where rel.Year == year
+                                              where rel.DateStart == year
                                               select rel.Course.Class).Distinct();
 
                 foreach (Class @class in classes)
                 {
                     IEnumerable<Student> maleStudents = (from s in db.Student
                                                          join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
-                                                         where s.Sex == Sex.Male && rel.Year == year
+                                                         where s.Sex == Sex.Male && rel.DateStart == year
                                                          select new { s, rel.Course.Class }).AsEnumerable().Where(i => i.Class == @class).Select(i => i.s).ToList();
 
                     IEnumerable<Student> femaleStudents = (from s in db.Student
                                                            join rel in db.StudentCourseRel on s.PKey equals rel.StudentPKey
-                                                           where s.Sex == Sex.Female && rel.Year == year
+                                                           where s.Sex == Sex.Female && rel.DateStart == year
                                                            select new { s, rel.Course.Class }).AsEnumerable().Where(i => i.Class == @class).Select(i => i.s).ToList();
 
                     if (maleStudents.Any())
@@ -609,7 +609,7 @@ namespace HonglornBL
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 return (from relations in db.StudentCourseRel
-                        select relations.Year).Distinct().OrderByDescending(year => year).ToArray();
+                        select relations.DateStart).Distinct().OrderByDescending(year => year).ToArray();
             }
         }
 
@@ -623,7 +623,7 @@ namespace HonglornBL
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 return (from r in db.StudentCourseRel
-                        where r.Year == year
+                        where r.DateStart == year
                         select r.Course).Distinct().Select(course => course.Name).OrderBy(name => name).ToArray();
             }
         }
@@ -639,7 +639,7 @@ namespace HonglornBL
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 return (from r in db.StudentCourseRel
-                        where r.Year == year
+                        where r.DateStart == year
                         select r.Course.Class).Distinct().Select(@class => @class.Name).OrderBy(name => name).ToArray();
             }
         }
@@ -761,11 +761,11 @@ namespace HonglornBL
                     }
                     else
                     {
-                        IEnumerable<StudentCourseRel> courseInformationQuery = from r in existingStudent.StudentCourseRel
-                                                                               where r.Year == year
+                        IEnumerable<StudentCourse> courseInformationQuery = from r in existingStudent.StudentCourseRel
+                                                                               where r.DateStart == year
                                                                                select r;
 
-                        StudentCourseRel existingCourseInformation = courseInformationQuery.SingleOrDefault();
+                        StudentCourse existingCourseInformation = courseInformationQuery.SingleOrDefault();
 
                         if (existingCourseInformation == null)
                         {
