@@ -7,9 +7,9 @@ using HonglornBL.Properties;
 
 namespace HonglornBL.Models.Framework
 {
-    class HonglornDbInitializer<T> : CreateDatabaseIfNotExists<T> where T : HonglornDb
+    class HonglornDbInitializer<TContext> : CreateDatabaseIfNotExists<TContext> where TContext : HonglornDb
     {
-        protected override void Seed(T context)
+        protected override void Seed(TContext context)
         {
             InitializeEntity<Handicap>(Resources.ArrayOfHandicap, context.Handicap);
             InitializeEntity<TraditionalDiscipline>(Resources.ArrayOfTraditionalDiscipline, context.TraditionalDiscipline);

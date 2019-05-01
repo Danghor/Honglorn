@@ -98,6 +98,9 @@
     <Compile Include="Calculation\Traditional\RunningScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\ScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\ZeroScoreCalculator.cs" />
+    <Compile Include="CompetitionGymnasticsGame.cs" />
+    <Compile Include="CompetitionSwimmingGame.cs" />
+    <Compile Include="CompetitionTrackAndFieldGame.cs" />
     <Compile Include="Enums\Certificate.cs" />
     <Compile Include="Calculation\Competition\CompetitionCalculatorContainer.cs" />
     <Compile Include="CompetitionDisciplineContainer.cs" />
@@ -106,9 +109,12 @@
     <Compile Include="Enums\Game.cs" />
     <Compile Include="Enums\Measurement.cs" />
     <Compile Include="Enums\Sex.cs" />
+    <Compile Include="EvaluationGroup.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="Exceptions\CourseNotFoundException.cs" />
     <Compile Include="Exceptions\DuplicateClassException.cs" />
     <Compile Include="FloatComparer.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\CsvImporter.cs" />
     <Compile Include="Import\FieldErrorInfo.cs" />
@@ -125,6 +131,7 @@
     <Compile Include="Models\Framework\HonglornDbFactory.cs" />
     <Compile Include="Models\Framework\HonglornSqlDb.cs" />
     <Compile Include="Models\Framework\HonglornMySqlDb.cs" />
+    <Compile Include="MultiDisciplineGame.cs" />
     <Compile Include="ProgressReport.cs" />
     <Compile Include="RawMeasurement.cs" />
     <Compile Include="DisciplineContainer.cs" />
@@ -136,6 +143,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\StudentHandicap.cs" />
+    <Compile Include="StudentEvent.cs" />
     <Compile Include="StudentPerformance.cs" />
     <Compile Include="Calculation\Traditional\TraditionalCalculator.cs" />
     <Compile Include="Import\ExcelImporter.cs" />
@@ -146,7 +154,7 @@
     <Compile Include="Models\Entities\DisciplineCollection.cs" />
     <Compile Include="Models\Framework\HonglornDb.cs" />
     <Compile Include="Models\Entities\Student.cs" />
-    <Compile Include="Models\Entities\StudentCourseRel.cs" />
+    <Compile Include="Models\Entities\StudentCourse.cs" />
     <Compile Include="Models\Entities\TraditionalDiscipline.cs" />
     <Compile Include="Models\Entities\TraditionalReportMeta.cs" />
     <Compile Include="Models\Framework\HonglornDbInitializer.cs" />
@@ -158,6 +166,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="TraditionalDisciplineContainer.cs" />
+    <Compile Include="TraditionalGymnasticsGame.cs" />
+    <Compile Include="TraditionalSwimmingGame.cs" />
+    <Compile Include="TraditionalTrackAndFieldGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
