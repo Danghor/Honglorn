@@ -6,10 +6,9 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public abstract class Game<TDiscipline> where TDiscipline : Discipline
+    public class Foo
     {
-
-        public ICollection<Foo> Foos
+        public Student Student
         {
             get => default;
             set
@@ -17,6 +16,12 @@ namespace HonglornBL
             }
         }
 
-        public abstract ICollection<IResult> CalculateResults();
+        public ICollection<Bar> Bars
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

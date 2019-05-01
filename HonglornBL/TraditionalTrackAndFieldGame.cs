@@ -5,7 +5,8 @@ using System.Text;
 
 namespace HonglornBL
 {
-    public class TraditionalTrackAndFieldGame : Game
+    public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldDiscipline>
     {
+        public override ICollection<IResult> CalculateResults() => throw new NotImplementedException();
     }
 }

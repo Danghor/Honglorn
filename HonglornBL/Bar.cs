@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public abstract class Game<TDiscipline> where TDiscipline : Discipline
+    public class Bar
     {
-
-        public ICollection<Foo> Foos
+        public Discipline Discipline
         {
             get => default;
             set
@@ -17,6 +15,12 @@ namespace HonglornBL
             }
         }
 
-        public abstract ICollection<IResult> CalculateResults();
+        public double Value
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }
