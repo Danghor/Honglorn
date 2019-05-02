@@ -1,14 +1,14 @@
-﻿using System;
+﻿using HonglornBL.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public class Foo
+    public class MeasuringPoint<TDiscipline> where TDiscipline : Discipline
     {
-        public Student Student
+        public TDiscipline Discipline
         {
             get => default;
             set
@@ -16,7 +16,7 @@ namespace HonglornBL
             }
         }
 
-        public ICollection<Bar> Bars
+        public double Measurement
         {
             get => default;
             set

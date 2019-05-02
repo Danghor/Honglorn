@@ -9,7 +9,7 @@ namespace HonglornBL
     public abstract class Game<TDiscipline> where TDiscipline : Discipline
     {
 
-        public ICollection<Foo> Foos
+        public ICollection<GamePerformance<TDiscipline>> GamePerformances
         {
             get => default;
             set

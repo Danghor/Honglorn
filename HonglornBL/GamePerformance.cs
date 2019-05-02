@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public class Bar
+    public class GamePerformance<TDiscipline> where TDiscipline : Discipline
     {
-        public Discipline Discipline
+        public Student Student
         {
             get => default;
             set
@@ -15,7 +16,7 @@ namespace HonglornBL
             }
         }
 
-        public double Value
+        public ICollection<MeasuringPoint<TDiscipline>> MeasuringPoints
         {
             get => default;
             set

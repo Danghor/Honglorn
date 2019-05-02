@@ -6,7 +6,8 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public class TraditionalTrackAndFieldDiscipline : Discipline
+    public abstract class TraditionalTrackAndFieldDiscipline : Discipline
     {
+        internal abstract ushort CalculateScore(Student student, double value);
     }
 }

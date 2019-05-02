@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="NameAndType">
   <Class Name="HonglornBL.Models.Entities.Class">
-    <Position X="16" Y="0.5" Width="1.5" />
+    <Position X="15.5" Y="0.5" Width="1.5" />
     <Members>
       <Method Name="Clone" Hidden="true" />
     </Members>
@@ -11,7 +11,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Models.Entities.Course">
-    <Position X="13.25" Y="0.5" Width="1.5" />
+    <Position X="13" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Course.cs</FileName>
@@ -82,25 +82,25 @@
       <Property Name="Event" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="HonglornBL.Game&lt;TDiscipline&gt;">
-    <Position X="7.75" Y="4.5" Width="3" />
+  <Class Name="HonglornBL.GamePerformance&lt;TDiscipline&gt;">
+    <Position X="11" Y="4" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAA=</HashCode>
-      <FileName>Game.cs</FileName>
+      <HashCode>AAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GamePerformance.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Foos" />
+      <Property Name="MeasuringPoints" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="HonglornBL.Models.Entities.Discipline">
-    <Position X="1.75" Y="6.25" Width="1.5" />
+    <Position X="1.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Discipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalTrackAndFieldGame">
-    <Position X="4.25" Y="6.5" Width="2.25" />
+    <Position X="4.25" Y="6.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>TraditionalTrackAndFieldGame.cs</FileName>
@@ -148,40 +148,44 @@
       <FileName>MultiDisciplineGame.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HonglornBL.Foo">
-    <Position X="13.25" Y="3.5" Width="1.5" />
-    <AssociationLine Name="Bars" Type="HonglornBL.Bar">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.102" Y="0.279" />
-      </MemberNameLabel>
-    </AssociationLine>
+  <Class Name="HonglornBL.MeasuringPoint&lt;TDiscipline&gt;">
+    <Position X="15.25" Y="4" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAEAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Foo.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Student" />
-    </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Bars" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="HonglornBL.Bar">
-    <Position X="18" Y="4.25" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
-      <FileName>Bar.cs</FileName>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>MeasuringPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalTrackAndFieldDiscipline">
-    <Position X="3.25" Y="9" Width="1.5" />
+    <Position X="1.25" Y="6.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TraditionalTrackAndFieldDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="HonglornBL.Game&lt;TDiscipline&gt;">
+    <Position X="5.5" Y="4" Width="3" />
+    <AssociationLine Name="GamePerformances" Type="HonglornBL.GamePerformance&lt;TDiscipline&gt;">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.021" Y="0.096" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="GamePerformances" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="HonglornBL.TraditionalTrackAndFieldSprintDiscipline">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TraditionalTrackAndFieldSprintDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="HonglornBL.IResult">
-    <Position X="22.75" Y="2" Width="2" />
+    <Position X="19.5" Y="2.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Interfaces\IResult.cs</FileName>

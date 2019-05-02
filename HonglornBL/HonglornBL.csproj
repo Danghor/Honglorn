@@ -93,7 +93,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bar.cs" />
+    <Compile Include="MeasuringPoint.cs" />
     <Compile Include="Calculation\IScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\JumpThrowScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\RunningScoreCalculator.cs" />
@@ -115,7 +115,7 @@
     <Compile Include="Exceptions\CourseNotFoundException.cs" />
     <Compile Include="Exceptions\DuplicateClassException.cs" />
     <Compile Include="FloatComparer.cs" />
-    <Compile Include="Foo.cs" />
+    <Compile Include="GamePerformance.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\CsvImporter.cs" />
@@ -172,6 +172,7 @@
     <Compile Include="TraditionalSwimmingGame.cs" />
     <Compile Include="TraditionalTrackAndFieldDiscipline.cs" />
     <Compile Include="TraditionalTrackAndFieldGame.cs" />
+    <Compile Include="TraditionalTrackAndFieldSprintDiscipline.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
