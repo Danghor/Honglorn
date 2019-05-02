@@ -83,7 +83,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="HonglornBL.GamePerformance&lt;TDiscipline&gt;">
-    <Position X="11" Y="4" Width="2.5" />
+    <Position X="10.5" Y="3.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GamePerformance.cs</FileName>
@@ -95,12 +95,12 @@
   <Class Name="HonglornBL.Models.Entities.Discipline">
     <Position X="1.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Entities\Discipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalTrackAndFieldGame">
-    <Position X="4.25" Y="6.75" Width="3" />
+    <Position X="5" Y="6.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>TraditionalTrackAndFieldGame.cs</FileName>
@@ -149,7 +149,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.MeasuringPoint&lt;TDiscipline&gt;">
-    <Position X="15.25" Y="4" Width="2.25" />
+    <Position X="14.75" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>MeasuringPoint.cs</FileName>
@@ -178,18 +178,50 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="HonglornBL.TraditionalTrackAndFieldSprintDiscipline">
-    <Position X="0.5" Y="8.75" Width="1.5" />
+    <Position X="0.5" Y="8.75" Width="3" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TraditionalTrackAndFieldSprintDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="HonglornBL.IResult">
-    <Position X="19.5" Y="2.75" Width="2" />
+  <Class Name="HonglornBL.TraditionalTrackAndFieldJumpDiscipline">
+    <Position X="4" Y="8.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TraditionalTrackAndFieldJumpDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.TraditionalTrackAndFieldThrowDiscipline">
+    <Position X="7.5" Y="8.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TraditionalTrackAndFieldThrowDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.TraditionalTrackAndFieldMiddleDistanceDiscipline">
+    <Position X="11.25" Y="8.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TraditionalTrackAndFieldMiddleDistanceDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="HonglornBL.IResult">
+    <Position X="14" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Interfaces\IResult.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GamePerformance" />
+      <Property Name="Certificate" />
+    </ShowAsAssociation>
   </Interface>
+  <Enum Name="HonglornBL.Enums.Certificate" Collapsed="true">
+    <Position X="17.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAABAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\Certificate.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -172,7 +172,10 @@
     <Compile Include="TraditionalSwimmingGame.cs" />
     <Compile Include="TraditionalTrackAndFieldDiscipline.cs" />
     <Compile Include="TraditionalTrackAndFieldGame.cs" />
+    <Compile Include="TraditionalTrackAndFieldJumpDiscipline.cs" />
+    <Compile Include="TraditionalTrackAndFieldMiddleDistanceDiscipline.cs" />
     <Compile Include="TraditionalTrackAndFieldSprintDiscipline.cs" />
+    <Compile Include="TraditionalTrackAndFieldThrowDiscipline.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
