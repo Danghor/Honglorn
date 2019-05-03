@@ -2,7 +2,7 @@
 
 namespace HonglornBL
 {
-    public class Result : IResult
+    public class Result : IStudentResult
     {
         public string Forename { get; }
         public string Surname { get; }
@@ -14,9 +14,9 @@ namespace HonglornBL
 
         public ushort Rank { get; }
         public ushort TotalScore { get; }
-        public Certificate Certificate { get; }
+        public CertificateType CertificateType { get; }
 
-        internal Result(string forename, string surname, ushort sprintScore, ushort jumpScore, ushort throwScore, ushort middleDistanceScore, ushort rank, ushort totalScore, Certificate certificate)
+        internal Result(string forename, string surname, ushort sprintScore, ushort jumpScore, ushort throwScore, ushort middleDistanceScore, ushort rank, ushort totalScore, CertificateType certificate)
         {
             Forename = forename;
             Surname = surname;
@@ -26,7 +26,7 @@ namespace HonglornBL
             MiddleDistanceScore = middleDistanceScore;
             Rank = rank;
             TotalScore = totalScore;
-            Certificate = certificate;
+            CertificateType = certificate;
         }
     }
 }

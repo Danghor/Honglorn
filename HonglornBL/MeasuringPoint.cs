@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HonglornBL
 {
-    public class MeasuringPoint<TDiscipline> where TDiscipline : Discipline
+    public class MeasuringPoint<TDiscipline> : Entity where TDiscipline : Discipline
     {
         public TDiscipline Discipline
         {

@@ -39,7 +39,7 @@ namespace HonglornBL.Calculation.Competition
             containers = containers.OrderBy(c => c.Rank).ToList();
 
             int lastRank = containers.First().Rank;
-            var currentCertificate = Certificate.Honorary;
+            var currentCertificate = CertificateType.Honorary;
             var count = 0;
 
             foreach (CompetitionCalculatorContainer container in containers)
@@ -50,11 +50,11 @@ namespace HonglornBL.Calculation.Competition
 
                     if (percentile > 70)
                     {
-                        currentCertificate = Certificate.Participation;
+                        currentCertificate = CertificateType.Participation;
                     }
                     else if (percentile > 20)
                     {
-                        currentCertificate = Certificate.Victory;
+                        currentCertificate = CertificateType.Victory;
                     }
 
                     lastRank = container.Rank;

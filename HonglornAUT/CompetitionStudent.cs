@@ -20,9 +20,9 @@ namespace HonglornAUT
         internal ushort MiddleDistanceScore { get; }
 
         internal ushort Rank { get; }
-        internal Certificate Certificate { get; }
+        internal CertificateType Certificate { get; }
 
-        internal CompetitionStudent(string course, string forename, string surname, Sex sex, float? sprint, float? jump, float? @throw, float? middleDistance, ushort sprintScore, ushort jumpScore, ushort throwScore, ushort middleDistanceScore, ushort rank, Certificate certificate)
+        internal CompetitionStudent(string course, string forename, string surname, Sex sex, float? sprint, float? jump, float? @throw, float? middleDistance, ushort sprintScore, ushort jumpScore, ushort throwScore, ushort middleDistanceScore, ushort rank, CertificateType certificate)
         {
             Course = course;
             Forename = forename;

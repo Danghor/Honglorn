@@ -77,14 +77,14 @@ namespace HonglornBL
             }
         }
 
-        public Task<IEnumerable<IResult>> GetResultsAsync(string course, short year)
+        public Task<IEnumerable<IStudentResult>> GetResultsAsync(string course, short year)
         {
             return Task.Factory.StartNew(() => GetResults(course, year));
         }
 
-        IEnumerable<IResult> GetResults(string courseName, short year)
+        IEnumerable<IStudentResult> GetResults(string courseName, short year)
         {
-            IEnumerable<IResult> results;
+            IEnumerable<IStudentResult> results;
 
             IEnumerable<Student> students = GetStudents(courseName, year);
 
@@ -145,7 +145,7 @@ namespace HonglornBL
             return results;
         }
 
-        IEnumerable<IResult> CalculateCompetitionResults(IEnumerable<Student> students, short year, CompetitionDisciplineContainer disciplineCollection)
+        IEnumerable<IStudentResult> CalculateCompetitionResults(IEnumerable<Student> students, short year, CompetitionDisciplineContainer disciplineCollection)
         {
             var competitionResults = new List<ICompetitionResult>();
 
@@ -208,9 +208,9 @@ namespace HonglornBL
                    select new Result(s.Forename, s.Surname, c.SprintScore, c.JumpScore, c.ThrowScore, c.MiddleDistanceScore, c.Rank, (ushort)(c.SprintScore + c.JumpScore + c.ThrowScore + c.MiddleDistanceScore), c.Certificate);
         }
 
-        IEnumerable<IResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
+        IEnumerable<IStudentResult> CalculateTraditionalResults(IEnumerable<Student> students, short year, TraditionalDisciplineContainer disciplineCollection)
         {
-            ICollection<IResult> results = new List<IResult>();
+            ICollection<IStudentResult> results = new List<IStudentResult>();
 
             foreach (Student student in students)
             {
@@ -255,9 +255,9 @@ namespace HonglornBL
             return results;
         }
 
-        Certificate DetermineTraditionalCertificate(Sex sex, int age, ushort totalScore)
+        CertificateType DetermineTraditionalCertificate(Sex sex, int age, ushort totalScore)
         {
-            Certificate result;
+            CertificateType result;
 
             using (HonglornDb db = ContextFactory.CreateContext())
             {
@@ -270,15 +270,15 @@ namespace HonglornBL
 
                 if (totalScore >= scoreBoundaries.HonoraryCertificateScore)
                 {
-                    result = Certificate.Honorary;
+                    result = CertificateType.Honorary;
                 }
                 else if (totalScore >= scoreBoundaries.VictoryCertificateScore)
                 {
-                    result = Certificate.Victory;
+                    result = CertificateType.Victory;
                 }
                 else
                 {
-                    result = Certificate.Participation;
+                    result = CertificateType.Participation;
                 }
             }
 

@@ -6,7 +6,7 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public class GamePerformance<TDiscipline> where TDiscipline : Discipline
+    public class GamePerformance<TDiscipline> : Entity where TDiscipline : Discipline
     {
         public Student Student
         {

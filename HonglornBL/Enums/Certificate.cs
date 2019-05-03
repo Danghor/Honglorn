@@ -1,6 +1,6 @@
 ﻿namespace HonglornBL.Enums
 {
-    public enum Certificate
+    public enum CertificateType
     {
         Honorary = 0,
         Victory = 1,

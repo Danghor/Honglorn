@@ -6,7 +6,7 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public abstract class Game<TDiscipline> where TDiscipline : Discipline
+    public abstract class Game<TDiscipline> : Entity, IGame where TDiscipline : Discipline
     {
 
         public ICollection<GamePerformance<TDiscipline>> GamePerformances
@@ -17,6 +17,6 @@ namespace HonglornBL
             }
         }
 
-        public abstract ICollection<IResult> CalculateResults();
+        public abstract ICollection<IStudentResult> CalculateResults();
     }
 }

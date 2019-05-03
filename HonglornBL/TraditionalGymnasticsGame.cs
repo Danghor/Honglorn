@@ -5,7 +5,11 @@ using System.Text;
 
 namespace HonglornBL
 {
-    public class TraditionalGymnasticsGame : Game
+    public class TraditionalGymnasticsGame : Game<TraditionalGymnasticsDiscipline>
     {
+        internal override ICollection<IStudentResult> CalculateResults()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

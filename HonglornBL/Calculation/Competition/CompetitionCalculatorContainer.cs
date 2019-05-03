@@ -21,7 +21,7 @@ namespace HonglornBL.Calculation.Competition
 
         public ushort Rank { get; set; }
 
-        public Certificate Certificate { get; set; }
+        public CertificateType Certificate { get; set; }
 
         internal CompetitionCalculatorContainer(Guid identifier, float? sprintValue, float? jumpValue, float? throwValue, float? middleDistanceValue)
         {

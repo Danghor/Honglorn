@@ -170,7 +170,7 @@ namespace HonglornAUT
 
             try
             {
-                IEnumerable<IResult> unused = sut.GetResultsAsync("A", 2000).Result;
+                IEnumerable<IStudentResult> unused = sut.GetResultsAsync("A", 2000).Result;
             }
             catch (AggregateException e)
             {
@@ -204,14 +204,14 @@ namespace HonglornAUT
             Guid studentPKey = sut.StudentPerformances(course, year).Single().StudentPKey;
             sut.UpdateSingleStudentCompetition(studentPKey, year, GetFloat("SprintPerformance"), GetFloat("JumpPerformance"), GetFloat("ThrowPerformance"), GetFloat("MiddleDistancePerformance"));
 
-            IResult result = sut.GetResultsAsync(course, year).Result.Single();
+            IStudentResult result = sut.GetResultsAsync(course, year).Result.Single();
 
             Assert.AreEqual(GetUshort("SprintScore"), result.SprintScore);
             Assert.AreEqual(GetUshort("JumpScore"), result.JumpScore);
             Assert.AreEqual(GetUshort("ThrowScore"), result.ThrowScore);
             Assert.AreEqual(GetUshort("MiddleDistanceScore"), result.MiddleDistanceScore);
             Assert.AreEqual(GetUshort("TotalScore"), result.TotalScore);
-            Assert.AreEqual(Enum.Parse(typeof(Certificate), GetData("Certificate")), result.Certificate);
+            Assert.AreEqual(Enum.Parse(typeof(CertificateType), GetData("Certificate")), result.CertificateType);
         }
 
         [TestMethod]
@@ -238,14 +238,14 @@ namespace HonglornAUT
             Guid studentPKey = sut.StudentPerformances(course, year).Single().StudentPKey;
             sut.UpdateSingleStudentCompetition(studentPKey, year, null, null, null, null);
 
-            IResult result = sut.GetResultsAsync(course, year).Result.Single();
+            IStudentResult result = sut.GetResultsAsync(course, year).Result.Single();
 
             Assert.AreEqual(0, result.SprintScore);
             Assert.AreEqual(0, result.JumpScore);
             Assert.AreEqual(0, result.ThrowScore);
             Assert.AreEqual(0, result.MiddleDistanceScore);
             Assert.AreEqual(0, result.TotalScore);
-            Assert.AreEqual(Certificate.Participation, result.Certificate);
+            Assert.AreEqual(CertificateType.Participation, result.CertificateType);
         }
 
         [TestMethod]
@@ -320,7 +320,7 @@ namespace HonglornAUT
                     ushort middleDistanceScore = ushort.Parse(student["MiddleDistanceScore"].ToString());
 
                     ushort rank = ushort.Parse(student["Rank"].ToString());
-                    var certificate = (Certificate)Enum.Parse(typeof(Certificate), student["Certificate"].ToString());
+                    var certificate = (CertificateType)Enum.Parse(typeof(CertificateType), student["Certificate"].ToString());
 
                     students.Add(new CompetitionStudent(courseName, RandomString(), RandomString(), sex, sprint, jump, @throw, middleDistance, sprintScore, jumpScore, throwScore, middleDistanceScore, rank, certificate));
                 }
@@ -371,15 +371,15 @@ namespace HonglornAUT
 
             foreach (string course in students.Select(s => s.Course).Distinct())
             {
-                IEnumerable<IResult> results = sut.GetResultsAsync(course, year).Result.ToList();
+                IEnumerable<IStudentResult> results = sut.GetResultsAsync(course, year).Result.ToList();
 
                 foreach (CompetitionStudent student in students.Where(s => s.Course == course))
                 {
-                    IResult studentResult = results.Single(r => r.Forename == student.Forename && r.Surname == student.Surname);
+                    IStudentResult studentResult = results.Single(r => r.Forename == student.Forename && r.Surname == student.Surname);
 
                     Assert.AreEqual(student.SprintScore + student.JumpScore + student.ThrowScore + student.MiddleDistanceScore, studentResult.TotalScore);
                     Assert.AreEqual(student.Rank, studentResult.Rank);
-                    Assert.AreEqual(student.Certificate, studentResult.Certificate);
+                    Assert.AreEqual(student.Certificate, studentResult.CertificateType);
                 }
             }
         }
@@ -556,7 +556,7 @@ namespace HonglornAUT
 
             try
             {
-                IEnumerable<IResult> unused = sut.GetResultsAsync("6A", 2014).Result;
+                IEnumerable<IStudentResult> unused = sut.GetResultsAsync("6A", 2014).Result;
             }
             catch (AggregateException ex)
             {

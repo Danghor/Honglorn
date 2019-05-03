@@ -11,6 +11,6 @@ namespace HonglornBL
         ushort ThrowScore { get; set; }
         ushort MiddleDistanceScore { get; set; }
         ushort Rank { get; set; }
-        Certificate Certificate { get; set; }
+        CertificateType Certificate { get; set; }
     }
 }

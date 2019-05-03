@@ -3,10 +3,11 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public interface IResult
+    public interface IStudentResult
     {
-        ushort TotalScore { get; }
-        Certificate Certificate { get; }
+        int TotalScore { get; }
+        CertificateType CertificateType { get; }
         GamePerformance<Discipline> GamePerformance { get; set; }
+        IPdfDocument Certificate { get; }
     }
 }

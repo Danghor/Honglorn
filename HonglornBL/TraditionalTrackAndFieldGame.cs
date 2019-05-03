@@ -7,6 +7,6 @@ namespace HonglornBL
 {
     public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldDiscipline>
     {
-        public override ICollection<IResult> CalculateResults() => throw new NotImplementedException();
+        public override ICollection<IStudentResult> CalculateResults() => throw new NotImplementedException();
     }
 }
