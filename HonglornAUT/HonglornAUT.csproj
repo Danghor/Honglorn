@@ -103,6 +103,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\DependencyValidation\DependencyValidation1.layerdiagram">
+      <Link>DependencyValidation1.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
     <None Include="packages.config" />
     <None Include="TestData\ImportTemplate.xlsx" />
   </ItemGroup>
@@ -124,6 +128,8 @@
     <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.6.3\analyzers\dotnet\cs\Humanizer.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.6.3\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.6.3\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
