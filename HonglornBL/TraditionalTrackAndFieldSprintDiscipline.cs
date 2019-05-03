@@ -8,7 +8,7 @@ namespace HonglornBL
 {
     public class TraditionalTrackAndFieldSprintDiscipline : TraditionalTrackAndFieldDiscipline
     {
-        internal override ushort CalculateScore(Student student, double value)
+        internal override int CalculateNonNullScore(Student student, double value)
         {
             throw new NotImplementedException();
         }
