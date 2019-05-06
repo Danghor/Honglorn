@@ -203,7 +203,8 @@ namespace HonglornBL
             {
                 return new GameCollection
                 {
-                    TraditionalTrackAndFieldGames = db
+                    TraditionalTrackAndFieldGames = db.TraditionalTrackAndFieldGame.ToList(),
+                    CompetitionTrackAndFieldGames = db.CompetitionTrackAndFieldGame.ToList()
                 };
             }
         }
