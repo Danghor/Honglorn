@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HonglornBL.TraditionalTrackAndFieldDiscipline" Collapsed="true">
+    <Position X="6.75" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.TraditionalTrackAndFieldJumpDiscipline" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldJumpDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.TraditionalTrackAndFieldMiddleDistanceDiscipline" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldMiddleDistanceDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.TraditionalTrackAndFieldSprintDiscipline" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldSprintDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.TraditionalTrackAndFieldThrowDiscipline" Collapsed="true">
+    <Position X="12.25" Y="3.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldThrowDiscipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.Models.Entities.Discipline" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Discipline.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
