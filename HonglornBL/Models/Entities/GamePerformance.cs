@@ -4,24 +4,12 @@ using System.Linq;
 using System.Text;
 using HonglornBL.Models.Entities;
 
-namespace HonglornBL
+namespace HonglornBL.Models.Entities
 {
     public class GamePerformance<TDiscipline> : Entity where TDiscipline : Discipline
     {
-        public Student Student
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public Student Student { get; set; }
 
-        public ICollection<MeasuringPoint<TDiscipline>> MeasuringPoints
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public ICollection<MeasuringPoint<TDiscipline>> MeasuringPoints { get; set; }
     }
 }

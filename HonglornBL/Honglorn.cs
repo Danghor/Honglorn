@@ -173,8 +173,8 @@ namespace HonglornBL
                     else
                     {
                         IEnumerable<StudentCourse> courseInformationQuery = from r in existingStudent.StudentCourseRel
-                                                                               where r.DateStart == year
-                                                                               select r;
+                                                                            where r.DateStart == year
+                                                                            select r;
 
                         StudentCourse existingCourseInformation = courseInformationQuery.SingleOrDefault();
 
@@ -197,9 +197,15 @@ namespace HonglornBL
             }
         }
 
-        public void GetGames()
+        public GameCollection GetGames()
         {
-            throw new System.NotImplementedException();
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                return new GameCollection
+                {
+                    TraditionalTrackAndFieldGames = db
+                };
+            }
         }
     }
 }

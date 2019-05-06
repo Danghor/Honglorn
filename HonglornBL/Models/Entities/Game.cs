@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace HonglornBL
+namespace HonglornBL.Models.Entities
 {
     public abstract class Game<TDiscipline> : Entity, IGame where TDiscipline : Discipline
     {

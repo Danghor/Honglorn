@@ -64,7 +64,7 @@
       <Property Name="Handicap" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="HonglornBL.GamePerformance&lt;TDiscipline&gt;">
+  <Class Name="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
     <Position X="9.75" Y="2.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -133,16 +133,16 @@
       <FileName>Models\Entities\MeasuringPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HonglornBL.Game&lt;TDiscipline&gt;">
+  <Class Name="HonglornBL.Models.Entities.Game&lt;TDiscipline&gt;">
     <Position X="5.25" Y="4" Width="3" />
-    <AssociationLine Name="GamePerformances" Type="HonglornBL.GamePerformance&lt;TDiscipline&gt;">
+    <AssociationLine Name="GamePerformances" Type="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-0.088" Y="1.565" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAABAEAABAAAAAAAAAAA=</HashCode>
-      <FileName>Game.cs</FileName>
+      <FileName>Models\Entities\Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="GamePerformances" />
@@ -158,7 +158,7 @@
   </Class>
   <Interface Name="HonglornBL.IStudentResult">
     <Position X="14" Y="4.25" Width="2" />
-    <AssociationLine Name="GamePerformance" Type="HonglornBL.GamePerformance&lt;TDiscipline&gt;">
+    <AssociationLine Name="GamePerformance" Type="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-1.307" Y="0.466" />
       </MemberNameLabel>
