@@ -6,12 +6,6 @@ namespace HonglornBL.Models.Entities
 {
     public class Discipline : Entity
     {
-        public string Name
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public string Name { get; set; }
     }
 }

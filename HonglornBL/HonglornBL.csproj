@@ -95,29 +95,26 @@
   <ItemGroup>
     <Compile Include="IGame.cs" />
     <Compile Include="IPdfDocument.cs" />
-    <Compile Include="MeasuringPoint.cs" />
+    <Compile Include="Models\Entities\MeasuringPoint.cs" />
     <Compile Include="Calculation\IScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\JumpThrowScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\RunningScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\ScoreCalculator.cs" />
     <Compile Include="Calculation\Traditional\ZeroScoreCalculator.cs" />
-    <Compile Include="CompetitionGymnasticsGame.cs" />
-    <Compile Include="CompetitionSwimmingGame.cs" />
-    <Compile Include="CompetitionTrackAndFieldGame.cs" />
+    <Compile Include="Games\Competition\Gymnastics\CompetitionGymnasticsGame.cs" />
+    <Compile Include="Games\Competition\Swimming\CompetitionSwimmingGame.cs" />
+    <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs" />
     <Compile Include="Enums\Certificate.cs" />
     <Compile Include="Calculation\Competition\CompetitionCalculatorContainer.cs" />
-    <Compile Include="CompetitionDisciplineContainer.cs" />
     <Compile Include="Calculation\Competition\CompetitionCalculator.cs" />
     <Compile Include="Enums\DisciplineType.cs" />
     <Compile Include="Enums\Game.cs" />
     <Compile Include="Enums\Measurement.cs" />
     <Compile Include="Enums\Sex.cs" />
-    <Compile Include="EvaluationGroup.cs" />
-    <Compile Include="Event.cs" />
     <Compile Include="Exceptions\CourseNotFoundException.cs" />
     <Compile Include="Exceptions\DuplicateClassException.cs" />
     <Compile Include="FloatComparer.cs" />
-    <Compile Include="GamePerformance.cs" />
+    <Compile Include="Models\Entities\GamePerformance.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="ICompetitionResult.cs" />
     <Compile Include="Import\CsvImporter.cs" />
@@ -135,10 +132,9 @@
     <Compile Include="Models\Framework\HonglornDbFactory.cs" />
     <Compile Include="Models\Framework\HonglornSqlDb.cs" />
     <Compile Include="Models\Framework\HonglornMySqlDb.cs" />
-    <Compile Include="MultiDisciplineGame.cs" />
+    <Compile Include="Games\MultiDiscipline\MultiDisciplineGame.cs" />
     <Compile Include="ProgressReport.cs" />
     <Compile Include="RawMeasurement.cs" />
-    <Compile Include="DisciplineContainer.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Import\ImportedStudentRecord.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -147,8 +143,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Models\Entities\StudentHandicap.cs" />
-    <Compile Include="StudentEvent.cs" />
-    <Compile Include="StudentPerformance.cs" />
     <Compile Include="Calculation\Traditional\TraditionalCalculator.cs" />
     <Compile Include="Import\ExcelImporter.cs" />
     <Compile Include="Honglorn.cs" />
@@ -169,16 +163,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TraditionalDisciplineContainer.cs" />
-    <Compile Include="TraditionalGymnasticsDiscipline.cs" />
-    <Compile Include="TraditionalGymnasticsGame.cs" />
-    <Compile Include="TraditionalSwimmingGame.cs" />
-    <Compile Include="TraditionalTrackAndFieldDiscipline.cs" />
-    <Compile Include="TraditionalTrackAndFieldGame.cs" />
-    <Compile Include="TraditionalTrackAndFieldJumpDiscipline.cs" />
-    <Compile Include="TraditionalTrackAndFieldMiddleDistanceDiscipline.cs" />
-    <Compile Include="TraditionalTrackAndFieldSprintDiscipline.cs" />
-    <Compile Include="TraditionalTrackAndFieldThrowDiscipline.cs" />
+    <Compile Include="Games\Traditional\Gymnastics\TraditionalGymnasticsDiscipline.cs" />
+    <Compile Include="Games\Traditional\Gymnastics\TraditionalGymnasticsGame.cs" />
+    <Compile Include="Games\Traditional\Swimming\TraditionalSwimmingGame.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldDiscipline.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldGame.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldJumpDiscipline.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldMiddleDistanceDiscipline.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldSprintDiscipline.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldThrowDiscipline.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

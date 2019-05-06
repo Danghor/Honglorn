@@ -68,7 +68,7 @@
     <Position X="10.75" Y="3.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GamePerformance.cs</FileName>
+      <FileName>Models\Entities\GamePerformance.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Student" />
@@ -88,63 +88,63 @@
     <Position X="5" Y="6.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalTrackAndFieldGame.cs</FileName>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalGymnasticsGame">
     <Position X="8.5" Y="6.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalGymnasticsGame.cs</FileName>
+      <FileName>Games\Traditional\Gymnastics\TraditionalGymnasticsGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalSwimmingGame">
     <Position X="11.25" Y="6.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalSwimmingGame.cs</FileName>
+      <FileName>Games\Traditional\Swimming\TraditionalSwimmingGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.CompetitionTrackAndFieldGame">
     <Position X="14" Y="6.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CompetitionTrackAndFieldGame.cs</FileName>
+      <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.CompetitionGymnasticsGame">
     <Position X="17" Y="6.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CompetitionGymnasticsGame.cs</FileName>
+      <FileName>Games\Competition\Gymnastics\CompetitionGymnasticsGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.CompetitionSwimmingGame">
     <Position X="19.75" Y="6.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CompetitionSwimmingGame.cs</FileName>
+      <FileName>Games\Competition\Swimming\CompetitionSwimmingGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.MultiDisciplineGame">
     <Position X="22.5" Y="6.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MultiDisciplineGame.cs</FileName>
+      <FileName>Games\MultiDiscipline\MultiDisciplineGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.MeasuringPoint&lt;TDiscipline&gt;">
     <Position X="14.75" Y="2.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
-      <FileName>MeasuringPoint.cs</FileName>
+      <FileName>Models\Entities\MeasuringPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalTrackAndFieldDiscipline">
     <Position X="2.25" Y="6.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalTrackAndFieldDiscipline.cs</FileName>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Game&lt;TDiscipline&gt;">
@@ -167,35 +167,35 @@
     <Position X="0.5" Y="8.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalTrackAndFieldSprintDiscipline.cs</FileName>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldSprintDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalTrackAndFieldJumpDiscipline">
     <Position X="4" Y="8.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalTrackAndFieldJumpDiscipline.cs</FileName>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldJumpDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalTrackAndFieldThrowDiscipline">
     <Position X="7.5" Y="8.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalTrackAndFieldThrowDiscipline.cs</FileName>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldThrowDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalTrackAndFieldMiddleDistanceDiscipline">
     <Position X="11.25" Y="8.75" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalTrackAndFieldMiddleDistanceDiscipline.cs</FileName>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldMiddleDistanceDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.TraditionalGymnasticsDiscipline">
     <Position X="0.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>TraditionalGymnasticsDiscipline.cs</FileName>
+      <FileName>Games\Traditional\Gymnastics\TraditionalGymnasticsDiscipline.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Honglorn">
