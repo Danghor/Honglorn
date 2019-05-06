@@ -4,8 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Competition : Entity
+    public class Competition
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Guid PKey { get; set; } = Guid.NewGuid();
+
         [Required]
         [Index("IX_FirstAndSecond", 1, IsUnique = true)]
         public Guid StudentPKey { get; set; }
