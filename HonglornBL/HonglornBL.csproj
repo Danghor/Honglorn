@@ -93,6 +93,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Games\Traditional\TrackAndField\Measurement.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldJumpThrowDiscipline.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="GameCollection.cs" />
     <Compile Include="IPdfDocument.cs" />

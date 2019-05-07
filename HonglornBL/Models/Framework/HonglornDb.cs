@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using HonglornBL.Games.Traditional.TrackAndField;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using HonglornBL.Models.Entities;
@@ -11,14 +12,12 @@ namespace HonglornBL.Models.Framework
         public virtual DbSet<Competition> Competition { get; set; }
         public virtual DbSet<Course> Course { get; set; }
         public virtual DbSet<CompetitionDiscipline> CompetitionDiscipline { get; set; }
-        public virtual DbSet<DisciplineCollection> DisciplineCollection { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldGame> TraditionalTrackAndFieldGame { get; set; }
         public virtual DbSet<CompetitionTrackAndFieldGame> CompetitionTrackAndFieldGame { get; set; }
         public virtual DbSet<Handicap> Handicap { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudentCourse> StudentCourseRel { get; set; }
         public virtual DbSet<TraditionalDiscipline> TraditionalDiscipline { get; set; }
-        public virtual DbSet<TraditionalReportMeta> TraditionalReportMeta { get; set; }
 
         internal HonglornDb(DbConnection connection) : base(connection, true)
         {

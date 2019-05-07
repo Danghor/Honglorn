@@ -13,7 +13,6 @@ namespace HonglornBL.Models.Framework
         {
             InitializeEntity<Handicap>(Resources.ArrayOfHandicap, context.Handicap);
             InitializeEntity<TraditionalDiscipline>(Resources.ArrayOfTraditionalDiscipline, context.TraditionalDiscipline);
-            InitializeEntity<TraditionalReportMeta>(Resources.ArrayOfTraditionalReportMeta, context.TraditionalReportMeta);
 
             base.Seed(context);
         }

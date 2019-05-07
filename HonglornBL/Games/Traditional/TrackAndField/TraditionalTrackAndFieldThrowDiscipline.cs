@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HonglornBL.Models.Entities;
-
-namespace HonglornBL
+﻿namespace HonglornBL.Games.Traditional.TrackAndField
 {
-    public class TraditionalTrackAndFieldThrowDiscipline : TraditionalTrackAndFieldDiscipline
-    {
-        internal override int CalculateNonNullScore(Student student, double value)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    public class TraditionalTrackAndFieldThrowDiscipline : TraditionalTrackAndFieldJumpThrowDiscipline { }
 }

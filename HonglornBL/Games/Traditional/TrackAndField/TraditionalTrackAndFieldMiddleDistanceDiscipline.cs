@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using HonglornBL.Models.Entities;
 
-namespace HonglornBL
+namespace HonglornBL.Games.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldMiddleDistanceDiscipline : TraditionalTrackAndFieldDiscipline
     {
-        internal override int CalculateNonNullScore(Student student, double value)
+        internal override double CalculateNonNullRawScore(Student student, double value)
         {
             throw new NotImplementedException();
         }

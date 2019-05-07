@@ -1,6 +1,4 @@
 ﻿using System;
-using HonglornBL.Enums;
-using HonglornBL.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

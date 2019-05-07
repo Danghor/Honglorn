@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
-using HonglornBL.Models.Entities;
 
 namespace HonglornBL.Models.Entities
 {

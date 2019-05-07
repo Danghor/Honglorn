@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using HonglornBL.Models.Entities;
 
-namespace HonglornBL
+namespace HonglornBL.Games.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldDiscipline>
     {
