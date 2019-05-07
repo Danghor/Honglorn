@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Games\Traditional\TrackAndField\Measurement.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldJumpThrowDiscipline.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldResult.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="GameCollection.cs" />
     <Compile Include="IPdfDocument.cs" />

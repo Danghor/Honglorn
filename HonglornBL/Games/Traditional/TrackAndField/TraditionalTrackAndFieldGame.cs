@@ -1,13 +1,17 @@
-﻿using System;
+﻿using HonglornBL.Models.Entities;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HonglornBL.Models.Entities;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
-    public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldDiscipline>
+    public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldDiscipline, TraditionalTrackAndFieldResult>
     {
-        public override ICollection<IStudentResult> CalculateResults() => throw new NotImplementedException();
+        public override ICollection<TraditionalTrackAndFieldResult> CalculateResults()
+        {
+            foreach(var performance in GamePerformances)
+            {
+
+            }
+        }
     }
 }

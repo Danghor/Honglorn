@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace HonglornBL
 {
-    public interface IGame
+    public interface IGame<TResult>
     {
-        ICollection<IStudentResult> CalculateResults();
+        ICollection<TResult> CalculateResults();
     }
 }

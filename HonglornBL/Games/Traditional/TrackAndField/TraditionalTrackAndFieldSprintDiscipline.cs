@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using HonglornBL.Models.Entities;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using HonglornBL.Models.Entities;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
@@ -12,11 +8,14 @@ namespace HonglornBL.Games.Traditional.TrackAndField
         [Required]
         public Measurement Measurement { get; set; }
 
+        [Required]
+        public short Distance { get; set; }
+
         public float? Overhead { get; set; }
 
         internal override double CalculateNonNullRawScore(Student student, double value)
         {
-            throw new NotImplementedException();
+            return (Distance / (value + (Overhead ?? 0)) - ConstantA) / ConstantC;
         }
     }
 }

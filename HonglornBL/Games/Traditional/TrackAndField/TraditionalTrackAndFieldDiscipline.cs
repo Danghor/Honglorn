@@ -16,13 +16,16 @@ namespace HonglornBL.Games.Traditional.TrackAndField
         [Required]
         public float ConstantC { get; set; }
 
-        // TODO: need the reference date for the game so we know if the student had a disability at this date or not
-
-        internal int CalculateScore(Student student, double? value)
+        internal int CalculateScore(Handicap handicap, double? value)
         {
-            return value == null ? 0 : (int)Math.Max(0, Math.Floor(CalculateNonNullRawScore(student, value.Value)));
+            return value == null ? 0 : CleanScore(CalculateNonNullRawScore(handicap, value.Value));
         }
 
-        internal abstract double CalculateNonNullRawScore(Student student, double value);
+        static int CleanScore(double rawScore)
+        {
+            return (int)Math.Max(0, Math.Floor(rawScore));
+        }
+
+        internal abstract double CalculateNonNullRawScore(Handicap handicap, double value);
     }
 }
