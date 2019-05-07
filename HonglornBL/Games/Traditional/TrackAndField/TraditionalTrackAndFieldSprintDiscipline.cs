@@ -13,7 +13,7 @@ namespace HonglornBL.Games.Traditional.TrackAndField
 
         public float? Overhead { get; set; }
 
-        internal override double CalculateNonNullRawScore(Student student, double value)
+        internal override double CalculateNonNullRawScore(Handicap handicap, double value)
         {
             return (Distance / (value + (Overhead ?? 0)) - ConstantA) / ConstantC;
         }

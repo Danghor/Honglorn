@@ -27,33 +27,6 @@ namespace HonglornBL.Models.Entities
 
         [Required]
         public DateTime DateOfBirth { get; set; }
-
-        public virtual ICollection<Competition> Competitions { get; set; }
-        public virtual ICollection<StudentCourse> StudentCourseRel { get; set; }
-
-        public Student()
-        {
-            Competitions = new HashSet<Competition>();
-            StudentCourseRel = new HashSet<StudentCourse>();
-        }
-
-        internal Student(string forename, string surname, Sex sex, short yearOfBirth) : this()
-        {
-            Forename = forename;
-            Surname = surname;
-            Sex = sex;
-            DateOfBirth = yearOfBirth;
-        }
-
-        internal void AddStudentCourseRel(short year, Course course)
-        {
-            var rel = new StudentCourse
-            {
-                DateStart = year,
-                Course = course
-            };
-
-            StudentCourseRel.Add(rel);
-        }
+        public virtual ICollection<StudentCourse> StudentCourseRel { get; set; } = new HashSet<StudentCourse>();
     }
 }

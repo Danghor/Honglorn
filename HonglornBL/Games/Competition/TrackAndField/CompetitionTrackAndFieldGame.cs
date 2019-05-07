@@ -3,14 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HonglornBL.Games.Competition.TrackAndField;
 
 namespace HonglornBL
 {
-    public class CompetitionTrackAndFieldGame : Game<Discipline>
+    public class CompetitionTrackAndFieldGame : Game<CompetitionTrackAndFieldDiscipline, CompetitionTrackAndFieldResult>
     {
-        public override ICollection<IStudentResult> CalculateResults()
-        {
-            throw new NotImplementedException();
-        }
+        public override ICollection<CompetitionTrackAndFieldResult> CalculateResults() => throw new NotImplementedException();
     }
 }

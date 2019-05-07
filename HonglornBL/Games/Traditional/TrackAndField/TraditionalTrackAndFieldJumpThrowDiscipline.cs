@@ -5,7 +5,7 @@ namespace HonglornBL.Games.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldJumpThrowDiscipline : TraditionalTrackAndFieldDiscipline
     {
-        internal override double CalculateNonNullRawScore(Student student, double value)
+        internal override double CalculateNonNullRawScore(Handicap handicap, double value)
         {
             return (Math.Sqrt(value) - ConstantA) / ConstantC;
         }

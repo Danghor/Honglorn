@@ -6,14 +6,14 @@
       <Method Name="Clone" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAABA=</HashCode>
       <FileName>Models\Entities\Class.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Models.Entities.Course">
     <Position X="13" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAQAAAIAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\Course.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -23,18 +23,14 @@
   <Class Name="HonglornBL.Models.Entities.Handicap">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\Handicap.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Models.Entities.Student">
     <Position X="5.75" Y="0.5" Width="3.25" />
-    <Members>
-      <Method Name="AddStudentCourseRel" Hidden="true" />
-      <Method Name="Student" Hidden="true" />
-    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAABABAAAAAABAAAABACQAAAAAAAIAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAABAAAABAAQAAAAAAAMAAAAAAA=</HashCode>
       <FileName>Models\Entities\Student.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -45,7 +41,7 @@
       <Property Name="StudentPKey" Hidden="true" />
     </Members>
     <TypeIdentifier>
-      <HashCode>BAAACAAQQAAAAAAAAIAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <HashCode>BAAACAAQQAAAAAAAAIAAAAAAAAAAAAAAAACEAAAAAAA=</HashCode>
       <FileName>Models\Entities\StudentCourse.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -56,7 +52,7 @@
   <Class Name="HonglornBL.Models.Entities.StudentHandicap">
     <Position X="3" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>BAAACAAQQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>BAAACAAQQAgAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAI=</HashCode>
       <FileName>Models\Entities\StudentHandicap.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -67,7 +63,7 @@
   <Class Name="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
     <Position X="9.75" Y="2.75" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\GamePerformance.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -77,7 +73,7 @@
       <Property Name="MeasuringPoints" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="HonglornBL.TraditionalTrackAndFieldGame">
+  <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldGame">
     <Position X="0.5" Y="6.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
@@ -129,11 +125,11 @@
   <Class Name="HonglornBL.MeasuringPoint&lt;TDiscipline&gt;">
     <Position X="14" Y="2.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAA=</HashCode>
       <FileName>Models\Entities\MeasuringPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HonglornBL.Models.Entities.Game&lt;TDiscipline&gt;">
+  <Class Name="HonglornBL.Models.Entities.Game&lt;TDiscipline, TResult&gt;">
     <Position X="5.25" Y="4" Width="3" />
     <AssociationLine Name="GamePerformances" Type="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
       <MemberNameLabel ManuallyPlaced="true">
@@ -141,7 +137,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAABAEAABAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAABAEAABAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -152,7 +148,7 @@
   <Class Name="HonglornBL.Honglorn">
     <Position X="18" Y="0.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAEACAAAAAAAEAAAAQIAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAEACAAAABAAAAAAAQAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Honglorn.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -172,8 +168,8 @@
       <Property Name="GamePerformance" />
     </ShowAsAssociation>
   </Interface>
-  <Interface Name="HonglornBL.IGame">
-    <Position X="1.5" Y="3.25" Width="1.5" />
+  <Interface Name="HonglornBL.IGame&lt;TResult&gt;">
+    <Position X="2.25" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>IGame.cs</FileName>

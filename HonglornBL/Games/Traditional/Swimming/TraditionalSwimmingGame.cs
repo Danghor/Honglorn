@@ -1,16 +1,11 @@
 ﻿using HonglornBL.Models.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HonglornBL
 {
-    public class TraditionalSwimmingGame : Game<Discipline>
+    public class TraditionalSwimmingGame : Game<TraditionalSwimmingDiscipline, TraditionalSwimmingResult>
     {
-        public override ICollection<IStudentResult> CalculateResults()
-        {
-            throw new NotImplementedException();
-        }
+        public override ICollection<TraditionalSwimmingResult> CalculateResults() => throw new NotImplementedException();
     }
 }

@@ -6,11 +6,8 @@ using System.Text;
 
 namespace HonglornBL
 {
-    public class MultiDisciplineGame : Game<Discipline>
+    public class MultiDisciplineGame : Game<MultiDisciplineGameDiscipline, MultiDisciplineGameResult>
     {
-        public override ICollection<IStudentResult> CalculateResults()
-        {
-            throw new NotImplementedException();
-        }
+        public override ICollection<MultiDisciplineGameResult> CalculateResults() => throw new NotImplementedException();
     }
 }

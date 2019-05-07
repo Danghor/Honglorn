@@ -1,6 +1,7 @@
-﻿using HonglornBL.Models.Entities;
-using System;
+﻿using System;
+using HonglornBL.Models.Entities;
 using System.Collections.Generic;
+using HonglornBL.Models.Framework;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
@@ -8,10 +9,15 @@ namespace HonglornBL.Games.Traditional.TrackAndField
     {
         public override ICollection<TraditionalTrackAndFieldResult> CalculateResults()
         {
-            foreach(var performance in GamePerformances)
-            {
+            //using (HonglornDb db = contextFactory.CreateContext())
+            //{
+            //    foreach (var performance in GamePerformances)
+            //    {
 
-            }
+
+            //    }
+            //}
+            throw new NotImplementedException();
         }
     }
 }
