@@ -117,6 +117,7 @@
     <Compile Include="Interfaces\IResult.cs" />
     <Compile Include="Import\IStudentImporter.cs" />
     <Compile Include="Models\Framework\HonglornDbFactory.cs" />
+    <Compile Include="Models\Framework\HonglornSqlDb.cs" />
     <Compile Include="Models\Framework\HonglornMySqlDb.cs" />
     <Compile Include="ProgressReport.cs" />
     <Compile Include="RawMeasurement.cs" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Common;
+using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
 
 namespace HonglornBL.Models.Framework
@@ -13,6 +14,10 @@ namespace HonglornBL.Models.Framework
             {
                 "MySql.Data.MySqlClient",
                 new Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>> (conString => new MySqlConnection(conString), con => new HonglornMySqlDb(con))
+            },
+            {
+                "System.Data.SqlClient",
+                new Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>> (conString => new SqlConnection(conString), con => new HonglornSqlDb(con))
             }
         };
 
