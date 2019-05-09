@@ -2,11 +2,8 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="NameAndType">
   <Class Name="HonglornBL.Models.Entities.Class">
     <Position X="15.5" Y="0.5" Width="1.5" />
-    <Members>
-      <Method Name="Clone" Hidden="true" />
-    </Members>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAABA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\Class.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -133,7 +130,7 @@
     <Position X="5.25" Y="4" Width="3" />
     <AssociationLine Name="GamePerformances" Type="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.088" Y="1.565" />
+        <Position X="-0.24" Y="1.565" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>

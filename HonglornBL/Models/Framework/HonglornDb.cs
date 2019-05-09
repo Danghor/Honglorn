@@ -11,12 +11,12 @@ namespace HonglornBL.Models.Framework
     {
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<Course> Course { get; set; }
-        //public virtual DbSet<GamePerformance<TraditionalTrackAndFieldDiscipline>> TraditionalTrackAndFieldPerformance { get; set; }
-        //public virtual DbSet<GamePerformance<CompetitionTrackAndFieldDiscipline>> CompetitionTrackAndFieldPerformance { get; set; }
+        public virtual DbSet<TraditionalTrackAndFieldPerformance> TraditionalTrackAndFieldPerformance { get; set; }
+        public virtual DbSet<CompetitionTrackAndFieldPerformance> CompetitionTrackAndFieldPerformance { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldGame> TraditionalTrackAndFieldGame { get; set; }
         public virtual DbSet<CompetitionTrackAndFieldGame> CompetitionTrackAndFieldGame { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldDiscipline> TraditionalTrackAndFieldDiscipline { get; set; }
-        //public virtual DbSet<CompetitionTrackAndFieldDiscipline> CompetitionTrackAndFieldDiscipline { get; set; }
+        public virtual DbSet<CompetitionTrackAndFieldDiscipline> CompetitionTrackAndFieldDiscipline { get; set; }
         public virtual DbSet<Handicap> Handicap { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudentCourse> StudentCourseRel { get; set; }

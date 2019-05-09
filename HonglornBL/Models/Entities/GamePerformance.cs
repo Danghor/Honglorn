@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HonglornBL.Models.Entities
 {
-    public class GamePerformance<TDiscipline> where TDiscipline : Discipline
+    public abstract class GamePerformance<TDiscipline> where TDiscipline : Discipline
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

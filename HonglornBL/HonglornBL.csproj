@@ -98,7 +98,9 @@
     <Compile Include="Games\Competition\Swimming\CompetitionSwimmingDiscipline.cs" />
     <Compile Include="Games\Competition\Swimming\CompetitionSwimmingResult.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldDiscipline.cs" />
+    <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldPerformance.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldResult.cs" />
+    <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldSprintDiscipline.cs" />
     <Compile Include="Games\MultiDiscipline\MultiDisciplineGameDiscipline.cs" />
     <Compile Include="Games\MultiDiscipline\MultiDisciplineGameResult.cs" />
     <Compile Include="Games\Traditional\Gymnastics\TraditionalGymnasticsResult.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Games\Traditional\Swimming\TraditionalSwimmingResult.cs" />
     <Compile Include="Games\Traditional\TrackAndField\Measurement.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldJumpThrowDiscipline.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldPerformance.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldResult.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="GameCollection.cs" />
