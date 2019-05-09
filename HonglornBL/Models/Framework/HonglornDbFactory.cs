@@ -9,33 +9,36 @@ namespace HonglornBL.Models.Framework
 {
     class HonglornDbFactory
     {
-        static readonly IDictionary<string, Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>>> ProviderMap = new Dictionary<string, Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>>>
+        static readonly IDictionary<string, Tuple<Func<string, Func<DbConnection>>, Func<DbConnection, HonglornDb>>> ProviderMap = new Dictionary<string, Tuple<Func<string, Func<DbConnection>>, Func<DbConnection, HonglornDb>>>
         {
             {
                 "MySql.Data.MySqlClient",
-                new Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>> (conString => new MySqlConnection(conString), con => new HonglornMySqlDb(con))
+                new Tuple<Func<string, Func<DbConnection>>, Func<DbConnection, HonglornDb>> (conString => () => new MySqlConnection(conString), con => new HonglornMySqlDb(con))
             },
             {
                 "System.Data.SqlClient",
-                new Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>> (conString => new SqlConnection(conString), con => new HonglornSqlDb(con))
+                new Tuple<Func<string, Func<DbConnection>>, Func<DbConnection, HonglornDb>> (conString => () => new SqlConnection(conString), con => new HonglornSqlDb(con))
             }
         };
 
-        DbConnection Connection { get; }
+        Func<DbConnection> GetConnection { get; }
+
+        readonly string connectionString;
 
         internal Func<HonglornDb> CreateContext { get; }
 
         internal HonglornDbFactory(ConnectionStringSettings settings)
         {
-            Tuple<Func<string, DbConnection>, Func<DbConnection, HonglornDb>> functions = ProviderMap[settings.ProviderName];
-            Connection = functions.Item1(settings.ConnectionString);
-            CreateContext = () => functions.Item2(Connection);
+            Tuple<Func<string, Func<DbConnection>>, Func<DbConnection, HonglornDb>> functions = ProviderMap[settings.ProviderName];
+            connectionString = settings.ConnectionString;
+            GetConnection = functions.Item1(connectionString);
+            CreateContext = () => functions.Item2(GetConnection());
         }
 
         internal HonglornDbFactory(DbConnection connection)
         {
-            Connection = connection;
-            CreateContext = () => new HonglornDb(Connection);
+            GetConnection = () => connection;
+            CreateContext = () => new HonglornDb(GetConnection());
         }
     }
 }
