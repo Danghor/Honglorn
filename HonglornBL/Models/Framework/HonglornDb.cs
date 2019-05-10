@@ -1,9 +1,9 @@
-﻿using HonglornBL.Games.Traditional.TrackAndField;
+﻿using HonglornBL.Games.Competition.TrackAndField;
+using HonglornBL.Games.Traditional.TrackAndField;
+using HonglornBL.Models.Entities;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using HonglornBL.Games.Competition.TrackAndField;
-using HonglornBL.Models.Entities;
 
 namespace HonglornBL.Models.Framework
 {
@@ -16,6 +16,7 @@ namespace HonglornBL.Models.Framework
         public virtual DbSet<TraditionalTrackAndFieldPerformance> TraditionalTrackAndFieldPerformance { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldDiscipline> TraditionalTrackAndFieldDiscipline { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldMeasuringPoint> TraditionalTrackAndFieldMeasuringPoint { get; set; }
+        public virtual DbSet<TraditionalTrackAndFieldDisciplineHandicap> TraditionalTrackAndFieldDisciplineHandicap { get; set; }
 
         public virtual DbSet<CompetitionTrackAndFieldGame> CompetitionTrackAndFieldGame { get; set; }
         public virtual DbSet<CompetitionTrackAndFieldPerformance> CompetitionTrackAndFieldPerformance { get; set; }

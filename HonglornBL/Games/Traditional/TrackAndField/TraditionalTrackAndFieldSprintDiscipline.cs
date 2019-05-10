@@ -1,4 +1,5 @@
-﻿using HonglornBL.Models.Entities;
+﻿using HonglornBL.Enums;
+using HonglornBL.Models.Entities;
 using System.ComponentModel.DataAnnotations;
 
 namespace HonglornBL.Games.Traditional.TrackAndField

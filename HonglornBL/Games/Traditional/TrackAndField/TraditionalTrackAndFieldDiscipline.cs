@@ -1,6 +1,7 @@
 ﻿using HonglornBL.Enums;
 using HonglornBL.Models.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
@@ -15,6 +16,8 @@ namespace HonglornBL.Games.Traditional.TrackAndField
 
         [Required]
         public float ConstantC { get; set; }
+
+        public virtual ICollection<TraditionalTrackAndFieldDisciplineHandicap> TraditionalTrackAndFieldDisciplineHandicaps { get; set; }
 
         internal int CalculateScore(Handicap handicap, double? value)
         {
