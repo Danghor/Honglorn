@@ -7,7 +7,7 @@ using HonglornBL.Games.Competition.TrackAndField;
 
 namespace HonglornBL
 {
-    public class CompetitionTrackAndFieldGame : Game<CompetitionTrackAndFieldDiscipline, CompetitionTrackAndFieldResult>
+    public class CompetitionTrackAndFieldGame : Game<CompetitionTrackAndFieldResult, CompetitionTrackAndFieldPerformance>
     {
         public override ICollection<CompetitionTrackAndFieldResult> CalculateResults() => throw new NotImplementedException();
     }

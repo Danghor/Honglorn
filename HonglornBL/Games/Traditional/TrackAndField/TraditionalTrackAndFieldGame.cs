@@ -5,7 +5,7 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
-    public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldDiscipline, TraditionalTrackAndFieldResult>
+    public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldResult, TraditionalTrackAndFieldPerformance>
     {
         public override ICollection<TraditionalTrackAndFieldResult> CalculateResults()
         {

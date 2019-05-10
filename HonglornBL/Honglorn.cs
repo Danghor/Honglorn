@@ -212,7 +212,7 @@ namespace HonglornBL
             }
         }
 
-        static void AttachContextFactory<TDiscipline, TResult>(IEnumerable<Game<TDiscipline, TResult>> games, HonglornDbFactory contextFactory) where TDiscipline : Models.Entities.Discipline
+        static void AttachContextFactory<TResult, TGamePerformance>(IEnumerable<Game<TResult, TGamePerformance>> games, HonglornDbFactory contextFactory)
         {
             foreach (var game in games)
             {

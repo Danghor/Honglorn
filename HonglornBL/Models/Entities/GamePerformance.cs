@@ -7,7 +7,7 @@ using System.Text;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class GamePerformance<TDiscipline> where TDiscipline : Discipline
+    public abstract class GamePerformance<TMeasuringPoint, TDiscipline> where TMeasuringPoint : MeasuringPoint<TDiscipline> where TDiscipline : Discipline
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -15,6 +15,6 @@ namespace HonglornBL.Models.Entities
 
         public Student Student { get; set; }
 
-        public ICollection<MeasuringPoint<TDiscipline>> MeasuringPoints { get; set; }
+        public ICollection<TMeasuringPoint> MeasuringPoints { get; set; }
     }
 }

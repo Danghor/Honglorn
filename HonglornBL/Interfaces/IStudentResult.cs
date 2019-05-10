@@ -7,7 +7,7 @@ namespace HonglornBL
     {
         int TotalScore { get; }
         CertificateType CertificateType { get; }
-        GamePerformance<Models.Entities.Discipline> GamePerformance { get; set; }
+        //GamePerformance<Models.Entities.Discipline> GamePerformance { get; set; }
         IPdfDocument Certificate { get; }
     }
 }

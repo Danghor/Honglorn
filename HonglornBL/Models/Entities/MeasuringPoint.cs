@@ -5,7 +5,7 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
-    public class MeasuringPoint<TDiscipline> where TDiscipline : Discipline
+    public abstract class MeasuringPoint<TDiscipline> where TDiscipline : Discipline
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

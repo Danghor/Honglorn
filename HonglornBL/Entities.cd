@@ -57,8 +57,8 @@
       <Property Name="Handicap" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
-    <Position X="9.75" Y="2.75" Width="2.5" />
+  <Class Name="HonglornBL.Models.Entities.GamePerformance&lt;TMeasuringPoint, TDiscipline&gt;">
+    <Position X="6" Y="3.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\GamePerformance.cs</FileName>
@@ -66,80 +66,34 @@
     <ShowAsAssociation>
       <Property Name="Student" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="MeasuringPoints" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldGame">
-    <Position X="0.5" Y="6.75" Width="3" />
+    <Position X="3" Y="10" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldGame.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HonglornBL.TraditionalGymnasticsGame">
-    <Position X="4.25" Y="6.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Games\Traditional\Gymnastics\TraditionalGymnasticsGame.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HonglornBL.TraditionalSwimmingGame">
-    <Position X="7.25" Y="6.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Games\Traditional\Swimming\TraditionalSwimmingGame.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="HonglornBL.CompetitionTrackAndFieldGame">
-    <Position X="10.25" Y="6.75" Width="2.5" />
+    <Position X="6.25" Y="10" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HonglornBL.CompetitionGymnasticsGame">
-    <Position X="13.5" Y="6.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Games\Competition\Gymnastics\CompetitionGymnasticsGame.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HonglornBL.CompetitionSwimmingGame">
-    <Position X="16.5" Y="6.75" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Games\Competition\Swimming\CompetitionSwimmingGame.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="HonglornBL.MultiDisciplineGame">
-    <Position X="19.5" Y="6.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Games\MultiDiscipline\MultiDisciplineGame.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="HonglornBL.MeasuringPoint&lt;TDiscipline&gt;">
-    <Position X="14" Y="2.25" Width="2.25" />
+    <Position X="0.75" Y="3" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAA=</HashCode>
       <FileName>Models\Entities\MeasuringPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HonglornBL.Models.Entities.Game&lt;TDiscipline, TResult&gt;">
-    <Position X="5.25" Y="4" Width="3" />
-    <AssociationLine Name="GamePerformances" Type="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-0.24" Y="1.565" />
-      </MemberNameLabel>
-    </AssociationLine>
+  <Class Name="HonglornBL.Models.Entities.Game&lt;TResult, TGamePerformance&gt;">
+    <Position X="4.5" Y="7.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAABAEAABAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\Game.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="GamePerformances" />
-    </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Honglorn">
@@ -149,31 +103,52 @@
       <FileName>Honglorn.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldPerformance">
+    <Position X="4" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldPerformance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldPerformance">
+    <Position X="7.5" Y="5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldPerformance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldMeasuringPoint">
+    <Position X="0.5" Y="5" Width="3" />
+    <InheritanceLine Type="HonglornBL.MeasuringPoint&lt;TDiscipline&gt;" FixedToPoint="true">
+      <Path>
+        <Point X="1.875" Y="4.488" />
+        <Point X="1.875" Y="5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldMeasuringPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Interface Name="HonglornBL.IStudentResult">
-    <Position X="14" Y="4.25" Width="2" />
-    <AssociationLine Name="GamePerformance" Type="HonglornBL.Models.Entities.GamePerformance&lt;TDiscipline&gt;">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.307" Y="0.466" />
-      </MemberNameLabel>
-    </AssociationLine>
+    <Position X="9.5" Y="3" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAACAAAAAAAAAAAAAAAAAAAIAAAEAAAAA=</HashCode>
       <FileName>Interfaces\IStudentResult.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="CertificateType" />
-      <Property Name="GamePerformance" />
     </ShowAsAssociation>
   </Interface>
   <Interface Name="HonglornBL.IGame&lt;TResult&gt;">
-    <Position X="2.25" Y="2.75" Width="1.5" />
+    <Position X="8" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
       <FileName>IGame.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="HonglornBL.Enums.CertificateType">
-    <Position X="17.5" Y="4.25" Width="1.5" />
+    <Position X="12.5" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAABAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\Certificate.cs</FileName>

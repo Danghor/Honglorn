@@ -6,7 +6,7 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class Game<TDiscipline, TResult> : IGame<TResult> where TDiscipline : Discipline
+    public abstract class Game<TResult, TGamePerformance> : IGame<TResult>
     {
         internal HonglornDbFactory contextFactory;
 
@@ -19,7 +19,7 @@ namespace HonglornBL.Models.Entities
         [Required]
         public DateTime Date { get; set; }
 
-        public virtual ICollection<GamePerformance<TDiscipline>> GamePerformances { get; set; } = new HashSet<GamePerformance<TDiscipline>>();
+        public virtual ICollection<TGamePerformance> GamePerformances { get; set; } = new HashSet<TGamePerformance>();
 
         public abstract ICollection<TResult> CalculateResults();
     }

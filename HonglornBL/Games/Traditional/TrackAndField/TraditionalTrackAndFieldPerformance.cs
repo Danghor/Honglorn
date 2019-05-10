@@ -6,7 +6,7 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
-    public class TraditionalTrackAndFieldPerformance : GamePerformance<TraditionalGymnasticsDiscipline>
+    public class TraditionalTrackAndFieldPerformance : GamePerformance<TraditionalTrackAndFieldMeasuringPoint, TraditionalTrackAndFieldDiscipline>
     {
     }
 }
