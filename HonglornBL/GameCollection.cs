@@ -5,7 +5,7 @@ namespace HonglornBL
 {
     public class GameCollection
     {
-        public ICollection<TraditionalTrackAndFieldGame> TraditionalTrackAndFieldGames { get; internal set; }
-        public ICollection<CompetitionTrackAndFieldGame> CompetitionTrackAndFieldGames { get; internal set; }
+        public ICollection<TraditionalTrackAndFieldGameManager> TraditionalTrackAndFieldGames { get; internal set; }
+        public ICollection<CompetitionTrackAndFieldGameManager> CompetitionTrackAndFieldGames { get; internal set; }
     }
 }

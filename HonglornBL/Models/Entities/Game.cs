@@ -6,10 +6,8 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class Game<TResult, TGamePerformance> : IGame<TResult>
+    public abstract class Game<TGamePerformance>
     {
-        internal HonglornDbFactory contextFactory;
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid PKey { get; set; } = Guid.NewGuid();
@@ -20,7 +18,5 @@ namespace HonglornBL.Models.Entities
         public DateTime Date { get; set; }
 
         public virtual ICollection<TGamePerformance> GamePerformances { get; set; } = new HashSet<TGamePerformance>();
-
-        public abstract ICollection<TResult> CalculateResults();
     }
 }

@@ -201,22 +201,11 @@ namespace HonglornBL
             {
                 var collection = new GameCollection
                 {
-                    TraditionalTrackAndFieldGames = db.TraditionalTrackAndFieldGame.ToList(),
-                    CompetitionTrackAndFieldGames = db.CompetitionTrackAndFieldGame.ToList()
+                    TraditionalTrackAndFieldGames = db.TraditionalTrackAndFieldGame.Select(g => new TraditionalTrackAndFieldGameManager(g.PKey, ContextFactory)).ToList(),
+                    CompetitionTrackAndFieldGames = db.CompetitionTrackAndFieldGame.Select(g => new CompetitionTrackAndFieldGameManager(g.PKey, ContextFactory)).ToList()
                 };
 
-                AttachContextFactory(collection.TraditionalTrackAndFieldGames, ContextFactory);
-                AttachContextFactory(collection.CompetitionTrackAndFieldGames, ContextFactory);
-
                 return collection;
-            }
-        }
-
-        static void AttachContextFactory<TResult, TGamePerformance>(IEnumerable<Game<TResult, TGamePerformance>> games, HonglornDbFactory contextFactory)
-        {
-            foreach (var game in games)
-            {
-                game.contextFactory = contextFactory;
             }
         }
     }

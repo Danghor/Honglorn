@@ -2,7 +2,7 @@
 
 namespace HonglornBL
 {
-    public interface IGame<TResult>
+    public interface IGameManager<TResult>
     {
         ICollection<TResult> CalculateResults();
     }

@@ -5,19 +5,8 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
-    public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldResult, TraditionalTrackAndFieldPerformance>
+    public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldPerformance>
     {
-        public override ICollection<TraditionalTrackAndFieldResult> CalculateResults()
-        {
-            //using (HonglornDb db = contextFactory.CreateContext())
-            //{
-            //    foreach (var performance in GamePerformances)
-            //    {
 
-
-            //    }
-            //}
-            throw new NotImplementedException();
-        }
     }
 }

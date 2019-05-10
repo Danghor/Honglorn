@@ -70,7 +70,7 @@
   <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldGame">
     <Position X="3" Y="10" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldGame.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -88,18 +88,17 @@
       <FileName>Models\Entities\MeasuringPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="HonglornBL.Models.Entities.Game&lt;TResult, TGamePerformance&gt;">
+  <Class Name="HonglornBL.Models.Entities.Game&lt;TGamePerformance&gt;">
     <Position X="4.5" Y="7.25" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAABAEAABAAAEAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAABAAAABAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\Game.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Honglorn">
     <Position X="18" Y="0.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAEACAAAABAAAAAAAQAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAAEACAAAAAAAAAAAAQAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Honglorn.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -153,33 +152,19 @@
       <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldResult.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CertificateType" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldResult">
-    <Position X="12.25" Y="8.75" Width="2.5" />
+    <Position X="14.75" Y="8.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldResult.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="HonglornBL.IStudentResult">
-    <Position X="9.5" Y="3" Width="2" />
-    <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAA=</HashCode>
-      <FileName>Interfaces\IStudentResult.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="CertificateType" />
-    </ShowAsAssociation>
-  </Interface>
-  <Interface Name="HonglornBL.IGame&lt;TResult&gt;">
-    <Position X="8" Y="7" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IGame.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Enum Name="HonglornBL.Enums.CertificateType">
-    <Position X="12.5" Y="3" Width="1.5" />
+    <Position X="12.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAABAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\Certificate.cs</FileName>
