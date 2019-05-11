@@ -109,6 +109,7 @@
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldPerformance.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldResult.cs" />
     <Compile Include="GameCollection.cs" />
+    <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldRunningDiscipline.cs" />
     <Compile Include="IPdfDocument.cs" />
     <Compile Include="Models\Entities\MeasuringPoint.cs" />
     <Compile Include="Calculation\IScoreCalculator.cs" />

@@ -1,14 +1,10 @@
-﻿using HonglornBL.Enums;
-using HonglornBL.Models.Entities;
-using System;
-
-namespace HonglornBL.Games.Traditional.TrackAndField
+﻿namespace HonglornBL.Games.Traditional.TrackAndField
 {
-    public class TraditionalTrackAndFieldMiddleDistanceDiscipline : TraditionalTrackAndFieldDiscipline
+    public class TraditionalTrackAndFieldMiddleDistanceDiscipline : TraditionalTrackAndFieldRunningDiscipline
     {
-        internal override double CalculateNonNullRawScore(Handicap handicap, double value)
+        internal override double CalculateNonNullRawScore(double value)
         {
-            throw new NotImplementedException();
+            return (Distance / value - ConstantA) / ConstantC;
         }
     }
 }

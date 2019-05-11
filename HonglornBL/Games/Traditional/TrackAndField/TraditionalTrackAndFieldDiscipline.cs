@@ -3,6 +3,7 @@ using HonglornBL.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
@@ -19,9 +20,23 @@ namespace HonglornBL.Games.Traditional.TrackAndField
 
         public virtual ICollection<TraditionalTrackAndFieldDisciplineHandicap> TraditionalTrackAndFieldDisciplineHandicaps { get; set; }
 
+        protected double ValueWithHandicap(Handicap handicap, double value)
+        {
+            if (handicap != null)
+            {
+                double factor = (from h in TraditionalTrackAndFieldDisciplineHandicaps
+                                 where h.Handicap == handicap && h.Sex == Sex
+                                 select h.Factor).Single();
+
+                value *= factor;
+            }
+
+            return value;
+        }
+
         internal int CalculateScore(Handicap handicap, double? value)
         {
-            return value == null ? 0 : CleanScore(CalculateNonNullRawScore(handicap, value.Value));
+            return value == null ? 0 : CleanScore(CalculateNonNullRawScore(ValueWithHandicap(handicap, value.Value)));
         }
 
         static int CleanScore(double rawScore)
@@ -29,6 +44,6 @@ namespace HonglornBL.Games.Traditional.TrackAndField
             return (int)Math.Max(0, Math.Floor(rawScore));
         }
 
-        internal abstract double CalculateNonNullRawScore(Handicap handicap, double value);
+        internal abstract double CalculateNonNullRawScore(double value);
     }
 }
