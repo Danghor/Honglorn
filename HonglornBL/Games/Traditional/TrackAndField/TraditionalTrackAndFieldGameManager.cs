@@ -2,6 +2,7 @@
 using HonglornBL.Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HonglornBL
 {
@@ -53,16 +54,7 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                TraditionalTrackAndFieldGame game = Game(db);
-
-                var results = new List<TraditionalTrackAndFieldResult>();
-
-                foreach (var performance in game.GamePerformances)
-                {
-
-                }
-
-                return null;
+                return Game(db).GamePerformances.Select(performance => performance.CalculateResult(db)).ToList();
             }
         }
     }

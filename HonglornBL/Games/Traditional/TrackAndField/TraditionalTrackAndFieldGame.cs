@@ -1,12 +1,8 @@
-﻿using System;
-using HonglornBL.Models.Entities;
-using System.Collections.Generic;
-using HonglornBL.Models.Framework;
+﻿using HonglornBL.Models.Entities;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldGame : Game<TraditionalTrackAndFieldPerformance>
     {
-
     }
 }
