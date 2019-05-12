@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using DocumentFormat.OpenXml.Office2010.PowerPoint;
 using HonglornBL.Enums;
 using HonglornBL.Exceptions;
+using HonglornBL.Games.Traditional.TrackAndField;
 using HonglornBL.Import;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
@@ -199,13 +200,29 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                var collection = new GameCollection
+                return new GameCollection
                 {
                     TraditionalTrackAndFieldGames = db.TraditionalTrackAndFieldGame.Select(g => new TraditionalTrackAndFieldGameManager(g.PKey, ContextFactory)).ToList(),
                     CompetitionTrackAndFieldGames = db.CompetitionTrackAndFieldGame.Select(g => new CompetitionTrackAndFieldGameManager(g.PKey, ContextFactory)).ToList()
                 };
+            }
+        }
 
-                return collection;
+        public void CreateTraditionalTrackAndFieldGame(string name, DateTime date)
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                db.TraditionalTrackAndFieldGame.Add(new TraditionalTrackAndFieldGame(name, date));
+                db.SaveChanges();
+            }
+        }
+
+        public void CreateCompetitionTrackAndFieldGame(string name, DateTime date)
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                db.CompetitionTrackAndFieldGame.Add(new CompetitionTrackAndFieldGame(name, date));
+                db.SaveChanges();
             }
         }
     }

@@ -1,13 +1,11 @@
-﻿using HonglornBL.Models.Entities;
+﻿using HonglornBL.Games.Competition.TrackAndField;
+using HonglornBL.Models.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using HonglornBL.Games.Competition.TrackAndField;
 
 namespace HonglornBL
 {
     public class CompetitionTrackAndFieldGame : Game<CompetitionTrackAndFieldPerformance>
     {
+        public CompetitionTrackAndFieldGame(string name, DateTime date) : base(name, date) { }
     }
 }

@@ -50,6 +50,26 @@ namespace HonglornBL
             }
         }
 
+        public DateTime GameDate
+        {
+            get
+            {
+                using (HonglornDb db = ContextFactory.CreateContext())
+                {
+                    return Game(db).Date;
+                }
+            }
+
+            set
+            {
+                using (HonglornDb db = ContextFactory.CreateContext())
+                {
+                    Game(db).Date = value;
+                    db.SaveChanges();
+                }
+            }
+        }
+
         public ICollection<TraditionalTrackAndFieldResult> CalculateResults()
         {
             using (HonglornDb db = ContextFactory.CreateContext())

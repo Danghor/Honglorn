@@ -98,7 +98,7 @@
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldCertificateAssignment.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldDisciplineHandicap.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldGameManager.cs" />
-    <Compile Include="GameNotFoundException.cs" />
+    <Compile Include="Exceptions\GameNotFoundException.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldDiscipline.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldMeasuringPoint.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldPerformance.cs" />
