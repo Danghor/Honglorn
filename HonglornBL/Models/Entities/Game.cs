@@ -18,6 +18,8 @@ namespace HonglornBL.Models.Entities
 
         public virtual ICollection<TGamePerformance> GamePerformances { get; set; } = new HashSet<TGamePerformance>();
 
+        protected Game() { }
+
         protected Game(string name, DateTime date)
         {
             Name = name;
