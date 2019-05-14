@@ -1,6 +1,7 @@
 ﻿using HonglornBL.Games.Competition.TrackAndField;
 using HonglornBL.Models.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace HonglornBL
 {
@@ -9,5 +10,7 @@ namespace HonglornBL
         public CompetitionTrackAndFieldGame() { }
 
         public CompetitionTrackAndFieldGame(string name, DateTime date) : base(name, date) { }
+
+        public ICollection<CompetitionTrackAndFieldEvaluationGroup> EvaluationGroups = new HashSet<CompetitionTrackAndFieldEvaluationGroup>();
     }
 }

@@ -93,6 +93,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs" />
+    <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGameManager.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldCertificateAssignment.cs" />

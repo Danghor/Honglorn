@@ -23,6 +23,8 @@ namespace HonglornBL.Models.Framework
         public virtual DbSet<CompetitionTrackAndFieldPerformance> CompetitionTrackAndFieldPerformance { get; set; }
         public virtual DbSet<CompetitionTrackAndFieldDiscipline> CompetitionTrackAndFieldDiscipline { get; set; }
         public virtual DbSet<CompetitionTrackAndFieldMeasuringPoint> CompetitionTrackAndFieldMeasuringPoint { get; set; }
+        public virtual DbSet<CompetitionTrackAndFieldEvaluationGroup> CompetitionTrackAndFieldEvaluationGroup { get; set; }
+        public virtual DbSet<CompetitionTrackAndFieldEvaluationGroupStudent> CompetitionTrackAndFieldEvaluationGroupStudent { get; set; }
 
         public virtual DbSet<Handicap> Handicap { get; set; }
         public virtual DbSet<Student> Student { get; set; }

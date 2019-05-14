@@ -45,8 +45,8 @@
       <FileName>Models\Entities\Student.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="StudentCourses" />
       <Property Name="StudentHandicaps" />
+      <Property Name="StudentCourses" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="HonglornBL.Models.Entities.StudentCourse">
@@ -95,12 +95,15 @@
   <Class Name="HonglornBL.CompetitionTrackAndFieldGame">
     <Position X="6.25" Y="10" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="EvaluationGroups" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="HonglornBL.MeasuringPoint&lt;TDiscipline&gt;">
-    <Position X="12" Y="4.75" Width="2.25" />
+    <Position X="20.5" Y="5.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAA=</HashCode>
       <FileName>Models\Entities\MeasuringPoint.cs</FileName>
@@ -114,16 +117,16 @@
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Honglorn">
-    <Position X="15.25" Y="2.75" Width="4.75" />
+    <Position X="17" Y="2.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAEACAAAAAAAAAAAAQAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAQAAEACAAAQAAAAAAAAQAAAAAACAAAAAAAAA=</HashCode>
       <FileName>Honglorn.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldPerformance">
     <Position X="4" Y="5.75" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAACAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldPerformance.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -135,21 +138,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldMeasuringPoint">
-    <Position X="10.5" Y="6.75" Width="3" />
+    <Position X="19" Y="7.75" Width="3" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldMeasuringPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldMeasuringPoint">
-    <Position X="14" Y="6.75" Width="3.25" />
+    <Position X="22.5" Y="7.75" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldMeasuringPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldResult">
-    <Position X="9.5" Y="8.75" Width="2.5" />
+    <Position X="17.5" Y="10" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldResult.cs</FileName>
@@ -159,14 +162,44 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldResult">
-    <Position X="14.75" Y="8.75" Width="2.5" />
+    <Position X="22.75" Y="10" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldResult.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldEvaluationGroup">
+    <Position X="12.5" Y="10" Width="3.25" />
+    <AssociationLine Name="CompetitionTrackAndFieldEvaluationGroupStudents" Type="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldEvaluationGroupStudent" FixedFromPoint="true">
+      <Path>
+        <Point X="15" Y="10" />
+        <Point X="15" Y="5.738" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAQAAAgAAAAAAAAFAAAAAAA=</HashCode>
+      <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Game" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="CompetitionTrackAndFieldEvaluationGroupStudents" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldEvaluationGroupStudent">
+    <Position X="12" Y="4.25" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQQAAAAAAAAAAAAAAAAAAAAABAAAAEAAAAQAA=</HashCode>
+      <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EvaluationGroup" />
+      <Property Name="Student" />
+    </ShowAsAssociation>
+  </Class>
   <Enum Name="HonglornBL.Enums.CertificateType">
-    <Position X="12.75" Y="8.75" Width="1.5" />
+    <Position X="20.75" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAABAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
       <FileName>Enums\Certificate.cs</FileName>
