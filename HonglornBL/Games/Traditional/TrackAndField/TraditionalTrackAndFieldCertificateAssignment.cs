@@ -19,6 +19,10 @@ namespace HonglornBL.Games.Traditional.TrackAndField
         [Index("UniqueSexAge", 2, IsUnique = true)]
         public int Age { get; set; }
 
-        public CertificateType CertificateType { get; set; }
+        [Required]
+        public int MinimumHonoraryCertificateScore { get; set; }
+
+        [Required]
+        public int MinimumVictoryCertificateScore { get; set; }
     }
 }
