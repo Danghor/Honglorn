@@ -200,7 +200,7 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return db.Student.Select(s => s.PKey).ToList().Select(key => new StudentManager(key, ContextFactory);
+                return db.Student.Select(s => s.PKey).ToList().Select(key => new StudentManager(key, ContextFactory)).ToList();
             }
         }
 
@@ -218,18 +218,19 @@ namespace HonglornBL
 
         public void CreateTraditionalTrackAndFieldGame(string name, DateTime date)
         {
-            using (HonglornDb db = ContextFactory.CreateContext())
-            {
-                db.TraditionalTrackAndFieldGame.Add(new TraditionalTrackAndFieldGame(name, date));
-                db.SaveChanges();
-            }
+            CreateGame(context => context.TraditionalTrackAndFieldGame, new TraditionalTrackAndFieldGame(name, date));
         }
 
         public void CreateCompetitionTrackAndFieldGame(string name, DateTime date)
         {
+            CreateGame(context => context.CompetitionTrackAndFieldGame, new CompetitionTrackAndFieldGame(name, date));
+        }
+
+        void CreateGame<TGame>(Func<HonglornDb, IDbSet<TGame>> dbSet, TGame game) where TGame : class
+        {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                db.CompetitionTrackAndFieldGame.Add(new CompetitionTrackAndFieldGame(name, date));
+                dbSet(db).Add(game);
                 db.SaveChanges();
             }
         }

@@ -34,10 +34,7 @@ namespace HonglornBL
         {
             get
             {
-                using (HonglornDb db = ContextFactory.CreateContext())
-                {
-                    return Game(db).Name;
-                }
+                return GetValue(g => g.Name);
             }
 
             set
@@ -54,10 +51,7 @@ namespace HonglornBL
         {
             get
             {
-                using (HonglornDb db = ContextFactory.CreateContext())
-                {
-                    return Game(db).Date;
-                }
+                return GetValue(g => g.Date);
             }
 
             set
@@ -67,6 +61,14 @@ namespace HonglornBL
                     Game(db).Date = value;
                     db.SaveChanges();
                 }
+            }
+        }
+
+        T GetValue<T>(Func<TraditionalTrackAndFieldGame, T> getValue)
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                return getValue(Game(db));
             }
         }
 
