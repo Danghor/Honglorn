@@ -196,6 +196,14 @@ namespace HonglornBL
         //    }
         //}
 
+        public ICollection<StudentManager> GetStudents()
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                return db.Student.Select(s => s.PKey).ToList().Select(key => new StudentManager(key, ContextFactory);
+            }
+        }
+
         public GameCollection GetGames()
         {
             using (HonglornDb db = ContextFactory.CreateContext())
