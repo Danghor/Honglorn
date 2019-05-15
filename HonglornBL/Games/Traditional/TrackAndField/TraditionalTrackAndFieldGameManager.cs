@@ -8,7 +8,7 @@ namespace HonglornBL
 {
     public class TraditionalTrackAndFieldGameManager : IGameManager<TraditionalTrackAndFieldResult>
     {
-        internal HonglornDbFactory ContextFactory { get; set; }
+        HonglornDbFactory ContextFactory { get; }
 
         Guid GamePKey { get; }
 
