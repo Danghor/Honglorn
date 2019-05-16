@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using HonglornBL.Games.Competition.TrackAndField;
 using HonglornBL.Models.Framework;
 
@@ -31,18 +32,9 @@ namespace HonglornBL
 
         public ICollection<CompetitionTrackAndFieldResult> CalculateResults()
         {
-            throw new NotImplementedException();
-
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                var results = new List<CompetitionTrackAndFieldResult>();
-
-                foreach (var group in Game(db).EvaluationGroups)
-                {
-                    
-                }
-
-                return results;
+                return Game(db).EvaluationGroups.Select(group => group.CalculateResult(db)).ToList();
             }
         }
     }

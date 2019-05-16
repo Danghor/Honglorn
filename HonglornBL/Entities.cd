@@ -99,7 +99,7 @@
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Field Name="EvaluationGroups" />
+      <Property Name="EvaluationGroups" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="HonglornBL.MeasuringPoint&lt;TDiscipline&gt;">
@@ -119,7 +119,7 @@
   <Class Name="HonglornBL.Honglorn">
     <Position X="17" Y="2.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAQAAEACAAAQAAAAAAAAQAAAAAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAQAAEACAAAQAAAAAAAAQAAQBAACAAAAAAAAA=</HashCode>
       <FileName>Honglorn.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -164,7 +164,7 @@
   <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldResult">
     <Position X="22.75" Y="10" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldResult.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -177,14 +177,14 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAQAAAgAAAAAAAAFAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAQAAAgCAAAAAAAFAAAAAAA=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Game" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Field Name="CompetitionTrackAndFieldEvaluationGroupStudents" />
+      <Property Name="CompetitionTrackAndFieldEvaluationGroupStudents" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldEvaluationGroupStudent">

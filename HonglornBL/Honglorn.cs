@@ -218,15 +218,20 @@ namespace HonglornBL
 
         public void CreateTraditionalTrackAndFieldGame(string name, DateTime date)
         {
-            CreateGame(context => context.TraditionalTrackAndFieldGame, new TraditionalTrackAndFieldGame(name, date));
+            CreateEntity(context => context.TraditionalTrackAndFieldGame, new TraditionalTrackAndFieldGame(name, date));
         }
 
         public void CreateCompetitionTrackAndFieldGame(string name, DateTime date)
         {
-            CreateGame(context => context.CompetitionTrackAndFieldGame, new CompetitionTrackAndFieldGame(name, date));
+            CreateEntity(context => context.CompetitionTrackAndFieldGame, new CompetitionTrackAndFieldGame(name, date));
         }
 
-        void CreateGame<TGame>(Func<HonglornDb, IDbSet<TGame>> dbSet, TGame game) where TGame : class
+        public void CreateStudent()
+        {
+
+        }
+
+        void CreateEntity<TEntity>(Func<HonglornDb, IDbSet<TEntity>> dbSet, TEntity game) where TEntity : class
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {

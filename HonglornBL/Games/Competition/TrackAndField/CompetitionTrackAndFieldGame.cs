@@ -11,6 +11,6 @@ namespace HonglornBL
 
         public CompetitionTrackAndFieldGame(string name, DateTime date) : base(name, date) { }
 
-        public ICollection<CompetitionTrackAndFieldEvaluationGroup> EvaluationGroups = new HashSet<CompetitionTrackAndFieldEvaluationGroup>();
+        public ICollection<CompetitionTrackAndFieldEvaluationGroup> EvaluationGroups { get; set; } = new HashSet<CompetitionTrackAndFieldEvaluationGroup>();
     }
 }
