@@ -98,6 +98,9 @@
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGameManager.cs" />
     <Compile Include="GameManager.cs" />
+    <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldJumpDiscipline.cs" />
+    <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldMiddleDistanceDiscipline.cs" />
+    <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldThrowDiscipline.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldCertificateAssignment.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldDisciplineHandicap.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldGameManager.cs" />

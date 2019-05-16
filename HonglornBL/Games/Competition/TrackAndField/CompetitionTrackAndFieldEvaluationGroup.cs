@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace HonglornBL.Games.Competition.TrackAndField
 {
@@ -25,6 +26,8 @@ namespace HonglornBL.Games.Competition.TrackAndField
 
         internal CompetitionTrackAndFieldResult CalculateResult(HonglornDb context)
         {
+            var students = CompetitionTrackAndFieldEvaluationGroupStudents.Select(i => i.Student);
+
             throw new NotImplementedException();
         }
     }
