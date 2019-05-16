@@ -1,21 +1,15 @@
+using HonglornBL.Enums;
+using HonglornBL.Games.Traditional.TrackAndField;
+using HonglornBL.Import;
+using HonglornBL.Models.Entities;
+using HonglornBL.Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using DocumentFormat.OpenXml.Office2010.PowerPoint;
-using HonglornBL.Enums;
-using HonglornBL.Exceptions;
-using HonglornBL.Games.Traditional.TrackAndField;
-using HonglornBL.Import;
-using HonglornBL.Models.Entities;
-using HonglornBL.Models.Framework;
-using static HonglornBL.Prerequisites;
 
 namespace HonglornBL
 {
@@ -226,9 +220,19 @@ namespace HonglornBL
             CreateEntity(context => context.CompetitionTrackAndFieldGame, new CompetitionTrackAndFieldGame(name, date));
         }
 
-        public void CreateStudent()
+        public void CreateStudent(string surname, string forename, Sex sex, DateTime dateOfBirth)
         {
+            CreateEntity(context => context.Student, new Student(surname, forename, sex, dateOfBirth));
+        }
 
+        public void CreateHandicap(string name)
+        {
+            CreateEntity(context => context.Handicap, new Handicap(name));
+        }
+
+        public void CreateClass(string name)
+        {
+            CreateEntity(context => context.Class, new Class(name));
         }
 
         void CreateEntity<TEntity>(Func<HonglornDb, IDbSet<TEntity>> dbSet, TEntity game) where TEntity : class

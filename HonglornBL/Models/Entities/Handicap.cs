@@ -17,5 +17,10 @@ namespace HonglornBL.Models.Entities
         public string Name { get; set; }
 
         public virtual ICollection<StudentHandicap> StudentHandicaps { get; set; }
+
+        public Handicap(string name)
+        {
+            Name = name;
+        }
     }
 }

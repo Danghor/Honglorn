@@ -119,7 +119,7 @@
   <Class Name="HonglornBL.Honglorn">
     <Position X="17" Y="2.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAQAAEACAAAQAAAAAAAAQAAQBAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAQAAEgCAACQAAAAAAAAQAAQBAACAAAAAAAAA=</HashCode>
       <FileName>Honglorn.cs</FileName>
     </TypeIdentifier>
   </Class>

@@ -1,5 +1,5 @@
-﻿using System;
-using HonglornBL.Enums;
+﻿using HonglornBL.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace HonglornBL.Models.Entities
 {
-    [DebuggerDisplay("{Forename} {Surname}, {Sex}, YOB: {YearOfBirth}, ID: {PKey}")]
+    [DebuggerDisplay("{Forename} {Surname}, {Sex}, YOB: {DateOfBirth}, ID: {PKey}")]
     public class Student
     {
         [Key]
@@ -31,5 +31,13 @@ namespace HonglornBL.Models.Entities
         public ICollection<StudentHandicap> StudentHandicaps { get; set; } = new HashSet<StudentHandicap>();
 
         public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
+
+        public Student(string surname, string forename, Sex sex, DateTime dateOfBirth)
+        {
+            Surname = surname;
+            Forename = forename;
+            Sex = sex;
+            DateOfBirth = dateOfBirth;
+        }
     }
 }

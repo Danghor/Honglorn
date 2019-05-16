@@ -29,7 +29,7 @@ namespace HonglornBL.Models.Framework
         public virtual DbSet<Handicap> Handicap { get; set; }
         public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<StudentHandicap> StudentHandicap { get; set; }
-        public virtual DbSet<StudentCourse> StudentCourseRel { get; set; }
+        public virtual DbSet<StudentCourse> StudentCourse { get; set; }
 
         internal HonglornDb(DbConnection connection) : base(connection, true)
         {
