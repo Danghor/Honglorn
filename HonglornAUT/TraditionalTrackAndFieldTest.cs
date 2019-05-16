@@ -15,13 +15,13 @@ namespace HonglornAUT
         public TestContext TestContext { get; set; }
 
         const string GameName = "Leichtathletik Wettkampf";
-        DateTime GameDate = DateTime.Parse("1/1/2019");
+        readonly DateTime gameDate = DateTime.Parse("1/1/2019");
 
         TraditionalTrackAndFieldGameManager CreateGameManager()
         {
             var sut = new Honglorn(CreateConnection());
 
-            sut.CreateTraditionalTrackAndFieldGame(GameName, GameDate);
+            sut.CreateTraditionalTrackAndFieldGame(GameName, gameDate);
 
             return sut.GetGames().TraditionalTrackAndFieldGames.Single();
         }
@@ -31,12 +31,12 @@ namespace HonglornAUT
         {
             var sut = new Honglorn(CreateConnection());
 
-            sut.CreateTraditionalTrackAndFieldGame(GameName, GameDate);
+            sut.CreateTraditionalTrackAndFieldGame(GameName, gameDate);
 
             TraditionalTrackAndFieldGameManager game = sut.GetGames().TraditionalTrackAndFieldGames.Single();
 
             Assert.AreEqual(GameName, game.GameName);
-            Assert.AreEqual(GameDate, game.GameDate);
+            Assert.AreEqual(gameDate, game.GameDate);
         }
     }
 }
