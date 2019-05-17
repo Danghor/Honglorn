@@ -100,6 +100,7 @@
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGameManager.cs" />
+    <Compile Include="HandicapManager.cs" />
     <Compile Include="IGameManager.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldJumpDiscipline.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldMiddleDistanceDiscipline.cs" />

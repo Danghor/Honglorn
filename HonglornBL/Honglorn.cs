@@ -198,6 +198,14 @@ namespace HonglornBL
             }
         }
 
+        public ICollection<HandicapManager> GetHandicaps()
+        {
+            using(HonglornDb db = ContextFactory.CreateContext())
+            {
+                return db.Handicap.Select(s => s.PKey).ToList().Select(key => new HandicapManager(key, ContextFactory)).ToList();
+            }
+        }
+
         public GameCollection GetGames()
         {
             using (HonglornDb db = ContextFactory.CreateContext())
