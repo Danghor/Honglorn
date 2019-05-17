@@ -94,12 +94,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassManager.cs" />
+    <Compile Include="CourseManager.cs" />
     <Compile Include="Exceptions\ClassNotFoundException.cs" />
     <Compile Include="Exceptions\StudentNotFoundException.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGameManager.cs" />
-    <Compile Include="GameManager.cs" />
+    <Compile Include="IGameManager.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldJumpDiscipline.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldMiddleDistanceDiscipline.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldThrowDiscipline.cs" />

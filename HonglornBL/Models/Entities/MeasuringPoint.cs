@@ -5,6 +5,7 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
+    // Todo: Check whether it makes sense to always save a discipline here, since for a competition, the discipline would rather belong to the evaluationgroup
     public abstract class MeasuringPoint<TDiscipline> where TDiscipline : Discipline
     {
         [Key]
