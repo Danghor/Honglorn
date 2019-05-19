@@ -119,7 +119,7 @@
   <Class Name="HonglornBL.Honglorn">
     <Position X="17" Y="2.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AAAgAAAAQAAEgCAACQAAAAAAAAQAAQBAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAIAAQAAEgCAACQAAAAAAAAQAAQBAACAAAAAAAAA=</HashCode>
       <FileName>Honglorn.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -152,7 +152,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldResult">
-    <Position X="17.5" Y="10" Width="2.5" />
+    <Position X="17" Y="9.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldResult.cs</FileName>
@@ -162,11 +162,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldResult">
-    <Position X="22.75" Y="10" Width="2.5" />
+    <Position X="24" Y="9.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAQAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldResult.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CertificateType" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="HonglornBL.Games.Competition.TrackAndField.CompetitionTrackAndFieldEvaluationGroup">
     <Position X="12.5" Y="10" Width="3.25" />
