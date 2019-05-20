@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Games.Competition.TrackAndField
 {
+    // TODO: Use unique index to prevent the same student from being added multiple times to the same evaluationgroup
     public class CompetitionTrackAndFieldEvaluationGroupStudent
     {
         [Key]
