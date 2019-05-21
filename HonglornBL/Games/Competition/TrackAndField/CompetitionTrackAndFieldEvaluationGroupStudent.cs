@@ -5,7 +5,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Games.Competition.TrackAndField
 {
-    // TODO: Use unique index to prevent the same student from being added multiple times to the same evaluationgroup
     public class CompetitionTrackAndFieldEvaluationGroupStudent
     {
         [Key]
@@ -13,12 +12,14 @@ namespace HonglornBL.Games.Competition.TrackAndField
         public Guid PKey { get; set; } = Guid.NewGuid();
 
         [Required]
+        [Index("CompetitionTrackAndFieldEvaluationGroupStudent_Unique", 1, IsUnique = true)]
         public Guid EvaluationGroupPKey { get; set; }
 
         [ForeignKey(nameof(EvaluationGroupPKey))]
         public virtual CompetitionTrackAndFieldEvaluationGroup EvaluationGroup { get; set; }
 
         [Required]
+        [Index("CompetitionTrackAndFieldEvaluationGroupStudent_Unique", 2, IsUnique = true)]
         public Guid StudentPKey { get; set; }
 
         [ForeignKey(nameof(StudentPKey))]
