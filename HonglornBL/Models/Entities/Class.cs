@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Class
+    public class Class : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -17,10 +17,5 @@ namespace HonglornBL.Models.Entities
         public string Name { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; } = new HashSet<Course>();
-
-        public Class(string name)
-        {
-            Name = name;
-        }
     }
 }

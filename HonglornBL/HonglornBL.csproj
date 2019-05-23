@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassManager.cs" />
+    <Compile Include="ClassService.cs" />
     <Compile Include="CourseManager.cs" />
     <Compile Include="Exceptions\ClassNotFoundException.cs" />
     <Compile Include="Exceptions\StudentNotFoundException.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="GameCollection.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldRunningDiscipline.cs" />
     <Compile Include="IPdfDocument.cs" />
+    <Compile Include="Models\Entities\IEntity.cs" />
     <Compile Include="Models\Entities\MeasuringPoint.cs" />
     <Compile Include="Calculation\IScoreCalculator.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs" />
@@ -178,6 +180,7 @@
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldMiddleDistanceDiscipline.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldSprintDiscipline.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldThrowDiscipline.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="StudentManager.cs" />
   </ItemGroup>
   <ItemGroup>

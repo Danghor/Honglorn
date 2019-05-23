@@ -200,17 +200,9 @@ namespace HonglornBL
 
         public ICollection<HandicapManager> GetHandicaps()
         {
-            using(HonglornDb db = ContextFactory.CreateContext())
-            {
-                return db.Handicap.Select(s => s.PKey).ToList().Select(key => new HandicapManager(key, ContextFactory)).ToList();
-            }
-        }
-
-        public ICollection<ClassManager> GetClasses()
-        {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return db.Class.Select(s => s.PKey).ToList().Select(key => new ClassManager(key, ContextFactory)).ToList();
+                return db.Handicap.Select(s => s.PKey).ToList().Select(key => new HandicapManager(key, ContextFactory)).ToList();
             }
         }
 
@@ -254,9 +246,9 @@ namespace HonglornBL
             CreateEntity(context => context.Handicap, new Handicap(name));
         }
 
-        public void CreateClass(string name)
+        public ClassService ClassService()
         {
-            CreateEntity(context => context.Class, new Class(name));
+            return new ClassService(ContextFactory);
         }
 
         void CreateEntity<TEntity>(Func<HonglornDb, IDbSet<TEntity>> dbSet, TEntity game) where TEntity : class
