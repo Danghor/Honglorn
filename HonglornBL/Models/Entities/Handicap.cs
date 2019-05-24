@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Serialization;
 
 namespace HonglornBL.Models.Entities
 {
@@ -16,11 +17,7 @@ namespace HonglornBL.Models.Entities
         [StringLength(5)]
         public string Name { get; set; }
 
+        [XmlIgnore]
         public virtual ICollection<StudentHandicap> StudentHandicaps { get; set; }
-
-        public Handicap(string name)
-        {
-            Name = name;
-        }
     }
 }

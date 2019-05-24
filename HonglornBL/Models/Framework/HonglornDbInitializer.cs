@@ -11,7 +11,7 @@ namespace HonglornBL.Models.Framework
     {
         protected override void Seed(TContext context)
         {
-            //InitializeEntity<Handicap>(Resources.ArrayOfHandicap, context.Handicap);
+            InitializeEntity<Handicap>(Resources.ArrayOfHandicap, context.Handicap);
 
             base.Seed(context);
         }

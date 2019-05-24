@@ -243,7 +243,7 @@ namespace HonglornBL
 
         public void CreateHandicap(string name)
         {
-            CreateEntity(context => context.Handicap, new Handicap(name));
+            CreateEntity(context => context.Handicap, new Handicap { Name = name });
         }
 
         public ClassService ClassService()
