@@ -209,7 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Models\Seeds\ArrayOfHandicap.xml" />
-    <Content Include="Models\Seeds\ArrayOfTraditionalReportMeta.xml" />
+    <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldCertificateAssignment.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldThrowDiscipline.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldJumpDiscipline.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline.xml" />

@@ -90,22 +90,20 @@ namespace HonglornBL.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
         ///
-        ///&lt;ArrayOfTraditionalReportMeta xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
-        ///  &lt;TraditionalReportMeta&gt;
+        ///&lt;ArrayOfTraditionalTrackAndFieldCertificateAssignment xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+        ///  &lt;TraditionalTrackAndFieldCertificateAssignment&gt;
         ///    &lt;Sex&gt;Female&lt;/Sex&gt;
         ///    &lt;Age&gt;8&lt;/Age&gt;
-        ///    &lt;HonoraryCertificateScore&gt;625&lt;/HonoraryCertificateScore&gt;
-        ///    &lt;VictoryCertificateScore&gt;475&lt;/VictoryCertificateScore&gt;
-        ///  &lt;/TraditionalReportMeta&gt;
-        ///  &lt;TraditionalReportMeta&gt;
+        ///    &lt;MinimumHonoraryCertificateScore&gt;625&lt;/MinimumHonoraryCertificateScore&gt;
+        ///    &lt;MinimumVictoryCertificateScore&gt;475&lt;/MinimumVictoryCertificateScore&gt;
+        ///  &lt;/TraditionalTrackAndFieldCertificateAssignment&gt;
+        ///  &lt;TraditionalTrackAndFieldCertificateAssignment&gt;
         ///    &lt;Sex&gt;Female&lt;/Sex&gt;
-        ///    &lt;Age&gt;9&lt;/Age&gt;
-        ///    &lt;HonoraryCertificateScore&gt;725&lt;/HonoraryCertificateScore&gt;
-        ///    &lt;VictoryCertificateScore&gt;550&lt;/VictoryCertificate [rest of string was truncated]&quot;;.
+        ///    &lt;Age [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string ArrayOfTraditionalReportMeta {
+        internal static string ArrayOfTraditionalTrackAndFieldCertificateAssignment {
             get {
-                return ResourceManager.GetString("ArrayOfTraditionalReportMeta", resourceCulture);
+                return ResourceManager.GetString("ArrayOfTraditionalTrackAndFieldCertificateAssignment", resourceCulture);
             }
         }
         
@@ -113,14 +111,13 @@ namespace HonglornBL.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
         ///
         ///&lt;ArrayOfTraditionalTrackAndFieldDisciplineHandicap xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+        ///  &lt;!-- TODO: Add more disciplines (this is Hochsprung only) --&gt;
         ///  &lt;TraditionalTrackAndFieldDisciplineHandicap&gt;
         ///    &lt;DisciplinePKey&gt;FE237B12-41BD-4E0F-A825-0573F61598F7&lt;/DisciplinePKey&gt;
         ///    &lt;HandicapPKey&gt;D7F0B283-20F2-4167-B145-AE0D377E2910&lt;/HandicapPKey&gt;
-        ///    &lt;Sex&gt;Male&lt;/Sex&gt;
         ///    &lt;Factor&gt;1.05&lt;/Factor&gt;
         ///  &lt;/TraditionalTrackAndFieldDisciplineHandicap&gt;
-        ///  &lt;TraditionalTrackAndFieldDisciplineHandicap&gt;
-        ///    &lt;DisciplinePKey&gt;FE237B12-41BD-4E0F-A [rest of string was truncated]&quot;;.
+        ///  &lt;TraditionalTrackAndFieldDisciplineHandica [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ArrayOfTraditionalTrackAndFieldDisciplineHandicap {
             get {
