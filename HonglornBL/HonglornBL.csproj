@@ -209,7 +209,10 @@
   <ItemGroup>
     <Content Include="Models\Seeds\ArrayOfHandicap.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalReportMeta.xml" />
-    <Content Include="Models\Seeds\ArrayOfTraditionalDiscipline.xml" />
+    <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldThrowDiscipline.xml" />
+    <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldJumpDiscipline.xml" />
+    <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline.xml" />
+    <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldSprintDiscipline.xml" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />

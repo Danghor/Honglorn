@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" ?>
+
+<ArrayOfTraditionalDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TraditionalDiscipline>
+    <Type>Jump</Type>
+    <Name>Hochsprung</Name>
+    <Unit>m</Unit>
+    <Sex>Female</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>0.8807</ConstantA>
+    <ConstantC>0.00068</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Jump</Type>
+    <Name>Hochsprung</Name>
+    <Unit>m</Unit>
+    <Sex>Male</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>0.841</ConstantA>
+    <ConstantC>0.0008</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Jump</Type>
+    <Name>Weitsprung</Name>
+    <Unit>m</Unit>
+    <Sex>Male</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>1.15028</ConstantA>
+    <ConstantC>0.00219</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Jump</Type>
+    <Name>Weitsprung</Name>
+    <Unit>m</Unit>
+    <Sex>Female</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>1.0935</ConstantA>
+    <ConstantC>0.00208</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+</ArrayOfTraditionalDiscipline>

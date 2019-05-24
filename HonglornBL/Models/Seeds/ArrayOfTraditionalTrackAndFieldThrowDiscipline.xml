@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" ?>
+
+<ArrayOfTraditionalDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TraditionalDiscipline>
+    <Type>Throw</Type>
+    <Name>80-g-Schlagballwurf</Name>
+    <Unit>m</Unit>
+    <Sex>Male</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>2.8</ConstantA>
+    <ConstantC>0.011</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Throw</Type>
+    <Name>Schleuderball</Name>
+    <Unit>m</Unit>
+    <Sex>Female</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>1.085</ConstantA>
+    <ConstantC>0.00921</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Throw</Type>
+    <Name>Kugelstoß</Name>
+    <Unit>m</Unit>
+    <Sex>Female</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>1.279</ConstantA>
+    <ConstantC>0.00398</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Throw</Type>
+    <Name>80-g-Schlagballwurf</Name>
+    <Unit>m</Unit>
+    <Sex>Female</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>2.0232</ConstantA>
+    <ConstantC>0.00874</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Throw</Type>
+    <Name>Kugelstoß</Name>
+    <Unit>m</Unit>
+    <Sex>Male</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>1.425</ConstantA>
+    <ConstantC>0.0037</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Throw</Type>
+    <Name>Schleuderball</Name>
+    <Unit>m</Unit>
+    <Sex>Male</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>1.595</ConstantA>
+    <ConstantC>0.009125</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Throw</Type>
+    <Name>200-g-Ballwurf</Name>
+    <Unit>m</Unit>
+    <Sex>Male</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>1.936</ConstantA>
+    <ConstantC>0.0124</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+  <TraditionalDiscipline>
+    <Type>Throw</Type>
+    <Name>200-g-Ballwurf</Name>
+    <Unit>m</Unit>
+    <Sex>Female</Sex>
+    <Distance xsi:nil="true" />
+    <Overhead xsi:nil="true" />
+    <ConstantA>1.4149</ConstantA>
+    <ConstantC>0.01039</ConstantC>
+    <Measurement xsi:nil="true" />
+  </TraditionalDiscipline>
+</ArrayOfTraditionalDiscipline>
