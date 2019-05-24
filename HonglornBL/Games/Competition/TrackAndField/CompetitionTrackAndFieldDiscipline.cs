@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HonglornBL.Games.Competition.TrackAndField
 {
-    public abstract class CompetitionTrackAndFieldDiscipline : Discipline
+    public class CompetitionTrackAndFieldDiscipline : Discipline
     {
         [Required]
         public bool LowIsBetter { get; set; }
