@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Course
+    public class Course : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

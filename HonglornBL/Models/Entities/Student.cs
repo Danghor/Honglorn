@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace HonglornBL.Models.Entities
 {
     [DebuggerDisplay("{Forename} {Surname}, {Sex}, YOB: {DateOfBirth}, ID: {PKey}")]
-    public class Student
+    public class Student : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

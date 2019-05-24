@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class Game<TGamePerformance>
+    public abstract class Game<TGamePerformance> : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

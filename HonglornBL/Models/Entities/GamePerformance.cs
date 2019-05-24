@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class GamePerformance<TMeasuringPoint, TDiscipline, TGamePerformance> where TMeasuringPoint : MeasuringPoint<TDiscipline> where TDiscipline : Discipline
+    public abstract class GamePerformance<TMeasuringPoint, TDiscipline, TGamePerformance> : IEntity where TMeasuringPoint : MeasuringPoint<TDiscipline> where TDiscipline : Discipline
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
