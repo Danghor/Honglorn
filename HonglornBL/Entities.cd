@@ -9,6 +9,7 @@
     <ShowAsCollectionAssociation>
       <Property Name="Courses" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Models.Entities.Course">
     <Position X="15.25" Y="0.5" Width="1.5" />
@@ -22,6 +23,7 @@
     <ShowAsCollectionAssociation>
       <Property Name="StudentCourses" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Models.Entities.Handicap">
     <Position X="0.5" Y="0.5" Width="1.5" />
@@ -32,6 +34,7 @@
     <ShowAsCollectionAssociation>
       <Property Name="StudentHandicaps" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Models.Entities.Student">
     <Position X="6" Y="0.5" Width="3.25" />
@@ -48,6 +51,7 @@
       <Property Name="StudentHandicaps" />
       <Property Name="StudentCourses" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Models.Entities.StudentCourse">
     <Position X="10.25" Y="0.5" Width="1.75" />
@@ -63,6 +67,7 @@
       <Property Name="Student" />
       <Property Name="Course" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Models.Entities.StudentHandicap">
     <Position X="3" Y="0.5" Width="1.75" />
@@ -74,6 +79,7 @@
       <Property Name="Student" />
       <Property Name="Handicap" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Models.Entities.GamePerformance&lt;TMeasuringPoint, TDiscipline, TGamePerformance&gt;">
     <Position X="6" Y="3.25" Width="2.5" />
@@ -84,16 +90,17 @@
     <ShowAsAssociation>
       <Property Name="Student" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Games.Traditional.TrackAndField.TraditionalTrackAndFieldGame">
-    <Position X="3" Y="10" Width="3" />
+    <Position X="2.25" Y="10.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Games\Traditional\TrackAndField\TraditionalTrackAndFieldGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="HonglornBL.CompetitionTrackAndFieldGame">
-    <Position X="6.25" Y="10" Width="2.5" />
+    <Position X="5.5" Y="10.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs</FileName>
@@ -108,18 +115,20 @@
       <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAA=</HashCode>
       <FileName>Models\Entities\MeasuringPoint.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Models.Entities.Game&lt;TGamePerformance&gt;">
-    <Position X="4.5" Y="7.25" Width="3" />
+    <Position X="3.75" Y="7.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAABAAAABAAAEAAAAAAA=</HashCode>
       <FileName>Models\Entities\Game.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="HonglornBL.Honglorn">
     <Position X="17" Y="2.75" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AAAgAIAAQAAEgCAACQAAAAAAAAQAAQBAACAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAIAAQAAEgCAAAQABAAAQAAQAAQBAACAAAAAAAAA=</HashCode>
       <FileName>Honglorn.cs</FileName>
     </TypeIdentifier>
   </Class>
