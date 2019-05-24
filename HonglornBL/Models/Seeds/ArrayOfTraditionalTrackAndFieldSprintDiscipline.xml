@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" ?>
 
-<ArrayOfTraditionalDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <TraditionalDiscipline>
+<ArrayOfTraditionalTrackAndFieldSprintDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 100 m</Name>
     <Sex>Female</Sex>
     <Distance>100</Distance>
@@ -9,8 +9,8 @@
     <ConstantA>4.0062</ConstantA>
     <ConstantC>0.00656</ConstantC>
     <Measurement>Electronic</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 75 m</Name>
     <Sex>Male</Sex>
     <Distance>75</Distance>
@@ -18,8 +18,8 @@
     <ConstantA>4.1</ConstantA>
     <ConstantC>0.00664</ConstantC>
     <Measurement>Electronic</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 50 m</Name>
     <Sex>Female</Sex>
     <Distance>50</Distance>
@@ -27,8 +27,8 @@
     <ConstantA>3.648</ConstantA>
     <ConstantC>0.0066</ConstantC>
     <Measurement>Manual</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 100 m</Name>
     <Sex>Male</Sex>
     <Distance>100</Distance>
@@ -36,8 +36,8 @@
     <ConstantA>4.341</ConstantA>
     <ConstantC>0.00676</ConstantC>
     <Measurement>Manual</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 50 m</Name>
     <Sex>Male</Sex>
     <Distance>50</Distance>
@@ -45,8 +45,8 @@
     <ConstantA>3.79</ConstantA>
     <ConstantC>0.0069</ConstantC>
     <Measurement>Manual</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 50 m</Name>
     <Sex>Male</Sex>
     <Distance>50</Distance>
@@ -54,8 +54,8 @@
     <ConstantA>3.79</ConstantA>
     <ConstantC>0.0069</ConstantC>
     <Measurement>Electronic</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 75 m</Name>
     <Sex>Female</Sex>
     <Distance>75</Distance>
@@ -63,8 +63,8 @@
     <ConstantA>3.998</ConstantA>
     <ConstantC>0.0066</ConstantC>
     <Measurement>Electronic</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 100 m</Name>
     <Sex>Male</Sex>
     <Distance>100</Distance>
@@ -72,8 +72,8 @@
     <ConstantA>4.341</ConstantA>
     <ConstantC>0.00676</ConstantC>
     <Measurement>Electronic</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 100 m</Name>
     <Sex>Female</Sex>
     <Distance>100</Distance>
@@ -81,8 +81,8 @@
     <ConstantA>4.0062</ConstantA>
     <ConstantC>0.00656</ConstantC>
     <Measurement>Manual</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 50 m</Name>
     <Sex>Female</Sex>
     <Distance>50</Distance>
@@ -90,8 +90,8 @@
     <ConstantA>3.648</ConstantA>
     <ConstantC>0.0066</ConstantC>
     <Measurement>Electronic</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 75 m</Name>
     <Sex>Female</Sex>
     <Distance>75</Distance>
@@ -99,8 +99,8 @@
     <ConstantA>3.998</ConstantA>
     <ConstantC>0.0066</ConstantC>
     <Measurement>Manual</Measurement>
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+  <TraditionalTrackAndFieldSprintDiscipline>
     <Name>Sprint 75 m</Name>
     <Sex>Male</Sex>
     <Distance>75</Distance>
@@ -108,5 +108,5 @@
     <ConstantA>4.1</ConstantA>
     <ConstantC>0.00664</ConstantC>
     <Measurement>Manual</Measurement>
-  </TraditionalDiscipline>
-</ArrayOfTraditionalDiscipline>
+  </TraditionalTrackAndFieldSprintDiscipline>
+</ArrayOfTraditionalTrackAndFieldSprintDiscipline>

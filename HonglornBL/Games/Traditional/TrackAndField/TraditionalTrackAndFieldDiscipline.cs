@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Xml.Serialization;
 
 namespace HonglornBL.Games.Traditional.TrackAndField
 {
@@ -18,6 +19,7 @@ namespace HonglornBL.Games.Traditional.TrackAndField
         [Required]
         public float ConstantC { get; set; }
 
+        [XmlIgnore]
         public virtual ICollection<TraditionalTrackAndFieldDisciplineHandicap> TraditionalTrackAndFieldDisciplineHandicaps { get; set; }
 
         protected double ValueWithHandicap(Handicap handicap, double value)

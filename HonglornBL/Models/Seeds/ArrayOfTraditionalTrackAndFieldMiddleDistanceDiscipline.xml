@@ -1,70 +1,47 @@
 ﻿<?xml version="1.0" ?>
 
-<ArrayOfTraditionalDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <TraditionalDiscipline>
-    <Type>MiddleDistance</Type>
+<ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TraditionalTrackAndFieldMiddleDistanceDiscipline>
     <Name>Lauf 2000 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>2000</Distance>
-    <Overhead xsi:nil="true" />
     <ConstantA>1.784</ConstantA>
     <ConstantC>0.006</ConstantC>
-    <Measurement xsi:nil="true" />
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
-    <Type>MiddleDistance</Type>
+  </TraditionalTrackAndFieldMiddleDistanceDiscipline>
+  <TraditionalTrackAndFieldMiddleDistanceDiscipline>
     <Name>Lauf 800 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>800</Distance>
-    <Overhead xsi:nil="true" />
     <ConstantA>2.0232</ConstantA>
     <ConstantC>0.00647</ConstantC>
-    <Measurement xsi:nil="true" />
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
-    <Type>MiddleDistance</Type>
+  </TraditionalTrackAndFieldMiddleDistanceDiscipline>
+  <TraditionalTrackAndFieldMiddleDistanceDiscipline>
     <Name>Lauf 3000 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>3000</Distance>
-    <Overhead xsi:nil="true" />
     <ConstantA>1.75</ConstantA>
     <ConstantC>0.005</ConstantC>
-    <Measurement xsi:nil="true" />
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
-    <Type>MiddleDistance</Type>
+  </TraditionalTrackAndFieldMiddleDistanceDiscipline>
+  <TraditionalTrackAndFieldMiddleDistanceDiscipline>
     <Name>Lauf 3000 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>3000</Distance>
-    <Overhead xsi:nil="true" />
     <ConstantA>1.7</ConstantA>
     <ConstantC>0.0058</ConstantC>
     <Measurement xsi:nil="true" />
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
-    <Type>MiddleDistance</Type>
+  </TraditionalTrackAndFieldMiddleDistanceDiscipline>
+  <TraditionalTrackAndFieldMiddleDistanceDiscipline>
     <Name>Lauf 1000 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>1000</Distance>
-    <Overhead xsi:nil="true" />
     <ConstantA>2.158</ConstantA>
     <ConstantC>0.006</ConstantC>
-    <Measurement xsi:nil="true" />
-  </TraditionalDiscipline>
-  <TraditionalDiscipline>
-    <Type>MiddleDistance</Type>
+  </TraditionalTrackAndFieldMiddleDistanceDiscipline>
+  <TraditionalTrackAndFieldMiddleDistanceDiscipline>
     <Name>Lauf 2000 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>2000</Distance>
-    <Overhead xsi:nil="true" />
     <ConstantA>1.8</ConstantA>
     <ConstantC>0.0054</ConstantC>
-    <Measurement xsi:nil="true" />
-  </TraditionalDiscipline>
-</ArrayOfTraditionalDiscipline>
+  </TraditionalTrackAndFieldMiddleDistanceDiscipline>
+</ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline>
