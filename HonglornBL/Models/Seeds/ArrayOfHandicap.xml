@@ -2,39 +2,51 @@
 
 <ArrayOfHandicap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Handicap>
+    <PKey>D7F0B283-20F2-4167-B145-AE0D377E2910</PKey>
     <Name>A 1</Name>
   </Handicap>
   <Handicap>
+    <PKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</PKey>
     <Name>A 2</Name>
   </Handicap>
   <Handicap>
+    <PKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</PKey>
     <Name>A 3</Name>
   </Handicap>
   <Handicap>
+    <PKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</PKey>
     <Name>A 4</Name>
   </Handicap>
   <Handicap>
+    <PKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</PKey>
     <Name>A 5</Name>
   </Handicap>
   <Handicap>
+    <PKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</PKey>
     <Name>A 6</Name>
   </Handicap>
   <Handicap>
+    <PKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</PKey>
     <Name>B 1</Name>
   </Handicap>
   <Handicap>
+    <PKey>50947C52-0979-4571-A01A-AAD9ACE06559</PKey>
     <Name>B 2</Name>
   </Handicap>
   <Handicap>
+    <PKey>DF08F463-5BAA-4520-A91B-F144158BCC7B</PKey>
     <Name>C 1</Name>
   </Handicap>
   <Handicap>
+    <PKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</PKey>
     <Name>C 2</Name>
   </Handicap>
   <Handicap>
+    <PKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</PKey>
     <Name>D</Name>
   </Handicap>
   <Handicap>
+    <PKey>F948BB20-A89F-4A11-B760-D840795436AB</PKey>
     <Name>E</Name>
   </Handicap>
 </ArrayOfHandicap>

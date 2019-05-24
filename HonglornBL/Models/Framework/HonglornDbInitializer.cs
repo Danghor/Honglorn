@@ -17,6 +17,7 @@ namespace HonglornBL.Models.Framework
             InitializeEntity<TraditionalTrackAndFieldJumpDiscipline>(Resources.ArrayOfTraditionalTrackAndFieldJumpDiscipline, context.TraditionalTrackAndFieldJumpDiscipline);
             InitializeEntity<TraditionalTrackAndFieldThrowDiscipline>(Resources.ArrayOfTraditionalTrackAndFieldThrowDiscipline, context.TraditionalTrackAndFieldThrowDiscipline);
             InitializeEntity<TraditionalTrackAndFieldMiddleDistanceDiscipline>(Resources.ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline, context.TraditionalTrackAndFieldMiddleDistanceDiscipline);
+            InitializeEntity<TraditionalTrackAndFieldDisciplineHandicap>(Resources.ArrayOfTraditionalTrackAndFieldDisciplineHandicap, context.TraditionalTrackAndFieldDisciplineHandicap);
 
             base.Seed(context);
         }

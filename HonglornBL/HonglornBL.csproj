@@ -214,6 +214,7 @@
     <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldJumpDiscipline.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline.xml" />
     <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldSprintDiscipline.xml" />
+    <Content Include="Models\Seeds\ArrayOfTraditionalTrackAndFieldDisciplineHandicap.xml" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />

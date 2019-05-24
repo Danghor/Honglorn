@@ -2,6 +2,7 @@
 
 <ArrayOfTraditionalTrackAndFieldJumpDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <TraditionalTrackAndFieldJumpDiscipline>
+    <PKey>FE237B12-41BD-4E0F-A825-0573F61598F7</PKey>
     <Name>Hochsprung</Name>
     <Unit>m</Unit>
     <Sex>Female</Sex>
@@ -9,6 +10,7 @@
     <ConstantC>0.00068</ConstantC>
   </TraditionalTrackAndFieldJumpDiscipline>
   <TraditionalTrackAndFieldJumpDiscipline>
+    <PKey>BDD3DDC4-771A-48AF-A374-101A0248FC8C</PKey>
     <Name>Hochsprung</Name>
     <Unit>m</Unit>
     <Sex>Male</Sex>
@@ -16,6 +18,7 @@
     <ConstantC>0.0008</ConstantC>
   </TraditionalTrackAndFieldJumpDiscipline>
   <TraditionalTrackAndFieldJumpDiscipline>
+    <PKey>F0F683FA-ABFD-4791-8035-1133F760F70E</PKey>
     <Name>Weitsprung</Name>
     <Unit>m</Unit>
     <Sex>Male</Sex>
@@ -23,6 +26,7 @@
     <ConstantC>0.00219</ConstantC>
   </TraditionalTrackAndFieldJumpDiscipline>
   <TraditionalTrackAndFieldJumpDiscipline>
+    <PKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</PKey>
     <Name>Weitsprung</Name>
     <Unit>m</Unit>
     <Sex>Female</Sex>
