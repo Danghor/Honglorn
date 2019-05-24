@@ -27,7 +27,7 @@ namespace HonglornBL.Games.Traditional.TrackAndField
             if (handicap != null)
             {
                 double factor = (from h in TraditionalTrackAndFieldDisciplineHandicaps
-                                 where h.Handicap == handicap && h.Sex == Sex
+                                 where h.Handicap == handicap
                                  select h.Factor).Single();
 
                 value *= factor;

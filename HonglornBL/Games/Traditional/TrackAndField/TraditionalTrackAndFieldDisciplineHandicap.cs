@@ -25,9 +25,6 @@ namespace HonglornBL.Games.Traditional.TrackAndField
         public virtual Handicap Handicap { get; set; }
 
         [Required]
-        public Sex Sex { get; set; }
-
-        [Required]
         public double Factor { get; set; }
     }
 }
