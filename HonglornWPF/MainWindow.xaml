@@ -48,7 +48,12 @@
 
         <Grid Grid.Row="1">
             <controls:MetroAnimatedSingleRowTabControl>
-                
+                <TabItem Header="Stammdaten">
+                    <views:MasterDataView />
+                </TabItem>
+                <TabItem Header="Spiele">
+
+                </TabItem>
             </controls:MetroAnimatedSingleRowTabControl>
         </Grid>
     </Grid>

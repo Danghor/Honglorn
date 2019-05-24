@@ -7,10 +7,10 @@
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
              mc:Ignorable="d">
     <UserControl.DataContext>
-        <viewModels:GameSelectViewModel/>
+        <viewModels:GameSelectViewModel />
     </UserControl.DataContext>
 
-    <ListBox Width="400" Margin="10" ItemsSource="{Binding Source={StaticResource myTodoList}}">
+    <ListBox>
         <ListBox.ItemTemplate>
             <DataTemplate>
                 <StackPanel>
