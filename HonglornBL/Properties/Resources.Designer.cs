@@ -19,7 +19,7 @@ namespace HonglornBL.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -67,36 +67,32 @@ namespace HonglornBL.Properties {
         ///  &lt;Handicap&gt;
         ///    &lt;Name&gt;A 1&lt;/Name&gt;
         ///  &lt;/Handicap&gt;
-        ///&lt;/ArrayOfHandicap&gt;.
+        ///  &lt;Handicap&gt;
+        ///    &lt;Name&gt;A 2&lt;/Name&gt;
+        ///  &lt;/Handicap&gt;
+        ///  &lt;Handicap&gt;
+        ///    &lt;Name&gt;A 3&lt;/Name&gt;
+        ///  &lt;/Handicap&gt;
+        ///  &lt;Handicap&gt;
+        ///    &lt;Name&gt;A 4&lt;/Name&gt;
+        ///  &lt;/Handicap&gt;
+        ///  &lt;Handicap&gt;
+        ///    &lt;Name&gt;A 5&lt;/Name&gt;
+        ///  &lt;/Handicap&gt;
+        ///  &lt;Handicap&gt;
+        ///    &lt;Name&gt;A 6&lt;/Name&gt;
+        ///  &lt;/Handicap&gt;
+        ///  &lt;Handicap&gt;
+        ///    &lt;Name&gt;B 1&lt;/Name&gt;
+        ///  &lt;/Handicap&gt;
+        ///  &lt;Handicap&gt;
+        ///    &lt;Name&gt;B 2&lt;/Name&gt;
+        ///  &lt;/Handicap&gt;
+        ///  &lt;Ha [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ArrayOfHandicap {
             get {
                 return ResourceManager.GetString("ArrayOfHandicap", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
-        ///
-        ///&lt;ArrayOfTraditionalDiscipline xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
-        ///  &lt;TraditionalDiscipline&gt;
-        ///    &lt;Type&gt;Sprint&lt;/Type&gt;
-        ///    &lt;Name&gt;Sprint 100 m&lt;/Name&gt;
-        ///    &lt;Unit&gt;s&lt;/Unit&gt;
-        ///    &lt;Sex&gt;Female&lt;/Sex&gt;
-        ///    &lt;Distance&gt;100&lt;/Distance&gt;
-        ///    &lt;Overhead xsi:nil=&quot;true&quot; /&gt;
-        ///    &lt;ConstantA&gt;4.0062&lt;/ConstantA&gt;
-        ///    &lt;ConstantC&gt;0.00656&lt;/ConstantC&gt;
-        ///    &lt;Measurement&gt;Electronic&lt;/Measurement&gt;
-        ///  &lt;/TraditionalDiscipline&gt;
-        ///  &lt;TraditionalDiscipline&gt;
-        ///    &lt;Type&gt;Sprint&lt;/Type&gt;
-        ///    &lt;Name&gt;Sprint  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string ArrayOfTraditionalDiscipline {
-            get {
-                return ResourceManager.GetString("ArrayOfTraditionalDiscipline", resourceCulture);
             }
         }
         
@@ -119,6 +115,106 @@ namespace HonglornBL.Properties {
         internal static string ArrayOfTraditionalReportMeta {
             get {
                 return ResourceManager.GetString("ArrayOfTraditionalReportMeta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
+        ///
+        ///&lt;ArrayOfTraditionalDiscipline xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;Jump&lt;/Type&gt;
+        ///    &lt;Name&gt;Hochsprung&lt;/Name&gt;
+        ///    &lt;Unit&gt;m&lt;/Unit&gt;
+        ///    &lt;Sex&gt;Female&lt;/Sex&gt;
+        ///    &lt;Distance xsi:nil=&quot;true&quot; /&gt;
+        ///    &lt;Overhead xsi:nil=&quot;true&quot; /&gt;
+        ///    &lt;ConstantA&gt;0.8807&lt;/ConstantA&gt;
+        ///    &lt;ConstantC&gt;0.00068&lt;/ConstantC&gt;
+        ///    &lt;Measurement xsi:nil=&quot;true&quot; /&gt;
+        ///  &lt;/TraditionalDiscipline&gt;
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;Jump&lt;/Type&gt;
+        ///    &lt;Name&gt;Hochsprung&lt;/Name&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ArrayOfTraditionalTrackAndFieldJumpDiscipline {
+            get {
+                return ResourceManager.GetString("ArrayOfTraditionalTrackAndFieldJumpDiscipline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
+        ///
+        ///&lt;ArrayOfTraditionalDiscipline xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;MiddleDistance&lt;/Type&gt;
+        ///    &lt;Name&gt;Lauf 2000 m&lt;/Name&gt;
+        ///    &lt;Unit&gt;s&lt;/Unit&gt;
+        ///    &lt;Sex&gt;Male&lt;/Sex&gt;
+        ///    &lt;Distance&gt;2000&lt;/Distance&gt;
+        ///    &lt;Overhead xsi:nil=&quot;true&quot; /&gt;
+        ///    &lt;ConstantA&gt;1.784&lt;/ConstantA&gt;
+        ///    &lt;ConstantC&gt;0.006&lt;/ConstantC&gt;
+        ///    &lt;Measurement xsi:nil=&quot;true&quot; /&gt;
+        ///  &lt;/TraditionalDiscipline&gt;
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;MiddleDistance&lt;/Type&gt;
+        ///    &lt;Name&gt;Lau [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline {
+            get {
+                return ResourceManager.GetString("ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
+        ///
+        ///&lt;ArrayOfTraditionalDiscipline xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;Sprint&lt;/Type&gt;
+        ///    &lt;Name&gt;Sprint 100 m&lt;/Name&gt;
+        ///    &lt;Unit&gt;s&lt;/Unit&gt;
+        ///    &lt;Sex&gt;Female&lt;/Sex&gt;
+        ///    &lt;Distance&gt;100&lt;/Distance&gt;
+        ///    &lt;Overhead xsi:nil=&quot;true&quot; /&gt;
+        ///    &lt;ConstantA&gt;4.0062&lt;/ConstantA&gt;
+        ///    &lt;ConstantC&gt;0.00656&lt;/ConstantC&gt;
+        ///    &lt;Measurement&gt;Electronic&lt;/Measurement&gt;
+        ///  &lt;/TraditionalDiscipline&gt;
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;Sprint&lt;/Type&gt;
+        ///    &lt;Name&gt;Sprint  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ArrayOfTraditionalTrackAndFieldSprintDiscipline {
+            get {
+                return ResourceManager.GetString("ArrayOfTraditionalTrackAndFieldSprintDiscipline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
+        ///
+        ///&lt;ArrayOfTraditionalDiscipline xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;Throw&lt;/Type&gt;
+        ///    &lt;Name&gt;80-g-Schlagballwurf&lt;/Name&gt;
+        ///    &lt;Unit&gt;m&lt;/Unit&gt;
+        ///    &lt;Sex&gt;Male&lt;/Sex&gt;
+        ///    &lt;Distance xsi:nil=&quot;true&quot; /&gt;
+        ///    &lt;Overhead xsi:nil=&quot;true&quot; /&gt;
+        ///    &lt;ConstantA&gt;2.8&lt;/ConstantA&gt;
+        ///    &lt;ConstantC&gt;0.011&lt;/ConstantC&gt;
+        ///    &lt;Measurement xsi:nil=&quot;true&quot; /&gt;
+        ///  &lt;/TraditionalDiscipline&gt;
+        ///  &lt;TraditionalDiscipline&gt;
+        ///    &lt;Type&gt;Throw&lt;/Type&gt;
+        ///    &lt;Name&gt;Schleuderball [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ArrayOfTraditionalTrackAndFieldThrowDiscipline {
+            get {
+                return ResourceManager.GetString("ArrayOfTraditionalTrackAndFieldThrowDiscipline", resourceCulture);
             }
         }
     }

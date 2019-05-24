@@ -121,11 +121,19 @@
   <data name="ArrayOfHandicap" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Models\Seeds\ArrayOfHandicap.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="ArrayOfTraditionalDiscipline" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Models\Seeds\ArrayOfTraditionalDiscipline.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-    <comment>Data for traditional disciplines (name, type, constants etc.)</comment>
-  </data>
   <data name="ArrayOfTraditionalReportMeta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Models\Seeds\ArrayOfTraditionalReportMeta.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ArrayOfTraditionalTrackAndFieldJumpDiscipline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Models\Seeds\ArrayOfTraditionalTrackAndFieldJumpDiscipline.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Models\Seeds\ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ArrayOfTraditionalTrackAndFieldSprintDiscipline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Models\Seeds\ArrayOfTraditionalTrackAndFieldSprintDiscipline.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="ArrayOfTraditionalTrackAndFieldThrowDiscipline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Models\Seeds\ArrayOfTraditionalTrackAndFieldThrowDiscipline.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

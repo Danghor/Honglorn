@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.IO;
 using System.Xml.Serialization;
+using HonglornBL.Games.Traditional.TrackAndField;
 using HonglornBL.Models.Entities;
 using HonglornBL.Properties;
 
@@ -12,6 +13,10 @@ namespace HonglornBL.Models.Framework
         protected override void Seed(TContext context)
         {
             InitializeEntity<Handicap>(Resources.ArrayOfHandicap, context.Handicap);
+            InitializeEntity<TraditionalTrackAndFieldSprintDiscipline>(Resources.ArrayOfTraditionalTrackAndFieldSprintDiscipline, context.TraditionalTrackAndFieldSprintDiscipline);
+            InitializeEntity<TraditionalTrackAndFieldJumpDiscipline>(Resources.ArrayOfTraditionalTrackAndFieldJumpDiscipline, context.TraditionalTrackAndFieldJumpDiscipline);
+            InitializeEntity<TraditionalTrackAndFieldThrowDiscipline>(Resources.ArrayOfTraditionalTrackAndFieldThrowDiscipline, context.TraditionalTrackAndFieldThrowDiscipline);
+            InitializeEntity<TraditionalTrackAndFieldMiddleDistanceDiscipline>(Resources.ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline, context.TraditionalTrackAndFieldMiddleDistanceDiscipline);
 
             base.Seed(context);
         }

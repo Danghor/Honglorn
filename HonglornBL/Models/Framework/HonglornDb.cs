@@ -14,7 +14,10 @@ namespace HonglornBL.Models.Framework
 
         public virtual DbSet<TraditionalTrackAndFieldGame> TraditionalTrackAndFieldGame { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldPerformance> TraditionalTrackAndFieldPerformance { get; set; }
-        public virtual DbSet<TraditionalTrackAndFieldDiscipline> TraditionalTrackAndFieldDiscipline { get; set; }
+        public virtual DbSet<TraditionalTrackAndFieldSprintDiscipline> TraditionalTrackAndFieldSprintDiscipline { get; set; }
+        public virtual DbSet<TraditionalTrackAndFieldJumpDiscipline> TraditionalTrackAndFieldJumpDiscipline { get; set; }
+        public virtual DbSet<TraditionalTrackAndFieldThrowDiscipline> TraditionalTrackAndFieldThrowDiscipline { get; set; }
+        public virtual DbSet<TraditionalTrackAndFieldMiddleDistanceDiscipline> TraditionalTrackAndFieldMiddleDistanceDiscipline { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldMeasuringPoint> TraditionalTrackAndFieldMeasuringPoint { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldDisciplineHandicap> TraditionalTrackAndFieldDisciplineHandicap { get; set; }
         public virtual DbSet<TraditionalTrackAndFieldCertificateAssignment> TraditionalTrackAndFieldCertificateAssignment { get; set; }
