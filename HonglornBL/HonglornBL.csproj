@@ -182,6 +182,7 @@
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldThrowDiscipline.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="StudentManager.cs" />
+    <Compile Include="StudentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

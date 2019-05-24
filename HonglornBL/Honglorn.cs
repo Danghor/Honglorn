@@ -236,11 +236,6 @@ namespace HonglornBL
             CreateEntity(context => context.CompetitionTrackAndFieldGame, new CompetitionTrackAndFieldGame(name, date));
         }
 
-        public void CreateStudent(string surname, string forename, Sex sex, DateTime dateOfBirth)
-        {
-            CreateEntity(context => context.Student, new Student(surname, forename, sex, dateOfBirth));
-        }
-
         public void CreateHandicap(string name)
         {
             CreateEntity(context => context.Handicap, new Handicap { Name = name });
@@ -249,6 +244,11 @@ namespace HonglornBL
         public ClassService ClassService()
         {
             return new ClassService(ContextFactory);
+        }
+
+        public StudentService StudentService()
+        {
+            return new StudentService(ContextFactory);
         }
 
         void CreateEntity<TEntity>(Func<HonglornDb, IDbSet<TEntity>> dbSet, TEntity game) where TEntity : class

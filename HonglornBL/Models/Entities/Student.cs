@@ -31,13 +31,5 @@ namespace HonglornBL.Models.Entities
         public ICollection<StudentHandicap> StudentHandicaps { get; set; } = new HashSet<StudentHandicap>();
 
         public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
-
-        public Student(string surname, string forename, Sex sex, DateTime dateOfBirth)
-        {
-            Surname = surname;
-            Forename = forename;
-            Sex = sex;
-            DateOfBirth = dateOfBirth;
-        }
     }
 }
