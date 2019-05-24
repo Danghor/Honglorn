@@ -2,9 +2,7 @@
 
 <ArrayOfTraditionalDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 100 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>100</Distance>
     <Overhead xsi:nil="true" />
@@ -13,9 +11,7 @@
     <Measurement>Electronic</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 75 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>75</Distance>
     <Overhead xsi:nil="true" />
@@ -24,9 +20,7 @@
     <Measurement>Electronic</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 50 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>50</Distance>
     <Overhead>0.24</Overhead>
@@ -35,9 +29,7 @@
     <Measurement>Manual</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 100 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>100</Distance>
     <Overhead>0.24</Overhead>
@@ -46,9 +38,7 @@
     <Measurement>Manual</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 50 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>50</Distance>
     <Overhead>0.24</Overhead>
@@ -57,9 +47,7 @@
     <Measurement>Manual</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 50 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>50</Distance>
     <Overhead xsi:nil="true" />
@@ -68,9 +56,7 @@
     <Measurement>Electronic</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 75 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>75</Distance>
     <Overhead xsi:nil="true" />
@@ -79,9 +65,7 @@
     <Measurement>Electronic</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 100 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>100</Distance>
     <Overhead xsi:nil="true" />
@@ -90,9 +74,7 @@
     <Measurement>Electronic</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 100 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>100</Distance>
     <Overhead>0.24</Overhead>
@@ -101,9 +83,7 @@
     <Measurement>Manual</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 50 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>50</Distance>
     <Overhead xsi:nil="true" />
@@ -112,9 +92,7 @@
     <Measurement>Electronic</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 75 m</Name>
-    <Unit>s</Unit>
     <Sex>Female</Sex>
     <Distance>75</Distance>
     <Overhead>0.24</Overhead>
@@ -123,9 +101,7 @@
     <Measurement>Manual</Measurement>
   </TraditionalDiscipline>
   <TraditionalDiscipline>
-    <Type>Sprint</Type>
     <Name>Sprint 75 m</Name>
-    <Unit>s</Unit>
     <Sex>Male</Sex>
     <Distance>75</Distance>
     <Overhead>0.24</Overhead>
