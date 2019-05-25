@@ -2,18 +2,21 @@
 
 <ArrayOfTraditionalTrackAndFieldThrowDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <TraditionalTrackAndFieldThrowDiscipline>
+    <PKey>23374050-795C-4129-B12F-2DFED5C06EE9</PKey>
     <Name>80-g-Schlagballwurf</Name>
     <Sex>Male</Sex>
     <ConstantA>2.8</ConstantA>
     <ConstantC>0.011</ConstantC>
   </TraditionalTrackAndFieldThrowDiscipline>
   <TraditionalTrackAndFieldThrowDiscipline>
+    <PKey>2542A291-71B4-47CC-9072-05DD833057D6</PKey>
     <Name>Schleuderball</Name>
     <Sex>Female</Sex>
     <ConstantA>1.085</ConstantA>
     <ConstantC>0.00921</ConstantC>
   </TraditionalTrackAndFieldThrowDiscipline>
   <TraditionalTrackAndFieldThrowDiscipline>
+    <PKey>39FC9A42-4B0E-4DAC-9862-EDAB9DBD3799</PKey>
     <Name>Kugelstoß</Name>
     <Sex>Female</Sex>
     <Distance xsi:nil="true" />
@@ -22,30 +25,35 @@
     <ConstantC>0.00398</ConstantC>
   </TraditionalTrackAndFieldThrowDiscipline>
   <TraditionalTrackAndFieldThrowDiscipline>
+    <PKey>08E8A9C8-6CE3-4075-A725-DC3F2346C72F</PKey>
     <Name>80-g-Schlagballwurf</Name>
     <Sex>Female</Sex>
     <ConstantA>2.0232</ConstantA>
     <ConstantC>0.00874</ConstantC>
   </TraditionalTrackAndFieldThrowDiscipline>
   <TraditionalTrackAndFieldThrowDiscipline>
+    <PKey>F4B2D192-BE68-41B9-838C-6C0255718896</PKey>
     <Name>Kugelstoß</Name>
     <Sex>Male</Sex>
     <ConstantA>1.425</ConstantA>
     <ConstantC>0.0037</ConstantC>
   </TraditionalTrackAndFieldThrowDiscipline>
   <TraditionalTrackAndFieldThrowDiscipline>
+    <PKey>F2617E42-E57A-42F4-B5CA-358C8ECF0257</PKey>
     <Name>Schleuderball</Name>
     <Sex>Male</Sex>
     <ConstantA>1.595</ConstantA>
     <ConstantC>0.009125</ConstantC>
   </TraditionalTrackAndFieldThrowDiscipline>
   <TraditionalTrackAndFieldThrowDiscipline>
+    <PKey>22209059-3DA8-4956-9485-2862B2D372D0</PKey>
     <Name>200-g-Ballwurf</Name>
     <Sex>Male</Sex>
     <ConstantA>1.936</ConstantA>
     <ConstantC>0.0124</ConstantC>
   </TraditionalTrackAndFieldThrowDiscipline>
   <TraditionalTrackAndFieldThrowDiscipline>
+    <PKey>BE7F08EB-B059-4EA3-B0D6-234C3EF308E2</PKey>
     <Name>200-g-Ballwurf</Name>
     <Sex>Female</Sex>
     <ConstantA>1.4149</ConstantA>

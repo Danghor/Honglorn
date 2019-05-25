@@ -2,6 +2,7 @@
 
 <ArrayOfTraditionalTrackAndFieldMiddleDistanceDiscipline xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <TraditionalTrackAndFieldMiddleDistanceDiscipline>
+    <PKey>8A814393-0F1A-422E-A6FE-15AFBECBB448</PKey>
     <Name>Lauf 2000 m</Name>
     <Sex>Male</Sex>
     <Distance>2000</Distance>
@@ -9,6 +10,7 @@
     <ConstantC>0.006</ConstantC>
   </TraditionalTrackAndFieldMiddleDistanceDiscipline>
   <TraditionalTrackAndFieldMiddleDistanceDiscipline>
+    <PKey>CD149E72-0666-4524-A60F-B49079E03EB0</PKey>
     <Name>Lauf 800 m</Name>
     <Sex>Female</Sex>
     <Distance>800</Distance>
@@ -16,6 +18,7 @@
     <ConstantC>0.00647</ConstantC>
   </TraditionalTrackAndFieldMiddleDistanceDiscipline>
   <TraditionalTrackAndFieldMiddleDistanceDiscipline>
+    <PKey>9524D697-FE44-4404-ADA3-98547EBE8FB1</PKey>
     <Name>Lauf 3000 m</Name>
     <Sex>Female</Sex>
     <Distance>3000</Distance>
@@ -23,6 +26,7 @@
     <ConstantC>0.005</ConstantC>
   </TraditionalTrackAndFieldMiddleDistanceDiscipline>
   <TraditionalTrackAndFieldMiddleDistanceDiscipline>
+    <PKey>FCC5E095-6BB9-4F66-98F5-6FB12F02B42C</PKey>
     <Name>Lauf 3000 m</Name>
     <Sex>Male</Sex>
     <Distance>3000</Distance>
@@ -31,6 +35,7 @@
     <Measurement xsi:nil="true" />
   </TraditionalTrackAndFieldMiddleDistanceDiscipline>
   <TraditionalTrackAndFieldMiddleDistanceDiscipline>
+    <PKey>95129646-8ADE-4C93-9150-457DFAEB8E05</PKey>
     <Name>Lauf 1000 m</Name>
     <Sex>Male</Sex>
     <Distance>1000</Distance>
@@ -38,6 +43,7 @@
     <ConstantC>0.006</ConstantC>
   </TraditionalTrackAndFieldMiddleDistanceDiscipline>
   <TraditionalTrackAndFieldMiddleDistanceDiscipline>
+    <PKey>65E91181-CF13-47E0-BAD5-A2D73CFCB1EA</PKey>
     <Name>Lauf 2000 m</Name>
     <Sex>Female</Sex>
     <Distance>2000</Distance>
