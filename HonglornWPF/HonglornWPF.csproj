@@ -126,6 +126,7 @@
     <Compile Include="Converter\CompetitionValueConverter.cs" />
     <Compile Include="Converter\EnumToBoolConverter.cs" />
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
+    <Compile Include="ViewModels\ClassListViewModel.cs" />
     <Compile Include="ViewModels\GameSelectViewModel.cs" />
     <Compile Include="Views\GameSelectView.xaml.cs">
       <DependentUpon>GameSelectView.xaml</DependentUpon>
@@ -138,6 +139,9 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\MasterData\ClassListView.xaml.cs">
+      <DependentUpon>ClassListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MasterData\MasterDataView.xaml.cs">
       <DependentUpon>MasterDataView.xaml</DependentUpon>
     </Compile>
@@ -157,6 +161,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MasterData\ClassListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MasterData\MasterDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
