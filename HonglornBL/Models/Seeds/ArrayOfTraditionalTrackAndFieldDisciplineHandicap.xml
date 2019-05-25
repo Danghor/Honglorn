@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" ?>
 
 <ArrayOfTraditionalTrackAndFieldDisciplineHandicap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <!-- TODO: Add more disciplines (this is Hochsprung only) -->
+  <!-- TODO: Add more disciplines -->
+  
+  
+  <!-- Hochsprung -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FE237B12-41BD-4E0F-A825-0573F61598F7</DisciplinePKey>
     <HandicapPKey>D7F0B283-20F2-4167-B145-AE0D377E2910</HandicapPKey>
@@ -81,5 +84,97 @@
     <DisciplinePKey>BDD3DDC4-771A-48AF-A374-101A0248FC8C</DisciplinePKey>
     <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>1.27</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+
+  <!-- Weitsprung -->
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>D7F0B283-20F2-4167-B145-AE0D377E2910</HandicapPKey>
+    <Factor>1.05</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>D7F0B283-20F2-4167-B145-AE0D377E2910</HandicapPKey>
+    <Factor>1.05</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
+    <Factor>1.44</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
+    <Factor>2.05</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
+    <Factor>1.48</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
+    <Factor>1.53</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
+    <Factor>1.25</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
+    <Factor>1.31</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
+    <Factor>1.34</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
+    <Factor>1.44</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
+    <Factor>1.23</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
+    <Factor>1.31</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>DF08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
+    <Factor>1.05</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>DF08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
+    <Factor>1.05</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
+    <Factor>1.05</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
+    <Factor>1.05</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F0F683FA-ABFD-4791-8035-1133F760F70E</DisciplinePKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
+    <Factor>1.21</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>DB017B35-8968-4ABB-9A76-810629A9F7D4</DisciplinePKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
+    <Factor>1.38</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 </ArrayOfTraditionalTrackAndFieldDisciplineHandicap>
