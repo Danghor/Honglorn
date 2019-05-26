@@ -9,7 +9,7 @@ namespace HonglornBL
     {
         internal HonglornDbFactory ContextFactory { get; set; }
 
-        Guid ClassPKey { get; }
+        internal Guid ClassPKey { get; }
 
         internal ClassManager(Guid classPKey, HonglornDbFactory contextFactory)
         {

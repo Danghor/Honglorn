@@ -18,6 +18,11 @@ namespace HonglornBL
             }
         }
 
+        public void Delete(ClassManager manager)
+        {
+            Delete(manager.ClassPKey);
+        }
+
         public void Create(string name)
         {
             CreateEntity(context => context.Class, new Class { Name = name });

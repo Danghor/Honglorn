@@ -15,12 +15,12 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" />
+        <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" CurrentItem="{Binding CurrentClassManager}"/>
         <StackPanel Grid.Row="1">
             <Button Content="Neu" />
             <Button Content="Bearbeiten" />
-            <Button Content="Löschen" />
-            <Button Content="Aktualisieren" Command="{Binding RefreshCommand}"/>
+            <Button Content="Löschen" Command="{Binding DeleteCommand}" />
+            <Button Content="Aktualisieren" Command="{Binding RefreshCommand}" />
         </StackPanel>
     </Grid>
 </UserControl>

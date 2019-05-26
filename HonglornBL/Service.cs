@@ -18,7 +18,7 @@ namespace HonglornBL
 
         public abstract ICollection<TManager> GetManagers();
 
-        public void Delete(Guid pKey)
+        protected void Delete(Guid pKey)
         {
             var entity = new TEntity
             {
