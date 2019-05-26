@@ -10,6 +10,17 @@
     <UserControl.DataContext>
         <viewModels:ClassListViewModel/>
     </UserControl.DataContext>
-
-    <DataGrid ItemsSource="{Binding ClassManagers}" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" />
+        <StackPanel Grid.Row="1">
+            <Button Content="Neu" />
+            <Button Content="Bearbeiten" />
+            <Button Content="Löschen" />
+            <Button Content="Aktualisieren" Command="{Binding RefreshCommand}"/>
+        </StackPanel>
+    </Grid>
 </UserControl>
