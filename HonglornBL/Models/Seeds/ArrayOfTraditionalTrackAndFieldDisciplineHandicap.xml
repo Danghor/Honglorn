@@ -71,641 +71,705 @@
   <!-- Male A 2 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.87</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.87</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.87</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.87</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.87</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.87</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female A 2 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.67</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.67</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.67</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.67</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.67</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>A 2</HandicapPKey>
+    <HandicapPKey>0F93BB28-3F2C-44F1-96C0-568B8E9D943F</HandicapPKey>
     <Factor>0.67</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Male A 3 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female A 3 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>A 3</HandicapPKey>
+    <HandicapPKey>65758571-7B9A-48BB-8A4B-0D66C72950A7</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Male A 4 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.82</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.82</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.82</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.82</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.82</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.82</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female A 4 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.76</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.76</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.76</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.76</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.76</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>A 4</HandicapPKey>
+    <HandicapPKey>BA9F2D1A-842D-428D-A744-ACAE02437E04</HandicapPKey>
     <Factor>0.76</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
     <!-- Male A 5 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.69</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female A 5 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>A 5</HandicapPKey>
+    <HandicapPKey>5A936E2D-3163-4263-B447-4C940F5CF3C0</HandicapPKey>
     <Factor>0.62</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Male A 6 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.51</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.51</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.51</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.51</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.51</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.51</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female A 6 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.45</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.45</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.45</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.45</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.45</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>A 6</HandicapPKey>
+    <HandicapPKey>33101C51-BD35-4FB2-BDD7-5E5998012C8B</HandicapPKey>
     <Factor>0.45</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   
   <!-- Male B 1 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.86</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.86</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.86</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.86</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.86</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.86</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female B 1 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>B 1</HandicapPKey>
+    <HandicapPKey>08DF546C-8589-4709-BD7F-CECB97C07E8E</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Male B 2 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.90</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.90</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.90</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.90</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.90</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.90</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female B 2 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>B 2</HandicapPKey>
+    <HandicapPKey>50947C52-0979-4571-A01A-AAD9ACE06559</HandicapPKey>
     <Factor>0.85</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Male C 1 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female C 1 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>C 1</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7F08F463-5BAA-4520-A91B-F144158BCC7B</HandicapPKey>
     <Factor>0.95</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Male C 2 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female C 2 -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>C 2</HandicapPKey>
+    <HandicapPKey>5DFAAD0D-7BD6-4036-BA8B-59F3E237C97F</HandicapPKey>
     <Factor>0.98</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Male D -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.89</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.89</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.89</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.89</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.89</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.89</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Female D -->
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.84</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.84</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.84</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.84</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.84</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
   <TraditionalTrackAndFieldDisciplineHandicap>
     <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
-    <HandicapPKey>D</HandicapPKey>
+    <HandicapPKey>E53F454F-7278-43E1-A7D8-A4EDDD5DB1A7</HandicapPKey>
     <Factor>0.84</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+
+  <!-- Male E -->
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>0D2ECDC8-0CF5-4B7C-865F-6277D804B60C</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>FA9D3FFC-AE19-427A-B78E-D5E7DD4E997E</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>FC8816D7-AEF2-4799-A2D1-63975F607A12</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>F93543D4-5A7B-429D-9425-BE1A99211A50</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>2B109C93-173B-4698-959C-2FFDBFCED754</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>E28BEFDC-5CEF-442E-9AF9-B01043EDC0CF</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+
+  <!-- Female E -->
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>95683D38-F6A4-4E81-98F9-E74BDA461E72</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>6697CDE9-62B5-4046-9EBD-C004E9145A44</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>5D76854C-76B0-49BA-B509-232CA4743658</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>08D175C2-D29F-4273-A723-9F94C887B752</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>35751D5B-04DC-4C47-8414-1471ACA5D217</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
+  </TraditionalTrackAndFieldDisciplineHandicap>
+  <TraditionalTrackAndFieldDisciplineHandicap>
+    <DisciplinePKey>5BAAE9BD-172B-4FB6-A8DD-82592901EF16</DisciplinePKey>
+    <HandicapPKey>F948BB20-A89F-4A11-B760-D840795436AB</HandicapPKey>
+    <Factor>0.6</Factor>
   </TraditionalTrackAndFieldDisciplineHandicap>
 
   <!-- Hochsprung -->
