@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF.Views.MasterData"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
@@ -18,9 +19,22 @@
         <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentClassManager}"/>
         <StackPanel Grid.Row="1">
             <Button Content="Neu" />
-            <Button Content="Bearbeiten" />
+            <Button Content="Bearbeiten" Command="{Binding EditCommand}" />
             <Button Content="Löschen" Command="{Binding DeleteCommand}" />
             <Button Content="Aktualisieren" Command="{Binding RefreshCommand}" />
         </StackPanel>
+
+        <controls:Flyout Header="Modal"
+                         IsModal="True"
+                         Position="Right"
+                         IsOpen="{Binding EditIsOpen}"
+                         Grid.Row="0"
+                         Grid.RowSpan="2">
+            <StackPanel Height="80"
+                        Margin="5 5 5 5"
+                        Orientation="Horizontal">
+                <TextBlock>Modal Flyout</TextBlock>
+            </StackPanel>
+        </controls:Flyout>
     </Grid>
 </UserControl>

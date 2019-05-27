@@ -17,14 +17,28 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out currentClassManager, value);
         }
 
+        bool editIsOpen;
+        public bool EditIsOpen
+        {
+            get => editIsOpen;
+            set => OnPropertyChanged(out editIsOpen, value);
+        }
+
+        public ICommand EditCommand { get; }
         public ICommand RefreshCommand { get; }
         public ICommand DeleteCommand { get; }
 
         public ClassListViewModel()
         {
+            EditCommand = new RelayCommand(Edit);
             RefreshCommand = new RelayCommand(Refresh);
             DeleteCommand = new RelayCommand(Delete);
             service = Honglorn.ClassService();
+        }
+
+        void Edit()
+        {
+            EditIsOpen = true;
         }
 
         void Delete()
