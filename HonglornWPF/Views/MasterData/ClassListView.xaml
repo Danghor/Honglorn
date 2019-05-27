@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" CurrentItem="{Binding CurrentClassManager}"/>
+        <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentClassManager}"/>
         <StackPanel Grid.Row="1">
             <Button Content="Neu" />
             <Button Content="Bearbeiten" />
