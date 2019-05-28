@@ -20,5 +20,6 @@
             <TextBlock Text="Name" Grid.Column="0"/>
             <TextBox Grid.Column="1"/>
         </Grid>
+        <Button Content="Update" Command="{Binding UpdateCommand}" />
     </StackPanel>
 </UserControl>
