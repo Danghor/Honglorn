@@ -24,7 +24,7 @@
             <Button Content="Aktualisieren" Command="{Binding RefreshCommand}" />
         </StackPanel>
 
-        <controls:Flyout Header="Modal"
+        <controls:Flyout Header="Class"
                          IsModal="True"
                          Position="Right"
                          IsOpen="{Binding EditIsOpen}"

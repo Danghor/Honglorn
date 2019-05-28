@@ -1,14 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
     class ClassDetailViewModel : ViewModel
     {
         public enum Mode { Add, Edit }
+
+        string className;
+
+        public string ClassName
+        {
+            get => className;
+            set => OnPropertyChanged(out className, value);
+        }
 
         public ICommand UpdateCommand { get; }
 

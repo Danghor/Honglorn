@@ -24,6 +24,14 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out editIsOpen, value);
         }
 
+        ClassDetailViewModel detailViewModel;
+
+        ClassDetailViewModel DetailViewModel
+        {
+            get => detailViewModel;
+            set => OnPropertyChanged(out detailViewModel, value);
+        }
+
         public ICommand NewCommand { get; }
         public ICommand EditCommand { get; }
         public ICommand RefreshCommand { get; }
@@ -40,6 +48,11 @@ namespace HonglornWPF.ViewModels
 
         void New()
         {
+            DetailViewModel = new ClassDetailViewModel
+            {
+                ClassName = CurrentClassManager.ClassName
+            };
+
             EditIsOpen = true;
         }
 

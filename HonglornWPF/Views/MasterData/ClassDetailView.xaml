@@ -11,7 +11,6 @@
         <viewModels:ClassDetailViewModel/>
     </UserControl.DataContext>
     <StackPanel>
-        <TextBlock Text="Class" />
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
