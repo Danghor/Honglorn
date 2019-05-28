@@ -1,8 +1,8 @@
 ﻿<UserControl x:Class="HonglornWPF.Views.MasterData.ClassListView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:HonglornWPF.Views.MasterData"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentClassManager}"/>
         <StackPanel Grid.Row="1">
-            <Button Content="Neu" />
+            <Button Content="Neu" Command="{Binding NewCommand}" />
             <Button Content="Bearbeiten" Command="{Binding EditCommand}" />
             <Button Content="Löschen" Command="{Binding DeleteCommand}" />
             <Button Content="Aktualisieren" Command="{Binding RefreshCommand}" />
@@ -30,11 +30,9 @@
                          IsOpen="{Binding EditIsOpen}"
                          Grid.Row="0"
                          Grid.RowSpan="2">
-            <StackPanel Height="80"
-                        Margin="5 5 5 5"
-                        Orientation="Horizontal">
-                <TextBlock>Modal Flyout</TextBlock>
-            </StackPanel>
+            <ContentControl>
+                <local:ClassDetailView />
+            </ContentControl>
         </controls:Flyout>
     </Grid>
 </UserControl>

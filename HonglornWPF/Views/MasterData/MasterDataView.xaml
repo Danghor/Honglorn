@@ -19,7 +19,7 @@
             <ListViewItem Content="Schüler" />
         </ListView>
         <ContentControl Grid.Column="1">
-            <masterData:ClassListView/>
+            <masterData:ClassListView />
         </ContentControl>
     </Grid>
 </UserControl>
