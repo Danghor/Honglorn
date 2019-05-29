@@ -119,7 +119,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Converter\DisciplineTypeToStringConverter.cs" />
-    <Compile Include="Converter\ObjectToBoolConverter.cs" />
+    <Compile Include="Converter\ObjectNotNullToBoolConverter.cs" />
+    <Compile Include="Converter\ObjectsNotNullToBoolConverter.cs" />
     <Compile Include="Converter\ResultGridVisibilityConverter.cs" />
     <Compile Include="Converter\StringToVisibilityConverter.cs" />
     <Compile Include="Converter\BooleanToVisibilityConverter.cs" />
