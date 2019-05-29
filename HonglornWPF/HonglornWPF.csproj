@@ -129,6 +129,8 @@
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="ViewModels\ClassDetailViewModel.cs" />
     <Compile Include="ViewModels\ClassListViewModel.cs" />
+    <Compile Include="ViewModels\DetailViewModel.cs" />
+    <Compile Include="ViewModels\ListViewModel.cs" />
     <Compile Include="ViewModels\GameSelectViewModel.cs" />
     <Compile Include="Views\GameSelectView.xaml.cs">
       <DependentUpon>GameSelectView.xaml</DependentUpon>

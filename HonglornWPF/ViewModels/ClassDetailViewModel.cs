@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassDetailViewModel : ViewModel, IClassModel
+    class ClassDetailViewModel : DetailViewModel<IClassModel>, IClassModel
     {
         string name;
 
@@ -26,6 +26,16 @@ namespace HonglornWPF.ViewModels
         internal ClassDetailViewModel(ICommand cancelCommand)
         {
             CancelCommand = cancelCommand;
+        }
+
+        internal override void Clear()
+        {
+            Name = string.Empty;
+        }
+
+        internal override void CopyValues(IClassModel model)
+        {
+            Name = model.Name;
         }
     }
 }

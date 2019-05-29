@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassListViewModel : ViewModel
+    class ClassListViewModel : ListViewModel
     {
         readonly ClassService service;
 
@@ -53,7 +53,7 @@ namespace HonglornWPF.ViewModels
 
         void New()
         {
-            DetailViewModel.Name = string.Empty;
+            DetailViewModel.Clear();
             DetailViewModel.AcceptCommand = new RelayCommand(() => { CreateNewClass(); DetailViewIsVisible = false; });
 
             DetailViewIsVisible = true;
@@ -61,7 +61,7 @@ namespace HonglornWPF.ViewModels
 
         void Edit()
         {
-            DetailViewModel.Name = CurrentClassManager.Name;
+            DetailViewModel.CopyValues(CurrentClassManager);
             DetailViewModel.AcceptCommand = new RelayCommand(() => { EditClass(); DetailViewIsVisible = false; });
 
             DetailViewIsVisible = true;
