@@ -13,20 +13,7 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out name, value);
         }
 
-        ICommand acceptCommand;
-
-        public ICommand AcceptCommand
-        {
-            get => acceptCommand;
-            set => OnPropertyChanged(out acceptCommand, value);
-        }
-
-        public ICommand CancelCommand { get; }
-
-        internal ClassDetailViewModel(ICommand cancelCommand)
-        {
-            CancelCommand = cancelCommand;
-        }
+        public ClassDetailViewModel(ICommand cancelCommand) : base(cancelCommand) { }
 
         internal override void Clear()
         {
