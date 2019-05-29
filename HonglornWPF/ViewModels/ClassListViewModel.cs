@@ -4,20 +4,8 @@ using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassListViewModel : ListViewModel
+    class ClassListViewModel : ListViewModel<ClassService, ClassManager>
     {
-        readonly ClassService service;
-
-        public ObservableCollection<ClassManager> ClassManagers { get; } = new ObservableCollection<ClassManager>();
-
-        ClassManager currentClassManager;
-
-        public ClassManager CurrentClassManager
-        {
-            get => currentClassManager;
-            set => OnPropertyChanged(out currentClassManager, value);
-        }
-
         bool detailViewIsVisible;
 
         public bool DetailViewIsVisible
@@ -61,7 +49,7 @@ namespace HonglornWPF.ViewModels
 
         void Edit()
         {
-            DetailViewModel.CopyValues(CurrentClassManager);
+            DetailViewModel.CopyValues(CurrentManager);
             DetailViewModel.AcceptCommand = new RelayCommand(() => { EditClass(); DetailViewIsVisible = false; });
 
             DetailViewIsVisible = true;
@@ -69,7 +57,7 @@ namespace HonglornWPF.ViewModels
 
         void Delete()
         {
-            service.Delete(currentClassManager);
+            service.Delete(CurrentManager);
             Refresh();
         }
 
@@ -87,7 +75,7 @@ namespace HonglornWPF.ViewModels
 
         void EditClass()
         {
-            CurrentClassManager.Update(DetailViewModel);
+            CurrentManager.Update(DetailViewModel);
             Refresh();
         }
     }
