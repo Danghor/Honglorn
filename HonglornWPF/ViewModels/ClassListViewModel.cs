@@ -11,22 +11,24 @@ namespace HonglornWPF.ViewModels
         public ObservableCollection<ClassManager> ClassManagers { get; } = new ObservableCollection<ClassManager>();
 
         ClassManager currentClassManager;
+
         public ClassManager CurrentClassManager
         {
             get => currentClassManager;
             set => OnPropertyChanged(out currentClassManager, value);
         }
 
-        bool editIsOpen;
-        public bool EditIsOpen
+        bool detailViewIsVisible;
+
+        public bool DetailViewIsVisible
         {
-            get => editIsOpen;
-            set => OnPropertyChanged(out editIsOpen, value);
+            get => detailViewIsVisible;
+            set => OnPropertyChanged(out detailViewIsVisible, value);
         }
 
         ClassDetailViewModel detailViewModel;
 
-        ClassDetailViewModel DetailViewModel
+        public ClassDetailViewModel DetailViewModel
         {
             get => detailViewModel;
             set => OnPropertyChanged(out detailViewModel, value);
@@ -34,31 +36,35 @@ namespace HonglornWPF.ViewModels
 
         public ICommand NewCommand { get; }
         public ICommand EditCommand { get; }
-        public ICommand RefreshCommand { get; }
         public ICommand DeleteCommand { get; }
 
         public ClassListViewModel()
         {
             NewCommand = new RelayCommand(New);
             EditCommand = new RelayCommand(Edit);
-            RefreshCommand = new RelayCommand(Refresh);
             DeleteCommand = new RelayCommand(Delete);
+
+            DetailViewModel = new ClassDetailViewModel(new RelayCommand(() => DetailViewIsVisible = false));
+
             service = Honglorn.ClassService();
+
+            Refresh();
         }
 
         void New()
         {
-            DetailViewModel = new ClassDetailViewModel
-            {
-                ClassName = CurrentClassManager.ClassName
-            };
+            DetailViewModel.ClassName = string.Empty;
+            DetailViewModel.AcceptCommand = new RelayCommand(() => { CreateNewClass(); DetailViewIsVisible = false; });
 
-            EditIsOpen = true;
+            DetailViewIsVisible = true;
         }
 
         void Edit()
         {
-            EditIsOpen = true;
+            DetailViewModel.ClassName = CurrentClassManager.ClassName;
+            DetailViewModel.AcceptCommand = new RelayCommand(() => { EditClass(); DetailViewIsVisible = false; });
+
+            DetailViewIsVisible = true;
         }
 
         void Delete()
@@ -71,6 +77,18 @@ namespace HonglornWPF.ViewModels
         {
             var classManagers = service.GetManagers();
             ClearAndFill(ClassManagers, classManagers);
+        }
+
+        void CreateNewClass()
+        {
+            service.Create(DetailViewModel.ClassName);
+            Refresh();
+        }
+
+        void EditClass()
+        {
+            CurrentClassManager.ClassName = DetailViewModel.ClassName;
+            Refresh();
         }
     }
 }

@@ -19,20 +19,12 @@
         <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentClassManager}"/>
         <StackPanel Grid.Row="1">
             <Button Content="Neu" Command="{Binding NewCommand}" />
-            <Button Content="Bearbeiten" Command="{Binding EditCommand}" />
-            <Button Content="Löschen" Command="{Binding DeleteCommand}" />
-            <Button Content="Aktualisieren" Command="{Binding RefreshCommand}" />
+            <Button Content="Bearbeiten" Command="{Binding EditCommand}" IsEnabled="{Binding CurrentClassManager, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
+            <Button Content="Löschen" Command="{Binding DeleteCommand}" IsEnabled="{Binding CurrentClassManager, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
         </StackPanel>
 
-        <controls:Flyout Header="Class"
-                         IsModal="True"
-                         Position="Right"
-                         IsOpen="{Binding EditIsOpen}"
-                         Grid.Row="0"
-                         Grid.RowSpan="2">
-            <ContentControl>
-                <local:ClassDetailView />
-            </ContentControl>
+        <controls:Flyout Header="Class" IsModal="True" Position="Right" IsOpen="{Binding DetailViewIsVisible}" Grid.Row="0" Grid.RowSpan="2" Theme="Adapt">
+            <local:ClassDetailView DataContext="{Binding DetailViewModel}" />
         </controls:Flyout>
     </Grid>
 </UserControl>

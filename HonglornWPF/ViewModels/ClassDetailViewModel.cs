@@ -4,8 +4,6 @@ namespace HonglornWPF.ViewModels
 {
     class ClassDetailViewModel : ViewModel
     {
-        public enum Mode { Add, Edit }
-
         string className;
 
         public string ClassName
@@ -14,16 +12,19 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out className, value);
         }
 
-        public ICommand UpdateCommand { get; }
+        ICommand acceptCommand;
 
-        public ClassDetailViewModel()
+        public ICommand AcceptCommand
         {
-            UpdateCommand = new RelayCommand(Update);
+            get => acceptCommand;
+            set => OnPropertyChanged(out acceptCommand, value);
         }
 
-        void Update()
-        {
+        public ICommand CancelCommand { get; }
 
+        internal ClassDetailViewModel(ICommand cancelCommand)
+        {
+            CancelCommand = cancelCommand;
         }
     }
 }
