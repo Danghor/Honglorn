@@ -53,7 +53,7 @@ namespace HonglornWPF.ViewModels
 
         void New()
         {
-            DetailViewModel.ClassName = string.Empty;
+            DetailViewModel.Name = string.Empty;
             DetailViewModel.AcceptCommand = new RelayCommand(() => { CreateNewClass(); DetailViewIsVisible = false; });
 
             DetailViewIsVisible = true;
@@ -61,7 +61,7 @@ namespace HonglornWPF.ViewModels
 
         void Edit()
         {
-            DetailViewModel.ClassName = CurrentClassManager.ClassName;
+            DetailViewModel.Name = CurrentClassManager.Name;
             DetailViewModel.AcceptCommand = new RelayCommand(() => { EditClass(); DetailViewIsVisible = false; });
 
             DetailViewIsVisible = true;
@@ -81,13 +81,13 @@ namespace HonglornWPF.ViewModels
 
         void CreateNewClass()
         {
-            service.Create(DetailViewModel.ClassName);
+            service.Create(DetailViewModel);
             Refresh();
         }
 
         void EditClass()
         {
-            CurrentClassManager.ClassName = DetailViewModel.ClassName;
+            CurrentClassManager.Update(DetailViewModel);
             Refresh();
         }
     }

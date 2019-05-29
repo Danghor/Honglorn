@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HonglornBL.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Class : IEntity
+    public class Class : IEntity, IClassModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

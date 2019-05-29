@@ -1,4 +1,5 @@
-﻿using HonglornBL.Models.Entities;
+﻿using HonglornBL.Interfaces;
+using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,12 @@ namespace HonglornBL
             Delete(manager.ClassPKey);
         }
 
-        public void Create(string name)
+        public void Create(IClassModel model)
         {
-            CreateEntity(context => context.Class, new Class { Name = name });
+            CreateEntity(context => context.Class, new Class
+            {
+                Name = model.Name
+            });
         }
     }
 }

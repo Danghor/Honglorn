@@ -1,11 +1,12 @@
 ﻿using HonglornBL.Exceptions;
+using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System;
 
 namespace HonglornBL
 {
-    public class ClassManager
+    public class ClassManager : IClassModel
     {
         internal HonglornDbFactory ContextFactory { get; set; }
 
@@ -29,7 +30,12 @@ namespace HonglornBL
             return @class;
         }
 
-        public string ClassName
+        public void Update(IClassModel model)
+        {
+            Name = model.Name;
+        }
+
+        public string Name
         {
             get
             {

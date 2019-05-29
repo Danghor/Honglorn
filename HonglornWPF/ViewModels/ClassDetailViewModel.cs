@@ -1,15 +1,16 @@
-﻿using System.Windows.Input;
+﻿using HonglornBL.Interfaces;
+using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassDetailViewModel : ViewModel
+    class ClassDetailViewModel : ViewModel, IClassModel
     {
-        string className;
+        string name;
 
-        public string ClassName
+        public string Name
         {
-            get => className;
-            set => OnPropertyChanged(out className, value);
+            get => name;
+            set => OnPropertyChanged(out name, value);
         }
 
         ICommand acceptCommand;

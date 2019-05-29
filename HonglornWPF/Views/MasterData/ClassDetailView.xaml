@@ -15,7 +15,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Name" Grid.Column="0"/>
-            <TextBox Text="{Binding ClassName}" Grid.Column="1"/>
+            <TextBox Text="{Binding Name}" Grid.Column="1"/>
         </Grid>
         <Button Content="Accept" Command="{Binding AcceptCommand}" />
         <Button Content="Cancel" Command="{Binding CancelCommand}" />
