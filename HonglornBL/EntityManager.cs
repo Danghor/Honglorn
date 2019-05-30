@@ -6,7 +6,7 @@ namespace HonglornBL
     {
         internal Guid PKey { get; }
 
-        public EntityManager(Guid pKey)
+        protected EntityManager(Guid pKey)
         {
             PKey = pKey;
         }

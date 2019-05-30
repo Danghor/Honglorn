@@ -2,31 +2,25 @@
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HonglornBL
 {
-    public class CourseManager
+    public class CourseManager : EntityManager
     {
-        internal HonglornDbFactory ContextFactory { get; set; }
+        HonglornDbFactory ContextFactory { get; }
 
-        Guid CoursePKey { get; }
-
-        internal CourseManager(Guid classPKey, HonglornDbFactory contextFactory)
+        internal CourseManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey)
         {
-            CoursePKey = classPKey;
             ContextFactory = contextFactory;
         }
 
         Course Course(HonglornDb db)
         {
-            Course course = db.Course.Find(CoursePKey);
+            Course course = db.Course.Find(PKey);
 
             if (course == null)
             {
-                throw new CourseNotFoundException($"No course with key {CoursePKey} found.");
+                throw new CourseNotFoundException($"No course with key {PKey} found.");
             }
 
             return course;

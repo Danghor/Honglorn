@@ -4,25 +4,22 @@ using System;
 
 namespace HonglornBL
 {
-    public class HandicapManager
+    public class HandicapManager : EntityManager
     {
-        internal HonglornDbFactory ContextFactory { get; set; }
+        HonglornDbFactory ContextFactory { get; }
 
-        Guid HandicapPKey { get; }
-
-        internal HandicapManager(Guid handicapPKey, HonglornDbFactory contextFactory)
+        internal HandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey)
         {
-            HandicapPKey = handicapPKey;
             ContextFactory = contextFactory;
         }
 
         Handicap Handicap(HonglornDb db)
         {
-            Handicap handicap = db.Handicap.Find(HandicapPKey);
+            Handicap handicap = db.Handicap.Find(PKey);
 
             if (handicap == null)
             {
-                throw new HandicapNotFoundException($"No handicap with key {HandicapPKey} found.");
+                throw new HandicapNotFoundException($"No handicap with key {PKey} found.");
             }
 
             return handicap;

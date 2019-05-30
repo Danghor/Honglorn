@@ -5,25 +5,22 @@ using System;
 
 namespace HonglornBL
 {
-    public class StudentManager
+    public class StudentManager : EntityManager
     {
         HonglornDbFactory ContextFactory { get; }
 
-        Guid StudentPKey { get; }
-
-        internal StudentManager(Guid studentPKey, HonglornDbFactory contextFactory)
+        internal StudentManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey)
         {
-            StudentPKey = studentPKey;
             ContextFactory = contextFactory;
         }
 
         Student Student(HonglornDb db)
         {
-            Student student = db.Student.Find(StudentPKey);
+            Student student = db.Student.Find(PKey);
 
             if (student == null)
             {
-                throw new StudentNotFoundException($"No game with key {StudentPKey} found.");
+                throw new StudentNotFoundException($"No game with key {PKey} found.");
             }
 
             return student;
