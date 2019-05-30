@@ -7,7 +7,7 @@ namespace HonglornWPF.ViewModels
     {
         protected TService service;
 
-        public ObservableCollection<TManager> ClassManagers { get; } = new ObservableCollection<TManager>();
+        public ObservableCollection<TManager> Managers { get; } = new ObservableCollection<TManager>();
 
         TManager currentManager;
 

@@ -49,8 +49,8 @@ namespace HonglornWPF.ViewModels
 
         void Refresh()
         {
-            var classManagers = service.GetManagers();
-            ClearAndFill(ClassManagers, classManagers);
+            var managers = service.GetManagers();
+            ClearAndFill(Managers, managers);
         }
 
         void CreateNewClass()

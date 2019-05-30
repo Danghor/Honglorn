@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding ClassManagers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentManager}"/>
+        <DataGrid ItemsSource="{Binding Managers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentManager}"/>
         <StackPanel Grid.Row="1">
             <Button Content="Neu" Command="{Binding NewCommand}" />
             <Button Content="Bearbeiten" Command="{Binding EditCommand}" IsEnabled="{Binding CurrentManager, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
