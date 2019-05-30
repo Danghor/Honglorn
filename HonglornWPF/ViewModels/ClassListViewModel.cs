@@ -1,10 +1,8 @@
 ﻿using HonglornBL;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassListViewModel : ListViewModel<ClassService, ClassManager>
+    class ClassListViewModel : ListViewModel<ClassService, ClassManager, ClassDetailViewModel>
     {
         bool detailViewIsVisible;
 
@@ -13,18 +11,6 @@ namespace HonglornWPF.ViewModels
             get => detailViewIsVisible;
             set => OnPropertyChanged(out detailViewIsVisible, value);
         }
-
-        ClassDetailViewModel detailViewModel;
-
-        public ClassDetailViewModel DetailViewModel
-        {
-            get => detailViewModel;
-            set => OnPropertyChanged(out detailViewModel, value);
-        }
-
-        public ICommand NewCommand { get; }
-        public ICommand EditCommand { get; }
-        public ICommand DeleteCommand { get; }
 
         public ClassListViewModel()
         {
