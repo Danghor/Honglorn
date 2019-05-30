@@ -6,25 +6,22 @@ using System;
 
 namespace HonglornBL
 {
-    public class ClassManager : IClassModel
+    public class ClassManager : EntityManager, IClassModel
     {
         HonglornDbFactory ContextFactory { get; }
 
-        internal Guid ClassPKey { get; }
-
-        internal ClassManager(Guid classPKey, HonglornDbFactory contextFactory)
+        internal ClassManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey)
         {
-            ClassPKey = classPKey;
             ContextFactory = contextFactory;
         }
 
         Class Class(HonglornDb db)
         {
-            Class @class = db.Class.Find(ClassPKey);
+            Class @class = db.Class.Find(PKey);
 
             if (@class == null)
             {
-                throw new ClassNotFoundException($"No class with key {ClassPKey} found.");
+                throw new ClassNotFoundException($"No class with key {PKey} found.");
             }
 
             return @class;

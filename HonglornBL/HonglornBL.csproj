@@ -96,6 +96,7 @@
     <Compile Include="ClassManager.cs" />
     <Compile Include="ClassService.cs" />
     <Compile Include="CourseManager.cs" />
+    <Compile Include="EntityManager.cs" />
     <Compile Include="Exceptions\ClassNotFoundException.cs" />
     <Compile Include="Exceptions\StudentNotFoundException.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs" />

@@ -21,7 +21,7 @@ namespace HonglornBL
 
         public void Delete(ClassManager manager)
         {
-            Delete(manager.ClassPKey);
+            Delete(manager.PKey);
         }
 
         public void Create(IClassModel model)

@@ -1,6 +1,6 @@
-﻿using HonglornBL.Models.Framework;
+﻿using HonglornBL.Models.Entities;
+using HonglornBL.Models.Framework;
 using System;
-using HonglornBL.Models.Entities;
 
 namespace HonglornBL
 {
