@@ -8,7 +8,7 @@ namespace HonglornBL
 {
     public class ClassManager : IClassModel
     {
-        internal HonglornDbFactory ContextFactory { get; set; }
+        HonglornDbFactory ContextFactory { get; }
 
         internal Guid ClassPKey { get; }
 
@@ -42,7 +42,7 @@ namespace HonglornBL
                 return GetValue(g => g.Name);
             }
 
-            set
+            private set
             {
                 using (HonglornDb db = ContextFactory.CreateContext())
                 {

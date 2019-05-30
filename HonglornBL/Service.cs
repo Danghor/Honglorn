@@ -9,7 +9,7 @@ namespace HonglornBL
 {
     public abstract class Service<TManager, TEntity> where TEntity : class, IEntity, new()
     {
-        internal HonglornDbFactory ContextFactory { get; set; }
+        internal HonglornDbFactory ContextFactory { get; }
 
         internal Service(HonglornDbFactory contextFactory)
         {
