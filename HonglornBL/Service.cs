@@ -41,12 +41,12 @@ namespace HonglornBL
             }
         }
 
-        internal void CreateEntity(Func<HonglornDb, IDbSet<TEntity>> dbSet, TEntity game)
+        internal void CreateEntity(Func<HonglornDb, IDbSet<TEntity>> dbSet, TEntity entity)
         {
-            using (HonglornDb db = ContextFactory.CreateContext())
+            using (HonglornDb context = ContextFactory.CreateContext())
             {
-                dbSet(db).Add(game);
-                db.SaveChanges();
+                dbSet(context).Add(entity);
+                context.SaveChanges();
             }
         }
     }
