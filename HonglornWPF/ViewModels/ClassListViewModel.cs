@@ -4,39 +4,31 @@ namespace HonglornWPF.ViewModels
 {
     class ClassListViewModel : ListViewModel<ClassService, ClassManager, ClassDetailViewModel>
     {
-        bool detailViewIsVisible;
-
-        public bool DetailViewIsVisible
-        {
-            get => detailViewIsVisible;
-            set => OnPropertyChanged(out detailViewIsVisible, value);
-        }
-
         public ClassListViewModel()
         {
-            NewCommand = new RelayCommand(New);
-            EditCommand = new RelayCommand(Edit);
+            NewCommand = new RelayCommand(OpenDetailViewForCreate);
+            EditCommand = new RelayCommand(OpenDetailViewForEdit);
             DeleteCommand = new RelayCommand(Delete);
 
             DetailViewModel = new ClassDetailViewModel(() => DetailViewIsVisible = false);
 
             service = Honglorn.ClassService();
 
-            Refresh();
+            RefreshViewModel();
         }
 
-        void New()
+        void OpenDetailViewForCreate()
         {
             DetailViewModel.Clear();
-            DetailViewModel.AcceptCommand = new RelayCommand(() => { CreateNewClass(); DetailViewIsVisible = false; });
+            DetailViewModel.AcceptCommand = new RelayCommand(() => { Create(); DetailViewIsVisible = false; });
 
             DetailViewIsVisible = true;
         }
 
-        void Edit()
+        void OpenDetailViewForEdit()
         {
             DetailViewModel.CopyValues(CurrentManager);
-            DetailViewModel.AcceptCommand = new RelayCommand(() => { EditClass(); DetailViewIsVisible = false; });
+            DetailViewModel.AcceptCommand = new RelayCommand(() => { Update(); DetailViewIsVisible = false; });
 
             DetailViewIsVisible = true;
         }
@@ -44,25 +36,25 @@ namespace HonglornWPF.ViewModels
         void Delete()
         {
             service.Delete(CurrentManager);
-            Refresh();
+            RefreshViewModel();
         }
 
-        void Refresh()
+        void RefreshViewModel()
         {
             var managers = service.GetManagers();
             ClearAndFill(Managers, managers);
         }
 
-        void CreateNewClass()
+        void Create()
         {
             service.Create(DetailViewModel);
-            Refresh();
+            RefreshViewModel();
         }
 
-        void EditClass()
+        void Update()
         {
             CurrentManager.Update(DetailViewModel);
-            Refresh();
+            RefreshViewModel();
         }
     }
 }
