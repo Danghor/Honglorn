@@ -2,11 +2,12 @@
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace HonglornBL
 {
-    public sealed class ClassService : Service<ClassManager, Class>
+    public sealed class ClassService : Service<ClassManager, Class, IClassModel>
     {
         internal ClassService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
@@ -19,13 +20,17 @@ namespace HonglornBL
             }
         }
 
-        public void Create(IClassModel model)
+        protected override IDbSet<Class> GetDbSet(HonglornDb context)
         {
-            CreateEntity(context => context.Class,
-                new Class
-                {
-                    Name = model.Name
-                });
+            return context.Class;
+        }
+
+        protected override Class ConstructEntity(IClassModel model)
+        {
+            return new Class
+            {
+                Name = model.Name
+            };
         }
     }
 }

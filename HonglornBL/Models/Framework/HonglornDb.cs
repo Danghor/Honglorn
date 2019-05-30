@@ -7,7 +7,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace HonglornBL.Models.Framework
 {
-    class HonglornDb : DbContext
+    public class HonglornDb : DbContext
     {
         public virtual DbSet<Class> Class { get; set; }
         public virtual DbSet<Course> Course { get; set; }

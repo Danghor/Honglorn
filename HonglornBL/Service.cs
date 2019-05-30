@@ -7,7 +7,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace HonglornBL
 {
-    public abstract class Service<TManager, TEntity>
+    public abstract class Service<TManager, TEntity, TModel>
         where TManager : EntityManager
         where TEntity : class, IEntity, new()
     {
@@ -41,11 +41,14 @@ namespace HonglornBL
             }
         }
 
-        internal void CreateEntity(Func<HonglornDb, IDbSet<TEntity>> dbSet, TEntity entity)
+        protected abstract TEntity ConstructEntity(TModel model);
+        protected abstract IDbSet<TEntity> GetDbSet(HonglornDb context);
+
+        public void Create(TModel model)
         {
             using (HonglornDb context = ContextFactory.CreateContext())
             {
-                dbSet(context).Add(entity);
+                GetDbSet(context).Add(ConstructEntity(model));
                 context.SaveChanges();
             }
         }
