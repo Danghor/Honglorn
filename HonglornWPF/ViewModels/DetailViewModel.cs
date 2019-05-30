@@ -5,7 +5,6 @@ namespace HonglornWPF.ViewModels
 {
     abstract class DetailViewModel<TModel> : ViewModel
     {
-
         ICommand acceptCommand;
 
         public ICommand AcceptCommand
