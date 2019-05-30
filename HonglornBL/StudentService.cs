@@ -1,7 +1,5 @@
-﻿using HonglornBL.Enums;
-using HonglornBL.Models.Entities;
+﻿using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,9 +17,16 @@ namespace HonglornBL
             }
         }
 
-        public void Create(string surname, string forename, Sex sex, DateTime dateOfBirth)
+        public void Create(IStudentModel model)
         {
-            CreateEntity(context => context.Student, new Student { Surname = surname, Forename = forename, Sex = sex, DateOfBirth = dateOfBirth });
+            CreateEntity(context => context.Student,
+                new Student
+                {
+                    Surname = model.Surname,
+                    Forename = model.Forename,
+                    Sex = model.Sex,
+                    DateOfBirth = model.DateOfBirth
+                });
         }
     }
 }

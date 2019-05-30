@@ -21,10 +21,11 @@ namespace HonglornBL
 
         public void Create(IClassModel model)
         {
-            CreateEntity(context => context.Class, new Class
-            {
-                Name = model.Name
-            });
+            CreateEntity(context => context.Class,
+                new Class
+                {
+                    Name = model.Name
+                });
         }
     }
 }

@@ -123,6 +123,7 @@
     <Compile Include="Interfaces\IClassModel.cs" />
     <Compile Include="IPdfDocument.cs" />
     <Compile Include="Models\Entities\IEntity.cs" />
+    <Compile Include="Interfaces\IStudentModel.cs" />
     <Compile Include="Models\Entities\MeasuringPoint.cs" />
     <Compile Include="Calculation\IScoreCalculator.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs" />
