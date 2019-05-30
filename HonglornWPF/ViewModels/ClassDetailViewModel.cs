@@ -1,5 +1,5 @@
 ﻿using HonglornBL.Interfaces;
-using System.Windows.Input;
+using System;
 
 namespace HonglornWPF.ViewModels
 {
@@ -13,7 +13,7 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out name, value);
         }
 
-        public ClassDetailViewModel(ICommand cancelCommand) : base(cancelCommand) { }
+        public ClassDetailViewModel(Action cancelAction) : base(cancelAction) { }
 
         internal override void Clear()
         {

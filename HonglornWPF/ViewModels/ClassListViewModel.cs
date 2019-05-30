@@ -18,7 +18,7 @@ namespace HonglornWPF.ViewModels
             EditCommand = new RelayCommand(Edit);
             DeleteCommand = new RelayCommand(Delete);
 
-            DetailViewModel = new ClassDetailViewModel(new RelayCommand(() => DetailViewIsVisible = false));
+            DetailViewModel = new ClassDetailViewModel(() => DetailViewIsVisible = false);
 
             service = Honglorn.ClassService();
 

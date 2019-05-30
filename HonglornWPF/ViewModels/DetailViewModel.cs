@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
@@ -15,9 +16,9 @@ namespace HonglornWPF.ViewModels
 
         public ICommand CancelCommand { get; }
 
-        internal DetailViewModel(ICommand cancelCommand)
+        internal DetailViewModel(Action cancelAction)
         {
-            CancelCommand = cancelCommand;
+            CancelCommand = new RelayCommand(cancelAction);
         }
 
         internal abstract void Clear();
