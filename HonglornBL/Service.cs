@@ -7,7 +7,9 @@ using System.Data.Entity.Infrastructure;
 
 namespace HonglornBL
 {
-    public abstract class Service<TManager, TEntity> where TEntity : class, IEntity, new()
+    public abstract class Service<TManager, TEntity>
+        where TManager : EntityManager
+        where TEntity : class, IEntity, new()
     {
         internal HonglornDbFactory ContextFactory { get; }
 
@@ -18,11 +20,11 @@ namespace HonglornBL
 
         public abstract ICollection<TManager> GetManagers();
 
-        protected void Delete(Guid pKey)
+        public void Delete(TManager manager)
         {
             var entity = new TEntity
             {
-                PKey = pKey
+                PKey = manager.PKey
             };
 
             try
@@ -35,7 +37,7 @@ namespace HonglornBL
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                throw new ArgumentException($"A {entity.GetType()} with PKey {pKey} does not exist in the database.", nameof(pKey), ex);
+                throw new ArgumentException($"A {entity.GetType()} with PKey {manager.PKey} does not exist in the database.", nameof(manager.PKey), ex);
             }
         }
 

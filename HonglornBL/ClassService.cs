@@ -19,11 +19,6 @@ namespace HonglornBL
             }
         }
 
-        public void Delete(ClassManager manager)
-        {
-            Delete(manager.PKey);
-        }
-
         public void Create(IClassModel model)
         {
             CreateEntity(context => context.Class, new Class
