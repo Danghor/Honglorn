@@ -131,7 +131,6 @@
     <Compile Include="MasterData\Sex.cs" />
     <Compile Include="MasterData\Course\CourseNotFoundException.cs" />
     <Compile Include="MasterData\Class\DuplicateClassException.cs" />
-    <Compile Include="FloatComparer.cs" />
     <Compile Include="Models\Entities\GamePerformance.cs" />
     <Compile Include="Models\Entities\Game.cs" />
     <Compile Include="Import\CsvImporter.cs" />
@@ -144,7 +143,7 @@
     <Compile Include="Models\Framework\HonglornDbFactory.cs" />
     <Compile Include="Models\Framework\HonglornSqlDb.cs" />
     <Compile Include="Models\Framework\HonglornMySqlDb.cs" />
-    <Compile Include="ProgressReport.cs" />
+    <Compile Include="Import\ProgressReport.cs" />
     <Compile Include="Import\ImportedStudentRecord.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
