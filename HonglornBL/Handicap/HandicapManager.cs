@@ -11,19 +11,8 @@ namespace HonglornBL
 
         public string Name
         {
-            get
-            {
-                return GetValue(g => g.Name);
-            }
-
-            set
-            {
-                using (HonglornDb db = ContextFactory.CreateContext())
-                {
-                    Entity(db).Name = value;
-                    db.SaveChanges();
-                }
-            }
+            get => GetValue(g => g.Name);
+            set => SetValue((handicap, name) => handicap.Name = name, value);
         }
 
         protected override Exception CreateException(string message) => new HandicapNotFoundException(message);

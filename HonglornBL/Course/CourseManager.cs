@@ -12,36 +12,14 @@ namespace HonglornBL
 
         public string Name
         {
-            get
-            {
-                return GetValue(g => g.Name);
-            }
-
-            set
-            {
-                using (HonglornDb db = ContextFactory.CreateContext())
-                {
-                    Entity(db).Name = value;
-                    db.SaveChanges();
-                }
-            }
+            get => GetValue(g => g.Name);
+            set => SetValue((course, name) => course.Name = name, value);
         }
 
         public Guid ClassIdentifier
         {
-            get
-            {
-                return GetValue(g => g.ClassPKey);
-            }
-
-            set
-            {
-                using (HonglornDb db = ContextFactory.CreateContext())
-                {
-                    Entity(db).Class = db.Class.Find(value);
-                    db.SaveChanges();
-                }
-            }
+            get => GetValue(g => g.ClassPKey);
+            set => SetValue((course, classPKey) => course.ClassPKey = classPKey, value);
         }
 
         protected override Exception CreateException(string message) => new CourseNotFoundException(message);
