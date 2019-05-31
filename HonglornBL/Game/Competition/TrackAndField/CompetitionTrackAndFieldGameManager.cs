@@ -6,7 +6,7 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL
 {
-    public class CompetitionTrackAndFieldGameManager : IGameManager<CompetitionTrackAndFieldResult>
+    public class CompetitionTrackAndFieldGameManager
     {
         internal HonglornDbFactory ContextFactory { get; set; }
 

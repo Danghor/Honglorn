@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace HonglornBL
 {
-    public class TraditionalTrackAndFieldGameManager : IGameManager<TraditionalTrackAndFieldResult>
+    public class TraditionalTrackAndFieldGameManager
     {
         HonglornDbFactory ContextFactory { get; }
 
