@@ -2,81 +2,42 @@
 using HonglornBL.Models.Framework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace HonglornBL
 {
-    public class TraditionalTrackAndFieldGameManager
+    public class TraditionalTrackAndFieldGameManager : EntityManager<TraditionalTrackAndFieldGame>
     {
-        HonglornDbFactory ContextFactory { get; }
-
-        Guid GamePKey { get; }
-
-        internal TraditionalTrackAndFieldGameManager(Guid gamePKey, HonglornDbFactory contextFactory)
-        {
-            GamePKey = gamePKey;
-            ContextFactory = contextFactory;
-        }
-
-        TraditionalTrackAndFieldGame Game(HonglornDb db)
-        {
-            TraditionalTrackAndFieldGame game = db.TraditionalTrackAndFieldGame.Find(GamePKey);
-
-            if (game == null)
-            {
-                throw new GameNotFoundException($"No game with key {GamePKey} found.");
-            }
-
-            return game;
-        }
+        internal TraditionalTrackAndFieldGameManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
         public string GameName
         {
-            get
-            {
-                return GetValue(g => g.Name);
-            }
-
-            set
-            {
-                using (HonglornDb db = ContextFactory.CreateContext())
-                {
-                    Game(db).Name = value;
-                    db.SaveChanges();
-                }
-            }
+            get => GetValue(g => g.Name);
+            set => SetValue((game, name) => game.Name = name, value);
         }
 
         public DateTime GameDate
         {
-            get
-            {
-                return GetValue(g => g.Date);
-            }
-
-            set
-            {
-                using (HonglornDb db = ContextFactory.CreateContext())
-                {
-                    Game(db).Date = value;
-                    db.SaveChanges();
-                }
-            }
+            get => GetValue(g => g.Date);
+            set => SetValue((game, date) => game.Date = date, value);
         }
 
-        T GetValue<T>(Func<TraditionalTrackAndFieldGame, T> getValue)
+        protected override Exception CreateNotFoundException(string message)
         {
-            using (HonglornDb db = ContextFactory.CreateContext())
-            {
-                return getValue(Game(db));
-            }
+            return new GameNotFoundException(message);
+        }
+
+        protected override DbSet<TraditionalTrackAndFieldGame> GetDbSet(HonglornDb db)
+        {
+            return db.TraditionalTrackAndFieldGame;
         }
 
         public ICollection<TraditionalTrackAndFieldResult> CalculateResults()
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return Game(db).GamePerformances.Select(performance => performance.CalculateResult(db)).ToList();
+                return Entity(db).GamePerformances.Select(performance => performance.CalculateResult(db)).ToList();
             }
         }
     }

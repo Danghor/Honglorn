@@ -1,41 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using HonglornBL.Games.Competition.TrackAndField;
 using HonglornBL.Models.Framework;
 
 namespace HonglornBL
 {
-    public class CompetitionTrackAndFieldGameManager
+    public class CompetitionTrackAndFieldGameManager : EntityManager<CompetitionTrackAndFieldGame>
     {
-        internal HonglornDbFactory ContextFactory { get; set; }
+        internal CompetitionTrackAndFieldGameManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
-        Guid GamePKey { get; }
-
-        internal CompetitionTrackAndFieldGameManager(Guid gamePKey, HonglornDbFactory contextFactory)
+        protected override DbSet<CompetitionTrackAndFieldGame> GetDbSet(HonglornDb db)
         {
-            GamePKey = gamePKey;
-            ContextFactory = contextFactory;
+            return db.CompetitionTrackAndFieldGame;
         }
 
-        CompetitionTrackAndFieldGame Game(HonglornDb db)
+        protected override Exception CreateNotFoundException(string message)
         {
-            CompetitionTrackAndFieldGame game = db.CompetitionTrackAndFieldGame.Find(GamePKey);
-
-            if (game == null)
-            {
-                throw new GameNotFoundException($"No game with key {GamePKey} found.");
-            }
-
-            return game;
+            return new GameNotFoundException(message);
         }
 
         public ICollection<CompetitionTrackAndFieldResult> CalculateResults()
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return Game(db).EvaluationGroups.Select(group => group.CalculateResult(db)).ToList();
+                return Entity(db).EvaluationGroups.Select(group => group.CalculateResult(db)).ToList();
             }
         }
+
     }
 }
