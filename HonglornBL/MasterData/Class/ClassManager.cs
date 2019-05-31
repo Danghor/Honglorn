@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public class ClassManager : EntityManager<Class>, IClassModel
+    public class ClassManager : EntityManager<Class>, IClassModel, IEntityManager<IClassModel>
     {
         internal ClassManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 

@@ -33,29 +33,5 @@ namespace HonglornWPF.ViewModels
 
             DetailViewIsVisible = true;
         }
-
-        void Delete()
-        {
-            service.Delete(CurrentManager);
-            RefreshViewModel();
-        }
-
-        void RefreshViewModel()
-        {
-            var managers = service.GetManagers();
-            ClearAndFill(Managers, managers);
-        }
-
-        void Create()
-        {
-            service.Create(DetailViewModel);
-            RefreshViewModel();
-        }
-
-        void Update()
-        {
-            CurrentManager.Update(DetailViewModel);
-            RefreshViewModel();
-        }
     }
 }

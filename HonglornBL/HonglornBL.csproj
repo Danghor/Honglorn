@@ -93,6 +93,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IEntityManager.cs" />
     <Compile Include="IEntityService.cs" />
     <Compile Include="MasterData\Class\ClassManager.cs" />
     <Compile Include="MasterData\Class\ClassService.cs" />

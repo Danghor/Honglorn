@@ -5,6 +5,8 @@ using System.Windows.Input;
 namespace HonglornWPF.ViewModels
 {
     abstract class ListViewModel<TManager, TDetailViewModel, TModel> : ViewModel
+        where TManager : IEntityManager<TModel>
+        where TDetailViewModel : TModel
     {
         protected IEntityService<TManager, TModel> service;
 
@@ -32,6 +34,30 @@ namespace HonglornWPF.ViewModels
         {
             get => detailViewIsVisible;
             set => OnPropertyChanged(out detailViewIsVisible, value);
+        }
+
+        protected void RefreshViewModel()
+        {
+            var managers = service.GetManagers();
+            ClearAndFill(Managers, managers);
+        }
+
+        protected void Create()
+        {
+            service.Create(DetailViewModel);
+            RefreshViewModel();
+        }
+
+        protected void Update()
+        {
+            CurrentManager.Update(DetailViewModel);
+            RefreshViewModel();
+        }
+
+        protected void Delete()
+        {
+            service.Delete(CurrentManager);
+            RefreshViewModel();
         }
     }
 }
