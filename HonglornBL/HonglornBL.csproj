@@ -93,16 +93,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassManager.cs" />
-    <Compile Include="ClassService.cs" />
-    <Compile Include="CourseManager.cs" />
+    <Compile Include="Class\ClassManager.cs" />
+    <Compile Include="Class\ClassService.cs" />
+    <Compile Include="Course\CourseManager.cs" />
+    <Compile Include="Course\ICourseModel.cs" />
     <Compile Include="EntityManager.cs" />
     <Compile Include="Exceptions\ClassNotFoundException.cs" />
     <Compile Include="Exceptions\StudentNotFoundException.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGameManager.cs" />
-    <Compile Include="HandicapManager.cs" />
+    <Compile Include="Handicap\HandicapManager.cs" />
     <Compile Include="Exceptions\HandicapNotFoundException.cs" />
     <Compile Include="IGameManager.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldCertificateAssignment.cs" />
@@ -120,10 +121,11 @@
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldResult.cs" />
     <Compile Include="GameCollection.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldRunningDiscipline.cs" />
-    <Compile Include="Interfaces\IClassModel.cs" />
+    <Compile Include="Handicap\IHandicapModel.cs" />
+    <Compile Include="Class\IClassModel.cs" />
     <Compile Include="IPdfDocument.cs" />
     <Compile Include="Models\Entities\IEntity.cs" />
-    <Compile Include="Interfaces\IStudentModel.cs" />
+    <Compile Include="Student\IStudentModel.cs" />
     <Compile Include="Models\Entities\MeasuringPoint.cs" />
     <Compile Include="Calculation\IScoreCalculator.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs" />
@@ -184,8 +186,8 @@
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldSprintDiscipline.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldThrowDiscipline.cs" />
     <Compile Include="Service.cs" />
-    <Compile Include="StudentManager.cs" />
-    <Compile Include="StudentService.cs" />
+    <Compile Include="Student\StudentManager.cs" />
+    <Compile Include="Student\StudentService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

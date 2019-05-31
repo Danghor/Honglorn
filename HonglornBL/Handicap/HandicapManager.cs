@@ -5,11 +5,11 @@ using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public class HandicapManager : EntityManager<Handicap>
+    public class HandicapManager : EntityManager<Handicap>, IHandicapModel
     {
         internal HandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
-        public string HandicapName
+        public string Name
         {
             get
             {
@@ -29,13 +29,5 @@ namespace HonglornBL
         protected override Exception CreateException(string message) => new HandicapNotFoundException(message);
 
         protected override DbSet<Handicap> GetDbSet(HonglornDb db) => db.Handicap;
-
-        T GetValue<T>(Func<Handicap, T> getValue)
-        {
-            using (HonglornDb db = ContextFactory.CreateContext())
-            {
-                return getValue(Entity(db));
-            }
-        }
     }
 }

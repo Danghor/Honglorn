@@ -1,15 +1,16 @@
-﻿using HonglornBL.Models.Entities;
+﻿using HonglornBL.Exceptions;
+using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System;
 using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public class CourseManager : EntityManager<Course>
+    public class CourseManager : EntityManager<Course>, ICourseModel
     {
         internal CourseManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
-        public string CourseName
+        public string Name
         {
             get
             {
@@ -43,17 +44,8 @@ namespace HonglornBL
             }
         }
 
-        // TODO: Write own exception type
-        protected override Exception CreateException(string message) => new Exception(message);
+        protected override Exception CreateException(string message) => new CourseNotFoundException(message);
 
         protected override DbSet<Course> GetDbSet(HonglornDb db) => db.Course;
-
-        T GetValue<T>(Func<Course, T> getValue)
-        {
-            using (HonglornDb db = ContextFactory.CreateContext())
-            {
-                return getValue(Entity(db));
-            }
-        }
     }
 }

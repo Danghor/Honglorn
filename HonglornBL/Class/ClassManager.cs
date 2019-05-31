@@ -33,14 +33,6 @@ namespace HonglornBL
             }
         }
 
-        T GetValue<T>(Func<Class, T> getValue)
-        {
-            using (HonglornDb db = ContextFactory.CreateContext())
-            {
-                return getValue(Entity(db));
-            }
-        }
-
         protected override DbSet<Class> GetDbSet(HonglornDb db) => db.Class;
 
         protected override Exception CreateException(string message) => new ClassNotFoundException(message);
