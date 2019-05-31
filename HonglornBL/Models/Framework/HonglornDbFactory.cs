@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace HonglornBL.Models.Framework
 {
-    class HonglornDbFactory
+    public class HonglornDbFactory
     {
         static readonly IDictionary<string, Tuple<Func<string, Func<DbConnection>>, Func<DbConnection, HonglornDb>>> ProviderMap = new Dictionary<string, Tuple<Func<string, Func<DbConnection>>, Func<DbConnection, HonglornDb>>>
         {

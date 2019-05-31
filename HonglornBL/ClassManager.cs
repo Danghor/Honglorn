@@ -3,29 +3,13 @@ using HonglornBL.Interfaces;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System;
+using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public class ClassManager : EntityManager, IClassModel
+    public class ClassManager : EntityManager<Class>, IClassModel
     {
-        HonglornDbFactory ContextFactory { get; }
-
-        internal ClassManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey)
-        {
-            ContextFactory = contextFactory;
-        }
-
-        Class Class(HonglornDb db)
-        {
-            Class @class = db.Class.Find(PKey);
-
-            if (@class == null)
-            {
-                throw new ClassNotFoundException($"No class with key {PKey} found.");
-            }
-
-            return @class;
-        }
+        internal ClassManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
         public void Update(IClassModel model)
         {
@@ -43,7 +27,7 @@ namespace HonglornBL
             {
                 using (HonglornDb db = ContextFactory.CreateContext())
                 {
-                    Class(db).Name = value;
+                    Entity(db).Name = value;
                     db.SaveChanges();
                 }
             }
@@ -53,8 +37,12 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return getValue(Class(db));
+                return getValue(Entity(db));
             }
         }
+
+        protected override DbSet<Class> GetDbSet(HonglornDb db) => db.Class;
+
+        protected override Exception CreateException(string message) => new ClassNotFoundException(message);
     }
 }

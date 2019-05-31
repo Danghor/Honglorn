@@ -8,7 +8,7 @@ using System.Data.Entity.Infrastructure;
 namespace HonglornBL
 {
     public abstract class Service<TManager, TEntity, TModel>
-        where TManager : EntityManager
+        where TManager : EntityManager<TEntity>
         where TEntity : class, IEntity, new()
     {
         internal HonglornDbFactory ContextFactory { get; }

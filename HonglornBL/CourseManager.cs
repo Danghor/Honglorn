@@ -1,30 +1,13 @@
-﻿using HonglornBL.Exceptions;
-using HonglornBL.Models.Entities;
+﻿using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System;
+using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public class CourseManager : EntityManager
+    public class CourseManager : EntityManager<Course>
     {
-        HonglornDbFactory ContextFactory { get; }
-
-        internal CourseManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey)
-        {
-            ContextFactory = contextFactory;
-        }
-
-        Course Course(HonglornDb db)
-        {
-            Course course = db.Course.Find(PKey);
-
-            if (course == null)
-            {
-                throw new CourseNotFoundException($"No course with key {PKey} found.");
-            }
-
-            return course;
-        }
+        internal CourseManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
         public string CourseName
         {
@@ -37,7 +20,7 @@ namespace HonglornBL
             {
                 using (HonglornDb db = ContextFactory.CreateContext())
                 {
-                    Course(db).Name = value;
+                    Entity(db).Name = value;
                     db.SaveChanges();
                 }
             }
@@ -54,17 +37,22 @@ namespace HonglornBL
             {
                 using (HonglornDb db = ContextFactory.CreateContext())
                 {
-                    Course(db).Class = db.Class.Find(value);
+                    Entity(db).Class = db.Class.Find(value);
                     db.SaveChanges();
                 }
             }
         }
 
+        // TODO: Write own exception type
+        protected override Exception CreateException(string message) => new Exception(message);
+
+        protected override DbSet<Course> GetDbSet(HonglornDb db) => db.Course;
+
         T GetValue<T>(Func<Course, T> getValue)
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return getValue(Course(db));
+                return getValue(Entity(db));
             }
         }
     }

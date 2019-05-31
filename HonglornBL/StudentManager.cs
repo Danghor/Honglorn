@@ -2,28 +2,16 @@
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System;
+using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public class StudentManager : EntityManager
+    public class StudentManager : EntityManager<Student>
     {
-        HonglornDbFactory ContextFactory { get; }
+        internal StudentManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
-        internal StudentManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey)
-        {
-            ContextFactory = contextFactory;
-        }
+        protected override Exception CreateException(string message) => new StudentNotFoundException(message);
 
-        Student Student(HonglornDb db)
-        {
-            Student student = db.Student.Find(PKey);
-
-            if (student == null)
-            {
-                throw new StudentNotFoundException($"No game with key {PKey} found.");
-            }
-
-            return student;
-        }
+        protected override DbSet<Student> GetDbSet(HonglornDb db) => db.Student;
     }
 }

@@ -1,29 +1,13 @@
 ﻿using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 using System;
+using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public class HandicapManager : EntityManager
+    public class HandicapManager : EntityManager<Handicap>
     {
-        HonglornDbFactory ContextFactory { get; }
-
-        internal HandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey)
-        {
-            ContextFactory = contextFactory;
-        }
-
-        Handicap Handicap(HonglornDb db)
-        {
-            Handicap handicap = db.Handicap.Find(PKey);
-
-            if (handicap == null)
-            {
-                throw new HandicapNotFoundException($"No handicap with key {PKey} found.");
-            }
-
-            return handicap;
-        }
+        internal HandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
         public string HandicapName
         {
@@ -36,17 +20,21 @@ namespace HonglornBL
             {
                 using (HonglornDb db = ContextFactory.CreateContext())
                 {
-                    Handicap(db).Name = value;
+                    Entity(db).Name = value;
                     db.SaveChanges();
                 }
             }
         }
 
+        protected override Exception CreateException(string message) => new HandicapNotFoundException(message);
+
+        protected override DbSet<Handicap> GetDbSet(HonglornDb db) => db.Handicap;
+
         T GetValue<T>(Func<Handicap, T> getValue)
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return getValue(Handicap(db));
+                return getValue(Entity(db));
             }
         }
     }
