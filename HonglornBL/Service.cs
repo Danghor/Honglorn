@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Linq;
 
 namespace HonglornBL
 {
@@ -18,7 +19,15 @@ namespace HonglornBL
             ContextFactory = contextFactory;
         }
 
-        public abstract ICollection<TManager> GetManagers();
+        protected abstract TManager CreateManager(Guid pKey, HonglornDbFactory contextFactory);
+
+        public ICollection<TManager> GetManagers()
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                return GetDbSet(db).Select(s => s.PKey).ToList().Select(key => CreateManager(key, ContextFactory)).ToList();
+            }
+        }
 
         public void Delete(TManager manager)
         {
