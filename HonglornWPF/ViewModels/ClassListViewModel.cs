@@ -1,8 +1,9 @@
 ﻿using HonglornBL;
+using HonglornBL.Interfaces;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassListViewModel : ListViewModel<ClassService, ClassManager, ClassDetailViewModel>
+    class ClassListViewModel : ListViewModel<ClassManager, ClassDetailViewModel, IClassModel>
     {
         public ClassListViewModel()
         {

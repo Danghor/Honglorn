@@ -1,11 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using HonglornBL;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    abstract class ListViewModel<TService, TManager, TDetailViewModel> : ViewModel
+    abstract class ListViewModel<TManager, TDetailViewModel, TModel> : ViewModel
     {
-        protected TService service;
+        protected IEntityService<TManager, TModel> service;
 
         public ObservableCollection<TManager> Managers { get; } = new ObservableCollection<TManager>();
         public ICommand NewCommand { get; protected set; }

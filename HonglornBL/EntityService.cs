@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace HonglornBL
 {
-    public abstract class EntityService<TManager, TEntity, TModel>
+    public abstract class EntityService<TManager, TEntity, TModel> : IEntityService<TManager, TModel>
         where TManager : EntityManager<TEntity>
         where TEntity : class, IEntity, new()
     {
