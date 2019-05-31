@@ -2,7 +2,7 @@
 {
     public enum Measurement
     {
-        Electronic,
-        Manual
+        Electronic = 0,
+        Manual = 1
     }
 }

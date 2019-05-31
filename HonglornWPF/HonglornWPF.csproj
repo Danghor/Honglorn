@@ -118,7 +118,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converter\DisciplineTypeToStringConverter.cs" />
     <Compile Include="Converter\ObjectNotNullToBoolConverter.cs" />
     <Compile Include="Converter\ObjectsNotNullToBoolConverter.cs" />
     <Compile Include="Converter\ResultGridVisibilityConverter.cs" />
@@ -136,7 +135,6 @@
       <DependentUpon>GameSelectView.xaml</DependentUpon>
     </Compile>
     <Compile Include="HonglornApi.cs" />
-    <Compile Include="StudentPerformance.cs" />
     <Compile Include="ViewModels\ColorMenuData\AccentColorMenuData.cs" />
     <Compile Include="ViewModels\ColorMenuData\AppThemeMenuData.cs" />
     <Compile Include="ViewModels\ColorMenuData\ColorMenuData.cs" />

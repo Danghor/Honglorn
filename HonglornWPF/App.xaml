@@ -20,7 +20,6 @@
 
                 <ResourceDictionary>
                     <converter:CompetitionValueConverter x:Key="CompetitionValueConverter"/>
-                    <converter:DisciplineTypeToStringConverter x:Key="DisciplineTypeToStringConverter"/>
                     <converter:StringToVisibilityConverter x:Key="StringToVisibilityConverter"/>
                     <converter:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
                     <converter:EnumToBoolConverter x:Key="EnumToBoolConverter"/>
