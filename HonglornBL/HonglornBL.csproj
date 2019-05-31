@@ -98,13 +98,13 @@
     <Compile Include="Course\CourseManager.cs" />
     <Compile Include="Course\ICourseModel.cs" />
     <Compile Include="EntityManager.cs" />
-    <Compile Include="Exceptions\ClassNotFoundException.cs" />
-    <Compile Include="Exceptions\StudentNotFoundException.cs" />
+    <Compile Include="Class\ClassNotFoundException.cs" />
+    <Compile Include="Student\StudentNotFoundException.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs" />
     <Compile Include="Games\Competition\TrackAndField\CompetitionTrackAndFieldGameManager.cs" />
     <Compile Include="Handicap\HandicapManager.cs" />
-    <Compile Include="Exceptions\HandicapNotFoundException.cs" />
+    <Compile Include="Handicap\HandicapNotFoundException.cs" />
     <Compile Include="IGameManager.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldCertificateAssignment.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldDisciplineHandicap.cs" />
@@ -136,8 +136,8 @@
     <Compile Include="Enums\Game.cs" />
     <Compile Include="Enums\Measurement.cs" />
     <Compile Include="Enums\Sex.cs" />
-    <Compile Include="Exceptions\CourseNotFoundException.cs" />
-    <Compile Include="Exceptions\DuplicateClassException.cs" />
+    <Compile Include="Course\CourseNotFoundException.cs" />
+    <Compile Include="Class\DuplicateClassException.cs" />
     <Compile Include="FloatComparer.cs" />
     <Compile Include="Models\Entities\GamePerformance.cs" />
     <Compile Include="Models\Entities\Game.cs" />
