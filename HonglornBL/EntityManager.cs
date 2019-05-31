@@ -33,11 +33,20 @@ namespace HonglornBL
             return entity;
         }
 
-        protected T GetValue<T>(Func<TEntity, T> getValue)
+        protected TValue GetValue<TValue>(Func<TEntity, TValue> getValue)
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
                 return getValue(Entity(db));
+            }
+        }
+
+        protected void SetValue<TValue>(Action<TEntity, TValue> setValue, TValue value)
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                setValue(Entity(db), value);
+                db.SaveChanges();
             }
         }
     }

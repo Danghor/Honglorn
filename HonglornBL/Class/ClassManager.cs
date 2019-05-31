@@ -18,19 +18,8 @@ namespace HonglornBL
 
         public string Name
         {
-            get
-            {
-                return GetValue(g => g.Name);
-            }
-
-            private set
-            {
-                using (HonglornDb db = ContextFactory.CreateContext())
-                {
-                    Entity(db).Name = value;
-                    db.SaveChanges();
-                }
-            }
+            get => GetValue(@class => @class.Name);
+            private set => SetValue((@class, name) => @class.Name = name, value);
         }
 
         protected override DbSet<Class> GetDbSet(HonglornDb db) => db.Class;
