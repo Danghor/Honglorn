@@ -185,7 +185,7 @@
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldMiddleDistanceDiscipline.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldSprintDiscipline.cs" />
     <Compile Include="Games\Traditional\TrackAndField\TraditionalTrackAndFieldThrowDiscipline.cs" />
-    <Compile Include="Service.cs" />
+    <Compile Include="EntityService.cs" />
     <Compile Include="Student\StudentManager.cs" />
     <Compile Include="Student\StudentService.cs" />
   </ItemGroup>

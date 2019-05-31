@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public sealed class ClassService : Service<ClassManager, Class, IClassModel>
+    public sealed class ClassService : EntityService<ClassManager, Class, IClassModel>
     {
         internal ClassService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 

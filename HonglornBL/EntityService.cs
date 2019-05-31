@@ -8,13 +8,13 @@ using System.Linq;
 
 namespace HonglornBL
 {
-    public abstract class Service<TManager, TEntity, TModel>
+    public abstract class EntityService<TManager, TEntity, TModel>
         where TManager : EntityManager<TEntity>
         where TEntity : class, IEntity, new()
     {
         internal HonglornDbFactory ContextFactory { get; }
 
-        internal Service(HonglornDbFactory contextFactory)
+        internal EntityService(HonglornDbFactory contextFactory)
         {
             ContextFactory = contextFactory;
         }

@@ -5,7 +5,7 @@ using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public sealed class StudentService : Service<StudentManager, Student, IStudentModel>
+    public sealed class StudentService : EntityService<StudentManager, Student, IStudentModel>
     {
         internal StudentService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
