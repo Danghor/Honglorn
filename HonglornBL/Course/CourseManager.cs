@@ -22,7 +22,7 @@ namespace HonglornBL
             set => SetValue((course, classPKey) => course.ClassPKey = classPKey, value);
         }
 
-        protected override Exception CreateException(string message) => new CourseNotFoundException(message);
+        protected override Exception CreateNotFoundException(string message) => new CourseNotFoundException(message);
 
         protected override DbSet<Course> GetDbSet(HonglornDb db) => db.Course;
     }

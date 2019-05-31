@@ -19,7 +19,7 @@ namespace HonglornBL
 
         protected abstract DbSet<TEntity> GetDbSet(HonglornDb db);
 
-        protected abstract Exception CreateException(string message);
+        protected abstract Exception CreateNotFoundException(string message);
 
         protected TEntity Entity(HonglornDb db)
         {
@@ -27,7 +27,7 @@ namespace HonglornBL
 
             if (entity == null)
             {
-                throw CreateException($"No {typeof(TEntity)} with key {PKey} found.");
+                throw CreateNotFoundException($"No {typeof(TEntity)} with key {PKey} found.");
             }
 
             return entity;

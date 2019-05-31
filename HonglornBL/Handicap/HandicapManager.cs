@@ -15,7 +15,7 @@ namespace HonglornBL
             set => SetValue((handicap, name) => handicap.Name = name, value);
         }
 
-        protected override Exception CreateException(string message) => new HandicapNotFoundException(message);
+        protected override Exception CreateNotFoundException(string message) => new HandicapNotFoundException(message);
 
         protected override DbSet<Handicap> GetDbSet(HonglornDb db) => db.Handicap;
     }

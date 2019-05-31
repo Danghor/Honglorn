@@ -14,7 +14,7 @@ namespace HonglornBL
             return context.Student;
         }
 
-        protected override Student ConstructEntity(IStudentModel model)
+        protected override Student CreateEntity(IStudentModel model)
         {
             return new Student
             {

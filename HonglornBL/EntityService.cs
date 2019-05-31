@@ -50,14 +50,14 @@ namespace HonglornBL
             }
         }
 
-        protected abstract TEntity ConstructEntity(TModel model);
+        protected abstract TEntity CreateEntity(TModel model);
         protected abstract IDbSet<TEntity> GetDbSet(HonglornDb context);
 
         public void Create(TModel model)
         {
             using (HonglornDb context = ContextFactory.CreateContext())
             {
-                GetDbSet(context).Add(ConstructEntity(model));
+                GetDbSet(context).Add(CreateEntity(model));
                 context.SaveChanges();
             }
         }

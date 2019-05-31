@@ -20,7 +20,7 @@ namespace HonglornBL
             return context.Class;
         }
 
-        protected override Class ConstructEntity(IClassModel model)
+        protected override Class CreateEntity(IClassModel model)
         {
             return new Class
             {

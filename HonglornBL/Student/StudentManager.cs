@@ -10,7 +10,7 @@ namespace HonglornBL
     {
         internal StudentManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
-        protected override Exception CreateException(string message) => new StudentNotFoundException(message);
+        protected override Exception CreateNotFoundException(string message) => new StudentNotFoundException(message);
 
         protected override DbSet<Student> GetDbSet(HonglornDb db) => db.Student;
     }

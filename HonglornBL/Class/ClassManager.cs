@@ -24,6 +24,6 @@ namespace HonglornBL
 
         protected override DbSet<Class> GetDbSet(HonglornDb db) => db.Class;
 
-        protected override Exception CreateException(string message) => new ClassNotFoundException(message);
+        protected override Exception CreateNotFoundException(string message) => new ClassNotFoundException(message);
     }
 }
