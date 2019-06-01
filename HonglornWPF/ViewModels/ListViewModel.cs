@@ -36,6 +36,13 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out detailViewIsVisible, value);
         }
 
+        protected ListViewModel()
+        {
+            NewCommand = new RelayCommand(OpenDetailViewForCreate);
+            EditCommand = new RelayCommand(OpenDetailViewForEdit);
+            DeleteCommand = new RelayCommand(Delete);
+        }
+
         protected void RefreshViewModel()
         {
             var managers = service.GetManagers();
