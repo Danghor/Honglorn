@@ -5,8 +5,8 @@ using System.Windows.Input;
 namespace HonglornWPF.ViewModels
 {
     abstract class ListViewModel<TManager, TDetailViewModel, TModel> : ViewModel
-        where TManager : IEntityManager<TModel>
-        where TDetailViewModel : TModel
+        where TManager : IEntityManager<TModel>, TModel
+        where TDetailViewModel : DetailViewModel<TModel>, TModel
     {
         protected IEntityService<TManager, TModel> service;
 
@@ -58,6 +58,22 @@ namespace HonglornWPF.ViewModels
         {
             service.Delete(CurrentManager);
             RefreshViewModel();
+        }
+
+        protected void OpenDetailViewForCreate()
+        {
+            DetailViewModel.Clear();
+            DetailViewModel.AcceptCommand = new RelayCommand(() => { Create(); DetailViewIsVisible = false; });
+
+            DetailViewIsVisible = true;
+        }
+
+        protected void OpenDetailViewForEdit()
+        {
+            DetailViewModel.CopyValues(CurrentManager);
+            DetailViewModel.AcceptCommand = new RelayCommand(() => { Update(); DetailViewIsVisible = false; });
+
+            DetailViewIsVisible = true;
         }
     }
 }

@@ -17,21 +17,5 @@ namespace HonglornWPF.ViewModels
 
             RefreshViewModel();
         }
-
-        void OpenDetailViewForCreate()
-        {
-            DetailViewModel.Clear();
-            DetailViewModel.AcceptCommand = new RelayCommand(() => { Create(); DetailViewIsVisible = false; });
-
-            DetailViewIsVisible = true;
-        }
-
-        void OpenDetailViewForEdit()
-        {
-            DetailViewModel.CopyValues(CurrentManager);
-            DetailViewModel.AcceptCommand = new RelayCommand(() => { Update(); DetailViewIsVisible = false; });
-
-            DetailViewIsVisible = true;
-        }
     }
 }
