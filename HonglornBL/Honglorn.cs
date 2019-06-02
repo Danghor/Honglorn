@@ -1,14 +1,9 @@
-using HonglornBL.Enums;
-using HonglornBL.Games.Traditional.TrackAndField;
-using HonglornBL.Import;
-using HonglornBL.Models.Entities;
+using HonglornBL.MasterData.Course;
 using HonglornBL.Models.Framework;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
-using System.Data.Entity;
-using System.IO;
 using System.Linq;
 
 namespace HonglornBL
@@ -76,6 +71,11 @@ namespace HonglornBL
         public ClassService ClassService()
         {
             return new ClassService(ContextFactory);
+        }
+
+        public CourseService CourseService()
+        {
+            return new CourseService(ContextFactory);
         }
 
         public StudentService StudentService()

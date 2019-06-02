@@ -128,6 +128,8 @@
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="ViewModels\ClassDetailViewModel.cs" />
     <Compile Include="ViewModels\ClassListViewModel.cs" />
+    <Compile Include="ViewModels\CourseDetailViewModel.cs" />
+    <Compile Include="ViewModels\CourseListViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
     <Compile Include="ViewModels\ListViewModel.cs" />
     <Compile Include="ViewModels\GameSelectViewModel.cs" />
@@ -146,6 +148,12 @@
     </Compile>
     <Compile Include="Views\MasterData\ClassListView.xaml.cs">
       <DependentUpon>ClassListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterData\CourseDetailView.xaml.cs">
+      <DependentUpon>CourseDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterData\CourseListView.xaml.cs">
+      <DependentUpon>CourseListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterData\MasterDataView.xaml.cs">
       <DependentUpon>MasterDataView.xaml</DependentUpon>
@@ -171,6 +179,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MasterData\ClassListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MasterData\CourseDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MasterData\CourseListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
