@@ -1,13 +1,17 @@
-﻿namespace HonglornWPF.ViewModels
+﻿using System.Collections.Generic;
+
+namespace HonglornWPF.ViewModels
 {
     class MasterDataViewModel : ViewModel
     {
-        ViewModel currentDetailViewModel;
+        ViewModel currentPageViewModel;
 
-        public ViewModel CurrentDetailViewModel
+        public ViewModel CurrentPageViewModel
         {
-            get => currentDetailViewModel;
-            set => OnPropertyChanged(out currentDetailViewModel, value);
+            get => currentPageViewModel;
+            set => OnPropertyChanged(out currentPageViewModel, value);
         }
+
+        public IEnumerable<ViewModel> ViewModels { get; } = new ViewModel[] { new ClassListViewModel(), new CourseListViewModel() };
     }
 }

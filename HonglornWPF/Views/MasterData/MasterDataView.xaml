@@ -5,21 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF.Views"
              xmlns:masterData="clr-namespace:HonglornWPF.Views.MasterData"
+             xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModels:MasterDataViewModel />
+    </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0">
-            <ListViewItem Content="Jahrgänge" />
-            <ListViewItem Content="Klassen" />
-            <ListViewItem Content="Behinderungen" />
-            <ListViewItem Content="Schüler" />
-        </ListView>
-        <ContentControl Grid.Column="1">
-            <masterData:ClassListView />
+        <ListView Grid.Column="0" ItemsSource="{Binding ViewModels}" SelectedItem="{Binding CurrentPageViewModel}" />
+        <ContentControl Content="{Binding CurrentPageViewModel}" Grid.Column="1" >
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewModels:ClassListViewModel}">
+                    <masterData:ClassListView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:CourseListViewModel}">
+                    <masterData:CourseListView />
+                </DataTemplate>
+            </ContentControl.Resources>
         </ContentControl>
     </Grid>
 </UserControl>
