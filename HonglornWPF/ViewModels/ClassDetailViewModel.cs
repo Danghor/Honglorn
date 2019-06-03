@@ -13,6 +13,8 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out name, value);
         }
 
+        public Guid PKey { get; }
+
         public ClassDetailViewModel(Action cancelAction) : base(cancelAction) { }
 
         internal override void Clear()

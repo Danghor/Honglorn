@@ -1,5 +1,7 @@
 ﻿using HonglornBL;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HonglornWPF.ViewModels
 {
@@ -13,6 +15,16 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out name, value);
         }
 
+        public IEnumerable<Tuple<Guid, string>> ValidClassValues { get; }
+
+        Tuple<Guid, string> currentClass;
+
+        public Tuple<Guid, string> CurrentClass
+        {
+            get => currentClass;
+            set => OnPropertyChanged(out currentClass, value);
+        }
+
         Guid classPKey;
 
         public Guid ClassPKey
@@ -21,7 +33,10 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out classPKey, value);
         }
 
-        public CourseDetailViewModel(Action cancelAction) : base(cancelAction) { }
+        public CourseDetailViewModel(Action cancelAction) : base(cancelAction)
+        {
+            ValidClassValues = Honglorn.ClassService().GetManagers().Select(m => new Tuple<Guid, string>(m.PKey, m.Name));
+        }
 
         internal override void Clear()
         {
