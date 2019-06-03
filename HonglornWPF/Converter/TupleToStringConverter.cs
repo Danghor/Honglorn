@@ -10,7 +10,8 @@ namespace HonglornWPF.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((IEnumerable<Tuple<Guid, string>>)value).Select(t => t.Item2);
+            var tuples = value as IEnumerable<Tuple<Guid, string>>;
+            return tuples?.Select(t => t?.Item2);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => throw new NotImplementedException();
