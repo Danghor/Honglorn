@@ -24,7 +24,7 @@
         </StackPanel>
 
         <controls:Flyout Header="Course" IsModal="True" Position="Right" IsOpen="{Binding DetailViewIsVisible}" Grid.Row="0" Grid.RowSpan="2" Theme="Adapt">
-            <local:ClassDetailView DataContext="{Binding DetailViewModel}" />
+            <local:CourseDetailView DataContext="{Binding DetailViewModel}" />
         </controls:Flyout>
     </Grid>
 </UserControl>
