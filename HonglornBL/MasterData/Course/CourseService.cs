@@ -21,6 +21,7 @@ namespace HonglornBL.MasterData.Course
         {
             return new CourseManager(pKey, contextFactory);
         }
+
         protected override IDbSet<Models.Entities.Course> GetDbSet(HonglornDb context)
         {
             return context.Course;

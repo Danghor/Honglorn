@@ -7,7 +7,7 @@ namespace HonglornBL
     public abstract class EntityManager<TEntity>
         where TEntity : class
     {
-        internal Guid PKey { get; }
+        public Guid PKey { get; }
 
         protected HonglornDbFactory ContextFactory { get; }
 
