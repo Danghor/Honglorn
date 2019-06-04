@@ -26,7 +26,6 @@
                     <converter:ObjectsNotNullToBoolConverter x:Key="ObjectsNotNullToBoolConverter"/>
                     <converter:ObjectNotNullToBoolConverter x:Key="ObjectNotNullToBoolConverter"/>
                     <converter:ResultGridVisibilityConverter x:Key="ResultGridVisibilityConverter"/>
-                    <converter:TupleToStringConverter x:Key="TupleToStringConverter"/>
                     <system:Boolean x:Key="True">True</system:Boolean>
                     <system:Boolean x:Key="False">False</system:Boolean>
                 </ResourceDictionary>
