@@ -29,8 +29,7 @@ namespace HonglornWPF.ViewModels
 
         public Guid ClassPKey
         {
-            get => classPKey;
-            set => OnPropertyChanged(out classPKey, value);
+            get => CurrentClass.Item1;
         }
 
         public CourseDetailViewModel(Action cancelAction) : base(cancelAction)
@@ -41,13 +40,13 @@ namespace HonglornWPF.ViewModels
         internal override void Clear()
         {
             Name = string.Empty;
-            ClassPKey = Guid.Empty;
+            //ClassPKey = Guid.Empty;
         }
 
         internal override void CopyValues(ICourseModel model)
         {
             Name = model.Name;
-            ClassPKey = model.ClassPKey;
+            //ClassPKey = model.ClassPKey;
         }
     }
 }
