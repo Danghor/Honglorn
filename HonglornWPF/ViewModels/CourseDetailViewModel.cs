@@ -15,38 +15,33 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out name, value);
         }
 
-        public IEnumerable<Tuple<Guid, string>> ValidClassValues { get; }
+        public IDictionary<Guid, string> ValidClassValues { get; }
 
-        Tuple<Guid, string> currentClass;
+        KeyValuePair<Guid, string>? currentClass;
 
-        public Tuple<Guid, string> CurrentClass
+        public KeyValuePair<Guid, string>? CurrentClass
         {
             get => currentClass;
             set => OnPropertyChanged(out currentClass, value);
         }
 
-        Guid classPKey;
-
-        public Guid ClassPKey
-        {
-            get => CurrentClass.Item1;
-        }
+        public Guid ClassPKey => CurrentClass?.Key ?? default;
 
         public CourseDetailViewModel(Action cancelAction) : base(cancelAction)
         {
-            ValidClassValues = Honglorn.ClassService().GetManagers().Select(m => new Tuple<Guid, string>(m.PKey, m.Name));
+            ValidClassValues = Honglorn.ClassService().GetManagers().ToDictionary(m => m.PKey, m => m.Name);
         }
 
         internal override void Clear()
         {
             Name = string.Empty;
-            //ClassPKey = Guid.Empty;
+            CurrentClass = null;
         }
 
         internal override void CopyValues(ICourseModel model)
         {
             Name = model.Name;
-            //ClassPKey = model.ClassPKey;
+            CurrentClass = ValidClassValues.SingleOrDefault(i => i.Key == model.ClassPKey);
         }
     }
 }
