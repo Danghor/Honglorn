@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Class" Grid.Column="0" Margin="5"/>
-            <ComboBox ItemsSource="{Binding ValidClassValues, Converter={StaticResource TupleToStringConverter}}" SelectedItem="{Binding CurrentClass}" Grid.Column="1" Margin="5"/>
+            <ComboBox ItemsSource="{Binding ValidClassValues}" DisplayMemberPath="Item2" SelectedItem="{Binding CurrentClass}" Grid.Column="1" Margin="5"/>
         </Grid>
         <Button Content="Accept" Command="{Binding AcceptCommand}" Margin="5" />
         <Button Content="Cancel" Command="{Binding CancelCommand}" Margin="5" />
