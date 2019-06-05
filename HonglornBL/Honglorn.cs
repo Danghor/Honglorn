@@ -1,7 +1,7 @@
 using HonglornBL.MasterData.Course;
 using HonglornBL.Models.Framework;
 using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
@@ -12,7 +12,7 @@ namespace HonglornBL
     {
         HonglornDbFactory ContextFactory { get; }
 
-        public Honglorn(System.Configuration.ConnectionStringSettings connectionStringSettings)
+        public Honglorn(ConnectionStringSettings connectionStringSettings)
         {
             if (string.IsNullOrWhiteSpace(connectionStringSettings.ProviderName))
             {
@@ -32,30 +32,6 @@ namespace HonglornBL
             ContextFactory = new HonglornDbFactory(connection);
         }
 
-        public ICollection<StudentManager> GetStudents()
-        {
-            using (HonglornDb db = ContextFactory.CreateContext())
-            {
-                return db.Student.Select(s => s.PKey).ToList().Select(key => new StudentManager(key, ContextFactory)).ToList();
-            }
-        }
-
-        public ICollection<HandicapManager> GetHandicaps()
-        {
-            using (HonglornDb db = ContextFactory.CreateContext())
-            {
-                return db.Handicap.Select(s => s.PKey).ToList().Select(key => new HandicapManager(key, ContextFactory)).ToList();
-            }
-        }
-
-        public ICollection<CourseManager> GetCourses()
-        {
-            using (HonglornDb db = ContextFactory.CreateContext())
-            {
-                return db.Course.Select(s => s.PKey).ToList().Select(key => new CourseManager(key, ContextFactory)).ToList();
-            }
-        }
-
         public GameCollection GetGames()
         {
             using (HonglornDb db = ContextFactory.CreateContext())
@@ -68,19 +44,10 @@ namespace HonglornBL
             }
         }
 
-        public ClassService ClassService()
-        {
-            return new ClassService(ContextFactory);
-        }
+        public ClassService ClassService() => new ClassService(ContextFactory);
 
-        public CourseService CourseService()
-        {
-            return new CourseService(ContextFactory);
-        }
+        public CourseService CourseService() => new CourseService(ContextFactory);
 
-        public StudentService StudentService()
-        {
-            return new StudentService(ContextFactory);
-        }
+        public StudentService StudentService() => new StudentService(ContextFactory);
     }
 }
