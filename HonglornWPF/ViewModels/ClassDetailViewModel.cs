@@ -19,7 +19,7 @@ namespace HonglornWPF.ViewModels
 
         internal override void Clear()
         {
-            Name = string.Empty;
+            Name = default;
         }
 
         internal override void CopyValues(IClassModel model)

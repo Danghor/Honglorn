@@ -34,8 +34,8 @@ namespace HonglornWPF.ViewModels
 
         internal override void Clear()
         {
-            Name = string.Empty;
-            CurrentClass = null;
+            Name = default;
+            CurrentClass = default;
         }
 
         internal override void CopyValues(ICourseModel model)
