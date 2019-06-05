@@ -14,7 +14,11 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Managers}" IsReadOnly="True" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentManager}"/>
+        <DataGrid ItemsSource="{Binding Managers}" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentManager}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
+            </DataGrid.Columns>
+        </DataGrid>
         <StackPanel Grid.Row="1">
             <Button Content="Neu" Command="{Binding NewCommand}" />
             <Button Content="Bearbeiten" Command="{Binding EditCommand}" IsEnabled="{Binding CurrentManager, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
