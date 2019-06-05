@@ -102,6 +102,9 @@
     <Compile Include="MasterData\Course\ICourseModel.cs" />
     <Compile Include="EntityManager.cs" />
     <Compile Include="MasterData\Class\ClassNotFoundException.cs" />
+    <Compile Include="MasterData\StudentCourse\IStudentCourseModel.cs" />
+    <Compile Include="MasterData\StudentCourse\StudentCourseManager.cs" />
+    <Compile Include="MasterData\StudentCourse\StudentCourseNotFoundException.cs" />
     <Compile Include="MasterData\Student\StudentNotFoundException.cs" />
     <Compile Include="Game\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs" />
     <Compile Include="Game\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs" />
