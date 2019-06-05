@@ -1,4 +1,5 @@
 using HonglornBL.MasterData.Course;
+using HonglornBL.MasterData.StudentCourse;
 using HonglornBL.Models.Framework;
 using System;
 using System.Configuration;
@@ -49,5 +50,7 @@ namespace HonglornBL
         public CourseService CourseService() => new CourseService(ContextFactory);
 
         public StudentService StudentService() => new StudentService(ContextFactory);
+
+        public StudentCourseService StudentCourseService() => new StudentCourseService(ContextFactory);
     }
 }
