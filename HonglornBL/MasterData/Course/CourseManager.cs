@@ -22,6 +22,11 @@ namespace HonglornBL
             set => SetValue((course, classPKey) => course.ClassPKey = classPKey, value);
         }
 
+        public string ClassName
+        {
+            get => GetValue(c => c.Class.Name);
+        }
+
         public void Update(ICourseModel model)
         {
             Name = model.Name;
