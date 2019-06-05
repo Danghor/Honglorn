@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF.Views.MasterData"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             xmlns:extension="clr-namespace:HonglornWPF.Extensions"
+             xmlns:enum="clr-namespace:HonglornBL.Enums;assembly=HonglornBL"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance viewModels:StudentDetailViewModel}">
     <StackPanel>
@@ -30,7 +32,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Sex" Grid.Column="0" Margin="5"/>
-            <TextBox Text="{Binding Sex}" Grid.Column="1" Margin="5"/>
+            <ComboBox ItemsSource="{Binding Source={extension:EnumBindingSource {x:Type enum:Sex}}}" SelectedValue="{Binding Sex}" Grid.Column="1" Margin="5"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
