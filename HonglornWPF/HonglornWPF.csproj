@@ -118,6 +118,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\DateTimeToDateStringConverter.cs" />
     <Compile Include="Converter\ObjectNotNullToBoolConverter.cs" />
     <Compile Include="Converter\ObjectsNotNullToBoolConverter.cs" />
     <Compile Include="Converter\ResultGridVisibilityConverter.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="ViewModels\GameSelectViewModel.cs" />
     <Compile Include="ViewModels\MasterDataViewModel.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel.cs" />
+    <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="Views\GameSelectView.xaml.cs">
       <DependentUpon>GameSelectView.xaml</DependentUpon>
     </Compile>
@@ -145,6 +147,12 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\MasterData\StudentListView.xaml.cs">
+      <DependentUpon>StudentListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterData\StudentDetailView.xaml.cs">
+      <DependentUpon>StudentDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MasterData\ClassDetailView.xaml.cs">
       <DependentUpon>ClassDetailView.xaml</DependentUpon>
     </Compile>
@@ -176,6 +184,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MasterData\StudentListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MasterData\StudentDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MasterData\ClassDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

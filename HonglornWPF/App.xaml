@@ -26,6 +26,7 @@
                     <converter:ObjectsNotNullToBoolConverter x:Key="ObjectsNotNullToBoolConverter"/>
                     <converter:ObjectNotNullToBoolConverter x:Key="ObjectNotNullToBoolConverter"/>
                     <converter:ResultGridVisibilityConverter x:Key="ResultGridVisibilityConverter"/>
+                    <converter:DateTimeToDateStringConverter x:Key="DateTimeToDateStringConverter"/>
                     <system:Boolean x:Key="True">True</system:Boolean>
                     <system:Boolean x:Key="False">False</system:Boolean>
                 </ResourceDictionary>

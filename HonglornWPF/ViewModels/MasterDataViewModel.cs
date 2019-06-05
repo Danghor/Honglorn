@@ -12,6 +12,6 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out currentPageViewModel, value);
         }
 
-        public IEnumerable<ViewModel> ViewModels { get; } = new ViewModel[] { new ClassListViewModel(), new CourseListViewModel() };
+        public IEnumerable<ViewModel> ViewModels { get; } = new ViewModel[] { new ClassListViewModel(), new CourseListViewModel(), new StudentListViewModel() };
     }
 }
