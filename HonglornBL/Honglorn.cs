@@ -1,6 +1,7 @@
 using HonglornBL.MasterData.Course;
 using HonglornBL.MasterData.Handicap;
 using HonglornBL.MasterData.StudentCourse;
+using HonglornBL.MasterData.StudentHandicap;
 using HonglornBL.Models.Framework;
 using System;
 using System.Configuration;
@@ -55,5 +56,7 @@ namespace HonglornBL
         public HandicapService HandicapService() => new HandicapService(ContextFactory);
 
         public StudentCourseService StudentCourseService() => new StudentCourseService(ContextFactory);
+
+        public StudentHandicapService StudentHandicapService() => new StudentHandicapService(ContextFactory);
     }
 }

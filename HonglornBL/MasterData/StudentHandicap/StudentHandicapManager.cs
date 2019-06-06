@@ -1,10 +1,6 @@
-﻿using HonglornBL.Models.Entities;
-using HonglornBL.Models.Framework;
+﻿using HonglornBL.Models.Framework;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 
 namespace HonglornBL.MasterData.StudentHandicap
 {
@@ -18,11 +14,16 @@ namespace HonglornBL.MasterData.StudentHandicap
             set => SetValue((s, p) => s.StudentPKey = p, value);
         }
 
+        public string StudentName => GetValue(s => $"{s.Student.Forename} {s.Student.Surname}");
+
         public Guid HandicapPKey
         {
             get => GetValue(s => s.HandicapPKey);
             set => SetValue((s, p) => s.HandicapPKey = p, value);
         }
+
+        public string HandicapName => GetValue(s => s.Handicap.Name);
+
 
         public DateTime DateStart
         {

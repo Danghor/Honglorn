@@ -139,6 +139,7 @@
     <Compile Include="ViewModels\StudentCourseListViewModel.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel.cs" />
     <Compile Include="ViewModels\StudentHandicapDetailViewModel.cs" />
+    <Compile Include="ViewModels\StudentHandicapListViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="Views\GameSelectView.xaml.cs">
       <DependentUpon>GameSelectView.xaml</DependentUpon>
@@ -155,6 +156,12 @@
     </Compile>
     <Compile Include="Views\MasterData\StudentCourseListView.xaml.cs">
       <DependentUpon>StudentCourseListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterData\StudentHandicapDetailView.xaml.cs">
+      <DependentUpon>StudentHandicapDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MasterData\StudentHandicapListView.xaml.cs">
+      <DependentUpon>StudentHandicapListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MasterData\StudentListView.xaml.cs">
       <DependentUpon>StudentListView.xaml</DependentUpon>
@@ -198,6 +205,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MasterData\StudentCourseListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MasterData\StudentHandicapDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MasterData\StudentHandicapListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

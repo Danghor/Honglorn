@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="HonglornWPF.Views.MasterData.StudentHandicapListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HonglornWPF.Views.MasterData"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <viewModels:StudentHandicapListViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid ItemsSource="{Binding Managers}" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentManager}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Student" Binding="{Binding StudentName}" />
+                <DataGridTextColumn Header="Handicap" Binding="{Binding HandicapName}" />
+                <DataGridTextColumn Header="DateStart" Binding="{Binding DateStart, Converter={StaticResource DateTimeToDateStringConverter}}" />
+                <DataGridTextColumn Header="DateEnd" Binding="{Binding DateEnd, Converter={StaticResource DateTimeToDateStringConverter}}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="1">
+            <Button Content="Neu" Command="{Binding NewCommand}" />
+            <Button Content="Bearbeiten" Command="{Binding EditCommand}" IsEnabled="{Binding CurrentManager, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
+            <Button Content="Löschen" Command="{Binding DeleteCommand}" IsEnabled="{Binding CurrentManager, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
+        </StackPanel>
+
+        <controls:Flyout Header="StudentHandicap" IsModal="True" Position="Right" IsOpen="{Binding DetailViewIsVisible}" Grid.Row="0" Grid.RowSpan="2" Theme="Adapt">
+            <local:StudentHandicapDetailView DataContext="{Binding DetailViewModel}" />
+        </controls:Flyout>
+    </Grid>
+</UserControl>
