@@ -135,7 +135,8 @@
     <Compile Include="ViewModels\ListViewModel.cs" />
     <Compile Include="ViewModels\GameSelectViewModel.cs" />
     <Compile Include="ViewModels\MasterDataViewModel.cs" />
-    <Compile Include="ViewModels\StudentCourseDetailModel.cs" />
+    <Compile Include="ViewModels\StudentCourseDetailViewModel.cs" />
+    <Compile Include="ViewModels\StudentCourseListViewModel.cs" />
     <Compile Include="ViewModels\StudentDetailViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="Views\GameSelectView.xaml.cs">

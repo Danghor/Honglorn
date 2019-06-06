@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace HonglornWPF.ViewModels
 {
-    class StudentCourseDetailModel : DetailViewModel<IStudentCourseModel>, IStudentCourseModel
+    class StudentCourseDetailViewModel : DetailViewModel<IStudentCourseModel>, IStudentCourseModel
     {
         Guid studentPKey;
 
@@ -59,7 +59,7 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out currentStudent, value);
         }
 
-        public StudentCourseDetailModel(Action cancelAction) : base(cancelAction)
+        public StudentCourseDetailViewModel(Action cancelAction) : base(cancelAction)
         {
             ValidStudents = Honglorn.StudentService().GetManagers().ToDictionary(s => s.PKey, s => $"{s.Forename} {s.Surname}");
             ValidCourses = Honglorn.CourseService().GetManagers().ToDictionary(c => c.PKey, c => c.Name);
