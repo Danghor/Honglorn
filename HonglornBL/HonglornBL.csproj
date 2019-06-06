@@ -106,6 +106,10 @@
     <Compile Include="MasterData\StudentCourse\StudentCourseManager.cs" />
     <Compile Include="MasterData\StudentCourse\StudentCourseNotFoundException.cs" />
     <Compile Include="MasterData\StudentCourse\StudentCourseService.cs" />
+    <Compile Include="MasterData\StudentHandicap\IStudentHandicap.cs" />
+    <Compile Include="MasterData\StudentHandicap\StudentHandicapManager.cs" />
+    <Compile Include="MasterData\StudentHandicap\StudentHandicapNotFoundException.cs" />
+    <Compile Include="MasterData\StudentHandicap\StudentHandicapService.cs" />
     <Compile Include="MasterData\Student\StudentNotFoundException.cs" />
     <Compile Include="Game\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroup.cs" />
     <Compile Include="Game\Competition\TrackAndField\CompetitionTrackAndFieldEvaluationGroupStudent.cs" />

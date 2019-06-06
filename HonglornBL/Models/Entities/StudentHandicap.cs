@@ -1,10 +1,11 @@
-﻿using System;
+﻿using HonglornBL.MasterData.StudentHandicap;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class StudentHandicap : IEntity
+    public class StudentHandicap : IEntity, IStudentHandicapModel
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
