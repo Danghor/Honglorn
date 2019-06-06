@@ -102,6 +102,7 @@
     <Compile Include="MasterData\Course\ICourseModel.cs" />
     <Compile Include="EntityManager.cs" />
     <Compile Include="MasterData\Class\ClassNotFoundException.cs" />
+    <Compile Include="MasterData\Handicap\HandicapService.cs" />
     <Compile Include="MasterData\StudentCourse\IStudentCourseModel.cs" />
     <Compile Include="MasterData\StudentCourse\StudentCourseManager.cs" />
     <Compile Include="MasterData\StudentCourse\StudentCourseNotFoundException.cs" />
