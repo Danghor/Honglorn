@@ -18,10 +18,10 @@
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding Managers}" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentManager}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Student" Binding="{Binding Student}" />
-                <DataGridTextColumn Header="Course" Binding="{Binding Course}" />
-                <DataGridTextColumn Header="DateStart" Binding="{Binding DateStart}" />
-                <DataGridTextColumn Header="DateEnd" Binding="{Binding DateEnd}" />
+                <DataGridTextColumn Header="Student" Binding="{Binding StudentName}" />
+                <DataGridTextColumn Header="Course" Binding="{Binding CourseName}" />
+                <DataGridTextColumn Header="DateStart" Binding="{Binding DateStart, Converter={StaticResource DateTimeToDateStringConverter}}" />
+                <DataGridTextColumn Header="DateEnd" Binding="{Binding DateEnd, Converter={StaticResource DateTimeToDateStringConverter}}" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1">
@@ -31,7 +31,7 @@
         </StackPanel>
 
         <controls:Flyout Header="StudentCourse" IsModal="True" Position="Right" IsOpen="{Binding DetailViewIsVisible}" Grid.Row="0" Grid.RowSpan="2" Theme="Adapt">
-            <local:CourseDetailView DataContext="{Binding DetailViewModel}" />
+            <local:StudentCourseDetailView DataContext="{Binding DetailViewModel}" />
         </controls:Flyout>
     </Grid>
 </UserControl>

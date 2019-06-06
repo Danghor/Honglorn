@@ -7,21 +7,9 @@ namespace HonglornWPF.ViewModels
 {
     class StudentCourseDetailViewModel : DetailViewModel<IStudentCourseModel>, IStudentCourseModel
     {
-        Guid studentPKey;
+        public Guid StudentPKey => CurrentStudent?.Key ?? default;
 
-        public Guid StudentPKey
-        {
-            get => studentPKey;
-            set => OnPropertyChanged(out studentPKey, value);
-        }
-
-        Guid coursePKey;
-
-        public Guid CoursePKey
-        {
-            get => coursePKey;
-            set => OnPropertyChanged(out coursePKey, value);
-        }
+        public Guid CoursePKey => CurrentCourse?.Key ?? default;
 
         DateTime dateStart;
 
@@ -67,16 +55,16 @@ namespace HonglornWPF.ViewModels
 
         internal override void Clear()
         {
-            StudentPKey = default;
-            CoursePKey = default;
+            CurrentStudent = default;
+            CurrentCourse = default;
             DateStart = default;
             dateEnd = default;
         }
 
         internal override void CopyValues(IStudentCourseModel model)
         {
-            StudentPKey = model.StudentPKey;
-            CoursePKey = model.CoursePKey;
+            CurrentStudent = ValidStudents.SingleOrDefault(i => i.Key == model.StudentPKey);
+            CurrentCourse = ValidCourses.SingleOrDefault(i => i.Key == model.CoursePKey);
             DateStart = model.DateStart;
             DateEnd = model.DateEnd;
         }

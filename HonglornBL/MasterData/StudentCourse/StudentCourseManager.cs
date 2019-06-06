@@ -15,11 +15,15 @@ namespace HonglornBL.MasterData.StudentCourse
             set => SetValue((s, p) => s.StudentPKey = p, value);
         }
 
+        public string StudentName => GetValue(s => $"{s.Student.Forename} {s.Student.Surname}");
+
         public Guid CoursePKey
         {
             get => GetValue(s => s.CoursePKey);
             set => SetValue((s, p) => s.CoursePKey = p, value);
         }
+
+        public string CourseName => GetValue(s => s.Course.Name);
 
         public DateTime DateStart
         {
