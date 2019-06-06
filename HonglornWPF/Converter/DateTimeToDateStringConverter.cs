@@ -8,7 +8,7 @@ namespace HonglornWPF.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((DateTime)value).ToShortDateString();
+            return (value as DateTime?)?.ToShortDateString() ?? string.Empty;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
