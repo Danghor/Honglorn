@@ -31,10 +31,10 @@ namespace HonglornBL.MasterData.StudentCourse
             set => SetValue((student, dateStart) => student.DateStart = dateStart, value.Date);
         }
 
-        public DateTime DateEnd
+        public DateTime? DateEnd
         {
             get => GetValue(s => s.DateEnd);
-            set => SetValue((student, dateEnd) => student.DateEnd = dateEnd, value.Date);
+            set => SetValue((student, dateEnd) => student.DateEnd = dateEnd, value?.Date);
         }
 
         public void Update(IStudentCourseModel model)

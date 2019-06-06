@@ -26,6 +26,6 @@ namespace HonglornBL.Models.Entities
         [ForeignKey(nameof(CoursePKey))]
         public virtual Course Course { get; set; }
 
-        public DateTime DateEnd { get; set; }
+        public DateTime? DateEnd { get; set; }
     }
 }

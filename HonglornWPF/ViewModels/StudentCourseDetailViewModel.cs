@@ -19,9 +19,9 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out dateStart, value);
         }
 
-        DateTime dateEnd;
+        DateTime? dateEnd;
 
-        public DateTime DateEnd
+        public DateTime? DateEnd
         {
             get => dateEnd;
             set => OnPropertyChanged(out dateEnd, value);

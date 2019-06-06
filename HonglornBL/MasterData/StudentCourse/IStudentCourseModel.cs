@@ -7,6 +7,6 @@ namespace HonglornBL.MasterData.StudentCourse
         Guid StudentPKey { get; }
         Guid CoursePKey { get; }
         DateTime DateStart { get; }
-        DateTime DateEnd { get; }
+        DateTime? DateEnd { get; }
     }
 }
