@@ -152,6 +152,9 @@
     <Compile Include="Views\MasterData\StudentCourseDetailView.xaml.cs">
       <DependentUpon>StudentCourseDetailView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MasterData\StudentCourseListView.xaml.cs">
+      <DependentUpon>StudentCourseListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MasterData\StudentListView.xaml.cs">
       <DependentUpon>StudentListView.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\MasterData\StudentCourseDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MasterData\StudentCourseListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
