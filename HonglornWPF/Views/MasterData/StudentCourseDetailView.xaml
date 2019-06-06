@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="HonglornWPF.Views.MasterData.StudentCourseDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:HonglornWPF.Views.MasterData"
+             xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance viewModels:StudentCourseDetailViewModel}">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Student" Grid.Column="0" Margin="5"/>
+            <ComboBox ItemsSource="{Binding ValidStudents}" DisplayMemberPath="Value" SelectedItem="{Binding CurrentStudent}" Grid.Column="1" Margin="5"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Course" Grid.Column="0" Margin="5"/>
+            <ComboBox ItemsSource="{Binding ValidCourses}" DisplayMemberPath="Value" SelectedItem="{Binding CurrentCourse}" Grid.Column="1" Margin="5"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="DateStart" Grid.Column="0" Margin="5"/>
+            <DatePicker SelectedDate="{Binding DateStart}" Grid.Column="1"/>
+        </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="DateEnd" Grid.Column="0" Margin="5"/>
+            <DatePicker SelectedDate="{Binding DateEnd}" Grid.Column="1"/>
+        </Grid>
+        <Button Content="Accept" Command="{Binding AcceptCommand}" Margin="5" />
+        <Button Content="Cancel" Command="{Binding CancelCommand}" Margin="5" />
+    </StackPanel>
+</UserControl>
