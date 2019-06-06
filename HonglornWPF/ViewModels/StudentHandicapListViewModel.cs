@@ -12,5 +12,7 @@ namespace HonglornWPF.ViewModels
 
             RefreshViewModel();
         }
+
+        public override string ToString() => "Student Handicaps";
     }
 }

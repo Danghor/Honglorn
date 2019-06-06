@@ -13,5 +13,7 @@ namespace HonglornWPF.ViewModels
 
             RefreshViewModel();
         }
+
+        public override string ToString() => "Classes";
     }
 }
