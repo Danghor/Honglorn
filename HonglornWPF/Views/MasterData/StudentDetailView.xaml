@@ -12,37 +12,30 @@
     <StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Surname" Grid.Column="0" Margin="5"/>
-            <TextBox Text="{Binding Surname}" Grid.Column="1" Margin="5"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Surname" Grid.Column="0" Grid.Row="0" Margin="2"/>
+            <TextBox Text="{Binding Surname}" Grid.Column="1" Grid.Row="0" Margin="2"/>
+
+            <TextBlock Text="Forename" Grid.Column="0" Grid.Row="1" Margin="2"/>
+            <TextBox Text="{Binding Forename}" Grid.Column="1" Grid.Row="1" Margin="2"/>
+
+            <TextBlock Text="Sex" Grid.Column="0" Grid.Row="2" Margin="2"/>
+            <ComboBox ItemsSource="{Binding Source={extension:EnumBindingSource {x:Type enum:Sex}}}" SelectedValue="{Binding Sex}" Grid.Column="1" Grid.Row="2" Margin="2"/>
+
+            <TextBlock Text="Date Of Birth" Grid.Column="0" Grid.Row="3" Margin="2"/>
+            <DatePicker SelectedDate="{Binding DateOfBirth}" Grid.Column="1" Grid.Row="3" Margin="2"/>
         </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Forename" Grid.Column="0" Margin="5"/>
-            <TextBox Text="{Binding Forename}" Grid.Column="1" Margin="5"/>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Sex" Grid.Column="0" Margin="5"/>
-            <ComboBox ItemsSource="{Binding Source={extension:EnumBindingSource {x:Type enum:Sex}}}" SelectedValue="{Binding Sex}" Grid.Column="1" Margin="5"/>
-        </Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Date Of Birth" Grid.Column="0" Margin="5"/>
-            <DatePicker SelectedDate="{Binding DateOfBirth}" Grid.Column="1" Margin="5"/>
-        </Grid>
-        <Button Content="Accept" Command="{Binding AcceptCommand}" Margin="5" />
-        <Button Content="Cancel" Command="{Binding CancelCommand}" Margin="5" />
+
+        <Button Content="Accept" Command="{Binding AcceptCommand}" Margin="2" />
+        <Button Content="Cancel" Command="{Binding CancelCommand}" Margin="2" />
     </StackPanel>
 </UserControl>
