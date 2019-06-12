@@ -1,4 +1,6 @@
 ﻿using HonglornBL;
+using HonglornBL.Game;
+using System.Linq;
 
 namespace HonglornWPF.ViewModels
 {
@@ -11,6 +13,5 @@ namespace HonglornWPF.ViewModels
             get => gameCollection;
             set => OnPropertyChanged(out gameCollection, value);
         }
-
     }
 }

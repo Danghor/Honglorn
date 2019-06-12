@@ -93,6 +93,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\GameManager.cs" />
+    <Compile Include="Game\IGameManager.cs" />
     <Compile Include="IEntityManager.cs" />
     <Compile Include="IEntityService.cs" />
     <Compile Include="MasterData\Class\ClassManager.cs" />

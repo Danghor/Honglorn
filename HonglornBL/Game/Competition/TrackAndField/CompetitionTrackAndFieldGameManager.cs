@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using HonglornBL.Game;
 using HonglornBL.Games.Competition.TrackAndField;
 using HonglornBL.Models.Framework;
 
 namespace HonglornBL
 {
-    public class CompetitionTrackAndFieldGameManager : EntityManager<CompetitionTrackAndFieldGame>
+    public class CompetitionTrackAndFieldGameManager : GameManager<CompetitionTrackAndFieldGame, CompetitionTrackAndFieldPerformance>
     {
         internal CompetitionTrackAndFieldGameManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 

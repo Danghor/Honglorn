@@ -1,4 +1,5 @@
-﻿using HonglornBL.Games.Traditional.TrackAndField;
+﻿using HonglornBL.Game;
+using HonglornBL.Games.Traditional.TrackAndField;
 using HonglornBL.Models.Framework;
 using System;
 using System.Collections.Generic;
@@ -7,21 +8,9 @@ using System.Linq;
 
 namespace HonglornBL
 {
-    public class TraditionalTrackAndFieldGameManager : EntityManager<TraditionalTrackAndFieldGame>
+    public class TraditionalTrackAndFieldGameManager : GameManager<TraditionalTrackAndFieldGame, TraditionalTrackAndFieldPerformance>
     {
         internal TraditionalTrackAndFieldGameManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
-
-        public string GameName
-        {
-            get => GetValue(g => g.Name);
-            set => SetValue((game, name) => game.Name = name, value);
-        }
-
-        public DateTime GameDate
-        {
-            get => GetValue(g => g.Date);
-            set => SetValue((game, date) => game.Date = date, value);
-        }
 
         protected override Exception CreateNotFoundException(string message)
         {
