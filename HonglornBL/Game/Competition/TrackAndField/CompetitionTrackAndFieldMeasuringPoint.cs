@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using HonglornBL.Models.Entities;
 
-namespace HonglornBL.Games.Competition.TrackAndField
+namespace HonglornBL.Game.Competition.TrackAndField
 {
     public class CompetitionTrackAndFieldMeasuringPoint : MeasuringPoint<CompetitionTrackAndFieldDiscipline>
     {

@@ -1,12 +1,10 @@
-﻿using HonglornBL.Interfaces;
-using HonglornBL.Models.Entities;
-using HonglornBL.Models.Framework;
-using System;
+﻿using System;
 using System.Data.Entity;
+using HonglornBL.Models.Framework;
 
-namespace HonglornBL
+namespace HonglornBL.MasterData.Class
 {
-    public sealed class ClassService : EntityService<ClassManager, Class, IClassModel>
+    public sealed class ClassService : EntityService<ClassManager, Models.Entities.Class, IClassModel>
     {
         internal ClassService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
@@ -15,14 +13,14 @@ namespace HonglornBL
             return new ClassManager(pKey, contextFactory);
         }
 
-        protected override IDbSet<Class> GetDbSet(HonglornDb context)
+        protected override IDbSet<Models.Entities.Class> GetDbSet(HonglornDb context)
         {
             return context.Class;
         }
 
-        protected override Class CreateEntity(IClassModel model)
+        protected override Models.Entities.Class CreateEntity(IClassModel model)
         {
-            return new Class
+            return new Models.Entities.Class
             {
                 Name = model.Name
             };

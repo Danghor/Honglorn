@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HonglornBL.Games.Traditional.TrackAndField
+namespace HonglornBL.Game.Traditional.TrackAndField
 {
     public abstract class TraditionalTrackAndFieldRunningDiscipline : TraditionalTrackAndFieldDiscipline
     {

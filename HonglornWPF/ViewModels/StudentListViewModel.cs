@@ -1,5 +1,4 @@
-﻿using HonglornBL;
-using HonglornBL.Models.Entities;
+﻿using HonglornBL.MasterData.Student;
 
 namespace HonglornWPF.ViewModels
 {

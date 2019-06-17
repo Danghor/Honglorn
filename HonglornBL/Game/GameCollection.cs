@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using HonglornBL.Game.Competition.TrackAndField;
+using HonglornBL.Game.Traditional.TrackAndField;
 
-namespace HonglornBL
+namespace HonglornBL.Game
 {
     public class GameCollection
     {

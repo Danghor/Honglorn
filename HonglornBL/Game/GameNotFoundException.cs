@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HonglornBL
+namespace HonglornBL.Game
 {
     public class GameNotFoundException : Exception
     {

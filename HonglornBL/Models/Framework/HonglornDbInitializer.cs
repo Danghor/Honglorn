@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.IO;
 using System.Xml.Serialization;
-using HonglornBL.Games.Traditional.TrackAndField;
+using HonglornBL.Game.Traditional.TrackAndField;
 using HonglornBL.Models.Entities;
 using HonglornBL.Properties;
 

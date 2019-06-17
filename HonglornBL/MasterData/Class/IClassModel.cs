@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HonglornBL.Interfaces
+namespace HonglornBL.MasterData.Class
 {
     public interface IClassModel
     {

@@ -1,4 +1,4 @@
-﻿namespace HonglornBL
+﻿namespace HonglornBL.Import
 {
     public class ProgressReport
     {

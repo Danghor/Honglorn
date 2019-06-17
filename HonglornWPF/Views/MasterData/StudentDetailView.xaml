@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:HonglornWPF.Views.MasterData"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
              xmlns:extension="clr-namespace:HonglornWPF.Extensions"
-             xmlns:enum="clr-namespace:HonglornBL.Enums;assembly=HonglornBL"
+             xmlns:enum="clr-namespace:HonglornBL.MasterData;assembly=HonglornBL"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance viewModels:StudentDetailViewModel}">
     <StackPanel>

@@ -1,13 +1,10 @@
-﻿using HonglornBL.Exceptions;
-using HonglornBL.Interfaces;
-using HonglornBL.Models.Entities;
-using HonglornBL.Models.Framework;
-using System;
+﻿using System;
 using System.Data.Entity;
+using HonglornBL.Models.Framework;
 
-namespace HonglornBL
+namespace HonglornBL.MasterData.Class
 {
-    public class ClassManager : EntityManager<Class>, IClassModel, IEntityManager<IClassModel>
+    public class ClassManager : EntityManager<Models.Entities.Class>, IClassModel, IEntityManager<IClassModel>
     {
         internal ClassManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -22,7 +19,7 @@ namespace HonglornBL
             private set => SetValue((@class, name) => @class.Name = name, value);
         }
 
-        protected override DbSet<Class> GetDbSet(HonglornDb db) => db.Class;
+        protected override DbSet<Models.Entities.Class> GetDbSet(HonglornDb db) => db.Class;
 
         protected override Exception CreateNotFoundException(string message) => new ClassNotFoundException(message);
     }

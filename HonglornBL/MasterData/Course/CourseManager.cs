@@ -1,12 +1,10 @@
-﻿using HonglornBL.Exceptions;
-using HonglornBL.Models.Entities;
-using HonglornBL.Models.Framework;
-using System;
+﻿using System;
 using System.Data.Entity;
+using HonglornBL.Models.Framework;
 
-namespace HonglornBL
+namespace HonglornBL.MasterData.Course
 {
-    public class CourseManager : EntityManager<Course>, ICourseModel, IEntityManager<ICourseModel>
+    public class CourseManager : EntityManager<Models.Entities.Course>, ICourseModel, IEntityManager<ICourseModel>
     {
         internal CourseManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -35,6 +33,6 @@ namespace HonglornBL
 
         protected override Exception CreateNotFoundException(string message) => new CourseNotFoundException(message);
 
-        protected override DbSet<Course> GetDbSet(HonglornDb db) => db.Course;
+        protected override DbSet<Models.Entities.Course> GetDbSet(HonglornDb db) => db.Course;
     }
 }

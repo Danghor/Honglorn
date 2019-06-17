@@ -1,9 +1,8 @@
-﻿using HonglornBL.Games.Competition.TrackAndField;
-using HonglornBL.Models.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using HonglornBL.Models.Entities;
 
-namespace HonglornBL
+namespace HonglornBL.Game.Competition.TrackAndField
 {
     public class CompetitionTrackAndFieldGame : Game<CompetitionTrackAndFieldPerformance>
     {

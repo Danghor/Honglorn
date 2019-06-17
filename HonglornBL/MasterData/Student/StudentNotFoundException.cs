@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HonglornBL.Exceptions
+namespace HonglornBL.MasterData.Student
 {
     public class StudentNotFoundException : Exception
     {

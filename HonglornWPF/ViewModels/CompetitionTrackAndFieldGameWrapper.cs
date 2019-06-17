@@ -1,5 +1,5 @@
 ﻿using System;
-using HonglornBL;
+using HonglornBL.Game.Competition.TrackAndField;
 
 namespace HonglornWPF.ViewModels
 {

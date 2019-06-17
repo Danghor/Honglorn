@@ -1,11 +1,11 @@
-﻿using HonglornBL.Models.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using HonglornBL.Models.Framework;
 
-namespace HonglornBL.Games.Competition.TrackAndField
+namespace HonglornBL.Game.Competition.TrackAndField
 {
     // Todo: Ensure that students in the same group are of the same sex
     public class CompetitionTrackAndFieldEvaluationGroup

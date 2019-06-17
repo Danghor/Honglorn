@@ -1,13 +1,10 @@
-﻿using HonglornBL.Enums;
-using HonglornBL.Exceptions;
-using HonglornBL.Models.Entities;
-using HonglornBL.Models.Framework;
-using System;
+﻿using System;
 using System.Data.Entity;
+using HonglornBL.Models.Framework;
 
-namespace HonglornBL
+namespace HonglornBL.MasterData.Student
 {
-    public class StudentManager : EntityManager<Student>, IStudentModel, IEntityManager<IStudentModel>
+    public class StudentManager : EntityManager<Models.Entities.Student>, IStudentModel, IEntityManager<IStudentModel>
     {
         internal StudentManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -45,6 +42,6 @@ namespace HonglornBL
 
         protected override Exception CreateNotFoundException(string message) => new StudentNotFoundException(message);
 
-        protected override DbSet<Student> GetDbSet(HonglornDb db) => db.Student;
+        protected override DbSet<Models.Entities.Student> GetDbSet(HonglornDb db) => db.Student;
     }
 }

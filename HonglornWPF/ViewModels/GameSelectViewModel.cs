@@ -1,7 +1,7 @@
-﻿using HonglornBL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using HonglornBL.Game;
 
 namespace HonglornWPF.ViewModels
 {

@@ -1,12 +1,10 @@
-﻿using HonglornBL.Game;
-using HonglornBL.Games.Traditional.TrackAndField;
-using HonglornBL.Models.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using HonglornBL.Models.Framework;
 
-namespace HonglornBL
+namespace HonglornBL.Game.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldGameManager : GameManager<TraditionalTrackAndFieldGame, TraditionalTrackAndFieldPerformance>
     {

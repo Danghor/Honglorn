@@ -1,7 +1,7 @@
-﻿using HonglornBL.Models.Entities;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using HonglornBL.Models.Entities;
 
-namespace HonglornBL.Games.Competition.TrackAndField
+namespace HonglornBL.Game.Competition.TrackAndField
 {
     public class CompetitionTrackAndFieldDiscipline : Discipline
     {

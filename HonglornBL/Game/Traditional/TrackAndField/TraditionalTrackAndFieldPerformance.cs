@@ -1,9 +1,8 @@
-﻿using HonglornBL.Enums;
+﻿using System.Linq;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
-using System.Linq;
 
-namespace HonglornBL.Games.Traditional.TrackAndField
+namespace HonglornBL.Game.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldPerformance : GamePerformance<TraditionalTrackAndFieldMeasuringPoint, TraditionalTrackAndFieldDiscipline, TraditionalTrackAndFieldPerformance>
     {

@@ -1,12 +1,12 @@
-﻿using HonglornBL.Enums;
-using HonglornBL.Models.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Xml.Serialization;
+using HonglornBL.MasterData;
+using HonglornBL.Models.Entities;
 
-namespace HonglornBL.Games.Traditional.TrackAndField
+namespace HonglornBL.Game.Traditional.TrackAndField
 {
     public abstract class TraditionalTrackAndFieldDiscipline : Discipline
     {

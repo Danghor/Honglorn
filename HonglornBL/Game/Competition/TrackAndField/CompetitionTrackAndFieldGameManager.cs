@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using HonglornBL.Game;
-using HonglornBL.Games.Competition.TrackAndField;
 using HonglornBL.Models.Framework;
 
-namespace HonglornBL
+namespace HonglornBL.Game.Competition.TrackAndField
 {
     public class CompetitionTrackAndFieldGameManager : GameManager<CompetitionTrackAndFieldGame, CompetitionTrackAndFieldPerformance>
     {

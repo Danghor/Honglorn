@@ -1,9 +1,6 @@
-﻿using HonglornBL.Enums;
-using HonglornBL.Models.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
+using HonglornBL.MasterData;
+using HonglornBL.MasterData.Student;
 
 namespace HonglornWPF.ViewModels
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HonglornBL
+namespace HonglornBL.MasterData.Course
 {
     public interface ICourseModel
     {

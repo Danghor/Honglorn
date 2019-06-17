@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace HonglornBL
+namespace HonglornBL.MasterData.Handicap
 {
     [Serializable]
     internal class HandicapNotFoundException : Exception

@@ -1,9 +1,9 @@
-﻿using HonglornBL.Models.Entities;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HonglornBL.Models.Entities;
 
-namespace HonglornBL.Games.Competition.TrackAndField
+namespace HonglornBL.Game.Competition.TrackAndField
 {
     public class CompetitionTrackAndFieldEvaluationGroupStudent
     {

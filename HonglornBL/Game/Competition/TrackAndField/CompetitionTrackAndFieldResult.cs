@@ -1,7 +1,6 @@
-﻿using HonglornBL.Enums;
-using HonglornBL.Models.Entities;
+﻿using HonglornBL.Models.Entities;
 
-namespace HonglornBL.Games.Competition.TrackAndField
+namespace HonglornBL.Game.Competition.TrackAndField
 {
     public class CompetitionTrackAndFieldResult
     {

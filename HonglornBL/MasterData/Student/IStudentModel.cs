@@ -1,7 +1,6 @@
-﻿using HonglornBL.Enums;
-using System;
+﻿using System;
 
-namespace HonglornBL.Models.Entities
+namespace HonglornBL.MasterData.Student
 {
     public interface IStudentModel
     {

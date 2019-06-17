@@ -1,11 +1,10 @@
-﻿using HonglornBL.Models.Entities;
-using HonglornBL.Models.Framework;
-using System;
+﻿using System;
 using System.Data.Entity;
+using HonglornBL.Models.Framework;
 
-namespace HonglornBL
+namespace HonglornBL.MasterData.Handicap
 {
-    public class HandicapManager : EntityManager<Handicap>, IHandicapModel
+    public class HandicapManager : EntityManager<Models.Entities.Handicap>, IHandicapModel
     {
         internal HandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -17,6 +16,6 @@ namespace HonglornBL
 
         protected override Exception CreateNotFoundException(string message) => new HandicapNotFoundException(message);
 
-        protected override DbSet<Handicap> GetDbSet(HonglornDb db) => db.Handicap;
+        protected override DbSet<Models.Entities.Handicap> GetDbSet(HonglornDb db) => db.Handicap;
     }
 }

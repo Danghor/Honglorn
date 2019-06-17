@@ -1,4 +1,4 @@
-﻿namespace HonglornBL
+﻿namespace HonglornBL.MasterData.Handicap
 {
     public interface IHandicapModel
     {

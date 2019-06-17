@@ -1,9 +1,8 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using HonglornBL.Models.Entities;
 
-namespace HonglornBL
+namespace HonglornBL.Models.Entities
 {
     // Todo: Check whether it makes sense to always save a discipline here, since for a competition, the discipline would rather belong to the evaluationgroup
     public abstract class MeasuringPoint<TDiscipline> : IEntity where TDiscipline : Discipline

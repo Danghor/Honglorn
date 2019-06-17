@@ -1,5 +1,4 @@
-﻿using HonglornBL;
-using HonglornBL.Interfaces;
+﻿using HonglornBL.MasterData.Class;
 
 namespace HonglornWPF.ViewModels
 {

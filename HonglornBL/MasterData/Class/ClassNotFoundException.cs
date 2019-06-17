@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HonglornBL.Exceptions
+namespace HonglornBL.MasterData.Class
 {
     public sealed class ClassNotFoundException : Exception
     {

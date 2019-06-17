@@ -1,4 +1,4 @@
-﻿using HonglornBL;
+﻿using HonglornBL.MasterData.Course;
 
 namespace HonglornWPF.ViewModels
 {

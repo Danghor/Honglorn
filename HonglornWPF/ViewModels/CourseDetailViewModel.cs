@@ -1,7 +1,7 @@
-﻿using HonglornBL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using HonglornBL.MasterData.Course;
 
 namespace HonglornWPF.ViewModels
 {

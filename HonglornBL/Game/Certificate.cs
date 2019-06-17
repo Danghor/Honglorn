@@ -1,4 +1,4 @@
-﻿namespace HonglornBL.Enums
+﻿namespace HonglornBL.Game
 {
     public enum CertificateType
     {

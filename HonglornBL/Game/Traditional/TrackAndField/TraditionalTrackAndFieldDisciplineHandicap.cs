@@ -1,10 +1,9 @@
-﻿using HonglornBL.Enums;
-using HonglornBL.Models.Entities;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HonglornBL.Models.Entities;
 
-namespace HonglornBL.Games.Traditional.TrackAndField
+namespace HonglornBL.Game.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldDisciplineHandicap
     {

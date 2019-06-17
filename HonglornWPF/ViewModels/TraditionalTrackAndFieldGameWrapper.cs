@@ -1,11 +1,11 @@
 ﻿using System;
-using HonglornBL;
+using HonglornBL.Game.Traditional.TrackAndField;
 
 namespace HonglornWPF.ViewModels
 {
-    class CompetitionTrackAndFieldGameWrapper : GameWrapper<CompetitionTrackAndFieldGameManager>
+    class TraditionalTrackAndFieldGameWrapper : GameWrapper<TraditionalTrackAndFieldGameManager>
     {
-        public CompetitionTrackAndFieldGameWrapper(CompetitionTrackAndFieldGameManager manager) : base(manager) { }
+        public TraditionalTrackAndFieldGameWrapper(TraditionalTrackAndFieldGameManager manager) : base(manager) { }
 
         public override string Name => manager.Name;
 

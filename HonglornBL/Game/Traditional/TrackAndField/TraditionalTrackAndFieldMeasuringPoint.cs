@@ -1,6 +1,6 @@
 ﻿using HonglornBL.Models.Entities;
 
-namespace HonglornBL.Games.Traditional.TrackAndField
+namespace HonglornBL.Game.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldMeasuringPoint : MeasuringPoint<TraditionalTrackAndFieldDiscipline>
     {
