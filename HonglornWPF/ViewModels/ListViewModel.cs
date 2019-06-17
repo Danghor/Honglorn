@@ -49,25 +49,25 @@ namespace HonglornWPF.ViewModels
             ClearAndFill(Managers, managers);
         }
 
-        protected void Create()
+        void Create()
         {
             service.Create(DetailViewModel);
             RefreshViewModel();
         }
 
-        protected void Update()
+        void Update()
         {
             CurrentManager.Update(DetailViewModel);
             RefreshViewModel();
         }
 
-        protected void Delete()
+        void Delete()
         {
             service.Delete(CurrentManager);
             RefreshViewModel();
         }
 
-        protected void OpenDetailViewForCreate()
+        void OpenDetailViewForCreate()
         {
             DetailViewModel.Clear();
             DetailViewModel.AcceptCommand = new RelayCommand(() => { Create(); DetailViewIsVisible = false; });
@@ -75,7 +75,7 @@ namespace HonglornWPF.ViewModels
             DetailViewIsVisible = true;
         }
 
-        protected void OpenDetailViewForEdit()
+        void OpenDetailViewForEdit()
         {
             DetailViewModel.CopyValues(CurrentManager);
             DetailViewModel.AcceptCommand = new RelayCommand(() => { Update(); DetailViewIsVisible = false; });
