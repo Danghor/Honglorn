@@ -143,8 +143,8 @@
     <Compile Include="ViewModels\StudentHandicapDetailViewModel.cs" />
     <Compile Include="ViewModels\StudentHandicapListViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
-    <Compile Include="ViewModels\TraditionalTrackAndFieldGameWrapper - Copy.cs" />
     <Compile Include="ViewModels\TraditionalTrackAndFieldGameWrapper.cs" />
+    <Compile Include="ViewModels\CompetitionTrackAndFieldGameWrapper.cs" />
     <Compile Include="Views\GameSelectView.xaml.cs">
       <DependentUpon>GameSelectView.xaml</DependentUpon>
     </Compile>
