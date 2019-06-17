@@ -10,15 +10,8 @@
         <viewModels:GameSelectViewModel />
     </UserControl.DataContext>
 
-    <ListBox>
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <StackPanel>
-                    <TextBlock Text="{Binding Path=TaskName}" />
-                    <TextBlock Text="{Binding Path=Description}"/>
-                    <TextBlock Text="{Binding Path=Priority}"/>
-                </StackPanel>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
+    <DataGrid ItemsSource="{Binding Wrappers}">
+
+    </DataGrid>
+
 </UserControl>

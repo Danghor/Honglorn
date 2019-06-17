@@ -52,7 +52,7 @@
                     <views:MasterDataView />
                 </TabItem>
                 <TabItem Header="Spiele">
-
+                    <views:GameSelectView />
                 </TabItem>
             </controls:MetroAnimatedSingleRowTabControl>
         </Grid>

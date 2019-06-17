@@ -132,6 +132,8 @@
     <Compile Include="ViewModels\CourseDetailViewModel.cs" />
     <Compile Include="ViewModels\CourseListViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
+    <Compile Include="ViewModels\GameWrapper.cs" />
+    <Compile Include="ViewModels\IGameWrapper.cs" />
     <Compile Include="ViewModels\ListViewModel.cs" />
     <Compile Include="ViewModels\GameSelectViewModel.cs" />
     <Compile Include="ViewModels\MasterDataViewModel.cs" />
@@ -141,6 +143,8 @@
     <Compile Include="ViewModels\StudentHandicapDetailViewModel.cs" />
     <Compile Include="ViewModels\StudentHandicapListViewModel.cs" />
     <Compile Include="ViewModels\StudentListViewModel.cs" />
+    <Compile Include="ViewModels\TraditionalTrackAndFieldGameWrapper - Copy.cs" />
+    <Compile Include="ViewModels\TraditionalTrackAndFieldGameWrapper.cs" />
     <Compile Include="Views\GameSelectView.xaml.cs">
       <DependentUpon>GameSelectView.xaml</DependentUpon>
     </Compile>
