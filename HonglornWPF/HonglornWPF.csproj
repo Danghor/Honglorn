@@ -145,6 +145,7 @@
     <Compile Include="ViewModels\StudentListViewModel.cs" />
     <Compile Include="ViewModels\TraditionalTrackAndFieldGameWrapper.cs" />
     <Compile Include="ViewModels\CompetitionTrackAndFieldGameWrapper.cs" />
+    <Compile Include="ViewModels\TraditionalTrackAndFieldViewModel.cs" />
     <Compile Include="Views\GameSelectView.xaml.cs">
       <DependentUpon>GameSelectView.xaml</DependentUpon>
     </Compile>
