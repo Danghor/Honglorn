@@ -10,5 +10,7 @@ namespace HonglornWPF.ViewModels
         public override string Name => manager.Name;
 
         public override DateTime Date => manager.Date;
+
+        public override ViewModel CreateViewModel() => new CompetitionTrackAndFieldViewModel();
     }
 }

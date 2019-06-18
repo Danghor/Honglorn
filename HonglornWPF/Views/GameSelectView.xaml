@@ -8,7 +8,7 @@
              mc:Ignorable="d"
               d:DataContext="{d:DesignInstance viewModels:GameSelectViewModel}">
     <StackPanel>
-        <DataGrid ItemsSource="{Binding Wrappers}" CurrentItem="{Binding CurrentWrapper}" />
-        <Button Content="Edit Game" Command="{Binding SelectGameCommand}" />
+        <DataGrid ItemsSource="{Binding Wrappers}" SelectedItem="{Binding CurrentWrapper}" />
+        <Button Content="Edit Game" Command="{Binding SelectGameCommand}" IsEnabled="{Binding CurrentWrapper, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
     </StackPanel>
 </UserControl>

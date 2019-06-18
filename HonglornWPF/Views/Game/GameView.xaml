@@ -11,14 +11,18 @@
     <UserControl.DataContext>
         <viewModels:GameViewModel />
     </UserControl.DataContext>
-    <ContentControl Content="{Binding CurrentViewModel}">
-        <ContentControl.Resources>
-            <DataTemplate DataType="{x:Type viewModels:GameSelectViewModel}">
-                <views:GameSelectView />
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type viewModels:TraditionalTrackAndFieldViewModel}">
-                <local:TraditionalTrackAndFieldView />
-            </DataTemplate>
-        </ContentControl.Resources>
-    </ContentControl>
+    <StackPanel>
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewModels:GameSelectViewModel}">
+                    <views:GameSelectView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:TraditionalTrackAndFieldViewModel}">
+                    <local:TraditionalTrackAndFieldView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+        <!-- TODO: Hide Button when we are already in the overview -->
+        <Button Content="Back To Overview" Command="{Binding GameSelectCommand}" />
+    </StackPanel>
 </UserControl>

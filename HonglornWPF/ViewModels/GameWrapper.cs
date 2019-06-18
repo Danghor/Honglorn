@@ -13,5 +13,7 @@ namespace HonglornWPF.ViewModels
 
         public abstract string Name { get; }
         public abstract DateTime Date { get; }
+
+        public abstract ViewModel CreateViewModel();
     }
 }

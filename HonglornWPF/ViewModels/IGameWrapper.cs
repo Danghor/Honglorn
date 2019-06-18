@@ -6,5 +6,6 @@ namespace HonglornWPF.ViewModels
     {
         string Name { get; }
         DateTime Date { get; }
+        ViewModel CreateViewModel();
     }
 }
