@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Managers}" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" Grid.Row="0" SelectedItem="{Binding CurrentManager}">
+        <DataGrid ItemsSource="{Binding Managers}" SelectedItem="{Binding CurrentManager}" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" Grid.Row="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Student" Binding="{Binding StudentName}" />
                 <DataGridTextColumn Header="Handicap" Binding="{Binding HandicapName}" />
