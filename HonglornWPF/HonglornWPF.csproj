@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\CourseDetailViewModel.cs" />
     <Compile Include="ViewModels\CourseListViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />
+    <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\GameWrapper.cs" />
     <Compile Include="ViewModels\IGameWrapper.cs" />
     <Compile Include="ViewModels\ListViewModel.cs" />
@@ -156,6 +157,12 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
+    <Compile Include="Views\Game\GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Game\TraditionalTrackAndFieldView.xaml.cs">
+      <DependentUpon>TraditionalTrackAndFieldView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MasterData\StudentCourseDetailView.xaml.cs">
       <DependentUpon>StudentCourseDetailView.xaml</DependentUpon>
     </Compile>
@@ -205,6 +212,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Game\GameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Game\TraditionalTrackAndFieldView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MasterData\StudentCourseDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
