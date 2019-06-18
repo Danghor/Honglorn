@@ -5,19 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF.Views.Game"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             xmlns:views="clr-namespace:HonglornWPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <viewModels:GameViewModel />
     </UserControl.DataContext>
-    <StackPanel>
-        <ContentControl Content="{Binding CurrentGameViewModel}">
-            <ContentControl.Resources>
-                <!--<DataTemplate DataType="{x:Type viewModels:ClassListViewModel}">
-                <masterData:ClassListView />
-            </DataTemplate>-->
-            </ContentControl.Resources>
-        </ContentControl>
-        <Button Content="Game Select" Command="{Binding GameSelectCommand}" />
-    </StackPanel>
+    <ContentControl Content="{Binding CurrentViewModel}">
+        <ContentControl.Resources>
+            <DataTemplate DataType="{x:Type viewModels:GameSelectViewModel}">
+                <views:GameSelectView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModels:TraditionalTrackAndFieldViewModel}">
+                <local:TraditionalTrackAndFieldView />
+            </DataTemplate>
+        </ContentControl.Resources>
+    </ContentControl>
 </UserControl>

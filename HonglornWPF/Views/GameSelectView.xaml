@@ -5,13 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HonglornWPF"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
-             mc:Ignorable="d">
-    <UserControl.DataContext>
-        <viewModels:GameSelectViewModel />
-    </UserControl.DataContext>
-
-    <DataGrid ItemsSource="{Binding Wrappers}">
-
-    </DataGrid>
-
+             mc:Ignorable="d"
+              d:DataContext="{d:DesignInstance viewModels:GameSelectViewModel}">
+    <StackPanel>
+        <DataGrid ItemsSource="{Binding Wrappers}" CurrentItem="{Binding CurrentWrapper}" />
+        <Button Content="Edit Game" Command="{Binding SelectGameCommand}" />
+    </StackPanel>
 </UserControl>

@@ -10,18 +10,21 @@
     <UserControl.DataContext>
         <viewModels:TraditionalTrackAndFieldViewModel />
     </UserControl.DataContext>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" ItemsSource="{Binding ViewModels}" SelectedItem="{Binding CurrentPageViewModel}" />
-        <ContentControl Content="{Binding CurrentPageViewModel}" Grid.Column="1" >
-            <ContentControl.Resources>
-                <!--<DataTemplate DataType="{x:Type viewModels:ClassListViewModel}">
+    <StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <ListView Grid.Column="0" ItemsSource="{Binding ViewModels}" SelectedItem="{Binding CurrentPageViewModel}" />
+            <ContentControl Content="{Binding CurrentPageViewModel}" Grid.Column="1" >
+                <ContentControl.Resources>
+                    <!--<DataTemplate DataType="{x:Type viewModels:ClassListViewModel}">
                     <masterData:ClassListView />
                 </DataTemplate>-->
-            </ContentControl.Resources>
-        </ContentControl>
-    </Grid>
+                </ContentControl.Resources>
+            </ContentControl>
+        </Grid>
+        <Button Content="Game Select" Command="{Binding GameSelectCommand}" />
+    </StackPanel>
 </UserControl>

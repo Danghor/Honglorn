@@ -2,20 +2,17 @@
 {
     class GameViewModel : ViewModel
     {
-        ViewModel gameSelectViewModel;
+        ViewModel currentViewModel;
 
-        public ViewModel GameSelectViewModel
+        public ViewModel CurrentViewModel
         {
-            get => gameSelectViewModel;
-            set => OnPropertyChanged(out gameSelectViewModel, value);
+            get => currentViewModel;
+            set => OnPropertyChanged(out currentViewModel, value);
         }
 
-        ViewModel currentGameViewModel;
-
-        public ViewModel CurrentGameViewModel
+        public GameViewModel()
         {
-            get => currentGameViewModel;
-            set => OnPropertyChanged(out currentGameViewModel, value);
+            CurrentViewModel = new GameSelectViewModel();
         }
     }
 }
