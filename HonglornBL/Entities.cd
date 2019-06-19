@@ -92,16 +92,6 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="HonglornBL.CompetitionTrackAndFieldGame">
-    <Position X="5.5" Y="10.5" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
-      <FileName>Games\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="EvaluationGroups" />
-    </ShowAsCollectionAssociation>
-  </Class>
   <Class Name="HonglornBL.Models.Entities.MeasuringPoint&lt;TDiscipline&gt;">
     <Position X="20.5" Y="5.75" Width="2.25" />
     <TypeIdentifier>
@@ -192,11 +182,21 @@
       <Property Name="Student" />
     </ShowAsAssociation>
   </Class>
-  <Enum Name="HonglornBL.Enums.CertificateType">
-    <Position X="20.75" Y="10" Width="1.5" />
+  <Class Name="HonglornBL.Game.Competition.TrackAndField.CompetitionTrackAndFieldGame">
+    <Position X="5.5" Y="10.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Game\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="EvaluationGroups" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Enum Name="HonglornBL.Game.CertificateType">
+    <Position X="20.75" Y="10" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACAAAAABAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
-      <FileName>Enums\Certificate.cs</FileName>
+      <FileName>Game\CertificateType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

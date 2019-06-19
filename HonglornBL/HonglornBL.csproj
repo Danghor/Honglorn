@@ -141,7 +141,7 @@
     <Compile Include="MasterData\Student\IStudentModel.cs" />
     <Compile Include="Models\Entities\MeasuringPoint.cs" />
     <Compile Include="Game\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs" />
-    <Compile Include="Game\Certificate.cs" />
+    <Compile Include="Game\CertificateType.cs" />
     <Compile Include="MasterData\Sex.cs" />
     <Compile Include="MasterData\Course\CourseNotFoundException.cs" />
     <Compile Include="MasterData\Class\DuplicateClassException.cs" />
