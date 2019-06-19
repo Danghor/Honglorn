@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 using HonglornBL.MasterData;
 using HonglornBL.MasterData.Student;
+using HonglornBL.MasterData.StudentCourse;
 
 namespace HonglornWPF.ViewModels
 {
@@ -38,6 +41,24 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out dateOfBirth, value);
         }
 
+        public ObservableCollection<IStudentCourseModel> StudentCourses { get; set; } = new ObservableCollection<IStudentCourseModel>();
+
+        IStudentCourseModel currentStudentCourse;
+
+        public IStudentCourseModel CurrentStudentCourse
+        {
+            get => currentStudentCourse;
+            set => OnPropertyChanged(out currentStudentCourse, value);
+        }
+
+        ICommand addStudentCourseCommand;
+
+        public ICommand AddStudentCourseCommand
+        {
+            get => addStudentCourseCommand;
+            set => OnPropertyChanged(out addStudentCourseCommand, value);
+        }
+
         public StudentDetailViewModel(Action cancelAction) : base(cancelAction) { }
 
         internal override void Clear()
@@ -46,6 +67,7 @@ namespace HonglornWPF.ViewModels
             Forename = default;
             Sex = default;
             DateOfBirth = default;
+            StudentCourses.Clear();
         }
 
         internal override void CopyValues(IStudentModel model)

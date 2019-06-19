@@ -20,6 +20,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <TextBlock Text="Surname" Grid.Column="0" Grid.Row="0" Margin="2"/>
@@ -33,6 +34,8 @@
 
             <TextBlock Text="Date Of Birth" Grid.Column="0" Grid.Row="3" Margin="2"/>
             <DatePicker SelectedDate="{Binding DateOfBirth}" Grid.Column="1" Grid.Row="3" Margin="2"/>
+
+            <DataGrid ItemsSource="{Binding StudentCourses}" Grid.Row="4" Grid.ColumnSpan="2" />
         </Grid>
 
         <Button Content="Accept" Command="{Binding AcceptCommand}" Margin="2" />
