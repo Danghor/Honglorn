@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class StudentHandicap : IEntity, IStudentHandicapModel
+    public class StudentHandicap : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

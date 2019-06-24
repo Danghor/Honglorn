@@ -9,7 +9,7 @@ using HonglornBL.MasterData.Student;
 namespace HonglornBL.Models.Entities
 {
     [DebuggerDisplay("{Forename} {Surname}, {Sex}, YOB: {DateOfBirth}, ID: {PKey}")]
-    public class Student : IEntity, IStudentModel
+    public class Student : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
