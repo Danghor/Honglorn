@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HonglornBL.MasterData.StudentCourse;
+using System;
+using System.Collections.Generic;
 
 namespace HonglornBL.MasterData.Student
 {
@@ -8,5 +10,6 @@ namespace HonglornBL.MasterData.Student
         string Forename { get; }
         Sex Sex { get; }
         DateTime DateOfBirth { get; }
+        ICollection<IStudentCourseModel> StudentCourses { get; }
     }
 }
