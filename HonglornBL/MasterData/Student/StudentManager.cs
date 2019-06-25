@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Entity;
+using HonglornBL.MasterData.StudentCourse;
 using HonglornBL.Models.Framework;
+using System.Linq;
 
 namespace HonglornBL.MasterData.Student
 {
@@ -32,8 +36,12 @@ namespace HonglornBL.MasterData.Student
             set => SetValue((student, dateOfBirth) => student.DateOfBirth = dateOfBirth, value.Date);
         }
 
+        public IEnumerable<StudentCourseManager> StudentCourses => GetValue(s => s.StudentCourses).Select(studentCourse => new StudentCourseManager(studentCourse.PKey, ContextFactory));
+
         public void Update(IStudentModel model)
         {
+            StudentCourses.
+
             Surname = model.Surname;
             Forename = model.Forename;
             Sex = model.Sex;
