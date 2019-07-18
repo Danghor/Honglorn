@@ -17,6 +17,10 @@ The ultimate goal will be to fully support everything mentioned in the official 
 
 [![Build status develop](https://danghor.visualstudio.com/Honglorn/_apis/build/status/Honglorn%20develop)](https://danghor.visualstudio.com/Honglorn/_build?definitionId=4)
 
+## Analyzer
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Honglorn&metric=alert_status)](https://sonarcloud.io/dashboard?id=Honglorn)
+
 ## Chat
 
 [![Gitter](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/Honglorn)
