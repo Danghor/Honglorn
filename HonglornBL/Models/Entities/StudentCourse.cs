@@ -5,7 +5,7 @@ using HonglornBL.MasterData.StudentCourse;
 
 namespace HonglornBL.Models.Entities
 {
-    public class StudentCourse : IEntity, IStudentCourseModel
+    public class StudentCourse : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

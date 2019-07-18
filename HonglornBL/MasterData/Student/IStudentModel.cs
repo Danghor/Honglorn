@@ -10,6 +10,6 @@ namespace HonglornBL.MasterData.Student
         string Forename { get; }
         Sex Sex { get; }
         DateTime DateOfBirth { get; }
-        IEnumerable<StudentCourseManager> StudentCourses { get; }
+        ICollection<IStudentCourseModel> StudentCourses { get; }
     }
 }
