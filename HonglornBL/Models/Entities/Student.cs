@@ -29,7 +29,7 @@ namespace HonglornBL.Models.Entities
         [Required]
         public DateTime DateOfBirth { get; set; }
 
-        public ICollection<StudentHandicap> StudentHandicaps { get; set; } = new HashSet<StudentHandicap>();
+        public virtual ICollection<StudentHandicap> StudentHandicaps { get; set; } = new HashSet<StudentHandicap>();
 
         public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
     }
