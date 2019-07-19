@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class GamePerformance<TMeasuringPoint, TDiscipline, TGamePerformance> : IEntity
+    public abstract class GamePerformance<TMeasuringPoint, TDiscipline, TGamePerformance> : IEntity<IGamePerformanceModel>
         where TMeasuringPoint : MeasuringPoint<TDiscipline>
         where TDiscipline : Discipline
     {
@@ -28,5 +28,11 @@ namespace HonglornBL.Models.Entities
         public virtual Game<TGamePerformance> Game { get; set; }
 
         public virtual ICollection<TMeasuringPoint> MeasuringPoints { get; set; }
+
+        public void AdoptValues(IGamePerformanceModel model)
+        {
+            StudentPKey = model.StudentPKey;
+            GamePKey = model.GamePKey;
+        }
     }
 }

@@ -17,10 +17,5 @@ namespace HonglornBL.MasterData.Class
         protected override DbSet<Models.Entities.Class> GetDbSet(HonglornDb db) => db.Class;
 
         protected override Exception CreateNotFoundException(string message) => new ClassNotFoundException(message);
-
-        protected override void CopyValues(IClassModel model, Models.Entities.Class entity)
-        {
-            entity.Name = model.Name;
-        }
     }
 }

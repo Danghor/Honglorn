@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HonglornBL.MasterData.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Class : IEntity
+    public class Class : IEntity<IClassModel>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -17,5 +18,10 @@ namespace HonglornBL.Models.Entities
         public string Name { get; set; }
 
         public virtual ICollection<Course> Courses { get; set; } = new HashSet<Course>();
+
+        public void AdoptValues(IClassModel model)
+        {
+            Name = model.Name;
+        }
     }
 }

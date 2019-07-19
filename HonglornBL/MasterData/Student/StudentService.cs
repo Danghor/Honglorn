@@ -13,17 +13,6 @@ namespace HonglornBL.MasterData.Student
             return context.Student;
         }
 
-        protected override Models.Entities.Student CreateEntity(IStudentModel model)
-        {
-            return new Models.Entities.Student
-            {
-                Surname = model.Surname,
-                Forename = model.Forename,
-                Sex = model.Sex,
-                DateOfBirth = model.DateOfBirth
-            };
-        }
-
         protected override StudentManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
         {
             return new StudentManager(pKey, contextFactory);

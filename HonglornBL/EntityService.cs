@@ -10,7 +10,7 @@ namespace HonglornBL
 {
     public abstract class EntityService<TManager, TEntity, TModel> : IEntityService<TManager, TModel>
         where TManager : EntityManager<TEntity, TModel>
-        where TEntity : class, IEntity, new()
+        where TEntity : class, IEntity<TModel>, new()
     {
         internal HonglornDbFactory ContextFactory { get; }
 
@@ -50,14 +50,16 @@ namespace HonglornBL
             }
         }
 
-        protected abstract TEntity CreateEntity(TModel model);
         protected abstract IDbSet<TEntity> GetDbSet(HonglornDb context);
 
         public void Create(TModel model)
         {
             using (HonglornDb context = ContextFactory.CreateContext())
             {
-                GetDbSet(context).Add(CreateEntity(model));
+                var entity = new TEntity();
+                entity.AdoptValues(model);
+                GetDbSet(context).Add(entity);
+
                 context.SaveChanges();
             }
         }

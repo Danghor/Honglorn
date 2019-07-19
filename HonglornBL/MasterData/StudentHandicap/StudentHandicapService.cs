@@ -13,17 +13,6 @@ namespace HonglornBL.MasterData.StudentHandicap
             return context.StudentHandicap;
         }
 
-        protected override Models.Entities.StudentHandicap CreateEntity(IStudentHandicapModel model)
-        {
-            return new Models.Entities.StudentHandicap
-            {
-                StudentPKey = model.StudentPKey,
-                HandicapPKey = model.HandicapPKey,
-                DateStart = model.DateStart,
-                DateEnd = model.DateEnd
-            };
-        }
-
         protected override StudentHandicapManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
         {
             return new StudentHandicapManager(pKey, contextFactory);

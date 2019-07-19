@@ -32,14 +32,6 @@ namespace HonglornBL.MasterData.Student
             set => SetValue((student, dateOfBirth) => student.DateOfBirth = dateOfBirth, value.Date);
         }
 
-        protected override void CopyValues(IStudentModel model, Models.Entities.Student entity)
-        {
-            entity.Surname = model.Surname;
-            entity.Forename = model.Forename;
-            entity.Sex = model.Sex;
-            entity.DateOfBirth = model.DateOfBirth;
-        }
-
         protected override Exception CreateNotFoundException(string message) => new StudentNotFoundException(message);
 
         protected override DbSet<Models.Entities.Student> GetDbSet(HonglornDb db) => db.Student;

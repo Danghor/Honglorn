@@ -20,11 +20,5 @@ namespace HonglornBL.Game
         }
 
         protected GameManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
-
-        protected sealed override void CopyValues(IGameModel model, TGame entity)
-        {
-            entity.Name = model.Name;
-            entity.Date = model.Date;
-        }
     }
 }

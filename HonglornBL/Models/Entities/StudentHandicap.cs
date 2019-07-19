@@ -1,10 +1,11 @@
-﻿using System;
+﻿using HonglornBL.MasterData.StudentHandicap;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class StudentHandicap : IEntity
+    public class StudentHandicap : IEntity<IStudentHandicapModel>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -26,5 +27,13 @@ namespace HonglornBL.Models.Entities
         public DateTime DateStart { get; set; }
 
         public DateTime? DateEnd { get; set; }
+
+        public void AdoptValues(IStudentHandicapModel model)
+        {
+            StudentPKey = model.StudentPKey;
+            HandicapPKey = model.HandicapPKey;
+            DateStart = model.DateStart;
+            DateEnd = model.DateEnd;
+        }
     }
 }

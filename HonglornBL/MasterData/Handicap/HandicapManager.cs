@@ -14,11 +14,6 @@ namespace HonglornBL.MasterData.Handicap
             set => SetValue((handicap, name) => handicap.Name = name, value);
         }
 
-        protected override void CopyValues(IHandicapModel model, Models.Entities.Handicap entity)
-        {
-            entity.Name = model.Name;
-        }
-
         protected override Exception CreateNotFoundException(string message) => new HandicapNotFoundException(message);
 
         protected override DbSet<Models.Entities.Handicap> GetDbSet(HonglornDb db) => db.Handicap;

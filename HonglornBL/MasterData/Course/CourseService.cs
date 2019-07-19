@@ -8,15 +8,6 @@ namespace HonglornBL.MasterData.Course
     {
         internal CourseService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
-        protected override Models.Entities.Course CreateEntity(ICourseModel model)
-        {
-            return new Models.Entities.Course
-            {
-                Name = model.Name,
-                ClassPKey = model.ClassPKey
-            };
-        }
-
         protected override CourseManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
         {
             return new CourseManager(pKey, contextFactory);

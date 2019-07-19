@@ -36,14 +36,6 @@ namespace HonglornBL.MasterData.StudentHandicap
             set => SetValue((student, dateEnd) => student.DateEnd = dateEnd, value?.Date);
         }
 
-        protected override void CopyValues(IStudentHandicapModel model, Models.Entities.StudentHandicap entity)
-        {
-            StudentPKey = model.StudentPKey;
-            HandicapPKey = model.HandicapPKey;
-            DateStart = model.DateStart;
-            DateEnd = model.DateEnd;
-        }
-
         protected override Exception CreateNotFoundException(string message) => new StudentHandicapNotFoundException(message);
 
         protected override DbSet<Models.Entities.StudentHandicap> GetDbSet(HonglornDb db) => db.StudentHandicap;

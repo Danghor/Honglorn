@@ -36,14 +36,6 @@ namespace HonglornBL.MasterData.StudentCourse
             set => SetValue((student, dateEnd) => student.DateEnd = dateEnd, value?.Date);
         }
 
-        protected override void CopyValues(IStudentCourseModel model, Models.Entities.StudentCourse entity)
-        {
-            entity.StudentPKey = model.StudentPKey;
-            entity.CoursePKey = model.CoursePKey;
-            entity.DateStart = model.DateStart;
-            entity.DateEnd = model.DateEnd;
-        }
-
         protected override Exception CreateNotFoundException(string message) => new StudentCourseNotFoundException(message);
 
         protected override DbSet<Models.Entities.StudentCourse> GetDbSet(HonglornDb db) => db.StudentCourse;

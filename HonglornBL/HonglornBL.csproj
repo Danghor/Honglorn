@@ -141,6 +141,8 @@
     <Compile Include="Models\Entities\IDisciplineModel.cs" />
     <Compile Include="Models\Entities\IEntity.cs" />
     <Compile Include="MasterData\Student\IStudentModel.cs" />
+    <Compile Include="Models\Entities\IGamePerformanceModel.cs" />
+    <Compile Include="Models\Entities\IMeasuringPoint.cs" />
     <Compile Include="Models\Entities\MeasuringPoint.cs" />
     <Compile Include="Game\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs" />
     <Compile Include="Game\CertificateType.cs" />

@@ -7,14 +7,6 @@ namespace HonglornBL.MasterData.Handicap
     {
         internal HandicapService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
-        protected override Models.Entities.Handicap CreateEntity(IHandicapModel model)
-        {
-            return new Models.Entities.Handicap
-            {
-                Name = model.Name
-            };
-        }
-
         protected override HandicapManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
         {
             return new HandicapManager(pKey, contextFactory);

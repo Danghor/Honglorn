@@ -13,17 +13,6 @@ namespace HonglornBL.MasterData.StudentCourse
             return context.StudentCourse;
         }
 
-        protected override Models.Entities.StudentCourse CreateEntity(IStudentCourseModel model)
-        {
-            return new Models.Entities.StudentCourse
-            {
-                StudentPKey = model.StudentPKey,
-                CoursePKey = model.CoursePKey,
-                DateStart = model.DateStart,
-                DateEnd = model.DateEnd
-            };
-        }
-
         protected override StudentCourseManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
         {
             return new StudentCourseManager(pKey, contextFactory);

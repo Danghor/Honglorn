@@ -1,11 +1,12 @@
-﻿using HonglornBL.Models.Framework;
+﻿using HonglornBL.Models.Entities;
+using HonglornBL.Models.Framework;
 using System;
 using System.Data.Entity;
 
 namespace HonglornBL
 {
     public abstract class EntityManager<TEntity, TEntityModel>
-        where TEntity : class
+        where TEntity : class, IEntity<TEntityModel>
     {
         public Guid PKey { get; }
 
@@ -54,12 +55,9 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                CopyValues(model, Entity(db));
+                Entity(db).AdoptValues(model);
                 db.SaveChanges();
             }
         }
-
-        // TODO: Maybe move this to IEntity and let the entities implement it
-        protected abstract void CopyValues(TEntityModel model, TEntity entity);
     }
 }

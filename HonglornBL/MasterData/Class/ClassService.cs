@@ -17,13 +17,5 @@ namespace HonglornBL.MasterData.Class
         {
             return context.Class;
         }
-
-        protected override Models.Entities.Class CreateEntity(IClassModel model)
-        {
-            return new Models.Entities.Class
-            {
-                Name = model.Name
-            };
-        }
     }
 }

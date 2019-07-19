@@ -1,4 +1,5 @@
 ﻿using HonglornBL.MasterData;
+using HonglornBL.MasterData.Student;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using System.Diagnostics;
 namespace HonglornBL.Models.Entities
 {
     [DebuggerDisplay("{Forename} {Surname}, {Sex}, YOB: {DateOfBirth}, ID: {PKey}")]
-    public class Student : IEntity
+    public class Student : IEntity<IStudentModel>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -31,5 +32,13 @@ namespace HonglornBL.Models.Entities
         public virtual ICollection<StudentHandicap> StudentHandicaps { get; set; } = new HashSet<StudentHandicap>();
 
         public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
+
+        public void AdoptValues(IStudentModel model)
+        {
+            Surname = model.Surname;
+            Forename = model.Forename;
+            Sex = model.Sex;
+            DateOfBirth = model.DateOfBirth;
+        }
     }
 }

@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HonglornBL.Game;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public abstract class Game<TGamePerformance> : IEntity
+    public abstract class Game<TGamePerformance> : IEntity<IGameModel>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -24,6 +25,12 @@ namespace HonglornBL.Models.Entities
         {
             Name = name;
             Date = date;
+        }
+
+        public void AdoptValues(IGameModel model)
+        {
+            Name = model.Name;
+            Date = model.Date;
         }
     }
 }

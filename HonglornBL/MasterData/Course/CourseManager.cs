@@ -25,12 +25,6 @@ namespace HonglornBL.MasterData.Course
             get => GetValue(c => c.Class.Name);
         }
 
-        protected override void CopyValues(ICourseModel model, Models.Entities.Course entity)
-        {
-            entity.Name = model.Name;
-            entity.ClassPKey = model.ClassPKey;
-        }
-
         protected override Exception CreateNotFoundException(string message) => new CourseNotFoundException(message);
 
         protected override DbSet<Models.Entities.Course> GetDbSet(HonglornDb db) => db.Course;

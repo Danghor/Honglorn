@@ -1,10 +1,11 @@
-﻿using System;
+﻿using HonglornBL.MasterData.StudentCourse;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class StudentCourse : IEntity
+    public class StudentCourse : IEntity<IStudentCourseModel>
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -26,5 +27,13 @@ namespace HonglornBL.Models.Entities
         public virtual Course Course { get; set; }
 
         public DateTime? DateEnd { get; set; }
+
+        public void AdoptValues(IStudentCourseModel model)
+        {
+            StudentPKey = model.StudentPKey;
+            CoursePKey = model.CoursePKey;
+            DateStart = model.DateStart;
+            DateEnd = model.DateEnd;
+        }
     }
 }
