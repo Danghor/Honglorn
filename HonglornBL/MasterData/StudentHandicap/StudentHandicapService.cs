@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace HonglornBL.MasterData.StudentHandicap
 {
-    public class StudentHandicapService : EntityService<StudentHandicapManager, Models.Entities.StudentHandicap, IStudentHandicapModel>
+    public sealed class StudentHandicapService : EntityService<StudentHandicapManager, Models.Entities.StudentHandicap, IStudentHandicapModel>
     {
         internal StudentHandicapService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
