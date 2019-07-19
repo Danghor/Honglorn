@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using HonglornBL.MasterData.StudentCourse;
 
 namespace HonglornBL.Models.Entities
 {

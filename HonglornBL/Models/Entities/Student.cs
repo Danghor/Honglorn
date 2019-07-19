@@ -1,10 +1,9 @@
-﻿using System;
+﻿using HonglornBL.MasterData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
-using HonglornBL.MasterData;
-using HonglornBL.MasterData.Student;
 
 namespace HonglornBL.Models.Entities
 {
