@@ -9,7 +9,7 @@ using System.Linq;
 namespace HonglornBL
 {
     public abstract class EntityService<TManager, TEntity, TModel> : IEntityService<TManager, TModel>
-        where TManager : EntityManager<TEntity>
+        where TManager : EntityManager<TEntity, TModel>
         where TEntity : class, IEntity, new()
     {
         internal HonglornDbFactory ContextFactory { get; }

@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace HonglornBL.MasterData.StudentHandicap
 {
-    public class StudentHandicapManager : EntityManager<Models.Entities.StudentHandicap>, IStudentHandicapModel, IEntityManager<IStudentHandicapModel>
+    public sealed class StudentHandicapManager : EntityManager<Models.Entities.StudentHandicap, IStudentHandicapModel>, IStudentHandicapModel, IEntityManager<IStudentHandicapModel>
     {
         internal StudentHandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -24,7 +24,6 @@ namespace HonglornBL.MasterData.StudentHandicap
 
         public string HandicapName => GetValue(s => s.Handicap.Name);
 
-
         public DateTime DateStart
         {
             get => GetValue(s => s.DateStart);
@@ -37,7 +36,7 @@ namespace HonglornBL.MasterData.StudentHandicap
             set => SetValue((student, dateEnd) => student.DateEnd = dateEnd, value?.Date);
         }
 
-        public void Update(IStudentHandicapModel model)
+        protected override void CopyValues(IStudentHandicapModel model, Models.Entities.StudentHandicap entity)
         {
             StudentPKey = model.StudentPKey;
             HandicapPKey = model.HandicapPKey;

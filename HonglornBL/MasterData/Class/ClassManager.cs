@@ -4,14 +4,9 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL.MasterData.Class
 {
-    public class ClassManager : EntityManager<Models.Entities.Class>, IClassModel, IEntityManager<IClassModel>
+    public sealed class ClassManager : EntityManager<Models.Entities.Class, IClassModel>, IClassModel, IEntityManager<IClassModel>
     {
         internal ClassManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
-
-        public void Update(IClassModel model)
-        {
-            Name = model.Name;
-        }
 
         public string Name
         {
@@ -22,5 +17,10 @@ namespace HonglornBL.MasterData.Class
         protected override DbSet<Models.Entities.Class> GetDbSet(HonglornDb db) => db.Class;
 
         protected override Exception CreateNotFoundException(string message) => new ClassNotFoundException(message);
+
+        protected override void CopyValues(IClassModel model, Models.Entities.Class entity)
+        {
+            entity.Name = model.Name;
+        }
     }
 }

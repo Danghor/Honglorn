@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace HonglornBL
 {
-    public abstract class EntityManager<TEntity>
+    public abstract class EntityManager<TEntity, TEntityModel>
         where TEntity : class
     {
         public Guid PKey { get; }
@@ -49,5 +49,17 @@ namespace HonglornBL
                 db.SaveChanges();
             }
         }
+
+        public void Update(TEntityModel model)
+        {
+            using (HonglornDb db = ContextFactory.CreateContext())
+            {
+                CopyValues(model, Entity(db));
+                db.SaveChanges();
+            }
+        }
+
+        // TODO: Maybe move this to IEntity and let the entities implement it
+        protected abstract void CopyValues(TEntityModel model, TEntity entity);
     }
 }

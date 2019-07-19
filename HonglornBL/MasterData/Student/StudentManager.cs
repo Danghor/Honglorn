@@ -4,7 +4,7 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL.MasterData.Student
 {
-    public class StudentManager : EntityManager<Models.Entities.Student>, IStudentModel, IEntityManager<IStudentModel>
+    public sealed class StudentManager : EntityManager<Models.Entities.Student, IStudentModel>, IStudentModel, IEntityManager<IStudentModel>
     {
         internal StudentManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -32,12 +32,12 @@ namespace HonglornBL.MasterData.Student
             set => SetValue((student, dateOfBirth) => student.DateOfBirth = dateOfBirth, value.Date);
         }
 
-        public void Update(IStudentModel model)
+        protected override void CopyValues(IStudentModel model, Models.Entities.Student entity)
         {
-            Surname = model.Surname;
-            Forename = model.Forename;
-            Sex = model.Sex;
-            DateOfBirth = model.DateOfBirth;
+            entity.Surname = model.Surname;
+            entity.Forename = model.Forename;
+            entity.Sex = model.Sex;
+            entity.DateOfBirth = model.DateOfBirth;
         }
 
         protected override Exception CreateNotFoundException(string message) => new StudentNotFoundException(message);

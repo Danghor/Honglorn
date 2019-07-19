@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Game\GameManager.cs" />
     <Compile Include="Game\IGameManager.cs" />
+    <Compile Include="Game\IGameModel.cs" />
     <Compile Include="IEntityManager.cs" />
     <Compile Include="IEntityService.cs" />
     <Compile Include="MasterData\Class\ClassManager.cs" />

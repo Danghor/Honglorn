@@ -4,7 +4,7 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL.MasterData.Course
 {
-    public class CourseManager : EntityManager<Models.Entities.Course>, ICourseModel, IEntityManager<ICourseModel>
+    public sealed class CourseManager : EntityManager<Models.Entities.Course, ICourseModel>, ICourseModel, IEntityManager<ICourseModel>
     {
         internal CourseManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -25,10 +25,10 @@ namespace HonglornBL.MasterData.Course
             get => GetValue(c => c.Class.Name);
         }
 
-        public void Update(ICourseModel model)
+        protected override void CopyValues(ICourseModel model, Models.Entities.Course entity)
         {
-            Name = model.Name;
-            ClassPKey = model.ClassPKey;
+            entity.Name = model.Name;
+            entity.ClassPKey = model.ClassPKey;
         }
 
         protected override Exception CreateNotFoundException(string message) => new CourseNotFoundException(message);

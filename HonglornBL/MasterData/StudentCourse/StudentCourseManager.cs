@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace HonglornBL.MasterData.StudentCourse
 {
-    public class StudentCourseManager : EntityManager<Models.Entities.StudentCourse>, IStudentCourseModel, IEntityManager<IStudentCourseModel>
+    public sealed class StudentCourseManager : EntityManager<Models.Entities.StudentCourse, IStudentCourseModel>, IStudentCourseModel, IEntityManager<IStudentCourseModel>
     {
         internal StudentCourseManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -36,12 +36,12 @@ namespace HonglornBL.MasterData.StudentCourse
             set => SetValue((student, dateEnd) => student.DateEnd = dateEnd, value?.Date);
         }
 
-        public void Update(IStudentCourseModel model)
+        protected override void CopyValues(IStudentCourseModel model, Models.Entities.StudentCourse entity)
         {
-            StudentPKey = model.StudentPKey;
-            CoursePKey = model.CoursePKey;
-            DateStart = model.DateStart;
-            DateEnd = model.DateEnd;
+            entity.StudentPKey = model.StudentPKey;
+            entity.CoursePKey = model.CoursePKey;
+            entity.DateStart = model.DateStart;
+            entity.DateEnd = model.DateEnd;
         }
 
         protected override Exception CreateNotFoundException(string message) => new StudentCourseNotFoundException(message);

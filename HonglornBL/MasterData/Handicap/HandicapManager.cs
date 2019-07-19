@@ -4,7 +4,7 @@ using HonglornBL.Models.Framework;
 
 namespace HonglornBL.MasterData.Handicap
 {
-    public class HandicapManager : EntityManager<Models.Entities.Handicap>, IHandicapModel
+    public sealed class HandicapManager : EntityManager<Models.Entities.Handicap, IHandicapModel>, IHandicapModel
     {
         internal HandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
 
@@ -12,6 +12,11 @@ namespace HonglornBL.MasterData.Handicap
         {
             get => GetValue(g => g.Name);
             set => SetValue((handicap, name) => handicap.Name = name, value);
+        }
+
+        protected override void CopyValues(IHandicapModel model, Models.Entities.Handicap entity)
+        {
+            entity.Name = model.Name;
         }
 
         protected override Exception CreateNotFoundException(string message) => new HandicapNotFoundException(message);
