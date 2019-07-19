@@ -27,6 +27,6 @@ namespace HonglornBL.Models.Entities
         [ForeignKey(nameof(GamePKey))]
         public virtual Game<TGamePerformance> Game { get; set; }
 
-        public ICollection<TMeasuringPoint> MeasuringPoints { get; set; }
+        public virtual ICollection<TMeasuringPoint> MeasuringPoints { get; set; }
     }
 }
