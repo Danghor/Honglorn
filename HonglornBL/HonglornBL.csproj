@@ -138,6 +138,7 @@
     <Compile Include="MasterData\Handicap\IHandicapModel.cs" />
     <Compile Include="MasterData\Class\IClassModel.cs" />
     <Compile Include="IPdfDocument.cs" />
+    <Compile Include="Models\Entities\IDisciplineModel.cs" />
     <Compile Include="Models\Entities\IEntity.cs" />
     <Compile Include="MasterData\Student\IStudentModel.cs" />
     <Compile Include="Models\Entities\MeasuringPoint.cs" />
