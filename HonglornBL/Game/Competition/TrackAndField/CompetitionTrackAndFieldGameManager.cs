@@ -27,6 +27,5 @@ namespace HonglornBL.Game.Competition.TrackAndField
                 return Entity(db).EvaluationGroups.Select(group => group.CalculateResult(db)).ToList();
             }
         }
-
     }
 }
