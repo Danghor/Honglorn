@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using HonglornBL.Models.Framework;
 
 namespace HonglornBL.MasterData.Student
@@ -31,6 +34,8 @@ namespace HonglornBL.MasterData.Student
             get => GetValue(s => s.DateOfBirth);
             set => SetValue((student, dateOfBirth) => student.DateOfBirth = dateOfBirth, value.Date);
         }
+
+        public ICollection<Guid> StudentCoursePKeys => GetValue(s => s.StudentCourses).Select(course => course.PKey).ToList();
 
         protected override Exception CreateNotFoundException(string message) => new StudentNotFoundException(message);
 

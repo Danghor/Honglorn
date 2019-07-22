@@ -7,9 +7,9 @@ namespace HonglornBL.MasterData.Handicap
     {
         internal HandicapService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
-        protected override HandicapManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
+        public override HandicapManager CreateManager(Guid pKey)
         {
-            return new HandicapManager(pKey, contextFactory);
+            return new HandicapManager(pKey, ContextFactory);
         }
 
         protected override System.Data.Entity.IDbSet<Models.Entities.Handicap> GetDbSet(HonglornDb context)

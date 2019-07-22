@@ -13,9 +13,9 @@ namespace HonglornBL.MasterData.StudentHandicap
             return context.StudentHandicap;
         }
 
-        protected override StudentHandicapManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
+        public override StudentHandicapManager CreateManager(Guid pKey)
         {
-            return new StudentHandicapManager(pKey, contextFactory);
+            return new StudentHandicapManager(pKey, ContextFactory);
         }
     }
 }

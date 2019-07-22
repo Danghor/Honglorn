@@ -13,9 +13,9 @@ namespace HonglornBL.MasterData.Student
             return context.Student;
         }
 
-        protected override StudentManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
+        public override StudentManager CreateManager(Guid pKey)
         {
-            return new StudentManager(pKey, contextFactory);
+            return new StudentManager(pKey, ContextFactory);
         }
     }
 }

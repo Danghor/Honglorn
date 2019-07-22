@@ -8,9 +8,9 @@ namespace HonglornBL.MasterData.Course
     {
         internal CourseService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
-        protected override CourseManager CreateManager(Guid pKey, HonglornDbFactory contextFactory)
+        public override CourseManager CreateManager(Guid pKey)
         {
-            return new CourseManager(pKey, contextFactory);
+            return new CourseManager(pKey, ContextFactory);
         }
 
         protected override IDbSet<Models.Entities.Course> GetDbSet(HonglornDb context)

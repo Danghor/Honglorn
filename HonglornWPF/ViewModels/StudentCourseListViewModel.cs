@@ -13,6 +13,6 @@ namespace HonglornWPF.ViewModels
             RefreshViewModel();
         }
 
-        public override string ToString() => "Students";
+        public override string ToString() => "Student Courses";
     }
 }

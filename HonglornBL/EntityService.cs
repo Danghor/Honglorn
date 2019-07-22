@@ -19,13 +19,13 @@ namespace HonglornBL
             ContextFactory = contextFactory;
         }
 
-        protected abstract TManager CreateManager(Guid pKey, HonglornDbFactory contextFactory);
+        public abstract TManager CreateManager(Guid pKey);
 
         public ICollection<TManager> GetManagers()
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return GetDbSet(db).Select(s => s.PKey).ToList().Select(key => CreateManager(key, ContextFactory)).ToList();
+                return GetDbSet(db).Select(s => s.PKey).ToList().Select(key => CreateManager(key)).ToList();
             }
         }
 
