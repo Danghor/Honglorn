@@ -37,7 +37,6 @@
 
             <DataGrid ItemsSource="{Binding StudentCourses}" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="4" Grid.ColumnSpan="2" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Student" Binding="{Binding StudentName}" />
                     <DataGridTextColumn Header="Course" Binding="{Binding CourseName}" />
                     <DataGridTextColumn Header="DateStart" Binding="{Binding DateStart, Converter={StaticResource DateTimeToDateStringConverter}}" />
                     <DataGridTextColumn Header="DateEnd" Binding="{Binding DateEnd, Converter={StaticResource DateTimeToDateStringConverter}}" />
