@@ -45,8 +45,8 @@ namespace HonglornBL
             {
                 return new GameCollection
                 {
-                    TraditionalTrackAndFieldGames = db.TraditionalTrackAndFieldGame.Select(g => g.PKey).ToList().Select(key => new TraditionalTrackAndFieldGameManager(key, ContextFactory)).ToList(),
-                    CompetitionTrackAndFieldGames = db.CompetitionTrackAndFieldGame.Select(g => g.PKey).ToList().Select(key => new CompetitionTrackAndFieldGameManager(key, ContextFactory)).ToList()
+                    TraditionalTrackAndFieldGames = db.TraditionalTrackAndFieldGame.Select(g => g.PKey).AsEnumerable().Select(key => new TraditionalTrackAndFieldGameManager(key, ContextFactory)).ToList(),
+                    CompetitionTrackAndFieldGames = db.CompetitionTrackAndFieldGame.Select(g => g.PKey).AsEnumerable().Select(key => new CompetitionTrackAndFieldGameManager(key, ContextFactory)).ToList()
                 };
             }
         }

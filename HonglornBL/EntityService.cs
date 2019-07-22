@@ -14,7 +14,7 @@ namespace HonglornBL
     {
         internal HonglornDbFactory ContextFactory { get; }
 
-        internal EntityService(HonglornDbFactory contextFactory)
+        protected EntityService(HonglornDbFactory contextFactory)
         {
             ContextFactory = contextFactory;
         }
@@ -25,7 +25,7 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return GetDbSet(db).Select(s => s.PKey).ToList().Select(CreateManager).ToList();
+                return GetDbSet(db).Select(s => s.PKey).AsEnumerable().Select(CreateManager).ToList();
             }
         }
 
@@ -46,7 +46,7 @@ namespace HonglornBL
             }
             catch (DbUpdateConcurrencyException ex)
             {
-                throw new ArgumentException($"A {entity.GetType()} with PKey {manager.PKey} does not exist in the database.", nameof(manager.PKey), ex);
+                throw new ArgumentException($"A {entity.GetType()} with PKey {manager.PKey} does not exist in the database.", nameof(manager), ex);
             }
         }
 
