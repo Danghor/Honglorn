@@ -25,7 +25,7 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
-                return GetDbSet(db).Select(s => s.PKey).ToList().Select(key => CreateManager(key)).ToList();
+                return GetDbSet(db).Select(s => s.PKey).ToList().Select(CreateManager).ToList();
             }
         }
 
