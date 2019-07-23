@@ -23,15 +23,12 @@ namespace HonglornBL.Models.Framework
 
         Func<DbConnection> GetConnection { get; }
 
-        readonly string connectionString;
-
         internal Func<HonglornDb> CreateContext { get; }
 
         internal HonglornDbFactory(ConnectionStringSettings settings)
         {
             Tuple<Func<string, Func<DbConnection>>, Func<DbConnection, HonglornDb>> functions = ProviderMap[settings.ProviderName];
-            connectionString = settings.ConnectionString;
-            GetConnection = functions.Item1(connectionString);
+            GetConnection = functions.Item1(settings.ConnectionString);
             CreateContext = () => functions.Item2(GetConnection());
         }
 
