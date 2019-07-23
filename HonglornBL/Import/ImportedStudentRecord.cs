@@ -39,7 +39,7 @@ namespace HonglornBL.Import
 
             fieldErrors.RemoveAll(e => e == null);
 
-            return fieldErrors.Any() ? fieldErrors : null;
+            return fieldErrors.Count > 0 ? fieldErrors : null;
         }
 
         static FieldErrorInfo FieldError(string fieldName, string fieldContent, Func<string, bool> isValid, string errorMessage)

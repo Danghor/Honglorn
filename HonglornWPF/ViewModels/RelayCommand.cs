@@ -14,7 +14,7 @@ namespace HonglornWPF.ViewModels
             set
             {
                 enabled = value;
-                CanExecuteChanged?.Invoke(this, null);
+                CanExecuteChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 

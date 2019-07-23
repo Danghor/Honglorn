@@ -1,6 +1,6 @@
 ﻿namespace HonglornBL
 {
-    public interface IEntityManager<TModel>
+    public interface IEntityManager<in TModel>
     {
         void Update(TModel model);
     }

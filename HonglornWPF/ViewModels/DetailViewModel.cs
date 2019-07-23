@@ -15,7 +15,7 @@ namespace HonglornWPF.ViewModels
 
         public ICommand CancelCommand { get; }
 
-        internal DetailViewModel(Action cancelAction)
+        protected DetailViewModel(Action cancelAction)
         {
             CancelCommand = new RelayCommand(cancelAction);
         }

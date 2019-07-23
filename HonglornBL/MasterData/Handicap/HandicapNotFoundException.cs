@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace HonglornBL.MasterData.Handicap
 {
     [Serializable]
-    internal class HandicapNotFoundException : Exception
+    public class HandicapNotFoundException : Exception
     {
         public HandicapNotFoundException() { }
 
