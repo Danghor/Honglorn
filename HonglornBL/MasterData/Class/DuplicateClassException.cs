@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace HonglornBL.MasterData.Class
 {
+    [Serializable]
     public sealed class DuplicateClassException : Exception
     {
         internal DuplicateClassException() { }
@@ -9,5 +11,7 @@ namespace HonglornBL.MasterData.Class
         internal DuplicateClassException(string message) : base(message) { }
 
         internal DuplicateClassException(string message, Exception innerException) : base(message, innerException) { }
+
+        DuplicateClassException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace HonglornBL.MasterData.StudentCourse
 {
+    [Serializable]
     public class StudentCourseNotFoundException : Exception
     {
         public StudentCourseNotFoundException() { }
@@ -9,5 +11,7 @@ namespace HonglornBL.MasterData.StudentCourse
         public StudentCourseNotFoundException(string message) : base(message) { }
 
         public StudentCourseNotFoundException(string message, Exception innerException) : base(message, innerException) { }
+
+        StudentCourseNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }
