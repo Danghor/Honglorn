@@ -8,14 +8,14 @@ namespace HonglornBL.MasterData.Student
     {
         internal StudentService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
+        public override StudentManager CreateManager(Guid pKey)
+        {
+            return new StudentManager(pKey, ContextFactory, GetDbSet);
+        }
+
         protected override IDbSet<Models.Entities.Student> GetDbSet(HonglornDb context)
         {
             return context.Student;
-        }
-
-        public override StudentManager CreateManager(Guid pKey)
-        {
-            return new StudentManager(pKey, ContextFactory);
         }
     }
 }

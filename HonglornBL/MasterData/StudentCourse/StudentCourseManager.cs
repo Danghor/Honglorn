@@ -6,7 +6,7 @@ namespace HonglornBL.MasterData.StudentCourse
 {
     public sealed class StudentCourseManager : EntityManager<Models.Entities.StudentCourse, IStudentCourseModel>, IStudentCourseModel, IEntityManager<IStudentCourseModel>
     {
-        internal StudentCourseManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
+        internal StudentCourseManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, IDbSet<Models.Entities.StudentCourse>> getDbSet) : base(pKey, contextFactory, getDbSet) { }
 
         public Guid StudentPKey
         {
@@ -37,7 +37,5 @@ namespace HonglornBL.MasterData.StudentCourse
         }
 
         protected override Exception CreateNotFoundException(string message) => new StudentCourseNotFoundException(message);
-
-        protected override DbSet<Models.Entities.StudentCourse> GetDbSet(HonglornDb db) => db.StudentCourse;
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -9,7 +8,7 @@ namespace HonglornBL.MasterData.Student
 {
     public sealed class StudentManager : EntityManager<Models.Entities.Student, IStudentModel>, IStudentModel, IEntityManager<IStudentModel>
     {
-        internal StudentManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
+        internal StudentManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, IDbSet<Models.Entities.Student>> getDbSet) : base(pKey, contextFactory, getDbSet) { }
 
         public string Surname
         {
@@ -38,7 +37,5 @@ namespace HonglornBL.MasterData.Student
         public ICollection<Guid> StudentCoursePKeys => GetValue(s => s.StudentCourses).Select(course => course.PKey).ToList();
 
         protected override Exception CreateNotFoundException(string message) => new StudentNotFoundException(message);
-
-        protected override DbSet<Models.Entities.Student> GetDbSet(HonglornDb db) => db.Student;
     }
 }

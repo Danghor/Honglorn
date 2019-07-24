@@ -6,7 +6,7 @@ namespace HonglornBL.MasterData.StudentHandicap
 {
     public sealed class StudentHandicapManager : EntityManager<Models.Entities.StudentHandicap, IStudentHandicapModel>, IStudentHandicapModel, IEntityManager<IStudentHandicapModel>
     {
-        internal StudentHandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
+        internal StudentHandicapManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, IDbSet<Models.Entities.StudentHandicap>> getDbSet) : base(pKey, contextFactory, getDbSet) { }
 
         public Guid StudentPKey
         {
@@ -37,7 +37,5 @@ namespace HonglornBL.MasterData.StudentHandicap
         }
 
         protected override Exception CreateNotFoundException(string message) => new StudentHandicapNotFoundException(message);
-
-        protected override DbSet<Models.Entities.StudentHandicap> GetDbSet(HonglornDb db) => db.StudentHandicap;
     }
 }

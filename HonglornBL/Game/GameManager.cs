@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using HonglornBL.Models.Entities;
 using HonglornBL.Models.Framework;
 
@@ -19,6 +20,6 @@ namespace HonglornBL.Game
             set => SetValue((game, date) => game.Date = date, value);
         }
 
-        protected GameManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
+        protected GameManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, DbSet<TGame>> getDbSet) : base(pKey, contextFactory, getDbSet) { }
     }
 }

@@ -10,7 +10,7 @@ namespace HonglornBL.MasterData.Class
 
         public override ClassManager CreateManager(Guid pKey)
         {
-            return new ClassManager(pKey, ContextFactory);
+            return new ClassManager(pKey, ContextFactory, GetDbSet);
         }
 
         protected override IDbSet<Models.Entities.Class> GetDbSet(HonglornDb context)

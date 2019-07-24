@@ -12,13 +12,14 @@ namespace HonglornBL
 
         protected HonglornDbFactory ContextFactory { get; }
 
-        protected EntityManager(Guid pKey, HonglornDbFactory contextFactory)
+        protected EntityManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, IDbSet<TEntity>> getDbSet)
         {
             PKey = pKey;
             ContextFactory = contextFactory;
+            GetDbSet = getDbSet;
         }
 
-        protected abstract DbSet<TEntity> GetDbSet(HonglornDb db);
+        protected Func<HonglornDb, IDbSet<TEntity>> GetDbSet;
 
         protected abstract Exception CreateNotFoundException(string message);
 

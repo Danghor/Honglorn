@@ -8,12 +8,7 @@ namespace HonglornBL.Game.Competition.TrackAndField
 {
     public class CompetitionTrackAndFieldGameManager : GameManager<CompetitionTrackAndFieldGame, CompetitionTrackAndFieldPerformance>
     {
-        internal CompetitionTrackAndFieldGameManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
-
-        protected override DbSet<CompetitionTrackAndFieldGame> GetDbSet(HonglornDb db)
-        {
-            return db.CompetitionTrackAndFieldGame;
-        }
+        internal CompetitionTrackAndFieldGameManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, DbSet<CompetitionTrackAndFieldGame>> getDbSet) : base(pKey, contextFactory, getDbSet) { }
 
         protected override Exception CreateNotFoundException(string message)
         {

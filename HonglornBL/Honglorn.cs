@@ -4,8 +4,8 @@ using HonglornBL.MasterData.StudentCourse;
 using HonglornBL.MasterData.StudentHandicap;
 using HonglornBL.Models.Framework;
 using System;
-using System.Configuration;
 using System.Data.Common;
+using System.Configuration;
 using System.Linq;
 using HonglornBL.Game;
 using HonglornBL.Game.Competition.TrackAndField;
@@ -43,10 +43,11 @@ namespace HonglornBL
         {
             using (HonglornDb db = ContextFactory.CreateContext())
             {
+                // TODO: Implement and use Service-Classes
                 return new GameCollection
                 {
-                    TraditionalTrackAndFieldGames = db.TraditionalTrackAndFieldGame.Select(g => g.PKey).AsEnumerable().Select(key => new TraditionalTrackAndFieldGameManager(key, ContextFactory)).ToList(),
-                    CompetitionTrackAndFieldGames = db.CompetitionTrackAndFieldGame.Select(g => g.PKey).AsEnumerable().Select(key => new CompetitionTrackAndFieldGameManager(key, ContextFactory)).ToList()
+                    TraditionalTrackAndFieldGames = db.TraditionalTrackAndFieldGame.Select(g => g.PKey).AsEnumerable().Select(key => new TraditionalTrackAndFieldGameManager(key, ContextFactory, c => c.TraditionalTrackAndFieldGame)).ToList(),
+                    CompetitionTrackAndFieldGames = db.CompetitionTrackAndFieldGame.Select(g => g.PKey).AsEnumerable().Select(key => new CompetitionTrackAndFieldGameManager(key, ContextFactory, c => c.CompetitionTrackAndFieldGame)).ToList()
                 };
             }
         }

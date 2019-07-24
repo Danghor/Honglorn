@@ -6,7 +6,7 @@ namespace HonglornBL.MasterData.Handicap
 {
     public sealed class HandicapManager : EntityManager<Models.Entities.Handicap, IHandicapModel>, IHandicapModel
     {
-        internal HandicapManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
+        internal HandicapManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, IDbSet<Models.Entities.Handicap>> getDbSet) : base(pKey, contextFactory, getDbSet) { }
 
         public string Name
         {
@@ -15,7 +15,5 @@ namespace HonglornBL.MasterData.Handicap
         }
 
         protected override Exception CreateNotFoundException(string message) => new HandicapNotFoundException(message);
-
-        protected override DbSet<Models.Entities.Handicap> GetDbSet(HonglornDb db) => db.Handicap;
     }
 }

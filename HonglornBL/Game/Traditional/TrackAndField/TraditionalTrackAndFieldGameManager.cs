@@ -8,16 +8,11 @@ namespace HonglornBL.Game.Traditional.TrackAndField
 {
     public class TraditionalTrackAndFieldGameManager : GameManager<TraditionalTrackAndFieldGame, TraditionalTrackAndFieldPerformance>
     {
-        internal TraditionalTrackAndFieldGameManager(Guid pKey, HonglornDbFactory contextFactory) : base(pKey, contextFactory) { }
+        internal TraditionalTrackAndFieldGameManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, DbSet<TraditionalTrackAndFieldGame>> getDbSet) : base(pKey, contextFactory, getDbSet) { }
 
         protected override Exception CreateNotFoundException(string message)
         {
             return new GameNotFoundException(message);
-        }
-
-        protected override DbSet<TraditionalTrackAndFieldGame> GetDbSet(HonglornDb db)
-        {
-            return db.TraditionalTrackAndFieldGame;
         }
 
         public ICollection<TraditionalTrackAndFieldResult> CalculateResults()
