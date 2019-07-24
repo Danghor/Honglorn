@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace HonglornBL.Game
 {
     [Serializable]
-    public class GameNotFoundException : Exception
+    public sealed class GameNotFoundException : Exception
     {
         public GameNotFoundException() { }
 

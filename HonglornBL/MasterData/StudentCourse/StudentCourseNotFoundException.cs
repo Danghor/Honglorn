@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace HonglornBL.MasterData.StudentCourse
 {
     [Serializable]
-    public class StudentCourseNotFoundException : Exception
+    public sealed class StudentCourseNotFoundException : Exception
     {
         public StudentCourseNotFoundException() { }
 
