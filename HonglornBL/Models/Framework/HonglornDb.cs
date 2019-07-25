@@ -1,9 +1,14 @@
-﻿using HonglornBL.Models.Entities;
+﻿using HonglornBL.Game.Competition.TrackAndField;
+using HonglornBL.Game.Traditional.TrackAndField;
+using HonglornBL.Models.Entities;
+using System;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using HonglornBL.Game.Competition.TrackAndField;
-using HonglornBL.Game.Traditional.TrackAndField;
+using System.Data.Entity.Validation;
+using System.Linq;
 
 namespace HonglornBL.Models.Framework
 {
@@ -42,6 +47,35 @@ namespace HonglornBL.Models.Framework
         protected sealed override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
+        {
+            var result = new DbEntityValidationResult(entityEntry, new List<DbValidationError>());
+
+            if (entityEntry.Entity is StudentHandicap studentHandicap)
+            {
+                // Two people could have met if both were born before the other died
+                var studentHandicapsInSamePeriod = from h in StudentHandicap
+                                                   where h.StudentPKey == studentHandicap.StudentPKey
+                                                   && h.DateStart < (studentHandicap.DateEnd ?? DateTime.MaxValue)
+                                                   && studentHandicap.DateStart < (h.DateEnd ?? DateTime.MaxValue)
+                                                   select h;
+
+                if (studentHandicapsInSamePeriod.Any())
+                {
+                    result.ValidationErrors.Add(new DbValidationError(nameof(studentHandicap.DateStart), "The time period of this object overlaps with an already existing object for the same student."));
+                }
+            }
+
+            if (result.ValidationErrors.Count > 0)
+            {
+                return result;
+            }
+            else
+            {
+                return base.ValidateEntity(entityEntry, items);
+            }
         }
     }
 }
