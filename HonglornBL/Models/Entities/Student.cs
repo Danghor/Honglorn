@@ -16,11 +16,9 @@ namespace HonglornBL.Models.Entities
         public Guid PKey { get; set; } = Guid.NewGuid();
 
         [Required]
-        [StringLength(45)]
         public string Surname { get; set; }
 
         [Required]
-        [StringLength(45)]
         public string Forename { get; set; }
 
         [Required]

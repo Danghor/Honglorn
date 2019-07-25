@@ -14,7 +14,6 @@ namespace HonglornBL.Models.Entities
 
         [Required]
         [Index(IsUnique = true)]
-        [StringLength(25)]
         public string Name { get; set; }
 
         [Required]
