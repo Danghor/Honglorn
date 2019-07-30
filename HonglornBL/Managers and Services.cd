@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HonglornBL.EntityManager&lt;TEntity, TEntityModel&gt;" Collapsed="true">
+    <Position X="3.75" Y="3" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAIAAAAiAAAAACAAAAAAAAAAAAAAAEAAAAABA=</HashCode>
+      <FileName>EntityManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.EntityService&lt;TManager, TEntity, TModel&gt;" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAACAAAAACAAAAAAEAAEAAAAAAACAAAAA=</HashCode>
+      <FileName>EntityService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HonglornBL.MasterData.Student.StudentManager" Collapsed="true">
+    <Position X="8.25" Y="4.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAABAAAABAAQAAIAAAAAAAAAABA=</HashCode>
+      <FileName>MasterData\Student\StudentManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HonglornBL.MasterData.Student.StudentService" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MasterData\Student\StudentService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.MasterData.Handicap.HandicapManager" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>MasterData\Handicap\HandicapManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HonglornBL.MasterData.Handicap.HandicapService" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MasterData\Handicap\HandicapService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.MasterData.StudentHandicap.StudentHandicapManager" Collapsed="true">
+    <Position X="4" Y="4.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>BAAADAAQAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABI=</HashCode>
+      <FileName>MasterData\StudentHandicap\StudentHandicapManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HonglornBL.MasterData.StudentHandicap.StudentHandicapService" Collapsed="true">
+    <Position X="5" Y="1.75" Width="4.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MasterData\StudentHandicap\StudentHandicapService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.Models.Entities.Student" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAABAAAAJAAQAAAAAAAEAAQAABA=</HashCode>
+      <FileName>Models\Entities\Student.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HonglornBL.Models.Entities.StudentHandicap" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAQQAgAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAI=</HashCode>
+      <FileName>Models\Entities\StudentHandicap.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="HonglornBL.Models.Entities.Handicap" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAIAAAAAAAAAAEAAQAAAA=</HashCode>
+      <FileName>Models\Entities\Handicap.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="HonglornBL.IEntityManager&lt;TModel&gt;" Collapsed="true">
+    <Position X="11.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEntityManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HonglornBL.IEntityService&lt;TManager, TModel&gt;" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAACAAAAA=</HashCode>
+      <FileName>IEntityService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HonglornBL.MasterData.Student.IStudentModel" Collapsed="true">
+    <Position X="13" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAABAAAABAAQAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>MasterData\Student\IStudentModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HonglornBL.MasterData.Handicap.IHandicapModel" Collapsed="true">
+    <Position X="14.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MasterData\Handicap\IHandicapModel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="HonglornBL.MasterData.StudentHandicap.IStudentHandicapModel" Collapsed="true">
+    <Position X="10.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAACAAQAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MasterData\StudentHandicap\IStudentHandicap.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
