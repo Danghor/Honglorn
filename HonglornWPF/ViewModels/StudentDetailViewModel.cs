@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using HonglornBL.MasterData;
 using HonglornBL.MasterData.Student;
@@ -42,13 +43,13 @@ namespace HonglornWPF.ViewModels
             set => OnPropertyChanged(out dateOfBirth, value);
         }
 
-        public ICollection<Guid> StudentCoursePKeys { get; }
+        public IEnumerable<Guid> StudentCoursePKeys => StudentCourses.Select(s => s.PKey);
 
-        public ObservableCollection<IStudentCourseModel> StudentCourses { get; set; } = new ObservableCollection<IStudentCourseModel>();
+        public ObservableCollection<StudentCourseManager> StudentCourses { get; set; } = new ObservableCollection<StudentCourseManager>();
 
-        IStudentCourseModel currentStudentCourse;
+        StudentCourseManager currentStudentCourse;
 
-        public IStudentCourseModel CurrentStudentCourse
+        public StudentCourseManager CurrentStudentCourse
         {
             get => currentStudentCourse;
             set => OnPropertyChanged(out currentStudentCourse, value);
@@ -83,7 +84,7 @@ namespace HonglornWPF.ViewModels
             var studentCourseService = Honglorn.StudentCourseService();
 
             StudentCourses.Clear();
-            foreach(var coursePKey in model.StudentCoursePKeys)
+            foreach (var coursePKey in model.StudentCoursePKeys)
             {
                 StudentCourses.Add(studentCourseService.CreateManager(coursePKey));
             }

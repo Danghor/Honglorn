@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using HonglornBL.MasterData.StudentCourse;
 using HonglornBL.Models.Framework;
 
 namespace HonglornBL.MasterData.Student
@@ -34,7 +35,14 @@ namespace HonglornBL.MasterData.Student
             set => SetValue((student, dateOfBirth) => student.DateOfBirth = dateOfBirth, value.Date);
         }
 
-        public ICollection<Guid> StudentCoursePKeys => GetValue(s => s.StudentCourses).Select(course => course.PKey).ToList();
+        public IEnumerable<Guid> StudentCoursePKeys => StudentCourseManagers.Select(m => m.PKey);
+
+        public ICollection<StudentCourseManager> StudentCourseManagers { get; } = new List<StudentCourseManager>();
+
+        public void AddStudentCourse(Guid pKey)
+        {
+            StudentCourseManagers.Add(new StudentCourseManager(pKey, ContextFactory, c => c.StudentCourse));
+        }
 
         protected override Exception CreateNotFoundException(string message) => new StudentNotFoundException(message);
     }

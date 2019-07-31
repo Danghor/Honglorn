@@ -9,6 +9,6 @@ namespace HonglornBL.MasterData.Student
         string Forename { get; }
         Sex Sex { get; }
         DateTime DateOfBirth { get; }
-        ICollection<Guid> StudentCoursePKeys { get; }
+        IEnumerable<Guid> StudentCoursePKeys { get; }
     }
 }

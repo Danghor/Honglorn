@@ -6,6 +6,7 @@ namespace HonglornBL.MasterData.StudentCourse
 {
     public sealed class StudentCourseManager : EntityManager<Models.Entities.StudentCourse, IStudentCourseModel>, IStudentCourseModel, IEntityManager<IStudentCourseModel>
     {
+        // TODO: getDBSet should not be passed in the constructor. It should be static anyway
         internal StudentCourseManager(Guid pKey, HonglornDbFactory contextFactory, Func<HonglornDb, IDbSet<Models.Entities.StudentCourse>> getDbSet) : base(pKey, contextFactory, getDbSet) { }
 
         public Guid StudentPKey
