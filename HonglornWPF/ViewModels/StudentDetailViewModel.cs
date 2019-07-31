@@ -9,7 +9,7 @@ using HonglornBL.MasterData.StudentCourse;
 
 namespace HonglornWPF.ViewModels
 {
-    class StudentDetailViewModel : DetailViewModel<IStudentModel>, IStudentModel
+    class StudentDetailViewModel : DetailViewModel<StudentManager>, IStudentModel
     {
         string surname;
 
@@ -74,7 +74,7 @@ namespace HonglornWPF.ViewModels
             StudentCourses.Clear();
         }
 
-        internal override void CopyValues(IStudentModel model)
+        internal override void CopyValues(StudentManager model)
         {
             Surname = model.Surname;
             Forename = model.Forename;

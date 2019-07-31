@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace HonglornWPF.ViewModels
 {
-    class StudentCourseDetailViewModel : DetailViewModel<IStudentCourseModel>, IStudentCourseModel
+    class StudentCourseDetailViewModel : DetailViewModel<StudentCourseManager>, IStudentCourseModel
     {
         public Guid StudentPKey => CurrentStudent?.Key ?? default;
 
@@ -61,7 +61,7 @@ namespace HonglornWPF.ViewModels
             dateEnd = default;
         }
 
-        internal override void CopyValues(IStudentCourseModel model)
+        internal override void CopyValues(StudentCourseManager model)
         {
             CurrentStudent = ValidStudents.SingleOrDefault(i => i.Key == model.StudentPKey);
             CurrentCourse = ValidCourses.SingleOrDefault(i => i.Key == model.CoursePKey);

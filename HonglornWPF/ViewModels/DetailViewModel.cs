@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    abstract class DetailViewModel<TModel> : ViewModel
+    abstract class DetailViewModel<TManager> : ViewModel
     {
         ICommand acceptCommand;
 
@@ -22,6 +22,6 @@ namespace HonglornWPF.ViewModels
 
         internal abstract void Clear();
 
-        internal abstract void CopyValues(TModel model);
+        internal abstract void CopyValues(TManager model);
     }
 }

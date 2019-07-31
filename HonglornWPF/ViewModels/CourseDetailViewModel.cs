@@ -5,7 +5,7 @@ using HonglornBL.MasterData.Course;
 
 namespace HonglornWPF.ViewModels
 {
-    class CourseDetailViewModel : DetailViewModel<ICourseModel>, ICourseModel
+    class CourseDetailViewModel : DetailViewModel<CourseManager>, ICourseModel
     {
         string name;
 
@@ -38,7 +38,7 @@ namespace HonglornWPF.ViewModels
             CurrentClass = default;
         }
 
-        internal override void CopyValues(ICourseModel model)
+        internal override void CopyValues(CourseManager model)
         {
             Name = model.Name;
             CurrentClass = ValidClassValues.SingleOrDefault(i => i.Key == model.ClassPKey);

@@ -6,7 +6,7 @@ namespace HonglornWPF.ViewModels
 {
     abstract class ListViewModel<TManager, TDetailViewModel, TModel> : ViewModel
         where TManager : IEntityManager<TModel>, TModel
-        where TDetailViewModel : DetailViewModel<TModel>, TModel
+        where TDetailViewModel : DetailViewModel<TManager>, TModel
     {
         protected IEntityService<TManager, TModel> service;
 

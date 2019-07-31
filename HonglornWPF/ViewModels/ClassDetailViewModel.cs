@@ -3,7 +3,7 @@ using HonglornBL.MasterData.Class;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassDetailViewModel : DetailViewModel<IClassModel>, IClassModel
+    class ClassDetailViewModel : DetailViewModel<ClassManager>, IClassModel
     {
         string name;
 
@@ -22,7 +22,7 @@ namespace HonglornWPF.ViewModels
             Name = default;
         }
 
-        internal override void CopyValues(IClassModel model)
+        internal override void CopyValues(ClassManager model)
         {
             Name = model.Name;
         }
