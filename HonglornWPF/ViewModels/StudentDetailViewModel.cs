@@ -81,12 +81,10 @@ namespace HonglornWPF.ViewModels
             Sex = model.Sex;
             DateOfBirth = model.DateOfBirth;
 
-            var studentCourseService = Honglorn.StudentCourseService();
-
             StudentCourses.Clear();
-            foreach (var coursePKey in model.StudentCoursePKeys)
+            foreach (StudentCourseManager manager in model.StudentCourseManagers)
             {
-                StudentCourses.Add(studentCourseService.CreateManager(coursePKey));
+                StudentCourses.Add(manager);
             }
         }
     }
