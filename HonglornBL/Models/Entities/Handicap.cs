@@ -15,6 +15,7 @@ namespace HonglornBL.Models.Entities
 
         [Required]
         [Index(IsUnique = true)]
+        [StringLength(5)]
         public string Name { get; set; }
 
         [XmlIgnore]

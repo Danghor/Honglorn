@@ -1,26 +1,28 @@
-﻿using HonglornBL.MasterData.Class;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Class : IEntity<IClassModel>
+    public class Class : NotifyPropertyChangedInformer
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; set; } = Guid.NewGuid();
+        public Guid PKey { get; internal set; } = Guid.NewGuid();
+
+        private string name;
 
         [Required]
         [Index(IsUnique = true)]
-        public string Name { get; set; }
-
-        public virtual ICollection<Course> Courses { get; set; } = new HashSet<Course>();
-
-        public void AdoptValues(IClassModel model)
+        [StringLength(25)]
+        public string Name
         {
-            Name = model.Name;
+            get => name;
+            set => OnPropertyChanged(out name, value);
         }
+
+        public virtual ObservableCollection<Course> Courses { get; set; } = new ObservableCollection<Course>();
     }
 }

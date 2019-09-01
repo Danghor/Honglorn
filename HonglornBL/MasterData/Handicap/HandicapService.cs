@@ -1,20 +1,12 @@
 ﻿using HonglornBL.Models.Framework;
-using System;
+using System.Data.Entity;
 
 namespace HonglornBL.MasterData.Handicap
 {
-    public sealed class HandicapService : EntityService<HandicapManager, Models.Entities.Handicap, IHandicapModel>
+    public sealed class HandicapService : NGService<Models.Entities.Handicap>
     {
         internal HandicapService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
-        public override HandicapManager CreateManager(Guid pKey)
-        {
-            return new HandicapManager(pKey, ContextFactory, GetDbSet);
-        }
-
-        protected override System.Data.Entity.IDbSet<Models.Entities.Handicap> GetDbSet(HonglornDb context)
-        {
-            return context.Handicap;
-        }
+        protected override DbSet<Models.Entities.Handicap> EntitySet => Context.Handicap;
     }
 }

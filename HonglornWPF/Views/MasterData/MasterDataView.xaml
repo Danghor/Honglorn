@@ -28,12 +28,12 @@
                 <DataTemplate DataType="{x:Type viewModels:StudentListViewModel}">
                     <masterData:StudentListView />
                 </DataTemplate>
-                <DataTemplate DataType="{x:Type viewModels:StudentCourseListViewModel}">
+                <!--<DataTemplate DataType="{x:Type viewModels:StudentCourseListViewModel}">
                     <masterData:StudentCourseListView />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewModels:StudentHandicapListViewModel}">
                     <masterData:StudentHandicapListView />
-                </DataTemplate>
+                </DataTemplate>-->
             </ContentControl.Resources>
         </ContentControl>
     </Grid>

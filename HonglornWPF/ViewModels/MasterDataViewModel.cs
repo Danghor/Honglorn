@@ -16,9 +16,7 @@ namespace HonglornWPF.ViewModels
         {
             new ClassListViewModel(),
             new CourseListViewModel(),
-            new StudentListViewModel(),
-            new StudentCourseListViewModel(),
-            new StudentHandicapListViewModel()
+            new StudentListViewModel()
         };
     }
 }

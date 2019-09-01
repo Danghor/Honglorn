@@ -1,16 +1,22 @@
-﻿using HonglornBL.MasterData.Class;
+﻿using System;
+using HonglornBL.MasterData;
+using HonglornBL.MasterData.Class;
+using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassListViewModel : ListViewModel<ClassManager, ClassDetailViewModel, IClassModel>
+    class ClassListViewModel : NGListViewModel<Class>
     {
+        protected override NGService<Class> Service { get; }
+
         public ClassListViewModel()
         {
-            DetailViewModel = new ClassDetailViewModel(() => DetailViewIsVisible = false);
+            Service = Honglorn.ClassService();
+        }
 
-            service = Honglorn.ClassService();
-
-            RefreshViewModel();
+        protected override NGDetailViewModel<Class> CreateDetailViewModel(Action cancelAction, Action acceptAction, Class entity)
+        {
+            return new ClassDetailViewModel(cancelAction, acceptAction, entity);
         }
 
         public override string ToString() => "Classes";

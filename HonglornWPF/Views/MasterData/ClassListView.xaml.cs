@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System;
+using System.Windows.Controls;
 
 namespace HonglornWPF.Views.MasterData
 {
@@ -10,6 +11,12 @@ namespace HonglornWPF.Views.MasterData
         public ClassListView()
         {
             InitializeComponent();
+            Dispatcher.ShutdownStarted += Dispatcher_ShutdownStarted;
+        }
+
+        private void Dispatcher_ShutdownStarted(object sender, EventArgs e)
+        {
+            (DataContext as IDisposable)?.Dispose();
         }
     }
 }

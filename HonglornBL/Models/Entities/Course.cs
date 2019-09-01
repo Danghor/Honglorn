@@ -1,19 +1,21 @@
 ﻿using HonglornBL.MasterData.Course;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Course : IEntity<ICourseModel>
+    public class Course : NotifyPropertyChangedInformer
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; set; } = Guid.NewGuid();
+        public Guid PKey { get; internal set; } = Guid.NewGuid();
 
         [Required]
         [Index(IsUnique = true)]
+        [StringLength(25)]
         public string Name { get; set; }
 
         [Required]
@@ -22,12 +24,6 @@ namespace HonglornBL.Models.Entities
         [ForeignKey(nameof(ClassPKey))]
         public virtual Class Class { get; set; }
 
-        public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
-
-        public void AdoptValues(ICourseModel model)
-        {
-            Name = model.Name;
-            ClassPKey = model.ClassPKey;
-        }
+        public virtual ObservableCollection<StudentCourse> StudentCourses { get; set; } = new ObservableCollection<StudentCourse>();
     }
 }

@@ -1,16 +1,23 @@
-﻿using HonglornBL.MasterData.Student;
+﻿using System;
+using HonglornBL;
+using HonglornBL.MasterData;
+using HonglornBL.MasterData.Student;
+using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
 {
-    class StudentListViewModel : ListViewModel<StudentManager, StudentDetailViewModel, IStudentModel>
+    class StudentListViewModel : NGListViewModel<Student>
     {
+        protected override NGService<Student> Service { get; }
+
         public StudentListViewModel()
         {
-            DetailViewModel = new StudentDetailViewModel(() => DetailViewIsVisible = false);
+            Service = Honglorn.StudentService();
+        }
 
-            service = Honglorn.StudentService();
-
-            RefreshViewModel();
+        protected override NGDetailViewModel<Student> CreateDetailViewModel(Action cancelAction, Action acceptAction, Student entity)
+        {
+            return new StudentDetailViewModel(cancelAction, acceptAction, entity);
         }
 
         public override string ToString() => "Students";

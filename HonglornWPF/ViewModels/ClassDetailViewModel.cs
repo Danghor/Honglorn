@@ -1,30 +1,11 @@
-﻿using System;
-using HonglornBL.MasterData.Class;
+﻿using HonglornBL.Models.Entities;
+using System;
 
 namespace HonglornWPF.ViewModels
 {
-    class ClassDetailViewModel : DetailViewModel<ClassManager>, IClassModel
+    class ClassDetailViewModel : NGDetailViewModel<Class>
     {
-        string name;
-
-        public string Name
-        {
-            get => name;
-            set => OnPropertyChanged(out name, value);
-        }
-
-        public Guid PKey { get; }
-
-        public ClassDetailViewModel(Action cancelAction) : base(cancelAction) { }
-
-        internal override void Clear()
-        {
-            Name = default;
-        }
-
-        internal override void CopyValues(ClassManager model)
-        {
-            Name = model.Name;
-        }
+        public ClassDetailViewModel(Action cancelAction, Action acceptAction, Class entity)
+            : base(cancelAction, acceptAction, entity) { }
     }
 }

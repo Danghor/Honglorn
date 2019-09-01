@@ -1,21 +1,12 @@
-﻿using System;
+﻿using HonglornBL.Models.Framework;
 using System.Data.Entity;
-using HonglornBL.Models.Framework;
 
 namespace HonglornBL.MasterData.Class
 {
-    public sealed class ClassService : EntityService<ClassManager, Models.Entities.Class, IClassModel>
+    public sealed class ClassService : NGService<Models.Entities.Class>
     {
         internal ClassService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
-        public override ClassManager CreateManager(Guid pKey)
-        {
-            return new ClassManager(pKey, ContextFactory, GetDbSet);
-        }
-
-        protected override IDbSet<Models.Entities.Class> GetDbSet(HonglornDb context)
-        {
-            return context.Class;
-        }
+        protected override DbSet<Models.Entities.Class> EntitySet => Context.Class;
     }
 }

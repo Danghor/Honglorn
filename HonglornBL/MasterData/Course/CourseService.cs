@@ -1,21 +1,19 @@
 ﻿using HonglornBL.Models.Framework;
-using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace HonglornBL.MasterData.Course
 {
-    public sealed class CourseService : EntityService<CourseManager, Models.Entities.Course, ICourseModel>
+    public sealed class CourseService : NGService<Models.Entities.Course>
     {
         internal CourseService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
-        public override CourseManager CreateManager(Guid pKey)
-        {
-            return new CourseManager(pKey, ContextFactory, GetDbSet);
-        }
+        protected override DbSet<Models.Entities.Course> EntitySet => Context.Course;
 
-        protected override IDbSet<Models.Entities.Course> GetDbSet(HonglornDb context)
+        public IEnumerable<Models.Entities.Class> GetValidClasses()
         {
-            return context.Course;
+            return Context.Class.AsEnumerable();
         }
     }
 }

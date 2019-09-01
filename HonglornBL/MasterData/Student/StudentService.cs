@@ -1,21 +1,12 @@
-﻿using System;
+﻿using HonglornBL.Models.Framework;
 using System.Data.Entity;
-using HonglornBL.Models.Framework;
 
 namespace HonglornBL.MasterData.Student
 {
-    public sealed class StudentService : EntityService<StudentManager, Models.Entities.Student, IStudentModel>
+    public sealed class StudentService : NGService<Models.Entities.Student>
     {
         internal StudentService(HonglornDbFactory contextFactory) : base(contextFactory) { }
 
-        public override StudentManager CreateManager(Guid pKey)
-        {
-            return new StudentManager(pKey, ContextFactory, GetDbSet);
-        }
-
-        protected override IDbSet<Models.Entities.Student> GetDbSet(HonglornDb context)
-        {
-            return context.Student;
-        }
+        protected override DbSet<Models.Entities.Student> EntitySet => Context.Student;
     }
 }

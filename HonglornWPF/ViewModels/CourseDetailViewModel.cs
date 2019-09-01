@@ -1,47 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using HonglornBL.MasterData.Course;
+﻿using HonglornBL.MasterData.Course;
+using HonglornBL.Models.Entities;
+using System;
+using System.Collections.ObjectModel;
 
 namespace HonglornWPF.ViewModels
 {
-    class CourseDetailViewModel : DetailViewModel<CourseManager>, ICourseModel
+    class CourseDetailViewModel : NGDetailViewModel<Course>
     {
-        string name;
+        public ObservableCollection<Class> ValidClassValues { get; } = new ObservableCollection<Class>();
 
-        public string Name
+        public CourseDetailViewModel(Action cancelAction, Action acceptAction, Course entity, CourseService service) : base(cancelAction, acceptAction, entity)
         {
-            get => name;
-            set => OnPropertyChanged(out name, value);
-        }
-
-        public IDictionary<Guid, string> ValidClassValues { get; }
-
-        KeyValuePair<Guid, string>? currentClass;
-
-        public KeyValuePair<Guid, string>? CurrentClass
-        {
-            get => currentClass;
-            set => OnPropertyChanged(out currentClass, value);
-        }
-
-        public Guid ClassPKey => CurrentClass?.Key ?? default;
-
-        public CourseDetailViewModel(Action cancelAction) : base(cancelAction)
-        {
-            ValidClassValues = Honglorn.ClassService().GetManagers().ToDictionary(m => m.PKey, m => m.Name);
-        }
-
-        internal override void Clear()
-        {
-            Name = default;
-            CurrentClass = default;
-        }
-
-        internal override void CopyValues(CourseManager model)
-        {
-            Name = model.Name;
-            CurrentClass = ValidClassValues.SingleOrDefault(i => i.Key == model.ClassPKey);
+            ClearAndFill(ValidClassValues, service.GetValidClasses());
         }
     }
 }

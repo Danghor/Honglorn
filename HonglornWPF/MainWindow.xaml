@@ -6,8 +6,7 @@
   xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
   xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
   xmlns:views="clr-namespace:HonglornWPF.Views"
-                      xmlns:game="clr-namespace:HonglornWPF.Views.Game"
-                      mc:Ignorable="d"
+  mc:Ignorable="d"
   x:ClassModifier="internal"
   Title="Honglorn">
 
@@ -51,9 +50,6 @@
             <controls:MetroAnimatedSingleRowTabControl>
                 <TabItem Header="Stammdaten">
                     <views:MasterDataView />
-                </TabItem>
-                <TabItem Header="Spiele">
-                    <game:GameView />
                 </TabItem>
             </controls:MetroAnimatedSingleRowTabControl>
         </Grid>

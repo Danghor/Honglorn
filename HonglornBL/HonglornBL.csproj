@@ -99,14 +99,12 @@
     <Compile Include="Game\IGameModel.cs" />
     <Compile Include="IEntityManager.cs" />
     <Compile Include="IEntityService.cs" />
-    <Compile Include="MasterData\Class\ClassManager.cs" />
     <Compile Include="MasterData\Class\ClassService.cs" />
-    <Compile Include="MasterData\Course\CourseManager.cs" />
     <Compile Include="MasterData\Course\CourseService.cs" />
-    <Compile Include="MasterData\Course\ICourseModel.cs" />
     <Compile Include="EntityManager.cs" />
     <Compile Include="MasterData\Class\ClassNotFoundException.cs" />
     <Compile Include="MasterData\Handicap\HandicapService.cs" />
+    <Compile Include="MasterData\NGService.cs" />
     <Compile Include="MasterData\StudentCourse\IStudentCourseModel.cs" />
     <Compile Include="MasterData\StudentCourse\StudentCourseManager.cs" />
     <Compile Include="MasterData\StudentCourse\StudentCourseNotFoundException.cs" />
@@ -148,7 +146,6 @@
     <Compile Include="Game\Competition\TrackAndField\CompetitionTrackAndFieldGame.cs" />
     <Compile Include="Game\CertificateType.cs" />
     <Compile Include="MasterData\Sex.cs" />
-    <Compile Include="MasterData\Course\CourseNotFoundException.cs" />
     <Compile Include="MasterData\Class\DuplicateClassException.cs" />
     <Compile Include="Models\Entities\GamePerformance.cs" />
     <Compile Include="Models\Entities\Game.cs" />
@@ -164,6 +161,7 @@
     <Compile Include="Models\Framework\HonglornMySqlDb.cs" />
     <Compile Include="Import\ProgressReport.cs" />
     <Compile Include="Import\ImportedStudentRecord.cs" />
+    <Compile Include="NotifyPropertyChangedInformer.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

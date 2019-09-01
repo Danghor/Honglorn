@@ -14,18 +14,19 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Managers}" SelectedItem="{Binding CurrentManager}" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" Grid.Row="0">
+        <DataGrid ItemsSource="{Binding Entities}" SelectedItem="{Binding CurrentEntity}" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" Grid.Row="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="1">
             <Button Content="Neu" Command="{Binding NewCommand}" />
-            <Button Content="Bearbeiten" Command="{Binding EditCommand}" IsEnabled="{Binding CurrentManager, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
-            <Button Content="Löschen" Command="{Binding DeleteCommand}" IsEnabled="{Binding CurrentManager, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
+            <Button Content="Bearbeiten" Command="{Binding EditCommand}" IsEnabled="{Binding CurrentEntity, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
+            <Button Content="Löschen" Command="{Binding DeleteCommand}" IsEnabled="{Binding CurrentEntity, Converter={StaticResource ObjectNotNullToBoolConverter}}" />
+            <Button Content="Aktualisieren" Command="{Binding RefreshCommand}" />
         </StackPanel>
 
-        <controls:Flyout Header="Class" IsModal="True" Position="Right" IsOpen="{Binding DetailViewIsVisible}" Grid.Row="0" Grid.RowSpan="2" Theme="Adapt">
+        <controls:Flyout CloseButtonVisibility="Collapsed" Header="Class" IsModal="True" Position="Bottom" IsOpen="{Binding DetailViewIsVisible}" Grid.Row="0" Grid.RowSpan="2" Theme="Adapt">
             <local:ClassDetailView DataContext="{Binding DetailViewModel}" />
         </controls:Flyout>
     </Grid>
