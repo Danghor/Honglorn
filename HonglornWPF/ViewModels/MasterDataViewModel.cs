@@ -1,22 +1,29 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace HonglornWPF.ViewModels
 {
     class MasterDataViewModel : ViewModel
     {
-        ViewModel currentPageViewModel;
+        public ObservableCollection<ViewModel> Tabs { get; } = new ObservableCollection<ViewModel>();
 
-        public ViewModel CurrentPageViewModel
+        public IEnumerable<ViewModelInfo> ViewModelInfos { get; } = new[]
         {
-            get => currentPageViewModel;
-            set => OnPropertyChanged(out currentPageViewModel, value);
-        }
-
-        public IEnumerable<ViewModel> ViewModels { get; } = new ViewModel[]
-        {
-            new ClassListViewModel(),
-            new CourseListViewModel(),
-            new StudentListViewModel()
+            new ViewModelInfo(() => new ClassListViewModel(), "Classes"),
+            new ViewModelInfo(() => new CourseListViewModel(), "Courses"),
+            new ViewModelInfo(() => new StudentListViewModel(), "Students")
         };
+
+        private ViewModelInfo currentViewModelInfo;
+
+        public ViewModelInfo CurrentViewModelInfo
+        {
+            get => currentViewModelInfo;
+            set
+            {
+                Tabs.Add(value.CreateViewModel());
+                OnPropertyChanged(out currentViewModelInfo, value);
+            }
+        }
     }
 }

@@ -6,35 +6,25 @@
              xmlns:local="clr-namespace:HonglornWPF.Views"
              xmlns:masterData="clr-namespace:HonglornWPF.Views.MasterData"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <viewModels:MasterDataViewModel />
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="{x:Type ListViewItem}">
+            <EventSetter Event="MouseDoubleClick" Handler="HandleDoubleClick" />
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" ItemsSource="{Binding ViewModels}" SelectedItem="{Binding CurrentPageViewModel}" />
-        <ContentControl Content="{Binding CurrentPageViewModel}" Grid.Column="1" >
-            <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type viewModels:ClassListViewModel}">
-                    <masterData:ClassListView />
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type viewModels:CourseListViewModel}">
-                    <masterData:CourseListView />
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type viewModels:StudentListViewModel}">
-                    <masterData:StudentListView />
-                </DataTemplate>
-                <!--<DataTemplate DataType="{x:Type viewModels:StudentCourseListViewModel}">
-                    <masterData:StudentCourseListView />
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type viewModels:StudentHandicapListViewModel}">
-                    <masterData:StudentHandicapListView />
-                </DataTemplate>-->
-            </ContentControl.Resources>
-        </ContentControl>
+
+        <ListView Grid.Column="0" ItemsSource="{Binding ViewModelInfos}" SelectedItem="{Binding CurrentViewModelInfo}" />
+        <TabControl Grid.Column="1" ItemsSource="{Binding Tabs}" />
     </Grid>
 </UserControl>

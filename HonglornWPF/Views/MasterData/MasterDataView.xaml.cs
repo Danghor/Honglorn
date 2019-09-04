@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using HonglornWPF.ViewModels;
 
 namespace HonglornWPF.Views
 {
@@ -10,6 +11,11 @@ namespace HonglornWPF.Views
         public MasterDataView()
         {
             InitializeComponent();
+        }
+
+        private void HandleDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ((MasterDataViewModel)DataContext).Tabs.Add(new ClassListViewModel());
         }
     }
 }
