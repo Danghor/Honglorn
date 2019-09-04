@@ -40,7 +40,10 @@
 
             <TabControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type viewModels:ViewModel}">
-                    <TextBlock Text="{Binding}" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}" />
+                        <Button Content="X" Command="{Binding CloseCommand}" />
+                    </StackPanel>
                 </DataTemplate>
             </TabControl.ItemTemplate>
         </TabControl>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace HonglornWPF.ViewModels
@@ -7,11 +8,28 @@ namespace HonglornWPF.ViewModels
     {
         public ObservableCollection<ViewModel> Tabs { get; } = new ObservableCollection<ViewModel>();
 
-        public IEnumerable<ViewModelInfo> ViewModelInfos { get; } = new[]
+        public IEnumerable<ViewModelInfo> ViewModelInfos { get; }
+
+        public MasterDataViewModel()
         {
-            new ViewModelInfo(() => new ClassListViewModel(), "Classes"),
-            new ViewModelInfo(() => new CourseListViewModel(), "Courses"),
-            new ViewModelInfo(() => new StudentListViewModel(), "Students")
-        };
+            ViewModelInfos = new[]
+            {
+                new ViewModelInfo(() => CreateAndSubscribe(() => new ClassListViewModel()), "Classes"),
+                new ViewModelInfo(() => CreateAndSubscribe(() => new CourseListViewModel()), "Courses"),
+                new ViewModelInfo(() => CreateAndSubscribe(() => new StudentListViewModel()), "Students")
+            };
+        }
+
+        private ViewModel CreateAndSubscribe(Func<ViewModel> createViewModel)
+        {
+            var viewModel = createViewModel();
+            viewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
+            return viewModel;
+        }
+
+        private void ViewModel_OnCloseButtonPressed(object sender, System.EventArgs e)
+        {
+            Tabs.Remove((ViewModel)sender);
+        }
     }
 }
