@@ -13,17 +13,5 @@ namespace HonglornWPF.ViewModels
             new ViewModelInfo(() => new CourseListViewModel(), "Courses"),
             new ViewModelInfo(() => new StudentListViewModel(), "Students")
         };
-
-        private ViewModelInfo currentViewModelInfo;
-
-        public ViewModelInfo CurrentViewModelInfo
-        {
-            get => currentViewModelInfo;
-            set
-            {
-                Tabs.Add(value.CreateViewModel());
-                OnPropertyChanged(out currentViewModelInfo, value);
-            }
-        }
     }
 }

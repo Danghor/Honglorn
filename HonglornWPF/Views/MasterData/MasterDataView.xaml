@@ -1,20 +1,19 @@
 ﻿<UserControl x:Class="HonglornWPF.Views.MasterDataView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:HonglornWPF.Views"
-             xmlns:masterData="clr-namespace:HonglornWPF.Views.MasterData"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:HonglornWPF.ViewModels"
-             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:masterData="clr-namespace:HonglornWPF.Views.MasterData"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <viewModels:MasterDataViewModel />
     </UserControl.DataContext>
+
     <UserControl.Resources>
-        <Style TargetType="{x:Type ListViewItem}">
-            <EventSetter Event="MouseDoubleClick" Handler="HandleDoubleClick" />
+        <Style TargetType="ListViewItem">
+            <EventSetter Event="MouseDoubleClick" Handler="ListViewItem_MouseDoubleClick"/>
         </Style>
     </UserControl.Resources>
 
@@ -24,7 +23,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <ListView Grid.Column="0" ItemsSource="{Binding ViewModelInfos}" SelectedItem="{Binding CurrentViewModelInfo}" />
+        <ListView Grid.Column="0" ItemsSource="{Binding ViewModelInfos}" />
 
         <TabControl Grid.Column="1" ItemsSource="{Binding Tabs}" >
             <TabControl.Resources>
