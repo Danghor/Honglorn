@@ -25,6 +25,25 @@
         </Grid.ColumnDefinitions>
 
         <ListView Grid.Column="0" ItemsSource="{Binding ViewModelInfos}" SelectedItem="{Binding CurrentViewModelInfo}" />
-        <TabControl Grid.Column="1" ItemsSource="{Binding Tabs}" />
+
+        <TabControl Grid.Column="1" ItemsSource="{Binding Tabs}" >
+            <TabControl.Resources>
+                <DataTemplate DataType="{x:Type viewModels:ClassListViewModel}">
+                    <masterData:ClassListView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:CourseListViewModel}">
+                    <masterData:CourseListView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:StudentListViewModel}">
+                    <masterData:StudentListView />
+                </DataTemplate>
+            </TabControl.Resources>
+
+            <TabControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type viewModels:ViewModel}">
+                    <TextBlock Text="{Binding}" />
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+        </TabControl>
     </Grid>
 </UserControl>
