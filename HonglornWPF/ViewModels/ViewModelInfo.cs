@@ -4,10 +4,10 @@ namespace HonglornWPF.ViewModels
 {
     public class ViewModelInfo
     {
-        internal readonly Func<ViewModel> CreateViewModel;
+        internal readonly Func<TabViewModel> CreateViewModel;
         private readonly string name;
 
-        internal ViewModelInfo(Func<ViewModel> createViewModel, string name)
+        internal ViewModelInfo(Func<TabViewModel> createViewModel, string name)
         {
             CreateViewModel = createViewModel;
             this.name = name;

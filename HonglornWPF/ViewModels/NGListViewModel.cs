@@ -1,4 +1,5 @@
 ﻿using HonglornBL.MasterData;
+using HonglornBL.Models.Framework;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -6,7 +7,7 @@ using System.Windows.Input;
 namespace HonglornWPF.ViewModels
 {
     // TODO: Rename
-    abstract class NGListViewModel<T> : ViewModel
+    abstract class NGListViewModel<T> : ContextViewModel
         where T : class, new()
     {
         internal event EventHandler<DetailViewModelCreatedEventArgs<T>> OnDetailViewModelCreated;
@@ -27,7 +28,7 @@ namespace HonglornWPF.ViewModels
 
         protected abstract NGService<T> Service { get; }
 
-        protected NGListViewModel()
+        protected NGListViewModel(HonglornDb context) : base(context)
         {
             RefreshCommand = new RelayCommand(Refresh);
             DeleteCommand = new RelayCommand(Delete);

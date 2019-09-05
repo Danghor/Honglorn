@@ -129,6 +129,7 @@
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="ViewModels\ClassDetailViewModel.cs" />
     <Compile Include="ViewModels\ClassListViewModel.cs" />
+    <Compile Include="ViewModels\ContextViewModel.cs" />
     <Compile Include="ViewModels\CourseDetailViewModel.cs" />
     <Compile Include="ViewModels\CourseListViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModelCreatedEventArgs.cs" />

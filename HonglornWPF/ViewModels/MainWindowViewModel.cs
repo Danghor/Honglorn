@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace HonglornWPF.ViewModels
 {
-    class MainWindowViewModel : ViewModel
+    class MainWindowViewModel
     {
         public IEnumerable<AppThemeMenuData> AppThemes { get; }
         public IEnumerable<AccentColorMenuData> AccentColors { get; }

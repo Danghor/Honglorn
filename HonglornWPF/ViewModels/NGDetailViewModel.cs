@@ -1,22 +1,19 @@
-﻿using System;
+﻿using HonglornBL.Models.Entities;
+using HonglornBL.Models.Framework;
+using System;
 using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    abstract class NGDetailViewModel<T> : ViewModel
+    abstract class NGDetailViewModel<T> : ContextViewModel
+        where T: class
     {
         public T Entity { get; }
 
-        public ICommand AcceptCommand { get; }
-        public ICommand CancelCommand { get; }
-
         // TODO: Swap Accept and Cancel for better readability
-        protected NGDetailViewModel(Action cancelAction, Action acceptAction, T entity)
+        protected NGDetailViewModel(HonglornDb context, Guid entityKey) : base(context)
         {
-            CancelCommand = new RelayCommand(cancelAction);
-            AcceptCommand = new RelayCommand(acceptAction);
-
-            Entity = entity;
+            Entity = context.Class.Find(entityKey);
         }
     }
 }

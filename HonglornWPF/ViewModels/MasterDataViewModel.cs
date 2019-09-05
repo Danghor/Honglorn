@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 
 namespace HonglornWPF.ViewModels
 {
-    class MasterDataViewModel : ViewModel
+    class MasterDataViewModel : TabViewModel
     {
-        public ObservableCollection<ViewModel> Tabs { get; } = new ObservableCollection<ViewModel>();
+        public ObservableCollection<TabViewModel> Tabs { get; } = new ObservableCollection<TabViewModel>();
 
         public IEnumerable<ViewModelInfo> ViewModelInfos { get; }
 
@@ -20,7 +20,7 @@ namespace HonglornWPF.ViewModels
             };
         }
 
-        private ViewModel CreateAndSubscribe<T>(Func<NGListViewModel<T>> createViewModel) where T : class, new()
+        private TabViewModel CreateAndSubscribe<T>(Func<NGListViewModel<T>> createViewModel) where T : class, new()
         {
             var viewModel = createViewModel();
             viewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
@@ -36,7 +36,7 @@ namespace HonglornWPF.ViewModels
 
         private void ViewModel_OnCloseButtonPressed(object sender, EventArgs e)
         {
-            Tabs.Remove((ViewModel)sender);
+            Tabs.Remove((TabViewModel)sender);
         }
     }
 }

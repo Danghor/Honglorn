@@ -1,33 +1,18 @@
-﻿using System;
-using HonglornBL;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using HonglornBL;
+using System;
 using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    abstract class ViewModel : NotifyPropertyChangedInformer
+    abstract class TabViewModel : NotifyPropertyChangedInformer
     {
-        internal event EventHandler OnCloseButtonPressed;
-
         public ICommand CloseCommand { get; }
 
-        protected Honglorn Honglorn { get; }
+        internal event EventHandler OnCloseButtonPressed;
 
-        protected ViewModel()
+        protected TabViewModel()
         {
-            Honglorn = HonglornApi.Instance;
             CloseCommand = new RelayCommand(() => OnCloseButtonPressed?.Invoke(this, EventArgs.Empty));
-        }
-
-        protected static void ClearAndFill<T>(ObservableCollection<T> collection, IEnumerable<T> content)
-        {
-            collection.Clear();
-
-            foreach (T item in content)
-            {
-                collection.Add(item);
-            }
         }
     }
 }
