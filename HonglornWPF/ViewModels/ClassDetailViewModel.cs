@@ -7,5 +7,7 @@ namespace HonglornWPF.ViewModels
     {
         public ClassDetailViewModel(Action cancelAction, Action acceptAction, Class entity)
             : base(cancelAction, acceptAction, entity) { }
+
+        public override string ToString() => $"Class - {Entity.Name}";
     }
 }

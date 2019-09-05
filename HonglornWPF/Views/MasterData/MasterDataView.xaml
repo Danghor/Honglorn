@@ -30,12 +30,24 @@
                 <DataTemplate DataType="{x:Type viewModels:ClassListViewModel}">
                     <masterData:ClassListView />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:ClassDetailViewModel}">
+                    <masterData:ClassDetailView />
+                </DataTemplate>
+                
                 <DataTemplate DataType="{x:Type viewModels:CourseListViewModel}">
                     <masterData:CourseListView />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:CourseDetailViewModel}">
+                    <masterData:CourseDetailView />
+                </DataTemplate>
+                
                 <DataTemplate DataType="{x:Type viewModels:StudentListViewModel}">
                     <masterData:StudentListView />
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:StudentDetailViewModel}">
+                    <masterData:StudentDetailView />
+                </DataTemplate>
+                
             </TabControl.Resources>
 
             <TabControl.ItemTemplate>

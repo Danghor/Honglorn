@@ -20,14 +20,21 @@ namespace HonglornWPF.ViewModels
             };
         }
 
-        private ViewModel CreateAndSubscribe(Func<ViewModel> createViewModel)
+        private ViewModel CreateAndSubscribe<T>(Func<NGListViewModel<T>> createViewModel) where T : class, new()
         {
             var viewModel = createViewModel();
             viewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
+            viewModel.OnDetailViewModelCreated += ViewModel_OnDetailViewModelCreated;
             return viewModel;
         }
 
-        private void ViewModel_OnCloseButtonPressed(object sender, System.EventArgs e)
+        private void ViewModel_OnDetailViewModelCreated<T>(object sender, DetailViewModelCreatedEventArgs<T> e)
+        {
+            e.DetailViewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
+            Tabs.Add(e.DetailViewModel);
+        }
+
+        private void ViewModel_OnCloseButtonPressed(object sender, EventArgs e)
         {
             Tabs.Remove((ViewModel)sender);
         }

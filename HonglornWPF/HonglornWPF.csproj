@@ -131,6 +131,7 @@
     <Compile Include="ViewModels\ClassListViewModel.cs" />
     <Compile Include="ViewModels\CourseDetailViewModel.cs" />
     <Compile Include="ViewModels\CourseListViewModel.cs" />
+    <Compile Include="ViewModels\DetailViewModelCreatedEventArgs.cs" />
     <Compile Include="ViewModels\MasterDataViewModel.cs" />
     <Compile Include="ViewModels\NGDetailViewModel.cs" />
     <Compile Include="ViewModels\NGListViewModel.cs" />

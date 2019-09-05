@@ -1,5 +1,4 @@
 ﻿using HonglornBL.MasterData;
-using HonglornBL.Models.Entities;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -10,6 +9,8 @@ namespace HonglornWPF.ViewModels
     abstract class NGListViewModel<T> : ViewModel
         where T : class, new()
     {
+        internal event EventHandler<DetailViewModelCreatedEventArgs<T>> OnDetailViewModelCreated;
+
         public ICommand RefreshCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand NewCommand { get; }
@@ -22,20 +23,6 @@ namespace HonglornWPF.ViewModels
         {
             get => currentEntity;
             set => OnPropertyChanged(out currentEntity, value);
-        }
-
-        NGDetailViewModel<T> detailViewModel;
-        public NGDetailViewModel<T> DetailViewModel
-        {
-            get => detailViewModel;
-            set => OnPropertyChanged(out detailViewModel, value);
-        }
-
-        bool detailViewIsVisible;
-        public bool DetailViewIsVisible
-        {
-            get => detailViewIsVisible;
-            set => OnPropertyChanged(out detailViewIsVisible, value);
         }
 
         protected abstract NGService<T> Service { get; }
@@ -57,37 +44,37 @@ namespace HonglornWPF.ViewModels
         void OpenDetailViewForCreate()
         {
             var newEntity = new T();
-            DetailViewModel = CreateDetailViewModel(
-                () => DetailViewIsVisible = false,
+            var detailViewModel = CreateDetailViewModel(
+                () => { }, //DetailViewIsVisible = false,
                 () =>
                 {
                     Service.Create(newEntity);
                     SaveAndRefresh();
-                    CloseDetailView();
+                    //CloseDetailView();
                 },
                 newEntity);
 
-            DetailViewIsVisible = true;
+            OnDetailViewModelCreated?.Invoke(this, new DetailViewModelCreatedEventArgs<T>(detailViewModel));
         }
 
         protected abstract NGDetailViewModel<T> CreateDetailViewModel(Action cancelAction, Action acceptAction, T entity);
 
         void OpenDetailViewForEdit()
         {
-            DetailViewModel = CreateDetailViewModel(
+            var detailViewModel = CreateDetailViewModel(
             () =>
             {
                 Service.DiscardObjectChanges(currentEntity);
-                CloseDetailView();
+                //CloseDetailView();
             },
             () =>
             {
                 SaveAndRefresh();
-                CloseDetailView();
+                //CloseDetailView();
             },
             currentEntity);
 
-            DetailViewIsVisible = true;
+            OnDetailViewModelCreated?.Invoke(this, new DetailViewModelCreatedEventArgs<T>(detailViewModel));
         }
 
         void SaveAndRefresh()
@@ -100,11 +87,6 @@ namespace HonglornWPF.ViewModels
         {
             Service.RefreshContext();
             ClearAndFill(Entities, Service.GetAll());
-        }
-
-        void CloseDetailView()
-        {
-            DetailViewIsVisible = false;
         }
     }
 }
