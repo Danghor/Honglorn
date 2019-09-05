@@ -6,12 +6,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Class : NotifyPropertyChangedInformer
+    public class Class : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; internal set; } = Guid.NewGuid();
-
         private string name;
 
         [Required]

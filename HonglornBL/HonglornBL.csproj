@@ -106,7 +106,6 @@
     <Compile Include="MasterData\Handicap\HandicapService.cs" />
     <Compile Include="MasterData\NGService.cs" />
     <Compile Include="MasterData\StudentCourse\IStudentCourseModel.cs" />
-    <Compile Include="MasterData\StudentCourse\StudentCourseManager.cs" />
     <Compile Include="MasterData\StudentCourse\StudentCourseNotFoundException.cs" />
     <Compile Include="MasterData\StudentCourse\StudentCourseService.cs" />
     <Compile Include="MasterData\StudentHandicap\IStudentHandicap.cs" />
@@ -137,6 +136,7 @@
     <Compile Include="MasterData\Handicap\IHandicapModel.cs" />
     <Compile Include="MasterData\Class\IClassModel.cs" />
     <Compile Include="IPdfDocument.cs" />
+    <Compile Include="Models\Entities\Entity.cs" />
     <Compile Include="Models\Entities\IDisciplineModel.cs" />
     <Compile Include="Models\Entities\IEntity.cs" />
     <Compile Include="MasterData\Student\IStudentModel.cs" />
@@ -189,7 +189,6 @@
     <Compile Include="Game\Traditional\TrackAndField\TraditionalTrackAndFieldSprintDiscipline.cs" />
     <Compile Include="Game\Traditional\TrackAndField\TraditionalTrackAndFieldThrowDiscipline.cs" />
     <Compile Include="EntityService.cs" />
-    <Compile Include="MasterData\Student\StudentManager.cs" />
     <Compile Include="MasterData\Student\StudentService.cs" />
   </ItemGroup>
   <ItemGroup>

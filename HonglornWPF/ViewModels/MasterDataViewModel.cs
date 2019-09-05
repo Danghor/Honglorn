@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.Remoting.Services;
+using HonglornBL.MasterData;
+using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
 {
@@ -14,13 +17,15 @@ namespace HonglornWPF.ViewModels
         {
             ViewModelInfos = new[]
             {
-                new ViewModelInfo(() => CreateAndSubscribe(() => new ClassListViewModel()), "Classes"),
-                new ViewModelInfo(() => CreateAndSubscribe(() => new CourseListViewModel()), "Courses"),
-                new ViewModelInfo(() => CreateAndSubscribe(() => new StudentListViewModel()), "Students")
+                new ViewModelInfo(() => CreateAndSubscribe(() => new ClassListViewModel(HonglornApi.Instance.ClassService())), "Classes"),
+                new ViewModelInfo(() => CreateAndSubscribe(() => new CourseListViewModel(HonglornApi.Instance.CourseService())), "Courses"),
+                new ViewModelInfo(() => CreateAndSubscribe(() => new StudentListViewModel(HonglornApi.Instance.StudentService())), "Students")
             };
         }
 
-        private TabViewModel CreateAndSubscribe<T>(Func<NGListViewModel<T>> createViewModel) where T : class, new()
+        private TabViewModel CreateAndSubscribe<TService, TEntity>(Func<NGListViewModel<TService, TEntity>> createViewModel)
+            where TService : NGService<TEntity>
+            where TEntity : Entity, new()
         {
             var viewModel = createViewModel();
             viewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
@@ -28,10 +33,10 @@ namespace HonglornWPF.ViewModels
             return viewModel;
         }
 
-        private void ViewModel_OnDetailViewModelCreated<T>(object sender, DetailViewModelCreatedEventArgs<T> e)
+        private void ViewModel_OnDetailViewModelCreated(object sender, TabViewModelCreatedEventArgs e)
         {
-            e.DetailViewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
-            Tabs.Add(e.DetailViewModel);
+            e.TabViewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
+            Tabs.Add(e.TabViewModel);
         }
 
         private void ViewModel_OnCloseButtonPressed(object sender, EventArgs e)

@@ -5,20 +5,13 @@ using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
 {
-    class CourseListViewModel : NGListViewModel<Course>
+    class CourseListViewModel : NGListViewModel<CourseService, Course>
     {
-        readonly CourseService courseService;
+        public CourseListViewModel(CourseService service) : base(service) { }
 
-        protected override NGService<Course> Service => courseService;
-
-        public CourseListViewModel()
+        protected override NGDetailViewModel<CourseService, Course> CreateDetailViewModel(CourseService service, Guid entityKey)
         {
-            courseService = Honglorn.CourseService();
-        }
-
-        protected override NGDetailViewModel<Course> CreateDetailViewModel(Action cancelAction, Action acceptAction, Course entity)
-        {
-            return new CourseDetailViewModel(cancelAction, acceptAction, entity, courseService);
+            return new CourseDetailViewModel(service, entityKey);
         }
 
         public override string ToString() => "Courses";

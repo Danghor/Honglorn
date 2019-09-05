@@ -1,36 +1,36 @@
 ﻿using HonglornBL.MasterData;
 using HonglornBL.Models.Framework;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
 {
     // TODO: Rename
-    abstract class NGListViewModel<T> : ContextViewModel
-        where T : class, new()
+    abstract class NGListViewModel<TService, TEntity> : ServiceViewModel<TService, TEntity>
+        where TService : NGService<TEntity>
+        where TEntity : Entity, new()
     {
-        internal event EventHandler<DetailViewModelCreatedEventArgs<T>> OnDetailViewModelCreated;
+        internal event EventHandler<TabViewModelCreatedEventArgs> OnDetailViewModelCreated;
 
-        public ICommand RefreshCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand NewCommand { get; }
         public ICommand EditCommand { get; }
 
-        public ObservableCollection<T> Entities { get; } = new ObservableCollection<T>();
+        public ObservableCollection<TEntity> Entities { get; } = new ObservableCollection<TEntity>();
 
-        T currentEntity;
-        public T CurrentEntity
+        TEntity selectedEntity;
+
+        public TEntity SelectedEntity
         {
-            get => currentEntity;
-            set => OnPropertyChanged(out currentEntity, value);
+            get => selectedEntity;
+            set => OnPropertyChanged(out selectedEntity, value);
         }
 
-        protected abstract NGService<T> Service { get; }
-
-        protected NGListViewModel(HonglornDb context) : base(context)
+        protected NGListViewModel(TService service) : base(service)
         {
-            RefreshCommand = new RelayCommand(Refresh);
             DeleteCommand = new RelayCommand(Delete);
             NewCommand = new RelayCommand(OpenDetailViewForCreate);
             EditCommand = new RelayCommand(OpenDetailViewForEdit);
@@ -38,55 +38,33 @@ namespace HonglornWPF.ViewModels
 
         void Delete()
         {
-            Service.Delete(CurrentEntity);
-            SaveAndRefresh();
+            Service.Delete(SelectedEntity);
+            Save();
+            Refresh();
         }
 
         void OpenDetailViewForCreate()
         {
-            var newEntity = new T();
-            var detailViewModel = CreateDetailViewModel(
-                () => { }, //DetailViewIsVisible = false,
-                () =>
-                {
-                    Service.Create(newEntity);
-                    SaveAndRefresh();
-                    //CloseDetailView();
-                },
-                newEntity);
+            var newEntity = new TEntity();
+            Service.AddNewEntity(newEntity);
 
-            OnDetailViewModelCreated?.Invoke(this, new DetailViewModelCreatedEventArgs<T>(detailViewModel));
+            var detailViewModel = CreateDetailViewModel(Service, newEntity.PKey);
+
+            OnDetailViewModelCreated?.Invoke(this, new TabViewModelCreatedEventArgs(detailViewModel));
         }
 
-        protected abstract NGDetailViewModel<T> CreateDetailViewModel(Action cancelAction, Action acceptAction, T entity);
+        protected abstract NGDetailViewModel<TService, TEntity> CreateDetailViewModel(TService service, Guid entityKey);
 
         void OpenDetailViewForEdit()
         {
-            var detailViewModel = CreateDetailViewModel(
-            () =>
-            {
-                Service.DiscardObjectChanges(currentEntity);
-                //CloseDetailView();
-            },
-            () =>
-            {
-                SaveAndRefresh();
-                //CloseDetailView();
-            },
-            currentEntity);
+            var detailViewModel = CreateDetailViewModel(Service, SelectedEntity.PKey);
 
-            OnDetailViewModelCreated?.Invoke(this, new DetailViewModelCreatedEventArgs<T>(detailViewModel));
+            OnDetailViewModelCreated?.Invoke(this, new TabViewModelCreatedEventArgs(detailViewModel));
         }
 
-        void SaveAndRefresh()
+        protected override void Refresh()
         {
-            Service.SaveChanges();
-            Refresh();
-        }
-
-        public void Refresh()
-        {
-            Service.RefreshContext();
+            base.Refresh();
             ClearAndFill(Entities, Service.GetAll());
         }
     }

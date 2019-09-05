@@ -7,16 +7,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class Course : NotifyPropertyChangedInformer
+    public class Course : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; internal set; } = Guid.NewGuid();
+        private string name;
 
         [Required]
         [Index(IsUnique = true)]
         [StringLength(25)]
-        public string Name { get; set; }
+        public string Name
+        {
+            get => name;
+            set => OnPropertyChanged(out name ,value);
+        }
 
         [Required]
         public Guid ClassPKey { get; set; }

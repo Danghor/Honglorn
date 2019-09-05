@@ -5,12 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HonglornBL.Models.Entities
 {
-    public class StudentCourse : IEntity<IStudentCourseModel>
+    public class StudentCourse : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; set; } = Guid.NewGuid();
-
         [Required]
         public Guid StudentPKey { get; set; }
 

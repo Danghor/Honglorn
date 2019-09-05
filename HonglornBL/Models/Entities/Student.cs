@@ -1,42 +1,52 @@
 ﻿using HonglornBL.MasterData;
-using HonglornBL.MasterData.Student;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 
 namespace HonglornBL.Models.Entities
 {
     [DebuggerDisplay("{Forename} {Surname}, {Sex}, YOB: {DateOfBirth}, ID: {PKey}")]
-    public class Student : IEntity<IStudentModel>
+    public class Student : Entity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid PKey { get; set; } = Guid.NewGuid();
+        private string surname;
 
         [Required]
-        public string Surname { get; set; }
-
-        [Required]
-        public string Forename { get; set; }
-
-        [Required]
-        public Sex Sex { get; set; }
-
-        [Required]
-        public DateTime DateOfBirth { get; set; }
-
-        public virtual ICollection<StudentHandicap> StudentHandicaps { get; set; } = new HashSet<StudentHandicap>();
-
-        public virtual ICollection<StudentCourse> StudentCourses { get; set; } = new HashSet<StudentCourse>();
-
-        public void AdoptValues(IStudentModel model)
+        public string Surname
         {
-            Surname = model.Surname;
-            Forename = model.Forename;
-            Sex = model.Sex;
-            DateOfBirth = model.DateOfBirth;
+            get => surname;
+            set => OnPropertyChanged(out surname, value);
         }
+
+        private string forename;
+
+        [Required]
+        public string Forename
+        {
+            get => forename;
+            set => OnPropertyChanged(out forename, value);
+        }
+
+        private Sex sex;
+
+        [Required]
+        public Sex Sex
+        {
+            get => sex;
+            set => OnPropertyChanged(out sex, value);
+        }
+
+        private DateTime dateOfBirth;
+
+        [Required]
+        public DateTime DateOfBirth
+        {
+            get => dateOfBirth;
+            set => OnPropertyChanged(out dateOfBirth, value);
+        }
+
+        public virtual ObservableCollection<StudentHandicap> StudentHandicaps { get; set; } = new ObservableCollection<StudentHandicap>();
+
+        public virtual ObservableCollection<StudentCourse> StudentCourses { get; set; } = new ObservableCollection<StudentCourse>();
     }
 }

@@ -129,10 +129,10 @@
     <Compile Include="Extensions\EnumBindingSourceExtension.cs" />
     <Compile Include="ViewModels\ClassDetailViewModel.cs" />
     <Compile Include="ViewModels\ClassListViewModel.cs" />
-    <Compile Include="ViewModels\ContextViewModel.cs" />
+    <Compile Include="ViewModels\ServiceViewModel.cs" />
     <Compile Include="ViewModels\CourseDetailViewModel.cs" />
     <Compile Include="ViewModels\CourseListViewModel.cs" />
-    <Compile Include="ViewModels\DetailViewModelCreatedEventArgs.cs" />
+    <Compile Include="ViewModels\TabViewModelCreatedEventArgs.cs" />
     <Compile Include="ViewModels\MasterDataViewModel.cs" />
     <Compile Include="ViewModels\NGDetailViewModel.cs" />
     <Compile Include="ViewModels\NGListViewModel.cs" />

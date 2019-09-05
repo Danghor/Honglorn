@@ -31,9 +31,9 @@ namespace HonglornBL.MasterData
             return EntitySet.Find(key);
         }
 
-        public void Create(T entity)
+        public void AddNewEntity(T entity)
         {
-            EntitySet.Add(@entity);
+            EntitySet.Add(entity);
         }
 
         public void DiscardObjectChanges(T entity)

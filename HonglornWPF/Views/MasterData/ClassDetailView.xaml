@@ -27,7 +27,7 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Button Content="Accept" Command="{Binding AcceptCommand}" Margin="5" />
-        <Button Content="Cancel" Command="{Binding CancelCommand}" Margin="5" />
+        <Button Content="Save" Command="{Binding SaveCommand}" Margin="5" />
+        <Button Content="Refresh" Command="{Binding RefreshCommand}" Margin="5" />
     </StackPanel>
 </UserControl>

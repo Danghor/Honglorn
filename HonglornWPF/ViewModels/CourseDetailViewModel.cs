@@ -5,11 +5,11 @@ using System.Collections.ObjectModel;
 
 namespace HonglornWPF.ViewModels
 {
-    class CourseDetailViewModel : NGDetailViewModel<Course>
+    class CourseDetailViewModel : NGDetailViewModel<CourseService, Course>
     {
         public ObservableCollection<Class> ValidClassValues { get; } = new ObservableCollection<Class>();
 
-        public CourseDetailViewModel(Action cancelAction, Action acceptAction, Course entity, CourseService service) : base(cancelAction, acceptAction, entity)
+        public CourseDetailViewModel(CourseService service, Guid entityKey) : base(service, entityKey)
         {
             ClearAndFill(ValidClassValues, service.GetValidClasses());
         }

@@ -1,19 +1,30 @@
-﻿using HonglornBL.Models.Entities;
-using HonglornBL.Models.Framework;
+﻿using HonglornBL.MasterData;
+using HonglornBL.Models.Entities;
 using System;
-using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    abstract class NGDetailViewModel<T> : ContextViewModel
-        where T: class
+    abstract class NGDetailViewModel<TService, TEntity> : ServiceViewModel<TService, TEntity>
+        where TService : NGService<TEntity>
+        where TEntity : Entity
     {
-        public T Entity { get; }
+        private TEntity entity;
 
-        // TODO: Swap Accept and Cancel for better readability
-        protected NGDetailViewModel(HonglornDb context, Guid entityKey) : base(context)
+        public TEntity Entity
         {
-            Entity = context.Class.Find(entityKey);
+            get => entity;
+            set => OnPropertyChanged(out entity, value);
+        }
+
+        protected NGDetailViewModel(TService service, Guid entityKey) : base(service)
+        {
+            Entity = Service.Find(entityKey);
+        }
+
+        protected override void Refresh()
+        {
+            base.Refresh();
+            Entity = Service.Find(Entity.PKey);
         }
     }
 }
