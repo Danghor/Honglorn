@@ -100,6 +100,7 @@
     <Compile Include="IEntityManager.cs" />
     <Compile Include="IEntityService.cs" />
     <Compile Include="MasterData\Class\ClassService.cs" />
+    <Compile Include="MasterData\ContextChangedEventArgs.cs" />
     <Compile Include="MasterData\Course\CourseService.cs" />
     <Compile Include="EntityManager.cs" />
     <Compile Include="MasterData\Class\ClassNotFoundException.cs" />

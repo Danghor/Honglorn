@@ -10,6 +10,8 @@ namespace HonglornBL.MasterData
     public abstract class NGService<T> : IDisposable
         where T : class
     {
+        public event EventHandler<ContextChangedEventArgs> ContextChanged;
+
         protected abstract DbSet<T> EntitySet { get; }
         protected HonglornDb Context { get; private set; }
 
@@ -50,6 +52,8 @@ namespace HonglornBL.MasterData
         {
             Context.Dispose();
             Context = contextFactory.CreateContext();
+
+            ContextChanged?.Invoke(this, new ContextChangedEventArgs(Context));
         }
 
         public void Delete(T entity)

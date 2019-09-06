@@ -19,11 +19,12 @@ namespace HonglornWPF.ViewModels
         protected NGDetailViewModel(TService service, Guid entityKey) : base(service)
         {
             Entity = Service.Find(entityKey);
+
+            Service.ContextChanged += Service_ContextChanged;
         }
 
-        protected override void Refresh()
+        private void Service_ContextChanged(object sender, ContextChangedEventArgs e)
         {
-            base.Refresh();
             Entity = Service.Find(Entity.PKey);
         }
     }

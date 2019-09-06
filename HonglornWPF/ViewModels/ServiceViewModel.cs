@@ -29,7 +29,7 @@ namespace HonglornWPF.ViewModels
             Service.SaveChanges();
         }
 
-        protected virtual void Refresh()
+        protected void Refresh()
         {
             Service.RefreshContext();
         }

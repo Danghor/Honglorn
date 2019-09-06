@@ -34,6 +34,13 @@ namespace HonglornWPF.ViewModels
             DeleteCommand = new RelayCommand(Delete);
             NewCommand = new RelayCommand(OpenDetailViewForCreate);
             EditCommand = new RelayCommand(OpenDetailViewForEdit);
+
+            Service.ContextChanged += Service_ContextChanged;
+        }
+
+        private void Service_ContextChanged(object sender, ContextChangedEventArgs e)
+        {
+            ClearAndFill(Entities, Service.GetAll());
         }
 
         void Delete()
@@ -60,12 +67,6 @@ namespace HonglornWPF.ViewModels
             var detailViewModel = CreateDetailViewModel(Service, SelectedEntity.PKey);
 
             OnDetailViewModelCreated?.Invoke(this, new TabViewModelCreatedEventArgs(detailViewModel));
-        }
-
-        protected override void Refresh()
-        {
-            base.Refresh();
-            ClearAndFill(Entities, Service.GetAll());
         }
     }
 }
