@@ -16,12 +16,17 @@ namespace HonglornWPF.ViewModels
 
         public ICommand CloseCommand { get; }
 
-        internal event EventHandler OnCloseButtonPressed;
+        internal event EventHandler Closing;
 
         protected TabViewModel()
         {
-            CloseCommand = new RelayCommand(() => OnCloseButtonPressed?.Invoke(this, EventArgs.Empty));
+            CloseCommand = new RelayCommand(OnClosing);
             TabTitle = ToString();
+        }
+
+        protected void OnClosing()
+        {
+            Closing?.Invoke(this, EventArgs.Empty);
         }
     }
 }

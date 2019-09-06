@@ -49,18 +49,18 @@ namespace HonglornWPF.ViewModels
             where TEntity : Entity, new()
         {
             var viewModel = createViewModel();
-            viewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
+            viewModel.Closing += ViewModel_Closing;
             viewModel.OnDetailViewModelCreated += ViewModel_OnDetailViewModelCreated;
             return viewModel;
         }
 
         private void ViewModel_OnDetailViewModelCreated(object sender, TabViewModelCreatedEventArgs e)
         {
-            e.TabViewModel.OnCloseButtonPressed += ViewModel_OnCloseButtonPressed;
+            e.TabViewModel.Closing += ViewModel_Closing;
             Tabs.Add(e.TabViewModel);
         }
 
-        private void ViewModel_OnCloseButtonPressed(object sender, EventArgs e)
+        private void ViewModel_Closing(object sender, EventArgs e)
         {
             Tabs.Remove((TabViewModel)sender);
         }

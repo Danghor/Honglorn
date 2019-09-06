@@ -20,8 +20,18 @@ namespace HonglornWPF.ViewModels
                 {
                     entity.PropertyChanged -= Entity_PropertyChanged;
                 }
+
                 OnPropertyChanged(out entity, value);
-                Entity.PropertyChanged += Entity_PropertyChanged;
+
+                if (value != null)
+                {
+                    Entity.PropertyChanged += Entity_PropertyChanged;
+                    RefreshTabTitle();
+                }
+                else
+                {
+                    OnClosing();
+                }
             }
         }
 
