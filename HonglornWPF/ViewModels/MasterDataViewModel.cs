@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Runtime.Remoting.Services;
 using HonglornBL.MasterData;
 using HonglornBL.Models.Entities;
@@ -10,6 +12,14 @@ namespace HonglornWPF.ViewModels
     class MasterDataViewModel : TabViewModel
     {
         public ObservableCollection<TabViewModel> Tabs { get; } = new ObservableCollection<TabViewModel>();
+
+        TabViewModel selectedTab;
+
+        public TabViewModel SelectedTab
+        {
+            get => selectedTab;
+            set => OnPropertyChanged(out selectedTab, value);
+        }
 
         public IEnumerable<ViewModelInfo> ViewModelInfos { get; }
 
@@ -21,6 +31,16 @@ namespace HonglornWPF.ViewModels
                 new ViewModelInfo(() => CreateAndSubscribe(() => new CourseListViewModel(HonglornApi.Instance.CourseService())), "Courses"),
                 new ViewModelInfo(() => CreateAndSubscribe(() => new StudentListViewModel(HonglornApi.Instance.StudentService())), "Students")
             };
+
+            Tabs.CollectionChanged += Tabs_CollectionChanged;
+        }
+
+        private void Tabs_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                SelectedTab = e.NewItems.Cast<TabViewModel>().First();
+            }
         }
 
         private TabViewModel CreateAndSubscribe<TService, TEntity>(Func<NGListViewModel<TService, TEntity>> createViewModel)

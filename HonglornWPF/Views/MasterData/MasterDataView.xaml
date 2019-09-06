@@ -25,7 +25,7 @@
 
         <ListView Grid.Column="0" ItemsSource="{Binding ViewModelInfos}" />
 
-        <TabControl Grid.Column="1" ItemsSource="{Binding Tabs}" >
+        <TabControl Grid.Column="1" ItemsSource="{Binding Tabs}" SelectedItem="{Binding SelectedTab}">
             <TabControl.Resources>
                 <DataTemplate DataType="{x:Type viewModels:ClassListViewModel}">
                     <masterData:ClassListView />
