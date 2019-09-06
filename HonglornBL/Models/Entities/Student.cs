@@ -48,5 +48,10 @@ namespace HonglornBL.Models.Entities
         public virtual ObservableCollection<StudentHandicap> StudentHandicaps { get; set; } = new ObservableCollection<StudentHandicap>();
 
         public virtual ObservableCollection<StudentCourse> StudentCourses { get; set; } = new ObservableCollection<StudentCourse>();
+
+        public override string ToString()
+        {
+            return $"{Forename} {Surname}";
+        }
     }
 }

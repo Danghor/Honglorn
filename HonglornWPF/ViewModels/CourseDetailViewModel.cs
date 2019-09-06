@@ -13,7 +13,5 @@ namespace HonglornWPF.ViewModels
         {
             ClearAndFill(ValidClassValues, service.GetValidClasses());
         }
-
-        public override string ToString() => $"Course - {Entity.Name}";
     }
 }
