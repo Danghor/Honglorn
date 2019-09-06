@@ -36,6 +36,8 @@ namespace HonglornWPF.ViewModels
             EditCommand = new RelayCommand(OpenDetailViewForEdit);
 
             Service.ContextChanged += Service_ContextChanged;
+
+            ClearAndFill(Entities, Service.GetAll());
         }
 
         private void Service_ContextChanged(object sender, ContextChangedEventArgs e)
