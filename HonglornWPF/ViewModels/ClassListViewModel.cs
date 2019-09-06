@@ -6,7 +6,6 @@ namespace HonglornWPF.ViewModels
 {
     class ClassListViewModel : NGListViewModel<ClassService, Class>
     {
-
         public ClassListViewModel(ClassService service) : base(service) { }
 
         protected override NGDetailViewModel<ClassService, Class> CreateDetailViewModel(ClassService service, Guid entityKey)

@@ -4,12 +4,13 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Runtime.Remoting.Services;
+using HonglornBL;
 using HonglornBL.MasterData;
 using HonglornBL.Models.Entities;
 
 namespace HonglornWPF.ViewModels
 {
-    class MasterDataViewModel : TabViewModel
+    class MasterDataViewModel : NotifyPropertyChangedInformer
     {
         public ObservableCollection<TabViewModel> Tabs { get; } = new ObservableCollection<TabViewModel>();
 
@@ -35,7 +36,7 @@ namespace HonglornWPF.ViewModels
             Tabs.CollectionChanged += Tabs_CollectionChanged;
         }
 
-        private void Tabs_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        private void Tabs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (e.Action == NotifyCollectionChangedAction.Add)
             {

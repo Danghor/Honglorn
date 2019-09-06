@@ -23,13 +23,5 @@ namespace HonglornBL.Models.Entities
         public virtual Course Course { get; set; }
 
         public DateTime? DateEnd { get; set; }
-
-        public void AdoptValues(IStudentCourseModel model)
-        {
-            StudentPKey = model.StudentPKey;
-            CoursePKey = model.CoursePKey;
-            DateStart = model.DateStart;
-            DateEnd = model.DateEnd;
-        }
     }
 }
