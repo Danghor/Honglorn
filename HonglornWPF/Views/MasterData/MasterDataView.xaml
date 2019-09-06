@@ -47,14 +47,19 @@
                 <DataTemplate DataType="{x:Type viewModels:StudentDetailViewModel}">
                     <masterData:StudentDetailView />
                 </DataTemplate>
-                
             </TabControl.Resources>
 
             <TabControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type viewModels:TabViewModel}">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}" />
-                        <Button Content="X" Command="{Binding CloseCommand}" />
+                        <TextBlock Text="{Binding TabTitle}" />
+                        <Button Command="{Binding CloseCommand}" Margin="5,0,0,0">
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Label FontWeight="Bold" Content="X"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
                     </StackPanel>
                 </DataTemplate>
             </TabControl.ItemTemplate>
