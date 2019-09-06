@@ -14,14 +14,21 @@ namespace HonglornWPF.ViewModels
         public TEntity Entity
         {
             get => entity;
-            set => OnPropertyChanged(out entity, value);
+            set
+            {
+                if (entity != null)
+                {
+                    entity.PropertyChanged -= Entity_PropertyChanged;
+                }
+                OnPropertyChanged(out entity, value);
+                Entity.PropertyChanged += Entity_PropertyChanged;
+            }
         }
 
         protected NGDetailViewModel(TService service, Guid entityKey) : base(service)
         {
             Entity = Service.Find(entityKey);
 
-            Entity.PropertyChanged += Entity_PropertyChanged;
             Service.ContextChanged += Service_ContextChanged;
 
             RefreshTabTitle();
