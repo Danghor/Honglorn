@@ -44,6 +44,8 @@
             </DataGrid>
         </Grid>
 
+        <Button Content="Add Course" Command="{Binding AddStudentCourseCommand}" Margin="2" />
+        <Button Content="Remove Course" Command="{Binding RemoveStudentCourseCommand}" Margin="2" />
         <Button Content="Save" Command="{Binding SaveCommand}" Margin="2" />
         <Button Content="Refresh" Command="{Binding RefreshCommand}" Margin="2" />
     </StackPanel>
