@@ -30,7 +30,7 @@
             <TextBox Text="{Binding Entity.Forename}" Grid.Column="1" Grid.Row="1" Margin="2"/>
 
             <TextBlock Text="Sex" Grid.Column="0" Grid.Row="2" Margin="2"/>
-            <ComboBox ItemsSource="{Binding Source={extension:EnumBindingSource {x:Type enum:Sex}}}" SelectedValue="{Binding Sex}" Grid.Column="1" Grid.Row="2" Margin="2"/>
+            <ComboBox ItemsSource="{Binding Source={extension:EnumBindingSource {x:Type enum:Sex}}}" SelectedValue="{Binding Entity.Sex}" Grid.Column="1" Grid.Row="2" Margin="2"/>
 
             <TextBlock Text="Date Of Birth" Grid.Column="0" Grid.Row="3" Margin="2"/>
             <DatePicker SelectedDate="{Binding Entity.DateOfBirth}" Grid.Column="1" Grid.Row="3" Margin="2"/>
