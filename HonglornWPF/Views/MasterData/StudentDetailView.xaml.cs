@@ -16,8 +16,7 @@ namespace HonglornWPF.Views.MasterData
             DataContextChanged += StudentDetailView_DataContextChanged;
         }
 
-        private void StudentDetailView_DataContextChanged(object sender,
-            System.Windows.DependencyPropertyChangedEventArgs e)
+        private void StudentDetailView_DataContextChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue is NotifyPropertyChangedInformer oldContext)
             {
@@ -30,17 +29,21 @@ namespace HonglornWPF.Views.MasterData
             }
         }
 
-        private void StudentDetailViewModel_PropertyChanged(object sender,
-            System.ComponentModel.PropertyChangedEventArgs e)
+        private void StudentDetailViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(StudentDetailViewModel.StudentCourseDetailViewModel))
             {
-                var view = new StudentCourseDetailView
-                {
-                    DataContext = ((StudentDetailViewModel)sender).StudentCourseDetailViewModel
-                };
+                var detailViewModel = ((StudentDetailViewModel)sender).StudentCourseDetailViewModel;
 
-                view.ShowDialog();
+                if (detailViewModel != null)
+                {
+                    var view = new StudentCourseDetailView
+                    {
+                        DataContext = ((StudentDetailViewModel)sender).StudentCourseDetailViewModel
+                    };
+
+                    view.ShowDialog();
+                }
             }
         }
     }
