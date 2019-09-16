@@ -35,7 +35,7 @@
             <TextBlock Text="Date Of Birth" Grid.Column="0" Grid.Row="3" Margin="2"/>
             <DatePicker SelectedDate="{Binding Entity.DateOfBirth}" Grid.Column="1" Grid.Row="3" Margin="2"/>
 
-            <DataGrid ItemsSource="{Binding Entity.StudentCourses}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
+            <DataGrid ItemsSource="{Binding Entity.StudentCourses}" SelectedItem="{Binding SelectedStudentCourse}" IsReadOnly="True" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Course" Binding="{Binding Course.Name}" />
                     <DataGridTextColumn Header="DateStart" Binding="{Binding DateStart, Converter={StaticResource DateTimeToDateStringConverter}}" />

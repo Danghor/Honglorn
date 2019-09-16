@@ -5,14 +5,18 @@ using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    class StudentCourseDetailViewModel : NGDetailViewModel<StudentCourseService, StudentCourse>
+    public class StudentCourseDetailViewModel
     {
-        internal ICommand AcceptCommand { get; }
-        internal ICommand CancelCommand { get; }
+        public ICommand AcceptCommand { get; }
+        public ICommand CancelCommand { get; }
 
-        public StudentCourseDetailViewModel(StudentCourseService service, Guid entityKey) : base(service, entityKey)
+        public StudentCourse StudentCourse { get; }
+
+        public StudentCourseDetailViewModel(StudentCourse studentCourse, Action acceptAction, Action cancelAction)
         {
-
+            StudentCourse = studentCourse;
+            AcceptCommand = new RelayCommand(acceptAction);
+            CancelCommand = new RelayCommand(cancelAction);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="HonglornWPF.Views.MasterData.StudentCourseDetailView"
+﻿<Window x:Class="HonglornWPF.Views.MasterData.StudentCourseDetailView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,7 +14,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Student" Grid.Column="0" Margin="5"/>
-            <TextBlock Text="{Binding Entity.Student}" Grid.Column="1" Margin="5"/>
+            <TextBlock Text="{Binding StudentCourse.Student}" Grid.Column="1" Margin="5"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Course" Grid.Column="0" Margin="5"/>
-            <ComboBox SelectedItem="{Binding Entity.Course}" Grid.Column="1" Margin="5"/>
+            <ComboBox SelectedItem="{Binding StudentCourse.Course}" Grid.Column="1" Margin="5"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="DateStart" Grid.Column="0" Margin="5"/>
-            <DatePicker SelectedDate="{Binding Entity.DateStart}" Grid.Column="1"/>
+            <DatePicker SelectedDate="{Binding StudentCourse.DateStart}" Grid.Column="1"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -38,9 +38,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="DateEnd" Grid.Column="0" Margin="5"/>
-            <DatePicker SelectedDate="{Binding Entity.DateEnd}" Grid.Column="1"/>
+            <DatePicker SelectedDate="{Binding StudentCourse.DateEnd}" Grid.Column="1"/>
         </Grid>
         <Button Content="Accept" Command="{Binding AcceptCommand}" Margin="5" />
         <Button Content="Cancel" Command="{Binding CancelCommand}" Margin="5" />
     </StackPanel>
-</UserControl>
+</Window>

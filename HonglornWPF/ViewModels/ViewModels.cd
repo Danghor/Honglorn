@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HonglornWPF.ViewModels.TabViewModel" Collapsed="true">
+    <Position X="8.75" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAgECABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\TabViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornBL.NotifyPropertyChangedInformer">
+    <Position X="8.5" Y="1.25" Width="2.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HonglornWPF.ViewModels.ServiceViewModel&lt;TService, TEntity&gt;" Collapsed="true">
+    <Position X="8.5" Y="5.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAACBAAAAAgAAAAAAAAAAAQAAAAAAAAAAEAIA=</HashCode>
+      <FileName>ViewModels\ServiceViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="HonglornWPF.ViewModels.LookupViewModel&lt;TService, TEntity&gt;" Collapsed="true">
+    <Position X="5" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\LookupViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornWPF.ViewModels.NGDetailViewModel&lt;TService, TEntity&gt;" Collapsed="true">
+    <Position X="8.5" Y="6.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAABAAAAAAAEAAAAEAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>ViewModels\NGDetailViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HonglornWPF.ViewModels.NGListViewModel&lt;TService, TEntity&gt;" Collapsed="true">
+    <Position X="12" Y="6.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAECAQEFAAAAAEAAAAAEAIACAAAEAAACAAAA=</HashCode>
+      <FileName>ViewModels\NGListViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

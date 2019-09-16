@@ -11,16 +11,20 @@ namespace HonglornWPF.ViewModels
         public ICommand AddStudentCourseCommand { get; }
         public ICommand RemoveStudentCourseCommand { get; }
 
+        StudentCourse selectedStudentCourse;
+
+        public StudentCourse SelectedStudentCourse
+        {
+            get => selectedStudentCourse;
+            set => OnPropertyChanged(out selectedStudentCourse, value);
+        }
+
         StudentCourseDetailViewModel studentCourseDetailViewModel;
 
         public StudentCourseDetailViewModel StudentCourseDetailViewModel
         {
             get => studentCourseDetailViewModel;
-            set
-            {
-                studentCourseDetailViewModel?.Dispose();
-                OnPropertyChanged(out studentCourseDetailViewModel, value);
-            }
+            set => OnPropertyChanged(out studentCourseDetailViewModel, value);
         }
 
         public StudentDetailViewModel(StudentService service, Guid entityKey) : base(service, entityKey)
@@ -31,7 +35,18 @@ namespace HonglornWPF.ViewModels
 
         void AddStudentCourse()
         {
-            throw new NotImplementedException();
+            var studentCourse = new StudentCourse();
+            StudentCourseDetailViewModel = new StudentCourseDetailViewModel(studentCourse,
+                () =>
+                {
+                    Entity.StudentCourses.Add(studentCourse);
+                    StudentCourseDetailViewModel = null;
+                },
+                () =>
+                {
+                    StudentCourseDetailViewModel = null;
+                }
+                );
         }
 
         void RemoveStudentCourse()
