@@ -14,7 +14,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Student" Grid.Column="0" Margin="5"/>
-            <ComboBox ItemsSource="{Binding ValidStudents}" DisplayMemberPath="Value" SelectedItem="{Binding CurrentStudent}" Grid.Column="1" Margin="5"/>
+            <TextBlock Text="{Binding Entity.Student}" Grid.Column="1" Margin="5"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Course" Grid.Column="0" Margin="5"/>
-            <ComboBox ItemsSource="{Binding ValidCourses}" DisplayMemberPath="Value" SelectedItem="{Binding CurrentCourse}" Grid.Column="1" Margin="5"/>
+            <ComboBox SelectedItem="{Binding Entity.Course}" Grid.Column="1" Margin="5"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="DateStart" Grid.Column="0" Margin="5"/>
-            <DatePicker SelectedDate="{Binding DateStart}" Grid.Column="1"/>
+            <DatePicker SelectedDate="{Binding Entity.DateStart}" Grid.Column="1"/>
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -38,7 +38,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="DateEnd" Grid.Column="0" Margin="5"/>
-            <DatePicker SelectedDate="{Binding DateEnd}" Grid.Column="1"/>
+            <DatePicker SelectedDate="{Binding Entity.DateEnd}" Grid.Column="1"/>
         </Grid>
         <Button Content="Accept" Command="{Binding AcceptCommand}" Margin="5" />
         <Button Content="Cancel" Command="{Binding CancelCommand}" Margin="5" />

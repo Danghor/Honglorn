@@ -1,72 +1,18 @@
 ﻿using HonglornBL.MasterData.StudentCourse;
+using HonglornBL.Models.Entities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Windows.Input;
 
 namespace HonglornWPF.ViewModels
 {
-    class StudentCourseDetailViewModel : DetailViewModel<StudentCourseManager>, IStudentCourseModel
+    class StudentCourseDetailViewModel : NGDetailViewModel<StudentCourseService, StudentCourse>
     {
-        public Guid StudentPKey => CurrentStudent?.Key ?? default;
+        internal ICommand AcceptCommand { get; }
+        internal ICommand CancelCommand { get; }
 
-        public Guid CoursePKey => CurrentCourse?.Key ?? default;
-
-        DateTime dateStart;
-
-        public DateTime DateStart
+        public StudentCourseDetailViewModel(StudentCourseService service, Guid entityKey) : base(service, entityKey)
         {
-            get => dateStart;
-            set => OnPropertyChanged(out dateStart, value);
-        }
 
-        DateTime? dateEnd;
-
-        public DateTime? DateEnd
-        {
-            get => dateEnd;
-            set => OnPropertyChanged(out dateEnd, value);
-        }
-
-        public IDictionary<Guid, string> ValidCourses { get; }
-
-        KeyValuePair<Guid, string>? currentCourse;
-
-        public KeyValuePair<Guid, string>? CurrentCourse
-        {
-            get => currentCourse;
-            set => OnPropertyChanged(out currentCourse, value);
-        }
-
-        public IDictionary<Guid, string> ValidStudents { get; }
-
-        KeyValuePair<Guid, string>? currentStudent;
-
-        public KeyValuePair<Guid, string>? CurrentStudent
-        {
-            get => currentStudent;
-            set => OnPropertyChanged(out currentStudent, value);
-        }
-
-        public StudentCourseDetailViewModel(Action cancelAction) : base(cancelAction)
-        {
-            ValidStudents = Honglorn.StudentService().GetManagers().ToDictionary(s => s.PKey, s => $"{s.Forename} {s.Surname}");
-            ValidCourses = Honglorn.CourseService().GetManagers().ToDictionary(c => c.PKey, c => c.Name);
-        }
-
-        internal override void Clear()
-        {
-            CurrentStudent = default;
-            CurrentCourse = default;
-            DateStart = default;
-            dateEnd = default;
-        }
-
-        internal override void CopyValues(StudentCourseManager model)
-        {
-            CurrentStudent = ValidStudents.SingleOrDefault(i => i.Key == model.StudentPKey);
-            CurrentCourse = ValidCourses.SingleOrDefault(i => i.Key == model.CoursePKey);
-            DateStart = model.DateStart;
-            DateEnd = model.DateEnd;
         }
     }
 }

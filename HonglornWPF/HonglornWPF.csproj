@@ -133,6 +133,7 @@
     <Compile Include="ViewModels\ServiceViewModel.cs" />
     <Compile Include="ViewModels\CourseDetailViewModel.cs" />
     <Compile Include="ViewModels\CourseListViewModel.cs" />
+    <Compile Include="ViewModels\StudentCourseDetailViewModel.cs" />
     <Compile Include="ViewModels\TabViewModelCreatedEventArgs.cs" />
     <Compile Include="ViewModels\MasterDataViewModel.cs" />
     <Compile Include="ViewModels\NGDetailViewModel.cs" />
@@ -147,6 +148,9 @@
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\TabViewModel.cs" />
     <Compile Include="ViewModels\ViewModelInfo.cs" />
+    <Compile Include="Views\MasterData\StudentCourseDetailView.xaml.cs">
+      <DependentUpon>StudentCourseDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MasterData\StudentListView.xaml.cs">
       <DependentUpon>StudentListView.xaml</DependentUpon>
     </Compile>
@@ -180,6 +184,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MasterData\StudentCourseDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\MasterData\StudentListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

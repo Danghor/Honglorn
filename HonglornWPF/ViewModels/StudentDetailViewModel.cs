@@ -11,15 +11,15 @@ namespace HonglornWPF.ViewModels
         public ICommand AddStudentCourseCommand { get; }
         public ICommand RemoveStudentCourseCommand { get; }
 
-        LookupViewModel<StudentCourseService, StudentCourse> studentCourseLookupViewModel;
+        StudentCourseDetailViewModel studentCourseDetailViewModel;
 
-        public LookupViewModel<StudentCourseService, StudentCourse> StudentCourseLookupViewModel
+        public StudentCourseDetailViewModel StudentCourseDetailViewModel
         {
-            get => studentCourseLookupViewModel;
+            get => studentCourseDetailViewModel;
             set
             {
-                studentCourseLookupViewModel?.Dispose();
-                OnPropertyChanged(out studentCourseLookupViewModel, value);
+                studentCourseDetailViewModel?.Dispose();
+                OnPropertyChanged(out studentCourseDetailViewModel, value);
             }
         }
 
